@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './assets/stylesheets/index.css';
 import CommentBox from './CommentBox';
 import * as serviceWorker from './serviceWorker';
 
