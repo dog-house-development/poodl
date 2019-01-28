@@ -4,6 +4,7 @@ import logger from 'morgan';
 import mongoose from 'mongoose';
 import { getSecret } from './secrets';
 import Comment from './models/comment';
+import Member from './models/member'
 
 // and create our instances
 const app = express();
