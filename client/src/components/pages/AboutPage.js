@@ -1,6 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const AboutPage = () => (
-    <div>{"The about page content"}</div>
+const AboutPage = (props) => (
+    <div>
+        {"The documentation can go here"}
+    </div>
 );
+
+export default AboutPage;

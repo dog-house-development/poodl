@@ -1,0 +1,77 @@
+@import './palette.scss';
+
+.button {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: none;
+  -webkit-appearance: none;
+
+  &:focus {
+    outline: 0;
+    border-color: blue;
+  }
+
+  &.small {
+    padding: 4px 12px;
+    font-size: 14px;
+  }
+
+  &.medium {
+    padding: 5px 16px;
+    font-size: 16px;
+  }
+
+  &.large {
+    padding: 6px 20px;
+    font-size: 18px;
+  }
+
+  &.primary {
+    background-color: $button-primary;
+    border-color: $button-primary;
+    color: #fff;
+
+    &:hover {
+      background-color: $button-primary-hover;
+      border-color: $button-primary-hover;
+    }
+
+    &:active {
+      background-color: $button-primary-active;
+      border-color: $button-primary-active;
+    }
+  }
+
+  &.secondary {
+    border-color: $button-primary;
+    color: $button-primary;
+    background-color: #fff;
+
+    &:hover {
+      background-color: $button-primary;
+      color: #fff;
+    }
+
+    &:active {
+      border-color: $button-primary-active;
+      color: #fff;
+      background-color: $button-primary-active;
+    }
+  }
+
+  &.tertiary {
+    border-color: $button-primary;
+    color: $button-primary;
+    background-color: #fff;
+
+    &:hover {
+      border-color: $button-primary-hover;
+      color: $button-primary-hover;
+    }
+
+    &:active {
+      border-color: $button-primary-active;
+      color: $button-primary-active;
+    }
+  }
+}
