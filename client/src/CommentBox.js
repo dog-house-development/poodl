@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
-import DATA from './data';
 import './CommentBox.css';
 
 class CommentBox extends Component {
