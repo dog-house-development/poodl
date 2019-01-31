@@ -1,0 +1,21 @@
+@import '../palette.scss';
+
+.header {
+
+  ul {
+
+    li {
+      display: inline;
+      list-style: none;
+      padding: 5px 10px;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
