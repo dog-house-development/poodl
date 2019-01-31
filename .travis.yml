@@ -10,5 +10,6 @@ install:
   - yarn client-install
 script:
   - yarn test
+  - yarn --cwd client build
 before_script:
   - sleep 15
