@@ -3,7 +3,12 @@ node_js:
   - "8"
   - "10"
   - "11"
-before_install:
-  - "npm install -g npm@6"
+services:
+  - mongodb
+install:
+  - yarn
+  - yarn client-install
+script:
+  - yarn test
 before_script:
   - sleep 15
