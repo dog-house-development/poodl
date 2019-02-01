@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
-const UserSchema = new Schema({
+const SeniorCenterSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -11,7 +11,15 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  password: {
+  address: {
+    type: String,
+    required: true
+  },
+  phone: {
+    type: String,
+    required: true
+  },
+  operationHours: {
     type: String,
     required: true
   },
@@ -21,4 +29,4 @@ const UserSchema = new Schema({
   }
 }, { timestamps: true }); // this might cause problems!!!!
 
-module.exports = User = mongoose.model("users", UserSchema);
+module.exports = SeniorCenter = mongoose.model("seniorCenters", SeniorCenterSchema);
