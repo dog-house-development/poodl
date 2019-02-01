@@ -6,8 +6,7 @@ node_js:
 services:
   - mongodb
 install:
-  - yarn
-  - yarn client-install
+  - yarn all-install
 script:
   - yarn test
   - yarn --cwd client build
