@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "8"
+  - "10"
+  - "11"
+services:
+  - mongodb
+install:
+  - yarn
+  - yarn client-install
+script:
+  - yarn test
+  - yarn --cwd client build
+
