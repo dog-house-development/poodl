@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 class Landing extends Component {
   render() {
@@ -9,12 +8,6 @@ class Landing extends Component {
         <p>The member management tool for rural senior centers!</p>
         <p>Users please see our <a href="https://github.com/dog-house-development/poodl/wiki/User-Documentation">User Documentation.</a></p>
         <p>Developers please see our <a href="https://github.com/dog-house-development/poodl/">GitHub Repository.</a></p>
-        <div>
-          <Link to="/register">Register</Link>
-        </div>
-        <div>
-          <Link to="/login">Log In</Link>
-        </div>
       </div>
     );
   }
