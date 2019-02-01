@@ -29,7 +29,7 @@ Make sure you have the correct yarn installed. If none of the commands are worki
 
 To install dependencies, run:
 
-`npm install && npm run client-install`
+`yarn && yarn client-install`
 
 ### Start development server
 
