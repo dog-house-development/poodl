@@ -6,6 +6,7 @@
   "scripts": {
     "client-install": "yarn --cwd client",
     "start": "node server.js",
+    "test": "yarn --cwd client test",
     "server": "nodemon server.js",
     "client": "yarn --cwd client start",
     "start:dev": "concurrently \"yarn server\" \"yarn client\"",
