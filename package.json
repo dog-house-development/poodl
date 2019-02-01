@@ -4,7 +4,7 @@
   "description": "Senior Center App",
   "main": "server.js",
   "scripts": {
-    "client-install": "yarn --cwd client",
+    "all-install": "yarn && yarn --cwd client",
     "start": "node server.js",
     "test": "yarn --cwd client test",
     "server": "nodemon server.js",
