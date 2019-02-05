@@ -1,4 +1,5 @@
 # Poodl
+[![Build Status](https://travis-ci.org/dog-house-development/poodl.svg?branch=dev)](https://travis-ci.org/dog-house-development/poodl)
 
 Welcome to Poodl!
 
