@@ -7,7 +7,7 @@ const propTypes = {
   auth: PropTypes.object.isRequired
 };
 
-const PrivateRoute = ({ component: Component, auth, ...rest }) => (
+export const PrivateRoute = ({ component: Component, auth, ...rest }) => (
   <Route
     {...rest}
     render={props =>

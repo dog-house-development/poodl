@@ -10,6 +10,9 @@ configure({ adapter: new Adapter() });
 
 let state, props, wrapper, instance;
 beforeEach(() => {
+  state = {
+    value: ""
+  };
   props = {
     onChange: () => {},
     name: "email",
@@ -21,8 +24,9 @@ beforeEach(() => {
     label: "Email:",
     error: {}
   };
-  wrapper = shallow(<Field {..._.assign({}, state, props)} />);
+  wrapper = shallow(<Field {..._.assign({}, props)} />);
   instance = wrapper.instance();
+  instance.state = state;
 });
 
 describe("render", () => {

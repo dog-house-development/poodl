@@ -8,7 +8,7 @@ import Form from "../Form";
 
 configure({ adapter: new Adapter() });
 
-let state, props, wrapper, instance;
+let props, wrapper, instance;
 beforeEach(() => {
   props = {
     onSubmit: () => {},
@@ -26,7 +26,7 @@ beforeEach(() => {
     noValidate: false,
     buttonLabel: "Submit"
   };
-  wrapper = shallow(<Form {..._.assign({}, state, props)} />);
+  wrapper = shallow(<Form {..._.assign({}, props)} />);
   instance = wrapper.instance();
 });
 

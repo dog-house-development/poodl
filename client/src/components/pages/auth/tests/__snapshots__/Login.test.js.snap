@@ -8,17 +8,15 @@ Login {
   "onSubmit": [Function],
   "props": Object {
     "auth": Object {},
-    "email": "test@test.test",
     "errors": Object {},
     "loginUser": [Function],
-    "password": "abc123",
   },
   "refs": Object {},
   "setState": [Function],
   "state": Object {
-    "email": "",
+    "email": "test@test.test",
     "errors": Object {},
-    "password": "",
+    "password": "abc123",
   },
   "updater": Updater {
     "_callbacks": Array [],
@@ -26,10 +24,8 @@ Login {
       "_context": Object {},
       "_element": <Login
         auth={Object {}}
-        email="test@test.test"
         errors={Object {}}
         loginUser={[Function]}
-        password="abc123"
       />,
       "_forcedUpdate": false,
       "_instance": [Circular],

@@ -8,7 +8,7 @@ import Button from "../Button";
 
 configure({ adapter: new Adapter() });
 
-let state, props, wrapper, instance;
+let props, wrapper, instance;
 beforeEach(() => {
   props = {
     onClick: () => {},
@@ -17,7 +17,7 @@ beforeEach(() => {
     content: "Press me",
     type: "normal"
   };
-  wrapper = shallow(<Button {..._.assign({}, state, props)} />);
+  wrapper = shallow(<Button {..._.assign({}, props)} />);
   instance = wrapper.instance();
 });
 

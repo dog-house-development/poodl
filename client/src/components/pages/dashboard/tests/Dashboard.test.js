@@ -4,25 +4,27 @@ import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import _ from "lodash";
 
-import { Login } from "../Login";
+import { Dashboard } from "../Dashboard";
 
 configure({ adapter: new Adapter() });
 
-let state, props, wrapper, instance;
+let props, wrapper, instance;
 beforeEach(() => {
-  state = {
-    email: "test@test.test",
-    password: "abc123",
-    errors: {}
-  };
   props = {
-    loginUser: () => {},
-    auth: {},
-    errors: {}
+    logoutUser: () => {},
+    auth: {
+      isAuthenticated: true,
+      loading: false,
+      user: {
+        exp: 1580940830,
+        iat: 1549383904,
+        id: "5c52379d9be6fc0017afd46e",
+        name: "Sandwich Man"
+      }
+    }
   };
-  wrapper = shallow(<Login {..._.assign({}, props)} />);
+  wrapper = shallow(<Dashboard {..._.assign({}, props)} />);
   instance = wrapper.instance();
-  instance.state = state;
 });
 
 describe("render", () => {

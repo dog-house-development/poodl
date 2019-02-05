@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should render correctly 1`] = `
+Landing {
+  "context": Object {},
+  "props": Object {},
+  "refs": Object {},
+  "setState": [Function],
+  "state": null,
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_element": <Landing />,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_newState": null,
+      "_rendered": <div>
+        <h4>
+          Welcome to Poodl!
+        </h4>
+        <p>
+          The member management tool for rural senior centers!
+        </p>
+        <p>
+          Users please see our 
+          <a
+            href="https://github.com/dog-house-development/poodl/wiki/User-Documentation"
+          >
+            User Documentation.
+          </a>
+        </p>
+        <p>
+          Developers please see our 
+          <a
+            href="https://github.com/dog-house-development/poodl/"
+          >
+            GitHub Repository.
+          </a>
+        </p>
+      </div>,
+      "_rendering": false,
+      "_updater": [Circular],
+    },
+  },
+  Symbol(enzyme.__setState__): [Function],
+}
+`;
