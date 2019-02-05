@@ -2,12 +2,12 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
+import { GET_ERRORS, SET_CURRENT_ADMIN, ADMIN_LOADING } from "./types";
 
-// Register User
-export const registerUser = (userData, history) => dispatch => {
+// Register Admin
+export const registerAdmin = (adminData, history) => dispatch => {
   axios
-    .post("/api/users/register", userData)
+    .post("/api/admins/register", adminData)
     .then(res => history.push("/login"))
     .catch(err =>
       dispatch({
@@ -17,10 +17,10 @@ export const registerUser = (userData, history) => dispatch => {
     );
 };
 
-// Login - get user token
-export const loginUser = userData => dispatch => {
+// Login - get admin token
+export const loginAdmin = adminData => dispatch => {
   axios
-    .post("/api/users/login", userData)
+    .post("/api/admins/login", adminData)
     .then(res => {
       // Save to localStorage
 
@@ -29,10 +29,10 @@ export const loginUser = userData => dispatch => {
       localStorage.setItem("jwtToken", token);
       // Set token to Auth header
       setAuthToken(token);
-      // Decode token to get user data
+      // Decode token to get admin data
       const decoded = jwt_decode(token);
-      // Set current user
-      dispatch(setCurrentUser(decoded));
+      // Set current admin
+      dispatch(setCurrentAdmin(decoded));
     })
     .catch(err =>
       dispatch({
@@ -42,27 +42,27 @@ export const loginUser = userData => dispatch => {
     );
 };
 
-// Set logged in user
-export const setCurrentUser = decoded => {
+// Set logged in admin
+export const setCurrentAdmin = decoded => {
   return {
-    type: SET_CURRENT_USER,
+    type: SET_CURRENT_ADMIN,
     payload: decoded
   };
 };
 
-// User loading
-export const setUserLoading = () => {
+// Admin loading
+export const setAdminLoading = () => {
   return {
-    type: USER_LOADING
+    type: ADMIN_LOADING
   };
 };
 
-// Log user out
-export const logoutUser = () => dispatch => {
+// Log admin out
+export const logoutAdmin = () => dispatch => {
   // Remove token from local storage
   localStorage.removeItem("jwtToken");
   // Remove auth header for future requests
   setAuthToken(false);
-  // Set current user to empty object {} which will set isAuthenticated to false
-  dispatch(setCurrentUser({}));
+  // Set current admin to empty object {} which will set isAuthenticated to false
+  dispatch(setCurrentAdmin({}));
 };
