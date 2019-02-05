@@ -12,7 +12,7 @@ const propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-class Register extends Component {
+export class Register extends Component {
   constructor() {
     super();
     this.state = {

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar should render correctly 1`] = `
+Navbar {
+  "context": Object {},
+  "props": Object {
+    "content": "Press me",
+    "onClick": [Function],
+  },
+  "refs": Object {},
+  "setState": [Function],
+  "state": null,
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_element": <Navbar
+        content="Press me"
+        onClick={[Function]}
+      />,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_newState": null,
+      "_rendered": <div
+        className="navbar-fixed"
+      >
+        <nav
+          className="z-depth-0"
+        >
+          <div
+            className="nav-wrapper white"
+          >
+            <Link
+              replace={false}
+              to="/"
+            >
+              Poodl
+            </Link>
+          </div>
+        </nav>
+      </div>,
+      "_rendering": false,
+      "_updater": [Circular],
+    },
+  },
+  Symbol(enzyme.__setState__): [Function],
+}
+`;

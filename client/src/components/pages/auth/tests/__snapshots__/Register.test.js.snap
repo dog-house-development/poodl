@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should render correctly 1`] = `
+Register {
+  "context": Object {},
+  "getFields": [Function],
+  "onChange": [Function],
+  "onSubmit": [Function],
+  "props": Object {
+    "auth": Object {},
+    "email": "sam@test.com",
+    "errors": Object {},
+    "name": "Sam",
+    "password": "abc123",
+    "password2": "abc123",
+    "registerUser": [Function],
+  },
+  "refs": Object {},
+  "setState": [Function],
+  "state": Object {
+    "email": "",
+    "errors": Object {},
+    "name": "",
+    "password": "",
+    "password2": "",
+  },
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_element": <Register
+        auth={Object {}}
+        email="sam@test.com"
+        errors={Object {}}
+        name="Sam"
+        password="abc123"
+        password2="abc123"
+        registerUser={[Function]}
+      />,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_newState": null,
+      "_rendered": <div>
+        <Link
+          replace={false}
+          to="/"
+        >
+          <i
+            className="material-icons left"
+          >
+            keyboard_backspace
+          </i>
+           Back to home
+        </Link>
+        <div>
+          <h4>
+            <b>
+              Register
+            </b>
+             below
+          </h4>
+          <p>
+            Already have an account? 
+            <Link
+              replace={false}
+              to="/login"
+            >
+              Log in
+            </Link>
+          </p>
+        </div>
+        <Form
+          buttonLabel="Sign up"
+          fields={
+            Array [
+              Object {
+                "error": undefined,
+                "id": "name",
+                "label": "Name",
+                "onChange": [Function],
+                "placeholder": "Name...",
+                "type": "text",
+                "value": "",
+              },
+              Object {
+                "error": undefined,
+                "id": "email",
+                "label": "Email",
+                "onChange": [Function],
+                "placeholder": "Email...",
+                "type": "email",
+                "value": "",
+              },
+              Object {
+                "error": undefined,
+                "id": "password",
+                "label": "Password",
+                "onChange": [Function],
+                "placeholder": "Password...",
+                "type": "password",
+                "value": "",
+              },
+              Object {
+                "error": undefined,
+                "id": "password2",
+                "label": "Confirm Password",
+                "onChange": [Function],
+                "placeholder": "Confirm password...",
+                "type": "password",
+                "value": "",
+              },
+            ]
+          }
+          noValidate={true}
+          onSubmit={[Function]}
+        />
+      </div>,
+      "_rendering": false,
+      "_updater": [Circular],
+    },
+  },
+  Symbol(enzyme.__setState__): [Function],
+}
+`;

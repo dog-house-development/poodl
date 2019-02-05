@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should render correctly 1`] = `
+Login {
+  "context": Object {},
+  "getFields": [Function],
+  "onChange": [Function],
+  "onSubmit": [Function],
+  "props": Object {
+    "auth": Object {},
+    "email": "test@test.test",
+    "errors": Object {},
+    "loginUser": [Function],
+    "password": "abc123",
+  },
+  "refs": Object {},
+  "setState": [Function],
+  "state": Object {
+    "email": "",
+    "errors": Object {},
+    "password": "",
+  },
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_element": <Login
+        auth={Object {}}
+        email="test@test.test"
+        errors={Object {}}
+        loginUser={[Function]}
+        password="abc123"
+      />,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_newState": null,
+      "_rendered": <div>
+        <Link
+          replace={false}
+          to="/"
+        >
+          Back to home
+        </Link>
+        <div>
+          <h4>
+            <b>
+              Login
+            </b>
+             below
+          </h4>
+          <p>
+            Don't have an account? 
+            <Link
+              replace={false}
+              to="/register"
+            >
+              Register
+            </Link>
+          </p>
+        </div>
+        <Form
+          buttonLabel="Log in"
+          fields={
+            Array [
+              Object {
+                "error": undefined,
+                "id": "email",
+                "label": "Email",
+                "onChange": [Function],
+                "placeholder": "Email...",
+                "type": "email",
+                "value": "",
+              },
+              Object {
+                "error": undefined,
+                "id": "password",
+                "label": "Password",
+                "onChange": [Function],
+                "placeholder": "Password......",
+                "type": "password",
+                "value": "",
+              },
+            ]
+          }
+          noValidate={true}
+          onSubmit={[Function]}
+        />
+      </div>,
+      "_rendering": false,
+      "_updater": [Circular],
+    },
+  },
+  Symbol(enzyme.__setState__): [Function],
+}
+`;

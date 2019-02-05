@@ -11,7 +11,7 @@ const propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-class Login extends Component {
+export class Login extends Component {
   constructor() {
     super();
     this.state = {
