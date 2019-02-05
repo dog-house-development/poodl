@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login should render correctly 1`] = `
+exports[`render should render correctly 1`] = `
 Login {
   "context": Object {},
   "getFields": [Function],

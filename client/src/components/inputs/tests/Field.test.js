@@ -1,13 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { shallow, configure } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import _ from "lodash";
+
 import Field from "../Field";
 
-it("renders without crashing", () => {
-  const props = {
+configure({ adapter: new Adapter() });
+
+let state, props, wrapper, instance;
+beforeEach(() => {
+  props = {
     onChange: () => {},
-    id: "name"
+    name: "email",
+    id: "email",
+    type: "email",
+    size: "normal",
+    content: "",
+    placeholder: "Enter email...",
+    label: "Email:",
+    error: {}
   };
-  const div = document.createElement("div");
-  ReactDOM.render(<Field {...props} />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  wrapper = shallow(<Field {..._.assign({}, state, props)} />);
+  instance = wrapper.instance();
+});
+
+describe("render", () => {
+  it("should render correctly", () => {
+    expect(instance).toMatchSnapshot();
+  });
 });

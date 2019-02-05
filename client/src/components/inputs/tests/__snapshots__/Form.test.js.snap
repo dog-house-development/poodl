@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should render correctly 1`] = `
+Form {
+  "context": Object {},
+  "getFieldsMarkup": [Function],
+  "handleChange": [Function],
+  "props": Object {
+    "buttonLabel": "Submit",
+    "fields": Array [
+      Object {
+        "error": Object {},
+        "id": "email",
+        "label": "Email:",
+        "onChange": [Function],
+        "placeholder": "Enter email...",
+        "type": "email",
+        "value": "",
+      },
+    ],
+    "noValidate": false,
+    "onSubmit": [Function],
+  },
+  "refs": Object {},
+  "setState": [Function],
+  "state": null,
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_element": <Form
+        buttonLabel="Submit"
+        fields={
+          Array [
+            Object {
+              "error": Object {},
+              "id": "email",
+              "label": "Email:",
+              "onChange": [Function],
+              "placeholder": "Enter email...",
+              "type": "email",
+              "value": "",
+            },
+          ]
+        }
+        noValidate={false}
+        onSubmit={[Function]}
+      />,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_newState": null,
+      "_rendered": <form
+        noValidate={false}
+        onSubmit={[Function]}
+      >
+        <Field
+          error={Object {}}
+          id="email"
+          label="Email:"
+          onChange={[Function]}
+          placeholder="Enter email..."
+          size="normal"
+          type="email"
+        />
+        <Button
+          content="Submit"
+          kind="primary"
+          size="medium"
+          type="submit"
+        />
+      </form>,
+      "_rendering": false,
+      "_updater": [Circular],
+    },
+  },
+  Symbol(enzyme.__setState__): [Function],
+}
+`;

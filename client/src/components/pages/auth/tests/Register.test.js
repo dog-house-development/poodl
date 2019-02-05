@@ -22,31 +22,23 @@ beforeEach(() => {
     auth: {},
     errors: {}
   };
-  wrapper = shallow(<Register {..._.assign({}, state, props)} />);
+  wrapper = shallow(<Register {..._.assign({}, props)} />);
   instance = wrapper.instance();
+  instance.state = state;
 });
 
 describe("onChange", () => {
   it("should update the state", () => {
     spyOn(instance, "onChange");
-    const lastState = instance.state;
-    const e = {
+    const event = {
       target: {
         id: "email",
         value: "changed.email@test.test"
       }
     };
-    instance.onChange(e);
+    instance.onChange(event);
     expect(instance.onChange).toHaveBeenCalled();
-    expect(instance.state).not.toEqual(lastState);
-  });
-});
-
-describe("onChange", () => {
-  it("should call onChange when form is changed", () => {
-    spyOn(instance, "onChange");
-
-    expect(instance.onChange).not.toHaveBeenCalled();
+    expect(instance.state.email).toEqual("changed.email@test.test");
   });
 });
 

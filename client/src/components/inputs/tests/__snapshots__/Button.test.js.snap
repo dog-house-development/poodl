@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should render correctly 1`] = `
+Button {
+  "context": Object {},
+  "props": Object {
+    "content": "Press me",
+    "kind": "primary",
+    "onClick": [Function],
+    "size": "medium",
+    "type": "normal",
+  },
+  "refs": Object {},
+  "setState": [Function],
+  "state": null,
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_element": <Button
+        content="Press me"
+        kind="primary"
+        onClick={[Function]}
+        size="medium"
+        type="normal"
+      />,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_newState": null,
+      "_rendered": <button
+        className="button medium primary"
+        onClick={[Function]}
+        type="normal"
+      >
+        Press me
+      </button>,
+      "_rendering": false,
+      "_updater": [Circular],
+    },
+  },
+  Symbol(enzyme.__setState__): [Function],
+}
+`;

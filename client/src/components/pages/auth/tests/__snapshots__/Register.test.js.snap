@@ -8,21 +8,17 @@ Register {
   "onSubmit": [Function],
   "props": Object {
     "auth": Object {},
-    "email": "sam@test.com",
     "errors": Object {},
-    "name": "Sam",
-    "password": "abc123",
-    "password2": "abc123",
     "registerUser": [Function],
   },
   "refs": Object {},
   "setState": [Function],
   "state": Object {
-    "email": "",
+    "email": "sam@test.com",
     "errors": Object {},
-    "name": "",
-    "password": "",
-    "password2": "",
+    "name": "Sam",
+    "password": "abc123",
+    "password2": "abc123",
   },
   "updater": Updater {
     "_callbacks": Array [],
@@ -30,11 +26,7 @@ Register {
       "_context": Object {},
       "_element": <Register
         auth={Object {}}
-        email="sam@test.com"
         errors={Object {}}
-        name="Sam"
-        password="abc123"
-        password2="abc123"
         registerUser={[Function]}
       />,
       "_forcedUpdate": false,

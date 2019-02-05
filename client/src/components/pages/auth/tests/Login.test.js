@@ -8,23 +8,23 @@ import { Login } from "../Login";
 
 configure({ adapter: new Adapter() });
 
-describe("Login", () => {
-  let state, props, wrapper, instance;
-  beforeEach(() => {
-    state = {
-      email: "test@test.test",
-      password: "abc123",
-      errors: {}
-    };
-    props = {
-      loginUser: () => {},
-      auth: {},
-      errors: {}
-    };
-    wrapper = shallow(<Login {..._.assign({}, state, props)} />);
-    instance = wrapper.instance();
-  });
+let state, props, wrapper, instance;
+beforeEach(() => {
+  state = {
+    email: "test@test.test",
+    password: "abc123",
+    errors: {}
+  };
+  props = {
+    loginUser: () => {},
+    auth: {},
+    errors: {}
+  };
+  wrapper = shallow(<Login {..._.assign({}, state, props)} />);
+  instance = wrapper.instance();
+});
 
+describe("render", () => {
   it("should render correctly", () => {
     expect(instance).toMatchSnapshot();
   });

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should render correctly 1`] = `
+Field {
+  "context": Object {},
+  "handleChange": [Function],
+  "props": Object {
+    "content": "",
+    "error": Object {},
+    "id": "email",
+    "label": "Email:",
+    "name": "email",
+    "onChange": [Function],
+    "placeholder": "Enter email...",
+    "size": "normal",
+    "type": "email",
+  },
+  "refs": Object {},
+  "setState": [Function],
+  "state": Object {
+    "value": "",
+  },
+  "updater": Updater {
+    "_callbacks": Array [],
+    "_renderer": ReactShallowRenderer {
+      "_context": Object {},
+      "_element": <Field
+        content=""
+        error={Object {}}
+        id="email"
+        label="Email:"
+        name="email"
+        onChange={[Function]}
+        placeholder="Enter email..."
+        size="normal"
+        type="email"
+      />,
+      "_forcedUpdate": false,
+      "_instance": [Circular],
+      "_newState": null,
+      "_rendered": <div>
+        Email:
+        <input
+          className="field normal"
+          error={Object {}}
+          id="email"
+          name="email"
+          onChange={[Function]}
+          placeholder="Enter email..."
+          type="email"
+          value=""
+        />
+      </div>,
+      "_rendering": false,
+      "_updater": [Circular],
+    },
+  },
+  Symbol(enzyme.__setState__): [Function],
+}
+`;
