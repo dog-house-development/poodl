@@ -1,11 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-/node_modules
-package-lock.json
-.DS_Store
-
-
 # dependencies
+/node_modules
 /client/node_modules
 /client/.pnp
 /client/.pnp.js
@@ -17,6 +13,7 @@ package-lock.json
 /client/build
 
 # misc
+.DS_Store
 /client/.DS_Store
 /client/.env.local
 /client/.env.development.local
