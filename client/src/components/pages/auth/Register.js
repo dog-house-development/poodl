@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../../../actions/authActions";
+import { registerAdmin } from "../../../actions/authActions";
 
 import Form from "../../inputs/Form";
 
 const propTypes = {
-  registerUser: PropTypes.func.isRequired,
+  registerAdmin: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -25,7 +25,7 @@ export class Register extends Component {
   }
 
   componentDidMount() {
-    // If logged in and user navigates to Register page, should redirect them to dashboard
+    // If logged in and admin navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
@@ -46,14 +46,14 @@ export class Register extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const newUser = {
+    const newAdmin = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
     };
 
-    this.props.registerUser(newUser, this.props.history);
+    this.props.registerAdmin(newAdmin, this.props.history);
   };
 
   getFields = () => {
@@ -133,8 +133,8 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    registerUser: (userData, history) =>
-      dispatch(registerUser(userData, history))
+    registerAdmin: (adminData, history) =>
+      dispatch(registerAdmin(adminData, history))
   };
 };
 

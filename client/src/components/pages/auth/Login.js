@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../../actions/authActions";
+import { loginAdmin } from "../../../actions/authActions";
 import Form from "../../inputs/Form";
 
 const propTypes = {
-  loginUser: PropTypes.func.isRequired,
+  loginAdmin: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -22,7 +22,7 @@ export class Login extends Component {
   }
 
   componentDidMount() {
-    // If logged in and user navigates to Login page, should redirect them to dashboard
+    // If logged in and admin navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
@@ -47,12 +47,12 @@ export class Login extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const userData = {
+    const adminData = {
       email: this.state.email,
       password: this.state.password
     };
 
-    this.props.loginUser(userData);
+    this.props.loginAdmin(adminData);
   };
 
   getFields = () => {
@@ -112,7 +112,7 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    loginUser: userData => dispatch(loginUser(userData))
+    loginAdmin: userData => dispatch(loginAdmin(adminData))
   };
 };
 
