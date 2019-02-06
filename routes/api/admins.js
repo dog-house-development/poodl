@@ -9,11 +9,11 @@ const passport = require("passport");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
-// Load User model
-const User = require("../../models/User");
+// Load Admin model
+const Admin = require("../../models/Admin");
 
-// @route POST api/users/register
-// @desc Register user
+// @route POST api/Admins/register
+// @desc Register Admin
 // @access Public
 router.post("/register", (req, res) => {
   // Form validation
@@ -25,11 +25,11 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  User.findOne({ email: req.body.email }).then(user => {
-    if (user) {
+  Admin.findOne({ email: req.body.email }).then(Admin => {
+    if (Admin) {
       return res.status(400).json({ email: "Email already exists" });
     } else {
-      const newUser = new User({
+      const newAdmin = new Admin({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
@@ -37,12 +37,12 @@ router.post("/register", (req, res) => {
 
       // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
+        bcrypt.hash(newAdmin.password, salt, (err, hash) => {
           if (err) throw err;
-          newUser.password = hash;
-          newUser
+          newAdmin.password = hash;
+          newAdmin
             .save()
-            .then(user => res.json(user))
+            .then(Admin => res.json(Admin))
             .catch(err => console.log(err));
         });
       });
@@ -50,8 +50,8 @@ router.post("/register", (req, res) => {
   });
 });
 
-// @route POST api/users/login
-// @desc Login user and return JWT token
+// @route POST api/Admins/login
+// @desc Login Admin and return JWT token
 // @access Public
 router.post("/login", (req, res) => {
   // Form validation
@@ -66,21 +66,21 @@ router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  // Find user by email
-  User.findOne({ email }).then(user => {
-    // Check if user exists
-    if (!user) {
+  // Find Admin by email
+  Admin.findOne({ email }).then(Admin => {
+    // Check if Admin exists
+    if (!Admin) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
 
     // Check password
-    bcrypt.compare(password, user.password).then(isMatch => {
+    bcrypt.compare(password, Admin.password).then(isMatch => {
       if (isMatch) {
-        // User matched
+        // Admin matched
         // Create JWT Payload
         const payload = {
-          id: user.id,
-          name: user.name
+          id: Admin.id,
+          name: Admin.name
         };
 
         // Sign token
