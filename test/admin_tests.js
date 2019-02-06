@@ -1,7 +1,7 @@
 process.env.NODE_ENV = "test";
 
 let mongoose = require("mongoose");
-let user = require("../models/User");
+let user = require("../models/Admin");
 
 let Mockgoose = require("mockgoose").Mockgoose;
 let mockgoose = new Mockgoose(mongoose);
