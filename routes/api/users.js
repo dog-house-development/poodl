@@ -12,6 +12,16 @@ const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
 
+// @route GET api/users/get
+// should return
+//temp
+router.get("/get", (req, res) => {
+  User.find((err, users) => {
+    if (err) return res.json({ success: flase, error: err });
+    return res.json({ success: true, data: users });
+  });
+});
+
 // @route POST api/users/register
 // @desc Register user
 // @access Public
