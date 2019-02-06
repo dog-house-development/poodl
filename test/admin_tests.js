@@ -29,11 +29,11 @@ mockgoose.helper.reset().then(() => {
   done();
 });
 
-describe("/GET users", () => {
-  it("it should get all the users", done => {
+describe("/GET admins", () => {
+  it("it should get all the admins", done => {
     chai
       .request(server)
-      .get("/api/users/get")
+      .get("/api/admins/get")
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.have.property("success").eql(true);

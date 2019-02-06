@@ -12,17 +12,17 @@ const validateLoginInput = require("../../validation/login");
 // Load Admin model
 const Admin = require("../../models/Admin");
 
-// @route GET api/users/get
+// @route GET api/admins/get
 // should return
 //temp
 router.get("/get", (req, res) => {
-  User.find((err, users) => {
-    if (err) return res.json({ success: flase, error: err });
-    return res.json({ success: true, data: users });
+  Admin.find((err, admins) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: admins });
   });
 });
 
-// @route POST api/users/register
+// @route POST api/admins/register
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
@@ -60,7 +60,7 @@ router.post("/register", (req, res) => {
   });
 });
 
-// @route POST api/Admins/login
+// @route POST api/admins/login
 // @desc Login Admin and return JWT token
 // @access Public
 router.post("/login", (req, res) => {
