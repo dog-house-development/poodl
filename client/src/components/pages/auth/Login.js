@@ -112,7 +112,7 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    loginAdmin: userData => dispatch(loginAdmin(adminData))
+    loginAdmin: adminData => dispatch(loginAdmin(adminData))
   };
 };
 

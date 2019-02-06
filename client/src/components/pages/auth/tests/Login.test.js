@@ -46,7 +46,7 @@ describe("Login tests", () => {
   });
 
   describe("componentDidMount", () => {
-    it("should redirect if user is authenticated", () => {
+    it("should redirect if admin is authenticated", () => {
       const authenticatedState = {
         auth: {
           isAuthenticated: true,

@@ -6,14 +6,14 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <PrivateRoute
     auth={
       Object {
-        "isAuthenticated": true,
-        "loading": false,
-        "user": Object {
+        "admin": Object {
           "exp": 1580940830,
           "iat": 1549383904,
           "id": "5c52379d9be6fc0017afd46e",
           "name": "Sandwich Man",
         },
+        "isAuthenticated": true,
+        "loading": false,
       }
     }
   />,

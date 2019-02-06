@@ -16,7 +16,7 @@ ShallowWrapper {
         "/register",
       ]
     }
-    registerUser={[Function]}
+    registerAdmin={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

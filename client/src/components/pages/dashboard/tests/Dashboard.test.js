@@ -17,7 +17,7 @@ describe("Dashbaord tests", () => {
         auth: {
           isAuthenticated: true,
           loading: false,
-          user: {
+          admin: {
             id: "5c52379d9be6fc0017afd46e",
             name: "Sandwich Man"
           }

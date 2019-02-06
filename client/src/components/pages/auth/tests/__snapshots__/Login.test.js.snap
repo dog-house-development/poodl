@@ -16,7 +16,7 @@ ShallowWrapper {
         "/login",
       ]
     }
-    loginUser={[Function]}
+    loginAdmin={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

@@ -6,15 +6,15 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Dashboard
     auth={
       Object {
-        "isAuthenticated": true,
-        "loading": false,
-        "user": Object {
+        "admin": Object {
           "id": "5c52379d9be6fc0017afd46e",
           "name": "Sandwich Man",
         },
+        "isAuthenticated": true,
+        "loading": false,
       }
     }
-    logoutUser={[Function]}
+    logoutAdmin={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

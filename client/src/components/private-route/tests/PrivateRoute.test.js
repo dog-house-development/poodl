@@ -18,7 +18,7 @@ describe("PrivateRoute tests", () => {
         auth: {
           isAuthenticated: true,
           loading: false,
-          user: {
+          admin: {
             exp: 1580940830,
             iat: 1549383904,
             id: "5c52379d9be6fc0017afd46e",
