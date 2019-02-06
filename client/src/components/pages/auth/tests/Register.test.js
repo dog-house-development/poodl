@@ -4,46 +4,67 @@ import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import _ from "lodash";
 
-import { Register } from "../Register";
+import { Register, mapStateToProps, mapDispatchToProps } from "../Register";
 
 configure({ adapter: new Adapter() });
 
-let state, props, wrapper, instance;
-beforeEach(() => {
-  state = {
-    name: "Sam",
-    email: "sam@test.com",
-    password: "abc123",
-    password2: "abc123",
-    errors: {}
+describe("Register tests", () => {
+  let wrapper, instance;
+  const setInstanceAndWrapper = (_props = {}, _state = {}) => {
+    const state = _.assign(
+      {},
+      {
+        auth: {
+          isAuthenticated: false,
+          loading: false
+        },
+        errors: {}
+      },
+      _state
+    );
+    const props = _.assign({}, { history: ["/register"] }, _props);
+    wrapper = shallow(
+      <Register
+        {..._.assign(
+          {},
+          props,
+          mapStateToProps(state, props),
+          mapDispatchToProps(jasmine.createSpy("dispatch"))
+        )}
+      />
+    );
+    instance = wrapper.instance();
+    wrapper.setState({
+      name: "Sam",
+      email: "sam@test.com",
+      password: "abc123",
+      password2: "abc123",
+      errors: {}
+    });
   };
-  props = {
-    registerUser: () => {},
-    auth: {},
-    errors: {}
-  };
-  wrapper = shallow(<Register {..._.assign({}, props)} />);
-  instance = wrapper.instance();
-  instance.state = state;
-});
 
-describe("onChange", () => {
-  it("should update the state", () => {
-    spyOn(instance, "onChange");
-    const event = {
-      target: {
-        id: "email",
-        value: "changed.email@test.test"
-      }
-    };
-    instance.onChange(event);
-    expect(instance.onChange).toHaveBeenCalled();
-    expect(instance.state.email).toEqual("changed.email@test.test");
+  beforeEach(() => {
+    setInstanceAndWrapper();
   });
-});
 
-describe("render", () => {
-  it("should render correctly", () => {
-    expect(instance).toMatchSnapshot();
+  describe("componentDidMount", () => {
+    it("should redirect if user is authenticated", () => {
+      const authenticatedState = {
+        auth: {
+          isAuthenticated: true,
+          loading: false
+        }
+      };
+      setInstanceAndWrapper({}, authenticatedState);
+      const newInstanceProps = instance.props.history.concat("/dashboard");
+      instance.componentDidMount();
+      expect(instance.props.history).toEqual(newInstanceProps);
+    });
+  });
+
+  describe("render", () => {
+    it("should render correctly", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

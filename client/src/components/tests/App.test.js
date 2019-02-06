@@ -8,14 +8,20 @@ import App from "../App";
 
 configure({ adapter: new Adapter() });
 
-let wrapper, instance;
-beforeEach(() => {
-  wrapper = shallow(<App />);
-  instance = wrapper.instance();
-});
+describe("Navbar tests", () => {
+  let wrapper, instance;
+  const setInstanceAndWrapper = () => {
+    wrapper = shallow(<App />);
+    instance = wrapper.instance();
+  };
 
-describe("render", () => {
-  it("should render correctly", () => {
-    expect(instance).toMatchSnapshot();
+  beforeEach(() => {
+    setInstanceAndWrapper();
+  });
+
+  describe("render", () => {
+    it("should render correctly", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

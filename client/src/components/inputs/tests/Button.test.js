@@ -8,21 +8,31 @@ import Button from "../Button";
 
 configure({ adapter: new Adapter() });
 
-let props, wrapper, instance;
-beforeEach(() => {
-  props = {
-    onClick: () => {},
-    size: "medium",
-    kind: "primary",
-    content: "Press me",
-    type: "normal"
+describe("Button tests", () => {
+  let wrapper, instance;
+  const setInstanceAndWrapper = (_props = {}) => {
+    const props = _.assign(
+      {},
+      {
+        onClick: () => {},
+        size: "medium",
+        kind: "primary",
+        content: "Press me",
+        type: "normal"
+      },
+      _props
+    );
+    wrapper = shallow(<Button {..._.assign({}, props)} />);
+    instance = wrapper.instance();
   };
-  wrapper = shallow(<Button {..._.assign({}, props)} />);
-  instance = wrapper.instance();
-});
 
-describe("render", () => {
-  it("should render correctly", () => {
-    expect(instance).toMatchSnapshot();
+  beforeEach(() => {
+    setInstanceAndWrapper();
+  });
+
+  describe("render", () => {
+    it("should render correctly", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

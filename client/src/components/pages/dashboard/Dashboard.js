@@ -29,12 +29,20 @@ export class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
-});
+export const mapStateToProps = (state, props) => {
+  return {
+    auth: state.auth
+  };
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    logoutUser: () => dispatch(logoutUser())
+  };
+};
 
 Dashboard.propTypes = propTypes;
 export default connect(
   mapStateToProps,
-  { logoutUser }
+  mapDispatchToProps
 )(Dashboard);

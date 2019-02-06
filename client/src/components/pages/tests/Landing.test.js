@@ -8,14 +8,19 @@ import Landing from "../Landing";
 
 configure({ adapter: new Adapter() });
 
-let wrapper, instance;
-beforeEach(() => {
-  wrapper = shallow(<Landing />);
-  instance = wrapper.instance();
-});
+describe("Landing tests", () => {
+  let wrapper, instance;
+  const setInstanceAndWrapper = () => {
+    wrapper = shallow(<Landing />);
+    instance = wrapper.instance();
+  };
+  beforeEach(() => {
+    setInstanceAndWrapper();
+  });
 
-describe("render", () => {
-  it("should render correctly", () => {
-    expect(instance).toMatchSnapshot();
+  describe("render", () => {
+    it("should render correctly", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

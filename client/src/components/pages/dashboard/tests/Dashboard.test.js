@@ -4,31 +4,49 @@ import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import _ from "lodash";
 
-import { Dashboard } from "../Dashboard";
+import { Dashboard, mapStateToProps, mapDispatchToProps } from "../Dashboard";
 
 configure({ adapter: new Adapter() });
 
-let props, wrapper, instance;
-beforeEach(() => {
-  props = {
-    logoutUser: () => {},
-    auth: {
-      isAuthenticated: true,
-      loading: false,
-      user: {
-        exp: 1580940830,
-        iat: 1549383904,
-        id: "5c52379d9be6fc0017afd46e",
-        name: "Sandwich Man"
-      }
-    }
+describe("Dashbaord tests", () => {
+  let wrapper, instance;
+  const setInstanceAndWrapper = (_props = {}, _state = {}) => {
+    const state = _.assign(
+      {},
+      {
+        auth: {
+          isAuthenticated: true,
+          loading: false,
+          user: {
+            id: "5c52379d9be6fc0017afd46e",
+            name: "Sandwich Man"
+          }
+        },
+        errors: {}
+      },
+      _state
+    );
+    const props = _.assign({}, _props);
+    wrapper = shallow(
+      <Dashboard
+        {..._.assign(
+          {},
+          props,
+          mapStateToProps(state, props),
+          mapDispatchToProps(jasmine.createSpy("dispatch"))
+        )}
+      />
+    );
+    instance = wrapper.instance();
   };
-  wrapper = shallow(<Dashboard {..._.assign({}, props)} />);
-  instance = wrapper.instance();
-});
 
-describe("render", () => {
-  it("should render correctly", () => {
-    expect(instance).toMatchSnapshot();
+  beforeEach(() => {
+    setInstanceAndWrapper();
+  });
+
+  describe("render", () => {
+    it("should render correctly", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

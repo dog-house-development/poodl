@@ -103,14 +103,22 @@ export class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
-});
+export const mapStateToProps = (state, props) => {
+  return {
+    auth: state.auth,
+    errors: state.errors
+  };
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: userData => dispatch(loginUser(userData))
+  };
+};
 
 Login.propTypes = propTypes;
 
 export default connect(
   mapStateToProps,
-  { loginUser }
+  mapDispatchToProps
 )(Login);

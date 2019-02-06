@@ -4,29 +4,65 @@ import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import _ from "lodash";
 
-import { Login } from "../Login";
+import { Login, mapStateToProps, mapDispatchToProps } from "../Login";
 
 configure({ adapter: new Adapter() });
 
-let state, props, wrapper, instance;
-beforeEach(() => {
-  state = {
-    email: "test@test.test",
-    password: "abc123",
-    errors: {}
+describe("Login tests", () => {
+  let wrapper, instance;
+  const setInstanceAndWrapper = (_props = {}, _state = {}) => {
+    const state = _.assign(
+      {},
+      {
+        auth: {
+          isAuthenticated: false,
+          loading: false
+        },
+        errors: {}
+      },
+      _state
+    );
+    const props = _.assign({}, { history: ["/login"] }, _props);
+    wrapper = shallow(
+      <Login
+        {..._.assign(
+          {},
+          props,
+          mapStateToProps(state, props),
+          mapDispatchToProps(jasmine.createSpy("dispatch"))
+        )}
+      />
+    );
+    instance = wrapper.instance();
+    wrapper.setState({
+      email: "test@test.test",
+      password: "abc123",
+      errors: {}
+    });
   };
-  props = {
-    loginUser: () => {},
-    auth: {},
-    errors: {}
-  };
-  wrapper = shallow(<Login {..._.assign({}, props)} />);
-  instance = wrapper.instance();
-  instance.state = state;
-});
 
-describe("render", () => {
-  it("should render correctly", () => {
-    expect(instance).toMatchSnapshot();
+  beforeEach(() => {
+    setInstanceAndWrapper();
+  });
+
+  describe("componentDidMount", () => {
+    it("should redirect if user is authenticated", () => {
+      const authenticatedState = {
+        auth: {
+          isAuthenticated: true,
+          loading: false
+        }
+      };
+      setInstanceAndWrapper({}, authenticatedState);
+      const newInstanceProps = _.concat(instance.props.history, "/dashboard");
+      instance.componentDidMount();
+      expect(instance.props.history).toEqual(newInstanceProps);
+    });
+  });
+
+  describe("render", () => {
+    it("should render correctly", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

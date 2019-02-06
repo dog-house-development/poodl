@@ -8,29 +8,36 @@ import Field from "../Field";
 
 configure({ adapter: new Adapter() });
 
-let state, props, wrapper, instance;
-beforeEach(() => {
-  state = {
-    value: ""
+describe("Field tests", () => {
+  let wrapper, instance;
+  const setInstanceAndWrapper = (_props = {}) => {
+    const props = _.assign(
+      {},
+      {
+        onChange: () => {},
+        name: "email",
+        id: "email",
+        type: "email",
+        size: "normal",
+        content: "",
+        placeholder: "Enter email...",
+        label: "Email:",
+        error: {}
+      },
+      _props
+    );
+    wrapper = shallow(<Field {..._.assign({}, props)} />);
+    instance = wrapper.instance();
+    instance.setState({ value: "" });
   };
-  props = {
-    onChange: () => {},
-    name: "email",
-    id: "email",
-    type: "email",
-    size: "normal",
-    content: "",
-    placeholder: "Enter email...",
-    label: "Email:",
-    error: {}
-  };
-  wrapper = shallow(<Field {..._.assign({}, props)} />);
-  instance = wrapper.instance();
-  instance.state = state;
-});
 
-describe("render", () => {
-  it("should render correctly", () => {
-    expect(instance).toMatchSnapshot();
+  beforeEach(() => {
+    setInstanceAndWrapper();
+  });
+
+  describe("render", () => {
+    it("should render correctly", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

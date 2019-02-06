@@ -20,7 +20,7 @@ export const PrivateRoute = ({ component: Component, auth, ...rest }) => (
   />
 );
 
-const mapStateToProps = state => ({
+export const mapStateToProps = (state, props) => ({
   auth: state.auth
 });
 

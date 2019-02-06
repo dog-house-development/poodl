@@ -8,30 +8,40 @@ import Form from "../Form";
 
 configure({ adapter: new Adapter() });
 
-let props, wrapper, instance;
-beforeEach(() => {
-  props = {
-    onSubmit: () => {},
-    fields: [
+describe("Form tests", () => {
+  let wrapper, instance;
+  const setInstanceAndWrapper = (_props = {}) => {
+    const props = _.assign(
+      {},
       {
-        onChange: () => {},
-        value: "",
-        error: {},
-        id: "email",
-        type: "email",
-        label: "Email:",
-        placeholder: "Enter email..."
-      }
-    ],
-    noValidate: false,
-    buttonLabel: "Submit"
+        onSubmit: jasmine.createSpy("onSubmit"),
+        fields: [
+          {
+            onChange: () => {},
+            value: "",
+            error: {},
+            id: "email",
+            type: "email",
+            label: "Email:",
+            placeholder: "Enter email..."
+          }
+        ],
+        noValidate: false,
+        buttonLabel: "Submit"
+      },
+      _props
+    );
+    wrapper = shallow(<Form {..._.assign({}, props)} />);
+    instance = wrapper.instance();
   };
-  wrapper = shallow(<Form {..._.assign({}, props)} />);
-  instance = wrapper.instance();
-});
 
-describe("render", () => {
-  it("should render correctly", () => {
-    expect(instance).toMatchSnapshot();
+  beforeEach(() => {
+    setInstanceAndWrapper();
+  });
+
+  describe("render", () => {
+    it("should render correctly", () => {
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });
