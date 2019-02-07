@@ -1,7 +1,7 @@
 # Poodl
 [![Build Status](https://travis-ci.org/dog-house-development/poodl.svg?branch=dev)](https://travis-ci.org/dog-house-development/poodl)
 
-Welcome to Poodl!
+_Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ "poodl"). Please read [our wiki](https://github.com/dog-house-development/poodl/wiki "poodl wiki") to learn more.
 
 **To get your development environment setup, follow the instructions below.**
 
