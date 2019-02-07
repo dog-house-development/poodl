@@ -12,6 +12,7 @@ const validateLoginInput = require("../../validation/login");
 // Load Admin model
 const Admin = require("../../models/Admin");
 
+
 // @route GET api/admins/get
 // should return all admins
 router.get("/get", (req, res) => {
@@ -33,6 +34,7 @@ router.post("/register", (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
+
 
   Admin.findOne({ email: req.body.email }).then(admins => {
     if (admins) {
