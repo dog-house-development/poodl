@@ -1,0 +1,454 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login tests render should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Login
+    auth={
+      Object {
+        "isAuthenticated": false,
+        "loading": false,
+      }
+    }
+    errors={Object {}}
+    history={
+      Array [
+        "/login",
+      ]
+    }
+    loginAdmin={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Link
+          replace={false}
+          to="/"
+        >
+          Back to home
+        </Link>,
+        <div>
+          <h4>
+            <b>
+              Login
+            </b>
+             below
+          </h4>
+          <p>
+            Don't have an account? 
+            <Link
+              replace={false}
+              to="/register"
+            >
+              Register
+            </Link>
+          </p>
+        </div>,
+        <Form
+          buttonLabel="Log in"
+          fields={
+            Array [
+              Object {
+                "error": undefined,
+                "id": "email",
+                "label": "Email",
+                "onChange": [Function],
+                "placeholder": "Email...",
+                "type": "email",
+                "value": "test@test.test",
+              },
+              Object {
+                "error": undefined,
+                "id": "password",
+                "label": "Password",
+                "onChange": [Function],
+                "placeholder": "Password......",
+                "type": "password",
+                "value": "abc123",
+              },
+            ]
+          }
+          noValidate={true}
+          onSubmit={[Function]}
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Back to home",
+          "replace": false,
+          "to": "/",
+        },
+        "ref": null,
+        "rendered": "Back to home",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h4>
+              <b>
+                Login
+              </b>
+               below
+            </h4>,
+            <p>
+              Don't have an account? 
+              <Link
+                replace={false}
+                to="/register"
+              >
+                Register
+              </Link>
+            </p>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <b>
+                  Login
+                </b>,
+                " below",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Login",
+                },
+                "ref": null,
+                "rendered": "Login",
+                "type": "b",
+              },
+              " below",
+            ],
+            "type": "h4",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Don't have an account? ",
+                <Link
+                  replace={false}
+                  to="/register"
+                >
+                  Register
+                </Link>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Don't have an account? ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Register",
+                  "replace": false,
+                  "to": "/register",
+                },
+                "ref": null,
+                "rendered": "Register",
+                "type": [Function],
+              },
+            ],
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "buttonLabel": "Log in",
+          "fields": Array [
+            Object {
+              "error": undefined,
+              "id": "email",
+              "label": "Email",
+              "onChange": [Function],
+              "placeholder": "Email...",
+              "type": "email",
+              "value": "test@test.test",
+            },
+            Object {
+              "error": undefined,
+              "id": "password",
+              "label": "Password",
+              "onChange": [Function],
+              "placeholder": "Password......",
+              "type": "password",
+              "value": "abc123",
+            },
+          ],
+          "noValidate": true,
+          "onSubmit": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Link
+            replace={false}
+            to="/"
+          >
+            Back to home
+          </Link>,
+          <div>
+            <h4>
+              <b>
+                Login
+              </b>
+               below
+            </h4>
+            <p>
+              Don't have an account? 
+              <Link
+                replace={false}
+                to="/register"
+              >
+                Register
+              </Link>
+            </p>
+          </div>,
+          <Form
+            buttonLabel="Log in"
+            fields={
+              Array [
+                Object {
+                  "error": undefined,
+                  "id": "email",
+                  "label": "Email",
+                  "onChange": [Function],
+                  "placeholder": "Email...",
+                  "type": "email",
+                  "value": "test@test.test",
+                },
+                Object {
+                  "error": undefined,
+                  "id": "password",
+                  "label": "Password",
+                  "onChange": [Function],
+                  "placeholder": "Password......",
+                  "type": "password",
+                  "value": "abc123",
+                },
+              ]
+            }
+            noValidate={true}
+            onSubmit={[Function]}
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Back to home",
+            "replace": false,
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": "Back to home",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h4>
+                <b>
+                  Login
+                </b>
+                 below
+              </h4>,
+              <p>
+                Don't have an account? 
+                <Link
+                  replace={false}
+                  to="/register"
+                >
+                  Register
+                </Link>
+              </p>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <b>
+                    Login
+                  </b>,
+                  " below",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Login",
+                  },
+                  "ref": null,
+                  "rendered": "Login",
+                  "type": "b",
+                },
+                " below",
+              ],
+              "type": "h4",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "Don't have an account? ",
+                  <Link
+                    replace={false}
+                    to="/register"
+                  >
+                    Register
+                  </Link>,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "Don't have an account? ",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Register",
+                    "replace": false,
+                    "to": "/register",
+                  },
+                  "ref": null,
+                  "rendered": "Register",
+                  "type": [Function],
+                },
+              ],
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "buttonLabel": "Log in",
+            "fields": Array [
+              Object {
+                "error": undefined,
+                "id": "email",
+                "label": "Email",
+                "onChange": [Function],
+                "placeholder": "Email...",
+                "type": "email",
+                "value": "test@test.test",
+              },
+              Object {
+                "error": undefined,
+                "id": "password",
+                "label": "Password",
+                "onChange": [Function],
+                "placeholder": "Password......",
+                "type": "password",
+                "value": "abc123",
+              },
+            ],
+            "noValidate": true,
+            "onSubmit": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

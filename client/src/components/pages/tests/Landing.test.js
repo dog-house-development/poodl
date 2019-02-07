@@ -4,28 +4,16 @@ import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import _ from "lodash";
 
-import Button from "../Button";
+import Landing from "../Landing";
 
 configure({ adapter: new Adapter() });
 
-describe("Button tests", () => {
+describe("Landing tests", () => {
   let wrapper, instance;
-  const setInstanceAndWrapper = (_props = {}) => {
-    const props = _.assign(
-      {},
-      {
-        onClick: () => {},
-        size: "medium",
-        kind: "primary",
-        content: "Press me",
-        type: "normal"
-      },
-      _props
-    );
-    wrapper = shallow(<Button {..._.assign({}, props)} />);
+  const setInstanceAndWrapper = () => {
+    wrapper = shallow(<Landing />);
     instance = wrapper.instance();
   };
-
   beforeEach(() => {
     setInstanceAndWrapper();
   });

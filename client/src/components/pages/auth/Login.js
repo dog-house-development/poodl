@@ -11,7 +11,7 @@ const propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-class Login extends Component {
+export class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -103,14 +103,22 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
-});
+export const mapStateToProps = (state, props) => {
+  return {
+    auth: state.auth,
+    errors: state.errors
+  };
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    loginAdmin: adminData => dispatch(loginAdmin(adminData))
+  };
+};
 
 Login.propTypes = propTypes;
 
 export default connect(
   mapStateToProps,
-  { loginAdmin }
+  mapDispatchToProps
 )(Login);

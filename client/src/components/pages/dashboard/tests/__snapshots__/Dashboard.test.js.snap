@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashbaord tests render should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Dashboard
+    auth={
+      Object {
+        "admin": Object {
+          "id": "5c52379d9be6fc0017afd46e",
+          "name": "Sandwich Man",
+        },
+        "isAuthenticated": true,
+        "loading": false,
+      }
+    }
+    logoutAdmin={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h4>
+          <p>
+            Hey there, 
+            Sandwich
+            . You are now logged in
+          </p>
+        </h4>,
+        <Button
+          content="log out"
+          kind="primary"
+          onClick={[Function]}
+          size="medium"
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <p>
+            Hey there, 
+            Sandwich
+            . You are now logged in
+          </p>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Hey there, ",
+              "Sandwich",
+              ". You are now logged in",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Hey there, ",
+            "Sandwich",
+            ". You are now logged in",
+          ],
+          "type": "p",
+        },
+        "type": "h4",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "content": "log out",
+          "kind": "primary",
+          "onClick": [Function],
+          "size": "medium",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h4>
+            <p>
+              Hey there, 
+              Sandwich
+              . You are now logged in
+            </p>
+          </h4>,
+          <Button
+            content="log out"
+            kind="primary"
+            onClick={[Function]}
+            size="medium"
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <p>
+              Hey there, 
+              Sandwich
+              . You are now logged in
+            </p>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Hey there, ",
+                "Sandwich",
+                ". You are now logged in",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Hey there, ",
+              "Sandwich",
+              ". You are now logged in",
+            ],
+            "type": "p",
+          },
+          "type": "h4",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "content": "log out",
+            "kind": "primary",
+            "onClick": [Function],
+            "size": "medium",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
