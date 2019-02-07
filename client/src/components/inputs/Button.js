@@ -6,7 +6,8 @@ const propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     kind: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
     content: PropTypes.string.isRequired,
-    type: PropTypes.string
+    type: PropTypes.string,
+    formButton: PropTypes.bool
 };
 
 const defaultProps = {
@@ -23,8 +24,11 @@ class Button extends Component {
         return (
             <button
                 onClick={this.props.onClick}
-                className={`button ${this.props.size} ${this.props.kind}`}
-                type={this.props.type} >
+                className={`button ${this.props.size} ${this.props.kind} ${
+                    this.props.formButton ? 'form-button' : ''
+                }`}
+                type={this.props.type}
+            >
                 {this.props.content}
             </button>
         );

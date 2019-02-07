@@ -1,29 +1,57 @@
-@import "./palette.scss";
+@import './_presets.scss';
 
-.field {
-  border: 1px solid transparent;
-  border-radius: 5px;
-  box-shadow: none;
-  -webkit-appearance: none;
-  background-color: $gray-2;
-
-  &::placeholder {
-    color: $gray-4;
+.field-wrapper {
+  .field-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: $gray-6;
+    display: inline-block;
+    margin: 20px 0 6px 0;
+    text-transform: uppercase;
   }
 
-  &:focus {
-    outline: 0;
-    border-color: $button-primary;
-    background-color: $gray-1;
+  .field-error-label {
+    color: $red-2;
+    font-size: 12px;
+    margin: 0 15px;
+    display: inline;
   }
 
-  &.normal {
-    padding: 5px 0px 5px 5px;
-    font-size: 14px;
-  }
+  .field-outer {
+    display: flex;
+    margin-bottom: 10px;
 
-  &.large {
-    padding: 8px 0px 8px 5px;
-    font-size: 16px;
+    .field {
+      flex-grow: 1;
+      border: 1px solid $gray-2;
+      border-radius: $border-radius-default;
+      box-shadow: none;
+      -webkit-appearance: none;
+      background-color: transparent;
+
+      &::placeholder {
+        color: $gray-4;
+      }
+
+      &:focus {
+        outline: 0;
+        border-color: $button-primary;
+        background-color: $gray-1;
+      }
+
+      &.normal {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      &.large {
+        padding: 15px;
+        font-size: 18px;
+      }
+
+      &.field-error-border {
+        border-color: $red-1;
+      }
+    }
   }
 }

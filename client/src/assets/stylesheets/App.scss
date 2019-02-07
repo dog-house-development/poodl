@@ -2,3 +2,27 @@
 @import './layout/footer.scss';
 @import './buttons.scss';
 @import './field.scss';
+@import './panel.scss';
+
+// pages
+@import './pages/register.scss';
+@import './pages/login.scss';
+@import './pages/landing.scss';
+
+// global styles
+
+i {
+  vertical-align: middle;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}

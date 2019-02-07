@@ -1,19 +1,33 @@
-@import '../palette.scss';
+@import '../_presets.scss';
 
 .header {
+  background: $gray-1;
+  padding: 0 24px;
+  margin-bottom: 15px;
 
   ul {
+    margin: 0;
+    padding: 0;
 
     li {
       display: inline;
       list-style: none;
-      padding: 5px 10px;
+
+      &.right {
+        float: right;
+      }
 
       a {
+        font-size: 13px;
+        font-weight: bold;
+        color: $gray-6;
+        display: inline-block;
+        text-transform: uppercase;
         text-decoration: none;
+        padding: 20px 15px;
 
         &:hover {
-          text-decoration: underline;
+          color: $gray-8;
         }
       }
     }

@@ -1,9 +1,11 @@
-@import "./palette.scss";
+@import './_presets.scss';
 
 .button {
+  font-weight: bold;
   border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: none;
+  text-decoration: none;
   -webkit-appearance: none;
 
   &:focus {
@@ -13,17 +15,17 @@
 
   &.small {
     padding: 4px 12px;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   &.medium {
-    padding: 5px 16px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 16px;
   }
 
   &.large {
     padding: 6px 20px;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   &.primary {
@@ -60,12 +62,11 @@
   }
 
   &.tertiary {
-    border-color: $button-primary;
+    border-color: transparent;
     color: $button-primary;
     background-color: #fff;
 
     &:hover {
-      border-color: $button-primary-hover;
       color: $button-primary-hover;
     }
 
@@ -73,5 +74,9 @@
       border-color: $button-primary-active;
       color: $button-primary-active;
     }
+  }
+
+  &.form-button {
+    float: right;
   }
 }
