@@ -43,3 +43,23 @@ describe("/GET admins", () => {
       });
   });
 }).timeout(120000);
+
+describe("/REGISTER admins", () => {
+  it("it should create a new admin", done => {
+    let admin = {
+      name: "testy boy",
+      email: "test@gmail.com",
+      password: "greatpassword1!@",
+      password2: "greatpassword1!@"
+    };
+
+    chai
+      .request(server)
+      .post("/api/admins/register")
+      .send(admin)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.have.done();
+      });
+  });
+}).timeout(120000);

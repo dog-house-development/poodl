@@ -34,9 +34,9 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  Admin.findOne({ email: req.body.email }).then(admin => {
-    if (admin) {
-      return res.status(400).json({ email: "Email already exists" });
+  Admin.findOne({ email: req.body.email }).then(admins => {
+    if (admins) {
+      return res.status(400).json({ email: "Admin already exists" });
     } else {
       const newAdmin = new Admin({
         name: req.body.name,
@@ -76,20 +76,20 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
 
   // Find Admin by email
-  Admin.findOne({ email }).then(Admin => {
+  Admin.findOne({ email: req.body.email }).then(admins => {
     // Check if Admin exists
-    if (!Admin) {
+    if (!admins) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
 
     // Check password
-    bcrypt.compare(password, Admin.password).then(isMatch => {
+    bcrypt.compare(password, admins.password).then(isMatch => {
       if (isMatch) {
         // Admin matched
         // Create JWT Payload
         const payload = {
-          id: Admin.id,
-          name: Admin.name
+          id: admins.id,
+          name: admins.name
         };
 
         // Sign token
