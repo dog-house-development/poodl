@@ -73,7 +73,6 @@ describe("/LOGIN admins", () => {
       email: "test@gmail.com",
       password: "greatpassword1!@"
     };
-
     chai
       .request(server)
       .post("/api/admins/login")
@@ -82,6 +81,8 @@ describe("/LOGIN admins", () => {
         res.should.have.status(200);
         res.body.should.have.property("success").eql(true);
         res.body.should.have.property("token");
+
+        done();
       });
   }).timeout(120000);
 });
