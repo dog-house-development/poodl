@@ -13,8 +13,7 @@ const validateLoginInput = require("../../validation/login");
 const Admin = require("../../models/Admin");
 
 // @route GET api/admins/get
-// should return
-//temp
+// should return all admins
 router.get("/get", (req, res) => {
   Admin.find((err, admins) => {
     if (err) return res.json({ success: false, error: err });
@@ -35,8 +34,8 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  Admin.findOne({ email: req.body.email }).then(Admin => {
-    if (Admin) {
+  Admin.findOne({ email: req.body.email }).then(admin => {
+    if (admin) {
       return res.status(400).json({ email: "Email already exists" });
     } else {
       const newAdmin = new Admin({
