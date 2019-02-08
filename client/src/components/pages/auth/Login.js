@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginAdmin } from '../../../actions/authActions';
-import Form from '../../inputs/Form';
+import Form from '../../ui/Form';
 
 const propTypes = {
     loginAdmin: PropTypes.func.isRequired,

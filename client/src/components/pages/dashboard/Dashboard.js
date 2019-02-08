@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutAdmin } from '../../../actions/authActions';
-import Button from '../../inputs/Button';
+import Button from '../../ui/Button';
+import DataGrid from '../../ui/DataGrid';
 
 const propTypes = {
     logoutAdmin: PropTypes.func.isRequired,
@@ -17,6 +18,11 @@ export class Dashboard extends Component {
 
     render() {
         const { admin } = this.props.auth;
+        const columnNames = ['Sam', 'Karl', 'Peter'];
+        const data = [
+            { key: 'coolness', data: ['Cool', 'Weird', 'Musical'] },
+            { key: 'smartness', data: ['Smart', 'Eh', 'Meh'] }
+        ];
 
         return (
             <div className="dashboard-container">
@@ -24,6 +30,7 @@ export class Dashboard extends Component {
                 <h1>{admin.name.split(' ')[0]}.</h1>
                 <p>You are now logged in</p>
                 <Button content="Log out" onClick={this.onLogoutClick} />
+                <DataGrid columnNames={columnNames} data={data} />
             </div>
         );
     }

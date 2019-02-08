@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerAdmin } from '../../../actions/authActions';
 
-import Form from '../../inputs/Form';
+import Form from '../../ui/Form';
 
 const propTypes = {
     registerAdmin: PropTypes.func.isRequired,
