@@ -4,11 +4,11 @@
 
 _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Please read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
 
-#### Sites
+### Sites
 
 **dev:** [poodl-dev.herokuapp.com](http://poodl-dev.herokuapp.com/)
 
-**prod** [poodl.herokuapp.com](http://poodl-dev.herokuapp.com/)
+**prod:** [poodl.herokuapp.com](http://poodl-dev.herokuapp.com/)
 
 **To get your development environment setup, follow the instructions below.**
 
