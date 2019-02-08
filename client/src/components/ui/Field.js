@@ -48,9 +48,7 @@ class Field extends Component {
                         value={this.state.value}
                         placeholder={this.props.placeholder}
                         onChange={this.handleChange}
-                        className={`field ${this.props.size} ${
-                            this.props.error ? 'field-error-border' : ''
-                        }`}
+                        className={`field ${this.props.size} ${this.props.error ? 'field-error-border' : ''}`}
                         error={this.props.error}
                     />
                 </div>

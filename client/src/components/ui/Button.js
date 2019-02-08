@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const propTypes = {
     onClick: PropTypes.func,
@@ -11,8 +11,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-  size: "medium",
-  kind: "primary"
+    size: 'medium',
+    kind: 'primary'
 };
 
 class Button extends Component {
@@ -24,9 +24,7 @@ class Button extends Component {
         return (
             <button
                 onClick={this.props.onClick}
-                className={`button ${this.props.size} ${this.props.kind} ${
-                    this.props.formButton ? 'form-button' : ''
-                }`}
+                className={`button ${this.props.size} ${this.props.kind} ${this.props.formButton ? 'form-button' : ''}`}
                 type={this.props.type}
             >
                 {this.props.content}

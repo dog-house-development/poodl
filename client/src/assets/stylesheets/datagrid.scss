@@ -1,4 +1,4 @@
-@import './_presets.scss';
+@import '_presets.scss';
 
 .datagrid {
   padding: 2px 5px 0 5px;
@@ -26,7 +26,6 @@
       transition: all 0.2s;
 
       &:hover {
-        background: $gray-1;
       }
     }
   }

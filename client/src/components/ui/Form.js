@@ -55,16 +55,9 @@ class Form extends Component {
         return (
             <div className="panel">
                 <h1 className="panel-title">{this.props.formTitle}</h1>
-                <form
-                    noValidate={this.props.noValidate}
-                    onSubmit={this.props.onSubmit}
-                >
+                <form noValidate={this.props.noValidate} onSubmit={this.props.onSubmit}>
                     {this.getFieldsMarkup()}
-                    <Button
-                        type="submit"
-                        content={this.props.buttonLabel}
-                        formButton
-                    />
+                    <Button type="submit" content={this.props.buttonLabel} formButton />
                 </form>
             </div>
         );
