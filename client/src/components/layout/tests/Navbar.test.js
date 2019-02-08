@@ -4,25 +4,22 @@ import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import _ from "lodash";
 
-import Button from "../Button";
+import Navbar from "../Navbar";
 
 configure({ adapter: new Adapter() });
 
-describe("Button tests", () => {
+describe("Navbar tests", () => {
   let wrapper, instance;
   const setInstanceAndWrapper = (_props = {}) => {
     const props = _.assign(
       {},
       {
-        onClick: () => {},
-        size: "medium",
-        kind: "primary",
         content: "Press me",
-        type: "normal"
+        onClick: () => {}
       },
       _props
     );
-    wrapper = shallow(<Button {..._.assign({}, props)} />);
+    wrapper = shallow(<Navbar {...props} />);
     instance = wrapper.instance();
   };
 

@@ -12,7 +12,7 @@ const validateLoginInput = require("../../validation/login");
 // Load Admin model
 const Admin = require("../../models/Admin");
 
-// @route POST api/Admins/register
+// @route POST api/admins/register
 // @desc Register Admin
 // @access Public
 router.post("/register", (req, res) => {
@@ -25,8 +25,8 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  Admin.findOne({ email: req.body.email }).then(Admin => {
-    if (Admin) {
+  Admin.findOne({ email: req.body.email }).then(admin => {
+    if (admin) {
       return res.status(400).json({ email: "Email already exists" });
     } else {
       const newAdmin = new Admin({
@@ -42,7 +42,7 @@ router.post("/register", (req, res) => {
           newAdmin.password = hash;
           newAdmin
             .save()
-            .then(Admin => res.json(Admin))
+            .then(admin => res.json(admin))
             .catch(err => console.log(err));
         });
       });
@@ -50,7 +50,7 @@ router.post("/register", (req, res) => {
   });
 });
 
-// @route POST api/Admins/login
+// @route POST api/admins/login
 // @desc Login Admin and return JWT token
 // @access Public
 router.post("/login", (req, res) => {
@@ -67,20 +67,20 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
 
   // Find Admin by email
-  Admin.findOne({ email }).then(Admin => {
+  Admin.findOne({ email }).then(admin => {
     // Check if Admin exists
-    if (!Admin) {
+    if (!admin) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
 
     // Check password
-    bcrypt.compare(password, Admin.password).then(isMatch => {
+    bcrypt.compare(password, admin.password).then(isMatch => {
       if (isMatch) {
         // Admin matched
         // Create JWT Payload
         const payload = {
-          id: Admin.id,
-          name: Admin.name
+          id: admin.id,
+          name: admin.name
         };
 
         // Sign token

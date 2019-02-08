@@ -126,13 +126,22 @@ class Register extends Component {
     }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = (state, props) => {
+  return {
     auth: state.auth,
     errors: state.errors
-});
+  };
+};
+
+export const mapDispatchToProps = dispatch => {
+  return {
+    registerAdmin: (adminData, history) =>
+      dispatch(registerAdmin(adminData, history))
+  };
+};
 
 Register.propTypes = propTypes;
 export default connect(
-    mapStateToProps,
-    { registerAdmin }
+  mapStateToProps,
+  mapDispatchToProps
 )(withRouter(Register));
