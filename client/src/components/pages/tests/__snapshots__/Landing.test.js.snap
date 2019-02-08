@@ -1,0 +1,282 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing tests render should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Landing />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h4>
+          Welcome to Poodl!
+        </h4>,
+        <p>
+          The member management tool for rural senior centers!
+        </p>,
+        <p>
+          Users please see our 
+          <a
+            href="https://github.com/dog-house-development/poodl/wiki/User-Documentation"
+          >
+            User Documentation.
+          </a>
+        </p>,
+        <p>
+          Developers please see our 
+          <a
+            href="https://github.com/dog-house-development/poodl/"
+          >
+            GitHub Repository.
+          </a>
+        </p>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Welcome to Poodl!",
+        },
+        "ref": null,
+        "rendered": "Welcome to Poodl!",
+        "type": "h4",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "The member management tool for rural senior centers!",
+        },
+        "ref": null,
+        "rendered": "The member management tool for rural senior centers!",
+        "type": "p",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Users please see our ",
+            <a
+              href="https://github.com/dog-house-development/poodl/wiki/User-Documentation"
+            >
+              User Documentation.
+            </a>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Users please see our ",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "User Documentation.",
+              "href": "https://github.com/dog-house-development/poodl/wiki/User-Documentation",
+            },
+            "ref": null,
+            "rendered": "User Documentation.",
+            "type": "a",
+          },
+        ],
+        "type": "p",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Developers please see our ",
+            <a
+              href="https://github.com/dog-house-development/poodl/"
+            >
+              GitHub Repository.
+            </a>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Developers please see our ",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "GitHub Repository.",
+              "href": "https://github.com/dog-house-development/poodl/",
+            },
+            "ref": null,
+            "rendered": "GitHub Repository.",
+            "type": "a",
+          },
+        ],
+        "type": "p",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h4>
+            Welcome to Poodl!
+          </h4>,
+          <p>
+            The member management tool for rural senior centers!
+          </p>,
+          <p>
+            Users please see our 
+            <a
+              href="https://github.com/dog-house-development/poodl/wiki/User-Documentation"
+            >
+              User Documentation.
+            </a>
+          </p>,
+          <p>
+            Developers please see our 
+            <a
+              href="https://github.com/dog-house-development/poodl/"
+            >
+              GitHub Repository.
+            </a>
+          </p>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Welcome to Poodl!",
+          },
+          "ref": null,
+          "rendered": "Welcome to Poodl!",
+          "type": "h4",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "The member management tool for rural senior centers!",
+          },
+          "ref": null,
+          "rendered": "The member management tool for rural senior centers!",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Users please see our ",
+              <a
+                href="https://github.com/dog-house-development/poodl/wiki/User-Documentation"
+              >
+                User Documentation.
+              </a>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Users please see our ",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "User Documentation.",
+                "href": "https://github.com/dog-house-development/poodl/wiki/User-Documentation",
+              },
+              "ref": null,
+              "rendered": "User Documentation.",
+              "type": "a",
+            },
+          ],
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Developers please see our ",
+              <a
+                href="https://github.com/dog-house-development/poodl/"
+              >
+                GitHub Repository.
+              </a>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Developers please see our ",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "GitHub Repository.",
+                "href": "https://github.com/dog-house-development/poodl/",
+              },
+              "ref": null,
+              "rendered": "GitHub Repository.",
+              "type": "a",
+            },
+          ],
+          "type": "p",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
