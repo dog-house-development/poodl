@@ -8,7 +8,10 @@ const passport = require("passport");
 // Load Member model
 const Member = require("../../models/Member");
 
-router.post("/register", (req, res) => {
+// Load input validation
+const validateRegisterInput = require("../../validation/addMember");
+
+router.post("/add", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
   if (!isValid) {
@@ -34,11 +37,12 @@ router.post("/register", (req, res) => {
         disabilities: req.body.disabilities,
         mealPreference: req.body.mealPreference
       });
+
+      newMember
+        .save()
+        .then(Member => res.json(Member))
+        .catch(err => console.log(err));
     }
-    newMember
-      .save()
-      .then(Member => res.json(Member))
-      .catch(err => console.log(err));
   });
 });
 

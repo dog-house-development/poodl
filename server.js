@@ -5,6 +5,8 @@ const passport = require("passport");
 const path = require("path");
 
 const admins = require("./routes/api/admins");
+const members = require("./routes/api/members");
+const seniorCenters = require("./routes/api/seniorCenters");
 
 const app = express();
 
@@ -36,6 +38,8 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/admins", admins);
+app.use("/api/members", members);
+app.use("/api/seniorCenters", seniorCenters);
 
 //Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
@@ -43,7 +47,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
 
