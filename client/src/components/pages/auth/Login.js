@@ -73,7 +73,7 @@ export class Login extends Component {
                 label: 'Password',
                 value: this.state.password,
                 onChange: this.onChange,
-                error: errors.email,
+                error: errors.password,
                 placeholder: 'Password......'
             }
         ];
@@ -84,8 +84,7 @@ export class Login extends Component {
         return (
             <div className="login-container">
                 <Link to="/" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to
-                    home
+                    <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
                 <Form
                     fields={this.getFields()}

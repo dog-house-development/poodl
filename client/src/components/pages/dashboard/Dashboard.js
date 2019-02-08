@@ -28,7 +28,6 @@ export class Dashboard extends Component {
             <div className="dashboard-container">
                 <h2>Hey there, </h2>
                 <h1>{admin.name.split(' ')[0]}.</h1>
-                <p>You are now logged in</p>
                 <Button content="Log out" onClick={this.onLogoutClick} />
                 <DataGrid columnNames={columnNames} data={data} />
             </div>
