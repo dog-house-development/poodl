@@ -10,7 +10,7 @@ const propTypes = {
     content: PropTypes.string,
     placeholder: PropTypes.string,
     label: PropTypes.string,
-    error: PropTypes.string
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 const defaultProps = {

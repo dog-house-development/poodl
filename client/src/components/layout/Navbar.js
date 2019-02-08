@@ -3,9 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutAdmin } from '../../actions/authActions';
 
-import Button from '../inputs/Button';
-
-class Navbar extends Component {
+export class Navbar extends Component {
     getHeaderMarkup() {
         if (!this.props.auth.isAuthenticated) {
             return (
@@ -27,13 +25,6 @@ class Navbar extends Component {
                     <li className="right">
                         <Link to="/register">Activities</Link>
                     </li>
-                    <li className="right">
-                        <Button
-                            content="Sign out"
-                            onClick={this.props.logoutAdmin}
-                            kind="secondary"
-                        />
-                    </li>
                 </>
             );
         }
@@ -52,13 +43,13 @@ class Navbar extends Component {
     }
 }
 
-const mapStateToProps = (state, props) => {
+export const mapStateToProps = (state, props) => {
     return {
         auth: state.auth
     };
 };
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
     return {
         logoutAdmin: () => dispatch(logoutAdmin())
     };

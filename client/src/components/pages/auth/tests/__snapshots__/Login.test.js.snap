@@ -34,28 +34,17 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Link
+          className="button small tertiary"
           replace={false}
           to="/"
         >
-          Back to home
+          <i
+            className="material-icons"
+          >
+            keyboard_backspace
+          </i>
+           Back to home
         </Link>,
-        <div>
-          <h4>
-            <b>
-              Login
-            </b>
-             below
-          </h4>
-          <p>
-            Don't have an account? 
-            <Link
-              replace={false}
-              to="/register"
-            >
-              Register
-            </Link>
-          </p>
-        </div>,
         <Form
           buttonLabel="Log in"
           fields={
@@ -80,10 +69,27 @@ ShallowWrapper {
               },
             ]
           }
+          formTitle="Log in"
           noValidate={true}
           onSubmit={[Function]}
         />,
+        <div
+          className="center"
+        >
+          <p>
+            Don't have an account?
+             
+            <Link
+              className="button small secondary"
+              replace={false}
+              to="/register"
+            >
+              Register
+            </Link>
+          </p>
+        </div>,
       ],
+      "className": "login-container",
     },
     "ref": null,
     "rendered": Array [
@@ -92,36 +98,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": "Back to home",
+          "children": Array [
+            <i
+              className="material-icons"
+            >
+              keyboard_backspace
+            </i>,
+            " Back to home",
+          ],
+          "className": "button small tertiary",
           "replace": false,
           "to": "/",
-        },
-        "ref": null,
-        "rendered": "Back to home",
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <h4>
-              <b>
-                Login
-              </b>
-               below
-            </h4>,
-            <p>
-              Don't have an account? 
-              <Link
-                replace={false}
-                to="/register"
-              >
-                Register
-              </Link>
-            </p>,
-          ],
         },
         "ref": null,
         "rendered": Array [
@@ -130,66 +117,16 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": Array [
-                <b>
-                  Login
-                </b>,
-                " below",
-              ],
+              "children": "keyboard_backspace",
+              "className": "material-icons",
             },
             "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "Login",
-                },
-                "ref": null,
-                "rendered": "Login",
-                "type": "b",
-              },
-              " below",
-            ],
-            "type": "h4",
+            "rendered": "keyboard_backspace",
+            "type": "i",
           },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                "Don't have an account? ",
-                <Link
-                  replace={false}
-                  to="/register"
-                >
-                  Register
-                </Link>,
-              ],
-            },
-            "ref": null,
-            "rendered": Array [
-              "Don't have an account? ",
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": "Register",
-                  "replace": false,
-                  "to": "/register",
-                },
-                "ref": null,
-                "rendered": "Register",
-                "type": [Function],
-              },
-            ],
-            "type": "p",
-          },
+          " Back to home",
         ],
-        "type": "div",
+        "type": [Function],
       },
       Object {
         "instance": null,
@@ -217,12 +154,72 @@ ShallowWrapper {
               "value": "abc123",
             },
           ],
+          "formTitle": "Log in",
           "noValidate": true,
           "onSubmit": [Function],
         },
         "ref": null,
         "rendered": null,
         "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <p>
+            Don't have an account?
+             
+            <Link
+              className="button small secondary"
+              replace={false}
+              to="/register"
+            >
+              Register
+            </Link>
+          </p>,
+          "className": "center",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Don't have an account?",
+              " ",
+              <Link
+                className="button small secondary"
+                replace={false}
+                to="/register"
+              >
+                Register
+              </Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Don't have an account?",
+            " ",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Register",
+                "className": "button small secondary",
+                "replace": false,
+                "to": "/register",
+              },
+              "ref": null,
+              "rendered": "Register",
+              "type": [Function],
+            },
+          ],
+          "type": "p",
+        },
+        "type": "div",
       },
     ],
     "type": "div",
@@ -235,28 +232,17 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Link
+            className="button small tertiary"
             replace={false}
             to="/"
           >
-            Back to home
+            <i
+              className="material-icons"
+            >
+              keyboard_backspace
+            </i>
+             Back to home
           </Link>,
-          <div>
-            <h4>
-              <b>
-                Login
-              </b>
-               below
-            </h4>
-            <p>
-              Don't have an account? 
-              <Link
-                replace={false}
-                to="/register"
-              >
-                Register
-              </Link>
-            </p>
-          </div>,
           <Form
             buttonLabel="Log in"
             fields={
@@ -281,10 +267,27 @@ ShallowWrapper {
                 },
               ]
             }
+            formTitle="Log in"
             noValidate={true}
             onSubmit={[Function]}
           />,
+          <div
+            className="center"
+          >
+            <p>
+              Don't have an account?
+               
+              <Link
+                className="button small secondary"
+                replace={false}
+                to="/register"
+              >
+                Register
+              </Link>
+            </p>
+          </div>,
         ],
+        "className": "login-container",
       },
       "ref": null,
       "rendered": Array [
@@ -293,36 +296,17 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": "Back to home",
+            "children": Array [
+              <i
+                className="material-icons"
+              >
+                keyboard_backspace
+              </i>,
+              " Back to home",
+            ],
+            "className": "button small tertiary",
             "replace": false,
             "to": "/",
-          },
-          "ref": null,
-          "rendered": "Back to home",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <h4>
-                <b>
-                  Login
-                </b>
-                 below
-              </h4>,
-              <p>
-                Don't have an account? 
-                <Link
-                  replace={false}
-                  to="/register"
-                >
-                  Register
-                </Link>
-              </p>,
-            ],
           },
           "ref": null,
           "rendered": Array [
@@ -331,66 +315,16 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": Array [
-                  <b>
-                    Login
-                  </b>,
-                  " below",
-                ],
+                "children": "keyboard_backspace",
+                "className": "material-icons",
               },
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "Login",
-                  },
-                  "ref": null,
-                  "rendered": "Login",
-                  "type": "b",
-                },
-                " below",
-              ],
-              "type": "h4",
+              "rendered": "keyboard_backspace",
+              "type": "i",
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [
-                  "Don't have an account? ",
-                  <Link
-                    replace={false}
-                    to="/register"
-                  >
-                    Register
-                  </Link>,
-                ],
-              },
-              "ref": null,
-              "rendered": Array [
-                "Don't have an account? ",
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": "Register",
-                    "replace": false,
-                    "to": "/register",
-                  },
-                  "ref": null,
-                  "rendered": "Register",
-                  "type": [Function],
-                },
-              ],
-              "type": "p",
-            },
+            " Back to home",
           ],
-          "type": "div",
+          "type": [Function],
         },
         Object {
           "instance": null,
@@ -418,12 +352,72 @@ ShallowWrapper {
                 "value": "abc123",
               },
             ],
+            "formTitle": "Log in",
             "noValidate": true,
             "onSubmit": [Function],
           },
           "ref": null,
           "rendered": null,
           "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <p>
+              Don't have an account?
+               
+              <Link
+                className="button small secondary"
+                replace={false}
+                to="/register"
+              >
+                Register
+              </Link>
+            </p>,
+            "className": "center",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Don't have an account?",
+                " ",
+                <Link
+                  className="button small secondary"
+                  replace={false}
+                  to="/register"
+                >
+                  Register
+                </Link>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Don't have an account?",
+              " ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Register",
+                  "className": "button small secondary",
+                  "replace": false,
+                  "to": "/register",
+                },
+                "ref": null,
+                "rendered": "Register",
+                "type": [Function],
+              },
+            ],
+            "type": "p",
+          },
+          "type": "div",
         },
       ],
       "type": "div",

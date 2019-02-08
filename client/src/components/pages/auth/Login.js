@@ -12,19 +12,13 @@ const propTypes = {
 };
 
 export class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: "",
-      password: "",
-      errors: {}
-    };
-  }
-
-  componentDidMount() {
-    // If logged in and admin navigates to Login page, should redirect them to dashboard
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+    constructor() {
+        super();
+        this.state = {
+            email: '',
+            password: '',
+            errors: {}
+        };
     }
 
     componentDidMount() {
@@ -114,21 +108,21 @@ export class Login extends Component {
 }
 
 export const mapStateToProps = (state, props) => {
-  return {
-    auth: state.auth,
-    errors: state.errors
-  };
+    return {
+        auth: state.auth,
+        errors: state.errors
+    };
 };
 
 export const mapDispatchToProps = dispatch => {
-  return {
-    loginAdmin: adminData => dispatch(loginAdmin(adminData))
-  };
+    return {
+        loginAdmin: adminData => dispatch(loginAdmin(adminData))
+    };
 };
 
 Login.propTypes = propTypes;
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Login);

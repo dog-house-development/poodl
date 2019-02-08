@@ -26,7 +26,8 @@ ShallowWrapper {
           The member management tool for rural senior centers!
         </p>,
         <p>
-          Users please see our 
+          Users please see our
+           
           <a
             href="https://github.com/dog-house-development/poodl/wiki/User-Documentation"
           >
@@ -34,7 +35,8 @@ ShallowWrapper {
           </a>
         </p>,
         <p>
-          Developers please see our 
+          Developers please see our
+           
           <a
             href="https://github.com/dog-house-development/poodl/"
           >
@@ -42,6 +44,7 @@ ShallowWrapper {
           </a>
         </p>,
       ],
+      "className": "landing-container",
     },
     "ref": null,
     "rendered": Array [
@@ -73,7 +76,8 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            "Users please see our ",
+            "Users please see our",
+            " ",
             <a
               href="https://github.com/dog-house-development/poodl/wiki/User-Documentation"
             >
@@ -83,7 +87,8 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          "Users please see our ",
+          "Users please see our",
+          " ",
           Object {
             "instance": null,
             "key": undefined,
@@ -105,7 +110,8 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            "Developers please see our ",
+            "Developers please see our",
+            " ",
             <a
               href="https://github.com/dog-house-development/poodl/"
             >
@@ -115,7 +121,8 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          "Developers please see our ",
+          "Developers please see our",
+          " ",
           Object {
             "instance": null,
             "key": undefined,
@@ -148,7 +155,8 @@ ShallowWrapper {
             The member management tool for rural senior centers!
           </p>,
           <p>
-            Users please see our 
+            Users please see our
+             
             <a
               href="https://github.com/dog-house-development/poodl/wiki/User-Documentation"
             >
@@ -156,7 +164,8 @@ ShallowWrapper {
             </a>
           </p>,
           <p>
-            Developers please see our 
+            Developers please see our
+             
             <a
               href="https://github.com/dog-house-development/poodl/"
             >
@@ -164,6 +173,7 @@ ShallowWrapper {
             </a>
           </p>,
         ],
+        "className": "landing-container",
       },
       "ref": null,
       "rendered": Array [
@@ -195,7 +205,8 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              "Users please see our ",
+              "Users please see our",
+              " ",
               <a
                 href="https://github.com/dog-house-development/poodl/wiki/User-Documentation"
               >
@@ -205,7 +216,8 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            "Users please see our ",
+            "Users please see our",
+            " ",
             Object {
               "instance": null,
               "key": undefined,
@@ -227,7 +239,8 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              "Developers please see our ",
+              "Developers please see our",
+              " ",
               <a
                 href="https://github.com/dog-house-development/poodl/"
               >
@@ -237,7 +250,8 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            "Developers please see our ",
+            "Developers please see our",
+            " ",
             Object {
               "instance": null,
               "key": undefined,

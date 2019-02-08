@@ -22,7 +22,7 @@ ShallowWrapper {
         <div
           className="App"
         >
-          <Navbar />
+          <Connect(withRouter(Navbar)) />
           <Route
             component={[Function]}
             exact={true}
@@ -64,7 +64,7 @@ ShallowWrapper {
         "children": <div
           className="App"
         >
-          <Navbar />
+          <Connect(withRouter(Navbar)) />
           <Route
             component={[Function]}
             exact={true}
@@ -96,7 +96,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <Navbar />,
+            <Connect(withRouter(Navbar)) />,
             <Route
               component={[Function]}
               exact={true}
@@ -216,7 +216,7 @@ ShallowWrapper {
           <div
             className="App"
           >
-            <Navbar />
+            <Connect(withRouter(Navbar)) />
             <Route
               component={[Function]}
               exact={true}
@@ -258,7 +258,7 @@ ShallowWrapper {
           "children": <div
             className="App"
           >
-            <Navbar />
+            <Connect(withRouter(Navbar)) />
             <Route
               component={[Function]}
               exact={true}
@@ -290,7 +290,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <Navbar />,
+              <Connect(withRouter(Navbar)) />,
               <Route
                 component={[Function]}
                 exact={true}

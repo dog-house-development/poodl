@@ -12,7 +12,7 @@ const propTypes = {
     errors: PropTypes.object.isRequired
 };
 
-class Register extends Component {
+export class Register extends Component {
     constructor() {
         super();
         this.state = {
@@ -127,21 +127,21 @@ class Register extends Component {
 }
 
 export const mapStateToProps = (state, props) => {
-  return {
-    auth: state.auth,
-    errors: state.errors
-  };
+    return {
+        auth: state.auth,
+        errors: state.errors
+    };
 };
 
 export const mapDispatchToProps = dispatch => {
-  return {
-    registerAdmin: (adminData, history) =>
-      dispatch(registerAdmin(adminData, history))
-  };
+    return {
+        registerAdmin: (adminData, history) =>
+            dispatch(registerAdmin(adminData, history))
+    };
 };
 
 Register.propTypes = propTypes;
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(withRouter(Register));

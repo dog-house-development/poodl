@@ -36,7 +36,13 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        Array [
+        <h1
+          className="panel-title"
+        />,
+        <form
+          noValidate={false}
+          onSubmit={[Function]}
+        >
           <Field
             error={Object {}}
             id="email"
@@ -45,55 +51,101 @@ ShallowWrapper {
             placeholder="Enter email..."
             size="normal"
             type="email"
-          />,
-        ],
-        <Button
-          content="Submit"
-          kind="primary"
-          size="medium"
-          type="submit"
-        />,
+          />
+          <Button
+            content="Submit"
+            formButton={true}
+            kind="primary"
+            size="medium"
+            type="submit"
+          />
+        </form>,
       ],
-      "noValidate": false,
-      "onSubmit": [Function],
+      "className": "panel",
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": "email",
-        "nodeType": "class",
+        "key": undefined,
+        "nodeType": "host",
         "props": Object {
-          "content": undefined,
-          "error": Object {},
-          "id": "email",
-          "label": "Email:",
-          "name": undefined,
-          "onChange": [Function],
-          "placeholder": "Enter email...",
-          "size": "normal",
-          "type": "email",
+          "children": undefined,
+          "className": "panel-title",
         },
         "ref": null,
         "rendered": null,
-        "type": [Function],
+        "type": "h1",
       },
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "host",
         "props": Object {
-          "content": "Submit",
-          "kind": "primary",
-          "size": "medium",
-          "type": "submit",
+          "children": Array [
+            Array [
+              <Field
+                error={Object {}}
+                id="email"
+                label="Email:"
+                onChange={[Function]}
+                placeholder="Enter email..."
+                size="normal"
+                type="email"
+              />,
+            ],
+            <Button
+              content="Submit"
+              formButton={true}
+              kind="primary"
+              size="medium"
+              type="submit"
+            />,
+          ],
+          "noValidate": false,
+          "onSubmit": [Function],
         },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "email",
+            "nodeType": "class",
+            "props": Object {
+              "content": undefined,
+              "error": Object {},
+              "id": "email",
+              "label": "Email:",
+              "name": undefined,
+              "onChange": [Function],
+              "placeholder": "Enter email...",
+              "size": "normal",
+              "type": "email",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "content": "Submit",
+              "formButton": true,
+              "kind": "primary",
+              "size": "medium",
+              "type": "submit",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "form",
       },
     ],
-    "type": "form",
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -102,7 +154,13 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          Array [
+          <h1
+            className="panel-title"
+          />,
+          <form
+            noValidate={false}
+            onSubmit={[Function]}
+          >
             <Field
               error={Object {}}
               id="email"
@@ -111,55 +169,101 @@ ShallowWrapper {
               placeholder="Enter email..."
               size="normal"
               type="email"
-            />,
-          ],
-          <Button
-            content="Submit"
-            kind="primary"
-            size="medium"
-            type="submit"
-          />,
+            />
+            <Button
+              content="Submit"
+              formButton={true}
+              kind="primary"
+              size="medium"
+              type="submit"
+            />
+          </form>,
         ],
-        "noValidate": false,
-        "onSubmit": [Function],
+        "className": "panel",
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": "email",
-          "nodeType": "class",
+          "key": undefined,
+          "nodeType": "host",
           "props": Object {
-            "content": undefined,
-            "error": Object {},
-            "id": "email",
-            "label": "Email:",
-            "name": undefined,
-            "onChange": [Function],
-            "placeholder": "Enter email...",
-            "size": "normal",
-            "type": "email",
+            "children": undefined,
+            "className": "panel-title",
           },
           "ref": null,
           "rendered": null,
-          "type": [Function],
+          "type": "h1",
         },
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "host",
           "props": Object {
-            "content": "Submit",
-            "kind": "primary",
-            "size": "medium",
-            "type": "submit",
+            "children": Array [
+              Array [
+                <Field
+                  error={Object {}}
+                  id="email"
+                  label="Email:"
+                  onChange={[Function]}
+                  placeholder="Enter email..."
+                  size="normal"
+                  type="email"
+                />,
+              ],
+              <Button
+                content="Submit"
+                formButton={true}
+                kind="primary"
+                size="medium"
+                type="submit"
+              />,
+            ],
+            "noValidate": false,
+            "onSubmit": [Function],
           },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "email",
+              "nodeType": "class",
+              "props": Object {
+                "content": undefined,
+                "error": Object {},
+                "id": "email",
+                "label": "Email:",
+                "name": undefined,
+                "onChange": [Function],
+                "placeholder": "Enter email...",
+                "size": "normal",
+                "type": "email",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "content": "Submit",
+                "formButton": true,
+                "kind": "primary",
+                "size": "medium",
+                "type": "submit",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "form",
         },
       ],
-      "type": "form",
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {
