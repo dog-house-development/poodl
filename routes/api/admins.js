@@ -12,8 +12,17 @@ const validateLoginInput = require("../../validation/login");
 // Load Admin model
 const Admin = require("../../models/Admin");
 
+// @route GET api/admins/get
+// should return all admins
+router.get("/get", (req, res) => {
+  Admin.find((err, admins) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: admins });
+  });
+});
+
 // @route POST api/admins/register
-// @desc Register Admin
+// @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
   // Form validation
