@@ -38,9 +38,6 @@ ShallowWrapper {
           Sandwich
           .
         </h1>,
-        <p>
-          You are now logged in
-        </p>,
         <Button
           content="Log out"
           kind="primary"
@@ -83,17 +80,6 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "You are now logged in",
-        },
-        "ref": null,
-        "rendered": "You are now logged in",
-        "type": "p",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "content": "Log out",
@@ -122,9 +108,6 @@ ShallowWrapper {
             Sandwich
             .
           </h1>,
-          <p>
-            You are now logged in
-          </p>,
           <Button
             content="Log out"
             kind="primary"
@@ -163,17 +146,6 @@ ShallowWrapper {
             ".",
           ],
           "type": "h1",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "You are now logged in",
-          },
-          "ref": null,
-          "rendered": "You are now logged in",
-          "type": "p",
         },
         Object {
           "instance": null,

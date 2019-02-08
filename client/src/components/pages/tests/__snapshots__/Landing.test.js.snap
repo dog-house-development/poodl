@@ -22,7 +22,7 @@ ShallowWrapper {
         className="landing-header"
       >
         <h1>
-          Welcome to,
+          Welcome to
         </h1>
         <h1
           className="landing-title"
@@ -50,7 +50,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <h1>
-            Welcome to,
+            Welcome to
           </h1>,
           <h1
             className="landing-title"
@@ -77,10 +77,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Welcome to,",
+            "children": "Welcome to",
           },
           "ref": null,
-          "rendered": "Welcome to,",
+          "rendered": "Welcome to",
           "type": "h1",
         },
         Object {
@@ -135,7 +135,7 @@ ShallowWrapper {
           className="landing-header"
         >
           <h1>
-            Welcome to,
+            Welcome to
           </h1>
           <h1
             className="landing-title"
@@ -163,7 +163,7 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <h1>
-              Welcome to,
+              Welcome to
             </h1>,
             <h1
               className="landing-title"
@@ -190,10 +190,10 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "Welcome to,",
+              "children": "Welcome to",
             },
             "ref": null,
-            "rendered": "Welcome to,",
+            "rendered": "Welcome to",
             "type": "h1",
           },
           Object {
