@@ -69,7 +69,7 @@ ShallowWrapper {
               },
             ]
           }
-          formTitle="Log in"
+          formTitle="Log In"
           noValidate={true}
           onSubmit={[Function]}
         />,
@@ -154,7 +154,7 @@ ShallowWrapper {
               "value": "abc123",
             },
           ],
-          "formTitle": "Log in",
+          "formTitle": "Log In",
           "noValidate": true,
           "onSubmit": [Function],
         },
@@ -267,7 +267,7 @@ ShallowWrapper {
                 },
               ]
             }
-            formTitle="Log in"
+            formTitle="Log In"
             noValidate={true}
             onSubmit={[Function]}
           />,
@@ -352,7 +352,7 @@ ShallowWrapper {
                 "value": "abc123",
               },
             ],
-            "formTitle": "Log in",
+            "formTitle": "Log In",
             "noValidate": true,
             "onSubmit": [Function],
           },

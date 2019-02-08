@@ -4,4 +4,13 @@
   max-width: 100%;
   margin: auto;
   padding: 0 24px;
+
+  .landing-header {
+    text-align: center;
+
+    .landing-title {
+      font-size: 64px;
+      margin: 8px 0;
+    }
+  }
 }

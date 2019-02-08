@@ -1,6 +1,7 @@
 @import './_presets.scss';
 
 .button {
+  display: inline-block;
   font-weight: bold;
   border: 1px solid transparent;
   border-radius: 5px;
@@ -24,7 +25,7 @@
   }
 
   &.large {
-    padding: 6px 20px;
+    padding: 18px 30px;
     font-size: 18px;
   }
 
@@ -78,5 +79,6 @@
 
   &.form-button {
     float: right;
+    margin-top: 20px;
   }
 }

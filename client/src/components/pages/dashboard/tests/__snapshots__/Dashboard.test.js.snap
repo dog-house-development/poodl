@@ -31,20 +31,24 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <h4>
-          <p>
-            Hey there, 
-            Sandwich
-            . You are now logged in
-          </p>
-        </h4>,
+        <h2>
+          Hey there, 
+        </h2>,
+        <h1>
+          Sandwich
+          .
+        </h1>,
+        <p>
+          You are now logged in
+        </p>,
         <Button
-          content="log out"
+          content="Log out"
           kind="primary"
           onClick={[Function]}
           size="medium"
         />,
       ],
+      "className": "dashboard-container",
     },
     "ref": null,
     "rendered": Array [
@@ -53,40 +57,46 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <p>
-            Hey there, 
-            Sandwich
-            . You are now logged in
-          </p>,
+          "children": "Hey there, ",
         },
         "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              "Hey there, ",
-              "Sandwich",
-              ". You are now logged in",
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            "Hey there, ",
+        "rendered": "Hey there, ",
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
             "Sandwich",
-            ". You are now logged in",
+            ".",
           ],
-          "type": "p",
         },
-        "type": "h4",
+        "ref": null,
+        "rendered": Array [
+          "Sandwich",
+          ".",
+        ],
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "You are now logged in",
+        },
+        "ref": null,
+        "rendered": "You are now logged in",
+        "type": "p",
       },
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "content": "log out",
+          "content": "Log out",
           "kind": "primary",
           "onClick": [Function],
           "size": "medium",
@@ -105,20 +115,24 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <h4>
-            <p>
-              Hey there, 
-              Sandwich
-              . You are now logged in
-            </p>
-          </h4>,
+          <h2>
+            Hey there, 
+          </h2>,
+          <h1>
+            Sandwich
+            .
+          </h1>,
+          <p>
+            You are now logged in
+          </p>,
           <Button
-            content="log out"
+            content="Log out"
             kind="primary"
             onClick={[Function]}
             size="medium"
           />,
         ],
+        "className": "dashboard-container",
       },
       "ref": null,
       "rendered": Array [
@@ -127,40 +141,46 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <p>
-              Hey there, 
-              Sandwich
-              . You are now logged in
-            </p>,
+            "children": "Hey there, ",
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                "Hey there, ",
-                "Sandwich",
-                ". You are now logged in",
-              ],
-            },
-            "ref": null,
-            "rendered": Array [
-              "Hey there, ",
+          "rendered": "Hey there, ",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
               "Sandwich",
-              ". You are now logged in",
+              ".",
             ],
-            "type": "p",
           },
-          "type": "h4",
+          "ref": null,
+          "rendered": Array [
+            "Sandwich",
+            ".",
+          ],
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "You are now logged in",
+          },
+          "ref": null,
+          "rendered": "You are now logged in",
+          "type": "p",
         },
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "content": "log out",
+            "content": "Log out",
             "kind": "primary",
             "onClick": [Function],
             "size": "medium",

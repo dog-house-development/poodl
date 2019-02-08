@@ -23,7 +23,7 @@ export class Navbar extends Component {
                         <Link to="/dashboard">My Dashboard</Link>
                     </li>
                     <li className="right">
-                        <Link to="/register">Activities</Link>
+                        <Link to="/activities">Activities</Link>
                     </li>
                 </>
             );

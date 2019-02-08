@@ -20,7 +20,7 @@ ShallowWrapper {
     "props": Object {
       "children": <BrowserRouter>
         <div
-          className="App"
+          className="App wrapper"
         >
           <Connect(withRouter(Navbar)) />
           <Route
@@ -45,6 +45,7 @@ ShallowWrapper {
               path="/dashboard"
             />
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>,
       "store": Object {
@@ -62,7 +63,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <div
-          className="App"
+          className="App wrapper"
         >
           <Connect(withRouter(Navbar)) />
           <Route
@@ -87,6 +88,7 @@ ShallowWrapper {
               path="/dashboard"
             />
           </Switch>
+          <Footer />
         </div>,
       },
       "ref": null,
@@ -119,8 +121,9 @@ ShallowWrapper {
                 path="/dashboard"
               />
             </Switch>,
+            <Footer />,
           ],
-          "className": "App",
+          "className": "App wrapper",
         },
         "ref": null,
         "rendered": Array [
@@ -199,6 +202,15 @@ ShallowWrapper {
             },
             "type": [Function],
           },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
         ],
         "type": "div",
       },
@@ -214,7 +226,7 @@ ShallowWrapper {
       "props": Object {
         "children": <BrowserRouter>
           <div
-            className="App"
+            className="App wrapper"
           >
             <Connect(withRouter(Navbar)) />
             <Route
@@ -239,6 +251,7 @@ ShallowWrapper {
                 path="/dashboard"
               />
             </Switch>
+            <Footer />
           </div>
         </BrowserRouter>,
         "store": Object {
@@ -256,7 +269,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": <div
-            className="App"
+            className="App wrapper"
           >
             <Connect(withRouter(Navbar)) />
             <Route
@@ -281,6 +294,7 @@ ShallowWrapper {
                 path="/dashboard"
               />
             </Switch>
+            <Footer />
           </div>,
         },
         "ref": null,
@@ -313,8 +327,9 @@ ShallowWrapper {
                   path="/dashboard"
                 />
               </Switch>,
+              <Footer />,
             ],
-            "className": "App",
+            "className": "App wrapper",
           },
           "ref": null,
           "rendered": Array [
@@ -391,6 +406,15 @@ ShallowWrapper {
                 "rendered": null,
                 "type": [Function],
               },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
               "type": [Function],
             },
           ],

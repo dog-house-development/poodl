@@ -3,7 +3,7 @@
 .header {
   background: $gray-1;
   padding: 0 24px;
-  margin-bottom: 15px;
+  margin-bottom: 24px;
 
   ul {
     margin: 0;
@@ -24,10 +24,15 @@
         display: inline-block;
         text-transform: uppercase;
         text-decoration: none;
-        padding: 20px 15px;
+        padding: 18px 15px;
+        border-bottom: 2px solid transparent;
 
         &:hover {
           color: $gray-8;
+        }
+
+        &.current-location {
+          border-bottom: 2px solid $button-primary;
         }
       }
     }

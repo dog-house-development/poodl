@@ -92,7 +92,7 @@ export class Login extends Component {
                     onSubmit={this.onSubmit}
                     noValidate
                     buttonLabel="Log in"
-                    formTitle="Log in"
+                    formTitle="Log In"
                 />
                 <div className="center">
                     <p>
