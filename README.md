@@ -1,7 +1,14 @@
 # Poodl
+
 [![Build Status](https://travis-ci.org/dog-house-development/poodl.svg?branch=dev)](https://travis-ci.org/dog-house-development/poodl)
 
-_Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ "poodl"). Please read [our wiki](https://github.com/dog-house-development/poodl/wiki "poodl wiki") to learn more.
+_Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Please read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
+
+#### Sites
+
+**dev:** [poodl-dev.herokuapp.com](http://poodl-dev.herokuapp.com/)
+
+**prod** [poodl.herokuapp.com](http://poodl-dev.herokuapp.com/)
 
 **To get your development environment setup, follow the instructions below.**
 
@@ -23,8 +30,8 @@ Make sure you have the correct yarn installed. If none of the commands are worki
 
 ### Clone the repository onto your computer
 
-- Clone: `git clone <remote>`
-- Change directory: `cd poodl`
+-   Clone: `git clone <remote>`
+-   Change directory: `cd poodl`
 
 ### Install dependencies
 
