@@ -6,9 +6,9 @@ _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https
 
 ### Sites
 
-**dev:** [poodl-dev.herokuapp.com](http://poodl-dev.herokuapp.com/)
+**Development:** [poodl-dev.herokuapp.com](http://poodl-dev.herokuapp.com/)
 
-**prod:** [poodl.herokuapp.com](http://poodl-dev.herokuapp.com/)
+**Production:** [poodl.herokuapp.com](http://poodl-dev.herokuapp.com/)
 
 ## Setup for Development
 
