@@ -10,7 +10,7 @@ _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https
 
 **prod:** [poodl.herokuapp.com](http://poodl-dev.herokuapp.com/)
 
-**To get your development environment setup, follow the instructions below.**
+## Setup for Development
 
 _Before starting development, familiarize yourself with the merge strategy in the wiki_
 
