@@ -40,6 +40,7 @@ require('./config/passport')(passport);
 app.use('/api/admins', admins);
 app.use('/api/members', members);
 app.use('/api/seniorCenters', seniorCenters);
+app.use('/api/volunteers');
 
 //Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
