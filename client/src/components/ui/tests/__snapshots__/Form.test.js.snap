@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form tests render should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Form
+    buttonLabel="Submit"
+    fields={
+      Array [
+        Object {
+          "error": Object {},
+          "id": "email",
+          "label": "Email:",
+          "onChange": [Function],
+          "placeholder": "Enter email...",
+          "type": "email",
+          "value": "",
+        },
+      ]
+    }
+    noValidate={false}
+    onSubmit={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1
+          className="panel-title"
+        />,
+        <form
+          noValidate={false}
+          onSubmit={[Function]}
+        >
+          <Field
+            error={Object {}}
+            id="email"
+            label="Email:"
+            onChange={[Function]}
+            placeholder="Enter email..."
+            size="normal"
+            type="email"
+          />
+          <Button
+            content="Submit"
+            formButton={true}
+            kind="primary"
+            size="medium"
+            type="submit"
+          />
+        </form>,
+      ],
+      "className": "panel",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": undefined,
+          "className": "panel-title",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            Array [
+              <Field
+                error={Object {}}
+                id="email"
+                label="Email:"
+                onChange={[Function]}
+                placeholder="Enter email..."
+                size="normal"
+                type="email"
+              />,
+            ],
+            <Button
+              content="Submit"
+              formButton={true}
+              kind="primary"
+              size="medium"
+              type="submit"
+            />,
+          ],
+          "noValidate": false,
+          "onSubmit": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "email",
+            "nodeType": "class",
+            "props": Object {
+              "content": undefined,
+              "error": Object {},
+              "id": "email",
+              "label": "Email:",
+              "name": undefined,
+              "onChange": [Function],
+              "placeholder": "Enter email...",
+              "size": "normal",
+              "type": "email",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "content": "Submit",
+              "formButton": true,
+              "kind": "primary",
+              "size": "medium",
+              "type": "submit",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "form",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1
+            className="panel-title"
+          />,
+          <form
+            noValidate={false}
+            onSubmit={[Function]}
+          >
+            <Field
+              error={Object {}}
+              id="email"
+              label="Email:"
+              onChange={[Function]}
+              placeholder="Enter email..."
+              size="normal"
+              type="email"
+            />
+            <Button
+              content="Submit"
+              formButton={true}
+              kind="primary"
+              size="medium"
+              type="submit"
+            />
+          </form>,
+        ],
+        "className": "panel",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": undefined,
+            "className": "panel-title",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              Array [
+                <Field
+                  error={Object {}}
+                  id="email"
+                  label="Email:"
+                  onChange={[Function]}
+                  placeholder="Enter email..."
+                  size="normal"
+                  type="email"
+                />,
+              ],
+              <Button
+                content="Submit"
+                formButton={true}
+                kind="primary"
+                size="medium"
+                type="submit"
+              />,
+            ],
+            "noValidate": false,
+            "onSubmit": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "email",
+              "nodeType": "class",
+              "props": Object {
+                "content": undefined,
+                "error": Object {},
+                "id": "email",
+                "label": "Email:",
+                "name": undefined,
+                "onChange": [Function],
+                "placeholder": "Enter email...",
+                "size": "normal",
+                "type": "email",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "content": "Submit",
+                "formButton": true,
+                "kind": "primary",
+                "size": "medium",
+                "type": "submit",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "form",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

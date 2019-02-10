@@ -1,21 +1,61 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logoutAdmin } from '../../actions/authActions';
 
-class Navbar extends Component {
-  render() {
-    return (
-      <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
-            <Link
-              to="/" >
-              Poodl
-            </Link>
-          </div>
-        </nav>
-      </div>
-    );
-  }
+export class Navbar extends Component {
+    getHeaderMarkup() {
+        if (!this.props.auth.isAuthenticated) {
+            return (
+                <>
+                    <li className="right">
+                        <Link to="/register">Sign up</Link>
+                    </li>
+                    <li className="right">
+                        <Link to="/login">Log in</Link>
+                    </li>
+                </>
+            );
+        } else {
+            return (
+                <>
+                    <li className="right">
+                        <Link to="/dashboard">My Dashboard</Link>
+                    </li>
+                    <li className="right">
+                        <Link to="/activities">Activities</Link>
+                    </li>
+                </>
+            );
+        }
+    }
+    render() {
+        return (
+            <div className="header">
+                <ul>
+                    <li className="">
+                        <Link to="/">Poodl</Link>
+                    </li>
+                    {this.getHeaderMarkup()}
+                </ul>
+            </div>
+        );
+    }
 }
 
-export default Navbar;
+export const mapStateToProps = (state, props) => {
+    return {
+        auth: state.auth
+    };
+};
+
+export const mapDispatchToProps = dispatch => {
+    return {
+        logoutAdmin: () => dispatch(logoutAdmin())
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRouter(Navbar));

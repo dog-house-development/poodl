@@ -25,7 +25,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": "Press me",
-      "className": "button medium primary",
+      "className": "button medium primary ",
       "onClick": [Function],
       "type": "normal",
     },
@@ -40,7 +40,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": "Press me",
-        "className": "button medium primary",
+        "className": "button medium primary ",
         "onClick": [Function],
         "type": "normal",
       },
