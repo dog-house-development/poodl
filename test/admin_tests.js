@@ -33,9 +33,8 @@ describe('/GET admins', () => {
                 res.body.should.have.property('success').eql(true);
                 //res.body.should.have.property("data"); //should go deeper having issues add later
                 //res.body.length.should.be.eql(0);
-                done();
-            })
-            .catch(done);
+            });
+        done();
     });
 }).timeout(120000);
 
@@ -55,10 +54,8 @@ describe('/REGISTER admins', () => {
                 res.should.have.status(200);
                 res.body.should.have.property('name').eql('testy boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
-
-                done();
-            })
-            .catch(done);
+            });
+        done();
     });
 }).timeout(120000);
 
@@ -75,9 +72,7 @@ describe('/LOGIN admins', () => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 res.body.should.have.property('token');
-
-                done();
-            })
-            .catch(done);
+            });
+        done();
     }).timeout(120000);
 });
