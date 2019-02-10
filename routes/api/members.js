@@ -17,7 +17,10 @@ router.get('/get', (req, res) => {
     });
 });
 
-router.post('/register', (req, res) => {
+// Load input validation
+const validateRegisterInput = require('../../validation/addMember');
+
+router.post('/add', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if (!isValid) {

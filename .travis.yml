@@ -1,12 +1,12 @@
 language: node_js
 node_js:
-  - "8"
-  - "10"
-  - "11"
+    - '8'
+    - '10'
+    - '11'
 services:
-  - mongodb
+    - mongodb
 install:
-  - yarn all-install
+    - yarn all-install
 script:
-  - yarn test
-  - yarn --cwd client build
+    - yarn test
+    - yarn --cwd client build
