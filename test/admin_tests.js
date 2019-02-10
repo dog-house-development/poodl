@@ -17,6 +17,7 @@ before(function(done) {
     mockgoose.prepareStorage().then(function() {
         mongoose.connect(
             'mongodb://example.com/TestingDB',
+            { useNewUrlParser: true },
             function(err) {
                 done(err);
             }
@@ -33,8 +34,8 @@ describe('/GET admins', () => {
                 res.body.should.have.property('success').eql(true);
                 //res.body.should.have.property("data"); //should go deeper having issues add later
                 //res.body.length.should.be.eql(0);
+                done();
             });
-        done();
     });
 }).timeout(120000);
 
@@ -54,8 +55,9 @@ describe('/REGISTER admins', () => {
                 res.should.have.status(200);
                 res.body.should.have.property('name').eql('testy boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
+
+                done();
             });
-        done();
     });
 }).timeout(120000);
 
@@ -72,7 +74,8 @@ describe('/LOGIN admins', () => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 res.body.should.have.property('token');
+
+                done();
             });
-        done();
     }).timeout(120000);
 });
