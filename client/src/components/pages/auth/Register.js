@@ -103,8 +103,7 @@ export class Register extends Component {
         return (
             <div className="register-container">
                 <Link to="/" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to
-                    home
+                    <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
                 <Form
                     noValidate
@@ -135,8 +134,7 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
     return {
-        registerAdmin: (adminData, history) =>
-            dispatch(registerAdmin(adminData, history))
+        registerAdmin: (adminData, history) => dispatch(registerAdmin(adminData, history))
     };
 };
 
