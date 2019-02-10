@@ -1,0 +1,520 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register tests render should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Register
+    auth={
+      Object {
+        "isAuthenticated": false,
+        "loading": false,
+      }
+    }
+    errors={Object {}}
+    history={
+      Array [
+        "/register",
+      ]
+    }
+    registerAdmin={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Link
+          className="button small tertiary"
+          replace={false}
+          to="/"
+        >
+          <i
+            className="material-icons"
+          >
+            keyboard_backspace
+          </i>
+           Back to home
+        </Link>,
+        <Form
+          buttonLabel="Register"
+          fields={
+            Array [
+              Object {
+                "error": undefined,
+                "id": "name",
+                "label": "Name",
+                "onChange": [Function],
+                "placeholder": "First Last...",
+                "type": "text",
+                "value": "Sam",
+              },
+              Object {
+                "error": undefined,
+                "id": "email",
+                "label": "Email",
+                "onChange": [Function],
+                "placeholder": "example@poodl.com...",
+                "type": "email",
+                "value": "sam@test.com",
+              },
+              Object {
+                "error": undefined,
+                "id": "password",
+                "label": "Password",
+                "onChange": [Function],
+                "placeholder": "Shhhhh...",
+                "type": "password",
+                "value": "abc123",
+              },
+              Object {
+                "error": undefined,
+                "id": "password2",
+                "label": "Confirm Password",
+                "onChange": [Function],
+                "placeholder": "Again...",
+                "type": "password",
+                "value": "abc123",
+              },
+            ]
+          }
+          formTitle="Register Admin"
+          noValidate={true}
+          onSubmit={[Function]}
+        />,
+        <div
+          className="center"
+        >
+          <p>
+            Already have an account?
+             
+            <Link
+              className="button small secondary"
+              replace={false}
+              to="/login"
+            >
+              Log in
+            </Link>
+          </p>
+        </div>,
+      ],
+      "className": "register-container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <i
+              className="material-icons"
+            >
+              keyboard_backspace
+            </i>,
+            " Back to home",
+          ],
+          "className": "button small tertiary",
+          "replace": false,
+          "to": "/",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "keyboard_backspace",
+              "className": "material-icons",
+            },
+            "ref": null,
+            "rendered": "keyboard_backspace",
+            "type": "i",
+          },
+          " Back to home",
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "buttonLabel": "Register",
+          "fields": Array [
+            Object {
+              "error": undefined,
+              "id": "name",
+              "label": "Name",
+              "onChange": [Function],
+              "placeholder": "First Last...",
+              "type": "text",
+              "value": "Sam",
+            },
+            Object {
+              "error": undefined,
+              "id": "email",
+              "label": "Email",
+              "onChange": [Function],
+              "placeholder": "example@poodl.com...",
+              "type": "email",
+              "value": "sam@test.com",
+            },
+            Object {
+              "error": undefined,
+              "id": "password",
+              "label": "Password",
+              "onChange": [Function],
+              "placeholder": "Shhhhh...",
+              "type": "password",
+              "value": "abc123",
+            },
+            Object {
+              "error": undefined,
+              "id": "password2",
+              "label": "Confirm Password",
+              "onChange": [Function],
+              "placeholder": "Again...",
+              "type": "password",
+              "value": "abc123",
+            },
+          ],
+          "formTitle": "Register Admin",
+          "noValidate": true,
+          "onSubmit": [Function],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <p>
+            Already have an account?
+             
+            <Link
+              className="button small secondary"
+              replace={false}
+              to="/login"
+            >
+              Log in
+            </Link>
+          </p>,
+          "className": "center",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Already have an account?",
+              " ",
+              <Link
+                className="button small secondary"
+                replace={false}
+                to="/login"
+              >
+                Log in
+              </Link>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Already have an account?",
+            " ",
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Log in",
+                "className": "button small secondary",
+                "replace": false,
+                "to": "/login",
+              },
+              "ref": null,
+              "rendered": "Log in",
+              "type": [Function],
+            },
+          ],
+          "type": "p",
+        },
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Link
+            className="button small tertiary"
+            replace={false}
+            to="/"
+          >
+            <i
+              className="material-icons"
+            >
+              keyboard_backspace
+            </i>
+             Back to home
+          </Link>,
+          <Form
+            buttonLabel="Register"
+            fields={
+              Array [
+                Object {
+                  "error": undefined,
+                  "id": "name",
+                  "label": "Name",
+                  "onChange": [Function],
+                  "placeholder": "First Last...",
+                  "type": "text",
+                  "value": "Sam",
+                },
+                Object {
+                  "error": undefined,
+                  "id": "email",
+                  "label": "Email",
+                  "onChange": [Function],
+                  "placeholder": "example@poodl.com...",
+                  "type": "email",
+                  "value": "sam@test.com",
+                },
+                Object {
+                  "error": undefined,
+                  "id": "password",
+                  "label": "Password",
+                  "onChange": [Function],
+                  "placeholder": "Shhhhh...",
+                  "type": "password",
+                  "value": "abc123",
+                },
+                Object {
+                  "error": undefined,
+                  "id": "password2",
+                  "label": "Confirm Password",
+                  "onChange": [Function],
+                  "placeholder": "Again...",
+                  "type": "password",
+                  "value": "abc123",
+                },
+              ]
+            }
+            formTitle="Register Admin"
+            noValidate={true}
+            onSubmit={[Function]}
+          />,
+          <div
+            className="center"
+          >
+            <p>
+              Already have an account?
+               
+              <Link
+                className="button small secondary"
+                replace={false}
+                to="/login"
+              >
+                Log in
+              </Link>
+            </p>
+          </div>,
+        ],
+        "className": "register-container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <i
+                className="material-icons"
+              >
+                keyboard_backspace
+              </i>,
+              " Back to home",
+            ],
+            "className": "button small tertiary",
+            "replace": false,
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "keyboard_backspace",
+                "className": "material-icons",
+              },
+              "ref": null,
+              "rendered": "keyboard_backspace",
+              "type": "i",
+            },
+            " Back to home",
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "buttonLabel": "Register",
+            "fields": Array [
+              Object {
+                "error": undefined,
+                "id": "name",
+                "label": "Name",
+                "onChange": [Function],
+                "placeholder": "First Last...",
+                "type": "text",
+                "value": "Sam",
+              },
+              Object {
+                "error": undefined,
+                "id": "email",
+                "label": "Email",
+                "onChange": [Function],
+                "placeholder": "example@poodl.com...",
+                "type": "email",
+                "value": "sam@test.com",
+              },
+              Object {
+                "error": undefined,
+                "id": "password",
+                "label": "Password",
+                "onChange": [Function],
+                "placeholder": "Shhhhh...",
+                "type": "password",
+                "value": "abc123",
+              },
+              Object {
+                "error": undefined,
+                "id": "password2",
+                "label": "Confirm Password",
+                "onChange": [Function],
+                "placeholder": "Again...",
+                "type": "password",
+                "value": "abc123",
+              },
+            ],
+            "formTitle": "Register Admin",
+            "noValidate": true,
+            "onSubmit": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <p>
+              Already have an account?
+               
+              <Link
+                className="button small secondary"
+                replace={false}
+                to="/login"
+              >
+                Log in
+              </Link>
+            </p>,
+            "className": "center",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "Already have an account?",
+                " ",
+                <Link
+                  className="button small secondary"
+                  replace={false}
+                  to="/login"
+                >
+                  Log in
+                </Link>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "Already have an account?",
+              " ",
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Log in",
+                  "className": "button small secondary",
+                  "replace": false,
+                  "to": "/login",
+                },
+                "ref": null,
+                "rendered": "Log in",
+                "type": [Function],
+              },
+            ],
+            "type": "p",
+          },
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

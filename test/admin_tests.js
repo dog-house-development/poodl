@@ -43,3 +43,46 @@ describe("/GET admins", () => {
       });
   });
 }).timeout(120000);
+
+describe("/REGISTER admins", () => {
+  it("it should create a new admin", done => {
+    let admin = {
+      name: "testy boy",
+      email: "test@gmail.com",
+      password: "greatpassword1!@",
+      password2: "greatpassword1!@"
+    };
+
+    chai
+      .request(server)
+      .post("/api/admins/register")
+      .send(admin)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property("name").eql("testy boy");
+        res.body.should.have.property("email").eql("test@gmail.com");
+
+        done();
+      });
+  });
+}).timeout(120000);
+
+describe("/LOGIN admins", () => {
+  it("it should login an existing admin", done => {
+    let loginInfo = {
+      email: "test@gmail.com",
+      password: "greatpassword1!@"
+    };
+    chai
+      .request(server)
+      .post("/api/admins/login")
+      .send(loginInfo)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property("success").eql(true);
+        res.body.should.have.property("token");
+
+        done();
+      });
+  }).timeout(120000);
+});

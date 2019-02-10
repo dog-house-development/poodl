@@ -6,7 +6,7 @@ const keys = require("../../config/keys");
 const passport = require("passport");
 
 // Load input validation
-const validateRegisterInput = require("../../validation/register");
+const validateRegisterInput = require("../../validation/registerAdmin");
 const validateLoginInput = require("../../validation/login");
 
 // Load Admin model
@@ -51,7 +51,7 @@ router.post("/register", (req, res) => {
           newAdmin.password = hash;
           newAdmin
             .save()
-            .then(Admin => res.json(Admin))
+            .then(admin => res.json(admin))
             .catch(err => console.log(err));
         });
       });
@@ -76,20 +76,20 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
 
   // Find Admin by email
-  Admin.findOne({ email }).then(Admin => {
+  Admin.findOne({ email }).then(admin => {
     // Check if Admin exists
-    if (!Admin) {
+    if (!admin) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
 
     // Check password
-    bcrypt.compare(password, Admin.password).then(isMatch => {
+    bcrypt.compare(password, admin.password).then(isMatch => {
       if (isMatch) {
         // Admin matched
         // Create JWT Payload
         const payload = {
-          id: Admin.id,
-          name: Admin.name
+          id: admin.id,
+          name: admin.name
         };
 
         // Sign token
