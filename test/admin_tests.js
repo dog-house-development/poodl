@@ -34,7 +34,8 @@ describe('/GET admins', () => {
                 //res.body.should.have.property("data"); //should go deeper having issues add later
                 //res.body.length.should.be.eql(0);
                 done();
-            });
+            })
+            .catch(done);
     });
 }).timeout(120000);
 
@@ -56,7 +57,8 @@ describe('/REGISTER admins', () => {
                 res.body.should.have.property('email').eql('test@gmail.com');
 
                 done();
-            });
+            })
+            .catch(done);
     });
 }).timeout(120000);
 
@@ -75,6 +77,7 @@ describe('/LOGIN admins', () => {
                 res.body.should.have.property('token');
 
                 done();
-            });
+            })
+            .catch(done);
     }).timeout(120000);
 });
