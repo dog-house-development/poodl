@@ -29,14 +29,14 @@ describe('/GET admins', () => {
     it('it should get all the admins', done => {
         chai.request(server)
             .get('/api/admins/get')
-            .then((err, res) => {
+            .end((err, res) => {
+                if (err) return done(err);
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 //res.body.should.have.property("data"); //should go deeper having issues add later
                 //res.body.length.should.be.eql(0);
-            })
-            .catch(err => {});
-        done();
+                done();
+            });
     });
 }).timeout(120000);
 
@@ -52,13 +52,14 @@ describe('/REGISTER admins', () => {
         chai.request(server)
             .post('/api/admins/register')
             .send(admin)
-            .then((err, res) => {
+            .end((err, res) => {
+                if (err) return done(err);
                 res.should.have.status(200);
                 res.body.should.have.property('name').eql('testy boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
-            })
-            .catch(err => {});
-        done();
+
+                done();
+            });
     });
 }).timeout(120000);
 
@@ -71,12 +72,13 @@ describe('/LOGIN admins', () => {
         chai.request(server)
             .post('/api/admins/login')
             .send(loginInfo)
-            .then((err, res) => {
+            .end((err, res) => {
+                if (err) return done(err);
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 res.body.should.have.property('token');
-            })
-            .catch(err => {});
-        done();
+
+                done();
+            });
     }).timeout(120000);
 });
