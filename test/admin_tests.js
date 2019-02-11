@@ -47,7 +47,7 @@ describe('/GET admins', () => {
 
 describe('/REGISTER admins', () => {
     it('it should create a new admin', done => {
-        let admin = {
+        var admin = {
             name: 'testy boy',
             email: 'test@gmail.com',
             password: 'greatpassword1!@',
