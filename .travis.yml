@@ -9,4 +9,5 @@ install:
     - yarn all-install
 script:
     - yarn test
+    - yarn test:server
     - yarn --cwd client build
