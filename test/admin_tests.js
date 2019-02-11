@@ -41,7 +41,7 @@ describe('/GET admins', () => {
                 done();
             });
     });
-}).timeout(120000);
+});
 
 describe('/REGISTER admins', () => {
     it('it should create a new admin', done => {
@@ -62,7 +62,7 @@ describe('/REGISTER admins', () => {
                 done();
             });
     });
-}).timeout(120000);
+});
 
 describe('/LOGIN admins', () => {
     it('it should login an existing admin', done => {
@@ -80,5 +80,5 @@ describe('/LOGIN admins', () => {
 
                 done();
             });
-    }).timeout(120000);
+    });
 });
