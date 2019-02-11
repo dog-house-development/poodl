@@ -1,7 +1,6 @@
 process.env.NODE_ENV = 'test';
 
 let mongoose = require('mongoose');
-let user = require('../models/Admin');
 
 let Mockgoose = require('mockgoose').Mockgoose;
 let mockgoose = new Mockgoose(mongoose);
@@ -29,7 +28,7 @@ after(function() {
     process.exit(0);
 });
 
-describe('/GET admins', () => {
+describe('Admin API suite /GET,/REGISTER,/LOGIN admins', () => {
     it('it should get all the admins', done => {
         chai.request(server)
             .get('/api/admins/get')
@@ -41,9 +40,7 @@ describe('/GET admins', () => {
                 done();
             });
     });
-});
 
-describe('/REGISTER admins', () => {
     it('it should create a new admin', done => {
         var admin = {
             name: 'testy boy',
@@ -62,9 +59,7 @@ describe('/REGISTER admins', () => {
                 done();
             });
     });
-});
 
-describe('/LOGIN admins', () => {
     it('it should login an existing admin', done => {
         let loginInfo = {
             email: 'test@gmail.com',
