@@ -1,7 +1,7 @@
 # Poodl
 
 [![Build Status](https://travis-ci.org/dog-house-development/poodl.svg?branch=dev)](https://travis-ci.org/dog-house-development/poodl)
-[![Coverage Status](https://coveralls.io/repos/github/dog-house-development/poodl/badge.svg?branch=code-coverage)](https://coveralls.io/github/dog-house-development/poodl?branch=code-coverage)
+[![Coverage Status](https://coveralls.io/repos/github/dog-house-development/poodl/badge.svg?branch=dev)](https://coveralls.io/github/dog-house-development/poodl?branch=code-coverage)
 
 _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Please read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
 
