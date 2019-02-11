@@ -28,7 +28,7 @@ after(function() {
     process.exit(0);
 });
 
-describe('Admin API suitr /GET,/REGISTER,/LOGIN admins', () => {
+describe('Admin API suite /GET,/REGISTER,/LOGIN admins', () => {
     it('it should get all the admins', done => {
         chai.request(server)
             .get('/api/admins/get')
