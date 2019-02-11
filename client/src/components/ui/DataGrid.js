@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import _ from 'lodash';
+import _ from 'lodash';
+
+import Loading from './Loading';
 
 const propTypes = {
     data: PropTypes.array.isRequired,
@@ -12,28 +14,36 @@ const defaultProps = {
 };
 
 class DataGrid extends Component {
-    // getHeaderMarkup() {
-    //     return this.props.data.map(columnName => {
-    //         return <th key={columnName}>{columnName}</th>;
-    //     });
-    // }
-    getTableMarkup() {
-        return this.props.data.map(row => {
-            return (
-                <tr key={row.key}>
-                    {row.data.map(rowData => {
-                        return <td key={rowData}>{rowData}</td>;
-                    })}
-                </tr>
-            );
-        });
-    }
-    render() {
+    getHeaderMarkup() {
         return (
-            <table className="panel datagrid">
-                <tbody>{this.getTableMarkup()}</tbody>
+            <tr>
+                {_.map(_.keys(_.get(this.props, 'data[0]')), key => {
+                    return key !== 'key' ? <th key={key}>{key.toUpperCase()}</th> : null;
+                })}
+            </tr>
+        );
+    }
+
+    getBodyMarkup() {
+        return this.props.data.map(row => (
+            <tr key={row.key}>{_.map(row, (value, key) => (key !== 'key' ? <td key={key}>{value}</td> : null))}</tr>
+        ));
+    }
+
+    getTableMarkup() {
+        if (this.props.loading) {
+            return <Loading />;
+        }
+        return (
+            <table>
+                <thead>{this.getHeaderMarkup()}</thead>
+                <tbody>{this.getBodyMarkup()}</tbody>
             </table>
         );
+    }
+
+    render() {
+        return <div className="panel datagrid">{this.getTableMarkup()}</div>;
     }
 }
 

@@ -1,16 +1,18 @@
 @import 'layout/header.scss';
 @import 'layout/footer.scss';
-@import 'buttons.scss';
-@import 'links.scss';
-@import 'field.scss';
-@import 'panel.scss';
-@import 'datagrid.scss';
+@import 'ui/buttons.scss';
+@import 'ui/links.scss';
+@import 'ui/field.scss';
+@import 'ui/panel.scss';
+@import 'ui/datagrid.scss';
+@import 'ui/loading.scss';
 
 // pages
 @import 'pages/register.scss';
 @import 'pages/login.scss';
 @import 'pages/landing.scss';
 @import 'pages/dashboard.scss';
+@import 'pages/viewAll.scss';
 
 // global styles
 

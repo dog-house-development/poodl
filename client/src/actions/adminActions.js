@@ -6,10 +6,9 @@ export const fetchAdmins = () => dispatch => {
     dispatch(fetchAdminsBegin());
     axios
         .get('/api/admins/get')
-        .then(res => res.json())
-        .then(json => {
-            dispatch(fetchAdminsSuccess(json.admins));
-            return json.admins;
+        .then(res => {
+            dispatch(fetchAdminsSuccess(res.data));
+            return res.data;
         })
         .catch(err =>
             dispatch({

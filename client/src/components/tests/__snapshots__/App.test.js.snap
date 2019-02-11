@@ -44,6 +44,11 @@ ShallowWrapper {
               exact={true}
               path="/dashboard"
             />
+            <Connect(PrivateRoute)
+              component={[Function]}
+              exact={true}
+              path="/admins"
+            />
           </Switch>
           <Footer />
         </div>
@@ -87,6 +92,11 @@ ShallowWrapper {
               exact={true}
               path="/dashboard"
             />
+            <Connect(PrivateRoute)
+              component={[Function]}
+              exact={true}
+              path="/admins"
+            />
           </Switch>
           <Footer />
         </div>,
@@ -119,6 +129,11 @@ ShallowWrapper {
                 component={[Function]}
                 exact={true}
                 path="/dashboard"
+              />
+              <Connect(PrivateRoute)
+                component={[Function]}
+                exact={true}
+                path="/admins"
               />
             </Switch>,
             <Footer />,
@@ -180,26 +195,48 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <Connect(PrivateRoute)
-                component={[Function]}
-                exact={true}
-                path="/dashboard"
-              />,
+              "children": Array [
+                <Connect(PrivateRoute)
+                  component={[Function]}
+                  exact={true}
+                  path="/dashboard"
+                />,
+                <Connect(PrivateRoute)
+                  component={[Function]}
+                  exact={true}
+                  path="/admins"
+                />,
+              ],
             },
             "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "component": [Function],
-                "exact": true,
-                "path": "/dashboard",
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "exact": true,
+                  "path": "/dashboard",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
               },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "exact": true,
+                  "path": "/admins",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
             "type": [Function],
           },
           Object {
@@ -250,6 +287,11 @@ ShallowWrapper {
                 exact={true}
                 path="/dashboard"
               />
+              <Connect(PrivateRoute)
+                component={[Function]}
+                exact={true}
+                path="/admins"
+              />
             </Switch>
             <Footer />
           </div>
@@ -293,6 +335,11 @@ ShallowWrapper {
                 exact={true}
                 path="/dashboard"
               />
+              <Connect(PrivateRoute)
+                component={[Function]}
+                exact={true}
+                path="/admins"
+              />
             </Switch>
             <Footer />
           </div>,
@@ -325,6 +372,11 @@ ShallowWrapper {
                   component={[Function]}
                   exact={true}
                   path="/dashboard"
+                />
+                <Connect(PrivateRoute)
+                  component={[Function]}
+                  exact={true}
+                  path="/admins"
                 />
               </Switch>,
               <Footer />,
@@ -386,26 +438,48 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <Connect(PrivateRoute)
-                  component={[Function]}
-                  exact={true}
-                  path="/dashboard"
-                />,
+                "children": Array [
+                  <Connect(PrivateRoute)
+                    component={[Function]}
+                    exact={true}
+                    path="/dashboard"
+                  />,
+                  <Connect(PrivateRoute)
+                    component={[Function]}
+                    exact={true}
+                    path="/admins"
+                  />,
+                ],
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "component": [Function],
-                  "exact": true,
-                  "path": "/dashboard",
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "component": [Function],
+                    "exact": true,
+                    "path": "/dashboard",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
                 },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "component": [Function],
+                    "exact": true,
+                    "path": "/admins",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
               "type": [Function],
             },
             Object {
