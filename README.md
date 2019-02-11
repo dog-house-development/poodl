@@ -39,6 +39,10 @@ To install all dependencies, run:
 
 `yarn all-install`
 
+Install nodemon globally
+
+`yarn global add nodemon`
+
 ### Start development server
 
 To start the development server, run:
