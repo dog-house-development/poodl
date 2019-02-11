@@ -11,7 +11,7 @@ const validateRegisterInput = require('../../validation/addSeniorCenter');
 const SeniorCenter = require('../../models/SeniorCenter');
 
 // @route POST api/seniorCenter/add
-// @desc Register Admin
+// @desc adding a seniorCenter
 // @access Public
 router.post('/add', (req, res) => {
     // Form validation
