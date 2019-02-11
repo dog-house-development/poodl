@@ -1,5 +1,6 @@
 # Poodl
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac03f6f219c544ef9caf57d0e5e1045a)](https://app.codacy.com/app/karlmolina/poodl?utm_source=github.com&utm_medium=referral&utm_content=dog-house-development/poodl&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://travis-ci.org/dog-house-development/poodl.svg?branch=dev)](https://travis-ci.org/dog-house-development/poodl)
 [![Coverage Status](https://coveralls.io/repos/github/dog-house-development/poodl/badge.svg?branch=dev)](https://coveralls.io/github/dog-house-development/poodl?branch=code-coverage)
 
