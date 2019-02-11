@@ -8,7 +8,7 @@ const passport = require('passport');
 // Load Volunteer model
 const volunteer = require('../../models/volunteers');
 
-// @route GET api/Volunteers/get
+// @route GET api/volunteers/get
 // should return all volunteers
 router.get('/get', (req, res) => {
     volunteer.find((err, volunteers) => {
