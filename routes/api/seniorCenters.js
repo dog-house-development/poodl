@@ -10,7 +10,7 @@ const validateRegisterInput = require('../../validation/addSeniorCenter');
 
 const SeniorCenter = require('../../models/SeniorCenter');
 
-// @route POST api/seniorCenter/add
+// @route POST api/seniorCenters/add
 // @desc adding a seniorCenter
 // @access Public
 router.post('/add', (req, res) => {
@@ -37,7 +37,7 @@ router.post('/add', (req, res) => {
 
             newSeniorCenter
                 .save()
-                .then(SeniorCenter => res.json(SeniorCenter))
+                .then(seniorCenter => res.json(seniorCenter))
                 .catch(err => console.log(err));
         }
     });
