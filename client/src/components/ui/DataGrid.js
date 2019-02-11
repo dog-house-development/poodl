@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import _ from 'lodash';
 
 const propTypes = {
-    columnNames: PropTypes.array.isRequired,
-    data: PropTypes.array.isRequired
+    data: PropTypes.array.isRequired,
+    loading: PropTypes.bool
+};
+
+const defaultProps = {
+    loading: false
 };
 
 class DataGrid extends Component {
-    getHeaderMarkup() {
-        return this.props.columnNames.map(columnName => {
-            return <th key={columnName}>{columnName}</th>;
-        });
-    }
+    // getHeaderMarkup() {
+    //     return this.props.data.map(columnName => {
+    //         return <th key={columnName}>{columnName}</th>;
+    //     });
+    // }
     getTableMarkup() {
         return this.props.data.map(row => {
             return (
@@ -26,9 +31,6 @@ class DataGrid extends Component {
     render() {
         return (
             <table className="panel datagrid">
-                <thead>
-                    <tr>{this.getHeaderMarkup()}</tr>
-                </thead>
                 <tbody>{this.getTableMarkup()}</tbody>
             </table>
         );
@@ -36,4 +38,5 @@ class DataGrid extends Component {
 }
 
 DataGrid.propTypes = propTypes;
+DataGrid.defaultProps = defaultProps;
 export default DataGrid;
