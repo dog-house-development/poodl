@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/dog-house-development/poodl.svg?branch=dev)](https://travis-ci.org/dog-house-development/poodl)
 [![Coverage Status](https://coveralls.io/repos/github/dog-house-development/poodl/badge.svg?branch=dev)](https://coveralls.io/github/dog-house-development/poodl?branch=dev)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac03f6f219c544ef9caf57d0e5e1045a)](https://app.codacy.com/app/karlmolina/poodl?utm_source=github.com&utm_medium=referral&utm_content=dog-house-development/poodl&utm_campaign=Badge_Grade_Settings)
-![Github Version](https://img.shields.io/github/release/dog-house-development/poodl.svg?style=flat)
+[![Github Version](https://img.shields.io/github/release/dog-house-development/poodl.svg?style=flat)](https://github.com/dog-house-development/poodl/releases)
 
 _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Please read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
 
