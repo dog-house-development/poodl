@@ -8,11 +8,7 @@ const passport = require('passport');
 // Load Member model
 const Member = require('../../models/Member');
 
-<<<<<<< HEAD
-// @route GET api/member/get
-=======
 // @route GET api/members/get
->>>>>>> 504344639b258bf17b314385011e411ee1d002eb
 // should return all Members
 router.get('/get', (req, res) => {
     Member.find((err, members) => {
