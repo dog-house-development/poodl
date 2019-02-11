@@ -8,7 +8,7 @@ const passport = require('passport');
 // Load input validation
 const validateRegisterInput = require('../../validation/addSeniorCenter');
 
-const Admin = require('../../models/SeniorCenter');
+const SeniorCenter = require('../../models/SeniorCenter');
 
 // @route POST api/seniorCenter/add
 // @desc Register Admin
