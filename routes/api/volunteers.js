@@ -6,12 +6,12 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 // Load Volunteer model
-const volunteer = require('../../models/volunteers');
+const Volunteer = require('../../models/Volunteer');
 
-// @route GET api/Volunteers/get
+// @route GET api/volunteers/get
 // should return all volunteers
 router.get('/get', (req, res) => {
-    volunteer.find((err, volunteers) => {
+    Volunteer.find((err, volunteers) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: volunteers });
     });
