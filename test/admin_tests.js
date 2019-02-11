@@ -3,8 +3,8 @@ process.env.NODE_ENV = 'test';
 let mongoose = require('mongoose');
 let user = require('../models/Admin');
 
-let Mockgoose = require('mockgoose').Mockgoose;
-let mockgoose = new Mockgoose(mongoose);
+//let Mockgoose = require('mockgoose').Mockgoose;
+//let mockgoose = new Mockgoose(mongoose);
 
 let chai = require('chai');
 let chaiHttp = require('chai-http');
@@ -13,24 +13,29 @@ let should = chai.should();
 
 chai.use(chaiHttp);
 
-before(function(done) {
-    mockgoose.prepareStorage().then(function() {
-        mongoose.connect(
-            'mongodb://example.com/TestingDB',
-            { useNewUrlParser: true },
-            function(err) {
-                done(err);
-            }
-        );
-    });
-});
+// before(function(done) {
+//     mockgoose.prepareStorage().then(function() {
+//         mongoose.connect(
+//             'mongodb://example.com/TestingDB',
+//             { useNewUrlParser: true },
+//             function(err) {
+//                 done(err);
+//             }
+//         );
+//     });
+// });
+//
+// after(done => {
+//     mockgoose.reset();
+//     mongoose.connection.close();
+//     done();
+// });
 
 describe('/GET admins', () => {
     it('it should get all the admins', done => {
         chai.request(server)
             .get('/api/admins/get')
             .end((err, res) => {
-                if (err) return done(err);
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 //res.body.should.have.property("data"); //should go deeper having issues add later
@@ -53,7 +58,6 @@ describe('/REGISTER admins', () => {
             .post('/api/admins/register')
             .send(admin)
             .end((err, res) => {
-                if (err) return done(err);
                 res.should.have.status(200);
                 res.body.should.have.property('name').eql('testy boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
@@ -73,7 +77,6 @@ describe('/LOGIN admins', () => {
             .post('/api/admins/login')
             .send(loginInfo)
             .end((err, res) => {
-                if (err) return done(err);
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 res.body.should.have.property('token');
