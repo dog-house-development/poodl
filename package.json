@@ -4,14 +4,15 @@
     "description": "Senior Center App",
     "main": "server.js",
     "scripts": {
-        "all-install": "yarn && yarn --cwd client",
+        "install-all": "yarn && yarn --cwd client",
         "start": "node server.js",
-        "test": "yarn --cwd client test",
+        "test:client": "yarn --cwd client test",
         "test:server": "mocha",
         "server": "nodemon server.js",
         "client": "yarn --cwd client start",
-        "coverage": "yarn test --env=jsdom --coverage",
-        "coveralls": "cat ./client/coverage/lcov.info | node node_modules/.bin/coveralls",
+        "client:coverage": "yarn test:client -- --coverage",
+        "server:coverage": "nyc --reporter=lcovonly yarn test:server",
+        "codacy-coverage": "lcov -a client/coverage/lcov.info -a coverage/lcov.info | codacy-coverage",
         "start:dev": "concurrently \"yarn server\" \"yarn client\"",
         "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
     },
@@ -32,8 +33,10 @@
     "devDependencies": {
         "chai": "^4.2.0",
         "chai-http": "^4.2.1",
+        "codacy-coverage": "^3.4.0",
         "coveralls": "^3.0.2",
         "mocha": "^5.2.0",
-        "mockgoose": "^8.0.1"
+        "mockgoose": "^8.0.1",
+        "nyc": "^13.2.0"
     }
 }
