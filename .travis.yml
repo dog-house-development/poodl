@@ -8,5 +8,8 @@ services:
 install:
     - yarn all-install
 script:
-    - yarn test
+    - yarn test -- --coverage
+    - yarn test:server
     - yarn --cwd client build
+after_script: # Upload coverage reports
+    - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls

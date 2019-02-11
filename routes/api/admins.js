@@ -21,6 +21,14 @@ router.get('/get', (req, res) => {
     });
 });
 
+//@route GET api/admins/get/:id
+//should return admin with given id
+router.get('/get/:id', (req, res, next) => {
+    Admin.findOne({ _id: req.params.id }, (err, post) => {
+        if (err) return next(err);
+        return res.json(post);
+    });
+});
 // @route POST api/admins/register
 // @desc Register user
 // @access Public

@@ -8,10 +8,10 @@ const passport = require('passport');
 // Load input validation
 const validateRegisterInput = require('../../validation/addSeniorCenter');
 
-const Admin = require('../../models/SeniorCenter');
+const SeniorCenter = require('../../models/SeniorCenter');
 
-// @route POST api/seniorCenter/add
-// @desc Register Admin
+// @route POST api/seniorCenters/add
+// @desc adding a seniorCenter
 // @access Public
 router.post('/add', (req, res) => {
     // Form validation
@@ -37,7 +37,7 @@ router.post('/add', (req, res) => {
 
             newSeniorCenter
                 .save()
-                .then(SeniorCenter => res.json(SeniorCenter))
+                .then(seniorCenter => res.json(seniorCenter))
                 .catch(err => console.log(err));
         }
     });
