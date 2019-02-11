@@ -1,4 +1,40 @@
-@import './layout/header.scss';
-@import './layout/footer.scss';
-@import './buttons.scss';
-@import './field.scss';
+@import 'layout/header.scss';
+@import 'layout/footer.scss';
+@import 'buttons.scss';
+@import 'links.scss';
+@import 'field.scss';
+@import 'panel.scss';
+@import 'datagrid.scss';
+
+// pages
+@import 'pages/register.scss';
+@import 'pages/login.scss';
+@import 'pages/landing.scss';
+@import 'pages/dashboard.scss';
+
+// global styles
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 51px;
+  position: relative;
+}
+
+i {
+  vertical-align: middle;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}

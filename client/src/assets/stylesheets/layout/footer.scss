@@ -1,11 +1,20 @@
-@import '../palette.scss';
+@import '_presets.scss';
 
 .footer {
   position: absolute;
-  bottom: 0;
   width: 100%;
-  border-top: 1px #ccc solid;
-  height: 60px;
+  bottom: 0;
+  border-top: 1px solid $gray-2;
   text-align: center;
-  color: #ccc;
+  color: $gray-2;
+
+  li {
+    display: inline;
+    list-style: none;
+
+    .footer-link {
+      padding: 24px;
+      font-size: 14px;
+    }
+  }
 }

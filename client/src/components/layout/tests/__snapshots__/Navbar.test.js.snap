@@ -4,7 +4,14 @@ exports[`Navbar tests render should render correctly 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Navbar
+    auth={
+      Object {
+        "isAuthenticated": false,
+        "loading": false,
+      }
+    }
     content="Press me"
+    logoutAdmin={[Function]}
     onClick={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -21,11 +28,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <nav
-        className="z-depth-0"
-      >
-        <div
-          className="nav-wrapper white"
+      "children": <ul>
+        <li
+          className=""
         >
           <Link
             replace={false}
@@ -33,9 +38,31 @@ ShallowWrapper {
           >
             Poodl
           </Link>
-        </div>
-      </nav>,
-      "className": "navbar-fixed",
+        </li>
+        <React.Fragment>
+          <li
+            className="right"
+          >
+            <Link
+              replace={false}
+              to="/register"
+            >
+              Sign up
+            </Link>
+          </li>
+          <li
+            className="right"
+          >
+            <Link
+              replace={false}
+              to="/login"
+            >
+              Log in
+            </Link>
+          </li>
+        </React.Fragment>
+      </ul>,
+      "className": "header",
     },
     "ref": null,
     "rendered": Object {
@@ -43,63 +70,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <div
-          className="nav-wrapper white"
-        >
-          <Link
-            replace={false}
-            to="/"
-          >
-            Poodl
-          </Link>
-        </div>,
-        "className": "z-depth-0",
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <Link
-            replace={false}
-            to="/"
-          >
-            Poodl
-          </Link>,
-          "className": "nav-wrapper white",
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": "Poodl",
-            "replace": false,
-            "to": "/",
-          },
-          "ref": null,
-          "rendered": "Poodl",
-          "type": [Function],
-        },
-        "type": "div",
-      },
-      "type": "nav",
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <nav
-          className="z-depth-0"
-        >
-          <div
-            className="nav-wrapper white"
+        "children": Array [
+          <li
+            className=""
           >
             <Link
               replace={false}
@@ -107,30 +80,34 @@ ShallowWrapper {
             >
               Poodl
             </Link>
-          </div>
-        </nav>,
-        "className": "navbar-fixed",
+          </li>,
+          <React.Fragment>
+            <li
+              className="right"
+            >
+              <Link
+                replace={false}
+                to="/register"
+              >
+                Sign up
+              </Link>
+            </li>
+            <li
+              className="right"
+            >
+              <Link
+                replace={false}
+                to="/login"
+              >
+                Log in
+              </Link>
+            </li>
+          </React.Fragment>,
+        ],
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": <div
-            className="nav-wrapper white"
-          >
-            <Link
-              replace={false}
-              to="/"
-            >
-              Poodl
-            </Link>
-          </div>,
-          "className": "z-depth-0",
-        },
-        "ref": null,
-        "rendered": Object {
+      "rendered": Array [
+        Object {
           "instance": null,
           "key": undefined,
           "nodeType": "host",
@@ -141,7 +118,7 @@ ShallowWrapper {
             >
               Poodl
             </Link>,
-            "className": "nav-wrapper white",
+            "className": "",
           },
           "ref": null,
           "rendered": Object {
@@ -157,9 +134,311 @@ ShallowWrapper {
             "rendered": "Poodl",
             "type": [Function],
           },
-          "type": "div",
+          "type": "li",
         },
-        "type": "nav",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <li
+                className="right"
+              >
+                <Link
+                  replace={false}
+                  to="/register"
+                >
+                  Sign up
+                </Link>
+              </li>,
+              <li
+                className="right"
+              >
+                <Link
+                  replace={false}
+                  to="/login"
+                >
+                  Log in
+                </Link>
+              </li>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Link
+                  replace={false}
+                  to="/register"
+                >
+                  Sign up
+                </Link>,
+                "className": "right",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Sign up",
+                  "replace": false,
+                  "to": "/register",
+                },
+                "ref": null,
+                "rendered": "Sign up",
+                "type": [Function],
+              },
+              "type": "li",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Link
+                  replace={false}
+                  to="/login"
+                >
+                  Log in
+                </Link>,
+                "className": "right",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Log in",
+                  "replace": false,
+                  "to": "/login",
+                },
+                "ref": null,
+                "rendered": "Log in",
+                "type": [Function],
+              },
+              "type": "li",
+            },
+          ],
+          "type": Symbol(react.fragment),
+        },
+      ],
+      "type": "ul",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <ul>
+          <li
+            className=""
+          >
+            <Link
+              replace={false}
+              to="/"
+            >
+              Poodl
+            </Link>
+          </li>
+          <React.Fragment>
+            <li
+              className="right"
+            >
+              <Link
+                replace={false}
+                to="/register"
+              >
+                Sign up
+              </Link>
+            </li>
+            <li
+              className="right"
+            >
+              <Link
+                replace={false}
+                to="/login"
+              >
+                Log in
+              </Link>
+            </li>
+          </React.Fragment>
+        </ul>,
+        "className": "header",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <li
+              className=""
+            >
+              <Link
+                replace={false}
+                to="/"
+              >
+                Poodl
+              </Link>
+            </li>,
+            <React.Fragment>
+              <li
+                className="right"
+              >
+                <Link
+                  replace={false}
+                  to="/register"
+                >
+                  Sign up
+                </Link>
+              </li>
+              <li
+                className="right"
+              >
+                <Link
+                  replace={false}
+                  to="/login"
+                >
+                  Log in
+                </Link>
+              </li>
+            </React.Fragment>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <Link
+                replace={false}
+                to="/"
+              >
+                Poodl
+              </Link>,
+              "className": "",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Poodl",
+                "replace": false,
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": "Poodl",
+              "type": [Function],
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <li
+                  className="right"
+                >
+                  <Link
+                    replace={false}
+                    to="/register"
+                  >
+                    Sign up
+                  </Link>
+                </li>,
+                <li
+                  className="right"
+                >
+                  <Link
+                    replace={false}
+                    to="/login"
+                  >
+                    Log in
+                  </Link>
+                </li>,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <Link
+                    replace={false}
+                    to="/register"
+                  >
+                    Sign up
+                  </Link>,
+                  "className": "right",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Sign up",
+                    "replace": false,
+                    "to": "/register",
+                  },
+                  "ref": null,
+                  "rendered": "Sign up",
+                  "type": [Function],
+                },
+                "type": "li",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <Link
+                    replace={false}
+                    to="/login"
+                  >
+                    Log in
+                  </Link>,
+                  "className": "right",
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": "Log in",
+                    "replace": false,
+                    "to": "/login",
+                  },
+                  "ref": null,
+                  "rendered": "Log in",
+                  "type": [Function],
+                },
+                "type": "li",
+              },
+            ],
+            "type": Symbol(react.fragment),
+          },
+        ],
+        "type": "ul",
       },
       "type": "div",
     },

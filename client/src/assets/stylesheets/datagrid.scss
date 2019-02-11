@@ -1,0 +1,32 @@
+@import '_presets.scss';
+
+.datagrid {
+  padding: 2px 5px 0 5px;
+  width: 100%;
+
+  thead {
+    tr {
+      border-bottom: 1px solid $gray-4;
+
+      th {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: $gray-4;
+        font-size: 14px;
+        text-align: left;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      height: 50px;
+      border-radius: $border-radius-default;
+      -webkit-transition: all 0.2s; /* Safari */
+      transition: all 0.2s;
+
+      &:hover {
+      }
+    }
+  }
+}
