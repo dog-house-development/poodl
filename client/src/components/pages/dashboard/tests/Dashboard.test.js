@@ -44,6 +44,13 @@ describe('Dashbaord tests', () => {
         setInstanceAndWrapper();
     });
 
+    describe('onLogoutClick', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'onLogoutClick');
+            instance.onLogoutClick();
+        });
+    });
+
     describe('render', () => {
         it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();

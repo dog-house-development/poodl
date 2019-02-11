@@ -5,6 +5,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
 import Form from '../Form';
+import Field from '../Field';
 
 configure({ adapter: new Adapter() });
 
@@ -37,6 +38,43 @@ describe('Form tests', () => {
 
     beforeEach(() => {
         setInstanceAndWrapper();
+    });
+
+    describe('onComponentDidMount', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'onComponentDidMount');
+            instance.onComponentDidMount();
+        });
+    });
+
+    describe('handleChange', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'handleChange');
+            const e = { target: undefined };
+            instance.handleChange(e);
+        });
+    });
+
+    describe('getFieldsMarkup', () => {
+        it('should return correct fields markup', () => {
+            const fieldsMarkup = [
+                JSON.parse(
+                    JSON.stringify(
+                        <Field
+                            key="email"
+                            id="email"
+                            type="email"
+                            name={undefined}
+                            label="Email:"
+                            placeholder="Enter email..."
+                            onChange={() => {}}
+                            error={{}}
+                        />
+                    )
+                )
+            ];
+            expect(JSON.parse(JSON.stringify(instance.getFieldsMarkup()))).toEqual(fieldsMarkup);
+        });
     });
 
     describe('render', () => {

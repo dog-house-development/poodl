@@ -62,6 +62,68 @@ describe('Register tests', () => {
         });
     });
 
+    describe('componentWillReceiveProps', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'componentWillReceiveProps');
+            instance.componentWillReceiveProps();
+        });
+    });
+
+    describe('onChange', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'onChange');
+            const e = { target: undefined };
+            instance.onChange(e);
+        });
+    });
+
+    describe('onSubmit', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'onSubmit');
+            const e = { target: undefined };
+            instance.onSubmit(e);
+        });
+    });
+
+    describe('getFields', () => {
+        it('should return correct fields', () => {
+            expect(instance.getFields()).toEqual([
+                {
+                    onChange: instance.onChange,
+                    value: 'Sam',
+                    id: 'name',
+                    type: 'text',
+                    label: 'Name',
+                    placeholder: 'First Last...'
+                },
+                {
+                    onChange: instance.onChange,
+                    value: 'sam@test.com',
+                    id: 'email',
+                    type: 'email',
+                    label: 'Email',
+                    placeholder: 'example@poodl.com...'
+                },
+                {
+                    onChange: instance.onChange,
+                    value: 'abc123',
+                    id: 'password',
+                    type: 'password',
+                    label: 'Password',
+                    placeholder: 'Shhhhh...'
+                },
+                {
+                    onChange: instance.onChange,
+                    value: 'abc123',
+                    id: 'password2',
+                    type: 'password',
+                    label: 'Confirm Password',
+                    placeholder: 'Again...'
+                }
+            ]);
+        });
+    });
+
     describe('render', () => {
         it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();

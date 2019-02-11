@@ -35,6 +35,21 @@ describe('Field tests', () => {
         setInstanceAndWrapper();
     });
 
+    describe('onComponentDidMount', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'onComponentDidMount');
+            instance.onComponentDidMount();
+        });
+    });
+
+    describe('handleChange', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'handleChange');
+            const e = { target: undefined };
+            instance.handleChange(e);
+        });
+    });
+
     describe('render', () => {
         it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();

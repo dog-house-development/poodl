@@ -53,13 +53,18 @@ describe('ViewAdmins tests', () => {
         setInstanceAndWrapper();
     });
 
+    describe('componentDidMount', () => {
+        it('should run without breaking', () => {
+            spyOn(instance, 'componentDidMount');
+            instance.componentDidMount();
+        });
+    });
+
     describe('getDataGridContent', () => {
         it('should return filtered admins data', () => {
-            spyOn(instance, 'getDataGridContent');
-            instance.getDataGridContent();
-            expect(instance.getDataGridContent()).toBe([
-                { name: 'Big Tup', email: 'bigtup@nowhere.com', key: 123 },
-                { name: 'Lil Tup', email: 'liltup@nowhere.com', key: 321 }
+            expect(instance.getDataGridContent()).toEqual([
+                { key: '123', name: 'Big Tup', email: 'bigtup@nowhere.com' },
+                { key: '321', name: 'Lil Tup', email: 'liltup@nowhere.com' }
             ]);
         });
     });

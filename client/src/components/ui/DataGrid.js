@@ -25,7 +25,7 @@ class DataGrid extends Component {
     }
 
     getBodyMarkup() {
-        return this.props.data.map(row => (
+        return _.map(this.props.data, row => (
             <tr key={row.key}>{_.map(row, (value, key) => (key !== 'key' ? <td key={key}>{value}</td> : null))}</tr>
         ));
     }

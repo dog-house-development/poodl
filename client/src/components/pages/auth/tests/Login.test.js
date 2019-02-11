@@ -60,6 +60,20 @@ describe('Login tests', () => {
         });
     });
 
+    describe('componentWillReceiveProps', () => {
+        it('should redirect if admin is authenticated', () => {
+            const authenticatedState = {
+                auth: {
+                    isAuthenticated: true,
+                    loading: false
+                }
+            };
+            const newInstanceProps = _.concat(instance.props.history, '/dashboard');
+            instance.componentWillReceiveProps(authenticatedState);
+            expect(instance.props.history).toEqual(newInstanceProps);
+        });
+    });
+
     describe('render', () => {
         it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();

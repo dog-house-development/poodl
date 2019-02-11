@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
+
 import Field from './Field';
 import Button from './Button';
 
@@ -29,26 +31,23 @@ class Form extends Component {
 
     handleChange(e) {
         e.preventDefault();
-
         this.props.onChange(e);
     }
 
     getFieldsMarkup() {
-        return this.props.fields.map(field => {
-            return (
-                <Field
-                    key={field.id}
-                    id={field.id}
-                    type={field.type}
-                    name={field.name}
-                    label={field.label}
-                    content={field.content}
-                    placeholder={field.placeholder}
-                    onChange={field.onChange}
-                    error={field.error}
-                />
-            );
-        });
+        return _.map(this.props.fields, field => (
+            <Field
+                key={field.id}
+                id={field.id}
+                type={field.type}
+                name={field.name}
+                label={field.label}
+                content={field.content}
+                placeholder={field.placeholder}
+                onChange={field.onChange}
+                error={field.error}
+            />
+        ));
     }
 
     render() {
