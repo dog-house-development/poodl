@@ -8,6 +8,15 @@ const passport = require('passport');
 // Load Member model
 const Member = require('../../models/Member');
 
+// @route GET api/members/get
+// should return all Members
+router.get('/get', (req, res) => {
+    Member.find((err, members) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json({ success: true, data: members });
+    });
+});
+
 // Load input validation
 const validateRegisterInput = require('../../validation/addMember');
 
