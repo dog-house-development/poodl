@@ -1,7 +1,7 @@
 # Poodl
 
 [![Build Status](https://travis-ci.org/dog-house-development/poodl.svg?branch=dev)](https://travis-ci.org/dog-house-development/poodl)
-[![Coverage Status](https://coveralls.io/repos/github/dog-house-development/poodl/badge.svg?branch=dev)](https://coveralls.io/github/dog-house-development/poodl?branch=dev)
+[![Coverage Status](https://coveralls.io/repos/github/dog-house-development/poodl/badge.svg?branch=dev&service=github)](https://coveralls.io/github/dog-house-development/poodl)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ac03f6f219c544ef9caf57d0e5e1045a)](https://app.codacy.com/app/karlmolina/poodl?utm_source=github.com&utm_medium=referral&utm_content=dog-house-development/poodl&utm_campaign=Badge_Grade_Settings)
 [![Github Version](https://img.shields.io/github/release/dog-house-development/poodl.svg?style=flat)](https://github.com/dog-house-development/poodl/releases)
 [![Uptime Robot 30 Days](https://img.shields.io/uptimerobot/ratio/m781947640-2764269a69a56d48f8edc5db.svg?style=flat)](https://poodl.herokuapp.com/)
