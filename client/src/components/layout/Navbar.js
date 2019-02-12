@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logoutAdmin } from '../../actions/authActions';
 
 export class Navbar extends Component {
     getHeaderMarkup() {
@@ -49,13 +48,4 @@ export const mapStateToProps = (state, props) => {
     };
 };
 
-export const mapDispatchToProps = dispatch => {
-    return {
-        logoutAdmin: () => dispatch(logoutAdmin())
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withRouter(Navbar));
+export default connect(mapStateToProps)(withRouter(Navbar));

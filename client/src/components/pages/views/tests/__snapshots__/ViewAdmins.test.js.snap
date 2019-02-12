@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewAdmins tests render should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ViewAdmins
+    admins={
+      Array [
+        Object {
+          "_id": "123",
+          "email": "bigtup@nowhere.com",
+          "name": "Big Tup",
+        },
+        Object {
+          "_id": "321",
+          "email": "liltup@nowhere.com",
+          "name": "Lil Tup",
+        },
+      ]
+    }
+    errors={Object {}}
+    getAdmins={[Function]}
+    loading={false}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1>
+          View All Admins
+        </h1>,
+        <DataGrid
+          data={
+            Array [
+              Object {
+                "email": "bigtup@nowhere.com",
+                "key": "123",
+                "name": "Big Tup",
+              },
+              Object {
+                "email": "liltup@nowhere.com",
+                "key": "321",
+                "name": "Lil Tup",
+              },
+            ]
+          }
+          loading={false}
+        />,
+      ],
+      "className": "view-all-container",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "View All Admins",
+        },
+        "ref": null,
+        "rendered": "View All Admins",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "data": Array [
+            Object {
+              "email": "bigtup@nowhere.com",
+              "key": "123",
+              "name": "Big Tup",
+            },
+            Object {
+              "email": "liltup@nowhere.com",
+              "key": "321",
+              "name": "Lil Tup",
+            },
+          ],
+          "loading": false,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            View All Admins
+          </h1>,
+          <DataGrid
+            data={
+              Array [
+                Object {
+                  "email": "bigtup@nowhere.com",
+                  "key": "123",
+                  "name": "Big Tup",
+                },
+                Object {
+                  "email": "liltup@nowhere.com",
+                  "key": "321",
+                  "name": "Lil Tup",
+                },
+              ]
+            }
+            loading={false}
+          />,
+        ],
+        "className": "view-all-container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "View All Admins",
+          },
+          "ref": null,
+          "rendered": "View All Admins",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "data": Array [
+              Object {
+                "email": "bigtup@nowhere.com",
+                "key": "123",
+                "name": "Big Tup",
+              },
+              Object {
+                "email": "liltup@nowhere.com",
+                "key": "321",
+                "name": "Lil Tup",
+              },
+            ],
+            "loading": false,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

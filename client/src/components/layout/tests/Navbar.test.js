@@ -4,14 +4,14 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { Navbar, mapStateToProps, mapDispatchToProps } from '../Navbar';
+import { Navbar, mapStateToProps } from '../Navbar';
 
 configure({ adapter: new Adapter() });
 
 describe('Navbar tests', () => {
-    let wrapper, instance;
+    let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
-        const props = _.assign(
+        props = _.assign(
             {},
             {
                 content: 'Press me',
@@ -19,7 +19,7 @@ describe('Navbar tests', () => {
             },
             _props
         );
-        const state = _.assign(
+        state = _.assign(
             {},
             {
                 auth: {
@@ -29,16 +29,7 @@ describe('Navbar tests', () => {
             },
             _state
         );
-        wrapper = shallow(
-            <Navbar
-                {..._.assign(
-                    {},
-                    props,
-                    mapStateToProps(state, props),
-                    mapDispatchToProps(jasmine.createSpy('dispatch'))
-                )}
-            />
-        );
+        wrapper = shallow(<Navbar {..._.assign({}, props, mapStateToProps(state, props))} />);
         instance = wrapper.instance();
     };
 
@@ -46,8 +37,21 @@ describe('Navbar tests', () => {
         setInstanceAndWrapper();
     });
 
+    describe('mapStateToProps', () => {
+        it('should map state to props', () => {
+            expect(mapStateToProps(state, props)).toEqual({
+                auth: { isAuthenticated: false, loading: false }
+            });
+        });
+    });
+
     describe('render', () => {
-        it('should render correctly', () => {
+        it('should render links for logged in admins', () => {
+            setInstanceAndWrapper({}, { auth: { isAuthenticated: true } });
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render links for nobody logged in', () => {
             expect(wrapper).toMatchSnapshot();
         });
     });
