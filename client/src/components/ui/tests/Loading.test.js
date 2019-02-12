@@ -4,25 +4,22 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import Button from '../Button';
+import Loading from '../Loading';
 
 configure({ adapter: new Adapter() });
 
-describe('Button tests', () => {
+describe('Loading tests', () => {
     let wrapper, instance;
     const setInstanceAndWrapper = (_props = {}) => {
         const props = _.assign(
             {},
             {
-                onClick: () => {},
                 size: 'medium',
-                kind: 'primary',
-                content: 'Press me',
-                type: 'normal'
+                kind: 'primary'
             },
             _props
         );
-        wrapper = shallow(<Button {..._.assign({}, props)} />);
+        wrapper = shallow(<Loading {..._.assign({}, props)} />);
         instance = wrapper.instance();
     };
 
@@ -31,12 +28,7 @@ describe('Button tests', () => {
     });
 
     describe('render', () => {
-        it('should render normal button correctly', () => {
-            expect(wrapper).toMatchSnapshot();
-        });
-
-        it('should render form-button correctly', () => {
-            setInstanceAndWrapper({ formButton: true });
+        it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();
         });
     });

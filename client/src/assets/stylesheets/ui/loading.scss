@@ -1,0 +1,91 @@
+@import './_presets.scss';
+
+.loading-container {
+  margin: auto;
+  text-align: center;
+
+  p {
+    color: $gray-4;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 5px;
+    margin-bottom: 0;
+  }
+
+  .loading {
+    position: relative;
+
+    animation: spin;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    div {
+      position: absolute;
+      background: #fff;
+    }
+
+    &.small {
+      width: 24px;
+      height: 24px;
+      margin: auto;
+      border-radius: 12px;
+
+      div {
+        width: 12px;
+        height: 12px;
+        left: 6px;
+        top: 6px;
+        border-radius: 8px;
+      }
+    }
+
+    &.medium {
+      width: 36px;
+      height: 36px;
+      margin: auto;
+      border-radius: 18px;
+
+      div {
+        width: 20px;
+        height: 20px;
+        left: 8px;
+        top: 8px;
+        border-radius: 10px;
+      }
+    }
+
+    &.large {
+      width: 48px;
+      height: 48px;
+      margin: auto;
+      border-radius: 24px;
+
+      div {
+        width: 28px;
+        height: 28px;
+        left: 10px;
+        top: 10px;
+        border-radius: 18px;
+      }
+    }
+
+    &.primary {
+      background-image: linear-gradient($button-primary, $red-1);
+    }
+
+    &.secondary {
+      background-image: linear-gradient($gray-8, $gray-2);
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

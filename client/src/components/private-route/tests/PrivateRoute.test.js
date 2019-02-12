@@ -37,7 +37,13 @@ describe('PrivateRoute tests', () => {
     });
 
     describe('render', () => {
-        it('should render correctly', () => {
+        it('should render redirect if isAuthenticated is false', () => {
+            setInstanceAndWrapper({}, { auth: { isAuthenticated: false } });
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render the component if isAuthenticated is true', () => {
+            setInstanceAndWrapper({}, { auth: { isAuthenticated: true } });
             expect(wrapper).toMatchSnapshot();
         });
     });

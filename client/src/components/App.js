@@ -7,13 +7,20 @@ import { setCurrentAdmin, logoutAdmin } from '../actions/authActions';
 import { Provider } from 'react-redux';
 import store from '../store';
 
+// layout
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
+
+// auth
 import Landing from './pages/Landing';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
-import PrivateRoute from './private-route/PrivateRoute';
 import Dashboard from './pages/dashboard/Dashboard';
+
+// views
+import ViewAdmins from './pages/views/ViewAdmins';
+
+import PrivateRoute from './private-route/PrivateRoute';
 
 import '../assets/stylesheets/App.scss';
 
@@ -48,6 +55,7 @@ class App extends Component {
                         <Route exact path="/login" component={Login} />
                         <Switch>
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                            <PrivateRoute exact path="/admins" component={ViewAdmins} />
                         </Switch>
                         <Footer />
                     </div>

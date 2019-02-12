@@ -8,10 +8,28 @@ const passport = require('passport');
 // Load input validation
 const validateRegisterInput = require('../../validation/addSeniorCenter');
 
-const Admin = require('../../models/SeniorCenter');
+const SeniorCenter = require('../../models/SeniorCenter');
 
-// @route POST api/seniorCenter/add
-// @desc Register Admin
+//@route DELETE api/seniorCenters/delete/:id
+// should delete a specified seniorCenter by id
+router.delete('/delete/:id', (req, res) => {
+    SeniorCenter.findByIdAndRemove({ _id: req.params.id }, (err, item) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json({ success: true });
+    });
+});
+
+//@route GET api/seniorCenters/get
+//should return all seniorCenters
+router.get('/get', (req, res) => {
+    SeniorCenter.find((err, seniorCenters) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json({ success: true, data: seniorCenters });
+    });
+});
+
+// @route POST api/seniorCenters/add
+// @desc adding a seniorCenter
 // @access Public
 router.post('/add', (req, res) => {
     // Form validation
@@ -37,7 +55,7 @@ router.post('/add', (req, res) => {
 
             newSeniorCenter
                 .save()
-                .then(SeniorCenter => res.json(SeniorCenter))
+                .then(seniorCenter => res.json(seniorCenter))
                 .catch(err => console.log(err));
         }
     });
