@@ -12,4 +12,4 @@ script:
     - yarn server:coverage
     - yarn --cwd client build
 after_script: # Upload coverage reports
-    - yarn codacy-coverage
+    - yarn coveralls

@@ -12,8 +12,9 @@
         "client": "yarn --cwd client start",
         "client:coverage": "yarn test:client -- --coverage",
         "server:coverage": "nyc --reporter=lcovonly yarn test:server",
+        "coverage": "yarn client:coverage && yarn server:coverage",
         "combine-coverage-files": "lcov -a client/coverage/lcov.info -a coverage/lcov.info -o coverage/total.info",
-        "codacy-coverage": "yarn combine-coverage-files && cat coverage/total.info | codacy-coverage -v -d",
+        "coveralls": "yarn combine-coverage-files && cat coverage/total.info | coveralls",
         "start:dev": "concurrently \"yarn server\" \"yarn client\"",
         "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
     },
