@@ -10,6 +10,24 @@ const validateRegisterInput = require('../../validation/addSeniorCenter');
 
 const SeniorCenter = require('../../models/SeniorCenter');
 
+//@route DELETE api/seniorCenters/delete/:id
+// should delete a specified seniorCenter by id
+router.delete('/delete/:id', (req, res) => {
+    SeniorCenter.findByIdAndRemove({ _id: req.params.id }, (err, item) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json({ success: true });
+    });
+});
+
+//@route GET api/seniorCenters/get
+//should return all seniorCenters
+router.get('/get', (req, res) => {
+    SeniorCenter.find((err, seniorCenters) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json({ success: true, data: seniorCenters });
+    });
+});
+
 // @route POST api/seniorCenters/add
 // @desc adding a seniorCenter
 // @access Public
