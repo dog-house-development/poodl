@@ -9,9 +9,9 @@ import { Dashboard, mapStateToProps, mapDispatchToProps } from '../Dashboard';
 configure({ adapter: new Adapter() });
 
 describe('Dashbaord tests', () => {
-    let wrapper, instance;
+    let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
-        const state = _.assign(
+        state = _.assign(
             {},
             {
                 auth: {
@@ -26,7 +26,7 @@ describe('Dashbaord tests', () => {
             },
             _state
         );
-        const props = _.assign({}, _props);
+        props = _.assign({}, _props);
         wrapper = shallow(
             <Dashboard
                 {..._.assign(
@@ -42,6 +42,39 @@ describe('Dashbaord tests', () => {
 
     beforeEach(() => {
         setInstanceAndWrapper();
+    });
+
+    describe('mapStateToProps', () => {
+        it('should map state to props', () => {
+            expect(mapStateToProps(state, props)).toEqual({
+                auth: {
+                    isAuthenticated: true,
+                    loading: false,
+                    admin: {
+                        id: '5c52379d9be6fc0017afd46e',
+                        name: 'Sandwich Man'
+                    }
+                }
+            });
+        });
+    });
+
+    describe('mapDispatchToProps', () => {
+        it('should map dispatch to props', () => {
+            const dispatch = jest.fn();
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
+        });
+    });
+
+    describe('onLogoutClick', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'onLogoutClick');
+            const e = {
+                target: { name: 'email', value: 'Moo' },
+                preventDefault: () => {}
+            };
+            wrapper.find('Button').simulate('click', e);
+        });
     });
 
     describe('render', () => {

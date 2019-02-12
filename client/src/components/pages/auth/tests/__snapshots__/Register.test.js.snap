@@ -59,7 +59,7 @@ ShallowWrapper {
                 "value": "Sam",
               },
               Object {
-                "error": undefined,
+                "error": "Invalid email",
                 "id": "email",
                 "label": "Email",
                 "onChange": [Function],
@@ -163,7 +163,7 @@ ShallowWrapper {
               "value": "Sam",
             },
             Object {
-              "error": undefined,
+              "error": "Invalid email",
               "id": "email",
               "label": "Email",
               "onChange": [Function],
@@ -293,7 +293,7 @@ ShallowWrapper {
                   "value": "Sam",
                 },
                 Object {
-                  "error": undefined,
+                  "error": "Invalid email",
                   "id": "email",
                   "label": "Email",
                   "onChange": [Function],
@@ -397,7 +397,7 @@ ShallowWrapper {
                 "value": "Sam",
               },
               Object {
-                "error": undefined,
+                "error": "Invalid email",
                 "id": "email",
                 "label": "Email",
                 "onChange": [Function],
