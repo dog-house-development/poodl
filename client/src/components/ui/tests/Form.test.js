@@ -40,21 +40,6 @@ describe('Form tests', () => {
         setInstanceAndWrapper();
     });
 
-    describe('onComponentDidMount', () => {
-        it('should run without errors', () => {
-            spyOn(instance, 'onComponentDidMount');
-            instance.onComponentDidMount();
-        });
-    });
-
-    describe('handleChange', () => {
-        it('should run without errors', () => {
-            spyOn(instance, 'handleChange');
-            const e = { target: undefined };
-            instance.handleChange(e);
-        });
-    });
-
     describe('getFieldsMarkup', () => {
         it('should return correct fields markup', () => {
             const fieldsMarkup = [

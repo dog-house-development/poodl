@@ -9,9 +9,9 @@ import { Register, mapStateToProps, mapDispatchToProps } from '../Register';
 configure({ adapter: new Adapter() });
 
 describe('Register tests', () => {
-    let wrapper, instance;
+    let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
-        const state = _.assign(
+        state = _.assign(
             {},
             {
                 auth: {
@@ -22,7 +22,7 @@ describe('Register tests', () => {
             },
             _state
         );
-        const props = _.assign({}, { history: ['/register'] }, _props);
+        props = _.assign({}, { history: ['/register'] }, _props);
         wrapper = shallow(
             <Register
                 {..._.assign(
@@ -39,12 +39,30 @@ describe('Register tests', () => {
             email: 'sam@test.com',
             password: 'abc123',
             password2: 'abc123',
-            errors: {}
+            errors: { email: 'Invalid email' }
         });
     };
 
     beforeEach(() => {
         setInstanceAndWrapper();
+    });
+
+    describe('mapStateToProps', () => {
+        it('should map state to props', () => {
+            expect(mapStateToProps(state, props)).toEqual({
+                auth: { isAuthenticated: false, loading: false },
+                errors: {}
+            });
+        });
+    });
+
+    describe('mapDispatchToProps', () => {
+        it('should map dispatch to props', () => {
+            const dispatch = jest.fn();
+            expect(JSON.parse(JSON.stringify(mapDispatchToProps(dispatch)))).toEqual(
+                JSON.parse(JSON.stringify({ registerAdmin: () => {} }))
+            );
+        });
     });
 
     describe('componentDidMount', () => {
@@ -63,16 +81,25 @@ describe('Register tests', () => {
     });
 
     describe('componentWillReceiveProps', () => {
-        it('should run without errors', () => {
+        it('should set state.errors to newProps errors', () => {
             spyOn(instance, 'componentWillReceiveProps');
-            instance.componentWillReceiveProps();
+            expect(instance.state.errors).toEqual({ email: 'Invalid email' });
+            wrapper.setProps({ errors: { password: 'Fake password' } });
+            expect(instance.componentWillReceiveProps).toHaveBeenCalled();
+            //expect(instance.state.errors).toEqual({ password: 'Fake password' });
+            wrapper.setProps({ errors: {} });
+            //expect(instance.state.errors).toEqual({});
+            expect(instance.componentWillReceiveProps.calls.count()).toBe(2);
         });
     });
 
     describe('onChange', () => {
         it('should run without errors', () => {
             spyOn(instance, 'onChange');
-            const e = { target: undefined };
+            expect(instance.state.email).toEqual('sam@test.com');
+            const e = {
+                target: { id: 'email', value: 'Meow' }
+            };
             instance.onChange(e);
         });
     });
@@ -80,8 +107,11 @@ describe('Register tests', () => {
     describe('onSubmit', () => {
         it('should run without errors', () => {
             spyOn(instance, 'onSubmit');
-            const e = { target: undefined };
-            instance.onSubmit(e);
+            const e = {
+                target: { id: 'email', value: 'Meow' },
+                preventDefault: () => {}
+            };
+            wrapper.find('Form').simulate('submit', e);
         });
     });
 
@@ -102,6 +132,7 @@ describe('Register tests', () => {
                     id: 'email',
                     type: 'email',
                     label: 'Email',
+                    error: 'Invalid email',
                     placeholder: 'example@poodl.com...'
                 },
                 {

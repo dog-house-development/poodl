@@ -36,22 +36,39 @@ describe('Field tests', () => {
     });
 
     describe('onComponentDidMount', () => {
-        it('should run without errors', () => {
+        it('should set the value state', () => {
             spyOn(instance, 'onComponentDidMount');
+            expect(instance.state.value).toEqual('');
+            setInstanceAndWrapper({ content: 'Howdy' });
             instance.onComponentDidMount();
+            expect(instance.state.value).toEqual('Howdy');
         });
     });
 
     describe('handleChange', () => {
-        it('should run without errors', () => {
+        it('should change set the state to the new value', () => {
             spyOn(instance, 'handleChange');
-            const e = { target: undefined };
-            instance.handleChange(e);
+            const baseProps = { onChange: jest.fn() };
+            setInstanceAndWrapper(baseProps);
+            expect(instance.state.value).toEqual('');
+            const e = {
+                target: { name: 'email', value: 'Moo' },
+                preventDefault: () => {}
+            };
+            wrapper.find('input').simulate('change', e);
+            expect(instance.state.value).toEqual('Moo');
+            expect(baseProps.onChange).toHaveBeenCalledTimes(1);
         });
     });
 
     describe('render', () => {
-        it('should render correctly', () => {
+        it('should render without errors correctly', () => {
+            setInstanceAndWrapper({ error: null });
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render with errors correctly', () => {
+            setInstanceAndWrapper({ error: 'Big bad error' });
             expect(wrapper).toMatchSnapshot();
         });
     });

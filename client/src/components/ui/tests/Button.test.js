@@ -31,7 +31,12 @@ describe('Button tests', () => {
     });
 
     describe('render', () => {
-        it('should render correctly', () => {
+        it('should render normal button correctly', () => {
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render form-button correctly', () => {
+            setInstanceAndWrapper({ formButton: true });
             expect(wrapper).toMatchSnapshot();
         });
     });

@@ -9,9 +9,9 @@ import { Login, mapStateToProps, mapDispatchToProps } from '../Login';
 configure({ adapter: new Adapter() });
 
 describe('Login tests', () => {
-    let wrapper, instance;
+    let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
-        const state = _.assign(
+        state = _.assign(
             {},
             {
                 auth: {
@@ -22,7 +22,7 @@ describe('Login tests', () => {
             },
             _state
         );
-        const props = _.assign({}, { history: ['/login'] }, _props);
+        props = _.assign({}, { history: ['/login'] }, _props);
         wrapper = shallow(
             <Login
                 {..._.assign(
@@ -43,6 +43,22 @@ describe('Login tests', () => {
 
     beforeEach(() => {
         setInstanceAndWrapper();
+    });
+
+    describe('mapStateToProps', () => {
+        it('should map state to props', () => {
+            expect(mapStateToProps(state, props)).toEqual({
+                auth: { isAuthenticated: false, loading: false },
+                errors: {}
+            });
+        });
+    });
+
+    describe('mapDispatchToProps', () => {
+        it('should map dispatch to props', () => {
+            const dispatch = jest.fn();
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ loginAdmin: () => {} }));
+        });
     });
 
     describe('componentDidMount', () => {
@@ -71,6 +87,28 @@ describe('Login tests', () => {
             const newInstanceProps = _.concat(instance.props.history, '/dashboard');
             instance.componentWillReceiveProps(authenticatedState);
             expect(instance.props.history).toEqual(newInstanceProps);
+        });
+    });
+
+    describe('onChange', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'onChange');
+            expect(instance.state.email).toEqual('test@test.test');
+            const e = {
+                target: { id: 'email', value: 'Meow' }
+            };
+            instance.onChange(e);
+        });
+    });
+
+    describe('onSubmit', () => {
+        it('should run without errors', () => {
+            spyOn(instance, 'onSubmit');
+            const e = {
+                target: { id: 'email', value: 'Meow' },
+                preventDefault: () => {}
+            };
+            wrapper.find('Form').simulate('submit', e);
         });
     });
 

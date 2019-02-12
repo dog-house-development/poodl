@@ -18,22 +18,6 @@ const defaultProps = {
 };
 
 class Form extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handleChange = this.handleChange.bind(this);
-        this.getFieldsMarkup = this.getFieldsMarkup.bind(this);
-    }
-
-    onComponentDidMount() {
-        this.setState({ value: this.props.content });
-    }
-
-    handleChange(e) {
-        e.preventDefault();
-        this.props.onChange(e);
-    }
-
     getFieldsMarkup() {
         return _.map(this.props.fields, field => (
             <Field

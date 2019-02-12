@@ -9,9 +9,9 @@ import { ViewAdmins, mapStateToProps, mapDispatchToProps } from '../ViewAdmins';
 configure({ adapter: new Adapter() });
 
 describe('ViewAdmins tests', () => {
-    let wrapper, instance;
+    let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
-        const state = _.assign(
+        state = _.assign(
             {},
             {
                 admins: {
@@ -35,7 +35,7 @@ describe('ViewAdmins tests', () => {
             },
             _state
         );
-        const props = _.assign({}, _props);
+        props = _.assign({}, _props);
         wrapper = shallow(
             <ViewAdmins
                 {..._.assign(
@@ -51,6 +51,34 @@ describe('ViewAdmins tests', () => {
 
     beforeEach(() => {
         setInstanceAndWrapper();
+    });
+
+    describe('mapStateToProps', () => {
+        it('should map state to props', () => {
+            expect(mapStateToProps(state, props)).toEqual({
+                admins: [
+                    {
+                        _id: '123',
+                        email: 'bigtup@nowhere.com',
+                        name: 'Big Tup'
+                    },
+                    {
+                        _id: '321',
+                        email: 'liltup@nowhere.com',
+                        name: 'Lil Tup'
+                    }
+                ],
+                errors: {},
+                loading: false
+            });
+        });
+    });
+
+    describe('mapDispatchToProps', () => {
+        it('should map dispatch to props', () => {
+            const dispatch = jest.fn();
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getAdmins: () => {} }));
+        });
     });
 
     describe('componentDidMount', () => {
