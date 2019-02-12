@@ -10,11 +10,13 @@ cache:
         - client/node_modules
 services:
     - mongodb
+before_install:
+    - sudo apt-get install -y lcov
 install:
-    - yarn all-install
+    - yarn install-all
 script:
-    - yarn test -- --coverage
-    - yarn test:server
+    - yarn client:coverage
+    - yarn server:coverage
     - yarn --cwd client build
 after_script: # Upload coverage reports
-    - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
+    - yarn coveralls
