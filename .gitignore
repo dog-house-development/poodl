@@ -8,6 +8,8 @@
 
 # testing
 /client/coverage
+/coverage
+/.nyc_output
 
 # production
 /client/build
