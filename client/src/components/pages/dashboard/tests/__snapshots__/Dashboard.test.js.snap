@@ -17,5 +17,22 @@ exports[`Dashbaord tests render should render correctly 1`] = `
     onClick={[Function]}
     size="medium"
   />
+  <br />
+  <div
+    className="panel"
+  >
+    <h1
+      className="panel-title"
+    >
+      Admin controls
+    </h1>
+    <Link
+      className="link primary"
+      replace={false}
+      to="/admins"
+    >
+      View all admins
+    </Link>
+  </div>
 </div>
 `;

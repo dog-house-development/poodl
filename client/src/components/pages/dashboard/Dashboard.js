@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutAdmin } from '../../../actions/authActions';
 import Button from '../../ui/Button';
+import { Link } from 'react-router-dom';
 
 const propTypes = {
     logoutAdmin: PropTypes.func.isRequired,
@@ -23,6 +24,13 @@ export class Dashboard extends Component {
                 <h2>Hey there, </h2>
                 <h1>{admin.name.split(' ')[0]}.</h1>
                 <Button content="Log out" onClick={this.onLogoutClick} />
+                <br />
+                <div className="panel">
+                    <h1 className="panel-title">Admin controls</h1>
+                    <Link to="/admins" className="link primary">
+                        View all admins
+                    </Link>
+                </div>
             </div>
         );
     }
