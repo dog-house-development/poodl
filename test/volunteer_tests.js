@@ -28,16 +28,48 @@ after(function() {
     process.exit(0);
 });
 
-describe('/GET volunteers', () => {
-    it('it should get all volunteers', done => {
+describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
+    it('it should add a volunteer', done => {
+        var testVolunteer = {
+            firstName: 'Charles',
+            lastName: 'Boyle',
+            email: 'JakeFAN123@gmail.com'
+        };
+        chai.request(server)
+            .post('/api/volunteers/add')
+            .send(testVolunteer)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    var tempId = '';
+    it('it should get all the volunteers', done => {
         chai.request(server)
             .get('/api/volunteers/get')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
-                // res.body.should.have.property('firstName');
-                // res.body.should.have.property('lastName');
-                // res.body.should.have.property('email');
+                tempId = res.body.data[0]._id;
+                done();
+            });
+    });
+
+    it('it should get a specific volunteer', done => {
+        chai.request(server)
+            .get('/api/volunteers/get/' + tempId)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('it should delete a specific volunteer', done => {
+        chai.request(server)
+            .delete('/api/volunteers/delete/' + tempId)
+            .end((err, res) => {
+                res.should.have.status(200);
                 done();
             });
     });
