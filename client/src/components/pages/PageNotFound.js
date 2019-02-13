@@ -15,7 +15,7 @@ class PageNotFound extends Component {
                         </a>
                     </p>
                     <h3>Thanks</h3>
-                    <Link to="/" className="button large primary">
+                    <Link to="/dashboard" className="button large primary">
                         Home
                     </Link>
                 </div>

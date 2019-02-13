@@ -32,7 +32,7 @@ exports[`PageNotFound tests render should render correctly 1`] = `
     <Link
       className="button large primary"
       replace={false}
-      to="/"
+      to="/dashboard"
     >
       Home
     </Link>
