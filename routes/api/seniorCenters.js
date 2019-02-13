@@ -28,6 +28,15 @@ router.get('/get', (req, res) => {
     });
 });
 
+// @route GET api/seniorCenters/get/:id
+// shoudl return seniorCenter by Id
+router.get('/get/:id', (req, res) => {
+    SeniorCenter.findOne({ _id: req.params.id }, (err, post) => {
+        if (err) return next(err);
+        return res.json(post);
+    });
+});
+
 // @route POST api/seniorCenters/add
 // @desc adding a seniorCenter
 // @access Public
