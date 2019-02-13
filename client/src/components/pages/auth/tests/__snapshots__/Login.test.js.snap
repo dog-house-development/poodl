@@ -18,6 +18,7 @@ exports[`Login tests render should render correctly 1`] = `
   </Link>
   <Form
     buttonLabel="Log in"
+    errors={Array []}
     fields={
       Array [
         Object {

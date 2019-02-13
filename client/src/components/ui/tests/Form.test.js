@@ -28,7 +28,8 @@ describe('Form tests', () => {
                     }
                 ],
                 noValidate: false,
-                buttonLabel: 'Submit'
+                buttonLabel: 'Submit',
+                errors: []
             },
             _props
         );
@@ -38,6 +39,21 @@ describe('Form tests', () => {
 
     beforeEach(() => {
         setInstanceAndWrapper();
+    });
+
+    describe('getErrorMarkup', () => {
+        it('should return correct error markup when there are no errors', () => {
+            expect(instance.getErrorMarkup()).toEqual([]);
+        });
+
+        it('should return correct error markup when errors exist', () => {
+            setInstanceAndWrapper({ errors: ['Wrong thing'] });
+            expect(instance.getErrorMarkup()).toEqual([
+                <div key="Wrong thing" className="form-error">
+                    Wrong thing
+                </div>
+            ]);
+        });
     });
 
     describe('getFieldsMarkup', () => {
