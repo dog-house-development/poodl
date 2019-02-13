@@ -52,7 +52,7 @@ router.post('/add', (req, res) => {
 // @route GET api/volunteers/get/:id
 // should return specified volunteer
 router.get('/get/:id', (req, res) => {
-    Volunteer.findOne({ _id: reqparams.id }, (err, post) => {
+    Volunteer.findOne({ _id: req.params.id }, (err, post) => {
         if (err) return next(err);
         return res.json(post);
     });
