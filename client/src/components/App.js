@@ -59,7 +59,7 @@ class App extends Component {
                             <Route exact path="/login" component={Login} />
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
                             <PrivateRoute exact path="/admins" component={ViewAdmins} />
-                            // PageNotFound route must stay at bottom
+                            {/* PageNotFound route must stay at bottom */}
                             <Route component={PageNotFound} />
                         </Switch>
                         <Footer />

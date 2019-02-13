@@ -43,7 +43,6 @@ exports[`Navbar tests render should render correctly 1`] = `
           exact={true}
           path="/admins"
         />
-        // PageNotFound route must stay at bottom
         <Route
           component={[Function]}
         />

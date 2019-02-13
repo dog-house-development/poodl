@@ -10,7 +10,7 @@ class PageNotFound extends Component {
                     <h1>Page not found</h1>
                     <p>
                         If you believe this occured in error, please contact support at{' '}
-                        <a href="mailto:doghousedevelop@gmail.com" target="_blank" rel="noopener">
+                        <a href="mailto:doghousedevelop@gmail.com" target="_blank" rel="noopener noreferrer">
                             doghousedevelop@gmail.com.
                         </a>
                     </p>
