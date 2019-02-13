@@ -28,19 +28,7 @@ after(function() {
     process.exit(0);
 });
 
-describe('Admin API suite /GET,/REGISTER,/LOGIN admins', () => {
-    it('it should get all the admins', done => {
-        chai.request(server)
-            .get('/api/admins/get')
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.have.property('success').eql(true);
-                //res.body.should.have.property("data"); //should go deeper having issues add later
-                //res.body.length.should.be.eql(0);
-                done();
-            });
-    });
-
+describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => {
     it('it should create a new admin', done => {
         var admin = {
             name: 'testy boy',
@@ -56,6 +44,7 @@ describe('Admin API suite /GET,/REGISTER,/LOGIN admins', () => {
                 res.should.have.status(200);
                 res.body.should.have.property('name').eql('testy boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
+
                 done();
             });
     });
@@ -73,6 +62,35 @@ describe('Admin API suite /GET,/REGISTER,/LOGIN admins', () => {
                 res.body.should.have.property('success').eql(true);
                 res.body.should.have.property('token');
 
+                done();
+            });
+    });
+    var tempId = '';
+    it('it should get all the admins', done => {
+        chai.request(server)
+            .get('/api/admins/get')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('success').eql(true);
+                tempId = res.body.data[0]._id;
+                done();
+            });
+    });
+
+    it('it should get a specific admin', done => {
+        chai.request(server)
+            .get('/api/admins/get/' + tempId)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('it should delete a specific admin', done => {
+        chai.request(server)
+            .delete('/api/admins/delete/' + tempId)
+            .end((err, res) => {
+                res.should.have.status(200);
                 done();
             });
     });

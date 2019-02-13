@@ -13,7 +13,7 @@ const SeniorCenter = require('../../models/SeniorCenter');
 //@route DELETE api/seniorCenters/delete/:id
 // should delete a specified seniorCenter by id
 router.delete('/delete/:id', (req, res) => {
-    SeniorCenter.findByIdAndRemove({ _id: req.params.id }, (err, item) => {
+    SeniorCenter.findOneAndDelete({ _id: req.params.id }, (err, item) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });
     });
@@ -25,6 +25,15 @@ router.get('/get', (req, res) => {
     SeniorCenter.find((err, seniorCenters) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: seniorCenters });
+    });
+});
+
+// @route GET api/seniorCenters/get/:id
+// shoudl return seniorCenter by Id
+router.get('/get/:id', (req, res) => {
+    SeniorCenter.findOne({ _id: req.params.id }, (err, post) => {
+        if (err) return next(err);
+        return res.json(post);
     });
 });
 

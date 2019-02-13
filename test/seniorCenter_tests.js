@@ -25,10 +25,10 @@ before(function(done) {
 });
 
 after(function() {
-    //process.exit(0);
+    process.exit(0);
 });
 
-describe('SeniorCenter /ADD api', () => {
+describe('SeniorCenter API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
     it('it should add a seniorCenter', done => {
         var center = {
             name: 'deep puddle',
@@ -40,6 +40,36 @@ describe('SeniorCenter /ADD api', () => {
         chai.request(server)
             .post('/api/seniorCenters/add')
             .send(center)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    var tempId = '';
+    it('it should get all the seniorCenters', done => {
+        chai.request(server)
+            .get('/api/seniorCenters/get')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('success').eql(true);
+                tempId = res.body.data[0]._id;
+                done();
+            });
+    });
+
+    it('it should get a specific seniorCenter', done => {
+        chai.request(server)
+            .get('/api/seniorCenters/get/' + tempId)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('it should delete a specific seniorCenter', done => {
+        chai.request(server)
+            .delete('/api/seniorCenters/delete/' + tempId)
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
