@@ -16,7 +16,15 @@ exports[`PageNotFound tests render should render correctly 1`] = `
       Page not found
     </h1>
     <p>
-      If you believe this occured in error, please contance support.
+      If you believe this occured in error, please contact support at
+       
+      <a
+        href="mailto:doghousedevelop@gmail.com"
+        rel="noopener"
+        target="_blank"
+      >
+        doghousedevelop@gmail.com.
+      </a>
     </p>
     <h3>
       Thanks
