@@ -11,9 +11,18 @@ const Member = require('../../models/Member');
 // @route DELETE api/members/delete/:id
 // should delete specified member by ID
 router.delete('/delete/:id', (req, res) => {
-    Member.findByIdAndRemove({ _id: req.params.id }, (err, item) => {
+    Member.findOneAndDelete({ _id: req.params.id }, (err, item) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });
+    });
+});
+
+// @route GET api/members/get/:id
+// should return specifi members
+router.get('/get/:id', (req, res) => {
+    Member.findOne({ _id: req.params.id }, (err, post) => {
+        if (err) return next(err);
+        return res.json(post);
     });
 });
 

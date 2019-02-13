@@ -15,7 +15,7 @@ const Volunteer = require('../../models/Volunteer');
 // should delete a specified volunteer
 //CANNOT TEST LIKE OTHER DELETE WILL DO IN TICKET SOON
 router.delete('/delete/:id', (req, res) => {
-    Volunteer.findByIdAndRemove({ _id: req.params.id }, (err, item) => {
+    Volunteer.findOneAndDelete({ _id: req.params.id }, (err, item) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });
     });

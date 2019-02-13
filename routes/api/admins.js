@@ -15,7 +15,7 @@ const Admin = require('../../models/Admin');
 //@route DELETE api/admins/delete/:id
 // should delete specified admin by ID
 router.delete('/delete/:id', (req, res) => {
-    Admin.findByIdAndRemove({ _id: req.params.id }, (err, item) => {
+    Admin.findOneAndDelete({ _id: req.params.id }, (err, item) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });
     });
