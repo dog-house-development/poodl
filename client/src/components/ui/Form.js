@@ -10,7 +10,8 @@ const propTypes = {
     fields: PropTypes.array.isRequired,
     formTitle: PropTypes.string,
     noValidate: PropTypes.bool,
-    buttonLabel: PropTypes.string
+    buttonLabel: PropTypes.string,
+    errors: PropTypes.array
 };
 
 const defaultProps = {
@@ -18,6 +19,14 @@ const defaultProps = {
 };
 
 class Form extends Component {
+    getErrorMarkup() {
+        return _.map(this.props.errors, error => (
+            <div className="form-error" key={error}>
+                {error}
+            </div>
+        ));
+    }
+
     getFieldsMarkup() {
         return _.map(this.props.fields, field => (
             <Field
@@ -38,6 +47,7 @@ class Form extends Component {
         return (
             <div className="panel">
                 <h1 className="panel-title">{this.props.formTitle}</h1>
+                {this.getErrorMarkup()}
                 <form noValidate={this.props.noValidate} onSubmit={this.props.onSubmit}>
                     {this.getFieldsMarkup()}
                     <Button type="submit" content={this.props.buttonLabel} formButton />

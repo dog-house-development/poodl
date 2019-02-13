@@ -112,6 +112,26 @@ describe('Login tests', () => {
         });
     });
 
+    describe('getFormErrors', () => {
+        it('should return nothing when there are no errors', () => {
+            expect(instance.getFormErrors()).toEqual([]);
+        });
+
+        it('should return correct errors when they exist', () => {
+            setInstanceAndWrapper({}, { errors: { emailnotfound: 'Email not found' } });
+            expect(instance.getFormErrors()).toEqual(['Email and password combination not found']);
+
+            setInstanceAndWrapper({}, { errors: { passwordincorrect: 'Password incorrect' } });
+            expect(instance.getFormErrors()).toEqual(['Email and password combination not found']);
+
+            setInstanceAndWrapper({}, { errors: { email: 'Invalid email' } });
+            expect(instance.getFormErrors()).toEqual([]);
+
+            setInstanceAndWrapper({}, { errors: { party: 'Party time' } });
+            expect(instance.getFormErrors()).toEqual(['Party time']);
+        });
+    });
+
     describe('render', () => {
         it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();
