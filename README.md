@@ -42,7 +42,7 @@ Make sure you have the correct yarn installed. If none of the commands are worki
 
 To install all dependencies, run:
 
-`yarn all-install`
+`yarn install-all`
 
 Install nodemon globally
 
