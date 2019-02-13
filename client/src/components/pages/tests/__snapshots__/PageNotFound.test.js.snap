@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageNotFound tests render should render correctly 1`] = `
+<div
+  className="landing-container"
+>
+  <div
+    className="landing-header"
+  >
+    <h1
+      className="landing-title"
+    >
+      404
+    </h1>
+    <h1>
+      Page not found
+    </h1>
+    <p>
+      If you believe this occured in error, please contance support.
+    </p>
+    <h3>
+      Thanks
+    </h3>
+    <Link
+      className="button large primary"
+      replace={false}
+      to="/"
+    >
+      Home
+    </Link>
+  </div>
+</div>
+`;
