@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
-const forceSSL = require('express-force-ssl');
+const enforce = require('express-sslify');
 
 const admins = require('./routes/api/admins');
 const members = require('./routes/api/members');
@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Force https
-app.use(forceSSL);
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 const port = process.env.PORT || 5000;
 
