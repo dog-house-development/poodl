@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewAdmins tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <h1>
+    View All Admins
+  </h1>
+  <DataGrid
+    data={
+      Array [
+        Object {
+          "email": "bigtup@nowhere.com",
+          "key": "123",
+          "firstName": "Big",
+          "lastName": "Tup",
+        },
+        Object {
+          "email": "liltup@nowhere.com",
+          "key": "321",
+          "firstName": "Lil",
+          "lastName": "Tup",
+        },
+      ]
+    }
+    loading={false}
+  />
+</div>
+`;
