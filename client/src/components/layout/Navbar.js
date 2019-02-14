@@ -7,6 +7,9 @@ export class Navbar extends Component {
         if (!this.props.auth.isAuthenticated) {
             return (
                 <>
+                    <li className="">
+                        <Link to="/">Poodl</Link>
+                    </li>
                     <li className="right">
                         <Link to="/register">Sign up</Link>
                     </li>
@@ -18,6 +21,9 @@ export class Navbar extends Component {
         } else {
             return (
                 <>
+                    <li className="">
+                        <Link to="/dashboard">Poodl</Link>
+                    </li>
                     <li className="right">
                         <Link to="/dashboard">My Dashboard</Link>
                     </li>
@@ -31,12 +37,7 @@ export class Navbar extends Component {
     render() {
         return (
             <div className="header">
-                <ul>
-                    <li className="">
-                        <Link to="/">Poodl</Link>
-                    </li>
-                    {this.getHeaderMarkup()}
-                </ul>
+                <ul>{this.getHeaderMarkup()}</ul>
             </div>
         );
     }
