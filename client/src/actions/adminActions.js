@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_ERRORS, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS } from './types';
+import { GET_ERRORS, FETCH_ADMINS_BEGIN, FETCH_ADMINS_SUCCESS } from './types';
 
 export const fetchAdmins = () => dispatch => {
     dispatch(fetchAdminsBegin());
@@ -19,10 +19,10 @@ export const fetchAdmins = () => dispatch => {
 };
 
 export const fetchAdminsBegin = () => ({
-    type: FETCH_PRODUCTS_BEGIN
+    type: FETCH_ADMINS_BEGIN
 });
 
 export const fetchAdminsSuccess = admins => ({
-    type: FETCH_PRODUCTS_SUCCESS,
+    type: FETCH_ADMINS_SUCCESS,
     payload: { admins }
 });

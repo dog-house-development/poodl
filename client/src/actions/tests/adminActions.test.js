@@ -4,7 +4,7 @@ import * as types from '../types';
 describe('admin actions', () => {
     it('should create an action to begin fetching admins', () => {
         const expectedAction = {
-            type: types.FETCH_PRODUCTS_BEGIN
+            type: types.FETCH_ADMINS_BEGIN
         };
         expect(actions.fetchAdminsBegin()).toEqual(expectedAction);
     });
@@ -15,7 +15,7 @@ describe('admin actions', () => {
             loading: false
         };
         const expectedAction = {
-            type: types.FETCH_PRODUCTS_SUCCESS,
+            type: types.FETCH_ADMINS_SUCCESS,
             payload: { admins }
         };
         expect(actions.fetchAdminsSuccess(admins)).toEqual(expectedAction);

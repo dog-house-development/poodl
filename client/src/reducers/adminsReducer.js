@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS } from '../actions/types';
+import { FETCH_ADMINS_BEGIN, FETCH_ADMINS_SUCCESS } from '../actions/types';
 
 const initialState = {
     loading: false,
@@ -7,12 +7,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case FETCH_PRODUCTS_BEGIN:
+        case FETCH_ADMINS_BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_PRODUCTS_SUCCESS:
+        case FETCH_ADMINS_SUCCESS:
             return {
                 ...state,
                 loading: false,
