@@ -19,8 +19,6 @@ describe('PrivateRoute tests', () => {
                     isAuthenticated: true,
                     loading: false,
                     admin: {
-                        exp: 1580940830,
-                        iat: 1549383904,
                         id: '5c52379d9be6fc0017afd46e',
                         name: 'Sandwich Man'
                     }
