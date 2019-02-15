@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard tests render should render correctly 1`] = `
+<div
+  className="dashboard-container"
+>
+  <h2>
+    Hey there, 
+  </h2>
+  <h1>
+    Sandwich
+    .
+  </h1>
+  <Button
+    content="Log out"
+    kind="primary"
+    onClick={[Function]}
+    size="medium"
+  />
+  <br />
+  <div
+    className="panel"
+  >
+    <h1
+      className="panel-title"
+    >
+      View All
+    </h1>
+    <Link
+      className="link primary"
+      replace={false}
+      to="/admins"
+    >
+      Admins
+    </Link>
+    <br />
+    <Link
+      className="link primary"
+      replace={false}
+      to="/volunteers"
+    >
+      Volunteers
+    </Link>
+    <br />
+    <Link
+      className="link primary"
+      replace={false}
+      to="/members"
+    >
+      Members
+    </Link>
+  </div>
+</div>
+`;

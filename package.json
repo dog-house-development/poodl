@@ -1,29 +1,45 @@
 {
-  "name": "poodl",
-  "version": "1.0.0",
-  "description": "Senior Center App",
-  "main": "server.js",
-  "scripts": {
-    "all-install": "yarn && yarn --cwd client",
-    "start": "node server.js",
-    "test": "yarn --cwd client test",
-    "server": "nodemon server.js",
-    "client": "yarn --cwd client start",
-    "start:dev": "concurrently \"yarn server\" \"yarn client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
-  },
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
-    "concurrently": "^4.0.1",
-    "express": "^4.16.4",
-    "is-empty": "^1.2.0",
-    "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.3.11",
-    "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0",
-    "validator": "^10.9.0"
-  }
+    "name": "poodl",
+    "version": "1.0.0",
+    "description": "Senior Center App",
+    "main": "server.js",
+    "scripts": {
+        "install-all": "yarn && yarn --cwd client",
+        "start": "node server.js",
+        "test:client": "yarn --cwd client test",
+        "test:server": "mocha",
+        "server": "nodemon server.js",
+        "client": "yarn --cwd client start",
+        "client:coverage": "yarn test:client -- --coverage",
+        "server:coverage": "nyc --reporter=lcovonly yarn test:server",
+        "coverage": "yarn client:coverage && yarn server:coverage",
+        "combine-coverage-files": "lcov -a client/coverage/lcov.info -a coverage/lcov.info -o coverage/total.info",
+        "coveralls": "yarn combine-coverage-files && cat coverage/total.info | coveralls",
+        "start:dev": "concurrently \"yarn server\" \"yarn client\"",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.18.3",
+        "concurrently": "^4.0.1",
+        "express": "^4.16.4",
+        "express-sslify": "^1.2.0",
+        "is-empty": "^1.2.0",
+        "jsonwebtoken": "^8.3.0",
+        "mongoose": "^5.3.11",
+        "passport": "^0.4.0",
+        "passport-jwt": "^4.0.0",
+        "validator": "^10.9.0"
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "chai-http": "^4.2.1",
+        "codacy-coverage": "^3.4.0",
+        "coveralls": "^3.0.2",
+        "mocha": "^5.2.0",
+        "mockgoose": "^8.0.1",
+        "nyc": "^13.2.0"
+    }
 }

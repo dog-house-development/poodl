@@ -1,0 +1,24 @@
+@import './_presets.scss';
+
+.panel {
+  background: #fff;
+  padding: 24px;
+  border-radius: $border-radius-default;
+  //border: 1px solid $gray-2;
+  overflow: hidden;
+  margin: 24px 0;
+  -webkit-box-shadow: 0px 0px 52px -9px rgba(194, 194, 194, 0.8);
+  -moz-box-shadow: 0px 0px 52px -9px rgba(194, 194, 194, 0.8);
+  box-shadow: 0px 0px 52px -9px rgba(194, 194, 194, 0.8);
+
+  .panel-title {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+  }
+
+  .form-error {
+    color: $red-2;
+    font-size: 12px;
+    margin-top: 15px;
+  }
+}

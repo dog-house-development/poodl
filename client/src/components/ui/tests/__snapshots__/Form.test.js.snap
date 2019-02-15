@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form tests render should render correctly 1`] = `
+<div
+  className="panel"
+>
+  <h1
+    className="panel-title"
+  />
+  <form
+    noValidate={false}
+    onSubmit={[Function]}
+  >
+    <Field
+      error={Object {}}
+      id="email"
+      key="email"
+      label="Email:"
+      onChange={[Function]}
+      placeholder="Enter email..."
+      size="normal"
+      type="email"
+    />
+    <Button
+      content="Submit"
+      formButton={true}
+      kind="primary"
+      size="medium"
+      type="submit"
+    />
+  </form>
+</div>
+`;

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar tests render should render links for logged in admins 1`] = `
+<div
+  className="header"
+>
+  <ul>
+    <li
+      className=""
+    >
+      <Link
+        replace={false}
+        to="/dashboard"
+      >
+        Poodl
+      </Link>
+    </li>
+    <li
+      className="right"
+    >
+      <Link
+        replace={false}
+        to="/dashboard"
+      >
+        My Dashboard
+      </Link>
+    </li>
+    <li
+      className="right"
+    >
+      <Link
+        replace={false}
+        to="/activities"
+      >
+        Activities
+      </Link>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Navbar tests render should render links for nobody logged in 1`] = `
+<div
+  className="header"
+>
+  <ul>
+    <li
+      className=""
+    >
+      <Link
+        replace={false}
+        to="/"
+      >
+        Poodl
+      </Link>
+    </li>
+    <li
+      className="right"
+    >
+      <Link
+        replace={false}
+        to="/register"
+      >
+        Sign up
+      </Link>
+    </li>
+    <li
+      className="right"
+    >
+      <Link
+        replace={false}
+        to="/login"
+      >
+        Log in
+      </Link>
+    </li>
+  </ul>
+</div>
+`;

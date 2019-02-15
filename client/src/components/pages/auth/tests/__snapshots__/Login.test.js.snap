@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login tests render should render correctly 1`] = `
+<div
+  className="login-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to home
+  </Link>
+  <Form
+    buttonLabel="Log in"
+    errors={Array []}
+    fields={
+      Array [
+        Object {
+          "error": undefined,
+          "id": "email",
+          "label": "Email",
+          "onChange": [Function],
+          "placeholder": "Email...",
+          "type": "email",
+          "value": "test@test.test",
+        },
+        Object {
+          "error": undefined,
+          "id": "password",
+          "label": "Password",
+          "onChange": [Function],
+          "placeholder": "Password......",
+          "type": "password",
+          "value": "abc123",
+        },
+      ]
+    }
+    formTitle="Log In"
+    noValidate={true}
+    onSubmit={[Function]}
+  />
+  <div
+    className="center"
+  >
+    <p>
+      Don't have an account?
+       
+      <Link
+        className="button small secondary"
+        replace={false}
+        to="/register"
+      >
+        Register
+      </Link>
+    </p>
+  </div>
+</div>
+`;

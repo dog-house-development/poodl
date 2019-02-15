@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing tests render should render correctly 1`] = `
+<div
+  className="landing-container"
+>
+  <div
+    className="landing-header"
+  >
+    <h1>
+      Welcome to
+    </h1>
+    <h1
+      className="landing-title"
+    >
+      Poodl
+    </h1>
+    <p>
+      The member management tool for rural senior centers!
+    </p>
+    <Link
+      className="button large primary"
+      replace={false}
+      to="/"
+    >
+      Learn more
+    </Link>
+  </div>
+</div>
+`;

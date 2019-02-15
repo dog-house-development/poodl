@@ -1,21 +1,52 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-class Navbar extends Component {
-  render() {
-    return (
-      <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
-            <Link
-              to="/" >
-              Poodl
-            </Link>
-          </div>
-        </nav>
-      </div>
-    );
-  }
+export class Navbar extends Component {
+    getHeaderMarkup() {
+        if (!this.props.auth.isAuthenticated) {
+            return (
+                <>
+                    <li className="">
+                        <Link to="/">Poodl</Link>
+                    </li>
+                    <li className="right">
+                        <Link to="/register">Sign up</Link>
+                    </li>
+                    <li className="right">
+                        <Link to="/login">Log in</Link>
+                    </li>
+                </>
+            );
+        } else {
+            return (
+                <>
+                    <li className="">
+                        <Link to="/dashboard">Poodl</Link>
+                    </li>
+                    <li className="right">
+                        <Link to="/dashboard">My Dashboard</Link>
+                    </li>
+                    <li className="right">
+                        <Link to="/activities">Activities</Link>
+                    </li>
+                </>
+            );
+        }
+    }
+    render() {
+        return (
+            <div className="header">
+                <ul>{this.getHeaderMarkup()}</ul>
+            </div>
+        );
+    }
 }
 
-export default Navbar;
+export const mapStateToProps = (state, props) => {
+    return {
+        auth: state.auth
+    };
+};
+
+export default connect(mapStateToProps)(withRouter(Navbar));

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrivateRoute tests render should render redirect if isAuthenticated is false 1`] = `
+<Route
+  render={[Function]}
+/>
+`;
+
+exports[`PrivateRoute tests render should render the component if isAuthenticated is true 1`] = `
+<Route
+  render={[Function]}
+/>
+`;

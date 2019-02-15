@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register tests render should render correctly 1`] = `
+<div
+  className="register-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to home
+  </Link>
+  <Form
+    buttonLabel="Register"
+    fields={
+      Array [
+        Object {
+          "error": undefined,
+          "id": "name",
+          "label": "Name",
+          "onChange": [Function],
+          "placeholder": "First Last...",
+          "type": "text",
+          "value": "Sam",
+        },
+        Object {
+          "error": "Invalid email",
+          "id": "email",
+          "label": "Email",
+          "onChange": [Function],
+          "placeholder": "example@poodl.com...",
+          "type": "email",
+          "value": "sam@test.com",
+        },
+        Object {
+          "error": undefined,
+          "id": "password",
+          "label": "Password",
+          "onChange": [Function],
+          "placeholder": "Shhhhh...",
+          "type": "password",
+          "value": "abc123",
+        },
+        Object {
+          "error": undefined,
+          "id": "password2",
+          "label": "Confirm Password",
+          "onChange": [Function],
+          "placeholder": "Again...",
+          "type": "password",
+          "value": "abc123",
+        },
+      ]
+    }
+    formTitle="Register Admin"
+    noValidate={true}
+    onSubmit={[Function]}
+  />
+  <div
+    className="center"
+  >
+    <p>
+      Already have an account?
+       
+      <Link
+        className="button small secondary"
+        replace={false}
+        to="/login"
+      >
+        Log in
+      </Link>
+    </p>
+  </div>
+</div>
+`;

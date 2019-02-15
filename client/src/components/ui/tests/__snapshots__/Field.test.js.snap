@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field tests render should render with errors correctly 1`] = `
+<div
+  className="field-wrapper"
+>
+  <p
+    className="field-label"
+  >
+    Email:
+  </p>
+  <p
+    className="field-error-label"
+  >
+    Big bad error
+  </p>
+  <div
+    className="field-outer"
+  >
+    <input
+      className="field normal field-error-border"
+      error="Big bad error"
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter email..."
+      type="email"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`Field tests render should render without errors correctly 1`] = `
+<div
+  className="field-wrapper"
+>
+  <p
+    className="field-label"
+  >
+    Email:
+  </p>
+  <p
+    className="field-error-label"
+  />
+  <div
+    className="field-outer"
+  >
+    <input
+      className="field normal "
+      error={null}
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter email..."
+      type="email"
+      value=""
+    />
+  </div>
+</div>
+`;

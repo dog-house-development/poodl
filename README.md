@@ -1,8 +1,21 @@
 # Poodl
 
-Welcome to Poodl!
+[![Build Status](https://travis-ci.org/dog-house-development/poodl.svg?branch=dev)](https://travis-ci.org/dog-house-development/poodl)
+[![Coverage Status](https://coveralls.io/repos/github/dog-house-development/poodl/badge.svg?branch=dev&service=github)](https://coveralls.io/github/dog-house-development/poodl?branch=dev&service=github)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/63b5098b43bc458ea3e5ef8de9f5bc8b)](https://www.codacy.com/app/DogHouseDevelopment/poodl?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dog-house-development/poodl&amp;utm_campaign=Badge_Grade)
+[![Github Version](https://img.shields.io/github/release/dog-house-development/poodl.svg?style=flat)](https://github.com/dog-house-development/poodl/releases)
+[![Uptime Robot 30 Days](https://img.shields.io/uptimerobot/ratio/m781947640-2764269a69a56d48f8edc5db.svg?style=flat)](https://poodl.herokuapp.com/)
+[![Uptime Robot Status](https://img.shields.io/uptimerobot/status/m781947640-2764269a69a56d48f8edc5db.svg?style=flat)](https://poodl.herokuapp.com/)
 
-**To get your development environment setup, follow the instructions below.**
+_Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Please read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
+
+### Sites
+
+**Development:** [poodl-dev.herokuapp.com](http://poodl-dev.herokuapp.com/)
+
+**Production:** [poodl.herokuapp.com](http://poodl-dev.herokuapp.com/)
+
+## Setup for Development
 
 _Before starting development, familiarize yourself with the merge strategy in the wiki_
 
@@ -22,14 +35,18 @@ Make sure you have the correct yarn installed. If none of the commands are worki
 
 ### Clone the repository onto your computer
 
-- Clone: `git clone <remote>`
-- Change directory: `cd poodl`
+-   Clone: `git clone <remote>`
+-   Change directory: `cd poodl`
 
 ### Install dependencies
 
 To install all dependencies, run:
 
-`yarn all-install`
+`yarn install-all`
+
+Install nodemon globally
+
+`yarn global add nodemon`
 
 ### Start development server
 

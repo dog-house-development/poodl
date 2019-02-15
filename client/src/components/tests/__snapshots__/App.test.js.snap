@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar tests render should render correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <BrowserRouter>
+    <div
+      className="App wrapper"
+    >
+      <Connect(withRouter(Navbar)) />
+      <Switch>
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/register"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/login"
+        />
+        <Connect(PrivateRoute)
+          component={[Function]}
+          exact={true}
+          path="/dashboard"
+        />
+        <Connect(PrivateRoute)
+          component={[Function]}
+          exact={true}
+          path="/admins"
+        />
+        <Connect(PrivateRoute)
+          component={[Function]}
+          exact={true}
+          path="/volunteers"
+        />
+        <Connect(PrivateRoute)
+          component={[Function]}
+          exact={true}
+          path="/members"
+        />
+        <Route
+          component={[Function]}
+        />
+      </Switch>
+      <Footer />
+    </div>
+  </BrowserRouter>
+</Provider>
+`;
