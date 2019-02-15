@@ -99,8 +99,20 @@ describe('ViewMembers tests', () => {
     describe('getDataGridContent', () => {
         it('should return filtered members data', () => {
             expect(instance.getDataGridContent()).toEqual([
-                { key: '123', name: 'Big Tup', email: 'bigtup@nowhere.com' },
-                { key: '321', name: 'Lil Tup', email: 'liltup@nowhere.com' }
+                {
+                    key: '123',
+                    firstName: 'Big',
+                    lastName: 'Tup',
+                    membershipDate: '02/20/2020',
+                    email: 'bigtup@nowhere.com'
+                },
+                {
+                    key: '321',
+                    firstName: 'Lil',
+                    lastName: 'Tup',
+                    membershipDate: '02/02/2002',
+                    email: 'liltup@nowhere.com'
+                }
             ]);
         });
     });
