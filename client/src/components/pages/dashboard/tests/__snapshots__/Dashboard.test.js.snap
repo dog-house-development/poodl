@@ -5,7 +5,7 @@ exports[`Dashbaord tests render should render correctly 1`] = `
   className="dashboard-container"
 >
   <h2>
-    Hey there, 
+    Hey there,
   </h2>
   <h1>
     Sandwich
@@ -32,6 +32,14 @@ exports[`Dashbaord tests render should render correctly 1`] = `
       to="/admins"
     >
       View all admins
+    </Link>
+    <br />
+    <Link
+      className="link primary"
+      replace={false}
+      to="/members"
+    >
+      View all members
     </Link>
   </div>
 </div>
