@@ -8,7 +8,6 @@ import errorReducer from './errorReducer';
 export default combineReducers({
     auth: authReducer,
     admins: adminsReducer,
-
     volunteers: volunteersReducer,
     members: membersReducer,
     errors: errorReducer
