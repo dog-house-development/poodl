@@ -28,7 +28,10 @@ export class Dashboard extends Component {
                 <div className="panel">
                     <h1 className="panel-title">Admin controls</h1>
                     <Link to="/admins" className="link primary">
-                        View all admins
+                        View All Admins
+                    </Link>
+                    <Link to="/volunteers" className="link primary">
+                        View All Volunteers
                     </Link>
                 </div>
             </div>
