@@ -44,13 +44,13 @@ then uninstall that yarn and get the correct one
 
 Clone the repository
 
-```
+```bash
 git clone git@github.com:dog-house-development/poodl.git
 ```
 
 Change directory to poodl
 
-```
+```bash
 cd poodl
 ```
 
@@ -58,13 +58,13 @@ cd poodl
 
 To install all dependencies, run:
 
-```
+```bash
 yarn install-all
 ```
 
 Install nodemon globally
 
-```
+```bash
 yarn global add nodemon
 ```
 
@@ -72,7 +72,7 @@ yarn global add nodemon
 
 To start the development server, run:
 
-```
+```bash
 yarn start:dev
 ```
 
