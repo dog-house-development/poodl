@@ -11,20 +11,18 @@ exports[`ViewMembers tests render should render correctly 1`] = `
     data={
       Array [
         Object {
-          "email": "bigtup@nowhere.com"
+          "email": "bigtup@nowhere.com",
           "firstName": "Big",
           "key": "123",
           "lastName": "Tup",
-          "membershipDate: 02/20/2020",
-
+          "membershipDate": "02/20/2020",
         },
         Object {
           "email": "liltup@nowhere.com",
           "firstName": "Lil",
           "key": "321",
           "lastName": "Tup",
-          "membershipDate: 02/02/2002",
-
+          "membershipDate": "02/02/2002",
         },
       ]
     }
