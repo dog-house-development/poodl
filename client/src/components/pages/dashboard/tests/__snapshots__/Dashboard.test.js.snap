@@ -41,6 +41,7 @@ exports[`Dashboard tests render should render correctly 1`] = `
     >
       Volunteers
     </Link>
+    <br />
     <Link
       className="link primary"
       replace={false}
