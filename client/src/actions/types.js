@@ -4,7 +4,13 @@ export const GET_ERRORS = 'GET_ERRORS';
 // authActions
 export const ADMIN_LOADING = 'ADMIN_LOADING';
 export const SET_CURRENT_ADMIN = 'SET_CURRENT_ADMIN';
+export const MEMBER_LOADING = 'MEMBER_LOADING';
+export const SET_CURRENT_MEMBER = 'SET_CURRENT_MEMBER';
 
 // adminActions
 export const FETCH_ADMINS_BEGIN = 'FETCH_PRODUCTS_BEGIN';
 export const FETCH_ADMINS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
+
+// memberActions
+export const FETCH_MEMBERS_BEGIN = 'FETCH_MEMBERS_BEGIN';
+export const FETCH_MEMBERS_SUCCESS = 'FETCH_MEMBERS_SUCCESS';

@@ -31,7 +31,15 @@ exports[`Dashbaord tests render should render correctly 1`] = `
       replace={false}
       to="/admins"
     >
-      View all admins
+      View all Admins
+    </Link>
+    <br />
+    <Link
+      className="link primary"
+      replace={false}
+      to="/members"
+    >
+      View all Members
     </Link>
   </div>
 </div>
