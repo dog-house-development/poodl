@@ -31,25 +31,22 @@ exports[`Dashboard tests render should render correctly 1`] = `
       replace={false}
       to="/admins"
     >
-<<<<<<< HEAD
       Admins
-=======
-      View all Admins
->>>>>>> c1e334f64afeb98e2cea9bb5a36290fa31706e11
     </Link>
     <br />
     <Link
       className="link primary"
       replace={false}
-<<<<<<< HEAD
       to="/volunteers"
     >
       Volunteers
-=======
+    </Link>
+    <Link
+      className="link primary"
+      replace={false}
       to="/members"
     >
-      View all Members
->>>>>>> c1e334f64afeb98e2cea9bb5a36290fa31706e11
+      Members
     </Link>
   </div>
 </div>
