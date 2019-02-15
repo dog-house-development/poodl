@@ -2,12 +2,12 @@ import axios from 'axios';
 
 import { GET_ERRORS, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS } from './types';
 
-export const fetchAdmins = () => dispatch => {
-    dispatch(fetchAdminsBegin());
+export const fetchVolunteers = () => dispatch => {
+    dispatch(fetchVolunteersBegin());
     axios
-        .get('/api/admins/get')
+        .get('/api/volunteers/get')
         .then(res => {
-            dispatch(fetchAdminsSuccess(res.data));
+            dispatch(fetchVolunteersSuccess(res.data));
             return res.data;
         })
         .catch(err =>
@@ -18,11 +18,11 @@ export const fetchAdmins = () => dispatch => {
         );
 };
 
-export const fetchAdminsBegin = () => ({
+export const fetchVolunteersBegin = () => ({
     type: FETCH_PRODUCTS_BEGIN
 });
 
-export const fetchAdminsSuccess = admins => ({
+export const fetchVolunteersSuccess = volunteers => ({
     type: FETCH_PRODUCTS_SUCCESS,
-    payload: { admins }
+    payload: { volunteers }
 });
