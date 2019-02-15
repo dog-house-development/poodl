@@ -5,24 +5,26 @@ exports[`ViewMembers tests render should render correctly 1`] = `
   className="view-all-container"
 >
   <h1>
-    View All Admins
+    View All Members
   </h1>
   <DataGrid
     data={
       Array [
         Object {
-          "key": "123",
+          "email": "bigtup@nowhere.com"
           "firstName": "Big",
+          "key": "123",
           "lastName": "Tup",
           "membershipDate: 02/20/2020",
-          "email": "bigtup@nowhere.com"
+
         },
         Object {
-          "key": "321",
+          "email": "liltup@nowhere.com",
           "firstName": "Lil",
+          "key": "321",
           "lastName": "Tup",
           "membershipDate: 02/02/2002",
-          "email": "liltup@nowhere.com",
+
         },
       ]
     }
