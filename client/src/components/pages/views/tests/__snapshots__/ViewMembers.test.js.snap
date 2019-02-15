@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ViewMemberss tests render should render correctly 1`] = `
+exports[`ViewMembers tests render should render correctly 1`] = `
 <div
   className="view-all-container"
 >
@@ -16,7 +16,6 @@ exports[`ViewMemberss tests render should render correctly 1`] = `
           "lastName": "Tup",
           "membershipDate: 02/20/2020",
           "email": "bigtup@nowhere.com"
-
         },
         Object {
           "key": "321",
