@@ -35,13 +35,13 @@ Make sure you have the correct yarn installed. If none of the commands are worki
 
 ### Clone the repository onto your computer
 
-**Clone**
+Clone the repository
 
 ```
 git clone git@github.com:dog-house-development/poodl.git
 ```
 
-**Change directory**
+Change directory to poodl
 
 ```
 cd poodl
