@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewMembers tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <h1>
+    View All Members
+  </h1>
+  <DataGrid
+    data={
+      Array [
+        Object {
+          "email": "bigtup@nowhere.com",
+          "firstName": "Big",
+          "key": "123",
+          "lastName": "Tup",
+          "membershipDate": "02/20/2020",
+        },
+        Object {
+          "email": "liltup@nowhere.com",
+          "firstName": "Lil",
+          "key": "321",
+          "lastName": "Tup",
+          "membershipDate": "02/02/2002",
+        },
+      ]
+    }
+    loading={false}
+  />
+</div>
+`;

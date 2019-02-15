@@ -46,7 +46,11 @@ exports[`Navbar tests render should render correctly 1`] = `
         <Connect(PrivateRoute)
           component={[Function]}
           exact={true}
+<<<<<<< HEAD
           path="/volunteers"
+=======
+          path="/members"
+>>>>>>> c1e334f64afeb98e2cea9bb5a36290fa31706e11
         />
         <Route
           component={[Function]}
