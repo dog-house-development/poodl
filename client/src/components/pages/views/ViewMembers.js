@@ -16,7 +16,12 @@ export class ViewMembers extends Component {
         let data = [];
         _.each(this.props.members, member => {
             // we want members' names and emails
-            data.push({ firstName: member.firstName, email: member.email, key: member._id });
+            data.push({
+                firstName: member.firstName,
+                email: member.email,
+                membershipDate: member.membershipDate,
+                key: member._id
+            });
         });
         return data;
     }

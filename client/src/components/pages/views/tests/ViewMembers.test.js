@@ -22,12 +22,14 @@ describe('ViewMembers tests', () => {
                                 _id: '123',
                                 firstName: 'Big',
                                 lastName: 'Tup',
+                                membershipDate: '02/20/2020',
                                 email: 'bigtup@nowhere.com'
                             },
                             {
                                 _id: '321',
                                 firstName: 'Lil',
                                 lastName: 'Tup',
+                                membershipDate: '02/02/2002',
                                 email: 'liltup@nowhere.com'
                             }
                         ]

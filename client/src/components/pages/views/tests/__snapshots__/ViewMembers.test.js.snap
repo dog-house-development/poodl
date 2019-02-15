@@ -15,12 +15,14 @@ exports[`ViewAdmins tests render should render correctly 1`] = `
           "key": "123",
           "firstName": "Big",
           "lastName": "Tup",
+          "membershipDate: 02/20/2020"
         },
         Object {
           "email": "liltup@nowhere.com",
           "key": "321",
           "firstName": "Lil",
           "lastName": "Tup",
+          "membershipDate: 02/02/2002"
         },
       ]
     }
