@@ -26,13 +26,17 @@ export class Dashboard extends Component {
                 <Button content="Log out" onClick={this.onLogoutClick} />
                 <br />
                 <div className="panel">
-                    <h1 className="panel-title">Admin controls</h1>
+                    <h1 className="panel-title">View All</h1>
                     <Link to="/admins" className="link primary">
-                        View all Admins
+                        Admins
+                    </Link>
+                    <br />
+                    <Link to="/volunteers" className="link primary">
+                        Volunteers
                     </Link>
                     <br />
                     <Link to="/members" className="link primary">
-                        View all Members
+                        Members
                     </Link>
                 </div>
             </div>

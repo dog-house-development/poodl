@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashbaord tests render should render correctly 1`] = `
+exports[`Dashboard tests render should render correctly 1`] = `
 <div
   className="dashboard-container"
 >
@@ -24,14 +24,22 @@ exports[`Dashbaord tests render should render correctly 1`] = `
     <h1
       className="panel-title"
     >
-      Admin controls
+      View All
     </h1>
     <Link
       className="link primary"
       replace={false}
       to="/admins"
     >
-      View all Admins
+      Admins
+    </Link>
+    <br />
+    <Link
+      className="link primary"
+      replace={false}
+      to="/volunteers"
+    >
+      Volunteers
     </Link>
     <br />
     <Link
@@ -39,7 +47,7 @@ exports[`Dashbaord tests render should render correctly 1`] = `
       replace={false}
       to="/members"
     >
-      View all Members
+      Members
     </Link>
   </div>
 </div>

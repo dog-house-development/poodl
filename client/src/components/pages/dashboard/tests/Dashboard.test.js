@@ -8,7 +8,7 @@ import { Dashboard, mapStateToProps, mapDispatchToProps } from '../Dashboard';
 
 configure({ adapter: new Adapter() });
 
-describe('Dashbaord tests', () => {
+describe('Dashboard tests', () => {
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(

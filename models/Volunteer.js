@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Schema
-const MemberSchema = new Schema(
+const VolunteerSchema = new Schema(
     {
         firstName: {
             type: String,
@@ -18,6 +18,6 @@ const MemberSchema = new Schema(
         }
     },
     { timestamps: true }
-); // this might cause problems!!!!
+);
 
-module.exports = Member = mongoose.model('volunteers', MemberSchema);
+module.exports = mongoose.model('volunteers', VolunteerSchema);
