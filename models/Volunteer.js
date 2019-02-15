@@ -18,6 +18,6 @@ const MemberSchema = new Schema(
         }
     },
     { timestamps: true }
-); // this might cause problems!!!!
+);
 
 module.exports = Member = mongoose.model('volunteers', MemberSchema);
