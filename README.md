@@ -2,14 +2,14 @@
 
 [![Build Status](https://travis-ci.org/dog-house-development/poodl.svg?branch=dev)](https://travis-ci.org/dog-house-development/poodl)
 [![Coverage Status](https://coveralls.io/repos/github/dog-house-development/poodl/badge.svg?branch=dev&service=github)](https://coveralls.io/github/dog-house-development/poodl?branch=dev&service=github)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/63b5098b43bc458ea3e5ef8de9f5bc8b)](https://www.codacy.com/app/DogHouseDevelopment/poodl?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dog-house-development/poodl&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/63b5098b43bc458ea3e5ef8de9f5bc8b)](https://www.codacy.com/app/DogHouseDevelopment/poodl?utm_source=github.com&utm_medium=referral&utm_content=dog-house-development/poodl&utm_campaign=Badge_Grade)
 [![Github Version](https://img.shields.io/github/release/dog-house-development/poodl.svg?style=flat)](https://github.com/dog-house-development/poodl/releases)
 [![Uptime Robot 30 Days](https://img.shields.io/uptimerobot/ratio/m781947640-2764269a69a56d48f8edc5db.svg?style=flat)](https://poodl.herokuapp.com/)
 [![Uptime Robot Status](https://img.shields.io/uptimerobot/status/m781947640-2764269a69a56d48f8edc5db.svg?style=flat)](https://poodl.herokuapp.com/)
 
 _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Please read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
 
-### Sites
+## Sites
 
 **Development:** [poodl-dev.herokuapp.com](http://poodl-dev.herokuapp.com/)
 
@@ -21,7 +21,7 @@ _Before starting development, familiarize yourself with the merge strategy in th
 
 ### Ensure that you have yarn, npm, and node installed
 
-If you are not sure if you do, type `yarn -v`, `npm -v`, and `node -v` and it will either say `command not found` or tell you a version number.
+If you are not sure if you do, type `yarn -v`, `node -v`, and `npm -v`, and it will either say `command not found` or tell you a version number.
 
 If any of the above are not installed, using homebrew, type `brew install yarn`
 
@@ -35,24 +35,39 @@ Make sure you have the correct yarn installed. If none of the commands are worki
 
 ### Clone the repository onto your computer
 
--   Clone: `git clone <remote>`
--   Change directory: `cd poodl`
+**Clone**
+
+```
+git clone git@github.com:dog-house-development/poodl.git
+```
+
+**Change directory**
+
+```
+cd poodl
+```
 
 ### Install dependencies
 
 To install all dependencies, run:
 
-`yarn install-all`
+```
+yarn install-all
+```
 
 Install nodemon globally
 
-`yarn global add nodemon`
+```
+yarn global add nodemon
+```
 
 ### Start development server
 
 To start the development server, run:
 
-`yarn start:dev`
+```
+yarn start:dev
+```
 
 ### Publish your changes
 
