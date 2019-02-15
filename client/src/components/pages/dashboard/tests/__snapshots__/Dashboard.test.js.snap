@@ -24,21 +24,22 @@ exports[`Dashbaord tests render should render correctly 1`] = `
     <h1
       className="panel-title"
     >
-      Admin controls
+      View All
     </h1>
     <Link
       className="link primary"
       replace={false}
       to="/admins"
     >
-      View All Admins
+      Admins
     </Link>
+    <br />
     <Link
       className="link primary"
       replace={false}
       to="/volunteers"
     >
-      View All Volunteers
+      Volunteers
     </Link>
   </div>
 </div>
