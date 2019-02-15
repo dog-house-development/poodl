@@ -10,12 +10,12 @@ exports[`DataGrid tests render should render data 1`] = `
         <th
           key="name"
         >
-          NAME
+          Name
         </th>
         <th
           key="email"
         >
-          EMAIL
+          Email
         </th>
       </tr>
     </thead>

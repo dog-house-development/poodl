@@ -35,8 +35,8 @@ describe('DataGrid tests', () => {
         it('should return header markup', () => {
             const headerMarkup = (
                 <tr>
-                    <th key="name">NAME</th>
-                    <th key="email">EMAIL</th>
+                    <th key="name">Name</th>
+                    <th key="email">Email</th>
                     {null}
                 </tr>
             );
@@ -72,8 +72,8 @@ describe('DataGrid tests', () => {
                 <table>
                     <thead>
                         <tr>
-                            <th key="name">NAME</th>
-                            <th key="email">EMAIL</th>
+                            <th key="name">Name</th>
+                            <th key="email">Email</th>
                             {null}
                         </tr>
                     </thead>

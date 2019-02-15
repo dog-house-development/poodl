@@ -18,7 +18,7 @@ class DataGrid extends Component {
         return (
             <tr>
                 {_.map(_.keys(_.get(this.props, 'data[0]')), key => {
-                    return key !== 'key' ? <th key={key}>{key.toUpperCase()}</th> : null;
+                    return key !== 'key' ? <th key={key}>{_.startCase(key)}</th> : null;
                 })}
             </tr>
         );
