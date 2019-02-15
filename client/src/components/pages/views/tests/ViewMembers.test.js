@@ -63,13 +63,17 @@ describe('ViewMembers tests', () => {
                 members: [
                     {
                         _id: '123',
-                        email: 'bigtup@nowhere.com',
-                        name: 'Big Tup'
+                        firstName: 'Big',
+                        lastName: 'Tup',
+                        membershipDate: '02/20/2020',
+                        email: 'bigtup@nowhere.com'
                     },
                     {
                         _id: '321',
-                        email: 'liltup@nowhere.com',
-                        name: 'Lil Tup'
+                        firstName: 'Lil',
+                        lastName: 'Tup',
+                        membershipDate: '02/02/2002',
+                        email: 'liltup@nowhere.com'
                     }
                 ],
                 errors: {},
