@@ -32,4 +32,4 @@ const SeniorCenterSchema = new Schema(
     { timestamps: true }
 );
 
-module.exports = SeniorCenter = mongoose.model('seniorCenters', SeniorCenterSchema);
+module.exports = mongoose.model('seniorCenters', SeniorCenterSchema);
