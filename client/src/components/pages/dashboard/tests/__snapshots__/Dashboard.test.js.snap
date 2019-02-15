@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashbaord tests render should render correctly 1`] = `
+exports[`Dashboard tests render should render correctly 1`] = `
 <div
   className="dashboard-container"
 >
