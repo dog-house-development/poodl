@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { fetchMembers } from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
 
-export class ViewMembers extends Component {
+export class ViewAllMembers extends Component {
     componentDidMount() {
         // call redux action to retrieve all members from api
         this.props.getMembers();
@@ -54,4 +54,4 @@ export const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ViewMembers);
+)(ViewAllMembers);
