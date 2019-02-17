@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { fetchVolunteers } from '../../../actions/volunteerActions';
 import DataGrid from '../../ui/DataGrid';
 
-export class ViewVolunteers extends Component {
+export class ViewAllVolunteers extends Component {
     componentDidMount() {
         // call redux action to retrieve all volunteers from api
         this.props.getVolunteers();
@@ -53,4 +53,4 @@ export const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ViewVolunteers);
+)(ViewAllVolunteers);
