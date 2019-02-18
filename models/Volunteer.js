@@ -15,6 +15,10 @@ const MemberSchema = new Schema(
         email: {
             type: String,
             required: true
+        },
+        seniorCenter: {
+            type: String,
+            required: true
         }
     },
     { timestamps: true }

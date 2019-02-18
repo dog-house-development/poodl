@@ -16,6 +16,10 @@ const AdminSchema = new Schema(
             type: String,
             required: true
         },
+        seniorCenter: {
+            type: String,
+            required: true
+        },
         date: {
             type: Date,
             default: Date.now
