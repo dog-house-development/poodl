@@ -7,6 +7,7 @@ module.exports = function validateRegisterInput(data) {
     data.firstName = !isEmpty(data.firstName) ? data.firstName : '';
     data.lastName = !isEmpty(data.lastName) ? data.lastName : '';
     data.email = !isEmpty(data.email) ? data.email : '';
+    data.seniorCenter = !isEmpty(data.seniorCenter) ? data.seniorCenter : '';
 
     // Name checks
     if (Validator.isEmpty(data.firstName)) {
@@ -14,6 +15,11 @@ module.exports = function validateRegisterInput(data) {
     }
     if (Validator.isEmpty(data.lastName)) {
         errors.lastName = 'Last name field is required';
+    }
+
+    //SC check
+    if (Validator.isEmpty(data.seniorCenter)) {
+        errors.seniorCenter = 'Senior Center field is required';
     }
 
     // Email checks

@@ -57,6 +57,7 @@ router.post('/add', (req, res) => {
                 lastName: req.body.lastName,
                 email: req.body.email,
                 address: req.body.address,
+                seniorCenter: req.body.seniorCenter,
                 membershipDate: req.body.membershipDate,
                 renewalDate: req.body.renewalDate,
                 specialDiet: req.body.specialDiet,
