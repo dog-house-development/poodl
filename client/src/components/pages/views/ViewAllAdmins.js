@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { fetchAdmins } from '../../../actions/adminActions';
 import DataGrid from '../../ui/DataGrid';
 
-export class ViewAdmins extends Component {
+export class ViewAllAdmins extends Component {
     componentDidMount() {
         // call redux action to retrieve all admins from api
         this.props.getAdmins();
@@ -48,4 +48,4 @@ export const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ViewAdmins);
+)(ViewAllAdmins);

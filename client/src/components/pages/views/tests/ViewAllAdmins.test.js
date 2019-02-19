@@ -4,11 +4,11 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { ViewAdmins, mapStateToProps, mapDispatchToProps } from '../ViewAdmins';
+import { ViewAllAdmins, mapStateToProps, mapDispatchToProps } from '../ViewAllAdmins';
 
 configure({ adapter: new Adapter() });
 
-describe('ViewAdmins tests', () => {
+describe('ViewAllAdmins tests', () => {
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(
@@ -37,7 +37,7 @@ describe('ViewAdmins tests', () => {
         );
         props = _.assign({}, _props);
         wrapper = shallow(
-            <ViewAdmins
+            <ViewAllAdmins
                 {..._.assign(
                     {},
                     props,

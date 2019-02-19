@@ -4,11 +4,11 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { ViewMembers, mapStateToProps, mapDispatchToProps } from '../ViewMembers';
+import { ViewAllMembers, mapStateToProps, mapDispatchToProps } from '../ViewAllMembers';
 
 configure({ adapter: new Adapter() });
 
-describe('ViewMembers tests', () => {
+describe('ViewAllMembers tests', () => {
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(
@@ -41,7 +41,7 @@ describe('ViewMembers tests', () => {
         );
         props = _.assign({}, _props);
         wrapper = shallow(
-            <ViewMembers
+            <ViewAllMembers
                 {..._.assign(
                     {},
                     props,

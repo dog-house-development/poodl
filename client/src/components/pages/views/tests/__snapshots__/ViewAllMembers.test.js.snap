@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ViewMembers tests render should render correctly 1`] = `
+exports[`ViewAllMembers tests render should render correctly 1`] = `
 <div
   className="view-all-container"
 >

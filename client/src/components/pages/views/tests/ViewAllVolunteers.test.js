@@ -4,11 +4,11 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { ViewVolunteers, mapStateToProps, mapDispatchToProps } from '../ViewVolunteers';
+import { ViewAllVolunteers, mapStateToProps, mapDispatchToProps } from '../ViewAllVolunteers';
 
 configure({ adapter: new Adapter() });
 
-describe('ViewVolunteers tests', () => {
+describe('ViewAllVolunteers tests', () => {
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(
@@ -39,7 +39,7 @@ describe('ViewVolunteers tests', () => {
         );
         props = _.assign({}, _props);
         wrapper = shallow(
-            <ViewVolunteers
+            <ViewAllVolunteers
                 {..._.assign(
                     {},
                     props,
