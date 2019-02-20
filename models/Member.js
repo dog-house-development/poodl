@@ -16,6 +16,10 @@ const MemberSchema = new Schema(
             type: String,
             required: true
         },
+        seniorCenter: {
+            type: String,
+            required: true
+        },
         address: {
             type: String,
             required: true

@@ -38,7 +38,8 @@ router.post('/add', (req, res) => {
             const newVolunteer = new Volunteer({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                email: req.body.email
+                email: req.body.email,
+                seniorCenter: req.body.seniorCenter
             });
 
             newVolunteer
