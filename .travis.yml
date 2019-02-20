@@ -31,7 +31,6 @@ matrix:
               sauce_connect: true
           before_install:
               - cd selenium-tests
-              - pip3 install pipenv
-              - pipenv install
+              - pip3 install -r requirements.txt
           script:
-              - pipenv run python3 *.py
+              - python3 *.py
