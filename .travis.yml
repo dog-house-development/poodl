@@ -8,13 +8,18 @@ cache:
     directories:
         - node_modules
         - client/node_modules
+addons:
+    sauce_connect: true
 services:
     - mongodb
 before_install:
     - sudo apt-get install -y lcov
 install:
     - yarn install-all
+    - pip install pipenv
+    - yarn install-selenium
 script:
+    - yarn test:selenium
     - yarn client:coverage
     - yarn server:coverage
     - yarn --cwd client build

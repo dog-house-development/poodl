@@ -16,7 +16,9 @@
         "combine-coverage-files": "lcov -a client/coverage/lcov.info -a coverage/lcov.info -o coverage/total.info",
         "coveralls": "yarn combine-coverage-files && cat coverage/total.info | coveralls",
         "start:dev": "concurrently \"yarn server\" \"yarn client\"",
-        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+        "install-selenium": "cd selenium-tests; pipenv install; cd ..",
+        "test:selenium": "cd selenium-tests; pipenv run python3 *.py; cd .."
     },
     "author": "",
     "license": "MIT",
