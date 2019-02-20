@@ -12,13 +12,18 @@ import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
 
 // auth
-import Landing from './pages/Landing';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
+
+// basic
 import Dashboard from './pages/dashboard/Dashboard';
+import Landing from './pages/Landing';
+import PageNotFound from './pages/PageNotFound';
 
 // views
-import ViewAdmins from './pages/views/ViewAdmins';
+import ViewAllAdmins from './pages/views/ViewAllAdmins';
+import ViewAllVolunteers from './pages/views/ViewAllVolunteers';
+import ViewAllMembers from './pages/views/ViewAllMembers';
 
 import PrivateRoute from './private-route/PrivateRoute';
 
@@ -50,12 +55,16 @@ class App extends Component {
                 <Router>
                     <div className="App wrapper">
                         <Navbar />
-                        <Route exact path="/" component={Landing} />
-                        <Route exact path="/register" component={Register} />
-                        <Route exact path="/login" component={Login} />
                         <Switch>
+                            <Route exact path="/" component={Landing} />
+                            <Route exact path="/register" component={Register} />
+                            <Route exact path="/login" component={Login} />
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                            <PrivateRoute exact path="/admins" component={ViewAdmins} />
+                            <PrivateRoute exact path="/admins" component={ViewAllAdmins} />
+                            <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />
+                            <PrivateRoute exact path="/members" component={ViewAllMembers} />
+                            {/* PageNotFound route must stay at bottom */}
+                            <Route component={PageNotFound} />
                         </Switch>
                         <Footer />
                     </div>

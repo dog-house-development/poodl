@@ -17,22 +17,22 @@ exports[`Navbar tests render should render correctly 1`] = `
       className="App wrapper"
     >
       <Connect(withRouter(Navbar)) />
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/register"
-      />
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/login"
-      />
       <Switch>
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/register"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/login"
+        />
         <Connect(PrivateRoute)
           component={[Function]}
           exact={true}
@@ -42,6 +42,19 @@ exports[`Navbar tests render should render correctly 1`] = `
           component={[Function]}
           exact={true}
           path="/admins"
+        />
+        <Connect(PrivateRoute)
+          component={[Function]}
+          exact={true}
+          path="/volunteers"
+        />
+        <Connect(PrivateRoute)
+          component={[Function]}
+          exact={true}
+          path="/members"
+        />
+        <Route
+          component={[Function]}
         />
       </Switch>
       <Footer />

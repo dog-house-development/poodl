@@ -56,6 +56,6 @@ const MemberSchema = new Schema(
         }
     },
     { timestamps: true }
-); // this might cause problems!!!!
+);
 
-module.exports = Member = mongoose.model('members', MemberSchema);
+module.exports = mongoose.model('members', MemberSchema);

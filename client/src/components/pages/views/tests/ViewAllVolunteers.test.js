@@ -4,28 +4,30 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { ViewAdmins, mapStateToProps, mapDispatchToProps } from '../ViewAdmins';
+import { ViewAllVolunteers, mapStateToProps, mapDispatchToProps } from '../ViewAllVolunteers';
 
 configure({ adapter: new Adapter() });
 
-describe('ViewAdmins tests', () => {
+describe('ViewAllVolunteers tests', () => {
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(
             {},
             {
-                admins: {
+                volunteers: {
                     loading: false,
                     all: {
                         data: [
                             {
                                 _id: '123',
-                                name: 'Big Tup',
+                                firstName: 'Tup',
+                                lastName: 'Big',
                                 email: 'bigtup@nowhere.com'
                             },
                             {
                                 _id: '321',
-                                name: 'Lil Tup',
+                                firstName: 'Tup',
+                                lastName: 'Lil',
                                 email: 'liltup@nowhere.com'
                             }
                         ]
@@ -37,7 +39,7 @@ describe('ViewAdmins tests', () => {
         );
         props = _.assign({}, _props);
         wrapper = shallow(
-            <ViewAdmins
+            <ViewAllVolunteers
                 {..._.assign(
                     {},
                     props,
@@ -56,16 +58,18 @@ describe('ViewAdmins tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                admins: [
+                volunteers: [
                     {
                         _id: '123',
-                        email: 'bigtup@nowhere.com',
-                        name: 'Big Tup'
+                        firstName: 'Tup',
+                        lastName: 'Big',
+                        email: 'bigtup@nowhere.com'
                     },
                     {
                         _id: '321',
-                        email: 'liltup@nowhere.com',
-                        name: 'Lil Tup'
+                        firstName: 'Tup',
+                        lastName: 'Lil',
+                        email: 'liltup@nowhere.com'
                     }
                 ],
                 errors: {},
@@ -77,7 +81,7 @@ describe('ViewAdmins tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getAdmins: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getVolunteers: () => {} }));
         });
     });
 
@@ -89,10 +93,10 @@ describe('ViewAdmins tests', () => {
     });
 
     describe('getDataGridContent', () => {
-        it('should return filtered admins data', () => {
+        it('should return filtered volunteers data', () => {
             expect(instance.getDataGridContent()).toEqual([
-                { key: '123', name: 'Big Tup', email: 'bigtup@nowhere.com' },
-                { key: '321', name: 'Lil Tup', email: 'liltup@nowhere.com' }
+                { key: '123', firstName: 'Tup', lastName: 'Big', email: 'bigtup@nowhere.com' },
+                { key: '321', firstName: 'Tup', lastName: 'Lil', email: 'liltup@nowhere.com' }
             ]);
         });
     });

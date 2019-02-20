@@ -30,6 +30,6 @@ const SeniorCenterSchema = new Schema(
         }
     },
     { timestamps: true }
-); // this might cause problems!!!!
+);
 
-module.exports = SeniorCenter = mongoose.model('seniorCenters', SeniorCenterSchema);
+module.exports = mongoose.model('seniorCenters', SeniorCenterSchema);

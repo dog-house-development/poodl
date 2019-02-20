@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
+const enforce = require('express-sslify');
 
 const admins = require('./routes/api/admins');
 const members = require('./routes/api/members');
@@ -43,7 +44,7 @@ app.use('/api/members', members);
 app.use('/api/seniorCenters', seniorCenters);
 app.use('/api/volunteers', volunteers);
 
-//Serve static assets if in production
+// Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
     //Set static folder
     app.use(express.static('client/build'));
@@ -53,15 +54,8 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-function requireHTTPS(req, res, next) {
-    // The 'x-forwarded-proto' check is for Heroku
-    if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== 'development') {
-        return res.redirect('https://' + req.get('host') + req.url);
-    }
-    next();
-}
-
-app.use(requireHTTPS);
+// Force https
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 const port = process.env.PORT || 5000;
 

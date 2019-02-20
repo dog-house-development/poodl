@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+
 import { loginAdmin } from '../../../actions/authActions';
 import Form from '../../ui/Form';
 
@@ -80,6 +82,18 @@ export class Login extends Component {
         return fields;
     };
 
+    getFormErrors() {
+        let errors = [];
+        _.each(this.props.errors, (value, key) => {
+            if (key.toLowerCase() === 'emailnotfound' || key.toLowerCase() === 'passwordincorrect') {
+                errors.push('Email and password combination not found');
+            } else if (key !== 'email' && key !== 'password') {
+                errors.push(value);
+            }
+        });
+        return errors;
+    }
+
     render() {
         return (
             <div className="login-container">
@@ -92,6 +106,7 @@ export class Login extends Component {
                     noValidate
                     buttonLabel="Log in"
                     formTitle="Log In"
+                    errors={this.getFormErrors()}
                 />
                 <div className="center">
                     <p>
