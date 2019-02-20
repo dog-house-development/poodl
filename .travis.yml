@@ -16,7 +16,7 @@ before_install:
     - sudo apt-get install -y lcov
 install:
     - yarn install-all
-    - pip install pipenv
+    - pip3 install pipenv
     - yarn install-selenium
 script:
     - yarn test:selenium
