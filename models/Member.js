@@ -13,24 +13,19 @@ const MemberSchema = new Schema(
             required: true
         },
         email: {
-            type: String,
-            required: true
+            type: String
         },
         seniorCenter: {
-            type: String,
-            required: true
+            type: String
         },
         address: {
-            type: String,
-            required: true
+            type: String
         },
         membershipDate: {
-            type: String,
-            required: true
+            type: String
         },
         renewalDate: {
-            type: String,
-            required: true
+            type: String
         },
         specialDiet: [
             {
