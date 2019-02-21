@@ -69,4 +69,4 @@ homeLink.click()
 logout = driver.find_element_by_xpath('//button[contains(text(), "Log out")]')
 logout.click()
 
-driver.close()
+driver.quit()
