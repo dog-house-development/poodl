@@ -7,13 +7,14 @@
   border-top: 1px solid $gray-2;
   text-align: center;
   color: $gray-2;
+  padding: 1em 0;
 
   li {
-    display: inline;
+    display: inline-block;
     list-style: none;
+    padding: 0 3vw;
 
     .footer-link {
-      padding: 24px;
       font-size: 14px;
     }
   }

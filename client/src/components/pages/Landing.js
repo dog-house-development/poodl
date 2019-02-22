@@ -8,7 +8,7 @@ class Landing extends Component {
                 <div className="landing-header">
                     <h1>Welcome to</h1>
                     <h1 className="landing-title">Poodl</h1>
-                    <p>The member management tool for rural senior centers!</p>
+                    <p className="landing-info">The member management tool for rural senior centers!</p>
                     <Link to="/" className="button large primary">
                         Learn more
                     </Link>
