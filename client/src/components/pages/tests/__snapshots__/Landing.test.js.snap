@@ -15,7 +15,9 @@ exports[`Landing tests render should render correctly 1`] = `
     >
       Poodl
     </h1>
-    <p>
+    <p
+      className="landing-info"
+    >
       The member management tool for rural senior centers!
     </p>
     <Link
