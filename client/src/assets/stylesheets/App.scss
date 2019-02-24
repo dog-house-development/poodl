@@ -15,12 +15,14 @@
 @import 'pages/viewAll.scss';
 
 // global styles
+* {
+  margin: 0;
+  padding: 0;
+}
 
 .wrapper {
   width: 100%;
   min-height: 100%;
-  margin: 0;
-  padding: 0;
   padding-bottom: 51px;
   position: relative;
 }

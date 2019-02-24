@@ -5,35 +5,30 @@
   padding: 0 24px;
   margin-bottom: 24px;
 
-  ul {
-    margin: 0;
-    padding: 0;
+  li {
+    display: inline;
+    list-style: none;
 
-    li {
-      display: inline;
-      list-style: none;
+    &.right {
+      float: right;
+    }
 
-      &.right {
-        float: right;
+    a {
+      font-size: 13px;
+      font-weight: bold;
+      color: $gray-6;
+      display: inline-block;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 15px;
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        color: $gray-8;
       }
 
-      a {
-        font-size: 13px;
-        font-weight: bold;
-        color: $gray-6;
-        display: inline-block;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 18px 15px;
-        border-bottom: 2px solid transparent;
-
-        &:hover {
-          color: $gray-8;
-        }
-
-        &.current-location {
-          border-bottom: 2px solid $button-primary;
-        }
+      &.current-location {
+        border-bottom: 2px solid $button-primary;
       }
     }
   }
