@@ -40,12 +40,28 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             superAdmin: true
         };
 
+        var admin2 = {
+            name: 'testy boy2',
+            email: 'test2@gmail.com',
+            password: 'greatpassword2!@',
+            password2: 'greatpassword2!@',
+            seniorCenter: 'test center2'
+        };
+
         chai.request(server)
             .post('/api/admins/register')
-            .send(admin)
+            .send(admin2)
+            .end();
+
+        chai.request(server)
+            .post('/api/admins/register')
+            .send(admin1)
             .end((err, res) => {
                 res.should.have.status(200);
-
+                res.body.should.have.property('_id');
+                res.body.should.have.property('name').eql('testy boy');
+                res.body.should.have.property('email').eql('test@gmail.com');
+                res.body.should.have.property('seniorCenter').eql('test center');
                 done();
             });
     });
@@ -61,6 +77,7 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
+                res.body.should.have.property('token');
 
                 done();
             });
@@ -72,7 +89,20 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
-                tempId = res.body.data[0]._id;
+                tempId = res.body.data[1]._id;
+                res.body.should.have.property('data');
+                res.body.data[1].should.have.property('_id');
+                res.body.data[1].should.have.property('name').eql('testy boy');
+                res.body.data[1].should.have.property('email').eql('test@gmail.com');
+                res.body.data[1].should.have.property('password');
+                res.body.data[1].should.have.property('date');
+
+                res.body.data[0].should.have.property('_id');
+                res.body.data[0].should.have.property('name').eql('testy boy2');
+                res.body.data[0].should.have.property('email').eql('test2@gmail.com');
+                res.body.data[0].should.have.property('password');
+                res.body.data[0].should.have.property('date');
+
                 done();
             });
     });
@@ -82,6 +112,11 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             .get('/api/admins/get/' + tempId)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.not.have.property('data');
+                res.body.should.have.property('_id');
+                res.body.should.have.property('name').eql('testy boy');
+                res.body.should.have.property('email').eql('test@gmail.com');
+                res.body.should.have.property('seniorCenter').eql('test center');
                 done();
             });
     });
