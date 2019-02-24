@@ -33,7 +33,8 @@ describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
         var testVolunteer = {
             firstName: 'Charles',
             lastName: 'Boyle',
-            email: 'JakeFAN123@gmail.com'
+            email: 'JakeFAN123@gmail.com',
+            seniorCenter: 'center'
         };
         chai.request(server)
             .post('/api/volunteers/add')

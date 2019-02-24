@@ -28,15 +28,17 @@ after(function() {
     process.exit(0);
 });
 
-describe('Members suite /ADD,/GET,/GET/:ID,/DELETE', () => {
+describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
     it('it should add a new member', done => {
         let testMember = {
-            firstName: 'Jake',
-            lastName: 'Peralta',
-            email: 'NINENINE@gmail.com',
+            firstName: 'Charles',
+            lastName: 'Boile',
+            email: 'SpecialDiet2@gmail.com',
             address: 'Brooklyn 99',
+            seniorCenter: 'Nice little place',
             membershipDate: 'Frever',
-            renewalDate: 'Today'
+            renewalDate: 'Today',
+            specialDiet: ['fish', 'chicken nuggets']
         };
 
         chai.request(server)
@@ -63,6 +65,32 @@ describe('Members suite /ADD,/GET,/GET/:ID,/DELETE', () => {
     it('it should get a specific member', done => {
         chai.request(server)
             .get('/api/members/get/' + tempId)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+    it('it should edit a specific member by ID', done => {
+        let testMember1 = {
+            email: 'SpecialDiet3@gmail.com'
+        };
+        chai.request(server)
+            .post('/api/members/edit/' + tempId)
+            .send(testMember1)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+    it('it should edit a specific member by Name', done => {
+        let testMember2 = {
+            firstName: 'Charles',
+            lastName: 'Boile',
+            email: 'SpecialDiet4@gmail.com'
+        };
+        chai.request(server)
+            .post('/api/members/edit')
+            .send(testMember2)
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
