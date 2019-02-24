@@ -3,12 +3,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
-const enforce = require('express-sslify');
+//const enforce = require('express-sslify');
 
 const admins = require('./routes/api/admins');
 const members = require('./routes/api/members');
 const seniorCenters = require('./routes/api/seniorCenters');
 const volunteers = require('./routes/api/volunteers');
+const profiles = require('./routes/api/profiles');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use('/api/admins', admins);
 app.use('/api/members', members);
 app.use('/api/seniorCenters', seniorCenters);
 app.use('/api/volunteers', volunteers);
+app.use('/api/profiles', profiles);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
@@ -55,7 +57,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Force https
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+//app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 const port = process.env.PORT || 5000;
 

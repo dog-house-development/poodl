@@ -24,6 +24,7 @@ import PageNotFound from './pages/PageNotFound';
 import ViewAllAdmins from './pages/views/ViewAllAdmins';
 import ViewAllVolunteers from './pages/views/ViewAllVolunteers';
 import ViewAllMembers from './pages/views/ViewAllMembers';
+import ViewMember from './pages/views/ViewMember';
 
 import PrivateRoute from './private-route/PrivateRoute';
 
@@ -63,6 +64,7 @@ class App extends Component {
                             <PrivateRoute exact path="/admins" component={ViewAllAdmins} />
                             <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />
                             <PrivateRoute exact path="/members" component={ViewAllMembers} />
+                            <PrivateRoute exact path="/member" component={ViewMember} />
                             {/* PageNotFound route must stay at bottom */}
                             <Route component={PageNotFound} />
                         </Switch>

@@ -16,7 +16,12 @@ export class ViewAllAdmins extends Component {
         let data = [];
         _.each(this.props.admins, admin => {
             // we want admins' names and emails, and we need a key which will not be displayed
-            data.push({ name: admin.name, email: admin.email, key: admin._id });
+            data.push({
+                viewProfile: <button onClick={'/dashboard'}>View</button>,
+                name: admin.name,
+                email: admin.email,
+                key: admin._id
+            });
         });
         return data;
     }

@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-
+import Button from '../../ui/Button';
 import { fetchMembers } from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
-import Button from '../../ui/Button';
 
-export class ViewAllMembers extends Component {
-    onViewClick = e => {
-        e.preventDefault();
-        this.props.history.push(`/memberProfile/${member._id}`);
-    };
+export class ViewMember extends Component {
     componentDidMount() {
         // call redux action to retrieve all members from api
         this.props.getMembers();
@@ -22,14 +17,12 @@ export class ViewAllMembers extends Component {
         _.each(this.props.members, member => {
             // we want members' names, emails and membership dates.
             data.push({
+                viewProfile: <Button onClick={'/dashboard'}>View</Button>,
                 key: member._id,
                 firstName: member.firstName,
                 lastName: member.lastName,
                 membershipDate: member.membershipDate,
-                email: member.email,
-                //on click needs
-                viewProfile: <Button content="View" onClick={member._id => this.onViewClick} />
-                () => this.handleSort(column)}>{column}
+                email: member.email
             });
         });
         return data;
@@ -62,4 +55,4 @@ export const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ViewAllMembers);
+)(ViewMember);
