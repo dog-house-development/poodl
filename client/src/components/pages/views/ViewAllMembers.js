@@ -9,7 +9,7 @@ import Button from '../../ui/Button';
 export class ViewAllMembers extends Component {
     onViewClick = e => {
         e.preventDefault();
-        this.props.history.push(`/memberProfile/${id}`);
+        this.props.history.push('/dashboard');
     };
     componentDidMount() {
         // call redux action to retrieve all members from api

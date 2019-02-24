@@ -8,7 +8,7 @@ import DataGrid from '../../ui/DataGrid';
 export class MemberProfile extends Component {
     componentDidMount() {
         // call redux action to retrieve all members from api
-        this.props.getMember();
+        this.props.getMembers();
     }
 
     getDataGridContent() {
@@ -47,7 +47,7 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getMember: () => dispatch(fetchMember(memberID))
+        getMembers: () => dispatch(fetchMembers())
     };
 };
 
