@@ -9,7 +9,7 @@ import Button from '../../ui/Button';
 export class ViewAllMembers extends Component {
     onViewClick = e => {
         e.preventDefault();
-        this.props.history.push(`/memberProfile/${member._id}`);
+        this.props.history.push(`/memberProfile/${id}`);
     };
     componentDidMount() {
         // call redux action to retrieve all members from api
@@ -28,8 +28,7 @@ export class ViewAllMembers extends Component {
                 membershipDate: member.membershipDate,
                 email: member.email,
                 //on click needs
-                viewProfile: <Button content="View" onClick={member._id => this.onViewClick} />
-                () => this.handleSort(column)}>{column}
+                viewProfile: <Button content="View" onClick={this.onViewClick} />
             });
         });
         return data;

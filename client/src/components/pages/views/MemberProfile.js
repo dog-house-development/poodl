@@ -5,10 +5,10 @@ import Button from '../../ui/Button';
 import { fetchMembers } from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
 
-export class ViewMember extends Component {
+export class MemberProfile extends Component {
     componentDidMount() {
         // call redux action to retrieve all members from api
-        this.props.getMembers();
+        this.props.getMember();
     }
 
     getDataGridContent() {
@@ -17,7 +17,6 @@ export class ViewMember extends Component {
         _.each(this.props.members, member => {
             // we want members' names, emails and membership dates.
             data.push({
-                viewProfile: <Button onClick={'/dashboard'}>View</Button>,
                 key: member._id,
                 firstName: member.firstName,
                 lastName: member.lastName,
@@ -48,11 +47,11 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getMembers: () => dispatch(fetchMembers())
+        getMember: () => dispatch(fetchMember(memberID))
     };
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ViewMember);
+)(MemberProfile);
