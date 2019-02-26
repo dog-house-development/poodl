@@ -16,7 +16,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                all: action.payload.admins
+                all: action.payload.data
             };
         default:
             return state;

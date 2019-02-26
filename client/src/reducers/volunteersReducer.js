@@ -1,8 +1,14 @@
-import { FETCH_VOLUNTEERS_BEGIN, FETCH_VOLUNTEERS_SUCCESS } from '../actions/types';
+import {
+    FETCH_VOLUNTEERS_BEGIN,
+    FETCH_VOLUNTEERS_SUCCESS,
+    FETCH_VOLUNTEER_BEGIN,
+    FETCH_VOLUNTEER_SUCCESS
+} from '../actions/types';
 
 const initialState = {
     loading: false,
-    all: []
+    all: [],
+    one: {}
 };
 
 export default function(state = initialState, action) {
@@ -16,7 +22,18 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                all: action.payload.volunteers
+                all: action.payload.data
+            };
+        case FETCH_VOLUNTEER_BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case FETCH_VOLUNTEER_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                one: action.payload
             };
         default:
             return state;
