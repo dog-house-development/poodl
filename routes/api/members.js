@@ -35,6 +35,16 @@ router.get('/get', (req, res) => {
     });
 });
 
+//@route POST api/members/get
+//should return members by ids from list
+//takes json _id:[]
+router.post('/get', (req, res) => {
+    Member.find({ _id: req.body._id }, (err, members) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(members);
+    });
+});
+
 const validateEditInput = require('../../validation/editMember');
 
 // @route POST api/members/edit

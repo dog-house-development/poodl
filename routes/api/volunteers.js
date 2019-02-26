@@ -68,4 +68,14 @@ router.get('/get', (req, res) => {
     });
 });
 
+//@route POST api/volunteers/get
+//should return list of volunteers by id
+// teakes _id: []
+router.post('/get', (req, res) => {
+    Volunteer.find((err, volunteers) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(volunteers);
+    });
+});
+
 module.exports = router;
