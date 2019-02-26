@@ -2,51 +2,49 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchMember } from '../../../actions/memberActions';
-import DataGrid from '../../ui/DataGrid';
+import Loading from '../../ui/Loading';
 
 export class MemberProfile extends Component {
     constructor(props) {
         super(props);
+        const match = {
+            params: {
+                baseId: 1 //any id you want to set
+            }
+        };
         this.routeParam = props.match.params.id;
     }
-    
+
     componentDidMount() {
         // call redux action to retrieve all members from api
         this.props.getMember(this.routeParam);
     }
 
-    getDataGridContent() {
-        // choose what we want to display out of the members data
-        let data = [];
-        _.each(this.props.members, member => {
-            // we want members' names, emails and membership dates.
-            data.push({
-                key: member._id,
-                firstName: member.firstName,
-                lastName: member.lastName,
-                membershipDate: member.membershipDate,
-                email: member.email
-            });
-        });
-        return data;
+    getPageMarkup() {
+        if (this.props.loading) {
+            return <Loading content="Loading member info..." />;
+        } else {
+            return (
+                <h1>
+                    {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
+                </h1>
+            );
+        }
     }
 
     render() {
         return (
-        /*    <div className="view-all-container">
-                <h1>View All Members</h1>
-                <DataGrid data={this.getDataGridContent()} loading={this.props.loading} />
+            <div className="view-all-container">
+                <div className="panel">{this.getPageMarkup()}</div>
             </div>
-            */
-            <p> Hello, {this.props.member.firstName} </p>
         );
     }
 }
 
 export const mapStateToProps = (state, props) => {
     return {
-        //loading: state.member.loading,
-        member: state.members.member,
+        loading: state.members.loading,
+        members: state.members.one,
         errors: state.errors
     };
 };
