@@ -57,8 +57,8 @@ class App extends Component {
                         <Navbar />
                         <Switch>
                             <Route exact path="/" component={Landing} />
-                            <Route exact path="/register" component={Register} />
                             <Route exact path="/login" component={Login} />
+                            <PrivateRoute exact path="/register" component={Register} />
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
                             <PrivateRoute exact path="/admins" component={ViewAllAdmins} />
                             <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />

@@ -39,6 +39,12 @@ export class Dashboard extends Component {
                         Members
                     </Link>
                 </div>
+                <div className="panel">
+                    <h1 className="panel-title">Register New</h1>
+                    <Link to="/register" className="link primary">
+                        Admin
+                    </Link>
+                </div>
             </div>
         );
     }
