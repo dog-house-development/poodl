@@ -4,7 +4,6 @@ import _ from 'lodash';
 
 import { fetchMembers } from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
-import Button from '../../ui/Button';
 import { Link } from 'react-router-dom';
 
 export class ViewAllMembers extends Component {
@@ -52,8 +51,8 @@ export class ViewAllMembers extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
+        members: state.members.all,
         loading: state.members.loading,
-        members: state.members.all.data,
         errors: state.errors
     };
 };
