@@ -20,7 +20,14 @@ export class ViewAllVolunteers extends Component {
                 firstName: volunteer.firstName,
                 lastName: volunteer.lastName,
                 email: volunteer.email,
-                key: volunteer._id
+                key: volunteer._id,
+                //on click needs
+                viewProfile: (
+                    <Link to={'/volunteer/' + volunteer._id} className="button large primary">
+                        {' '}
+                        View{' '}
+                    </Link>
+                )
             });
         });
         return data;
