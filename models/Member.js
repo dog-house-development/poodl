@@ -22,7 +22,8 @@ const MemberSchema = new Schema(
             type: String
         },
         membershipDate: {
-            type: String
+            type: Date,
+            default: Date.now
         },
         renewalDate: {
             type: String
