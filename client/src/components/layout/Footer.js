@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import GoHome from '../ui/GoHome';
 
 class Footer extends Component {
     render() {
@@ -7,9 +8,7 @@ class Footer extends Component {
             <div className="footer">
                 <ul>
                     <li>
-                        <Link to="/" className="link tertiary footer-link">
-                            Home
-                        </Link>
+                        <GoHome className="footer-link" buttonOrLink='link' kind="tertiary" />
                     </li>
                     <li>
                         <a
