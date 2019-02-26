@@ -68,6 +68,17 @@ Install nodemon globally
 yarn global add nodemon
 ```
 
+### Add config/secrets.js
+We keep our database key secret, ask doghousedevelop@gmail.com to join our slack to have access to our keys. 
+Make sure you only use our dev database.
+
+```js
+// config/secrets.js
+module.exports = {
+    mongoURI: '<mongo database secret key>'
+};
+```
+
 ### Start development server
 
 To start the development server, run:
