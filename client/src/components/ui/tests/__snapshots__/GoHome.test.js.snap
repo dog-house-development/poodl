@@ -5,7 +5,7 @@ exports[`GoHome tests render should render correctly when admin is authenticated
   replace={false}
   to="/dashboard"
 >
-  Go Home
+  Home
 </Link>
 `;
 
@@ -14,6 +14,6 @@ exports[`GoHome tests render should render correctly when admin is not authentic
   replace={false}
   to="/"
 >
-  Go Home
+  Home
 </Link>
 `;

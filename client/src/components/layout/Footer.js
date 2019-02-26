@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import GoHome from '../ui/GoHome';
 
 class Footer extends Component {
@@ -8,7 +7,7 @@ class Footer extends Component {
             <div className="footer">
                 <ul>
                     <li>
-                        <GoHome className="footer-link" buttonOrLink='link' kind="tertiary" />
+                        <GoHome className="footer-link" buttonOrLink="link" kind="tertiary" />
                     </li>
                     <li>
                         <a

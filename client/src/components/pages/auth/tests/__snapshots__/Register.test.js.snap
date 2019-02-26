@@ -4,9 +4,11 @@ exports[`Register tests render should render correctly 1`] = `
 <div
   className="register-container"
 >
-  <Link
+  <Connect(GoHome)
+    buttonOrLink="button"
     className="button small tertiary"
-    replace={false}
+    kind="tertiary"
+    size="small"
     to="/"
   >
     <i
@@ -15,7 +17,7 @@ exports[`Register tests render should render correctly 1`] = `
       keyboard_backspace
     </i>
      Back to home
-  </Link>
+  </Connect(GoHome)>
   <Form
     buttonLabel="Register"
     fields={
