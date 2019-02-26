@@ -23,7 +23,7 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 // @route GET api/members/get/:id
-// should return specifi members
+// should return specified member by ID
 router.get('/get/:id', (req, res) => {
     Member.findOne({ _id: req.params.id }, (err, member) => {
         if (err) return next(err);
