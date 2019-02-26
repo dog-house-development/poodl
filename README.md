@@ -78,6 +78,7 @@ module.exports = {
     mongoURI: '<mongo database secret key>'
 };
 ```
+You can also start a local mongo database and use that key instead. See [installing mongodb](https://docs.mongodb.com/manual/installation/).
 
 ### Start development server
 
@@ -85,6 +86,12 @@ To start the development server, run:
 
 ```bash
 yarn start:dev
+```
+
+If you are using your own mongo database use the following:
+
+```bash
+export MONGO_URI=<local mongodb uri> yarn start:dev
 ```
 
 ### Publish your changes
