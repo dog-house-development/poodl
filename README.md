@@ -69,7 +69,9 @@ yarn global add nodemon
 ```
 
 ### Add config/secrets.js
-We keep our database key secret, ask doghousedevelop@gmail.com to join our slack to have access to our keys. 
+
+We keep our database key secret, ask doghousedevelop@gmail.com to 
+join our slack to have access to our keys. 
 Make sure you only use our dev database.
 
 ```js
@@ -78,7 +80,9 @@ module.exports = {
     mongoURI: '<mongo database secret key>'
 };
 ```
-You can also start a local mongo database and use that key instead. See [installing mongodb](https://docs.mongodb.com/manual/installation/).
+
+You can also start a local mongo database and use that key instead. 
+See [installing mongodb](https://docs.mongodb.com/manual/installation/).
 
 ### Start development server
 
@@ -88,7 +92,8 @@ To start the development server, run:
 yarn start:dev
 ```
 
-Instead of adding a secrets.js file you can export the mongo uri as an environment variable:
+Instead of adding a secrets.js file you can export the
+mongo uri as an environment variable:
 
 ```bash
 export MONGO_URI=<mongodb uri> yarn start:dev
