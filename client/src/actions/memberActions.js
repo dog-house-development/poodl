@@ -24,7 +24,7 @@ export const fetchMembers = () => dispatch => {
         );
 };
 
-//Get specific Member by // ID
+//Get specificied member by ID
 export const fetchMember = id => dispatch => {
     dispatch(fetchMemberBegin());
     axios
@@ -41,23 +41,13 @@ export const fetchMember = id => dispatch => {
         );
 };
 
-// Get Member Identifier
-export const viewMember = memberData => dispatch => {
-    axios.post('/api/members/viewMember', memberData).catch(err =>
-        dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-        })
-    );
-};
-
 export const fetchMembersBegin = () => ({
     type: FETCH_MEMBERS_BEGIN
 });
 
 export const fetchMembersSuccess = members => ({
     type: FETCH_MEMBERS_SUCCESS,
-    payload: { members }
+    payload: members
 });
 
 export const fetchMemberBegin = () => ({
@@ -66,5 +56,5 @@ export const fetchMemberBegin = () => ({
 
 export const fetchMemberSuccess = member => ({
     type: FETCH_MEMBER_SUCCESS,
-    payload:  member 
+    payload: member
 });
