@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import { fetchVolunteers } from '../../../actions/volunteerActions';
 import DataGrid from '../../ui/DataGrid';
+import { Link } from 'react-router-dom';
 
 export class ViewAllVolunteers extends Component {
     componentDidMount() {
@@ -45,7 +46,7 @@ export class ViewAllVolunteers extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        volunteers: state.volunteers.all.data,
+        volunteers: state.volunteers.all,
         loading: state.volunteers.loading,
         errors: state.errors
     };
