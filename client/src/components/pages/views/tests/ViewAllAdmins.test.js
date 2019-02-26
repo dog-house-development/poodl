@@ -16,20 +16,18 @@ describe('ViewAllAdmins tests', () => {
             {
                 admins: {
                     loading: false,
-                    all: {
-                        data: [
-                            {
-                                _id: '123',
-                                name: 'Big Tup',
-                                email: 'bigtup@nowhere.com'
-                            },
-                            {
-                                _id: '321',
-                                name: 'Lil Tup',
-                                email: 'liltup@nowhere.com'
-                            }
-                        ]
-                    }
+                    all: [
+                        {
+                            _id: '123',
+                            name: 'Big Tup',
+                            email: 'bigtup@nowhere.com'
+                        },
+                        {
+                            _id: '321',
+                            name: 'Lil Tup',
+                            email: 'liltup@nowhere.com'
+                        }
+                    ]
                 },
                 errors: {}
             },
