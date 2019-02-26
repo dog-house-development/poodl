@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { fetchMembers } from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
 import Button from '../../ui/Button';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export class ViewAllMembers extends Component {
     onViewClick = (e, memberID) => {
@@ -29,7 +29,12 @@ export class ViewAllMembers extends Component {
                 membershipDate: member.membershipDate,
                 email: member.email,
                 //on click needs
-                viewProfile: <Link to={'/member/' + member._id} className="button large primary"> Profile </Link> 
+                viewProfile: (
+                    <Link to={'/member/' + member._id} className="button large primary">
+                        {' '}
+                        View{' '}
+                    </Link>
+                )
             });
         });
         return data;
