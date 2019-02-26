@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import GoHome from '../ui/GoHome';
 
 class PageNotFound extends Component {
     render() {
@@ -15,9 +15,7 @@ class PageNotFound extends Component {
                         </a>
                     </p>
                     <h3>Thanks</h3>
-                    <Link to="/dashboard" className="button large primary">
-                        Home
-                    </Link>
+                    <GoHome buttonOrLink="button" size="large" />
                 </div>
             </div>
         );
