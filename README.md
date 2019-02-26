@@ -88,7 +88,7 @@ To start the development server, run:
 yarn start:dev
 ```
 
-If you are using your own mongo database use the following:
+Instead of adding a secrets.js file you can export the mongo uri as an environment variable:
 
 ```bash
 export MONGO_URI=<local mongodb uri> yarn start:dev
