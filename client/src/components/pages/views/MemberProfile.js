@@ -7,11 +7,6 @@ import Loading from '../../ui/Loading';
 export class MemberProfile extends Component {
     constructor(props) {
         super(props);
-        const match = {
-            params: {
-                baseId: 1 //any id you want to set
-            }
-        };
         this.routeParam = props.match.params.id;
     }
 
@@ -43,8 +38,7 @@ export class MemberProfile extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        loading: state.members.loading,
-        members: state.members.one,
+        member: state.members.one,
         errors: state.errors
     };
 };
