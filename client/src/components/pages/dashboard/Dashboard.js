@@ -38,10 +38,6 @@ export class Dashboard extends Component {
                     <Link to="/members" className="link primary">
                         Members
                     </Link>
-                    <br />
-                    <Link to="/member" className="link primary">
-                        View Member
-                    </Link>
                 </div>
             </div>
         );
