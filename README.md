@@ -91,7 +91,7 @@ yarn start:dev
 Instead of adding a secrets.js file you can export the mongo uri as an environment variable:
 
 ```bash
-export MONGO_URI=<local mongodb uri> yarn start:dev
+export MONGO_URI=<mongodb uri> yarn start:dev
 ```
 
 ### Publish your changes
