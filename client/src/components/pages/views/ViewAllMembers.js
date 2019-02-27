@@ -7,10 +7,6 @@ import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
 
 export class ViewAllMembers extends Component {
-    onViewClick = (e, memberID) => {
-        e.preventDefault();
-        this.props.history.push('/memberProfile/:id', memberID);
-    };
     componentDidMount() {
         // call redux action to retrieve all members from api
         this.props.getMembers();
