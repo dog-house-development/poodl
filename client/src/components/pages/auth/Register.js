@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerAdmin } from '../../../actions/authActions';
 
-import GoHome from '../../ui/GoHome';
 import Form from '../../ui/Form';
 
 const propTypes = {
@@ -103,9 +102,9 @@ export class Register extends Component {
     render() {
         return (
             <div className="register-container">
-                <GoHome to="/" className="button small tertiary" buttonOrLink="button" size="small" kind="tertiary">
+                <Link to="/" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
-                </GoHome>
+                </Link>
                 <Form
                     noValidate
                     fields={this.getFields()}
