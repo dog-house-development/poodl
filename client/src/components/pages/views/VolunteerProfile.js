@@ -11,7 +11,7 @@ export class VolunteerProfile extends Component {
     }
 
     componentDidMount() {
-        // call redux action to retrieve all volunteers from api
+        // call redux action to retrieve specified volunteer from api
         this.props.getVolunteer(this.routeParam);
     }
 
