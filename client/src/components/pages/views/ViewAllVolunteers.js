@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 import { fetchVolunteers } from '../../../actions/volunteerActions';
 import DataGrid from '../../ui/DataGrid';
@@ -29,6 +30,9 @@ export class ViewAllVolunteers extends Component {
     render() {
         return (
             <div className="view-all-container">
+                <Link to="/dashboard" className="button small tertiary">
+                    <i className="material-icons">keyboard_backspace</i> Back to home
+                </Link>
                 <h1>View All Volunteers</h1>
                 <DataGrid data={this.getDataGridContent()} loading={this.props.loading} />
             </div>

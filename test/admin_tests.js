@@ -31,11 +31,13 @@ after(function() {
 describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => {
     it('it should create a new admin', done => {
         var admin = {
-            name: 'testy boy',
+            firstName: 'testy',
+            lastName: 'boy',
             email: 'test@gmail.com',
             password: 'greatpassword1!@',
             password2: 'greatpassword1!@',
-            seniorCenter: 'test center'
+            seniorCenter: 'test center',
+            superAdmin: true
         };
 
         chai.request(server)

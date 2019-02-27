@@ -22,7 +22,7 @@ export class Dashboard extends Component {
         return (
             <div className="dashboard-container">
                 <h2>Hey there, </h2>
-                <h1>{admin.name.split(' ')[0]}.</h1>
+                <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
                 <Button content="Log out" onClick={this.onLogoutClick} />
                 <br />
                 <div className="panel">

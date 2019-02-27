@@ -4,7 +4,11 @@ const Schema = mongoose.Schema;
 // Create Schema
 const AdminSchema = new Schema(
     {
-        name: {
+        firstName: {
+            type: String,
+            required: true
+        },
+        lastName: {
             type: String,
             required: true
         },
@@ -19,6 +23,11 @@ const AdminSchema = new Schema(
         seniorCenter: {
             type: String,
             required: true
+        },
+        superAdmin: {
+            type: Boolean,
+            required: true,
+            default: false
         },
         date: {
             type: Date,

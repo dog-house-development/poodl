@@ -59,16 +59,6 @@ exports[`Navbar tests render should render links for nobody logged in 1`] = `
     >
       <Link
         replace={false}
-        to="/register"
-      >
-        Sign up
-      </Link>
-    </li>
-    <li
-      className="right"
-    >
-      <Link
-        replace={false}
         to="/login"
       >
         Log in
