@@ -66,6 +66,19 @@ describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
             });
     });
 
+    it('it should get a list of volunteers', done => {
+        let idList = {
+            _id: ['"' + tempId + '"']
+        };
+        chai.request(server)
+            .post('/api/volunteers/get')
+            .send(idList)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
     it('it should delete a specific volunteer', done => {
         chai.request(server)
             .delete('/api/volunteers/delete/' + tempId)

@@ -96,6 +96,20 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 done();
             });
     });
+
+    it('it should get a list of members', done => {
+        let idList = {
+            _id: ['"' + tempId + '"']
+        };
+        chai.request(server)
+            .post('/api/members/get')
+            .send(idList)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
     it('it should delete a specific member', done => {
         chai.request(server)
             .delete('/api/members/delete/' + tempId)
