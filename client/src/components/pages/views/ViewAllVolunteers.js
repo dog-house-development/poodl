@@ -22,7 +22,6 @@ export class ViewAllVolunteers extends Component {
                 lastName: volunteer.lastName,
                 email: volunteer.email,
                 key: volunteer._id,
-                //on click needs
                 viewProfile: (
                     <Link to={'/volunteer/' + volunteer._id} className="button large primary">
                         {' '}
