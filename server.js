@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
-//const enforce = require('express-sslify');
 
 const admins = require('./routes/api/admins');
 const members = require('./routes/api/members');
