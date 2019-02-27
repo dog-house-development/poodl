@@ -11,7 +11,7 @@ export class MemberProfile extends Component {
     }
 
     componentDidMount() {
-        // call redux action to retrieve all members from api
+        // call redux action to retrieve specified member from api
         this.props.getMember(this.routeParam);
     }
 
