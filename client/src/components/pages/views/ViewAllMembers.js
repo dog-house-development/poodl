@@ -23,7 +23,6 @@ export class ViewAllMembers extends Component {
                 lastName: member.lastName,
                 membershipDate: member.membershipDate,
                 email: member.email,
-                //on click needs
                 viewProfile: (
                     <Link to={'/member/' + member._id} className="button large primary">
                         {' '}
