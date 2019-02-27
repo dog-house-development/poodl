@@ -9,7 +9,6 @@ const admins = require('./routes/api/admins');
 const members = require('./routes/api/members');
 const seniorCenters = require('./routes/api/seniorCenters');
 const volunteers = require('./routes/api/volunteers');
-const profiles = require('./routes/api/profiles');
 
 const app = express();
 
@@ -44,7 +43,6 @@ app.use('/api/admins', admins);
 app.use('/api/members', members);
 app.use('/api/seniorCenters', seniorCenters);
 app.use('/api/volunteers', volunteers);
-app.use('/api/profiles', profiles);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
