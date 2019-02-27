@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
+import { connect } from 'react-redux';
 
-class Landing extends Component {
+export class Landing extends Component {
+    componentDidMount() {
+        // If logged in and an admin navigates to Landng page, should redirect them to dashboard
+        if (this.props.isAuthenticated) {
+            this.props.history.push('/dashboard');
+        }
+    }
+
     render() {
         return (
             <div className="landing-container">
@@ -18,4 +27,10 @@ class Landing extends Component {
     }
 }
 
-export default Landing;
+export const mapStateToProps = (state, props) => {
+    return {
+        isAuthenticated: _.get(state.auth, 'isAuthenticated')
+    };
+};
+
+export default connect(mapStateToProps)(Landing);

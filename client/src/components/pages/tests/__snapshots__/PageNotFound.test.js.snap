@@ -29,13 +29,10 @@ exports[`PageNotFound tests render should render correctly 1`] = `
     <h3>
       Thanks
     </h3>
-    <Link
-      className="button large primary"
-      replace={false}
-      to="/dashboard"
-    >
-      Home
-    </Link>
+    <Connect(GoHome)
+      buttonOrLink="button"
+      size="large"
+    />
   </div>
 </div>
 `;
