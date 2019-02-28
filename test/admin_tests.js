@@ -97,6 +97,19 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             });
     });
 
+    it('it should filter list of admins', done => {
+        let request = {
+            seniorCenter: 'test center'
+        };
+        chai.request(server)
+            .post('/api/admins/filter')
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
     it('it should delete a specific admin', done => {
         chai.request(server)
             .delete('/api/admins/delete/' + tempId)
