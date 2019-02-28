@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-
 import { fetchVolunteers } from '../../../actions/volunteerActions';
 import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
