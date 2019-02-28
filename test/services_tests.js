@@ -69,6 +69,20 @@ describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
                 done();
             });
     });
+
+    it('it should filter services', done => {
+        let request = {
+            seniorCenter: 'The one around the corner'
+        };
+        chai.request(server)
+            .post('/api/services/filter')
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
     it('it should delete a specific service', done => {
         chai.request(server)
             .delete('/api/services/delete/' + tempId)
