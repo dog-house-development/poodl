@@ -22,9 +22,8 @@ export class ViewAllVolunteers extends Component {
                 email: volunteer.email,
                 key: volunteer._id,
                 viewProfile: (
-                    <Link to={'/volunteer/' + volunteer._id} className="button large primary">
-                        {' '}
-                        View{' '}
+                    <Link to={'/volunteer/' + volunteer._id} className="button medium primary">
+                        View
                     </Link>
                 )
             });
