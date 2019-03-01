@@ -36,6 +36,9 @@ export class ViewAllMembers extends Component {
     render() {
         return (
             <div className="view-all-container">
+                <Link to="/dashboard" className="button small tertiary">
+                    <i className="material-icons">keyboard_backspace</i> Back to home
+                </Link>
                 <h1>View All Members</h1>
                 <DataGrid data={this.getDataGridContent()} loading={this.props.loading} />
             </div>

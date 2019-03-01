@@ -19,13 +19,17 @@ describe('ViewAllAdmins tests', () => {
                     all: [
                         {
                             _id: '123',
-                            name: 'Big Tup',
-                            email: 'bigtup@nowhere.com'
+                            firstName: 'Big',
+                            lastName: 'Tup',
+                            email: 'bigtup@nowhere.com',
+                            superAdmin: true
                         },
                         {
                             _id: '321',
-                            name: 'Lil Tup',
-                            email: 'liltup@nowhere.com'
+                            firstName: 'Lil',
+                            lastName: 'Tup',
+                            email: 'liltup@nowhere.com',
+                            superAdmin: false
                         }
                     ]
                 },
@@ -57,13 +61,17 @@ describe('ViewAllAdmins tests', () => {
                 admins: [
                     {
                         _id: '123',
+                        firstName: 'Big',
+                        lastName: 'Tup',
                         email: 'bigtup@nowhere.com',
-                        name: 'Big Tup'
+                        superAdmin: true
                     },
                     {
                         _id: '321',
+                        firstName: 'Lil',
+                        lastName: 'Tup',
                         email: 'liltup@nowhere.com',
-                        name: 'Lil Tup'
+                        superAdmin: false
                     }
                 ],
                 errors: {},
@@ -89,8 +97,8 @@ describe('ViewAllAdmins tests', () => {
     describe('getDataGridContent', () => {
         it('should return filtered admins data', () => {
             expect(instance.getDataGridContent()).toEqual([
-                { key: '123', name: 'Big Tup', email: 'bigtup@nowhere.com' },
-                { key: '321', name: 'Lil Tup', email: 'liltup@nowhere.com' }
+                { key: '123', firstName: 'Big', lastName: 'Tup', email: 'bigtup@nowhere.com', super: 'Yes' },
+                { key: '321', firstName: 'Lil', lastName: 'Tup', email: 'liltup@nowhere.com', super: 'No' }
             ]);
         });
     });

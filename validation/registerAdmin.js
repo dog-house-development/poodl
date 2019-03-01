@@ -12,8 +12,11 @@ module.exports = function validateRegisterInput(data) {
     data.password2 = !isEmpty(data.password2) ? data.password2 : '';
 
     // Name checks
-    if (Validator.isEmpty(data.name)) {
-        errors.name = 'Name field is required';
+    if (Validator.isEmpty(data.firstName)) {
+        errors.firstName = 'First name field is required';
+    }
+    if (Validator.isEmpty(data.lastName)) {
+        errors.lastName = 'Last name field is required';
     }
 
     // Email checks
@@ -23,10 +26,15 @@ module.exports = function validateRegisterInput(data) {
         errors.email = 'Email is invalid';
     }
 
-    //SC check
+    // SC check
     if (Validator.isEmpty(data.seniorCenter)) {
         errors.seniorCenter = 'Senior Center field is required';
     }
+
+    // Super admin check
+    // if (Validator.isNull(data.superAdmin)) {
+    //     errors.superAdmin = 'Super Admin field is required';
+    // }
 
     // Password checks
     if (Validator.isEmpty(data.password)) {
