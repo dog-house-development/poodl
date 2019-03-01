@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerAdmin } from '../../../actions/authActions';
+import _ from 'lodash';
 
 import Form from '../../ui/Form';
 
@@ -13,22 +14,18 @@ const propTypes = {
 };
 
 export class Register extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            name: '',
+            firstName: '',
+            lastName: '',
             email: '',
             password: '',
             password2: '',
+            seniorCenter: props.adminSeniorCenter,
+            superAdmin: false,
             errors: {}
         };
-    }
-
-    componentDidMount() {
-        // If logged in and admin navigates to Register page, should redirect them to dashboard
-        if (this.props.auth.isAuthenticated) {
-            this.props.history.push('/dashboard');
-        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -47,10 +44,13 @@ export class Register extends Component {
         e.preventDefault();
 
         const newAdmin = {
-            name: this.state.name,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
-            password2: this.state.password2
+            password2: this.state.password2,
+            seniorCenter: this.state.seniorCenter,
+            superAdmin: this.state.superAdmin
         };
 
         this.props.registerAdmin(newAdmin, this.props.history);
@@ -61,16 +61,22 @@ export class Register extends Component {
         const fields = [
             {
                 onChange: this.onChange,
-                value: this.state.name,
-                error: errors.name,
-                id: 'name',
+                error: errors.firstName,
+                id: 'firstName',
                 type: 'text',
-                label: 'Name',
-                placeholder: 'First Last...'
+                label: 'First name',
+                placeholder: 'John...'
             },
             {
                 onChange: this.onChange,
-                value: this.state.email,
+                error: errors.lastName,
+                id: 'lastName',
+                type: 'text',
+                label: 'Last name',
+                placeholder: 'Smith...'
+            },
+            {
+                onChange: this.onChange,
                 error: errors.email,
                 id: 'email',
                 type: 'email',
@@ -79,7 +85,6 @@ export class Register extends Component {
             },
             {
                 onChange: this.onChange,
-                value: this.state.password,
                 error: errors.password,
                 id: 'password',
                 type: 'password',
@@ -88,7 +93,6 @@ export class Register extends Component {
             },
             {
                 onChange: this.onChange,
-                value: this.state.password2,
                 error: errors.password2,
                 id: 'password2',
                 type: 'password',
@@ -96,13 +100,24 @@ export class Register extends Component {
                 placeholder: 'Again...'
             }
         ];
+        if (this.props.adminIsSuper) {
+            fields.push({
+                onChange: this.onChange,
+                content: this.props.adminSeniorCenter,
+                error: errors.seniorCenter,
+                id: 'seniorCenter',
+                type: 'text',
+                label: 'Senior Center',
+                placeholder: 'ID...'
+            });
+        }
         return fields;
     };
 
     render() {
         return (
             <div className="register-container">
-                <Link to="/" className="button small tertiary">
+                <Link to="/dashboard" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
                 <Form
@@ -112,14 +127,6 @@ export class Register extends Component {
                     buttonLabel="Register"
                     formTitle="Register Admin"
                 />
-                <div className="center">
-                    <p>
-                        Already have an account?{' '}
-                        <Link to="/login" className="button small secondary">
-                            Log in
-                        </Link>
-                    </p>
-                </div>
             </div>
         );
     }
@@ -128,6 +135,8 @@ export class Register extends Component {
 export const mapStateToProps = (state, props) => {
     return {
         auth: state.auth,
+        adminIsSuper: _.get(state.auth.admin, 'superAdmin', false),
+        adminSeniorCenter: _.get(state.auth.admin, 'seniorCenter'),
         errors: state.errors
     };
 };

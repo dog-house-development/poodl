@@ -22,7 +22,7 @@ export class Dashboard extends Component {
         return (
             <div className="dashboard-container">
                 <h2>Hey there, </h2>
-                <h1>{admin.name.split(' ')[0]}.</h1>
+                <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
                 <Button content="Log out" onClick={this.onLogoutClick} />
                 <br />
                 <div className="panel">
@@ -37,6 +37,12 @@ export class Dashboard extends Component {
                     <br />
                     <Link to="/members" className="link primary">
                         Members
+                    </Link>
+                </div>
+                <div className="panel">
+                    <h1 className="panel-title">Register New</h1>
+                    <Link to="/register" className="link primary">
+                        Admin
                     </Link>
                 </div>
             </div>

@@ -110,9 +110,9 @@ export class Login extends Component {
                 />
                 <div className="center">
                     <p>
-                        Don't have an account?{' '}
-                        <Link to="/register" className="button small secondary">
-                            Register
+                        Forgot password?{' '}
+                        <Link to="/login" className="button small secondary">
+                            Reset
                         </Link>
                     </p>
                 </div>

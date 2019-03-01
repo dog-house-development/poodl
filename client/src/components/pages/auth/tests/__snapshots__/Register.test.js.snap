@@ -7,7 +7,7 @@ exports[`Register tests render should render correctly 1`] = `
   <Link
     className="button small tertiary"
     replace={false}
-    to="/"
+    to="/dashboard"
   >
     <i
       className="material-icons"
@@ -22,12 +22,19 @@ exports[`Register tests render should render correctly 1`] = `
       Array [
         Object {
           "error": undefined,
-          "id": "name",
-          "label": "Name",
+          "id": "firstName",
+          "label": "First name",
           "onChange": [Function],
-          "placeholder": "First Last...",
+          "placeholder": "John...",
           "type": "text",
-          "value": "Sam",
+        },
+        Object {
+          "error": undefined,
+          "id": "lastName",
+          "label": "Last name",
+          "onChange": [Function],
+          "placeholder": "Smith...",
+          "type": "text",
         },
         Object {
           "error": "Invalid email",
@@ -36,7 +43,6 @@ exports[`Register tests render should render correctly 1`] = `
           "onChange": [Function],
           "placeholder": "example@poodl.com...",
           "type": "email",
-          "value": "sam@test.com",
         },
         Object {
           "error": undefined,
@@ -45,7 +51,6 @@ exports[`Register tests render should render correctly 1`] = `
           "onChange": [Function],
           "placeholder": "Shhhhh...",
           "type": "password",
-          "value": "abc123",
         },
         Object {
           "error": undefined,
@@ -54,7 +59,6 @@ exports[`Register tests render should render correctly 1`] = `
           "onChange": [Function],
           "placeholder": "Again...",
           "type": "password",
-          "value": "abc123",
         },
       ]
     }
@@ -62,20 +66,5 @@ exports[`Register tests render should render correctly 1`] = `
     noValidate={true}
     onSubmit={[Function]}
   />
-  <div
-    className="center"
-  >
-    <p>
-      Already have an account?
-       
-      <Link
-        className="button small secondary"
-        replace={false}
-        to="/login"
-      >
-        Log in
-      </Link>
-    </p>
-  </div>
 </div>
 `;

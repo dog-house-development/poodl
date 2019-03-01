@@ -19,7 +19,6 @@ describe('Form tests', () => {
                 fields: [
                     {
                         onChange: () => {},
-                        value: '',
                         error: {},
                         id: 'email',
                         type: 'email',

@@ -28,21 +28,10 @@ describe('Field tests', () => {
         );
         wrapper = shallow(<Field {..._.assign({}, props)} />);
         instance = wrapper.instance();
-        instance.setState({ value: '' });
     };
 
     beforeEach(() => {
         setInstanceAndWrapper();
-    });
-
-    describe('onComponentDidMount', () => {
-        it('should set the value state', () => {
-            spyOn(instance, 'onComponentDidMount');
-            expect(instance.state.value).toEqual('');
-            setInstanceAndWrapper({ content: 'Howdy' });
-            instance.onComponentDidMount();
-            expect(instance.state.value).toEqual('Howdy');
-        });
     });
 
     describe('handleChange', () => {
@@ -50,13 +39,11 @@ describe('Field tests', () => {
             spyOn(instance, 'handleChange');
             const baseProps = { onChange: jest.fn() };
             setInstanceAndWrapper(baseProps);
-            expect(instance.state.value).toEqual('');
             const e = {
                 target: { name: 'email', value: 'Moo' },
                 preventDefault: () => {}
             };
             wrapper.find('input').simulate('change', e);
-            expect(instance.state.value).toEqual('Moo');
             expect(baseProps.onChange).toHaveBeenCalledTimes(1);
         });
     });

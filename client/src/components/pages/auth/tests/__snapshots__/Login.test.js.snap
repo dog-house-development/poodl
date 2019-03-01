@@ -49,14 +49,14 @@ exports[`Login tests render should render correctly 1`] = `
     className="center"
   >
     <p>
-      Don't have an account?
+      Forgot password?
        
       <Link
         className="button small secondary"
         replace={false}
-        to="/register"
+        to="/login"
       >
-        Register
+        Reset
       </Link>
     </p>
   </div>

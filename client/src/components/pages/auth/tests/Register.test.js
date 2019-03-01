@@ -15,8 +15,14 @@ describe('Register tests', () => {
             {},
             {
                 auth: {
-                    isAuthenticated: false,
-                    loading: false
+                    isAuthenticated: true,
+                    loading: false,
+                    admin: {
+                        superAdmin: false,
+                        seniorCenter: 123,
+                        firstName: 'Frog',
+                        lastName: 'Anderson'
+                    }
                 },
                 errors: {}
             },
@@ -50,7 +56,18 @@ describe('Register tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                auth: { isAuthenticated: false, loading: false },
+                adminIsSuper: false,
+                adminSeniorCenter: 123,
+                auth: {
+                    isAuthenticated: true,
+                    loading: false,
+                    admin: {
+                        superAdmin: false,
+                        seniorCenter: 123,
+                        firstName: 'Frog',
+                        lastName: 'Anderson'
+                    }
+                },
                 errors: {}
             });
         });
@@ -62,21 +79,6 @@ describe('Register tests', () => {
             expect(JSON.parse(JSON.stringify(mapDispatchToProps(dispatch)))).toEqual(
                 JSON.parse(JSON.stringify({ registerAdmin: () => {} }))
             );
-        });
-    });
-
-    describe('componentDidMount', () => {
-        it('should redirect if admin is authenticated', () => {
-            const authenticatedState = {
-                auth: {
-                    isAuthenticated: true,
-                    loading: false
-                }
-            };
-            setInstanceAndWrapper({}, authenticatedState);
-            const newInstanceProps = instance.props.history.concat('/dashboard');
-            instance.componentDidMount();
-            expect(instance.props.history).toEqual(newInstanceProps);
         });
     });
 
@@ -116,40 +118,102 @@ describe('Register tests', () => {
     });
 
     describe('getFields', () => {
-        it('should return correct fields', () => {
+        it('should return correct fields if not super admin', () => {
             expect(instance.getFields()).toEqual([
                 {
                     onChange: instance.onChange,
-                    value: 'Sam',
-                    id: 'name',
+                    id: 'firstName',
                     type: 'text',
-                    label: 'Name',
-                    placeholder: 'First Last...'
+                    label: 'First name',
+                    placeholder: 'John...',
+                    error: undefined
                 },
                 {
                     onChange: instance.onChange,
-                    value: 'sam@test.com',
+                    id: 'lastName',
+                    type: 'text',
+                    label: 'Last name',
+                    placeholder: 'Smith...',
+                    error: undefined
+                },
+                {
+                    onChange: instance.onChange,
                     id: 'email',
                     type: 'email',
                     label: 'Email',
-                    error: 'Invalid email',
-                    placeholder: 'example@poodl.com...'
+                    placeholder: 'example@poodl.com...',
+                    error: 'Invalid email'
                 },
                 {
                     onChange: instance.onChange,
-                    value: 'abc123',
                     id: 'password',
                     type: 'password',
                     label: 'Password',
-                    placeholder: 'Shhhhh...'
+                    placeholder: 'Shhhhh...',
+                    error: undefined
                 },
                 {
                     onChange: instance.onChange,
-                    value: 'abc123',
                     id: 'password2',
                     type: 'password',
                     label: 'Confirm Password',
-                    placeholder: 'Again...'
+                    placeholder: 'Again...',
+                    error: undefined
+                }
+            ]);
+        });
+
+        it('should return correct fields if super admin', () => {
+            setInstanceAndWrapper({}, { auth: { admin: { superAdmin: true, seniorCenter: '123' } } });
+            expect(instance.getFields()).toEqual([
+                {
+                    onChange: instance.onChange,
+                    id: 'firstName',
+                    type: 'text',
+                    label: 'First name',
+                    placeholder: 'John...',
+                    error: undefined
+                },
+                {
+                    onChange: instance.onChange,
+                    id: 'lastName',
+                    type: 'text',
+                    label: 'Last name',
+                    placeholder: 'Smith...',
+                    error: undefined
+                },
+                {
+                    onChange: instance.onChange,
+                    id: 'email',
+                    type: 'email',
+                    label: 'Email',
+                    placeholder: 'example@poodl.com...',
+                    error: 'Invalid email'
+                },
+                {
+                    onChange: instance.onChange,
+                    id: 'password',
+                    type: 'password',
+                    label: 'Password',
+                    placeholder: 'Shhhhh...',
+                    error: undefined
+                },
+                {
+                    onChange: instance.onChange,
+                    id: 'password2',
+                    type: 'password',
+                    label: 'Confirm Password',
+                    placeholder: 'Again...',
+                    error: undefined
+                },
+                {
+                    onChange: instance.onChange,
+                    id: 'seniorCenter',
+                    content: '123',
+                    type: 'text',
+                    label: 'Senior Center',
+                    placeholder: 'ID...',
+                    error: undefined
                 }
             ]);
         });

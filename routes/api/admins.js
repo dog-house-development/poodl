@@ -76,10 +76,12 @@ router.post('/register', (req, res) => {
             return res.status(400).json({ email: 'Email already exists' });
         } else {
             const newAdmin = new Admin({
-                name: req.body.name,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 email: req.body.email,
                 password: req.body.password,
-                seniorCenter: req.body.seniorCenter
+                seniorCenter: req.body.seniorCenter,
+                superAdmin: req.body.superAdmin
             });
 
             // Hash password before saving in database
@@ -124,10 +126,13 @@ router.post('/login', (req, res) => {
         bcrypt.compare(password, admin.password).then(isMatch => {
             if (isMatch) {
                 // Admin matched
-                // Create JWT Payload
+                // Create JWT Payload, basically what we want to send in the response
                 const payload = {
                     id: admin.id,
-                    name: admin.name
+                    firstName: admin.firstName,
+                    lastName: admin.lastName,
+                    seniorCenter: admin.seniorCenter,
+                    superAdmin: admin.superAdmin
                 };
 
                 // Sign token
