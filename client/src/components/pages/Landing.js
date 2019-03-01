@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 
@@ -18,7 +17,12 @@ export class Landing extends Component {
                     <h1>Welcome to</h1>
                     <h1 className="landing-title">Poodl</h1>
                     <p className="landing-info">The member management tool for rural senior centers!</p>
-                    <a href="https://github.com/dog-house-development/poodl/wiki" className="button large primary">
+                    <a
+                        href="https://github.com/dog-house-development/poodl/wiki"
+                        className="button large primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         Learn More
                     </a>
                 </div>
