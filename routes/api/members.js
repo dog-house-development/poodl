@@ -35,6 +35,7 @@ router.get('/get', (req, res) => {
     });
 });
 
+const validateEditInput = require('../../validation/editMember');
 // @route POST api/members/edit
 //should edit specified member by first and last name
 router.post('/edit', (req, res) => {
