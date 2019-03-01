@@ -1,0 +1,52 @@
+@import '_presets.scss';
+
+.view-by-date {
+  padding: 0;
+
+  .view-by-date-header {
+    border-bottom: 2px solid $gray-1;
+    display: flex;
+    height: 3em;
+
+    .view-by-date-header-title {
+      display: inline-flex;
+      flex: 2;
+      text-align: center;
+    }
+
+    .view-by-date-header-button {
+      display: inline-flex;
+      flex: 1;
+      font-size: 0.9em;
+      border-radius: 0;
+
+      &:hover {
+        background-color: $button-primary;
+        color: #fff;
+      }
+
+      &:active {
+        background-color: $button-primary-active;
+        color: #fff;
+      }
+
+      &:focus {
+        border-color: $button-primary;
+      }
+
+      &:first-child {
+        border-right: 2px solid $gray-1;
+      }
+
+      &:last-child {
+        border-left: 2px solid $gray-1;
+        text-align: right;
+      }
+    }
+  }
+
+  .view-by-date-body {
+    .view-by-date-row {
+    }
+  }
+}
