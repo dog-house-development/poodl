@@ -91,19 +91,6 @@ To start the development server, run:
 ```bash
 yarn start:dev
 ```
-### Testing
-
-To run component tests(located in 'client/src/components/component_name_here/tests/):
-```bash
-yarn test:client
-```
-To run API tests (located in /test/):
-```bash
-yarn test:server
-```
-
-### View [Development Documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation)
-
 
 Instead of adding a secrets.js file you can export the
 mongo uri as an environment variable:
@@ -111,6 +98,24 @@ mongo uri as an environment variable:
 ```bash
 export MONGO_URI=<mongodb uri> yarn start:dev
 ```
+
+### Testing
+
+To run react component tests (located in '/client/src/components/component_name_here/tests/):
+
+```bash
+yarn test:client
+```
+
+To run API tests (located in /test/):
+
+```bash
+yarn test:server
+```
+
+### [Read Development Documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation)
+
+Learn how to develop our project by reading our development documentation.
 
 ### Publish your changes
 
