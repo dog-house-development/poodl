@@ -36,7 +36,6 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
             email: 'SpecialDiet2@gmail.com',
             address: 'Brooklyn 99',
             seniorCenter: 'Nice little place',
-            membershipDate: 'Frever',
             renewalDate: 'Today',
             specialDiet: ['fish', 'chicken nuggets']
         };
@@ -96,6 +95,33 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 done();
             });
     });
+
+    it('it should get a list of members', done => {
+        let idList = {
+            _id: ['"' + tempId + '"']
+        };
+        chai.request(server)
+            .post('/api/members/get')
+            .send(idList)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('it should filter list of members', done => {
+        let request = {
+            seniorCenter: 'Nice little place'
+        };
+        chai.request(server)
+            .post('/api/members/filter')
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
     it('it should delete a specific member', done => {
         chai.request(server)
             .delete('/api/members/delete/' + tempId)
