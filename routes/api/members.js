@@ -13,6 +13,7 @@ const validateEditInput = require('../../validation/editMember');
 //validator is here just for the purpose of setting all the values to '' probably a better way but this is what I want to do
 const validateEditInputByID = require('../../validation/editMemberByID');
 const validateRegisterInput = require('../../validation/addMember');
+const validateEditInput = require('../../validation/editMember');
 
 // @route DELETE api/members/delete/:id
 // should delete specified member by ID

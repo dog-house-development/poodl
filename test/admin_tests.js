@@ -84,6 +84,19 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             });
     });
 
+    it('it should get a list of admins', done => {
+        let idList = {
+            _id: ['"' + tempId + '"']
+        };
+        chai.request(server)
+            .post('/api/admins/get')
+            .send(idList)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
     it('it should delete a specific admin', done => {
         chai.request(server)
             .delete('/api/admins/delete/' + tempId)
