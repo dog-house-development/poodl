@@ -35,7 +35,6 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
             lastName: 'Boile',
             email: 'SpecialDiet2@gmail.com',
             address: 'Brooklyn 99',
-            membershipDate: 'Frever',
             seniorCenter: 'Nice little place',
             renewalDate: 'Today',
             specialDiet: ['fish', 'chicken nuggets']

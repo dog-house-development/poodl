@@ -142,9 +142,6 @@ router.post('/edit/:id', (req, res) => {
     });
 });
 
-// Load edit inout validation
-const validateEditInput = require('../../validation/editMember');
-
 // Load input validation
 const validateRegisterInput = require('../../validation/addMember');
 
