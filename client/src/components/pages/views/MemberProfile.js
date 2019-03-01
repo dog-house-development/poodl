@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import Button from '../../ui/Button';
-import { fetchMembers } from '../../../actions/memberActions';
+import { fetchMember } from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
 
 export class MemberProfile extends Component {
+    constructor(props) {
+        super(props);
+        this.routeParam = props.match.params.id;
+    }
+    
     componentDidMount() {
         // call redux action to retrieve all members from api
-        this.props.getMembers();
+        this.props.getMember(this.routeParam);
     }
 
     getDataGridContent() {
@@ -29,25 +33,27 @@ export class MemberProfile extends Component {
 
     render() {
         return (
-            <div className="view-all-container">
+        /*    <div className="view-all-container">
                 <h1>View All Members</h1>
                 <DataGrid data={this.getDataGridContent()} loading={this.props.loading} />
             </div>
+            */
+            <p> Hello, {this.props.member.firstName} </p>
         );
     }
 }
 
 export const mapStateToProps = (state, props) => {
     return {
-        loading: state.members.loading,
-        members: state.members.all.data,
+        //loading: state.member.loading,
+        member: state.members.member,
         errors: state.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getMembers: () => dispatch(fetchMembers())
+        getMember: id => dispatch(fetchMember(id))
     };
 };
 

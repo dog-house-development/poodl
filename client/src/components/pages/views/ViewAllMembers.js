@@ -5,11 +5,12 @@ import _ from 'lodash';
 import { fetchMembers } from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
 import Button from '../../ui/Button';
+import { Link } from 'react-router-dom'
 
 export class ViewAllMembers extends Component {
-    onViewClick = e => {
+    onViewClick = (e, memberID) => {
         e.preventDefault();
-        this.props.history.push('/dashboard');
+        this.props.history.push('/memberProfile/:id', memberID);
     };
     componentDidMount() {
         // call redux action to retrieve all members from api
@@ -28,7 +29,7 @@ export class ViewAllMembers extends Component {
                 membershipDate: member.membershipDate,
                 email: member.email,
                 //on click needs
-                viewProfile: <Button content="View" onClick={this.onViewClick} />
+                viewProfile: <Link to={'/member/' + member._id} className="button large primary"> Profile </Link> 
             });
         });
         return data;

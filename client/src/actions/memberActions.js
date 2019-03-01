@@ -66,5 +66,5 @@ export const fetchMemberBegin = () => ({
 
 export const fetchMemberSuccess = member => ({
     type: FETCH_MEMBER_SUCCESS,
-    payload: { member }
+    payload:  member 
 });

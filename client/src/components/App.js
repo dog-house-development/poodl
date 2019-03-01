@@ -64,7 +64,7 @@ class App extends Component {
                             <PrivateRoute exact path="/admins" component={ViewAllAdmins} />
                             <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />
                             <PrivateRoute exact path="/members" component={ViewAllMembers} />
-                            <PrivateRoute exact path="/member" component={MemberProfile} />
+                            <PrivateRoute exact path="/member/:id" component={MemberProfile} />
                             {/* PageNotFound route must stay at bottom */}
                             <Route component={PageNotFound} />
                         </Switch>

@@ -2,7 +2,8 @@ import { FETCH_MEMBERS_BEGIN, FETCH_MEMBERS_SUCCESS, FETCH_MEMBER_BEGIN, FETCH_M
 
 const initialState = {
     loading: false,
-    all: []
+    all: [],
+    member: {}
 };
 
 export default function(state = initialState, action) {
@@ -27,7 +28,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                all: action.payload.members
+                member: action.payload
             };
         default:
             return state;
