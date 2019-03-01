@@ -8,6 +8,12 @@ const passport = require('passport');
 // Load Member model
 const Member = require('../../models/Member');
 
+//Validation
+const validateEditInput = require('../../validation/editMember');
+//validator is here just for the purpose of setting all the values to '' probably a better way but this is what I want to do
+const validateEditInputByID = require('../../validation/editMemberByID');
+const validateRegisterInput = require('../../validation/addMember');
+
 // @route DELETE api/members/delete/:id
 // should delete specified member by ID
 router.delete('/delete/:id', (req, res) => {
@@ -18,11 +24,11 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 // @route GET api/members/get/:id
-// should return specified member by ID
+// should return specifi members
 router.get('/get/:id', (req, res) => {
-    Member.findOne({ _id: req.params.id }, (err, member) => {
+    Member.findOne({ _id: req.params.id }, (err, post) => {
         if (err) return next(err);
-        return res.json(member);
+        return res.json(post);
     });
 });
 
@@ -35,7 +41,25 @@ router.get('/get', (req, res) => {
     });
 });
 
-const validateEditInput = require('../../validation/editMember');
+//@route POST api/members/get
+//should return members by ids from list
+//takes json _id:[]
+router.post('/get', (req, res) => {
+    Member.find({ _id: req.body._id }, (err, members) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(members);
+    });
+});
+
+// @route POST api/members/filter
+//should filter members and return ones that you want. Builds up a query
+router.post('/filter', (req, res) => {
+    Member.find(req.body, (err, members) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(members);
+    });
+});
+
 // @route POST api/members/edit
 //should edit specified member by first and last name
 router.post('/edit', (req, res) => {
@@ -88,9 +112,6 @@ router.post('/edit', (req, res) => {
     });
 });
 
-//validator is here just for the purpose of setting all the values to '' probably a better way but this is what I want to do
-const validateEditInputByID = require('../../validation/editMemberByID');
-
 // @route POST api/members/edit/:id
 //should edit specified member by first and last name
 router.post('/edit/:id', (req, res) => {
@@ -142,12 +163,8 @@ router.post('/edit/:id', (req, res) => {
     });
 });
 
-// Load input validation
-const validateRegisterInput = require('../../validation/addMember');
-
 router.post('/add', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
-
     if (!isValid) {
         return res.status(400).json(errors);
     }
