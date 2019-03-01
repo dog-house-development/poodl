@@ -36,10 +36,7 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
             email: 'SpecialDiet2@gmail.com',
             address: 'Brooklyn 99',
             seniorCenter: 'Nice little place',
-<<<<<<< HEAD:test/member_test.js
-=======
             membershipDate: '01/02/2003',
->>>>>>> add more details to member_tests:test/member_tests.js
             renewalDate: 'Today',
             specialDiet: ['fish', 'chicken nuggets']
         };

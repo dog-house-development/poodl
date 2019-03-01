@@ -30,7 +30,7 @@ after(function() {
 
 describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => {
     it('it should create a new admin', done => {
-        var admin = {
+        var admin1 = {
             firstName: 'testy',
             lastName: 'boy',
             email: 'test@gmail.com',
@@ -41,7 +41,8 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
         };
 
         var admin2 = {
-            name: 'testy boy2',
+            firstName: 'testy',
+            lastName: 'boy2',
             email: 'test2@gmail.com',
             password: 'greatpassword2!@',
             password2: 'greatpassword2!@',
@@ -59,7 +60,8 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('_id');
-                res.body.should.have.property('name').eql('testy boy');
+                res.body.should.have.property('fistName').eql('testy');
+                res.body.should.have.property('lastName').eql('boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
                 res.body.should.have.property('seniorCenter').eql('test center');
                 done();
@@ -92,13 +94,15 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
                 tempId = res.body.data[1]._id;
                 res.body.should.have.property('data');
                 res.body.data[1].should.have.property('_id');
-                res.body.data[1].should.have.property('name').eql('testy boy');
+                res.body.data[1].should.have.property('firstName').eql('testy');
+                res.body.data[1].should.have.property('lastName').eql('boy');
                 res.body.data[1].should.have.property('email').eql('test@gmail.com');
                 res.body.data[1].should.have.property('password');
                 res.body.data[1].should.have.property('date');
 
                 res.body.data[0].should.have.property('_id');
-                res.body.data[0].should.have.property('name').eql('testy boy2');
+                res.body.data[0].should.have.property('firstName').eql('testy');
+                res.body.data[0].should.have.property('lastName').eql('boy2');
                 res.body.data[0].should.have.property('email').eql('test2@gmail.com');
                 res.body.data[0].should.have.property('password');
                 res.body.data[0].should.have.property('date');
@@ -114,7 +118,8 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
                 res.should.have.status(200);
                 res.body.should.not.have.property('data');
                 res.body.should.have.property('_id');
-                res.body.should.have.property('name').eql('testy boy');
+                res.body.should.have.property('firstName').eql('testy');
+                res.body.should.have.property('lastName').eql('boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
                 res.body.should.have.property('seniorCenter').eql('test center');
                 done();
