@@ -38,6 +38,26 @@ router.get('/get/:id', (req, res, next) => {
         return res.json(post);
     });
 });
+
+//@route GET api/admins/get
+//should return admins with ids from list
+//takes json _id: []
+router.post('/get', (req, res) => {
+    Admin.find({ _id: req.body._id }, (err, admins) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(admins);
+    });
+});
+
+// @route POST api/admins/filter
+// should return filtered results from json
+router.post('/filter', (req, res) => {
+    Admin.find(res.body, (err, admins) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(admins);
+    });
+});
+
 // @route POST api/admins/register
 // @desc Register user
 // @access Public

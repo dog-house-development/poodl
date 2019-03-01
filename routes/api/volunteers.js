@@ -21,6 +21,15 @@ router.delete('/delete/:id', (req, res) => {
     });
 });
 
+// @route POST api/volunteers/filter
+// should return filtered results from json
+router.post('/filter', (req, res) => {
+    Volunteer.find(res.body, (err, volunteers) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(volunteers);
+    });
+});
+
 // @route POST api/volunteers/add
 // should add a new Volunteer
 router.post('/add', (req, res) => {
@@ -65,6 +74,16 @@ router.get('/get', (req, res) => {
     Volunteer.find((err, volunteers) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: volunteers });
+    });
+});
+
+//@route POST api/volunteers/get
+//should return list of volunteers by id
+// teakes _id: []
+router.post('/get', (req, res) => {
+    Volunteer.find((err, volunteers) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(volunteers);
     });
 });
 

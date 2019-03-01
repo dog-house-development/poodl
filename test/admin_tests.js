@@ -34,7 +34,8 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             name: 'testy boy',
             email: 'test@gmail.com',
             password: 'greatpassword1!@',
-            password2: 'greatpassword1!@'
+            password2: 'greatpassword1!@',
+            seniorCenter: 'test center'
         };
 
         chai.request(server)
@@ -42,8 +43,6 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             .send(admin)
             .end((err, res) => {
                 res.should.have.status(200);
-                res.body.should.have.property('name').eql('testy boy');
-                res.body.should.have.property('email').eql('test@gmail.com');
 
                 done();
             });
@@ -60,7 +59,6 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
-                res.body.should.have.property('token');
 
                 done();
             });
@@ -80,6 +78,32 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
     it('it should get a specific admin', done => {
         chai.request(server)
             .get('/api/admins/get/' + tempId)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('it should get a list of admins', done => {
+        let idList = {
+            _id: ['"' + tempId + '"']
+        };
+        chai.request(server)
+            .post('/api/admins/get')
+            .send(idList)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('it should filter list of admins', done => {
+        let request = {
+            seniorCenter: 'test center'
+        };
+        chai.request(server)
+            .post('/api/admins/filter')
+            .send(request)
             .end((err, res) => {
                 res.should.have.status(200);
                 done();

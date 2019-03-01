@@ -28,27 +28,31 @@ after(function() {
     process.exit(0);
 });
 
-describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
-    it('it should add a volunteer', done => {
-        var testVolunteer = {
-            firstName: 'Charles',
-            lastName: 'Boyle',
-            email: 'JakeFAN123@gmail.com',
-            seniorCenter: 'center'
+describe('Activities suite /ADD./GET, /GET/:ID,/DELETE', () => {
+    it('it should add a new service', done => {
+        let testActivity = {
+            name: 'ice climbing',
+            times: '10AM-12PM',
+            dates: 'Saturday',
+            admins: 'Bill',
+            volunteers: 'Sandy',
+            members: 'Peepsuuu',
+            seniorCenter: 'The one around the corner'
         };
+
         chai.request(server)
-            .post('/api/volunteers/add')
-            .send(testVolunteer)
+            .post('/api/activities/add')
+            .send(testActivity)
             .end((err, res) => {
                 res.should.have.status(200);
+
                 done();
             });
     });
-
     var tempId = '';
-    it('it should get all the volunteers', done => {
+    it('it should get all activities', done => {
         chai.request(server)
-            .get('/api/volunteers/get')
+            .get('/api/activities/get')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
@@ -57,44 +61,32 @@ describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
             });
     });
 
-    it('it should get a specific volunteer', done => {
+    it('it should get a specific activity', done => {
         chai.request(server)
-            .get('/api/volunteers/get/' + tempId)
+            .get('/api/activities/get/' + tempId)
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
     });
 
-    it('it should get a list of volunteers', done => {
-        let idList = {
-            _id: ['"' + tempId + '"']
-        };
-        chai.request(server)
-            .post('/api/volunteers/get')
-            .send(idList)
-            .end((err, res) => {
-                res.should.have.status(200);
-                done();
-            });
-    });
-
-    it('it should filter volunteers', done => {
+    it('it should filter activities', done => {
         let request = {
-            seniorCenter: 'center'
+            seniorCenter: 'The one around the corner'
         };
         chai.request(server)
-            .post('/api/volunteers/filter')
+            .post('/api/activities/filter')
             .send(request)
             .end((err, res) => {
                 res.should.have.status(200);
+
                 done();
             });
     });
 
-    it('it should delete a specific volunteer', done => {
+    it('it should delete a specific activity', done => {
         chai.request(server)
-            .delete('/api/volunteers/delete/' + tempId)
+            .delete('/api/activities/delete/' + tempId)
             .end((err, res) => {
                 res.should.have.status(200);
                 done();

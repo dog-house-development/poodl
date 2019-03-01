@@ -37,6 +37,15 @@ router.get('/get/:id', (req, res) => {
     });
 });
 
+// @route POST api/seniorCenters/filter
+// should return filtered results from json
+router.post('/filter', (req, res) => {
+    SeniorCenter.find(res.body, (err, seniorCenters) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(seniorCenters);
+    });
+});
+
 // @route POST api/seniorCenters/add
 // @desc adding a seniorCenter
 // @access Public

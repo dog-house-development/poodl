@@ -67,6 +67,19 @@ describe('SeniorCenter API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
             });
     });
 
+    it('it should filter seniorCenters', done => {
+        let request = {
+            phone: '818-WATER'
+        };
+        chai.request(server)
+            .post('/api/seniorCenters/filter')
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
     it('it should delete a specific seniorCenter', done => {
         chai.request(server)
             .delete('/api/seniorCenters/delete/' + tempId)
