@@ -16,7 +16,11 @@ export class ViewAllAdmins extends Component {
         let data = [];
         _.each(this.props.admins, admin => {
             // we want admins' names and emails, and we need a key which will not be displayed
-            data.push({ name: admin.name, email: admin.email, key: admin._id });
+            data.push({
+                name: admin.name,
+                email: admin.email,
+                key: admin._id
+            });
         });
         return data;
     }
@@ -33,7 +37,7 @@ export class ViewAllAdmins extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        admins: state.admins.all.data,
+        admins: state.admins.all,
         loading: state.admins.loading,
         errors: state.errors
     };

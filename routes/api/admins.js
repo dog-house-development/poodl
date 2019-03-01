@@ -33,9 +33,9 @@ router.get('/get', (req, res) => {
 //@route GET api/admins/get/:id
 //should return admin with given id
 router.get('/get/:id', (req, res, next) => {
-    Admin.findOne({ _id: req.params.id }, (err, post) => {
+    Admin.findOne({ _id: req.params.id }, (err, admin) => {
         if (err) return next(err);
-        return res.json(post);
+        return res.json(admin);
     });
 });
 

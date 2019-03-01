@@ -16,7 +16,7 @@ describe('admin actions', () => {
         };
         const expectedAction = {
             type: types.FETCH_ADMINS_SUCCESS,
-            payload: { admins }
+            payload: admins
         };
         expect(actions.fetchAdminsSuccess(admins)).toEqual(expectedAction);
     });

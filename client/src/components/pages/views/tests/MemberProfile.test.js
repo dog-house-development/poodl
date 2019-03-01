@@ -3,29 +3,30 @@ import ReactDOM from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
-
-import { ViewAllAdmins, mapStateToProps, mapDispatchToProps } from '../ViewAllAdmins';
+import { Link } from 'react-router-dom';
+import { MemberProfile, mapStateToProps, mapDispatchToProps } from '../MemberProfile';
 
 configure({ adapter: new Adapter() });
 
-describe('ViewAllAdmins tests', () => {
+const match = {
+    params: {
+        _id: '123' //any id you want to set
+    }
+};
+describe('MemberProfile tests', () => {
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(
             {},
             {
-                admins: {
-                    loading: false,
-                    all: [
+                members: {
+                    one: [
                         {
                             _id: '123',
-                            name: 'Big Tup',
+                            firstName: 'Big',
+                            lastName: 'Tup',
+                            membershipDate: '02/20/2020',
                             email: 'bigtup@nowhere.com'
-                        },
-                        {
-                            _id: '321',
-                            name: 'Lil Tup',
-                            email: 'liltup@nowhere.com'
                         }
                     ]
                 },
@@ -35,7 +36,8 @@ describe('ViewAllAdmins tests', () => {
         );
         props = _.assign({}, _props);
         wrapper = shallow(
-            <ViewAllAdmins
+            <MemberProfile
+                match={match}
                 {..._.assign(
                     {},
                     props,
@@ -54,20 +56,16 @@ describe('ViewAllAdmins tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                admins: [
+                member: [
                     {
                         _id: '123',
-                        email: 'bigtup@nowhere.com',
-                        name: 'Big Tup'
-                    },
-                    {
-                        _id: '321',
-                        email: 'liltup@nowhere.com',
-                        name: 'Lil Tup'
+                        firstName: 'Big',
+                        lastName: 'Tup',
+                        membershipDate: '02/20/2020',
+                        email: 'bigtup@nowhere.com'
                     }
                 ],
-                errors: {},
-                loading: false
+                errors: {}
             });
         });
     });
@@ -75,7 +73,7 @@ describe('ViewAllAdmins tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getAdmins: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getMembers: () => {} }));
         });
     });
 
@@ -83,15 +81,6 @@ describe('ViewAllAdmins tests', () => {
         it('should run without breaking', () => {
             spyOn(instance, 'componentDidMount');
             instance.componentDidMount();
-        });
-    });
-
-    describe('getDataGridContent', () => {
-        it('should return filtered admins data', () => {
-            expect(instance.getDataGridContent()).toEqual([
-                { key: '123', name: 'Big Tup', email: 'bigtup@nowhere.com' },
-                { key: '321', name: 'Lil Tup', email: 'liltup@nowhere.com' }
-            ]);
         });
     });
 

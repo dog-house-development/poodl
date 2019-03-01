@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-
 import { fetchMembers } from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
+import { Link } from 'react-router-dom';
 
 export class ViewAllMembers extends Component {
     componentDidMount() {
@@ -21,7 +21,13 @@ export class ViewAllMembers extends Component {
                 firstName: member.firstName,
                 lastName: member.lastName,
                 membershipDate: member.membershipDate,
-                email: member.email
+                email: member.email,
+                viewProfile: (
+                    <Link to={'/member/' + member._id} className="button large primary">
+                        {' '}
+                        View{' '}
+                    </Link>
+                )
             });
         });
         return data;
@@ -39,8 +45,8 @@ export class ViewAllMembers extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
+        members: state.members.all,
         loading: state.members.loading,
-        members: state.members.all.data,
         errors: state.errors
     };
 };

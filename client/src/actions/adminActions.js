@@ -24,5 +24,5 @@ export const fetchAdminsBegin = () => ({
 
 export const fetchAdminsSuccess = admins => ({
     type: FETCH_ADMINS_SUCCESS,
-    payload: { admins }
+    payload: admins
 });
