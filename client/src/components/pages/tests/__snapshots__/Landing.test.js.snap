@@ -23,6 +23,8 @@ exports[`Landing tests render should render correctly 1`] = `
     <a
       className="button large primary"
       href="https://github.com/dog-house-development/poodl/wiki"
+      rel="noopener noreferrer"
+      target="_blank"
     >
       Learn More
     </a>
