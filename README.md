@@ -17,8 +17,9 @@ _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https
 
 ## Setup for Development
 
-_Before starting development, familiarize yourself with
-the merge strategy in the wiki_
+### Read development documentation
+
+Please read our [development documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation) before starting to develop for our project.
 
 ### Ensure that you have yarn, npm, and node installed
 
@@ -112,10 +113,6 @@ To run API tests (located in `/test/`):
 ```bash
 yarn test:server
 ```
-
-### [Read Development Documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation)
-
-Learn how to develop our project by reading our development documentation.
 
 ### Publish your changes
 
