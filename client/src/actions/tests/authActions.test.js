@@ -14,7 +14,7 @@ describe('auth actions', () => {
             auth: {
                 isAuthenticated: true,
                 loading: false,
-                admin: {
+                all: {
                     name: 'Sam',
                     email: 'goot@nowhere.com'
                 }

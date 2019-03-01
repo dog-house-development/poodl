@@ -33,9 +33,9 @@ router.get('/get', (req, res) => {
 //@route GET api/admins/get/:id
 //should return admin with given id
 router.get('/get/:id', (req, res, next) => {
-    Admin.findOne({ _id: req.params.id }, (err, post) => {
+    Admin.findOne({ _id: req.params.id }, (err, admin) => {
         if (err) return next(err);
-        return res.json(post);
+        return res.json(admin);
     });
 });
 
@@ -44,6 +44,15 @@ router.get('/get/:id', (req, res, next) => {
 //takes json _id: []
 router.post('/get', (req, res) => {
     Admin.find({ _id: req.body._id }, (err, admins) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(admins);
+    });
+});
+
+// @route POST api/admins/filter
+// should return filtered results from json
+router.post('/filter', (req, res) => {
+    Admin.find(res.body, (err, admins) => {
         if (err) return res.json({ success: false, error: err });
         return res.json(admins);
     });

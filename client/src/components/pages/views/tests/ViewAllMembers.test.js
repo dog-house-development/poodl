@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
-
+import { Link } from 'react-router-dom';
 import { ViewAllMembers, mapStateToProps, mapDispatchToProps } from '../ViewAllMembers';
 
 configure({ adapter: new Adapter() });
@@ -16,24 +16,22 @@ describe('ViewAllMembers tests', () => {
             {
                 members: {
                     loading: false,
-                    all: {
-                        data: [
-                            {
-                                _id: '123',
-                                firstName: 'Big',
-                                lastName: 'Tup',
-                                membershipDate: '02/20/2020',
-                                email: 'bigtup@nowhere.com'
-                            },
-                            {
-                                _id: '321',
-                                firstName: 'Lil',
-                                lastName: 'Tup',
-                                membershipDate: '02/02/2002',
-                                email: 'liltup@nowhere.com'
-                            }
-                        ]
-                    }
+                    all: [
+                        {
+                            _id: '123',
+                            firstName: 'Big',
+                            lastName: 'Tup',
+                            membershipDate: '02/20/2020',
+                            email: 'bigtup@nowhere.com'
+                        },
+                        {
+                            _id: '321',
+                            firstName: 'Lil',
+                            lastName: 'Tup',
+                            membershipDate: '02/02/2002',
+                            email: 'liltup@nowhere.com'
+                        }
+                    ]
                 },
                 errors: {}
             },
@@ -104,14 +102,26 @@ describe('ViewAllMembers tests', () => {
                     firstName: 'Big',
                     lastName: 'Tup',
                     membershipDate: '02/20/2020',
-                    email: 'bigtup@nowhere.com'
+                    email: 'bigtup@nowhere.com',
+                    viewProfile: (
+                        <Link to={'/member/123'} className="button large primary">
+                            {' '}
+                            View{' '}
+                        </Link>
+                    )
                 },
                 {
                     key: '321',
                     firstName: 'Lil',
                     lastName: 'Tup',
                     membershipDate: '02/02/2002',
-                    email: 'liltup@nowhere.com'
+                    email: 'liltup@nowhere.com',
+                    viewProfile: (
+                        <Link to={'/member/321'} className="button large primary">
+                            {' '}
+                            View{' '}
+                        </Link>
+                    )
                 }
             ]);
         });

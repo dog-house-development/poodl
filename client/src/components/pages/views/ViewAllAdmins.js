@@ -43,7 +43,7 @@ export class ViewAllAdmins extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        admins: state.admins.all.data,
+        admins: state.admins.all,
         loading: state.admins.loading,
         errors: state.errors
     };

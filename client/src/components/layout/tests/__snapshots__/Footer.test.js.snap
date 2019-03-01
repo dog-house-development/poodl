@@ -6,13 +6,11 @@ exports[`Navbar tests render should render correctly 1`] = `
 >
   <ul>
     <li>
-      <Link
-        className="link tertiary footer-link"
-        replace={false}
-        to="/"
-      >
-        Home
-      </Link>
+      <Connect(GoHome)
+        buttonOrLink="link"
+        className="footer-link"
+        kind="tertiary"
+      />
     </li>
     <li>
       <a

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
-
 import { fetchVolunteers } from '../../../actions/volunteerActions';
 import DataGrid from '../../ui/DataGrid';
+import { Link } from 'react-router-dom';
 
 export class ViewAllVolunteers extends Component {
     componentDidMount() {
@@ -21,7 +20,13 @@ export class ViewAllVolunteers extends Component {
                 firstName: volunteer.firstName,
                 lastName: volunteer.lastName,
                 email: volunteer.email,
-                key: volunteer._id
+                key: volunteer._id,
+                viewProfile: (
+                    <Link to={'/volunteer/' + volunteer._id} className="button large primary">
+                        {' '}
+                        View{' '}
+                    </Link>
+                )
             });
         });
         return data;
@@ -42,7 +47,7 @@ export class ViewAllVolunteers extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        volunteers: state.volunteers.all.data,
+        volunteers: state.volunteers.all,
         loading: state.volunteers.loading,
         errors: state.errors
     };

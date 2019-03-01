@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberProfile tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <div
+    className="panel"
+  >
+    <h1>
+       
+    </h1>
+  </div>
+</div>
+`;

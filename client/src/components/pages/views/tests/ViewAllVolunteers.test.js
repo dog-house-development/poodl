@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 import { ViewAllVolunteers, mapStateToProps, mapDispatchToProps } from '../ViewAllVolunteers';
 
@@ -16,22 +17,20 @@ describe('ViewAllVolunteers tests', () => {
             {
                 volunteers: {
                     loading: false,
-                    all: {
-                        data: [
-                            {
-                                _id: '123',
-                                firstName: 'Tup',
-                                lastName: 'Big',
-                                email: 'bigtup@nowhere.com'
-                            },
-                            {
-                                _id: '321',
-                                firstName: 'Tup',
-                                lastName: 'Lil',
-                                email: 'liltup@nowhere.com'
-                            }
-                        ]
-                    }
+                    all: [
+                        {
+                            _id: '123',
+                            firstName: 'Tup',
+                            lastName: 'Big',
+                            email: 'bigtup@nowhere.com'
+                        },
+                        {
+                            _id: '321',
+                            firstName: 'Tup',
+                            lastName: 'Lil',
+                            email: 'liltup@nowhere.com'
+                        }
+                    ]
                 },
                 errors: {}
             },
@@ -95,8 +94,30 @@ describe('ViewAllVolunteers tests', () => {
     describe('getDataGridContent', () => {
         it('should return filtered volunteers data', () => {
             expect(instance.getDataGridContent()).toEqual([
-                { key: '123', firstName: 'Tup', lastName: 'Big', email: 'bigtup@nowhere.com' },
-                { key: '321', firstName: 'Tup', lastName: 'Lil', email: 'liltup@nowhere.com' }
+                {
+                    key: '123',
+                    firstName: 'Tup',
+                    lastName: 'Big',
+                    email: 'bigtup@nowhere.com',
+                    viewProfile: (
+                        <Link to={'/volunteer/123'} className="button large primary">
+                            {' '}
+                            View{' '}
+                        </Link>
+                    )
+                },
+                {
+                    key: '321',
+                    firstName: 'Tup',
+                    lastName: 'Lil',
+                    email: 'liltup@nowhere.com',
+                    viewProfile: (
+                        <Link to={'/volunteer/321'} className="button large primary">
+                            {' '}
+                            View{' '}
+                        </Link>
+                    )
+                }
             ]);
         });
     });

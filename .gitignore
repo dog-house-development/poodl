@@ -28,3 +28,6 @@
 
 # secrets
 /config/secrets.js
+
+# karl's webstorm idea
+/.idea

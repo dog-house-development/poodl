@@ -28,6 +28,15 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
           "key": "123",
           "lastName": "Tup",
           "membershipDate": "02/20/2020",
+          "viewProfile": <Link
+            className="button large primary"
+            replace={false}
+            to="/member/123"
+          >
+             
+            View
+             
+          </Link>,
         },
         Object {
           "email": "liltup@nowhere.com",
@@ -35,6 +44,15 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
           "key": "321",
           "lastName": "Tup",
           "membershipDate": "02/02/2002",
+          "viewProfile": <Link
+            className="button large primary"
+            replace={false}
+            to="/member/321"
+          >
+             
+            View
+             
+          </Link>,
         },
       ]
     }
