@@ -101,13 +101,13 @@ export MONGO_URI=<mongodb uri> yarn start:dev
 
 ### Testing
 
-To run react component tests (located in '/client/src/components/component_name_here/tests/):
+To run react component tests (located in sibling `tests` folders of component files):
 
 ```bash
 yarn test:client
 ```
 
-To run API tests (located in /test/):
+To run API tests (located in `/test/`):
 
 ```bash
 yarn test:server
