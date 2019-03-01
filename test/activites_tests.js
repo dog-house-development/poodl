@@ -46,7 +46,13 @@ describe('Activities suite /ADD, /GET, /GET/:ID,/DELETE', () => {
             .send(testActivity)
             .end((err, res) => {
                 res.should.have.status(200);
-
+                res.body.should.have.property('name').eql('ice climbing');
+                //res.body.should.have.property('times').eql('10AM-12PM');
+                //res.body.should.have.property('dates').eql('Saturday');
+                //res.body.should.have.property('admins').eql('Bill');
+                //res.body.should.have.property('volunteers').eql('Sandy');
+                //res.body.should.have.property('members').eql('Peepsuuu');
+                //res.body.should.have.property('seniorCenter').eql('The one around the corner');
                 done();
             });
     });
