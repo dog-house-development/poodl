@@ -99,6 +99,24 @@ mongo uri as an environment variable:
 export MONGO_URI=<mongodb uri> yarn start:dev
 ```
 
+### Testing
+
+To run react component tests (located in sibling `tests` folders of component files):
+
+```bash
+yarn test:client
+```
+
+To run API tests (located in `/test/`):
+
+```bash
+yarn test:server
+```
+
+### [Read Development Documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation)
+
+Learn how to develop our project by reading our development documentation.
+
 ### Publish your changes
 
 To merge your changes into production, follow the
