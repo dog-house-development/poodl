@@ -27,15 +27,13 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
           "firstName": "Big",
           "key": "123",
           "lastName": "Tup",
-          "membershipDate": "02/20/2020",
+          "membershipDate": "February 2nd, 2020",
           "viewProfile": <Link
-            className="button large primary"
+            className="button medium primary"
             replace={false}
             to="/member/123"
           >
-             
             View
-             
           </Link>,
         },
         Object {
@@ -43,15 +41,13 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
           "firstName": "Lil",
           "key": "321",
           "lastName": "Tup",
-          "membershipDate": "02/02/2002",
+          "membershipDate": "February 2nd, 2020",
           "viewProfile": <Link
-            className="button large primary"
+            className="button medium primary"
             replace={false}
             to="/member/321"
           >
-             
             View
-             
           </Link>,
         },
       ]

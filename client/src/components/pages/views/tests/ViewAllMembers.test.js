@@ -21,14 +21,14 @@ describe('ViewAllMembers tests', () => {
                             _id: '123',
                             firstName: 'Big',
                             lastName: 'Tup',
-                            membershipDate: '02/20/2020',
+                            membershipDate: '02/02/2020',
                             email: 'bigtup@nowhere.com'
                         },
                         {
                             _id: '321',
                             firstName: 'Lil',
                             lastName: 'Tup',
-                            membershipDate: '02/02/2002',
+                            membershipDate: '02/02/2020',
                             email: 'liltup@nowhere.com'
                         }
                     ]
@@ -63,14 +63,14 @@ describe('ViewAllMembers tests', () => {
                         _id: '123',
                         firstName: 'Big',
                         lastName: 'Tup',
-                        membershipDate: '02/20/2020',
+                        membershipDate: '02/02/2020',
                         email: 'bigtup@nowhere.com'
                     },
                     {
                         _id: '321',
                         firstName: 'Lil',
                         lastName: 'Tup',
-                        membershipDate: '02/02/2002',
+                        membershipDate: '02/02/2020',
                         email: 'liltup@nowhere.com'
                     }
                 ],
@@ -101,12 +101,11 @@ describe('ViewAllMembers tests', () => {
                     key: '123',
                     firstName: 'Big',
                     lastName: 'Tup',
-                    membershipDate: '02/20/2020',
+                    membershipDate: 'February 2nd, 2020',
                     email: 'bigtup@nowhere.com',
                     viewProfile: (
-                        <Link to={'/member/123'} className="button large primary">
-                            {' '}
-                            View{' '}
+                        <Link to={'/member/123'} className="button medium primary">
+                            View
                         </Link>
                     )
                 },
@@ -114,12 +113,11 @@ describe('ViewAllMembers tests', () => {
                     key: '321',
                     firstName: 'Lil',
                     lastName: 'Tup',
-                    membershipDate: '02/02/2002',
+                    membershipDate: 'February 2nd, 2020',
                     email: 'liltup@nowhere.com',
                     viewProfile: (
-                        <Link to={'/member/321'} className="button large primary">
-                            {' '}
-                            View{' '}
+                        <Link to={'/member/321'} className="button medium primary">
+                            View
                         </Link>
                     )
                 }

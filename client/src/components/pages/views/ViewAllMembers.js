@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { fetchMembers } from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 export class ViewAllMembers extends Component {
     componentDidMount() {
@@ -20,12 +21,11 @@ export class ViewAllMembers extends Component {
                 key: member._id,
                 firstName: member.firstName,
                 lastName: member.lastName,
-                membershipDate: member.membershipDate,
+                membershipDate: moment(member.membershipDate).format('MMMM Do, YYYY'),
                 email: member.email,
                 viewProfile: (
-                    <Link to={'/member/' + member._id} className="button large primary">
-                        {' '}
-                        View{' '}
+                    <Link to={'/member/' + member._id} className="button medium primary">
+                        View
                     </Link>
                 )
             });
