@@ -102,7 +102,7 @@ To run API tests (located in /test/):
 yarn test:server
 ```
 
-### View [Developemnt Documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation)
+### View [Development Documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation)
 
 
 Instead of adding a secrets.js file you can export the
