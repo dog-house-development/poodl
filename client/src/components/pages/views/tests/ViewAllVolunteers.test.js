@@ -100,9 +100,8 @@ describe('ViewAllVolunteers tests', () => {
                     lastName: 'Big',
                     email: 'bigtup@nowhere.com',
                     viewProfile: (
-                        <Link to={'/volunteer/123'} className="button large primary">
-                            {' '}
-                            View{' '}
+                        <Link to={'/volunteer/123'} className="button medium primary">
+                            View
                         </Link>
                     )
                 },
@@ -112,9 +111,8 @@ describe('ViewAllVolunteers tests', () => {
                     lastName: 'Lil',
                     email: 'liltup@nowhere.com',
                     viewProfile: (
-                        <Link to={'/volunteer/321'} className="button large primary">
-                            {' '}
-                            View{' '}
+                        <Link to={'/volunteer/321'} className="button medium primary">
+                            View
                         </Link>
                     )
                 }
