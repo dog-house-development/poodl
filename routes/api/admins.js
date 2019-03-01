@@ -49,6 +49,15 @@ router.post('/get', (req, res) => {
     });
 });
 
+// @route POST api/admins/filter
+// should return filtered results from json
+router.post('/filter', (req, res) => {
+    Admin.find(res.body, (err, admins) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(admins);
+    });
+});
+
 // @route POST api/admins/register
 // @desc Register user
 // @access Public

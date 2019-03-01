@@ -38,6 +38,15 @@ router.get('/get/:id', (req, res, next) => {
     });
 });
 
+// @route POST api/services/filter
+// should return filtered results from json
+router.post('/filter', (req, res) => {
+    Service.find(res.body, (err, services) => {
+        if (err) return res.json({ success: false, error: err });
+        return res.json(services);
+    });
+});
+
 // @route POST api/services/add
 // @desc add a service
 router.post('/add', (req, res) => {

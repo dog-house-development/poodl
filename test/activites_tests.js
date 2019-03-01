@@ -69,6 +69,21 @@ describe('Activities suite /ADD./GET, /GET/:ID,/DELETE', () => {
                 done();
             });
     });
+
+    it('it should filter activities', done => {
+        let request = {
+            seniorCenter: 'The one around the corner'
+        };
+        chai.request(server)
+            .post('/api/activities/filter')
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+
+                done();
+            });
+    });
+
     it('it should delete a specific activity', done => {
         chai.request(server)
             .delete('/api/activities/delete/' + tempId)

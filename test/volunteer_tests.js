@@ -79,6 +79,19 @@ describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
             });
     });
 
+    it('it should filter volunteers', done => {
+        let request = {
+            seniorCenter: 'center'
+        };
+        chai.request(server)
+            .post('/api/volunteers/filter')
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
     it('it should delete a specific volunteer', done => {
         chai.request(server)
             .delete('/api/volunteers/delete/' + tempId)
