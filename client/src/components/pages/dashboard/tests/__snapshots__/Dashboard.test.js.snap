@@ -8,7 +8,7 @@ exports[`Dashboard tests render should render correctly 1`] = `
     Hey there, 
   </h2>
   <h1>
-    Sandwich
+    undefined undefined
     .
   </h1>
   <Button
@@ -48,6 +48,22 @@ exports[`Dashboard tests render should render correctly 1`] = `
       to="/members"
     >
       Members
+    </Link>
+  </div>
+  <div
+    className="panel"
+  >
+    <h1
+      className="panel-title"
+    >
+      Register New
+    </h1>
+    <Link
+      className="link primary"
+      replace={false}
+      to="/register"
+    >
+      Admin
     </Link>
   </div>
 </div>

@@ -15,16 +15,19 @@ exports[`Landing tests render should render correctly 1`] = `
     >
       Poodl
     </h1>
-    <p>
+    <p
+      className="landing-info"
+    >
       The member management tool for rural senior centers!
     </p>
-    <Link
+    <a
       className="button large primary"
-      replace={false}
-      to="/"
+      href="https://github.com/dog-house-development/poodl/wiki"
+      rel="noopener noreferrer"
+      target="_blank"
     >
-      Learn more
-    </Link>
+      Learn More
+    </a>
   </div>
 </div>
 `;

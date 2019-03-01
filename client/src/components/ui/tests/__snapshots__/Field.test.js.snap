@@ -19,13 +19,13 @@ exports[`Field tests render should render with errors correctly 1`] = `
   >
     <input
       className="field normal field-error-border"
+      defaultValue=""
       error="Big bad error"
       id="email"
       name="email"
       onChange={[Function]}
       placeholder="Enter email..."
       type="email"
-      value=""
     />
   </div>
 </div>
@@ -48,13 +48,13 @@ exports[`Field tests render should render without errors correctly 1`] = `
   >
     <input
       className="field normal "
+      defaultValue=""
       error={null}
       id="email"
       name="email"
       onChange={[Function]}
       placeholder="Enter email..."
       type="email"
-      value=""
     />
   </div>
 </div>

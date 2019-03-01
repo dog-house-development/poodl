@@ -1,11 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ViewMembers tests render should render correctly 1`] = `
+exports[`ViewAllAdmins tests render should render correctly 1`] = `
 <div
   className="view-all-container"
 >
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/dashboard"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to home
+  </Link>
   <h1>
-    View All Members
+    View All Admins
   </h1>
   <DataGrid
     data={
@@ -15,14 +27,14 @@ exports[`ViewMembers tests render should render correctly 1`] = `
           "firstName": "Big",
           "key": "123",
           "lastName": "Tup",
-          "membershipDate": "02/20/2020",
+          "super": "Yes",
         },
         Object {
           "email": "liltup@nowhere.com",
           "firstName": "Lil",
           "key": "321",
           "lastName": "Tup",
-          "membershipDate": "02/02/2002",
+          "super": "No",
         },
       ]
     }

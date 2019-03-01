@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 import { fetchAdmins } from '../../../actions/adminActions';
 import DataGrid from '../../ui/DataGrid';
 
-export class ViewAdmins extends Component {
+export class ViewAllAdmins extends Component {
     componentDidMount() {
         // call redux action to retrieve all admins from api
         this.props.getAdmins();
@@ -16,7 +17,13 @@ export class ViewAdmins extends Component {
         let data = [];
         _.each(this.props.admins, admin => {
             // we want admins' names and emails, and we need a key which will not be displayed
-            data.push({ name: admin.name, email: admin.email, key: admin._id });
+            data.push({
+                firstName: admin.firstName,
+                lastName: admin.lastName,
+                email: admin.email,
+                super: admin.superAdmin ? 'Yes' : 'No',
+                key: admin._id
+            });
         });
         return data;
     }
@@ -24,6 +31,9 @@ export class ViewAdmins extends Component {
     render() {
         return (
             <div className="view-all-container">
+                <Link to="/dashboard" className="button small tertiary">
+                    <i className="material-icons">keyboard_backspace</i> Back to home
+                </Link>
                 <h1>View All Admins</h1>
                 <DataGrid data={this.getDataGridContent()} loading={this.props.loading} />
             </div>
@@ -33,7 +43,7 @@ export class ViewAdmins extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        admins: state.admins.all.data,
+        admins: state.admins.all,
         loading: state.admins.loading,
         errors: state.errors
     };
@@ -48,4 +58,4 @@ export const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ViewAdmins);
+)(ViewAllAdmins);

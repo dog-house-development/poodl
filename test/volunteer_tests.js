@@ -33,7 +33,8 @@ describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
         var testVolunteer = {
             firstName: 'Charles',
             lastName: 'Boyle',
-            email: 'JakeFAN123@gmail.com'
+            email: 'JakeFAN123@gmail.com',
+            seniorCenter: 'center'
         };
         chai.request(server)
             .post('/api/volunteers/add')
@@ -59,6 +60,32 @@ describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
     it('it should get a specific volunteer', done => {
         chai.request(server)
             .get('/api/volunteers/get/' + tempId)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('it should get a list of volunteers', done => {
+        let idList = {
+            _id: ['"' + tempId + '"']
+        };
+        chai.request(server)
+            .post('/api/volunteers/get')
+            .send(idList)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+
+    it('it should filter volunteers', done => {
+        let request = {
+            seniorCenter: 'center'
+        };
+        chai.request(server)
+            .post('/api/volunteers/filter')
+            .send(request)
             .end((err, res) => {
                 res.should.have.status(200);
                 done();

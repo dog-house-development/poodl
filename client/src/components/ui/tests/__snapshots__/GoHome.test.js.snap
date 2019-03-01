@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GoHome tests render should render correctly when admin is authenticated 1`] = `
+<Link
+  replace={false}
+  to="/dashboard"
+>
+  Home
+</Link>
+`;
+
+exports[`GoHome tests render should render correctly when admin is not authenticated 1`] = `
+<Link
+  replace={false}
+  to="/"
+>
+  Home
+</Link>
+`;

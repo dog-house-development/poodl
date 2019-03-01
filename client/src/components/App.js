@@ -21,9 +21,11 @@ import Landing from './pages/Landing';
 import PageNotFound from './pages/PageNotFound';
 
 // views
-import ViewAdmins from './pages/views/ViewAdmins';
-import ViewVolunteers from './pages/views/ViewVolunteers';
-import ViewMembers from './pages/views/ViewMembers';
+import ViewAllAdmins from './pages/views/ViewAllAdmins';
+import ViewAllVolunteers from './pages/views/ViewAllVolunteers';
+import ViewAllMembers from './pages/views/ViewAllMembers';
+import MemberProfile from './pages/views/MemberProfile';
+import VolunteerProfile from './pages/views/VolunteerProfile';
 
 import PrivateRoute from './private-route/PrivateRoute';
 
@@ -57,12 +59,14 @@ class App extends Component {
                         <Navbar />
                         <Switch>
                             <Route exact path="/" component={Landing} />
-                            <Route exact path="/register" component={Register} />
                             <Route exact path="/login" component={Login} />
+                            <PrivateRoute exact path="/register" component={Register} />
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                            <PrivateRoute exact path="/admins" component={ViewAdmins} />
-                            <PrivateRoute exact path="/volunteers" component={ViewVolunteers} />
-                            <PrivateRoute exact path="/members" component={ViewMembers} />
+                            <PrivateRoute exact path="/admins" component={ViewAllAdmins} />
+                            <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />
+                            <PrivateRoute exact path="/members" component={ViewAllMembers} />
+                            <PrivateRoute exact path="/member/:id" component={MemberProfile} />
+                            <PrivateRoute exact path="/volunteer/:id" component={VolunteerProfile} />
                             {/* PageNotFound route must stay at bottom */}
                             <Route component={PageNotFound} />
                         </Switch>

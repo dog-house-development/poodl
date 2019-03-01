@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import GoHome from '../ui/GoHome';
 
 class PageNotFound extends Component {
     render() {
@@ -8,16 +8,14 @@ class PageNotFound extends Component {
                 <div className="landing-header">
                     <h1 className="landing-title">404</h1>
                     <h1>Page not found</h1>
-                    <p>
+                    <p className="landing-info">
                         If you believe this occured in error, please contact support at{' '}
                         <a href="mailto:doghousedevelop@gmail.com" target="_blank" rel="noopener noreferrer">
                             doghousedevelop@gmail.com.
                         </a>
                     </p>
-                    <h3>Thanks</h3>
-                    <Link to="/dashboard" className="button large primary">
-                        Home
-                    </Link>
+                    <h3 className="landing-info">Thanks</h3>
+                    <GoHome buttonOrLink="button" size="large" />
                 </div>
             </div>
         );

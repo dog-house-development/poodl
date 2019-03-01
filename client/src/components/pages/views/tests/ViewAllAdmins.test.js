@@ -4,36 +4,34 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { ViewMembers, mapStateToProps, mapDispatchToProps } from '../ViewMembers';
+import { ViewAllAdmins, mapStateToProps, mapDispatchToProps } from '../ViewAllAdmins';
 
 configure({ adapter: new Adapter() });
 
-describe('ViewMembers tests', () => {
+describe('ViewAllAdmins tests', () => {
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(
             {},
             {
-                members: {
+                admins: {
                     loading: false,
-                    all: {
-                        data: [
-                            {
-                                _id: '123',
-                                firstName: 'Big',
-                                lastName: 'Tup',
-                                membershipDate: '02/20/2020',
-                                email: 'bigtup@nowhere.com'
-                            },
-                            {
-                                _id: '321',
-                                firstName: 'Lil',
-                                lastName: 'Tup',
-                                membershipDate: '02/02/2002',
-                                email: 'liltup@nowhere.com'
-                            }
-                        ]
-                    }
+                    all: [
+                        {
+                            _id: '123',
+                            firstName: 'Big',
+                            lastName: 'Tup',
+                            email: 'bigtup@nowhere.com',
+                            superAdmin: true
+                        },
+                        {
+                            _id: '321',
+                            firstName: 'Lil',
+                            lastName: 'Tup',
+                            email: 'liltup@nowhere.com',
+                            superAdmin: false
+                        }
+                    ]
                 },
                 errors: {}
             },
@@ -41,7 +39,7 @@ describe('ViewMembers tests', () => {
         );
         props = _.assign({}, _props);
         wrapper = shallow(
-            <ViewMembers
+            <ViewAllAdmins
                 {..._.assign(
                     {},
                     props,
@@ -60,20 +58,20 @@ describe('ViewMembers tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                members: [
+                admins: [
                     {
                         _id: '123',
                         firstName: 'Big',
                         lastName: 'Tup',
-                        membershipDate: '02/20/2020',
-                        email: 'bigtup@nowhere.com'
+                        email: 'bigtup@nowhere.com',
+                        superAdmin: true
                     },
                     {
                         _id: '321',
                         firstName: 'Lil',
                         lastName: 'Tup',
-                        membershipDate: '02/02/2002',
-                        email: 'liltup@nowhere.com'
+                        email: 'liltup@nowhere.com',
+                        superAdmin: false
                     }
                 ],
                 errors: {},
@@ -85,7 +83,7 @@ describe('ViewMembers tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getMembers: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getAdmins: () => {} }));
         });
     });
 
@@ -97,22 +95,10 @@ describe('ViewMembers tests', () => {
     });
 
     describe('getDataGridContent', () => {
-        it('should return filtered members data', () => {
+        it('should return filtered admins data', () => {
             expect(instance.getDataGridContent()).toEqual([
-                {
-                    key: '123',
-                    firstName: 'Big',
-                    lastName: 'Tup',
-                    membershipDate: '02/20/2020',
-                    email: 'bigtup@nowhere.com'
-                },
-                {
-                    key: '321',
-                    firstName: 'Lil',
-                    lastName: 'Tup',
-                    membershipDate: '02/02/2002',
-                    email: 'liltup@nowhere.com'
-                }
+                { key: '123', firstName: 'Big', lastName: 'Tup', email: 'bigtup@nowhere.com', super: 'Yes' },
+                { key: '321', firstName: 'Lil', lastName: 'Tup', email: 'liltup@nowhere.com', super: 'No' }
             ]);
         });
     });

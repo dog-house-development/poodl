@@ -21,17 +21,11 @@ const defaultProps = {
 class Field extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
         this.handleChange = this.handleChange.bind(this);
-    }
-
-    onComponentDidMount() {
-        this.setState({ value: this.props.content });
     }
 
     handleChange(e) {
         e.preventDefault();
-        this.setState({ value: e.target.value });
         this.props.onChange(e);
     }
 
@@ -45,7 +39,7 @@ class Field extends Component {
                         id={this.props.id}
                         type={this.props.type}
                         name={this.props.name}
-                        value={this.state.value}
+                        defaultValue={this.props.content}
                         placeholder={this.props.placeholder}
                         onChange={this.handleChange}
                         className={`field ${this.props.size} ${this.props.error ? 'field-error-border' : ''}`}

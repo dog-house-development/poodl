@@ -3,35 +3,31 @@ import ReactDOM from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
-
-import { ViewVolunteers, mapStateToProps, mapDispatchToProps } from '../ViewVolunteers';
+import { Link } from 'react-router-dom';
+import { VolunteerProfile, mapStateToProps, mapDispatchToProps } from '../VolunteerProfile';
 
 configure({ adapter: new Adapter() });
 
-describe('ViewVolunteers tests', () => {
+const match = {
+    params: {
+        _id: '123' //any id you want to set
+    }
+};
+describe('VolunteerProfile tests', () => {
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(
             {},
             {
                 volunteers: {
-                    loading: false,
-                    all: {
-                        data: [
-                            {
-                                _id: '123',
-                                firstName: 'Tup',
-                                lastName: 'Big',
-                                email: 'bigtup@nowhere.com'
-                            },
-                            {
-                                _id: '321',
-                                firstName: 'Tup',
-                                lastName: 'Lil',
-                                email: 'liltup@nowhere.com'
-                            }
-                        ]
-                    }
+                    one: [
+                        {
+                            _id: '123',
+                            firstName: 'Big',
+                            lastName: 'Tup',
+                            email: 'bigtup@nowhere.com'
+                        }
+                    ]
                 },
                 errors: {}
             },
@@ -39,7 +35,8 @@ describe('ViewVolunteers tests', () => {
         );
         props = _.assign({}, _props);
         wrapper = shallow(
-            <ViewVolunteers
+            <VolunteerProfile
+                match={match}
                 {..._.assign(
                     {},
                     props,
@@ -58,22 +55,15 @@ describe('ViewVolunteers tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                volunteers: [
+                volunteer: [
                     {
                         _id: '123',
-                        firstName: 'Tup',
-                        lastName: 'Big',
+                        firstName: 'Big',
+                        lastName: 'Tup',
                         email: 'bigtup@nowhere.com'
-                    },
-                    {
-                        _id: '321',
-                        firstName: 'Tup',
-                        lastName: 'Lil',
-                        email: 'liltup@nowhere.com'
                     }
                 ],
-                errors: {},
-                loading: false
+                errors: {}
             });
         });
     });
@@ -89,15 +79,6 @@ describe('ViewVolunteers tests', () => {
         it('should run without breaking', () => {
             spyOn(instance, 'componentDidMount');
             instance.componentDidMount();
-        });
-    });
-
-    describe('getDataGridContent', () => {
-        it('should return filtered volunteers data', () => {
-            expect(instance.getDataGridContent()).toEqual([
-                { key: '123', firstName: 'Tup', lastName: 'Big', email: 'bigtup@nowhere.com' },
-                { key: '321', firstName: 'Tup', lastName: 'Lil', email: 'liltup@nowhere.com' }
-            ]);
         });
     });
 

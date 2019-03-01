@@ -15,7 +15,9 @@ exports[`PageNotFound tests render should render correctly 1`] = `
     <h1>
       Page not found
     </h1>
-    <p>
+    <p
+      className="landing-info"
+    >
       If you believe this occured in error, please contact support at
        
       <a
@@ -26,16 +28,15 @@ exports[`PageNotFound tests render should render correctly 1`] = `
         doghousedevelop@gmail.com.
       </a>
     </p>
-    <h3>
+    <h3
+      className="landing-info"
+    >
       Thanks
     </h3>
-    <Link
-      className="button large primary"
-      replace={false}
-      to="/dashboard"
-    >
-      Home
-    </Link>
+    <Connect(GoHome)
+      buttonOrLink="button"
+      size="large"
+    />
   </div>
 </div>
 `;

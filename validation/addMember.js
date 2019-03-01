@@ -8,8 +8,8 @@ module.exports = function validateRegisterInput(data) {
     data.firstName = !isEmpty(data.firstName) ? data.firstName : '';
     data.lastName = !isEmpty(data.lastName) ? data.lastName : '';
     data.email = !isEmpty(data.email) ? data.email : '';
+    data.seniorCenter = !isEmpty(data.seniorCenter) ? data.seniorCenter : '';
     data.address = !isEmpty(data.address) ? data.address : '';
-    data.membershipDate = !isEmpty(data.membershipDate) ? data.membershipDate : '';
     data.renewalDate = !isEmpty(data.renewalDate) ? data.renewalDate : '';
     data.mealPreference = !isEmpty(data.mealPreference) ? data.mealPreference : '';
 
@@ -28,13 +28,14 @@ module.exports = function validateRegisterInput(data) {
         errors.email = 'Email is invalid';
     }
 
+    //SC check
+    if (Validator.isEmpty(data.seniorCenter)) {
+        errors.seniorCenter = 'Senior Center field is required';
+    }
+
     // address checks
     if (Validator.isEmpty(data.address)) {
         errors.address = 'Address field is required';
-    }
-
-    if (Validator.isEmpty(data.membershipDate)) {
-        errors.membershipDate = 'Membership date field is required';
     }
 
     if (Validator.isEmpty(data.renewalDate)) {
