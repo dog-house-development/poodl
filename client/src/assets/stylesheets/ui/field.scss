@@ -1,6 +1,7 @@
 @import './_presets.scss';
 
 .field-wrapper {
+  position: relative;
   .field-label {
     font-size: 13px;
     font-weight: bold;
@@ -13,8 +14,8 @@
   .field-error-label {
     color: $red-2;
     font-size: 12px;
-    margin: 0 15px;
-    display: inline;
+    position: absolute;
+    top: 65px;
   }
 
   .field-outer {
@@ -51,6 +52,24 @@
 
       &.field-error-border {
         border-color: $red-1;
+      }
+    }
+  }
+
+  &.inline-field {
+    @media screen and (min-width: $mobile) {
+      display: inline-block;
+      width: 50%;
+
+      .first-side-by-side-input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+      }
+
+      .second-side-by-side-input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
       }
     }
   }

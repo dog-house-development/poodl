@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 const propTypes = {
     onChange: PropTypes.func.isRequired,
@@ -10,12 +11,15 @@ const propTypes = {
     content: PropTypes.string,
     placeholder: PropTypes.string,
     label: PropTypes.string,
+    autocomplete: PropTypes.oneOf(['on', 'off']),
+    sideBySide: PropTypes.oneOf([1, 2]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 const defaultProps = {
     size: 'normal',
-    type: 'text'
+    type: 'text',
+    autocomplete: 'on'
 };
 
 class Field extends Component {
@@ -31,18 +35,25 @@ class Field extends Component {
 
     render() {
         return (
-            <div className="field-wrapper">
+            <div className={classnames('field-wrapper', { 'inline-field': this.props.sideBySide })}>
                 <p className="field-label">{this.props.label}</p>
                 <p className="field-error-label">{this.props.error}</p>
                 <div className="field-outer">
                     <input
+                        autoComplete={this.props.autocomplete}
                         id={this.props.id}
                         type={this.props.type}
                         name={this.props.name}
                         defaultValue={this.props.content}
                         placeholder={this.props.placeholder}
                         onChange={this.handleChange}
-                        className={`field ${this.props.size} ${this.props.error ? 'field-error-border' : ''}`}
+                        className={classnames(
+                            'field',
+                            this.props.size,
+                            { 'first-side-by-side-input': this.props.sideBySide === 1 },
+                            { 'second-side-by-side-input': this.props.sideBySide === 2 },
+                            { 'field-error-border': this.props.error }
+                        )}
                         error={this.props.error}
                     />
                 </div>

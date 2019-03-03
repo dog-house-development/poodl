@@ -49,6 +49,21 @@ describe('Field tests', () => {
     });
 
     describe('render', () => {
+        it('should render not side by side', () => {
+            setInstanceAndWrapper();
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render the first side by side input', () => {
+            setInstanceAndWrapper({ sideBySide: 1 });
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render the second side by side input', () => {
+            setInstanceAndWrapper({ sideBySide: 2 });
+            expect(wrapper).toMatchSnapshot();
+        });
+
         it('should render without errors correctly', () => {
             setInstanceAndWrapper({ error: null });
             expect(wrapper).toMatchSnapshot();
