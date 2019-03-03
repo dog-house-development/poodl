@@ -1,5 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Field tests render should render not side by side 1`] = `
+<div
+  className="field-wrapper"
+>
+  <p
+    className="field-label"
+  >
+    Email:
+  </p>
+  <p
+    className="field-error-label"
+  >
+    <Component />
+  </p>
+  <div
+    className="field-outer"
+  >
+    <input
+      className="field normal field-error-border"
+      defaultValue=""
+      error={Object {}}
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter email..."
+      type="email"
+    />
+  </div>
+</div>
+`;
+
+exports[`Field tests render should render the first side by side input 1`] = `
+<div
+  className="field-wrapper inline-field"
+>
+  <p
+    className="field-label"
+  >
+    Email:
+  </p>
+  <p
+    className="field-error-label"
+  >
+    <Component />
+  </p>
+  <div
+    className="field-outer"
+  >
+    <input
+      className="field normal first-side-by-side-input field-error-border"
+      defaultValue=""
+      error={Object {}}
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter email..."
+      type="email"
+    />
+  </div>
+</div>
+`;
+
+exports[`Field tests render should render the second side by side input 1`] = `
+<div
+  className="field-wrapper inline-field"
+>
+  <p
+    className="field-label"
+  >
+    Email:
+  </p>
+  <p
+    className="field-error-label"
+  >
+    <Component />
+  </p>
+  <div
+    className="field-outer"
+  >
+    <input
+      className="field normal second-side-by-side-input field-error-border"
+      defaultValue=""
+      error={Object {}}
+      id="email"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter email..."
+      type="email"
+    />
+  </div>
+</div>
+`;
+
 exports[`Field tests render should render with errors correctly 1`] = `
 <div
   className="field-wrapper"
