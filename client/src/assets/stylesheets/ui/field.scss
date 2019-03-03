@@ -1,6 +1,8 @@
 @import './_presets.scss';
 
 .field-wrapper {
+  display: block;
+
   .field-label {
     font-size: 13px;
     font-weight: bold;
@@ -52,6 +54,22 @@
       &.field-error-border {
         border-color: $red-1;
       }
+    }
+  }
+
+  &.inline-field {
+    display: inline-block;
+    width: 50%;
+
+    .first-side-by-side-input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .second-side-by-side-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: none;
     }
   }
 }

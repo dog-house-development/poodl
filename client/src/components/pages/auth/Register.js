@@ -65,7 +65,8 @@ export class Register extends Component {
                 id: 'firstName',
                 type: 'text',
                 label: 'First name',
-                placeholder: 'John...'
+                placeholder: 'John...',
+                sideBySide: 1
             },
             {
                 onChange: this.onChange,
@@ -73,7 +74,8 @@ export class Register extends Component {
                 id: 'lastName',
                 type: 'text',
                 label: 'Last name',
-                placeholder: 'Smith...'
+                placeholder: 'Smith...',
+                sideBySide: 2
             },
             {
                 onChange: this.onChange,

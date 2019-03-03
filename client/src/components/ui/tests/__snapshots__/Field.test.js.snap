@@ -47,7 +47,7 @@ exports[`Field tests render should render without errors correctly 1`] = `
     className="field-outer"
   >
     <input
-      className="field normal "
+      className="field normal"
       defaultValue=""
       error={null}
       id="email"

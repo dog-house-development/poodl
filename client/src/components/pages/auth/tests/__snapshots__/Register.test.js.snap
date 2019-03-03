@@ -26,6 +26,7 @@ exports[`Register tests render should render correctly 1`] = `
           "label": "First name",
           "onChange": [Function],
           "placeholder": "John...",
+          "sideBySide": 1,
           "type": "text",
         },
         Object {
@@ -34,6 +35,7 @@ exports[`Register tests render should render correctly 1`] = `
           "label": "Last name",
           "onChange": [Function],
           "placeholder": "Smith...",
+          "sideBySide": 2,
           "type": "text",
         },
         Object {

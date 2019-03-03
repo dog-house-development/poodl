@@ -126,6 +126,7 @@ describe('Register tests', () => {
                     type: 'text',
                     label: 'First name',
                     placeholder: 'John...',
+                    sideBySide: 1,
                     error: undefined
                 },
                 {
@@ -134,6 +135,7 @@ describe('Register tests', () => {
                     type: 'text',
                     label: 'Last name',
                     placeholder: 'Smith...',
+                    sideBySide: 2,
                     error: undefined
                 },
                 {
@@ -172,6 +174,7 @@ describe('Register tests', () => {
                     type: 'text',
                     label: 'First name',
                     placeholder: 'John...',
+                    sideBySide: 1,
                     error: undefined
                 },
                 {
@@ -180,6 +183,7 @@ describe('Register tests', () => {
                     type: 'text',
                     label: 'Last name',
                     placeholder: 'Smith...',
+                    sideBySide: 2,
                     error: undefined
                 },
                 {
