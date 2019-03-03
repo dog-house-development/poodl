@@ -7,7 +7,7 @@
 [![Uptime Robot 30 Days](https://img.shields.io/uptimerobot/ratio/m781947640-2764269a69a56d48f8edc5db.svg?style=flat)](https://poodl.herokuapp.com/)
 [![Uptime Robot Status](https://img.shields.io/uptimerobot/status/m781947640-2764269a69a56d48f8edc5db.svg?style=flat)](https://poodl.herokuapp.com/)
 
-_Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Please read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
+_Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
 
 ## Sites
 
@@ -19,7 +19,8 @@ _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https
 
 ### Read development documentation
 
-Please read our [development documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation) before starting to develop for our project.
+Please read our [development documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation) 
+before starting to develop for our project.
 
 ### Ensure that you have yarn, npm, and node installed
 
