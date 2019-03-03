@@ -11,13 +11,15 @@ const propTypes = {
     content: PropTypes.string,
     placeholder: PropTypes.string,
     label: PropTypes.string,
+    autocomplete: PropTypes.oneOf(['on', 'off']),
     sideBySide: PropTypes.oneOf([1, 2]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 const defaultProps = {
     size: 'normal',
-    type: 'text'
+    type: 'text',
+    autocomplete: 'on'
 };
 
 class Field extends Component {
@@ -38,6 +40,7 @@ class Field extends Component {
                 <p className="field-error-label">{this.props.error}</p>
                 <div className="field-outer">
                     <input
+                        autoComplete={this.props.autocomplete}
                         id={this.props.id}
                         type={this.props.type}
                         name={this.props.name}

@@ -39,6 +39,7 @@ class Form extends Component {
                 placeholder={field.placeholder}
                 onChange={field.onChange}
                 sideBySide={field.sideBySide}
+                autocomplete={field.autocomplete}
                 error={field.error}
             />
         ));

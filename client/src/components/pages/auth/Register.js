@@ -66,7 +66,8 @@ export class Register extends Component {
                 type: 'text',
                 label: 'First name',
                 placeholder: 'John...',
-                sideBySide: 1
+                sideBySide: 1,
+                autocomplete: 'off'
             },
             {
                 onChange: this.onChange,
@@ -75,7 +76,8 @@ export class Register extends Component {
                 type: 'text',
                 label: 'Last name',
                 placeholder: 'Smith...',
-                sideBySide: 2
+                sideBySide: 2,
+                autocomplete: 'off'
             },
             {
                 onChange: this.onChange,
@@ -83,7 +85,8 @@ export class Register extends Component {
                 id: 'email',
                 type: 'email',
                 label: 'Email',
-                placeholder: 'example@poodl.com...'
+                placeholder: 'example@poodl.com...',
+                autocomplete: 'off'
             },
             {
                 onChange: this.onChange,
@@ -91,7 +94,8 @@ export class Register extends Component {
                 id: 'password',
                 type: 'password',
                 label: 'Password',
-                placeholder: 'Shhhhh...'
+                placeholder: 'Shhhhh...',
+                autocomplete: 'off'
             },
             {
                 onChange: this.onChange,
@@ -99,7 +103,8 @@ export class Register extends Component {
                 id: 'password2',
                 type: 'password',
                 label: 'Confirm Password',
-                placeholder: 'Again...'
+                placeholder: 'Again...',
+                autocomplete: 'off'
             }
         ];
         if (this.props.adminIsSuper) {

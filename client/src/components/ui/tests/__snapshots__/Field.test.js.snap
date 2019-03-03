@@ -18,6 +18,7 @@ exports[`Field tests render should render not side by side 1`] = `
     className="field-outer"
   >
     <input
+      autoComplete="on"
       className="field normal field-error-border"
       defaultValue=""
       error={Object {}}
@@ -49,6 +50,7 @@ exports[`Field tests render should render the first side by side input 1`] = `
     className="field-outer"
   >
     <input
+      autoComplete="on"
       className="field normal first-side-by-side-input field-error-border"
       defaultValue=""
       error={Object {}}
@@ -80,6 +82,7 @@ exports[`Field tests render should render the second side by side input 1`] = `
     className="field-outer"
   >
     <input
+      autoComplete="on"
       className="field normal second-side-by-side-input field-error-border"
       defaultValue=""
       error={Object {}}
@@ -111,6 +114,7 @@ exports[`Field tests render should render with errors correctly 1`] = `
     className="field-outer"
   >
     <input
+      autoComplete="on"
       className="field normal field-error-border"
       defaultValue=""
       error="Big bad error"
@@ -140,6 +144,7 @@ exports[`Field tests render should render without errors correctly 1`] = `
     className="field-outer"
   >
     <input
+      autoComplete="on"
       className="field normal"
       defaultValue=""
       error={null}
