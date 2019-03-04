@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
+import ViewByDate from '../ui/ViewByDate';
 
 export class Landing extends Component {
     componentDidMount() {
@@ -14,6 +15,7 @@ export class Landing extends Component {
         return (
             <div className="landing-container">
                 <div className="landing-header">
+                    <ViewByDate />
                     <h1>Welcome to</h1>
                     <h1 className="landing-title">Poodl</h1>
                     <p className="landing-info">The member management tool for rural senior centers!</p>
