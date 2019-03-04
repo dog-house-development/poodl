@@ -30,7 +30,7 @@ after(function() {
 
 describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => {
     it('it should create a new admin', done => {
-        var admin1 = {
+        const admin1 = {
             firstName: 'testy',
             lastName: 'boy',
             email: 'test@gmail.com',
@@ -40,7 +40,7 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             superAdmin: true
         };
 
-        var admin2 = {
+        const admin2 = {
             firstName: 'testy',
             lastName: 'boy2',
             email: 'test2@gmail.com',

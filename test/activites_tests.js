@@ -30,7 +30,7 @@ after(function() {
 
 describe('Activities suite /ADD, /GET, /GET/:ID,/DELETE', () => {
     it('it should add a new service', done => {
-        let testActivity = {
+        let testActivity1 = {
             name: 'ice climbing',
             time: '10AM-12PM',
             duration: '2 Hours',
@@ -41,18 +41,32 @@ describe('Activities suite /ADD, /GET, /GET/:ID,/DELETE', () => {
             seniorCenter: 'The one around the corner'
         };
 
+        let testActivity2 = {
+            name: 'skiing',
+            times: '4Am-12AM',
+            dates: 'Sun',
+            admins: 'Charles',
+            volunteers: 'Snady dandy',
+            members: 'that guy',
+            seniorCenter: 'The other one'
+        };
         chai.request(server)
             .post('/api/activities/add')
-            .send(testActivity)
+            .send(testActivity2)
+            .end();
+
+        chai.request(server)
+            .post('/api/activities/add')
+            .send(testActivity1)
             .end((err, res) => {
                 res.should.have.status(200);
-                res.body.should.have.property('name').eql('ice climbing');
-                //res.body.should.have.property('times').eql('10AM-12PM');
-                //res.body.should.have.property('dates').eql('Saturday');
-                //res.body.should.have.property('admins').eql('Bill');
-                //res.body.should.have.property('volunteers').eql('Sandy');
-                //res.body.should.have.property('members').eql('Peepsuuu');
-                //res.body.should.have.property('seniorCenter').eql('The one around the corner');
+                res.body.should.have.property('data');
+                res.body.should.have.property('times').eql('10AM-12PM');
+                res.body.should.have.property('dates').eql('Saturday');
+                res.body.should.have.property('admins').eql('Bill');
+                res.body.should.have.property('volunteers').eql('Sandy');
+                res.body.should.have.property('members').eql('Peepsuuu');
+                res.body.should.have.property('seniorCenter').eql('The one around the corner');
                 done();
             });
     });
