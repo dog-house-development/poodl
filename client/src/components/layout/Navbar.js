@@ -28,6 +28,7 @@ export class Navbar extends Component {
                             size="small"
                             kind="secondary"
                             align="right"
+                            arrow
                             buttonContent={this.props.auth.admin.firstName + ' ' + this.props.auth.admin.lastName}
                             dropdownContent={[
                                 {

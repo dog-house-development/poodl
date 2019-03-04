@@ -25,6 +25,7 @@ exports[`Navbar tests render should render links for logged in admins 1`] = `
     >
       <OnClickOutside(Dropdown)
         align="right"
+        arrow={true}
         buttonContent="Frank Limb"
         dropdownContent={
           Array [

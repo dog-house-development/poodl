@@ -127,5 +127,11 @@ describe('Dropdown tests', () => {
             instance.setState({ open: true });
             expect(wrapper).toMatchSnapshot();
         });
+
+        it('should render open arrow dropdown correctly', () => {
+            setInstanceAndWrapper({ arrow: true });
+            instance.setState({ open: true });
+            expect(wrapper).toMatchSnapshot();
+        });
     });
 });

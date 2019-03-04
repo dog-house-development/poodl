@@ -3,19 +3,22 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import _ from 'lodash';
 import onClickOutside from 'react-onclickoutside';
+import classnames from 'classnames';
 
 const propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     kind: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
     buttonContent: PropTypes.string.isRequired,
     dropdownContent: PropTypes.array.isRequired,
-    align: PropTypes.oneOf(['left', 'center', 'right'])
+    align: PropTypes.oneOf(['left', 'center', 'right']),
+    arrow: PropTypes.bool
 };
 
 const defaultProps = {
     size: 'medium',
     kind: 'primary',
-    align: 'left'
+    align: 'left',
+    arrow: false
 };
 
 export class Dropdown extends Component {
@@ -47,7 +50,11 @@ export class Dropdown extends Component {
     getDropdownContentMarkup() {
         if (this.state.open) {
             return (
-                <div className={`dropdown-content dropdown-align-${this.props.align}`}>
+                <div
+                    className={classnames('dropdown-content', `dropdown-align-${this.props.align}`, {
+                        'arrow-dropdown': this.props.arrow
+                    })}
+                >
                     {_.map(this.props.dropdownContent, row => {
                         if (_.get(row, 'type') === 'divider') {
                             return <hr key={_.uniqueId('divider-')} />;
@@ -73,7 +80,14 @@ export class Dropdown extends Component {
                 <Button
                     size={this.props.size}
                     kind={this.props.kind}
-                    content={this.props.buttonContent}
+                    content={
+                        <span>
+                            {this.props.buttonContent}
+                            <i className="material-icons dropdown-caret">
+                                {this.state.open ? 'arrow_drop_up' : 'arrow_drop_down'}
+                            </i>
+                        </span>
+                    }
                     onClick={this.onDropdownClick}
                     dropdownButton={true}
                 />
