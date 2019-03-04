@@ -45,10 +45,6 @@ const MemberSchema = new Schema(
         ],
         mealPreference: {
             type: String
-        },
-        date: {
-            type: Date,
-            default: Date.now
         }
     },
     { timestamps: true }
