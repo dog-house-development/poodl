@@ -4,6 +4,18 @@ exports[`MemberProfile tests render should render correctly 1`] = `
 <div
   className="view-all-container"
 >
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/members"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to all members
+  </Link>
   <div
     className="panel"
   >

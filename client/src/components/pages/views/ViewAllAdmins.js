@@ -22,7 +22,12 @@ export class ViewAllAdmins extends Component {
                 lastName: admin.lastName,
                 email: admin.email,
                 super: admin.superAdmin ? 'Yes' : 'No',
-                key: admin._id
+                key: admin._id,
+                viewProfile: (
+                    <Link to={'/admin/' + admin._id} className="button medium primary">
+                        View
+                    </Link>
+                )
             });
         });
         return data;
