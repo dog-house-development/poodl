@@ -27,16 +27,7 @@ describe('Dashboard tests', () => {
             _state
         );
         props = _.assign({}, _props);
-        wrapper = shallow(
-            <Dashboard
-                {..._.assign(
-                    {},
-                    props,
-                    mapStateToProps(state, props),
-                    mapDispatchToProps(jasmine.createSpy('dispatch'))
-                )}
-            />
-        );
+        wrapper = shallow(<Dashboard {..._.assign({}, props, mapStateToProps(state, props))} />);
         instance = wrapper.instance();
     };
 
@@ -65,17 +56,6 @@ describe('Dashboard tests', () => {
     //         expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
     //     });
     // });
-
-    describe('onLogoutClick', () => {
-        it('should run without errors', () => {
-            spyOn(instance, 'onLogoutClick');
-            const e = {
-                target: { name: 'email', value: 'Moo' },
-                preventDefault: () => {}
-            };
-            wrapper.find('Button').simulate('click', e);
-        });
-    });
 
     describe('render', () => {
         it('should render correctly', () => {

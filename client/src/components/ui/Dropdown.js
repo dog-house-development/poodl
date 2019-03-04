@@ -18,7 +18,7 @@ const defaultProps = {
     align: 'left'
 };
 
-class Dropdown extends Component {
+export class Dropdown extends Component {
     constructor(props) {
         super(props);
         this.state = {

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown tests render should render closed dropdown correctly 1`] = `
+<div
+  className="dropdown-wrapper"
+>
+  <Button
+    content="Dropdown time ∨"
+    dropdownButton={true}
+    kind="primary"
+    onClick={[Function]}
+    size="medium"
+  />
+</div>
+`;
+
+exports[`Dropdown tests render should render open dropdown correctly 1`] = `
+<div
+  className="dropdown-wrapper"
+>
+  <Button
+    content="Dropdown time ∧"
+    dropdownButton={true}
+    kind="primary"
+    onClick={[Function]}
+    size="medium"
+  />
+  <div
+    className="dropdown-content dropdown-align-left"
+  >
+    <button
+      className="dropdown-content-row medium"
+      key="dropdown-row-16"
+      onClick={[Function]}
+    >
+      party
+    </button>
+    <hr
+      key="divider-17"
+    />
+    <button
+      className="dropdown-content-row medium"
+      key="dropdown-row-18"
+      onClick={[Function]}
+    >
+      woohoo
+    </button>
+  </div>
+</div>
+`;
