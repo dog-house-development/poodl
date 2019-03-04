@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { logoutAdmin } from '../../../actions/authActions';
 import Button from '../../ui/Button';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
+import ViewByDate from '../../ui/ViewByDate';
 
 const propTypes = {
     logoutAdmin: PropTypes.func.isRequired,
@@ -11,9 +13,22 @@ const propTypes = {
 };
 
 export class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            activitiesDate: Date.now()
+        };
+    }
+
     onLogoutClick = e => {
         e.preventDefault();
         this.props.logoutAdmin();
+    };
+
+    requestDate = date => {
+        console.log(moment(date).format('MMM Do, YYYY'));
+        this.setState({ activitiesDate: date });
+        // this.props.getActivities(date);
     };
 
     render() {
@@ -45,6 +60,16 @@ export class Dashboard extends Component {
                         Admin
                     </Link>
                 </div>
+                <ViewByDate
+                    requestDate={this.requestDate}
+                    dateData={{
+                        date: this.state.activitiesDate,
+                        data: [
+                            { id: '123', time: Date.now(), name: 'Bingo' },
+                            { id: '321', time: Date.now() + 1500, name: 'Lunch' }
+                        ]
+                    }}
+                />
             </div>
         );
     }
