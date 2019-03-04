@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
-const validateRegisterInput = require('../../validation/addService');
+const validateRegisterInput = require('../../validation/addActivity');
 
 //Load Activity models
 const Activity = require('../../models/Activity');
@@ -61,12 +61,14 @@ router.post('/add', (req, res) => {
         } else {
             const newActivity = new Activity({
                 name: req.body.name,
-                times: req.body.times,
-                dates: req.body.dates,
+                time: req.body.time,
+                duration: req.body.duration,
+                date: req.body.date,
                 admins: req.body.admins,
                 volunteers: req.body.volunteers,
                 members: req.body.members,
-                seniorCenter: req.body.seniorCenter
+                seniorCenter: req.body.seniorCenter,
+                maxCapacity: req.body.maxCapacity
             });
 
             newActivity
