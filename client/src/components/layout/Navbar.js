@@ -26,7 +26,7 @@ export class Navbar extends Component {
                     <li className="right" style={{ marginTop: '12px' }}>
                         <Dropdown
                             size="small"
-                            kind="primary"
+                            kind="secondary"
                             align="right"
                             buttonContent={this.props.auth.admin.firstName + ' ' + this.props.auth.admin.lastName}
                             dropdownContent={[

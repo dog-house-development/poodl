@@ -48,4 +48,9 @@
       color: $gray-5;
     }
   }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3pt $blue-outline;
+  }
 }

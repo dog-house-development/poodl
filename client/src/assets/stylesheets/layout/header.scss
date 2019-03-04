@@ -27,6 +27,11 @@
         color: $gray-8;
       }
 
+      &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 3pt $blue-outline inset;
+      }
+
       &.current-location {
         border-bottom: 2px solid $button-primary;
       }

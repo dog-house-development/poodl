@@ -5,7 +5,7 @@ exports[`Dropdown tests render should render closed dropdown correctly 1`] = `
   className="dropdown-wrapper"
 >
   <Button
-    content="Dropdown time ∨"
+    content="Dropdown time"
     dropdownButton={true}
     kind="primary"
     onClick={[Function]}
@@ -19,7 +19,7 @@ exports[`Dropdown tests render should render open dropdown correctly 1`] = `
   className="dropdown-wrapper"
 >
   <Button
-    content="Dropdown time ∧"
+    content="Dropdown time"
     dropdownButton={true}
     kind="primary"
     onClick={[Function]}

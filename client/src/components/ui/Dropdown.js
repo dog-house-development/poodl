@@ -73,11 +73,7 @@ export class Dropdown extends Component {
                 <Button
                     size={this.props.size}
                     kind={this.props.kind}
-                    content={
-                        this.props.buttonContent +
-                        ' ' +
-                        (this.state.open ? String.fromCharCode(8743) : String.fromCharCode(8744))
-                    }
+                    content={this.props.buttonContent}
                     onClick={this.onDropdownClick}
                     dropdownButton={true}
                 />
