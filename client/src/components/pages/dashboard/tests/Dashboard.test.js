@@ -4,7 +4,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { Dashboard, mapStateToProps, mapDispatchToProps } from '../Dashboard';
+import { Dashboard, mapStateToProps } from '../Dashboard';
 
 configure({ adapter: new Adapter() });
 
@@ -59,12 +59,12 @@ describe('Dashboard tests', () => {
         });
     });
 
-    describe('mapDispatchToProps', () => {
-        it('should map dispatch to props', () => {
-            const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
-        });
-    });
+    // describe('mapDispatchToProps', () => {
+    //     it('should map dispatch to props', () => {
+    //         const dispatch = jest.fn();
+    //         expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
+    //     });
+    // });
 
     describe('onLogoutClick', () => {
         it('should run without errors', () => {

@@ -1,0 +1,86 @@
+@import './_presets.scss';
+
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .button {
+    &.tertiary {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .dropdown-content {
+    position: absolute;
+    padding: 5px 0;
+    border: 1px solid $gray-2;
+    border-radius: $border-radius-default;
+    background-color: #fff;
+    min-width: 150px;
+    max-width: 250px;
+
+    -webkit-box-shadow: 0px 0px 52px -9px rgba(194, 194, 194, 0.8);
+    -moz-box-shadow: 0px 0px 52px -9px rgba(194, 194, 194, 0.8);
+    box-shadow: 0px 0px 52px -9px rgba(194, 194, 194, 0.8);
+
+    &.dropdown-align-left {
+      left: 0;
+    }
+
+    &.dropdown-align-center {
+      left: -15%; // how to center this still needs to be figured out
+    }
+
+    &.dropdown-align-right {
+      right: 0;
+    }
+
+    hr {
+      border-color: $gray-3;
+      margin: 5px 0;
+      border-top: 0;
+      border-style: solid;
+    }
+
+    .dropdown-content-row {
+      display: block;
+      text-align: left;
+      border: none;
+      box-shadow: none;
+      text-decoration: none;
+      -webkit-appearance: none;
+      width: 100%;
+      padding: 0 10px;
+      border: 1px solid transparent;
+
+      &:hover {
+        background-color: $gray-2;
+      }
+
+      &:active {
+        background-color: $gray-3;
+      }
+
+      &:focus {
+        outline: none;
+        background-color: $gray-1;
+      }
+
+      &.small {
+        font-size: 0.9em;
+        height: 32px;
+      }
+
+      &.medium {
+        font-size: 0.9em;
+        height: 36px;
+      }
+
+      &.large {
+        font-size: 1em;
+        height: 38px;
+      }
+    }
+  }
+}

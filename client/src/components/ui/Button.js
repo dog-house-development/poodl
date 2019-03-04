@@ -7,12 +7,14 @@ const propTypes = {
     kind: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
     content: PropTypes.string.isRequired,
     type: PropTypes.string,
-    formButton: PropTypes.bool
+    formButton: PropTypes.bool,
+    dropdownButton: PropTypes.bool
 };
 
 const defaultProps = {
     size: 'medium',
-    kind: 'primary'
+    kind: 'primary',
+    dropdownButton: false
 };
 
 class Button extends Component {
