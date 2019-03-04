@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchVolunteer } from '../../../actions/volunteerActions';
 import Loading from '../../ui/Loading';
+import { Link } from 'react-router-dom';
 
 export class VolunteerProfile extends Component {
     constructor(props) {
@@ -30,6 +31,9 @@ export class VolunteerProfile extends Component {
     render() {
         return (
             <div className="view-all-container">
+                <Link to="/volunteers" className="button small tertiary">
+                    <i className="material-icons">keyboard_backspace</i> Back to all volunteers
+                </Link>
                 <div className="panel">{this.getPageMarkup()}</div>
             </div>
         );

@@ -8,6 +8,8 @@ export const SET_CURRENT_ADMIN = 'SET_CURRENT_ADMIN';
 // admin action types
 export const FETCH_ADMINS_BEGIN = 'FETCH_ADMINS_BEGIN';
 export const FETCH_ADMINS_SUCCESS = 'FETCH_ADMINS_SUCCESS';
+export const FETCH_ADMIN_BEGIN = 'FETCH_ADMIN_BEGIN';
+export const FETCH_ADMIN_SUCCESS = 'FETCH_ADMIN_SUCCESS';
 
 // volunteer action types
 export const FETCH_VOLUNTEERS_BEGIN = 'FETCH_VOLUNTEERS_BEGIN';

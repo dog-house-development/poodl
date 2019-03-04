@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchMember } from '../../../actions/memberActions';
 import Loading from '../../ui/Loading';
+import { Link } from 'react-router-dom';
 
 export class MemberProfile extends Component {
     constructor(props) {
@@ -30,6 +31,9 @@ export class MemberProfile extends Component {
     render() {
         return (
             <div className="view-all-container">
+                <Link to="/members" className="button small tertiary">
+                    <i className="material-icons">keyboard_backspace</i> Back to all members
+                </Link>
                 <div className="panel">{this.getPageMarkup()}</div>
             </div>
         );
