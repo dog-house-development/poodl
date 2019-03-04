@@ -4,6 +4,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
+import { Link } from 'react-router-dom';
 import { ViewAllAdmins, mapStateToProps, mapDispatchToProps } from '../ViewAllAdmins';
 
 configure({ adapter: new Adapter() });
@@ -97,8 +98,30 @@ describe('ViewAllAdmins tests', () => {
     describe('getDataGridContent', () => {
         it('should return filtered admins data', () => {
             expect(instance.getDataGridContent()).toEqual([
-                { key: '123', firstName: 'Big', lastName: 'Tup', email: 'bigtup@nowhere.com', super: 'Yes' },
-                { key: '321', firstName: 'Lil', lastName: 'Tup', email: 'liltup@nowhere.com', super: 'No' }
+                {
+                    key: '123',
+                    firstName: 'Big',
+                    lastName: 'Tup',
+                    email: 'bigtup@nowhere.com',
+                    super: 'Yes',
+                    viewProfile: (
+                        <Link to={'/admin/123'} className="button medium primary">
+                            View
+                        </Link>
+                    )
+                },
+                {
+                    key: '321',
+                    firstName: 'Lil',
+                    lastName: 'Tup',
+                    email: 'liltup@nowhere.com',
+                    super: 'No',
+                    viewProfile: (
+                        <Link to={'/admin/321'} className="button medium primary">
+                            View
+                        </Link>
+                    )
+                }
             ]);
         });
     });
