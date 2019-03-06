@@ -25,22 +25,34 @@ class ViewByDate extends Component {
         };
     }
     getHeaderMarkup() {
+        const currentDate = _.get(this.props.dateData, 'date');
         return (
             <div className="view-by-date-header">
                 <button
                     className="button view-by-date-header-button"
-                    onClick={() => this.props.requestDate(_.get(this.props.dateData, 'date') - DAY_LENGTH)}
+                    onClick={() => this.props.requestDate(currentDate - DAY_LENGTH)}
                 >
-                    back a day
+                    <span>
+                        <i className="material-icons">keyboard_arrow_left</i>
+                        {moment(currentDate - DAY_LENGTH).format('dddd')}
+                    </span>
                 </button>
-                <h2 className="view-by-date-header-title">
-                    {moment(_.get(this.props.dateData, 'date', 'No date provided')).format('MMM Do, YYYY')}
-                </h2>
+                <div>
+                    <h2 className="view-by-date-header-title">
+                        {moment(currentDate).format('MMM Do, YYYY') === moment(Date.now()).format('MMM Do, YYYY')
+                            ? 'Today'
+                            : moment(currentDate).format('dddd')}
+                    </h2>
+                    <p>{moment(currentDate).format('MMM Do, YYYY')}</p>
+                </div>
                 <button
                     className="button view-by-date-header-button"
-                    onClick={() => this.props.requestDate(_.get(this.props.dateData, 'date') + DAY_LENGTH)}
+                    onClick={() => this.props.requestDate(currentDate + DAY_LENGTH)}
                 >
-                    forward a day
+                    <span>
+                        {moment(currentDate + DAY_LENGTH).format('dddd')}
+                        <i className="material-icons">keyboard_arrow_right</i>
+                    </span>
                 </button>
             </div>
         );
