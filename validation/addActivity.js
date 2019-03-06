@@ -6,12 +6,14 @@ module.exports = function validateRegisterInput(data) {
 
     // Convert empty fields to an empty string so we can use validator functions
     data.name = !isEmpty(data.name) ? data.name : '';
-    data.times = !isEmpty(data.times) ? data.times : '';
-    data.dates = !isEmpty(data.dates) ? data.dates : '';
+    data.time = !isEmpty(data.time) ? data.time : '';
+    data.duration = !isEmpty(data.duration) ? data.duration : '';
+    data.date = !isEmpty(data.date) ? data.date : '';
     data.admins = !isEmpty(data.admins) ? data.admins : '';
     data.volunteers = !isEmpty(data.volunteers) ? data.volunteers : '';
     data.members = !isEmpty(data.members) ? data.members : '';
     data.seniorCenter = !isEmpty(data.seniorCenter) ? data.seniorCenter : '';
+    data.maxCapacity = !isEmpty(data.maxCapacity) ? data.maxCapacity : '';
 
     // Name checks
     if (Validator.isEmpty(data.name)) {
@@ -19,13 +21,18 @@ module.exports = function validateRegisterInput(data) {
     }
 
     // Times checks
-    if (Validator.isEmpty(data.times)) {
-        errors.times = 'Times field is required';
+    if (Validator.isEmpty(data.time)) {
+        errors.time = 'Time field is required';
     }
 
-    //Dates check
-    if (Validator.isEmpty(data.dates)) {
-        errors.dates = 'Dates field is required';
+    // Duration checks
+    if (Validator.isEmpty(data.duration)) {
+        errors.duration = 'Duration field is required';
+    }
+
+    //Date check
+    if (Validator.isEmpty(data.date)) {
+        errors.date = 'Date field is required';
     }
 
     // admins checks

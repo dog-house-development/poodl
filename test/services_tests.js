@@ -32,8 +32,9 @@ describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
     it('it should add a new service', done => {
         let testService = {
             name: 'ice climbing',
-            times: '10AM-12PM',
-            dates: 'Saturday',
+            time: '10AM-12PM',
+            duration: '2 Hours',
+            date: 'Saturday',
             admins: 'Bill',
             volunteers: 'Sandy',
             members: 'Peepsuuu',
