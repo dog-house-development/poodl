@@ -56,7 +56,7 @@ router.post('/get', (req, res) => {
 router.post('/filter', (req, res) => {
     Member.find(req.body, (err, members) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json(members);
+        return res.json({ success: true, data: members });
     });
 });
 

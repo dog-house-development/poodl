@@ -43,7 +43,7 @@ router.get('/get/:id', (req, res, next) => {
 router.post('/filter', (req, res) => {
     Service.find(res.body, (err, services) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json(services);
+        return res.json({ success: true, data: services });
     });
 });
 
@@ -63,7 +63,7 @@ router.post('/add', (req, res) => {
             const newService = new Service({
                 name: req.body.name,
                 time: req.body.time,
-                duration: req.body.time,
+                duration: req.body.duration,
                 date: req.body.date,
                 admins: req.body.admins,
                 volunteers: req.body.volunteers,
