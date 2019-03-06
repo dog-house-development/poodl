@@ -71,5 +71,11 @@ export const mapStateToProps = (state, props) => {
     };
 };
 
+// export const mapDispatchToProps = (dispatch) => {
+//     return {
+//         getActivities: date => dispatch(filterActivities(date))
+//     };
+// };
+
 Dashboard.propTypes = propTypes;
 export default connect(mapStateToProps)(Dashboard);
