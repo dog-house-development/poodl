@@ -94,23 +94,6 @@ describe('Dropdown tests', () => {
     });
 
     describe('getDropdownContentMarkup', () => {
-        it('should return markup if open is true', () => {
-            instance.setState({ open: true });
-            expect(JSON.stringify(instance.getDropdownContentMarkup())).toEqual(
-                JSON.stringify(
-                    <div className="dropdown-content dropdown-align-left">
-                        <button key="dropdown-row-13" className="dropdown-content-row medium" onClick={() => {}}>
-                            party
-                        </button>
-                        <hr key="divider-14" />
-                        <button key="dropdown-row-15" className="dropdown-content-row medium" onClick={() => {}}>
-                            woohoo
-                        </button>
-                    </div>
-                )
-            );
-        });
-
         it('should not return markup because open is false', () => {
             //spyOn(instance, 'handleClickOutside');
             instance.setState({ open: false });

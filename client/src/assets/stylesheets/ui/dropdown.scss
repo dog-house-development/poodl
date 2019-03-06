@@ -33,8 +33,7 @@
     &.arrow-dropdown {
       top: calc(100% + 14px);
 
-      &::before {
-        content: '';
+      .arrow {
         position: absolute;
         top: -8px;
         width: 0;
@@ -42,13 +41,18 @@
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         border-bottom: 8px solid #fff;
+
+        &.arrow-behind {
+          top: -9px;
+          border-bottom-color: $gray-2;
+        }
       }
     }
 
     &.dropdown-align-left {
       left: 0;
 
-      &.arrow-dropdown::before {
+      .arrow {
         left: 10px;
       }
     }
@@ -56,7 +60,7 @@
     &.dropdown-align-center {
       left: -15%; // how to center this still needs to be figured out
 
-      &.arrow-dropdown::before {
+      .arrow {
         right: calc(50% - 4px);
       }
     }
@@ -64,7 +68,7 @@
     &.dropdown-align-right {
       right: 0;
 
-      &.arrow-dropdown::before {
+      .arrow {
         right: 10px;
       }
     }

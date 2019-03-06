@@ -46,19 +46,25 @@ exports[`Dropdown tests render should render open arrow dropdown correctly 1`] =
   <div
     className="dropdown-content dropdown-align-left arrow-dropdown"
   >
+    <div
+      className="arrow arrow-behind"
+    />
+    <div
+      className="arrow"
+    />
     <button
       className="dropdown-content-row medium"
-      key="dropdown-row-19"
+      key="dropdown-row-13"
       onClick={[Function]}
     >
       party
     </button>
     <hr
-      key="divider-20"
+      key="divider-14"
     />
     <button
       className="dropdown-content-row medium"
-      key="dropdown-row-21"
+      key="dropdown-row-15"
       onClick={[Function]}
     >
       woohoo
@@ -92,17 +98,17 @@ exports[`Dropdown tests render should render open dropdown correctly 1`] = `
   >
     <button
       className="dropdown-content-row medium"
-      key="dropdown-row-16"
+      key="dropdown-row-10"
       onClick={[Function]}
     >
       party
     </button>
     <hr
-      key="divider-17"
+      key="divider-11"
     />
     <button
       className="dropdown-content-row medium"
-      key="dropdown-row-18"
+      key="dropdown-row-12"
       onClick={[Function]}
     >
       woohoo

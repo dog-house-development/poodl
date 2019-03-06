@@ -48,6 +48,15 @@ export class Dropdown extends Component {
     };
 
     getDropdownContentMarkup() {
+        let arrowMarkup;
+        if (this.props.arrow) {
+            arrowMarkup = (
+                <>
+                    <div className="arrow arrow-behind" />
+                    <div className="arrow" />
+                </>
+            );
+        }
         if (this.state.open) {
             return (
                 <div
@@ -55,6 +64,7 @@ export class Dropdown extends Component {
                         'arrow-dropdown': this.props.arrow
                     })}
                 >
+                    {arrowMarkup}
                     {_.map(this.props.dropdownContent, row => {
                         if (_.get(row, 'type') === 'divider') {
                             return <hr key={_.uniqueId('divider-')} />;
