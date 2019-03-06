@@ -34,9 +34,8 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
             firstName: 'Charles',
             lastName: 'Boile',
             email: 'SpecialDiet2@gmail.com',
-            address: 'Brooklyn 99',
             seniorCenter: 'Nice little place',
-            membershipDate: '01/02/2003',
+            address: 'Brooklyn 99',
             renewalDate: 'Today',
             specialDiet: ['fish', 'chicken nuggets']
         };
@@ -45,9 +44,8 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
             firstName: 'Karen',
             lastName: 'Engel',
             email: 'KarenEngel@gmail.com',
-            address: '123 4th Avenue',
             seniorCenter: 'Highgate',
-            membershipDate: '02/03/2004',
+            address: '123 4th Avenue',
             renewalDate: '02-03-2020',
             specialDiet: ['beef', 'chicken nuggets']
         };
@@ -68,10 +66,9 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 res.body.should.have.property('email').eql('SpecialDiet2@gmail.com');
                 res.body.should.have.property('address').eql('Brooklyn 99');
                 res.body.should.have.property('seniorCenter').eql('Nice little place');
-                res.body.should.have.property('membershipDate').eql('01/02/2003');
+                res.body.should.have.property('membershipDate');
                 res.body.should.have.property('renewalDate').eql('Today');
                 res.body.should.have.property('specialDiet').eql(['fish', 'chicken nuggets']);
-                res.body.should.have.property('date');
 
                 done();
             });
@@ -92,10 +89,9 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 res.body.data[1].should.have.property('email').eql('SpecialDiet2@gmail.com');
                 res.body.data[1].should.have.property('address').eql('Brooklyn 99');
                 res.body.data[1].should.have.property('seniorCenter').eql('Nice little place');
-                res.body.data[1].should.have.property('membershipDate').eql('01/02/2003');
+                res.body.data[1].should.have.property('membershipDate');
                 res.body.data[1].should.have.property('renewalDate').eql('Today');
                 res.body.data[1].should.have.property('specialDiet').eql(['fish', 'chicken nuggets']);
-                res.body.data[1].should.have.property('date');
 
                 res.body.data[0].should.have.property('_id');
                 res.body.data[0].should.have.property('firstName').eql('Karen');
@@ -103,10 +99,9 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 res.body.data[0].should.have.property('email').eql('KarenEngel@gmail.com');
                 res.body.data[0].should.have.property('address').eql('123 4th Avenue');
                 res.body.data[0].should.have.property('seniorCenter').eql('Highgate');
-                res.body.data[0].should.have.property('membershipDate').eql('02/03/2004');
+                res.body.data[0].should.have.property('membershipDate');
                 res.body.data[0].should.have.property('renewalDate').eql('02-03-2020');
                 res.body.data[0].should.have.property('specialDiet').eql(['beef', 'chicken nuggets']);
-                res.body.data[0].should.have.property('date');
 
                 done();
             });
@@ -124,10 +119,13 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 res.body.should.have.property('email').eql('SpecialDiet2@gmail.com');
                 res.body.should.have.property('address').eql('Brooklyn 99');
                 res.body.should.have.property('seniorCenter').eql('Nice little place');
-                res.body.should.have.property('membershipDate').eql('01/02/2003');
+                res.body.should.have.property('membershipDate');
                 res.body.should.have.property('renewalDate').eql('Today');
                 res.body.should.have.property('specialDiet').eql(['fish', 'chicken nuggets']);
-                res.body.should.have.property('date');
+                res.body.should.have.property('createdAt');
+                res.body.should.have.property('updatedAt');
+                res.body.should.have.property('disabilities');
+                res.body.should.have.property('medicalIssues');
 
                 done();
             });
@@ -176,13 +174,23 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
 
     it('it should filter list of members', done => {
         let request = {
-            seniorCenter: 'Nice little place'
+            firstName: 'Charles'
         };
         chai.request(server)
             .post('/api/members/filter')
             .send(request)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('success').eql(true);
+                res.body.should.have.property('data');
+                res.body.data[0].should.have.property('firstName').eql('Charles');
+                res.body.data[0].should.have.property('lastName').eql('Boile');
+                res.body.data[0].should.have.property('email').eql('SpecialDiet300@gmail.com');
+                res.body.data[0].should.have.property('address').eql('Brooklyn 99');
+                res.body.data[0].should.have.property('seniorCenter').eql('Highgate Living');
+                res.body.data[0].should.have.property('membershipDate');
+                res.body.data[0].should.have.property('renewalDate').eql('Today');
+                res.body.data[0].should.have.property('specialDiet');
                 done();
             });
     });

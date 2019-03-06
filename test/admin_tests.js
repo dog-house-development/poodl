@@ -60,7 +60,7 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('_id');
-                res.body.should.have.property('fistName').eql('testy');
+                res.body.should.have.property('firstName').eql('testy');
                 res.body.should.have.property('lastName').eql('boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
                 res.body.should.have.property('seniorCenter').eql('test center');
@@ -98,14 +98,16 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
                 res.body.data[1].should.have.property('lastName').eql('boy');
                 res.body.data[1].should.have.property('email').eql('test@gmail.com');
                 res.body.data[1].should.have.property('password');
-                res.body.data[1].should.have.property('date');
+                res.body.data[1].should.have.property('superAdmin').eql(true);
+                res.body.data[1].should.have.property('seniorCenter').eql('test center');
 
                 res.body.data[0].should.have.property('_id');
                 res.body.data[0].should.have.property('firstName').eql('testy');
                 res.body.data[0].should.have.property('lastName').eql('boy2');
                 res.body.data[0].should.have.property('email').eql('test2@gmail.com');
                 res.body.data[0].should.have.property('password');
-                res.body.data[0].should.have.property('date');
+                res.body.data[0].should.have.property('superAdmin').eql(false);
+                res.body.data[0].should.have.property('seniorCenter').eql('test center2');
 
                 done();
             });
@@ -148,6 +150,13 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             .send(request)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.data[0].should.have.property('_id');
+                res.body.data[0].should.have.property('firstName').eql('testy');
+                res.body.data[0].should.have.property('lastName').eql('boy2');
+                res.body.data[0].should.have.property('email').eql('test2@gmail.com');
+                res.body.data[0].should.have.property('password');
+                res.body.data[0].should.have.property('superAdmin').eql(false);
+                res.body.data[0].should.have.property('seniorCenter');
                 done();
             });
     });

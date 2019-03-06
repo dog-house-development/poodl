@@ -43,7 +43,7 @@ router.get('/get/:id', (req, res, next) => {
 router.post('/filter', (req, res) => {
     Service.find(res.body, (err, services) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json(services);
+        return res.json({ success: true, data: services });
     });
 });
 

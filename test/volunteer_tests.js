@@ -30,15 +30,27 @@ after(function() {
 
 describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
     it('it should add a volunteer', done => {
-        var testVolunteer = {
+        const testVolunteer1 = {
             firstName: 'Charles',
             lastName: 'Boyle',
             email: 'JakeFAN123@gmail.com',
             seniorCenter: 'center'
         };
+        const testVolunteer2 = {
+            firstName: 'Dorian',
+            lastName: 'Antipa',
+            email: 'bassoon@bassoonman.com',
+            seniorCenter: 'Howard'
+        };
+
         chai.request(server)
             .post('/api/volunteers/add')
-            .send(testVolunteer)
+            .send(testVolunteer2)
+            .end((err, res) => {});
+
+        chai.request(server)
+            .post('/api/volunteers/add')
+            .send(testVolunteer1)
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -53,6 +65,13 @@ describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 tempId = res.body.data[0]._id;
+                res.body.should.have.property('success').eql(true);
+                res.body.data[0].should.have.property('_id');
+                res.body.data[0].should.have.property('firstName').eql('Dorian');
+                res.body.data[0].should.have.property('lastName').eql('Antipa');
+                res.body.data[0].should.have.property('email').eql('bassoon@bassoonman.com');
+                res.body.data[0].should.have.property('createdAt');
+                res.body.data[0].should.have.property('updatedAt');
                 done();
             });
     });
@@ -62,6 +81,12 @@ describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
             .get('/api/volunteers/get/' + tempId)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('_id');
+                res.body.should.have.property('firstName').eql('Dorian');
+                res.body.should.have.property('lastName').eql('Antipa');
+                res.body.should.have.property('email').eql('bassoon@bassoonman.com');
+                res.body.should.have.property('createdAt');
+                res.body.should.have.property('updatedAt');
                 done();
             });
     });
@@ -75,19 +100,33 @@ describe('Volunteer API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
             .send(idList)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('success').eql(true);
+                res.body.data[0].should.have.property('_id');
+                res.body.data[0].should.have.property('firstName').eql('Dorian');
+                res.body.data[0].should.have.property('lastName').eql('Antipa');
+                res.body.data[0].should.have.property('email').eql('bassoon@bassoonman.com');
+                res.body.data[0].should.have.property('createdAt');
+                res.body.data[0].should.have.property('updatedAt');
                 done();
             });
     });
 
     it('it should filter volunteers', done => {
         let request = {
-            seniorCenter: 'center'
+            firstName: 'Charles'
         };
         chai.request(server)
             .post('/api/volunteers/filter')
             .send(request)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('success').eql(true);
+                res.body.data[0].should.have.property('_id');
+                res.body.data[1].should.have.property('firstName').eql('Charles');
+                res.body.data[1].should.have.property('lastName').eql('Boyle');
+                res.body.data[1].should.have.property('email').eql('JakeFAN123@gmail.com');
+                res.body.data[1].should.have.property('createdAt');
+                res.body.data[1].should.have.property('updatedAt');
                 done();
             });
     });
