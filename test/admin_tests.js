@@ -49,6 +49,19 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             seniorCenter: 'test center2'
         };
 
+        var admin2 = {
+            name: 'testy boy2',
+            email: 'test2@gmail.com',
+            password: 'greatpassword2!@',
+            password2: 'greatpassword2!@',
+            seniorCenter: 'test center2'
+        };
+
+        chai.request(server)
+            .post('/api/admins/register')
+            .send(admin2)
+            .end();
+
         chai.request(server)
             .post('/api/admins/register')
             .send(admin2)
