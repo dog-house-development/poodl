@@ -30,18 +30,34 @@ after(function() {
 
 describe('SeniorCenter API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
     it('it should add a seniorCenter', done => {
-        var center = {
+        const center1 = {
             name: 'deep puddle',
             email: 'ThisPuddleIsSoDeep@gmail.com',
             address: 'Hole in the ground',
             phone: '818-WATER',
             operationHours: '24 Hours'
         };
+        const center2 = {
+            name: 'Snow',
+            email: 'So Cold',
+            address: 'Outside',
+            phone: 'Freeze',
+            operationHours: 'Always'
+        };
         chai.request(server)
             .post('/api/seniorCenters/add')
-            .send(center)
+            .send(center2)
+            .end();
+        chai.request(server)
+            .post('/api/seniorCenters/add')
+            .send(center1)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('name').eql('deep puddle');
+                res.body.should.have.property('email').eql('ThisPuddleIsSoDeep@gmail.com');
+                res.body.should.have.property('address').eql('Hole in the ground');
+                res.body.should.have.property('phone').eql('818-WATER');
+                res.body.should.have.property('operationHours').eql('24 Hours');
                 done();
             });
     });
@@ -54,6 +70,11 @@ describe('SeniorCenter API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 tempId = res.body.data[0]._id;
+                res.body.data[0].should.have.property('name').eql('deep puddle');
+                res.body.data[0].should.have.property('email').eql('ThisPuddleIsSoDeep@gmail.com');
+                res.body.data[0].should.have.property('address').eql('Hole in the ground');
+                res.body.data[0].should.have.property('phone').eql('818-WATER');
+                res.body.data[0].should.have.property('operationHours').eql('24 Hours');
                 done();
             });
     });
@@ -63,6 +84,11 @@ describe('SeniorCenter API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
             .get('/api/seniorCenters/get/' + tempId)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('name').eql('deep puddle');
+                res.body.should.have.property('email').eql('ThisPuddleIsSoDeep@gmail.com');
+                res.body.should.have.property('address').eql('Hole in the ground');
+                res.body.should.have.property('phone').eql('818-WATER');
+                res.body.should.have.property('operationHours').eql('24 Hours');
                 done();
             });
     });
@@ -76,6 +102,11 @@ describe('SeniorCenter API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
             .send(request)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.data[0].should.have.property('name').eql('deep puddle');
+                res.body.data[0].should.have.property('email').eql('ThisPuddleIsSoDeep@gmail.com');
+                res.body.data[0].should.have.property('address').eql('Hole in the ground');
+                res.body.data[0].should.have.property('phone').eql('818-WATER');
+                res.body.data[0].should.have.property('operationHours').eql('24 Hours');
                 done();
             });
     });

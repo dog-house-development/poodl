@@ -42,7 +42,7 @@ router.get('/get/:id', (req, res) => {
 router.post('/filter', (req, res) => {
     SeniorCenter.find(res.body, (err, seniorCenters) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json(seniorCenters);
+        return res.json({ success: true, data: seniorCenters });
     });
 });
 

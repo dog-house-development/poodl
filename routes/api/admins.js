@@ -54,7 +54,7 @@ router.post('/get', (req, res) => {
 router.post('/filter', (req, res) => {
     Admin.find(res.body, (err, admins) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json(admins);
+        return res.json({ success: true, data: admins });
     });
 });
 
