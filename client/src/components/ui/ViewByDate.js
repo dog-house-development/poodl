@@ -61,6 +61,8 @@ class ViewByDate extends Component {
     getTableMarkup() {
         if (this.props.loading) {
             return <Loading />;
+        } else if (this.props.errors) {
+            return <p>Error time</p>;
         }
         return (
             <div className="view-by-date-body">
@@ -68,7 +70,7 @@ class ViewByDate extends Component {
                     return (
                         <div key={_.uniqueId('vbd-row-')} className="view-by-date-row">
                             <h3>{row.name}</h3>
-                            <p>{moment(row.time).format('h:mma')}</p>
+                            <p>{row.times}</p>
                         </div>
                     );
                 })}

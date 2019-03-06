@@ -19,6 +19,7 @@
       flex: 1;
       font-size: 0.9em;
       border-radius: 0;
+      white-space: nowrap;
 
       &:hover {
         background-color: $button-primary;

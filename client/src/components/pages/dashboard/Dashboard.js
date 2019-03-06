@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { filterActivities } from '../../../actions/activityActions';
 import ViewByDate from '../../ui/ViewByDate';
 
 const propTypes = {
@@ -17,10 +18,16 @@ export class Dashboard extends Component {
         };
     }
 
+    componentDidMount() {
+        // this.props.getActivities({ date: this.state.activitiesDate });
+        this.props.getActivities({ date: 'Saturday' });
+    }
+
     requestDate = date => {
         console.log(moment(date).format('MMM Do, YYYY'));
         this.setState({ activitiesDate: date });
         // this.props.getActivities(date);
+        console.log(this.props.activitiesLoading ? 'Loading' : 'Loaded');
     };
 
     render() {
@@ -52,13 +59,16 @@ export class Dashboard extends Component {
                 </div>
                 <ViewByDate
                     requestDate={this.requestDate}
+                    loading={this.props.activitiesLoading}
                     dateData={{
                         date: this.state.activitiesDate,
-                        data: [
-                            { id: '123', time: Date.now(), name: 'Bingo' },
-                            { id: '321', time: Date.now() + 1500, name: 'Lunch' }
-                        ]
+                        data: this.props.activities
+                        // data: [
+                        //     { id: '123', time: Date.now(), name: 'Bingo' },
+                        //     { id: '321', time: Date.now() + 1500, name: 'Lunch' }
+                        // ]
                     }}
+                    errors={this.props.errors}
                 />
             </div>
         );
@@ -66,16 +76,23 @@ export class Dashboard extends Component {
 }
 
 export const mapStateToProps = (state, props) => {
+    console.log(state.activities.all);
     return {
-        auth: state.auth
+        auth: state.auth,
+        activities: state.activities.all,
+        activitiesLoading: state.activities.loading,
+        errors: state.errors
     };
 };
 
-// export const mapDispatchToProps = (dispatch) => {
-//     return {
-//         getActivities: date => dispatch(filterActivities(date))
-//     };
-// };
+export const mapDispatchToProps = dispatch => {
+    return {
+        getActivities: date => dispatch(filterActivities(date))
+    };
+};
 
 Dashboard.propTypes = propTypes;
-export default connect(mapStateToProps)(Dashboard);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Dashboard);
