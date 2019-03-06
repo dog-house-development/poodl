@@ -63,7 +63,7 @@ router.post('/add', (req, res) => {
             const newService = new Service({
                 name: req.body.name,
                 time: req.body.time,
-                duration: req.body.time,
+                duration: req.body.duration,
                 date: req.body.date,
                 admins: req.body.admins,
                 volunteers: req.body.volunteers,
