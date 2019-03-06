@@ -4,7 +4,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { Navbar, mapStateToProps } from '../Navbar';
+import { Navbar, mapStateToProps, mapDispatchToProps } from '../Navbar';
 
 configure({ adapter: new Adapter() });
 
@@ -29,7 +29,16 @@ describe('Navbar tests', () => {
             },
             _state
         );
-        wrapper = shallow(<Navbar {..._.assign({}, props, mapStateToProps(state, props))} />);
+        wrapper = shallow(
+            <Navbar
+                {..._.assign(
+                    {},
+                    props,
+                    mapStateToProps(state, props),
+                    mapDispatchToProps(jasmine.createSpy('dispatch'))
+                )}
+            />
+        );
         instance = wrapper.instance();
     };
 
@@ -45,9 +54,19 @@ describe('Navbar tests', () => {
         });
     });
 
+    describe('mapDispatchToProps', () => {
+        it('should map dispatch to props', () => {
+            const dispatch = jest.fn();
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
+        });
+    });
+
     describe('render', () => {
         it('should render links for logged in admins', () => {
-            setInstanceAndWrapper({}, { auth: { isAuthenticated: true } });
+            setInstanceAndWrapper(
+                {},
+                { auth: { isAuthenticated: true, admin: { firstName: 'Frank', lastName: 'Limb' } } }
+            );
             expect(wrapper).toMatchSnapshot();
         });
 

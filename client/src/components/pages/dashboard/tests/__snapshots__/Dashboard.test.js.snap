@@ -11,13 +11,6 @@ exports[`Dashboard tests render should render correctly 1`] = `
     undefined undefined
     .
   </h1>
-  <Button
-    content="Log out"
-    kind="primary"
-    onClick={[Function]}
-    size="medium"
-  />
-  <br />
   <div
     className="panel"
   >
