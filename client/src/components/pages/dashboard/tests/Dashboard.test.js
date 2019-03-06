@@ -4,7 +4,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { Dashboard, mapStateToProps, mapDispatchToProps } from '../Dashboard';
+import { Dashboard, mapStateToProps } from '../Dashboard';
 
 configure({ adapter: new Adapter() });
 
@@ -27,16 +27,7 @@ describe('Dashboard tests', () => {
             _state
         );
         props = _.assign({}, _props);
-        wrapper = shallow(
-            <Dashboard
-                {..._.assign(
-                    {},
-                    props,
-                    mapStateToProps(state, props),
-                    mapDispatchToProps(jasmine.createSpy('dispatch'))
-                )}
-            />
-        );
+        wrapper = shallow(<Dashboard {..._.assign({}, props, mapStateToProps(state, props))} />);
         instance = wrapper.instance();
     };
 
@@ -59,23 +50,12 @@ describe('Dashboard tests', () => {
         });
     });
 
-    describe('mapDispatchToProps', () => {
-        it('should map dispatch to props', () => {
-            const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
-        });
-    });
-
-    describe('onLogoutClick', () => {
-        it('should run without errors', () => {
-            spyOn(instance, 'onLogoutClick');
-            const e = {
-                target: { name: 'email', value: 'Moo' },
-                preventDefault: () => {}
-            };
-            wrapper.find('Button').simulate('click', e);
-        });
-    });
+    // describe('mapDispatchToProps', () => {
+    //     it('should map dispatch to props', () => {
+    //         const dispatch = jest.fn();
+    //         expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
+    //     });
+    // });
 
     describe('render', () => {
         it('should render correctly', () => {

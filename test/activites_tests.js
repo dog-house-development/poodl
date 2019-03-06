@@ -28,12 +28,13 @@ after(function() {
     process.exit(0);
 });
 
-describe('Activities suite /ADD./GET, /GET/:ID,/DELETE', () => {
+describe('Activities suite /ADD, /GET, /GET/:ID,/DELETE', () => {
     it('it should add a new service', done => {
         let testActivity = {
             name: 'ice climbing',
-            times: '10AM-12PM',
-            dates: 'Saturday',
+            time: '10AM-12PM',
+            duration: '2 Hours',
+            date: 'Saturday',
             admins: 'Bill',
             volunteers: 'Sandy',
             members: 'Peepsuuu',

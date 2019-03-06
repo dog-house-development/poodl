@@ -5,14 +5,16 @@ const propTypes = {
     onClick: PropTypes.func,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     kind: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-    content: PropTypes.string.isRequired,
+    content: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
     type: PropTypes.string,
-    formButton: PropTypes.bool
+    formButton: PropTypes.bool,
+    dropdownButton: PropTypes.bool
 };
 
 const defaultProps = {
     size: 'medium',
-    kind: 'primary'
+    kind: 'primary',
+    dropdownButton: false
 };
 
 class Button extends Component {

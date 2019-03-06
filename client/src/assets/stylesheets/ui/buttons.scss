@@ -8,11 +8,7 @@
   box-shadow: none;
   text-decoration: none;
   -webkit-appearance: none;
-
-  &:focus {
-    outline: 0;
-    border-color: blue;
-  }
+  cursor: pointer;
 
   &.small {
     padding: 4px 12px;
@@ -48,7 +44,7 @@
   &.secondary {
     border-color: $button-primary;
     color: $button-primary;
-    background-color: #fff;
+    background-color: transparent;
 
     &:hover {
       background-color: $button-primary;
@@ -65,7 +61,7 @@
   &.tertiary {
     border-color: transparent;
     color: $button-primary;
-    background-color: #fff;
+    background-color: transparent;
 
     &:hover {
       color: $button-primary-hover;
@@ -74,6 +70,11 @@
     &:active {
       color: $button-primary-active;
     }
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3pt $blue-outline;
   }
 
   &.form-button {

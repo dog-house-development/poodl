@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown tests render should render closed dropdown correctly 1`] = `
+<div
+  className="dropdown-wrapper"
+>
+  <Button
+    content={
+      <span>
+        Dropdown time
+        <i
+          className="material-icons dropdown-caret"
+        >
+          arrow_drop_down
+        </i>
+      </span>
+    }
+    dropdownButton={true}
+    kind="primary"
+    onClick={[Function]}
+    size="medium"
+  />
+</div>
+`;
+
+exports[`Dropdown tests render should render open arrow dropdown correctly 1`] = `
+<div
+  className="dropdown-wrapper"
+>
+  <Button
+    content={
+      <span>
+        Dropdown time
+        <i
+          className="material-icons dropdown-caret"
+        >
+          arrow_drop_up
+        </i>
+      </span>
+    }
+    dropdownButton={true}
+    kind="primary"
+    onClick={[Function]}
+    size="medium"
+  />
+  <div
+    className="dropdown-content dropdown-align-left arrow-dropdown"
+  >
+    <div
+      className="arrow arrow-behind"
+    />
+    <div
+      className="arrow"
+    />
+    <button
+      className="dropdown-content-row medium"
+      key="dropdown-row-13"
+      onClick={[Function]}
+    >
+      party
+    </button>
+    <hr
+      key="divider-14"
+    />
+    <button
+      className="dropdown-content-row medium"
+      key="dropdown-row-15"
+      onClick={[Function]}
+    >
+      woohoo
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Dropdown tests render should render open dropdown correctly 1`] = `
+<div
+  className="dropdown-wrapper"
+>
+  <Button
+    content={
+      <span>
+        Dropdown time
+        <i
+          className="material-icons dropdown-caret"
+        >
+          arrow_drop_up
+        </i>
+      </span>
+    }
+    dropdownButton={true}
+    kind="primary"
+    onClick={[Function]}
+    size="medium"
+  />
+  <div
+    className="dropdown-content dropdown-align-left"
+  >
+    <button
+      className="dropdown-content-row medium"
+      key="dropdown-row-10"
+      onClick={[Function]}
+    >
+      party
+    </button>
+    <hr
+      key="divider-11"
+    />
+    <button
+      className="dropdown-content-row medium"
+      key="dropdown-row-12"
+      onClick={[Function]}
+    >
+      woohoo
+    </button>
+  </div>
+</div>
+`;

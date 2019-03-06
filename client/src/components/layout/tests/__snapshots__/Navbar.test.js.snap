@@ -17,6 +17,51 @@ exports[`Navbar tests render should render links for logged in admins 1`] = `
     </li>
     <li
       className="right"
+      style={
+        Object {
+          "marginTop": "12px",
+        }
+      }
+    >
+      <OnClickOutside(Dropdown)
+        align="right"
+        arrow={true}
+        buttonContent="Frank Limb"
+        dropdownContent={
+          Array [
+            Object {
+              "content": "Dashboard",
+              "onClick": [Function],
+            },
+            Object {
+              "content": "My profile",
+              "onClick": [Function],
+            },
+            Object {
+              "type": "divider",
+            },
+            Object {
+              "content": "Log out",
+              "onClick": [Function],
+            },
+          ]
+        }
+        eventTypes={
+          Array [
+            "mousedown",
+            "touchstart",
+          ]
+        }
+        excludeScrollbar={false}
+        kind="secondary"
+        outsideClickIgnoreClass="ignore-react-onclickoutside"
+        preventDefault={false}
+        size="small"
+        stopPropagation={false}
+      />
+    </li>
+    <li
+      className="right"
     >
       <Link
         replace={false}

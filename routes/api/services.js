@@ -62,12 +62,14 @@ router.post('/add', (req, res) => {
         } else {
             const newService = new Service({
                 name: req.body.name,
-                times: req.body.times,
-                dates: req.body.dates,
+                time: req.body.time,
+                duration: req.body.time,
+                date: req.body.date,
                 admins: req.body.admins,
                 volunteers: req.body.volunteers,
                 members: req.body.members,
-                seniorCenter: req.body.seniorCenter
+                seniorCenter: req.body.seniorCenter,
+                maxCapacity: req.body.maxCapacity
             });
             newService
                 .save()

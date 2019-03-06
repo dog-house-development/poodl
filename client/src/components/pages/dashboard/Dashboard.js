@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { logoutAdmin } from '../../../actions/authActions';
-import Button from '../../ui/Button';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import ViewByDate from '../../ui/ViewByDate';
 
 const propTypes = {
-    logoutAdmin: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
 
@@ -19,11 +16,6 @@ export class Dashboard extends Component {
             activitiesDate: Date.now()
         };
     }
-
-    onLogoutClick = e => {
-        e.preventDefault();
-        this.props.logoutAdmin();
-    };
 
     requestDate = date => {
         console.log(moment(date).format('MMM Do, YYYY'));
@@ -38,8 +30,6 @@ export class Dashboard extends Component {
             <div className="dashboard-container">
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
-                <Button content="Log out" onClick={this.onLogoutClick} />
-                <br />
                 <div className="panel">
                     <h1 className="panel-title">View All</h1>
                     <Link to="/admins" className="link primary">
@@ -81,14 +71,5 @@ export const mapStateToProps = (state, props) => {
     };
 };
 
-export const mapDispatchToProps = dispatch => {
-    return {
-        logoutAdmin: () => dispatch(logoutAdmin())
-    };
-};
-
 Dashboard.propTypes = propTypes;
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
