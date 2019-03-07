@@ -22,6 +22,7 @@ exports[`DataGrid tests render should render data 1`] = `
     <tbody>
       <tr
         key="123"
+        onClick={[Function]}
       >
         <td
           key="name"
@@ -36,6 +37,7 @@ exports[`DataGrid tests render should render data 1`] = `
       </tr>
       <tr
         key="321"
+        onClick={[Function]}
       >
         <td
           key="name"

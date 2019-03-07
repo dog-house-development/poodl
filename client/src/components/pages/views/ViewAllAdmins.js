@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { fetchAdmins } from '../../../actions/adminActions';
 import DataGrid from '../../ui/DataGrid';
 
 export class ViewAllAdmins extends Component {
+    constructor(props) {
+        super(props);
+        this.handleRowClick = this.handleRowClick.bind(this);
+    }
+
     componentDidMount() {
         // call redux action to retrieve all admins from api
         this.props.getAdmins();
+    }
+
+    handleRowClick(e, id) {
+        e.preventDefault();
+        this.props.history.push(`/admin/${id}`);
     }
 
     getDataGridContent() {
@@ -22,12 +32,7 @@ export class ViewAllAdmins extends Component {
                 lastName: admin.lastName,
                 email: admin.email,
                 super: admin.superAdmin ? 'Yes' : 'No',
-                key: admin._id,
-                viewProfile: (
-                    <Link to={'/admin/' + admin._id} className="button medium primary">
-                        View
-                    </Link>
-                )
+                key: admin._id
             });
         });
         return data;
@@ -40,7 +45,11 @@ export class ViewAllAdmins extends Component {
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
                 <h1>View All Admins</h1>
-                <DataGrid data={this.getDataGridContent()} loading={this.props.loading} />
+                <DataGrid
+                    data={this.getDataGridContent()}
+                    loading={this.props.loading}
+                    onRowClick={this.handleRowClick}
+                />
             </div>
         );
     }
@@ -63,4 +72,4 @@ export const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ViewAllAdmins);
+)(withRouter(ViewAllAdmins));
