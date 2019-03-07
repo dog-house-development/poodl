@@ -12,9 +12,6 @@ export class Navbar extends Component {
                     <li className="">
                         <Link to="/">Poodl</Link>
                     </li>
-                    <li className="right">
-                        <Link to="/login">Log in</Link>
-                    </li>
                 </>
             );
         } else {

@@ -5,7 +5,7 @@ import Login from './auth/Login';
 
 export class Landing extends Component {
     componentDidMount() {
-        // If logged in and an admin navigates to Landng page, should redirect them to dashboard
+        // If logged in and an admin navigates to Landing page, redirect them to dashboard
         if (this.props.isAuthenticated) {
             this.props.history.push('/dashboard');
         }

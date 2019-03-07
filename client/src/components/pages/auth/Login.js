@@ -109,7 +109,7 @@ export class Login extends Component {
                 <div className="center">
                     <p>
                         Forgot password?{' '}
-                        <Link to="/login" className="button small secondary">
+                        <Link to="/404" className="button small secondary">
                             Reset
                         </Link>
                     </p>
@@ -134,9 +134,7 @@ export const mapDispatchToProps = dispatch => {
 
 Login.propTypes = propTypes;
 
-export default withRouter(
-    connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(Login)
-);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRouter(Login));
