@@ -2,17 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
+import { withRouter } from 'react-router-dom';
 
 import Loading from './Loading';
 
 const propTypes = {
     dateData: PropTypes.object.isRequired,
     requestDate: PropTypes.func,
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
+    includeAttendance: PropTypes.bool,
+    clickableRowRoute: PropTypes.string,
+    errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
 };
 
 const defaultProps = {
-    loading: false
+    loading: false,
+    includeAttendance: true
 };
 
 const DAY_LENGTH = 86400000;
@@ -23,7 +28,16 @@ class ViewByDate extends Component {
         this.state = {
             timeLength: 'day'
         };
+        this.handleRowClick = this.handleRowClick.bind(this);
     }
+
+    handleRowClick(evt, id) {
+        evt.preventDefault();
+        if (this.props.clickableRowRoute) {
+            this.props.history.push(this.props.clickableRowRoute + id);
+        }
+    }
+
     getHeaderMarkup() {
         const currentDate = _.get(this.props.dateData, 'date');
         return (
@@ -37,13 +51,13 @@ class ViewByDate extends Component {
                         {moment(currentDate - DAY_LENGTH).format('dddd')}
                     </span>
                 </button>
-                <div>
-                    <h2 className="view-by-date-header-title">
+                <div className="view-by-date-header-title">
+                    <h2 className="view-by-date-title-main">
                         {moment(currentDate).format('MMM Do, YYYY') === moment(Date.now()).format('MMM Do, YYYY')
                             ? 'Today'
                             : moment(currentDate).format('dddd')}
                     </h2>
-                    <p>{moment(currentDate).format('MMM Do, YYYY')}</p>
+                    <p className="view-by-date-title-secondary">{moment(currentDate).format('MMM Do, YYYY')}</p>
                 </div>
                 <button
                     className="button view-by-date-header-button"
@@ -58,19 +72,35 @@ class ViewByDate extends Component {
         );
     }
 
+    getAttendanceMarkup(row) {
+        if (this.props.includeAttendance) {
+            return (
+                <p className="vbd-row-attendance">
+                    {_.size(row.members) + (row.maxCapacity ? '/' + row.maxCapacity : null)}
+                    <i className="material-icons vbd-row-attendance-icon">person</i>
+                </p>
+            );
+        }
+    }
+
     getTableMarkup() {
         if (this.props.loading) {
             return <Loading />;
-        } else if (this.props.errors) {
+        } else if (!_.isEmpty(this.props.errors)) {
             return <p>Error time</p>;
         }
         return (
             <div className="view-by-date-body">
                 {_.map(_.get(this.props.dateData, 'data'), row => {
                     return (
-                        <div key={_.uniqueId('vbd-row-')} className="view-by-date-row">
+                        <div
+                            key={row._id}
+                            className="view-by-date-row"
+                            onClick={evt => this.handleRowClick(evt, row._id)}
+                        >
                             <h3>{row.name}</h3>
-                            <p>{row.times}</p>
+                            <p className="vbd-row-time">{row.times}</p>
+                            {this.getAttendanceMarkup(row)}
                         </div>
                     );
                 })}
@@ -90,4 +120,4 @@ class ViewByDate extends Component {
 
 ViewByDate.propTypes = propTypes;
 ViewByDate.defaultProps = defaultProps;
-export default ViewByDate;
+export default withRouter(ViewByDate);

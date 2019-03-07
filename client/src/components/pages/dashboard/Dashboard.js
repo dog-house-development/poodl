@@ -27,7 +27,7 @@ export class Dashboard extends Component {
         console.log(moment(date).format('MMM Do, YYYY'));
         this.setState({ activitiesDate: date });
         // this.props.getActivities(date);
-        console.log(this.props.activitiesLoading ? 'Loading' : 'Loaded');
+        this.props.getActivities({ date: 'Saturday' });
     };
 
     render() {
@@ -38,36 +38,34 @@ export class Dashboard extends Component {
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
                 <div className="panel">
-                    <h1 className="panel-title">View All</h1>
-                    <Link to="/admins" className="link primary">
+                    <h1 className="panel-title">View</h1>
+                    <Link to="/admins" className="button primary medium">
                         Admins
                     </Link>
-                    <br />
-                    <Link to="/volunteers" className="link primary">
+                    <span> </span>
+                    <Link to="/volunteers" className="button primary medium">
                         Volunteers
                     </Link>
-                    <br />
-                    <Link to="/members" className="link primary">
+                    <span> </span>
+                    <Link to="/members" className="button primary medium">
                         Members
                     </Link>
                 </div>
                 <div className="panel">
                     <h1 className="panel-title">Register New</h1>
-                    <Link to="/register" className="link primary">
+                    <Link to="/register" className="button primary medium">
                         Admin
                     </Link>
                 </div>
+                <h2>Activities</h2>
                 <ViewByDate
                     requestDate={this.requestDate}
                     loading={this.props.activitiesLoading}
                     dateData={{
                         date: this.state.activitiesDate,
                         data: this.props.activities
-                        // data: [
-                        //     { id: '123', time: Date.now(), name: 'Bingo' },
-                        //     { id: '321', time: Date.now() + 1500, name: 'Lunch' }
-                        // ]
                     }}
+                    clickableRowRoute="activity/"
                     errors={this.props.errors}
                 />
             </div>
@@ -76,7 +74,6 @@ export class Dashboard extends Component {
 }
 
 export const mapStateToProps = (state, props) => {
-    console.log(state.activities.all);
     return {
         auth: state.auth,
         activities: state.activities.all,
