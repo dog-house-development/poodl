@@ -103,24 +103,14 @@ describe('ViewAllAdmins tests', () => {
                     firstName: 'Big',
                     lastName: 'Tup',
                     email: 'bigtup@nowhere.com',
-                    super: 'Yes',
-                    viewProfile: (
-                        <Link to={'/admin/123'} className="button medium primary">
-                            View
-                        </Link>
-                    )
+                    super: 'Yes'
                 },
                 {
                     key: '321',
                     firstName: 'Lil',
                     lastName: 'Tup',
                     email: 'liltup@nowhere.com',
-                    super: 'No',
-                    viewProfile: (
-                        <Link to={'/admin/321'} className="button medium primary">
-                            View
-                        </Link>
-                    )
+                    super: 'No'
                 }
             ]);
         });

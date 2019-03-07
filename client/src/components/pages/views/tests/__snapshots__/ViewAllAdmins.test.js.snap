@@ -28,13 +28,6 @@ exports[`ViewAllAdmins tests render should render correctly 1`] = `
           "key": "123",
           "lastName": "Tup",
           "super": "Yes",
-          "viewProfile": <Link
-            className="button medium primary"
-            replace={false}
-            to="/admin/123"
-          >
-            View
-          </Link>,
         },
         Object {
           "email": "liltup@nowhere.com",
@@ -42,17 +35,11 @@ exports[`ViewAllAdmins tests render should render correctly 1`] = `
           "key": "321",
           "lastName": "Tup",
           "super": "No",
-          "viewProfile": <Link
-            className="button medium primary"
-            replace={false}
-            to="/admin/321"
-          >
-            View
-          </Link>,
         },
       ]
     }
     loading={false}
+    onRowClick={[Function]}
   />
 </div>
 `;

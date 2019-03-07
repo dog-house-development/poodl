@@ -7,9 +7,19 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 export class ViewAllMembers extends Component {
+    constructor(props) {
+        super(props);
+        this.handleRowClick = this.handleRowClick.bind(this);
+    }
+
     componentDidMount() {
         // call redux action to retrieve all members from api
         this.props.getMembers();
+    }
+
+    handleRowClick(e, id) {
+        e.preventDefault();
+        this.props.history.push(`/member/${id}`);
     }
 
     getDataGridContent() {
@@ -22,12 +32,7 @@ export class ViewAllMembers extends Component {
                 firstName: member.firstName,
                 lastName: member.lastName,
                 membershipDate: moment(member.membershipDate).format('MMMM Do, YYYY'),
-                email: member.email,
-                viewProfile: (
-                    <Link to={'/member/' + member._id} className="button medium primary">
-                        View
-                    </Link>
-                )
+                email: member.email
             });
         });
         return data;
@@ -40,7 +45,11 @@ export class ViewAllMembers extends Component {
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
                 <h1>View All Members</h1>
-                <DataGrid data={this.getDataGridContent()} loading={this.props.loading} />
+                <DataGrid
+                    data={this.getDataGridContent()}
+                    loading={this.props.loading}
+                    onRowClick={this.handleRowClick}
+                />
             </div>
         );
     }
