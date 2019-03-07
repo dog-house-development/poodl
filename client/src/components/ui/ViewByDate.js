@@ -98,7 +98,7 @@ class ViewByDate extends Component {
                             className="view-by-date-row"
                             onClick={evt => this.handleRowClick(evt, row._id)}
                         >
-                            <h3>{row.name}</h3>
+                            <h3 className="vbd-row-title">{row.name}</h3>
                             <p className="vbd-row-time">{row.times}</p>
                             {this.getAttendanceMarkup(row)}
                         </div>

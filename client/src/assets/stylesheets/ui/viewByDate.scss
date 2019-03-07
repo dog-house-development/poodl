@@ -78,9 +78,14 @@
         background-color: $gray-2;
       }
 
+      .vbd-row-title {
+        font-size: 1em;
+      }
+
       .vbd-row-time {
         display: inline-block;
         width: 50%;
+        font-size: 0.9em;
       }
 
       .vbd-row-attendance {
