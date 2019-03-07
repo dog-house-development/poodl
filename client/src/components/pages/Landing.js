@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
+import { Login } from './auth/Login';
 
 export class Landing extends Component {
     componentDidMount() {
@@ -26,6 +27,7 @@ export class Landing extends Component {
                         Learn More
                     </a>
                 </div>
+                <Login />
             </div>
         );
     }

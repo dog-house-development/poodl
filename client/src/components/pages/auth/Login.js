@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { withRouter } from 'react-router';
 
 import { loginAdmin } from '../../../actions/authActions';
 import Form from '../../ui/Form';
@@ -25,13 +26,13 @@ export class Login extends Component {
 
     componentDidMount() {
         // If logged in and admin navigates to Login page, should redirect them to dashboard
-        if (this.props.auth.isAuthenticated) {
+        if (this.props.isAuthenticated) {
             this.props.history.push('/dashboard');
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAuthenticated) {
+        if (nextProps.isAuthenticated) {
             this.props.history.push('/dashboard');
         }
 
@@ -97,9 +98,6 @@ export class Login extends Component {
     render() {
         return (
             <div className="login-container">
-                <Link to="/" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to home
-                </Link>
                 <Form
                     fields={this.getFields()}
                     onSubmit={this.onSubmit}
@@ -122,9 +120,9 @@ export class Login extends Component {
 }
 
 export const mapStateToProps = (state, props) => {
+    console.log(state);
     return {
-        auth: state.auth,
-        errors: state.errors
+        isAuthenticated: _.get(state.auth, 'isAuthenticated')
     };
 };
 
