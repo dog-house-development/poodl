@@ -1,0 +1,18 @@
+@import '_presets.scss';
+
+.page-not-found {
+  margin: auto;
+  text-align: center;
+
+  h1 {
+    font-size: 4em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  * {
+    margin: 0.3em;
+  }
+}
