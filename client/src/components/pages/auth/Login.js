@@ -134,7 +134,9 @@ export const mapDispatchToProps = dispatch => {
 
 Login.propTypes = propTypes;
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Login);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Login)
+);

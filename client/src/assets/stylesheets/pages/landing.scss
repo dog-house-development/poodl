@@ -1,32 +1,46 @@
 @import '_presets.scss';
 
 .landing-container {
-  max-width: 50em;
-  margin: auto;
-  padding: 0 24px;
-  //text-align: center;
-  //display: flex;
-  //align-items: center;
-  margin-top: 5em;
+  .landing-body {
+    margin: auto;
+    min-width: 16em;
+    height: 20em;
 
-  .landing-header {
-    text-align: left;
-    display: inline-block;
-    width: 50%;
-    float: left;
+    .landing-header {
+      text-align: center;
+      margin: 3em;
 
-    .landing-title {
-      font-size: 4em;
-      margin: 8px 0;
+      .landing-title {
+        font-size: 4em;
+        margin: 8px 0;
+      }
+
+      .landing-info {
+        margin: 1em 0;
+      }
     }
 
-    .landing-info {
-      margin: 1em 0;
+    .login-container {
+      margin: auto;
+      .panel {
+        margin: 0;
+      }
     }
-  }
 
-  .login-container {
-    width: 50%;
-    float: right;
+    @media screen and (min-width: 75em) {
+      margin-top: 8em;
+      width: 70em;
+
+      .landing-header {
+        text-align: left;
+        float: left;
+        margin: 0;
+      }
+
+      .login-container {
+        width: 50%;
+        float: right;
+      }
+    }
   }
 }
