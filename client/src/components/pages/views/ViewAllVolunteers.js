@@ -6,9 +6,19 @@ import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
 
 export class ViewAllVolunteers extends Component {
+    constructor(props) {
+        super(props);
+        this.handleRowClick = this.handleRowClick.bind(this);
+    }
+
     componentDidMount() {
         // call redux action to retrieve all volunteers from api
         this.props.getVolunteers();
+    }
+
+    handleRowClick(e, id) {
+        e.preventDefault();
+        this.props.history.push(`/volunteer/${id}`);
     }
 
     getDataGridContent() {
@@ -20,12 +30,7 @@ export class ViewAllVolunteers extends Component {
                 firstName: volunteer.firstName,
                 lastName: volunteer.lastName,
                 email: volunteer.email,
-                key: volunteer._id,
-                viewProfile: (
-                    <Link to={'/volunteer/' + volunteer._id} className="button medium primary">
-                        View
-                    </Link>
-                )
+                key: volunteer._id
             });
         });
         return data;
@@ -38,7 +43,11 @@ export class ViewAllVolunteers extends Component {
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
                 <h1>View All Volunteers</h1>
-                <DataGrid data={this.getDataGridContent()} loading={this.props.loading} />
+                <DataGrid
+                    data={this.getDataGridContent()}
+                    loading={this.props.loading}
+                    onRowClick={this.handleRowClick}
+                />
             </div>
         );
     }
