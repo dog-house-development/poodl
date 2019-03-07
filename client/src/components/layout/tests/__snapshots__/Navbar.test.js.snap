@@ -99,16 +99,6 @@ exports[`Navbar tests render should render links for nobody logged in 1`] = `
         Poodl
       </Link>
     </li>
-    <li
-      className="right"
-    >
-      <Link
-        replace={false}
-        to="/login"
-      >
-        Log in
-      </Link>
-    </li>
   </ul>
 </div>
 `;

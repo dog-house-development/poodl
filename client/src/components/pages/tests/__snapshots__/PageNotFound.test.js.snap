@@ -2,41 +2,37 @@
 
 exports[`PageNotFound tests render should render correctly 1`] = `
 <div
-  className="landing-container"
+  className="page-not-found"
 >
-  <div
-    className="landing-header"
+  <h1
+    className=""
   >
-    <h1
-      className="landing-title"
+    404
+  </h1>
+  <h2>
+    Page not found
+  </h2>
+  <p
+    className=""
+  >
+    If you believe this occured in error, please contact support at
+     
+    <a
+      href="mailto:doghousedevelop@gmail.com"
+      rel="noopener noreferrer"
+      target="_blank"
     >
-      404
-    </h1>
-    <h1>
-      Page not found
-    </h1>
-    <p
-      className="landing-info"
-    >
-      If you believe this occured in error, please contact support at
-       
-      <a
-        href="mailto:doghousedevelop@gmail.com"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        doghousedevelop@gmail.com.
-      </a>
-    </p>
-    <h3
-      className="landing-info"
-    >
-      Thanks
-    </h3>
-    <Connect(GoHome)
-      buttonOrLink="button"
-      size="large"
-    />
-  </div>
+      doghousedevelop@gmail.com.
+    </a>
+  </p>
+  <h3
+    className=""
+  >
+    Thanks
+  </h3>
+  <Connect(GoHome)
+    buttonOrLink="button"
+    size="large"
+  />
 </div>
 `;

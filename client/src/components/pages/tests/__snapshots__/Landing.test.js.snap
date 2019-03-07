@@ -5,29 +5,34 @@ exports[`Landing tests render should render correctly 1`] = `
   className="landing-container"
 >
   <div
-    className="landing-header"
+    className="landing-body"
   >
-    <h1>
-      Welcome to
-    </h1>
-    <h1
-      className="landing-title"
+    <div
+      className="landing-header"
     >
-      Poodl
-    </h1>
-    <p
-      className="landing-info"
-    >
-      The member management tool for rural senior centers!
-    </p>
-    <a
-      className="button large primary"
-      href="https://github.com/dog-house-development/poodl/wiki"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      Learn More
-    </a>
+      <h1>
+        Welcome to
+      </h1>
+      <h1
+        className="landing-title"
+      >
+        Poodl
+      </h1>
+      <p
+        className="landing-info"
+      >
+        The member management tool for rural senior centers!
+      </p>
+      <a
+        className="button large primary"
+        href="https://github.com/dog-house-development/poodl/wiki"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Learn More
+      </a>
+    </div>
+    <Connect(withRouter(Login)) />
   </div>
 </div>
 `;

@@ -4,18 +4,6 @@ exports[`Login tests render should render correctly 1`] = `
 <div
   className="login-container"
 >
-  <Link
-    className="button small tertiary"
-    replace={false}
-    to="/"
-  >
-    <i
-      className="material-icons"
-    >
-      keyboard_backspace
-    </i>
-     Back to home
-  </Link>
   <Form
     buttonLabel="Log in"
     errors={Array []}
@@ -54,7 +42,7 @@ exports[`Login tests render should render correctly 1`] = `
       <Link
         className="button small secondary"
         replace={false}
-        to="/login"
+        to="/404"
       >
         Reset
       </Link>
