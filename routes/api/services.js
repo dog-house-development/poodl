@@ -7,7 +7,7 @@ const passport = require('passport');
 
 //Validation goes here
 const validateRegisterInput = require('../../validation/addService');
-
+const validateEditInputByID = require('../../validation/editServiceByID');
 //Load model
 const Service = require('../../models/Service');
 
@@ -35,6 +35,55 @@ router.get('/get/:id', (req, res, next) => {
     Service.findOne({ _id: req.params.id }, (err, post) => {
         if (err) return next(err);
         return res.json(post);
+    });
+});
+
+//@route POST api/services/get/:id
+//should edit something by id
+router.post('/edit/:id', (req, res) => {
+    const { errors, isValid } = validateEditInputByID(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    Service.findOne({
+        _id: req.params.id
+    }).then(service => {
+        if (!service) {
+            return res.status(400).json({ _id: 'Service does not exist' });
+        } else {
+            if (req.body.name != '') {
+                service.name = req.body.name;
+            }
+            if (req.body.time != '') {
+                service.time = req.body.time;
+            }
+            if (req.body.duration != '') {
+                service.duration = req.body.duration;
+            }
+            if (req.body.date != '') {
+                service.date = req.body.date;
+            }
+            if (req.body.admins != '') {
+                service.admins = req.body.admins;
+            }
+            if (req.body.volunteers != '') {
+                service.volunteers = req.body.volunteers;
+            }
+            if (req.body.members != '') {
+                service.members = req.body.members;
+            }
+            if (req.body.seniorCenter != '') {
+                service.seniorCenter = req.body.seniorCenter;
+            }
+            if (req.body.maxCapacity != '') {
+                service.maxCapacity = req.body.maxCapacity;
+            }
+        }
+        service
+            .save()
+            .then(Service => res.json(Service))
+            .catch(err => console.log(err));
     });
 });
 

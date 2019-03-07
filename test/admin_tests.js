@@ -161,6 +161,25 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             });
     });
 
+    it('it should edit a specific admin by id', done => {
+        let request = {
+            seniorCenter: 'new center'
+        };
+        chai.request(server)
+            .post('/api/admins/edit/' + tempId)
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.not.have.property('data');
+                res.body.should.have.property('_id');
+                res.body.should.have.property('firstName').eql('testy');
+                res.body.should.have.property('lastName').eql('boy');
+                res.body.should.have.property('email').eql('test@gmail.com');
+                res.body.should.have.property('seniorCenter').eql('new center');
+                done();
+            });
+    });
+
     it('it should delete a specific admin', done => {
         chai.request(server)
             .delete('/api/admins/delete/' + tempId)

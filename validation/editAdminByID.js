@@ -9,17 +9,7 @@ module.exports = function validateRegisterInput(data) {
     data.lastName = !isEmpty(data.lastName) ? data.lastName : '';
     data.email = !isEmpty(data.email) ? data.email : '';
     data.seniorCenter = !isEmpty(data.seniorCenter) ? data.seniorCenter : '';
-    data.address = !isEmpty(data.address) ? data.address : '';
-    data.membershipDate = !isEmpty(data.membershipDate) ? data.membershipDate : '';
-    data.renewalDate = !isEmpty(data.renewalDate) ? data.renewalDate : '';
-    data.mealPreference = !isEmpty(data.mealPreference) ? data.mealPreference : '';
-
-    if (Validator.isEmpty(data.firstName)) {
-        errors.firstName = 'First name field is required';
-    }
-    if (Validator.isEmpty(data.lastName)) {
-        errors.lastName = 'Last name field is required';
-    }
+    data.superAdmin = !isEmpty(data.superAdmin) ? data.superAdmin : '';
 
     return {
         errors,

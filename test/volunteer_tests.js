@@ -28,55 +28,45 @@ after(function() {
     process.exit(0);
 });
 
-describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
-    it('it should add a new member', done => {
-        let testMember1 = {
+describe('Volunteers suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
+    it('it should add a new volunteer', done => {
+        let testVolunteer1 = {
             firstName: 'Charles',
             lastName: 'Boile',
             email: 'SpecialDiet2@gmail.com',
-            seniorCenter: 'Nice little place',
-            address: 'Brooklyn 99',
-            renewalDate: 'Today',
-            specialDiet: ['fish', 'chicken nuggets']
+            seniorCenter: 'Nice little place'
         };
 
-        let testMember2 = {
+        let testVolunteer2 = {
             firstName: 'Karen',
             lastName: 'Engel',
             email: 'KarenEngel@gmail.com',
-            seniorCenter: 'Highgate',
-            address: '123 4th Avenue',
-            renewalDate: '02-03-2020',
-            specialDiet: ['beef', 'chicken nuggets']
+            seniorCenter: 'Highgate'
         };
 
         chai.request(server)
-            .post('/api/members/add')
-            .send(testMember2)
+            .post('/api/volunteers/add')
+            .send(testVolunteer2)
             .end();
 
         chai.request(server)
-            .post('/api/members/add')
-            .send(testMember1)
+            .post('/api/volunteers/add')
+            .send(testVolunteer1)
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('_id');
                 res.body.should.have.property('firstName').eql('Charles');
                 res.body.should.have.property('lastName').eql('Boile');
                 res.body.should.have.property('email').eql('SpecialDiet2@gmail.com');
-                res.body.should.have.property('address').eql('Brooklyn 99');
                 res.body.should.have.property('seniorCenter').eql('Nice little place');
-                res.body.should.have.property('membershipDate');
-                res.body.should.have.property('renewalDate').eql('Today');
-                res.body.should.have.property('specialDiet').eql(['fish', 'chicken nuggets']);
 
                 done();
             });
     });
     var tempId = '';
-    it('it should get all members', done => {
+    it('it should get all volunteers', done => {
         chai.request(server)
-            .get('/api/members/get')
+            .get('/api/volunteers/get')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
@@ -87,29 +77,21 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 res.body.data[1].should.have.property('firstName').eql('Charles');
                 res.body.data[1].should.have.property('lastName').eql('Boile');
                 res.body.data[1].should.have.property('email').eql('SpecialDiet2@gmail.com');
-                res.body.data[1].should.have.property('address').eql('Brooklyn 99');
                 res.body.data[1].should.have.property('seniorCenter').eql('Nice little place');
-                res.body.data[1].should.have.property('membershipDate');
-                res.body.data[1].should.have.property('renewalDate').eql('Today');
-                res.body.data[1].should.have.property('specialDiet').eql(['fish', 'chicken nuggets']);
 
                 res.body.data[0].should.have.property('_id');
                 res.body.data[0].should.have.property('firstName').eql('Karen');
                 res.body.data[0].should.have.property('lastName').eql('Engel');
                 res.body.data[0].should.have.property('email').eql('KarenEngel@gmail.com');
-                res.body.data[0].should.have.property('address').eql('123 4th Avenue');
                 res.body.data[0].should.have.property('seniorCenter').eql('Highgate');
-                res.body.data[0].should.have.property('membershipDate');
-                res.body.data[0].should.have.property('renewalDate').eql('02-03-2020');
-                res.body.data[0].should.have.property('specialDiet').eql(['beef', 'chicken nuggets']);
 
                 done();
             });
     });
 
-    it('it should get a specific member by ID', done => {
+    it('it should get a specific volunteer by ID', done => {
         chai.request(server)
-            .get('/api/members/get/' + tempId)
+            .get('/api/volunteers/get/' + tempId)
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.not.have.property('data');
@@ -117,54 +99,18 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 res.body.should.have.property('firstName').eql('Charles');
                 res.body.should.have.property('lastName').eql('Boile');
                 res.body.should.have.property('email').eql('SpecialDiet2@gmail.com');
-                res.body.should.have.property('address').eql('Brooklyn 99');
                 res.body.should.have.property('seniorCenter').eql('Nice little place');
-                res.body.should.have.property('membershipDate');
-                res.body.should.have.property('renewalDate').eql('Today');
-                res.body.should.have.property('specialDiet').eql(['fish', 'chicken nuggets']);
-                res.body.should.have.property('createdAt');
-                res.body.should.have.property('updatedAt');
-                res.body.should.have.property('disabilities');
-                res.body.should.have.property('medicalIssues');
 
                 done();
             });
     });
-    it('it should edit a specific member by ID', done => {
-        let testMember1 = {
-            email: 'SpecialDiet300@gmail.com'
-        };
-        chai.request(server)
-            .post('/api/members/edit/' + tempId)
-            .send(testMember1)
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.have.property('email').eql('SpecialDiet300@gmail.com');
-                done();
-            });
-    });
-    it('it should edit a specific member by Name', done => {
-        let testMember2 = {
-            firstName: 'Charles',
-            lastName: 'Boile',
-            seniorCenter: 'Highgate Living'
-        };
-        chai.request(server)
-            .post('/api/members/edit')
-            .send(testMember2)
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.have.property('seniorCenter').eql('Highgate Living');
-                done();
-            });
-    });
 
-    it('it should get a list of members', done => {
+    it('it should get a list of volunteers', done => {
         let idList = {
             _id: ['"' + tempId + '"']
         };
         chai.request(server)
-            .post('/api/members/get')
+            .post('/api/volunteers/get')
             .send(idList)
             .end((err, res) => {
                 res.should.have.status(200);
@@ -172,32 +118,45 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
             });
     });
 
-    it('it should filter list of members', done => {
+    it('it should filter list of volunteers', done => {
         let request = {
             firstName: 'Charles'
         };
         chai.request(server)
-            .post('/api/members/filter')
+            .post('/api/volunteers/filter')
             .send(request)
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 res.body.should.have.property('data');
-                res.body.data[0].should.have.property('firstName').eql('Charles');
-                res.body.data[0].should.have.property('lastName').eql('Boile');
-                res.body.data[0].should.have.property('email').eql('SpecialDiet300@gmail.com');
-                res.body.data[0].should.have.property('address').eql('Brooklyn 99');
-                res.body.data[0].should.have.property('seniorCenter').eql('Highgate Living');
-                res.body.data[0].should.have.property('membershipDate');
-                res.body.data[0].should.have.property('renewalDate').eql('Today');
-                res.body.data[0].should.have.property('specialDiet');
+                res.body.data[0].should.have.property('firstName').eql('Karen');
+                res.body.data[0].should.have.property('lastName').eql('Engel');
+                res.body.data[0].should.have.property('email').eql('KarenEngel@gmail.com');
+                res.body.data[0].should.have.property('seniorCenter').eql('Highgate');
                 done();
             });
     });
 
-    it('it should delete a specific member', done => {
+    it('it should edit a volunteers by their id', done => {
+        let request = {
+            seniorCenter: 'New One'
+        };
         chai.request(server)
-            .delete('/api/members/delete/' + tempId)
+            .post('/api/volunteers/edit/' + tempId)
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('firstName').eql('Charles');
+                res.body.should.have.property('lastName').eql('Boile');
+                res.body.should.have.property('email').eql('SpecialDiet2@gmail.com');
+                res.body.should.have.property('seniorCenter').eql('New One');
+                done();
+            });
+    });
+
+    it('it should delete a specific volunteer', done => {
+        chai.request(server)
+            .delete('/api/volunteers/delete/' + tempId)
             .end((err, res) => {
                 res.should.have.status(200);
                 done();

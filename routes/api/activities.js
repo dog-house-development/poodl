@@ -6,7 +6,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 const validateRegisterInput = require('../../validation/addActivity');
-
+const validateEditInputByID = require('../../validation/editActivityByID');
 //Load Activity models
 const Activity = require('../../models/Activity');
 
@@ -34,6 +34,55 @@ router.get('/get/:id', (req, res, next) => {
     Activity.findOne({ _id: req.params.id }, (err, post) => {
         if (err) return next(err);
         return res.json(post);
+    });
+});
+
+//@route POST api/activities/get/:id
+//should edit something by id
+router.post('/edit/:id', (req, res) => {
+    const { errors, isValid } = validateEditInputByID(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    Activity.findOne({
+        _id: req.params.id
+    }).then(activity => {
+        if (!activity) {
+            return res.status(400).json({ _id: 'Activity does not exist' });
+        } else {
+            if (req.body.name != '') {
+                activity.name = req.body.name;
+            }
+            if (req.body.time != '') {
+                activity.time = req.body.time;
+            }
+            if (req.body.duration != '') {
+                activity.duration = req.body.duration;
+            }
+            if (req.body.date != '') {
+                activity.date = req.body.date;
+            }
+            if (req.body.admins != '') {
+                activity.admins = req.body.admins;
+            }
+            if (req.body.volunteers != '') {
+                activity.volunteers = req.body.volunteers;
+            }
+            if (req.body.members != '') {
+                activity.members = req.body.members;
+            }
+            if (req.body.seniorCenter != '') {
+                activity.seniorCenter = req.body.seniorCenter;
+            }
+            if (req.body.maxCapacity != '') {
+                activity.maxCapacity = req.body.maxCapacity;
+            }
+        }
+        activity
+            .save()
+            .then(Activity => res.json(Activity))
+            .catch(err => console.log(err));
     });
 });
 
