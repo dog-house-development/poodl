@@ -130,15 +130,15 @@ describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
-                res.body.data[1].should.have.property('_id');
-                res.body.data[1].should.have.property('name').eql('skiing');
-                res.body.data[1].should.have.property('time').eql('10AM-12PM');
-                res.body.data[1].should.have.property('duration').eql('6 Hours');
-                res.body.data[1].should.have.property('date').eql('Sunday');
-                res.body.data[1].should.have.property('admins').eql(['11234']);
-                res.body.data[1].should.have.property('volunteers').eql(['The Dude']);
-                res.body.data[1].should.have.property('members').eql(['Karin']);
-                res.body.data[1].should.have.property('seniorCenter').eql('Good one');
+                res.body.data[0].should.have.property('_id');
+                res.body.data[0].should.have.property('name').eql('skiing');
+                res.body.data[0].should.have.property('time').eql('10AM-12PM');
+                res.body.data[0].should.have.property('duration').eql('6 Hours');
+                res.body.data[0].should.have.property('date').eql('Sunday');
+                res.body.data[0].should.have.property('admins').eql(['11234']);
+                res.body.data[0].should.have.property('volunteers').eql(['The Dude']);
+                res.body.data[0].should.have.property('members').eql(['Karin']);
+                res.body.data[0].should.have.property('seniorCenter').eql('Good one');
                 done();
             });
     });

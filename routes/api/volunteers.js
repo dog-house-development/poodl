@@ -25,7 +25,7 @@ router.delete('/delete/:id', (req, res) => {
 // @route POST api/volunteers/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    Volunteer.find(res.body, (err, volunteers) => {
+    Volunteer.find(req.body, (err, volunteers) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: volunteers });
     });

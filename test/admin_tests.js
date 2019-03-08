@@ -143,7 +143,7 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
 
     it('it should filter list of admins', done => {
         let request = {
-            seniorCenter: 'test center'
+            seniorCenter: 'test center2'
         };
         chai.request(server)
             .post('/api/admins/filter')
