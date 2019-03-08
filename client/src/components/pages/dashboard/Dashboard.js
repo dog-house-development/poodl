@@ -15,24 +15,25 @@ export class Dashboard extends Component {
             <div className="dashboard-container">
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
-                <div className="panel">
+                <div className="panel dashboard-panel">
                     <h1 className="panel-title">View All</h1>
                     <Link to="/admins" className="link primary">
                         Admins
                     </Link>
-                    <br />
                     <Link to="/volunteers" className="link primary">
                         Volunteers
                     </Link>
-                    <br />
                     <Link to="/members" className="link primary">
                         Members
                     </Link>
                 </div>
-                <div className="panel">
+                <div className="panel dashboard-panel">
                     <h1 className="panel-title">Register New</h1>
                     <Link to="/register" className="link primary">
                         Admin
+                    </Link>
+                    <Link to="/activities/add" className="link primary">
+                        Activity
                     </Link>
                 </div>
             </div>
