@@ -8,6 +8,11 @@ const passport = require('passport');
 //Validation goes here
 const validateRegisterInput = require('../../validation/addService');
 const validateEditInputByID = require('../../validation/editServiceByID');
+const validateFilterInput = require('../../validation/serviceFilter');
+
+//Load Utils
+const jsonBuilder = require('../../utility/stringConverter');
+
 //Load model
 const Service = require('../../models/Service');
 
@@ -90,10 +95,19 @@ router.post('/edit/:id', (req, res) => {
 // @route POST api/services/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    Service.find(req.body, (err, services) => {
+    const { errors, isValid } = validateFilterInput(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+    const request = jsonBuilder(req.body);
+
+    Service.find(request[0], (err, services) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: services });
-    });
+    })
+        .skip(request[2] * request[1]) // paging function
+        .limit(request[2]);
 });
 
 // @route POST api/services/add

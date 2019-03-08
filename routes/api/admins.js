@@ -9,6 +9,10 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/registerAdmin');
 const validateLoginInput = require('../../validation/login');
 const validateEditInputByID = require('../../validation/editAdminByID');
+const validateFilterInput = require('../../validation/adminFilter');
+
+//Load Utilities
+const jsonBuilder = require('../../utility/stringConverter');
 
 // Load Admin model
 const Admin = require('../../models/Admin');
@@ -53,10 +57,18 @@ router.post('/get', (req, res) => {
 // @route POST api/admins/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    Admin.find(req.body, (err, admins) => {
+    const { errors, isValid } = validateFilterInput(req.body);
+
+    if (!isValid) {
+        return res.status(400).jsonBuilder(errors);
+    }
+    const request = jsonBuilder(req.body);
+    Admin.find(request[0], (err, admins) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: admins });
-    });
+    })
+        .skip(request[2] * request[1])
+        .limit(request[2]);
 });
 
 // @route POST api/admins/register

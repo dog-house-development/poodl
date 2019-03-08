@@ -129,10 +129,10 @@ describe('Volunteers suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
                 res.body.should.have.property('data');
-                res.body.data[0].should.have.property('firstName').eql('Karen');
-                res.body.data[0].should.have.property('lastName').eql('Engel');
-                res.body.data[0].should.have.property('email').eql('KarenEngel@gmail.com');
-                res.body.data[0].should.have.property('seniorCenter').eql('Highgate');
+                res.body.data[0].should.have.property('firstName').eql('Charles');
+                res.body.data[0].should.have.property('lastName').eql('Boile');
+                res.body.data[0].should.have.property('email').eql('SpecialDiet2@gmail.com');
+                res.body.data[0].should.have.property('seniorCenter').eql('Nice little place');
                 done();
             });
     });

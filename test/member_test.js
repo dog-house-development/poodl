@@ -174,7 +174,9 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
 
     it('it should filter list of members', done => {
         let request = {
-            firstName: 'Charles'
+            firstName: 'Charles',
+            page: 0,
+            pageSize: 1
         };
         chai.request(server)
             .post('/api/members/filter')

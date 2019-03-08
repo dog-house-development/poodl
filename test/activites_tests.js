@@ -122,7 +122,9 @@ describe('Activities suite /ADD, /GET, /GET/:ID,/DELETE', () => {
 
     it('it should filter activities', done => {
         let request = {
-            seniorCenter: 'The one around the corner'
+            seniorCenter: 'The one around the corner',
+            page: 0,
+            pageSize: 1
         };
         chai.request(server)
             .post('/api/activities/filter')

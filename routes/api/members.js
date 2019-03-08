@@ -64,12 +64,11 @@ router.post('/filter', (req, res) => {
         return res.status(400).json(errors);
     }
     const request = jsonBuilder(req.body);
-    console.log(request);
     Member.find(request[0], (err, members) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: members });
     })
-        .skip(request[2] * request[1])
+        .skip(request[2] * request[1]) // paging function
         .limit(request[2]);
 });
 
