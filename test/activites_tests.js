@@ -141,6 +141,27 @@ describe('Activities suite /ADD, /GET, /GET/:ID,/DELETE', () => {
             });
     });
 
+    it('it should edit a member by id', done => {
+        let request = {
+            seniorCenter: 'New One'
+        };
+        chai.request(server)
+            .post('/api/activities/edit/' + tempId)
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('name').eql('ice climbing');
+                res.body.should.have.property('time').eql('10AM-12PM');
+                res.body.should.have.property('duration').eql('2 Hours');
+                res.body.should.have.property('date').eql('Saturday');
+                res.body.should.have.property('admins').eql(['Bill']);
+                res.body.should.have.property('volunteers').eql(['Sandy']);
+                res.body.should.have.property('members').eql(['Peepsuuu']);
+                res.body.should.have.property('seniorCenter').eql('New One');
+                done();
+            });
+    });
+
     it('it should delete a specific activity', done => {
         chai.request(server)
             .delete('/api/activities/delete/' + tempId)

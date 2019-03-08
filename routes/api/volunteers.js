@@ -7,6 +7,7 @@ const passport = require('passport');
 
 // Load input validation
 const validateRegisterInput = require('../../validation/addVolunteer');
+const validateEditInputByID = require('../../validation/editVolunteerByID');
 
 // Load Volunteer model
 const Volunteer = require('../../models/Volunteer');
@@ -56,6 +57,32 @@ router.post('/add', (req, res) => {
                 .then(volunteer => res.json(volunteer))
                 .catch(err => console.log(err));
         }
+    });
+});
+
+// @route POST api/volunteers/edit/:id
+// should edit a volunteer based on id
+router.post('/edit/:id', (req, res) => {
+    const { errors, isValid } = validateEditInputByID(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+    Volunteer.findOne({ _id: req.params.id }).then(volunteer => {
+        if (!volunteer) {
+            return res.status(400).json({ _id: 'Volunteer does not exist' });
+        } else {
+            if (req.body.email != '') {
+                volunteer.email = req.body.email;
+            }
+            if (req.body.seniorCenter != '') {
+                volunteer.seniorCenter = req.body.seniorCenter;
+            }
+        }
+        volunteer
+            .save()
+            .then(Volunteer => res.json(Volunteer))
+            .catch(err => console.log(err));
     });
 });
 

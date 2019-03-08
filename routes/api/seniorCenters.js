@@ -7,6 +7,7 @@ const passport = require('passport');
 
 // Load input validation
 const validateRegisterInput = require('../../validation/addSeniorCenter');
+const validateEditInputById = require('../../validation/editSeniorCenterByID');
 
 const SeniorCenter = require('../../models/SeniorCenter');
 
@@ -34,6 +35,40 @@ router.get('/get/:id', (req, res) => {
     SeniorCenter.findOne({ _id: req.params.id }, (err, post) => {
         if (err) return next(err);
         return res.json(post);
+    });
+});
+
+// @route POST api/seniorCenter/edit/:id
+//should edit a senior center given an id
+router.post('/edit/:id', (req, res) => {
+    const { errors, isValid } = validateEditInputById(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+    SeniorCenter.findOne({ _id: req.params.id }).then(seniorCenter => {
+        if (!seniorCenter) {
+            return res.status(400).json({ _id: 'SeniorCenter does not exist' });
+        } else {
+            if (req.body.name != '') {
+                seniorCenter.name = req.body.name;
+            }
+            if (req.body.email != '') {
+                seniorCenter.email = req.body.email;
+            }
+            if (req.body.address != '') {
+                seniorCenter.address = req.body.address;
+            }
+            if (req.body.phone != '') {
+                seniorCenter.phone = req.body.phone;
+            }
+            if (req.body.operationHours != '') {
+                seniorCenter.operationHours = req.body.operationHours;
+            }
+        }
+        seniorCenter
+            .save()
+            .then(SeniorCenter => res.json(SeniorCenter))
+            .catch(err => console.log(err));
     });
 });
 

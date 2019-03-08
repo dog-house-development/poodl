@@ -125,7 +125,7 @@ router.post('/edit/:id', (req, res) => {
         _id: req.params.id
     }).then(members => {
         if (!members) {
-            return res.status(400).json({ firstName: 'Member does not exist' });
+            return res.status(400).json({ _id: 'Member does not exist' });
         } else {
             if (req.body.email != '') {
                 members.email = req.body.email;

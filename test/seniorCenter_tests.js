@@ -111,6 +111,24 @@ describe('SeniorCenter API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
             });
     });
 
+    it('it should edit a seniorCenter given its id', done => {
+        let request = {
+            operationHours: 'New Ones'
+        };
+        chai.request(server)
+            .post('/api/seniorCenters/edit/' + tempId)
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('name').eql('deep puddle');
+                res.body.should.have.property('email').eql('ThisPuddleIsSoDeep@gmail.com');
+                res.body.should.have.property('address').eql('Hole in the ground');
+                res.body.should.have.property('phone').eql('818-WATER');
+                res.body.should.have.property('operationHours').eql('New Ones');
+                done();
+            });
+    });
+
     it('it should delete a specific seniorCenter', done => {
         chai.request(server)
             .delete('/api/seniorCenters/delete/' + tempId)

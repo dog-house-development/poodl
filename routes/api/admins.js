@@ -8,6 +8,7 @@ const passport = require('passport');
 // Load input validation
 const validateRegisterInput = require('../../validation/registerAdmin');
 const validateLoginInput = require('../../validation/login');
+const validateEditInputByID = require('../../validation/editAdminByID');
 
 // Load Admin model
 const Admin = require('../../models/Admin');
@@ -96,6 +97,38 @@ router.post('/register', (req, res) => {
                 });
             });
         }
+    });
+});
+
+// @route POST api/admins/edit/:id
+// should take request for admin id and make changes
+router.post('/edit/:id', (req, res) => {
+    const { errors, isValid } = validateEditInputByID(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    Admin.findOne({
+        _id: req.params.id
+    }).then(admin => {
+        if (!admin) {
+            return res.status(400).json({ _id: 'Admin does not exist' });
+        } else {
+            if (req.body.email != '') {
+                admin.email = req.body.email;
+            }
+            if (req.body.seniorCenter != '') {
+                admin.seniorCenter = req.body.seniorCenter;
+            }
+            if (req.body.superAdmin != '') {
+                admin.superAdmin = req.body.superAdmin;
+            }
+        }
+        admin
+            .save()
+            .then(Admin => res.json(Admin))
+            .catch(err => console.log(err));
     });
 });
 
