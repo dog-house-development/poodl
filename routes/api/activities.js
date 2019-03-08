@@ -40,7 +40,7 @@ router.get('/get/:id', (req, res, next) => {
 // @route POST api/activities/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    Activity.find(res.body, (err, activities) => {
+    Activity.find(req.body, (err, activities) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: activities });
     });
