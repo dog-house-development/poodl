@@ -113,34 +113,12 @@ router.post('/filter', (req, res) => {
 // @route POST api/activities/add
 // @desc add a activity
 router.post('/add', (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
-
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    Activity.findOne({ name: req.body.name }).then(activity => {
-        if (activity) {
-            return res.status(400).json({ name: 'Activity already exists' });
-        } else {
-            const newActivity = new Activity({
-                name: req.body.name,
-                time: req.body.time,
-                duration: req.body.duration,
-                date: req.body.date,
-                admins: req.body.admins,
-                volunteers: req.body.volunteers,
-                members: req.body.members,
-                seniorCenter: req.body.seniorCenter,
-                maxCapacity: req.body.maxCapacity
-            });
-
-            newActivity
-                .save()
-                .then(Activity => res.json(Activity))
-                .catch(err => console.log(err));
-        }
-    });
+    const newActivity = new Activity(req.body);
+    errors = newActivity.validateSync();
+    newActivity
+        .save()
+        .then(Activity => res.json(Activity))
+        .catch(err => console.log(err));
 });
 
 module.exports = router;

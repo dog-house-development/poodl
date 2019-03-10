@@ -176,38 +176,12 @@ router.post('/edit/:id', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    Member.findOne({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName
-    }).then(members => {
-        if (members) {
-            return res.status(400).json({ email: 'Member already exists' });
-        } else {
-            const newMember = new Member({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                address: req.body.address,
-                seniorCenter: req.body.seniorCenter,
-                membershipDate: req.body.membershipDate,
-                renewalDate: req.body.renewalDate,
-                specialDiet: req.body.specialDiet,
-                medicalIssues: req.body.medicalIssues,
-                disabilities: req.body.disabilities,
-                mealPreference: req.body.mealPreference
-            });
-
-            newMember
-                .save()
-                .then(Member => res.json(Member))
-                .catch(err => console.log(err));
-        }
-    });
+    const newMember = new Member(req.body);
+    error = newMember.validateSync();
+    newMember
+        .save()
+        .then(Member => res.json(Member))
+        .catch(err => console.log(err));
 });
 
 module.exports = router;

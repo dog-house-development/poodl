@@ -75,40 +75,18 @@ router.post('/filter', (req, res) => {
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
-    // Form validation
-
-    const { errors, isValid } = validateRegisterInput(req.body);
-
-    // Check validation
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    Admin.findOne({ email: req.body.email }).then(admin => {
-        if (admin) {
-            return res.status(400).json({ email: 'Email already exists' });
-        } else {
-            const newAdmin = new Admin({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                password: req.body.password,
-                seniorCenter: req.body.seniorCenter,
-                superAdmin: req.body.superAdmin
-            });
-
-            // Hash password before saving in database
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newAdmin.password, salt, (err, hash) => {
-                    if (err) throw err;
-                    newAdmin.password = hash;
-                    newAdmin
-                        .save()
-                        .then(admin => res.json(admin))
-                        .catch(err => console.log(err));
-                });
-            });
-        }
+    const newAdmin = new Admin(req.body);
+    errors = newAdmin.validateSync();
+    // Hash password before saving in database
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newAdmin.password, salt, (err, hash) => {
+            if (err) throw err;
+            newAdmin.password = hash;
+            newAdmin
+                .save()
+                .then(admin => res.json(admin))
+                .catch(err => console.log(err));
+        });
     });
 });
 
