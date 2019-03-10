@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addActivity } from '../../../actions/activityActions';
@@ -18,9 +18,6 @@ export class AddActivity extends Component {
         super(props);
         this.state = {
             name: '',
-            time: '',
-            duration: '',
-            date: '',
             seniorCenter: props.adminSeniorCenter,
             errors: {},
             maxCapacity: ''
@@ -41,11 +38,14 @@ export class AddActivity extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-
         const newActivity = {
-            ...this.state
+            ...this.state,
+            startDate: new Date(this.state.startDate).getTime(),
+            endDate: new Date(this.state.endDate).getTime()
         };
 
+        console.log('new activity');
+        console.log(newActivity);
         this.props.registerActivity(newActivity, this.props.history);
     };
 
@@ -57,45 +57,34 @@ export class AddActivity extends Component {
                 error: errors.name,
                 id: 'name',
                 type: 'text',
-                label: 'Activity Name',
-                placeholder: 'Name of Activity',
-                autocomplete: 'off'
+                label: 'Name',
+                placeholder: 'Name',
+                autoComplete: 'off'
             },
             {
                 onChange: this.onChange,
-                error: errors.time,
-                id: 'time',
+                error: errors.description,
+                id: 'description',
                 type: 'text',
-                label: 'Time of Activity',
-                placeholder: 'Time of Activity',
-                autocomplete: 'off'
+                label: 'Description',
+                placeholder: 'Description',
+                autoComplete: 'off'
             },
             {
                 onChange: this.onChange,
-                error: errors.Duration,
-                id: 'duration',
-                type: 'text',
-                label: 'duration',
-                placeholder: 'Duration of Activity',
-                autocomplete: 'off'
+                error: errors.startDate,
+                id: 'startDate',
+                type: 'datetime-local',
+                label: 'Start date',
+                sidebyside: 1
             },
             {
                 onChange: this.onChange,
-                error: errors.firstName,
-                id: 'date',
-                type: 'text',
-                label: 'Activity Date',
-                placeholder: 'Activity date',
-                autocomplete: 'off'
-            },
-            {
-                onChange: this.onChange,
-                error: errors.maxCapacity,
-                id: 'maxCapacity',
-                type: 'text',
-                label: 'Maximum Capacity',
-                placeholder: 'Capacity',
-                autocomplete: 'off'
+                error: errors.endDate,
+                id: 'endDate',
+                type: 'datetime-local',
+                label: 'End Date',
+                sidebyside: 2
             }
         ];
 
@@ -104,7 +93,7 @@ export class AddActivity extends Component {
 
     render() {
         return (
-            <div className="register-container">
+            <div className="activity-container">
                 <Link to="/dashboard" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
@@ -121,6 +110,7 @@ export class AddActivity extends Component {
 }
 
 export const mapStateToProps = (state, props) => {
+    console.log(state.errors);
     return {
         auth: state.auth,
         adminIsSuper: _.get(state.auth.admin, 'superAdmin', false),
@@ -139,4 +129,4 @@ AddActivity.propTypes = propTypes;
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(withRouter(AddActivity));
+)(AddActivity);

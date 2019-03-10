@@ -14,13 +14,11 @@
   .field-error-label {
     color: $red-2;
     font-size: 12px;
-    position: absolute;
-    top: 65px;
   }
 
   .field-outer {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 0.1em;
 
     .field {
       flex-grow: 1;

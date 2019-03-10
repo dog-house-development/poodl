@@ -1,46 +1,37 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 const ActivitySchema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            required: [true, 'Name is required']
         },
-        time: {
+        description: {
             type: String,
-            required: true
+            required: [true, 'Description is required']
         },
-        duration: {
-            type: String,
-            required: true
+        startDate: {
+            type: Date,
+            required: [true, 'Start Date is required']
         },
-        date: {
-            type: String,
-            required: true
+        endDate: {
+            type: Date,
+            required: [true, 'End Date is required']
         },
-        //The plan is to have admin and volunteer list be IDs
-        admins: [
-            {
-                type: String
-            }
-        ],
-        volunteers: [
-            {
-                type: String
-            }
-        ],
-        members: [
-            {
-                type: String
-            }
-        ],
+        // should be ObjectId
+        volunteers: [String],
+        // should be ObjectId
+        members: [String],
+        // should be ObjectId
         seniorCenter: {
             type: String,
             required: true
         },
         maxCapacity: {
-            type: String
+            type: Number,
+            min: 1
         }
     },
     { timestamps: true }

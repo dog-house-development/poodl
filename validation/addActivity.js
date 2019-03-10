@@ -17,37 +17,22 @@ module.exports = function validateRegisterInput(data) {
 
     // Name checks
     if (Validator.isEmpty(data.name)) {
-        errors.name = 'Name field is required';
+        //errors.name = 'Name field is required';
     }
 
     // Times checks
     if (Validator.isEmpty(data.time)) {
-        errors.time = 'Time field is required';
+        //errors.time = 'Time field is required';
     }
 
     // Duration checks
     if (Validator.isEmpty(data.duration)) {
-        errors.duration = 'Duration field is required';
+        //errors.duration = 'Duration field is required';
     }
 
     //Date check
     if (Validator.isEmpty(data.date)) {
-        errors.date = 'Date field is required';
-    }
-
-    // admins checks
-    if (Validator.isEmpty(data.admins)) {
-        errors.admins = 'Admins is required';
-    }
-
-    //volunteers check
-    if (Validator.isEmpty(data.volunteers)) {
-        errors.volunteers = 'Volunteers field is required';
-    }
-
-    //members check
-    if (Validator.isEmpty(data.members)) {
-        errors.members = 'Members field is required';
+        //errors.date = 'Date field is required';
     }
 
     //seniorCenter check
