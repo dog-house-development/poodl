@@ -99,33 +99,12 @@ router.post('/filter', (req, res) => {
 // @route POST api/services/add
 // @desc add a service
 router.post('/add', (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
-
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    Service.findOne({ name: req.body.name }).then(service => {
-        if (service) {
-            return res.status(400).json({ name: 'Service already exists' });
-        } else {
-            const newService = new Service({
-                name: req.body.name,
-                time: req.body.time,
-                duration: req.body.duration,
-                date: req.body.date,
-                admins: req.body.admins,
-                volunteers: req.body.volunteers,
-                members: req.body.members,
-                seniorCenter: req.body.seniorCenter,
-                maxCapacity: req.body.maxCapacity
-            });
-            newService
-                .save()
-                .then(Service => res.json(Service))
-                .catch(err => console.log(err));
-        }
-    });
+    const newService = new Service(req.body);
+    error = newService.validateSync();
+    newService
+        .save()
+        .then(Service => res.json(Service))
+        .catch(err => console.log(err));
 });
 
 module.exports = router;

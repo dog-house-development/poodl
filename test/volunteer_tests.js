@@ -120,7 +120,7 @@ describe('Volunteers suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
 
     it('it should filter list of volunteers', done => {
         let request = {
-            firstName: 'Charles'
+            firstName: 'Karen'
         };
         chai.request(server)
             .post('/api/volunteers/filter')
