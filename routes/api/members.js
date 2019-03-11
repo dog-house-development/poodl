@@ -8,11 +8,15 @@ const passport = require('passport');
 // Load Member model
 const Member = require('../../models/Member');
 
+//import utilities
+const jsonBuilder = require('../../utility/stringConverter');
+
 //Validation
 const validateEditInput = require('../../validation/editMember');
 //validator is here just for the purpose of setting all the values to '' probably a better way but this is what I want to do
 const validateEditInputByID = require('../../validation/editMemberByID');
 const validateRegisterInput = require('../../validation/addMember');
+const validateFilterInput = require('../../validation/memberFilter');
 
 // @route DELETE api/members/delete/:id
 // should delete specified member by ID
@@ -54,10 +58,13 @@ router.post('/get', (req, res) => {
 // @route POST api/members/filter
 //should filter members and return ones that you want. Builds up a query
 router.post('/filter', (req, res) => {
-    Member.find(req.body, (err, members) => {
+    const request = jsonBuilder(req.body);
+    Member.find(request[0], (err, members) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: members });
-    });
+    })
+        .skip(request[2] * request[1]) // paging function
+        .limit(request[2]);
 });
 
 // @route POST api/members/edit

@@ -7,6 +7,11 @@ const passport = require('passport');
 
 const validateRegisterInput = require('../../validation/addActivity');
 const validateEditInputByID = require('../../validation/editActivityByID');
+const validateFilterInput = require('../../validation/activityFilter');
+
+//Load Utilities
+const jsonBuilder = require('../../utility/stringConverter');
+
 //Load Activity models
 const Activity = require('../../models/Activity');
 
@@ -89,10 +94,14 @@ router.post('/edit/:id', (req, res) => {
 // @route POST api/activities/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    Activity.find(req.body, (err, activities) => {
+    const request = jsonBuilder(req.body);
+
+    Activity.find(request[0], (err, activities) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: activities });
-    });
+    })
+        .skip(request[2] * request[1]) // paging function
+        .limit(request[2]);
 });
 
 // @route POST api/activities/add

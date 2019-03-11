@@ -122,7 +122,9 @@ describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
 
     it('it should filter services', done => {
         let request = {
-            seniorCenter: 'Good one'
+            seniorCenter: 'Good one',
+            page: 0,
+            pageSize: 1
         };
         chai.request(server)
             .post('/api/services/filter')

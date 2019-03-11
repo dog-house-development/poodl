@@ -95,7 +95,9 @@ describe('SeniorCenter API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
 
     it('it should filter seniorCenters', done => {
         let request = {
-            phone: '818-WATER'
+            phone: '818-WATER',
+            page: 0,
+            pageSize: 1
         };
         chai.request(server)
             .post('/api/seniorCenters/filter')

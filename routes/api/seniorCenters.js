@@ -8,7 +8,12 @@ const passport = require('passport');
 // Load input validation
 const validateRegisterInput = require('../../validation/addSeniorCenter');
 const validateEditInputById = require('../../validation/editSeniorCenterByID');
+const validateFilterInput = require('../../validation/seniorCenterFilter');
 
+//load utilities
+const jsonBuilder = require('../../utility/stringConverter');
+
+//load model
 const SeniorCenter = require('../../models/SeniorCenter');
 
 //@route DELETE api/seniorCenters/delete/:id
@@ -75,10 +80,13 @@ router.post('/edit/:id', (req, res) => {
 // @route POST api/seniorCenters/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    SeniorCenter.find(req.body, (err, seniorCenters) => {
+    const request = jsonBuilder(req.body);
+    SeniorCenter.find(request[0], (err, seniorCenters) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: seniorCenters });
-    });
+    })
+        .skip(request[2] * request[1]) // paging function
+        .limit(request[2]);
 });
 
 // @route POST api/seniorCenters/add
