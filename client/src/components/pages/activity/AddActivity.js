@@ -110,6 +110,7 @@ export class AddActivity extends Component {
 }
 
 export const mapStateToProps = (state, props) => {
+    console.log('state.errors');
     console.log(state.errors);
     return {
         auth: state.auth,

@@ -6,7 +6,8 @@ import { GET_ERRORS } from './types';
 export const addActivity = (activityData, history) => dispatch => {
     axios
         .post('/api/activities/add', activityData)
-        .then(res => history.push('/dashboard')) // go to new activity's page when created
+        // change to go to new activity page instead
+        .then(res => history.push('/dashboard'))
         .catch(err =>
             dispatch({
                 type: GET_ERRORS,

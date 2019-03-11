@@ -6,6 +6,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 const validateRegisterInput = require('../../validation/addActivity');
+const invalid = require('../../utils/validation');
 
 //Load Activity models
 const Activity = require('../../models/Activity');
@@ -49,35 +50,13 @@ router.post('/filter', (req, res) => {
 // @route POST api/activities/add
 // @desc add a activity
 router.post('/add', (req, res) => {
-    // const { errors, isValid } = validateRegisterInput(req.body);
-    //
-    // if (!isValid) {
-    //     console.log(errors);
-    //     return res.status(400).json(errors);
-    // }
-    // const activity = new Activity({
-    //     name: req.body.name,
-    //     description: req.body.description,
-    //     startDate: req.body.startDate,
-    //     endDate: req.body.endDate
-    // });
     const activity = new Activity(req.body);
-    console.log(activity);
-    error = activity.validateSync();
-    console.log('error: ');
-    console.log(error);
+    if (invalid(activity, res)) return;
+
     new Activity(req.body)
         .save()
         .then(Activity => res.json(Activity))
         .catch(err => res.status(400).json(err));
-    // Activity.findOne({ name: req.body.name }).then(activity => {
-    //     if (activity) return res.status(400).json({ name: 'Activity already exists' });
-    //
-    //     new Activity(req.body)
-    //         .save()
-    //         .then(Activity => res.json(Activity))
-    //         .catch(err => res.status(400).json(err));
-    // });
 });
 
 module.exports = router;
