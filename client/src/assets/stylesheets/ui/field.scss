@@ -2,23 +2,27 @@
 
 .field-wrapper {
   position: relative;
+  margin-bottom: 1.5rem;
+
   .field-label {
     font-size: 13px;
     font-weight: bold;
     color: $gray-6;
     display: inline-block;
-    margin: 20px 0 6px 0;
+    margin: 0.4em 0;
     text-transform: uppercase;
   }
 
   .field-error-label {
     color: $red-2;
     font-size: 12px;
+    position: absolute;
+    bottom: -1.5em;
   }
 
   .field-outer {
     display: flex;
-    margin-bottom: 0.1em;
+    //margin-bottom: 10px;
 
     .field {
       flex-grow: 1;

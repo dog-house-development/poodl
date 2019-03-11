@@ -52,8 +52,8 @@ class Field extends Component {
                             { 'field-error-border': this.props.error }
                         )}
                     />
+                    <p className="field-error-label">{this.props.error}</p>
                 </div>
-                <p className="field-error-label">{this.props.error}</p>
             </div>
         );
     }
