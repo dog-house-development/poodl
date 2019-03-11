@@ -21,11 +21,8 @@ const schema = new Schema(
             type: Date,
             required: [true, 'End Date is required']
         },
-        // should be ObjectId
-        volunteers: [ObjectId],
-        // should be ObjectId
+        admins: [ObjectId],
         members: [ObjectId],
-        // should be ObjectId
         seniorCenter: {
             type: ObjectId,
             required: true
@@ -37,5 +34,13 @@ const schema = new Schema(
 // remove later because activity name will be shared with others
 // this exists now for an example for other schemas
 schema.post('save', keyError({ name: 'Activity already exists' }));
+
+schema.pre('save', function(next) {
+    if (this.startDate > this.endDate) {
+        next({ startDate: 'Start date must be before end date', endDate: 'End date must be after start date' });
+    }
+
+    next();
+});
 
 module.exports = mongoose.model('activities', schema);

@@ -17,10 +17,8 @@ export class AddActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
             seniorCenter: props.adminSeniorCenter,
-            errors: {},
-            maxCapacity: ''
+            errors: {}
         };
     }
 
@@ -39,13 +37,9 @@ export class AddActivity extends Component {
     onSubmit = e => {
         e.preventDefault();
         const newActivity = {
-            ...this.state,
-            startDate: new Date(this.state.startDate).getTime(),
-            endDate: new Date(this.state.endDate).getTime()
+            ...this.state
         };
 
-        console.log('new activity');
-        console.log(newActivity);
         this.props.registerActivity(newActivity, this.props.history);
     };
 
@@ -110,8 +104,6 @@ export class AddActivity extends Component {
 }
 
 export const mapStateToProps = (state, props) => {
-    console.log('state.errors');
-    console.log(state.errors);
     return {
         auth: state.auth,
         adminIsSuper: _.get(state.auth.admin, 'superAdmin', false),

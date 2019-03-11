@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
-const validateRegisterInput = require('../../validation/addActivity');
 const invalid = require('../../utils/validation');
 
 //Load Activity models
