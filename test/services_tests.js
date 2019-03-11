@@ -1,6 +1,7 @@
 process.env.NODE_ENV = 'test';
 
 let mongoose = require('mongoose');
+const Service = require('../models/Service');
 
 let Mockgoose = require('mockgoose').Mockgoose;
 let mockgoose = new Mockgoose(mongoose);
@@ -27,30 +28,20 @@ before(function(done) {
 after(function() {
     process.exit(0);
 });
-
 describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
     it('it should add a new service', done => {
-        let testService1 = {
+        let testService1 = new Service({
             name: 'ice climbing',
-            time: '10AM-12PM',
-            duration: '2 Hours',
-            date: 'Saturday',
-            admins: 'Bill',
-            volunteers: 'Sandy',
-            members: 'Peepsuuu',
-            seniorCenter: 'The one around the corner'
-        };
-        let testService2 = {
-            name: 'skiing',
-            time: '10AM-12PM',
-            duration: '6 Hours',
-            date: 'Sunday',
-            admins: '11234',
-            volunteers: 'The Dude',
-            members: 'Karin',
-            seniorCenter: 'Good one'
-        };
-
+            seniorCenterId: '5c75f8b1e7179a3e36ddee0e',
+            memberId: '5c762192c5d4ccce72a5d914',
+            description: 'Example Event'
+        });
+        let testService2 = new Service({
+            name: 'rock climbing',
+            seniorCenterId: '5c78d41c24952d2828f880ea',
+            memberId: '5c7c5363b275ce42fcb81097',
+            description: 'Example Event2'
+        });
         chai.request(server)
             .post('/api/services/add')
             .send(testService1)
@@ -62,14 +53,10 @@ describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('_id');
-                res.body.should.have.property('name').eql('skiing');
-                res.body.should.have.property('time').eql('10AM-12PM');
-                res.body.should.have.property('duration').eql('6 Hours');
-                res.body.should.have.property('date').eql('Sunday');
-                res.body.should.have.property('admins').eql(['11234']);
-                res.body.should.have.property('volunteers').eql(['The Dude']);
-                res.body.should.have.property('members').eql(['Karin']);
-                res.body.should.have.property('seniorCenter').eql('Good one');
+                res.body.should.have.property('name').eql('rock climbing');
+                res.body.should.have.property('seniorCenterId').eql('5c78d41c24952d2828f880ea');
+                res.body.should.have.property('memberId').eql('5c7c5363b275ce42fcb81097');
+                res.body.should.have.property('description').eql('Example Event2');
                 done();
             });
     });
@@ -82,23 +69,15 @@ describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
                 res.body.should.have.property('success').eql(true);
                 tempId = res.body.data[0]._id;
                 res.body.data[1].should.have.property('_id');
-                res.body.data[1].should.have.property('name').eql('skiing');
-                res.body.data[1].should.have.property('time').eql('10AM-12PM');
-                res.body.data[1].should.have.property('duration').eql('6 Hours');
-                res.body.data[1].should.have.property('date').eql('Sunday');
-                res.body.data[1].should.have.property('admins').eql(['11234']);
-                res.body.data[1].should.have.property('volunteers').eql(['The Dude']);
-                res.body.data[1].should.have.property('members').eql(['Karin']);
-                res.body.data[1].should.have.property('seniorCenter').eql('Good one');
+                res.body.data[1].should.have.property('name').eql('rock climbing');
+                res.body.data[1].should.have.property('seniorCenterId').eql('5c78d41c24952d2828f880ea');
+                res.body.data[1].should.have.property('memberId').eql('5c7c5363b275ce42fcb81097');
+                res.body.data[1].should.have.property('description').eql('Example Event2');
 
                 res.body.data[0].should.have.property('name').eql('ice climbing');
-                res.body.data[0].should.have.property('time').eql('10AM-12PM');
-                res.body.data[0].should.have.property('duration').eql('2 Hours');
-                res.body.data[0].should.have.property('date').eql('Saturday');
-                res.body.data[0].should.have.property('admins').eql(['Bill']);
-                res.body.data[0].should.have.property('volunteers').eql(['Sandy']);
-                res.body.data[0].should.have.property('members').eql(['Peepsuuu']);
-                res.body.data[0].should.have.property('seniorCenter').eql('The one around the corner');
+                res.body.data[0].should.have.property('seniorCenterId').eql('5c75f8b1e7179a3e36ddee0e');
+                res.body.data[0].should.have.property('memberId').eql('5c762192c5d4ccce72a5d914');
+                res.body.data[0].should.have.property('description').eql('Example Event');
                 done();
             });
     });
@@ -109,20 +88,16 @@ describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('name').eql('ice climbing');
-                res.body.should.have.property('time').eql('10AM-12PM');
-                res.body.should.have.property('duration').eql('2 Hours');
-                res.body.should.have.property('date').eql('Saturday');
-                res.body.should.have.property('admins').eql(['Bill']);
-                res.body.should.have.property('volunteers').eql(['Sandy']);
-                res.body.should.have.property('members').eql(['Peepsuuu']);
-                res.body.should.have.property('seniorCenter').eql('The one around the corner');
+                res.body.should.have.property('seniorCenterId').eql('5c75f8b1e7179a3e36ddee0e');
+                res.body.should.have.property('memberId').eql('5c762192c5d4ccce72a5d914');
+                res.body.should.have.property('description').eql('Example Event');
                 done();
             });
     });
 
     it('it should filter services', done => {
         let request = {
-            seniorCenter: 'Good one',
+            description: 'Example Event',
             page: 0,
             pageSize: 1
         };
@@ -132,15 +107,10 @@ describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
-                res.body.data[0].should.have.property('_id');
-                res.body.data[0].should.have.property('name').eql('skiing');
-                res.body.data[0].should.have.property('time').eql('10AM-12PM');
-                res.body.data[0].should.have.property('duration').eql('6 Hours');
-                res.body.data[0].should.have.property('date').eql('Sunday');
-                res.body.data[0].should.have.property('admins').eql(['11234']);
-                res.body.data[0].should.have.property('volunteers').eql(['The Dude']);
-                res.body.data[0].should.have.property('members').eql(['Karin']);
-                res.body.data[0].should.have.property('seniorCenter').eql('Good one');
+                res.body.data[0].should.have.property('name').eql('ice climbing');
+                res.body.data[0].should.have.property('seniorCenterId').eql('5c75f8b1e7179a3e36ddee0e');
+                res.body.data[0].should.have.property('memberId').eql('5c762192c5d4ccce72a5d914');
+                res.body.data[0].should.have.property('description').eql('Example Event');
                 done();
             });
     });
@@ -155,13 +125,9 @@ describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('name').eql('ice climbing');
-                res.body.should.have.property('time').eql('10AM-12PM');
-                res.body.should.have.property('duration').eql('2 Hours');
-                res.body.should.have.property('date').eql('Saturday');
-                res.body.should.have.property('admins').eql(['Bill']);
-                res.body.should.have.property('volunteers').eql(['Sandy']);
-                res.body.should.have.property('members').eql(['Peepsuuu']);
-                res.body.should.have.property('seniorCenter').eql('New One');
+                res.body.should.have.property('seniorCenterId').eql('5c75f8b1e7179a3e36ddee0e');
+                res.body.should.have.property('memberId').eql('5c762192c5d4ccce72a5d914');
+                res.body.should.have.property('description').eql('Example Event');
                 done();
             });
     });

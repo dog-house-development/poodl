@@ -6,9 +6,9 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 // Load input validation
-const validateRegisterInput = require('../../validation/addSeniorCenter');
-const validateEditInputById = require('../../validation/editSeniorCenterByID');
-const validateFilterInput = require('../../validation/seniorCenterFilter');
+const validateRegisterInput = require('../../validation/seniorCenter/addSeniorCenter');
+const validateEditInputById = require('../../validation/seniorCenter/editSeniorCenterByID');
+const validateFilterInput = require('../../validation/seniorCenter/seniorCenterFilter');
 
 //load utilities
 const jsonBuilder = require('../../utility/stringConverter');

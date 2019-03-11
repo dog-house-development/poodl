@@ -12,11 +12,11 @@ const Member = require('../../models/Member');
 const jsonBuilder = require('../../utility/stringConverter');
 
 //Validation
-const validateEditInput = require('../../validation/editMember');
+const validateEditInput = require('../../validation/member/editMember');
 //validator is here just for the purpose of setting all the values to '' probably a better way but this is what I want to do
-const validateEditInputByID = require('../../validation/editMemberByID');
-const validateRegisterInput = require('../../validation/addMember');
-const validateFilterInput = require('../../validation/memberFilter');
+const validateEditInputByID = require('../../validation/member/editMemberByID');
+const validateRegisterInput = require('../../validation/member/addMember');
+const validateFilterInput = require('../../validation/member/memberFilter');
 
 // @route DELETE api/members/delete/:id
 // should delete specified member by ID

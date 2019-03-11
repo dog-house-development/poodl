@@ -5,9 +5,9 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
-const validateRegisterInput = require('../../validation/addActivity');
-const validateEditInputByID = require('../../validation/editActivityByID');
-const validateFilterInput = require('../../validation/activityFilter');
+const validateRegisterInput = require('../../validation/activity/addActivity');
+const validateEditInputByID = require('../../validation/activity/editActivityByID');
+const validateFilterInput = require('../../validation/activity/activityFilter');
 
 //Load Utilities
 const jsonBuilder = require('../../utility/stringConverter');

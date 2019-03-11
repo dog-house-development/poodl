@@ -6,8 +6,8 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 // Load input validation
-const validateRegisterInput = require('../../validation/addVolunteer');
-const validateEditInputByID = require('../../validation/editVolunteerByID');
+const validateRegisterInput = require('../../validation/admin/addVolunteer');
+const validateEditInputByID = require('../../validation/admin/editVolunteerByID');
 
 // Load Volunteer model
 const Volunteer = require('../../models/Volunteer');

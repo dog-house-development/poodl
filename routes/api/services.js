@@ -6,9 +6,9 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 //Validation goes here
-const validateRegisterInput = require('../../validation/addService');
-const validateEditInputByID = require('../../validation/editServiceByID');
-const validateFilterInput = require('../../validation/serviceFilter');
+const validateRegisterInput = require('../../validation/service/addService');
+const validateEditInputByID = require('../../validation/service/editServiceByID');
+const validateFilterInput = require('../../validation/service/serviceFilter');
 
 //Load Utils
 const jsonBuilder = require('../../utility/stringConverter');
@@ -60,29 +60,14 @@ router.post('/edit/:id', (req, res) => {
             if (req.body.name != '') {
                 service.name = req.body.name;
             }
-            if (req.body.time != '') {
-                service.time = req.body.time;
+            if (req.body.seniorCenterId != '') {
+                service.seniorCenterId = req.body.seniorCenterId;
             }
-            if (req.body.duration != '') {
-                service.duration = req.body.duration;
+            if (req.body.memberId != '') {
+                service.memberId = req.body.memberId;
             }
-            if (req.body.date != '') {
-                service.date = req.body.date;
-            }
-            if (req.body.admins != '') {
-                service.admins = req.body.admins;
-            }
-            if (req.body.volunteers != '') {
-                service.volunteers = req.body.volunteers;
-            }
-            if (req.body.members != '') {
-                service.members = req.body.members;
-            }
-            if (req.body.seniorCenter != '') {
-                service.seniorCenter = req.body.seniorCenter;
-            }
-            if (req.body.maxCapacity != '') {
-                service.maxCapacity = req.body.maxCapacity;
+            if (req.body.description != '') {
+                service.description = req.body.description;
             }
         }
         service

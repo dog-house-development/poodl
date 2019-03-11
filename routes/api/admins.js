@@ -6,10 +6,10 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 // Load input validation
-const validateRegisterInput = require('../../validation/registerAdmin');
+const validateRegisterInput = require('../../validation/admin/registerAdmin');
 const validateLoginInput = require('../../validation/login');
-const validateEditInputByID = require('../../validation/editAdminByID');
-const validateFilterInput = require('../../validation/adminFilter');
+const validateEditInputByID = require('../../validation/admin/editAdminByID');
+const validateFilterInput = require('../../validation/admin/adminFilter');
 
 //Load Utilities
 const jsonBuilder = require('../../utility/stringConverter');
