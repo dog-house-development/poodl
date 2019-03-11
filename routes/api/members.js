@@ -58,11 +58,6 @@ router.post('/get', (req, res) => {
 // @route POST api/members/filter
 //should filter members and return ones that you want. Builds up a query
 router.post('/filter', (req, res) => {
-    const { errors, isValid } = validateFilterInput(req.body);
-
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
     const request = jsonBuilder(req.body);
     Member.find(request[0], (err, members) => {
         if (err) return res.json({ success: false, error: err });

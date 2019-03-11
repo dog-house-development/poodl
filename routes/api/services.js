@@ -95,11 +95,6 @@ router.post('/edit/:id', (req, res) => {
 // @route POST api/services/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    const { errors, isValid } = validateFilterInput(req.body);
-
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
     const request = jsonBuilder(req.body);
 
     Service.find(request[0], (err, services) => {

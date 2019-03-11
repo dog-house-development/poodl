@@ -57,11 +57,6 @@ router.post('/get', (req, res) => {
 // @route POST api/admins/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    const { errors, isValid } = validateFilterInput(req.body);
-
-    if (!isValid) {
-        return res.status(400).jsonBuilder(errors);
-    }
     const request = jsonBuilder(req.body);
     Admin.find(request[0], (err, admins) => {
         if (err) return res.json({ success: false, error: err });
