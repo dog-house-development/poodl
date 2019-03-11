@@ -14,7 +14,7 @@ const propTypes = {
     placeholder: PropTypes.string,
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),
-    sideBySide: PropTypes.oneOf([1, 2]),
+    sidebyside: PropTypes.oneOf([1, 2]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
