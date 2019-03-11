@@ -70,6 +70,12 @@ router.post('/filter', (req, res) => {
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
+    const { errors, isValid } = validateRegisterInput(req.body);
+
+    // Check validation
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
     const newAdmin = new Admin(req.body);
     errors = newAdmin.validateSync();
     // Hash password before saving in database
