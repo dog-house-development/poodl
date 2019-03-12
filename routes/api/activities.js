@@ -6,7 +6,6 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 const invalid = require('../../utils/validation');
-const validateRegisterInput = require('../../validation/addActivity');
 const validateEditInputByID = require('../../validation/editActivityByID');
 const validateFilterInput = require('../../validation/activityFilter');
 
