@@ -36,8 +36,29 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
             email: 'SpecialDiet2@gmail.com',
             seniorCenter: 'Nice little place',
             address: 'Brooklyn 99',
+            birthDate: '02-30-1950',
+            seniorCenter: '406-570-3856',
+            emergencyContact: ['Sharon Stone', '123-456-7890'],
+            memberisNewOrRenewal: true, //New
+            formOfPayment: true, // Cash
+            bankCheckNumber: '34df43sd21df',
+            includedInEstatePlans: true,
+            wantsEstateInfo: false,
             renewalDate: 'Today',
-            specialDiet: ['fish', 'chicken nuggets']
+            specialDiet: ['fish', 'chicken nuggets'],
+            medicalIssues: ['Diabetes', 'Dementia'],
+            disabilities: ['someDisability', 'otherDisability'],
+            mealPreference: 'Vegan',
+            race: 'White',
+            ethnicity: 'Non-Hispanic/Latino',
+            numberInHousehold: 3,
+            isPersonCaregiver: true,
+            monthlyIncome: 'Over $3,172',
+            isDisabled: false,
+            isVeteran: true,
+            isSpouse60: true,
+            isDisabled60: false,
+            caregiver: 'Jamie Pearson'
         };
 
         let testMember2 = {

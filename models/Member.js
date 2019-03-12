@@ -16,12 +16,39 @@ const MemberSchema = new Schema(
         email: {
             type: String
         },
-        seniorCenter: {
-            type: String
-        },
         address: {
             type: String
         },
+        birthDate: {
+            type: Date,
+            default: Date.now
+        },
+        seniorCenter: {
+            type: String
+        },
+        phoneNumber: {
+            type: String
+        },
+        emergencyContact: [
+            {
+                type: String
+            }
+        ],
+        memberisNewOrRenewal: {
+            type: Boolean //True = New, False = Renewal
+        },
+        formOfPayment: {
+            type: Boolean //True = Cash, False = Check
+        },
+        bankCheckNumber: {
+            type: String
+        },
+        includedInEstatePlans: {
+            type: Boolean // If True, means the member has included the center
+        }, // in their estate plans
+        wantsEstateInfo: {
+            type: Boolean // True = Member would like more info
+        }, // False = Member does not want more info
         membershipDate: {
             type: Date,
             default: Date.now
@@ -46,6 +73,47 @@ const MemberSchema = new Schema(
         ],
         mealPreference: {
             type: String
+        },
+
+        //Demographic info from Intake Form
+        race: {
+            type: String
+        },
+        ethnicity: {
+            type: String
+        },
+        numberInHousehold: {
+            type: Number
+        },
+        isPersonCaregiver: {
+            type: Boolean
+        },
+        monthlyIncome: {
+            type: String
+        },
+        isDisabled: {
+            type: Boolean
+        },
+        isVeteran: {
+            type: Boolean
+        },
+        isSpouse60: {
+            type: Boolean
+        },
+        isDisabled60: {
+            type: Boolean
+        },
+        caregiver: {
+            type: String
+        },
+        grandparent: {
+            type: String
+        },
+        needsAADL: {
+            type: Boolean
+        },
+        needsIADL: {
+            type: Boolean
         }
     },
     { timestamps: true }
