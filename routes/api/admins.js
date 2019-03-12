@@ -12,6 +12,7 @@ const validateEditInputByID = require('../../validation/admin/editAdminByID');
 const validateFilterInput = require('../../validation/admin/adminFilter');
 
 //Load Utilities
+const registerReformat = require('../../utility/reformatAdmin');
 const jsonBuilder = require('../../utility/stringConverter');
 
 // Load Admin model
@@ -70,8 +71,14 @@ router.post('/filter', (req, res) => {
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
-    const newAdmin = new Admin(req.body);
-    errors = newAdmin.validateSync();
+    const { errors, isValid } = validateRegisterInput(req.body);
+
+    // Check validation
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+    const newAdmin = new Admin(registerReformat(req.body));
+    error = newAdmin.validateSync();
     // Hash password before saving in database
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newAdmin.password, salt, (err, hash) => {
@@ -103,11 +110,68 @@ router.post('/edit/:id', (req, res) => {
             if (req.body.email != '') {
                 admin.email = req.body.email;
             }
-            if (req.body.seniorCenter != '') {
-                admin.seniorCenter = req.body.seniorCenter;
+            if (req.body.accessLevel != '') {
+                admin.accessLevel = req.body.accessLevel;
             }
-            if (req.body.superAdmin != '') {
-                admin.superAdmin = req.body.superAdmin;
+            if (req.body.seniorCenterId != '') {
+                admin.seniorCenterId = req.body.seneiorCenterID;
+            }
+            if (req.body.middleInitial != '') {
+                admin.middleInitial = req.body.middleInitial;
+            }
+            if (req.body.nickName != '') {
+                admin.nickName = req.body.nickName;
+            }
+            if (req.body.streetAddress != '') {
+                admin.streetAddress = req.body.streetAddress;
+            }
+            if (req.body.city != '') {
+                admin.city = req.body.city;
+            }
+            if (req.body.state != '') {
+                admin.state = req.body.state;
+            }
+            if (req.body.zip != '') {
+                admin.zip = req.body.zip;
+            }
+            if (req.body.homePhone != '') {
+                admin.homePhone = req.body.homePhone;
+            }
+            if (req.body.cellPhone != '') {
+                admin.cellPhone = req.body.cellPhone;
+            }
+            if (req.body.references != '') {
+                admin.references = req.body.references;
+            }
+            if (req.body.learnAboutVolunteerProgram != '') {
+                admin.learnAboutVolunteerProgram = req.body.learnAboutVolunteerProgram;
+            }
+            if (req.body.howOften != '') {
+                admin.howOften = req.body.howOften;
+            }
+            if (req.body.availability != '') {
+                admin.availability = req.body.availability;
+            }
+            if (req.body.houseMaintenanceAndRepairs != '') {
+                admin.houseMaintenanceAndRepairs = req.body.houseMaintenanceAndRepairs;
+            }
+            if (req.body.groundMaintenance != '') {
+                admin.groundMaintenance = req.body.groundMaintenance;
+            }
+            if (req.body.clericalAssistance != '') {
+                admin.clericalAssistance = req.body.clericalAssistance;
+            }
+            if (req.body.nutritionProgram != '') {
+                admin.nutritionProgram = req.body.nutritionProgram;
+            }
+            if (req.body.specialEventsAndFundRaising != '') {
+                admin.specialEventsAndFundRaising = req.body.specialEventsAndFundRaising;
+            }
+            if (req.body.interpretingTeachingClassesOrWorkshops != '') {
+                admin.interpretingTeachingClassesOrWorkshops = req.body.interpretingTeachingClassesOrWorkshops;
+            }
+            if (req.body.otherInterests != '') {
+                admin.otherInterests = req.body.otherInterests;
             }
         }
         admin

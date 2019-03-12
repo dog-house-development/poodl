@@ -7,7 +7,6 @@ const path = require('path');
 const admins = require('./routes/api/admins');
 const members = require('./routes/api/members');
 const seniorCenters = require('./routes/api/seniorCenters');
-const volunteers = require('./routes/api/volunteers');
 const services = require('./routes/api/services');
 const activities = require('./routes/api/activities');
 
@@ -43,7 +42,6 @@ require('./config/passport')(passport);
 app.use('/api/admins', admins);
 app.use('/api/members', members);
 app.use('/api/seniorCenters', seniorCenters);
-app.use('/api/volunteers', volunteers);
 app.use('/api/services', services);
 app.use('/api/activities', activities);
 

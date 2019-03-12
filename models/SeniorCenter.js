@@ -7,23 +7,23 @@ const SeniorCenterSchema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            required: [true, 'Name field is required']
         },
         email: {
             type: String,
-            required: true
+            required: [true, 'Email field is required']
         },
         address: {
             type: String,
-            required: true
+            required: [true, 'Address field is required']
         },
         phone: {
             type: String,
-            required: true
+            required: [true, 'Phone field is required']
         },
         operationHours: {
             type: String,
-            required: true
+            required: [true, 'operationHours field is required']
         }
     },
     { timestamps: true }

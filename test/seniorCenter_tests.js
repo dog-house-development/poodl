@@ -4,7 +4,7 @@ let mongoose = require('mongoose');
 
 let Mockgoose = require('mockgoose').Mockgoose;
 let mockgoose = new Mockgoose(mongoose);
-
+const SeniorCenter = require('../models/SeniorCenter');
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../server');
@@ -30,20 +30,20 @@ after(function() {
 
 describe('SeniorCenter API suite /ADD,/GET,/GET/:ID, /DELETE', () => {
     it('it should add a seniorCenter', done => {
-        let center1 = {
+        let center1 = new SeniorCenter({
             name: 'deep puddle',
             email: 'ThisPuddleIsSoDeep@gmail.com',
             address: 'Hole in the ground',
             phone: '818-WATER',
             operationHours: '24 Hours'
-        };
-        let center2 = {
+        });
+        let center2 = new SeniorCenter({
             name: 'Snow',
             email: 'So Cold',
             address: 'Outside',
             phone: 'Freeze',
             operationHours: 'Always'
-        };
+        });
         chai.request(server)
             .post('/api/seniorCenters/add')
             .send(center2)
