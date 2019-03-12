@@ -91,23 +91,23 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
-                tempId = res.body.data[1]._id;
+                tempId = res.body.data[0]._id;
                 res.body.should.have.property('data');
-                res.body.data[1].should.have.property('_id');
-                res.body.data[1].should.have.property('firstName').eql('testy');
-                res.body.data[1].should.have.property('lastName').eql('boy');
-                res.body.data[1].should.have.property('email').eql('test@gmail.com');
-                res.body.data[1].should.have.property('password');
-                res.body.data[1].should.have.property('superAdmin').eql(true);
-                res.body.data[1].should.have.property('seniorCenter').eql('test center');
-
                 res.body.data[0].should.have.property('_id');
                 res.body.data[0].should.have.property('firstName').eql('testy');
-                res.body.data[0].should.have.property('lastName').eql('boy2');
-                res.body.data[0].should.have.property('email').eql('test2@gmail.com');
+                res.body.data[0].should.have.property('lastName').eql('boy');
+                res.body.data[0].should.have.property('email').eql('test@gmail.com');
                 res.body.data[0].should.have.property('password');
-                res.body.data[0].should.have.property('superAdmin').eql(false);
-                res.body.data[0].should.have.property('seniorCenter').eql('test center2');
+                res.body.data[0].should.have.property('superAdmin').eql(true);
+                res.body.data[0].should.have.property('seniorCenter').eql('test center');
+                //
+                // res.body.data[1].should.have.property('_id');
+                // res.body.data[1].should.have.property('firstName').eql('testy');
+                // res.body.data[1].should.have.property('lastName').eql('boy2');
+                // res.body.data[1].should.have.property('email').eql('test2@gmail.com');
+                // res.body.data[1].should.have.property('password');
+                // res.body.data[1].should.have.property('superAdmin').eql(false);
+                // res.body.data[1].should.have.property('seniorCenter').eql('test center2');
 
                 done();
             });
@@ -143,7 +143,9 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
 
     it('it should filter list of admins', done => {
         let request = {
-            seniorCenter: 'test center'
+            seniorCenter: 'test center2',
+            page: 0,
+            pageSize: 1
         };
         chai.request(server)
             .post('/api/admins/filter')
@@ -157,6 +159,25 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
                 res.body.data[0].should.have.property('password');
                 res.body.data[0].should.have.property('superAdmin').eql(false);
                 res.body.data[0].should.have.property('seniorCenter');
+                done();
+            });
+    });
+
+    it('it should edit a specific admin by id', done => {
+        let request = {
+            seniorCenter: 'new center'
+        };
+        chai.request(server)
+            .post('/api/admins/edit/' + tempId)
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.not.have.property('data');
+                res.body.should.have.property('_id');
+                res.body.should.have.property('firstName').eql('testy');
+                res.body.should.have.property('lastName').eql('boy');
+                res.body.should.have.property('email').eql('test@gmail.com');
+                res.body.should.have.property('seniorCenter').eql('new center');
                 done();
             });
     });

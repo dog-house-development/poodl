@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Create Schema
 const SeniorCenterSchema = new Schema(
