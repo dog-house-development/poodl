@@ -1,34 +1,13 @@
-process.env.NODE_ENV = 'test';
-
-let mongoose = require('mongoose');
-
-let Mockgoose = require('mockgoose').Mockgoose;
-let mockgoose = new Mockgoose(mongoose);
-
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server');
-let should = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../../../server');
+const should = chai.should();
+const expect = chai.expect;
+const assert = chai.assert;
 
 chai.use(chaiHttp);
 
-before(function(done) {
-    mockgoose.prepareStorage().then(function() {
-        mongoose.connect(
-            'mongodb://example.com/TestingDB',
-            { useNewUrlParser: true },
-            function(err) {
-                done(err);
-            }
-        );
-    });
-});
-
-after(function() {
-    process.exit(0);
-});
-
-describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => {
+module.exports = function() {
     it('it should create a new admin', done => {
         const admin1 = {
             firstName: 'testy',
@@ -169,4 +148,4 @@ describe('Admin API suite /GET,/REGISTER,/GET/:ID,/LOGIN,/DELETE admins', () => 
                 done();
             });
     });
-});
+};
