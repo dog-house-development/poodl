@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 import { filterActivities } from '../../../actions/activityActions';
 import ViewByDate from '../../ui/ViewByDate';
 
@@ -19,15 +18,12 @@ export class Dashboard extends Component {
     }
 
     componentDidMount() {
-        // this.props.getActivities({ date: this.state.activitiesDate });
-        this.props.getActivities({ date: 'Saturday' });
+        this.props.getActivities({ startDate: this.state.activitiesDate });
     }
 
     requestDate = date => {
-        console.log(moment(date).format('MMM Do, YYYY'));
         this.setState({ activitiesDate: date });
-        // this.props.getActivities(date);
-        this.props.getActivities({ date: 'Saturday' });
+        this.props.getActivities({ startDate: this.state.activitiesDate });
     };
 
     render() {

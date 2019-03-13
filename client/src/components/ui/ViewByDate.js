@@ -83,6 +83,23 @@ class ViewByDate extends Component {
         }
     }
 
+    getDateMarkup(row) {
+        const startDate = new Date(row.startDate);
+        const endDate = new Date(row.endDate);
+        if (moment(startDate).format('MM/DD/YYYY') === moment(endDate).format('MM/DD/YYYY')) {
+            return (
+                <p className="vbd-row-time">
+                    {moment(startDate).format('h:mma')} - {moment(endDate).format('h:mma')}
+                </p>
+            );
+        }
+        return (
+            <p className="vbd-row-time">
+                {moment(startDate).format('h:mma M/D/YY')} - {moment(endDate).format('h:mma M/D/YY')}
+            </p>
+        );
+    }
+
     getTableMarkup() {
         if (this.props.loading) {
             return <Loading />;
@@ -99,7 +116,7 @@ class ViewByDate extends Component {
                             onClick={evt => this.handleRowClick(evt, row._id)}
                         >
                             <h3 className="vbd-row-title">{row.name}</h3>
-                            <p className="vbd-row-time">{row.times}</p>
+                            {this.getDateMarkup(row)}
                             {this.getAttendanceMarkup(row)}
                         </div>
                     );
