@@ -15,8 +15,34 @@ export class MemberProfile extends Component {
             editMode: false,
             fields: {
                 email: '',
+                address: '',
                 birthDate: '',
-                phoneNumber: ''
+                phoneNumber: '',
+                emergencyContact: '',
+                seniorCenter: '',
+                emergencyContact: ['', '', ''],
+                memberisNewOrRenewal: true, //New
+                formOfPayment: true, // Cash
+                bankCheckNumber: '',
+                includedInEstatePlans: true,
+                wantsEstateInfo: true,
+                renewalDate: '',
+                specialDiet: ['', ''],
+                medicalIssues: ['', ''],
+                disabilities: ['', ''],
+                mealPreference: '',
+                race: '',
+                ethnicity: '',
+                numberInHousehold: 0,
+                isPersonCaregiver: true,
+                monthlyIncome: '',
+                isDisabled: true,
+                isVeteran: true,
+                isSpouse60: true,
+                isDisabled60: true,
+                caregiver: '',
+                needsAADL: true,
+                needsIADL: true
             }
         };
         this.handleEditClick = this.handleEditClick.bind(this);
@@ -63,6 +89,39 @@ export class MemberProfile extends Component {
                     <h1>
                         {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
                     </h1>
+
+                    <div className="panel">
+                        <h2>Member Info</h2>
+                        <h3 style={{ color: '#a5a9af', fontSize: '0.8em' }}>Birth Date:</h3>
+                        <EditableField
+                            key="birthDate"
+                            defaultValue={this.state.fields.birthDate}
+                            id={'birthDate'}
+                            editMode={this.state.editMode}
+                            handleChange={this.onHandleFieldChange}
+                        />
+                        <EditableField
+                            key="seniorCenter"
+                            defaultValue={this.state.fields.seniorCenter}
+                            id={'seniorCenter'}
+                            editMode={this.state.editMode}
+                            handleChange={this.onHandleFieldChange}
+                        />
+                        <EditableField
+                            key="race"
+                            defaultValue={this.state.fields.race}
+                            id={'race'}
+                            editMode={this.state.editMode}
+                            handleChange={this.onHandleFieldChange}
+                        />
+                        <EditableField
+                            key="ethnicity"
+                            defaultValue={this.state.fields.ethnicity}
+                            id={'ethnicity'}
+                            editMode={this.state.editMode}
+                            handleChange={this.onHandleFieldChange}
+                        />
+                    </div>
                     <Button
                         onClick={this.handleEditClick}
                         content={this.state.editMode ? 'Done' : 'Edit'}
@@ -76,13 +135,7 @@ export class MemberProfile extends Component {
                         editMode={this.state.editMode}
                         handleChange={this.onHandleFieldChange}
                     />
-                    <EditableField
-                        key="birthDate"
-                        defaultValue={this.state.fields.birthDate}
-                        id={'birthDate'}
-                        editMode={this.state.editMode}
-                        handleChange={this.onHandleFieldChange}
-                    />
+
                     <EditableField
                         key="phoneNumber"
                         defaultValue={this.state.fields.phoneNumber}

@@ -37,7 +37,6 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
             seniorCenter: 'Nice little place',
             address: 'Brooklyn 99',
             birthDate: '02-30-1950',
-            seniorCenter: '406-570-3856',
             emergencyContact: ['Sharon Stone', '123-456-7890'],
             memberisNewOrRenewal: true, //New
             formOfPayment: true, // Cash
