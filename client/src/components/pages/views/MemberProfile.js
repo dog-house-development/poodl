@@ -5,12 +5,12 @@ import { fetchMember } from '../../../actions/memberActions';
 import Loading from '../../ui/Loading';
 import EditableField from '../../ui/EditableField';
 import { Link } from 'react-router-dom';
+import Button from '../../ui/Button';
 
 export class MemberProfile extends Component {
     constructor(props) {
         super(props);
         this.routeParam = props.match.params.id;
-        this.email = props.member.email;
         this.state = {
             editMode: false,
             fields: {
@@ -21,14 +21,24 @@ export class MemberProfile extends Component {
         };
         this.handleEditClick = this.handleEditClick.bind(this);
         this.onHandleFieldChange = this.onHandleFieldChange.bind(this);
-
     }
 
     componentDidMount() {
         // call redux action to retrieve specified member from api
         this.props.getMember(this.routeParam);
-  }
+    }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (!_.isEqual(prevProps.member, this.props.member)) {
+            this.setState({
+                fields: {
+                    email: this.props.member.email,
+                    birthDate: this.props.member.birthDate,
+                    phoneNumber: this.props.member.phoneNumber
+                }
+            });
+        }
+    }
 
     handleEditClick(e) {
         e.preventDefault();
@@ -40,49 +50,42 @@ export class MemberProfile extends Component {
     }
 
     onHandleFieldChange(e) {
-        console.log('Field changed ' + e.target.value);
         this.setState({
             fields: { ...this.state.fields, [e.target.id]: e.target.value }
         });
     }
     getPageMarkup() {
-      //// ENTIRELY aware this is so wrong. I'm pretty sure what I need to do is at somepoint
-      //// use setState to replace the empty '' values of each field with those of the
-      //// member once theyve been grabbed, but I am just getting messier and messier
-      //// as I try and figure out where the hell that goes. React Documentaion Is THEE Bane Of My Feeble Brain
-      this.setState({
-        email: this.props.member.email,
-        phoneNumber: this.props.member.phoneNumber,
-        birthDate: this.props.member.birthDate,
-      });
         if (this.props.loading) {
             return <Loading content="Loading member info..." />;
         } else {
-
             return (
                 <div>
                     <h1>
                         {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
                     </h1>
-                    <button onClick={this.handleEditClick}>{this.state.editMode ? 'Done' : 'Edit'}</button>
+                    <Button
+                        onClick={this.handleEditClick}
+                        content={this.state.editMode ? 'Done' : 'Edit'}
+                        size="small"
+                    />
                     <br />
                     <EditableField
                         key="email"
-                        value= {this.state.fields.email}
+                        defaultValue={this.state.fields.email}
                         id={'email'}
                         editMode={this.state.editMode}
                         handleChange={this.onHandleFieldChange}
                     />
                     <EditableField
                         key="birthDate"
-                        value={this.state.fields.birthDate}
+                        defaultValue={this.state.fields.birthDate}
                         id={'birthDate'}
                         editMode={this.state.editMode}
                         handleChange={this.onHandleFieldChange}
                     />
                     <EditableField
                         key="phoneNumber"
-                        value={this.state.fields.phoneNumber}
+                        defaultValue={this.state.fields.phoneNumber}
                         id={'phoneNumber'}
                         editMode={this.state.editMode}
                         handleChange={this.onHandleFieldChange}
