@@ -14,6 +14,19 @@
     font-weight: bold;
     margin: 0 0 10px 0;
   }
+  .panel-left {
+    float: left;
+  }
+  .panel-right {
+    float: right;
+  }
+  .panel-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .clear {
+    clear: both;
+  }
 
   .form-error {
     color: $red-2;

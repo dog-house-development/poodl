@@ -60,7 +60,33 @@ export class MemberProfile extends Component {
                 fields: {
                     email: this.props.member.email,
                     birthDate: this.props.member.birthDate,
-                    phoneNumber: this.props.member.phoneNumber
+                    phoneNumber: this.props.member.phoneNumber,
+                    address: this.props.member.address,
+                    emergencyContact: this.props.member.emergencyContact,
+                    seniorCenter: this.props.member.seniorCenter,
+                    emergencyContact: this.props.member.emergencyContact,
+                    memberisNewOrRenewal:this.props.member.memberisNewOrRenewal, //
+                    formOfPayment:this.props.member.formOfPayment, // Cash
+                    bankCheckNumber: this.props.member.bankCheckNumber,
+                    includedInEstatePlans:this.props.member.includedInEstatePlans,
+                    wantsEstateInfo:this.props.member.wantsEstateInfo,
+                    renewalDate: this.props.member.renewalDate,
+                    specialDiet: this.props.member.specialDiet,
+                    medicalIssues: this.props.member.medical,
+                    disabilities: this.props.member.disabilities,
+                    mealPreference: this.props.member.mealPreference,
+                    race: this.props.member.race,
+                    ethnicity: this.props.member.ethnicity,
+                    numberInHousehold: this.props.member.numberInHousehold,
+                    isPersonCaregiver: this.props.member.isPersonCaregiver,
+                    monthlyIncome: this.props.member.monthlyIncome,
+                    isDisabled: this.props.member.isDisabled,
+                    isVeteran: this.props.member.isVeteran,
+                    isSpouse60: this.props.member.isSpouse60,
+                    isDisabled60: this.props.member.isDisabled60,
+                    caregiver: this.props.member.caregiver,
+                    needsAADL: this.props.member.needsAADL,
+                    needsIADL: this.props.member.needsIADL
                 }
             });
         }
@@ -91,42 +117,51 @@ export class MemberProfile extends Component {
                     </h1>
 
                     <div className="panel">
-                        <h2>Member Info</h2>
-                        <h3 style={{ color: '#a5a9af', fontSize: '0.8em' }}>Birth Date:</h3>
-                        <EditableField
-                            key="birthDate"
-                            defaultValue={this.state.fields.birthDate}
-                            id={'birthDate'}
-                            editMode={this.state.editMode}
-                            handleChange={this.onHandleFieldChange}
-                        />
-                        <EditableField
-                            key="seniorCenter"
-                            defaultValue={this.state.fields.seniorCenter}
-                            id={'seniorCenter'}
-                            editMode={this.state.editMode}
-                            handleChange={this.onHandleFieldChange}
-                        />
-                        <EditableField
-                            key="race"
-                            defaultValue={this.state.fields.race}
-                            id={'race'}
-                            editMode={this.state.editMode}
-                            handleChange={this.onHandleFieldChange}
-                        />
-                        <EditableField
-                            key="ethnicity"
-                            defaultValue={this.state.fields.ethnicity}
-                            id={'ethnicity'}
-                            editMode={this.state.editMode}
-                            handleChange={this.onHandleFieldChange}
-                        />
-                    </div>
+                    <h2>Member Info</h2>
                     <Button
                         onClick={this.handleEditClick}
                         content={this.state.editMode ? 'Done' : 'Edit'}
                         size="small"
                     />
+                    <div className='panel-row'>
+                    <h3 style={{ color: '#a5a9af', fontSize: '0.8em' }}>Birth Date:</h3>
+                    <EditableField
+                        key="birthDate"
+                        defaultValue={this.state.fields.birthDate}
+                        id={'birthDate'}
+                        editMode={this.state.editMode}
+                        handleChange={this.onHandleFieldChange}
+                    />
+                    <h3 style={{ color: '#a5a9af', fontSize: '0.8em' }}>Senior Center:</h3>
+                    <EditableField
+                        key="seniorCenter"
+                        defaultValue={this.state.fields.seniorCenter}
+                        id={'seniorCenter'}
+                        editMode={this.state.editMode}
+                        handleChange={this.onHandleFieldChange}
+                    />
+                    <EditableField
+                        key="race"
+                        defaultValue={this.state.fields.race}
+                        id={'race'}
+                        editMode={this.state.editMode}
+                        handleChange={this.onHandleFieldChange}
+
+                    /><EditableField
+                        key="ethnicity"
+                        defaultValue={this.state.fields.ethnicity}
+                        id={'ethnicity'}
+                        editMode={this.state.editMode}
+                        handleChange={this.onHandleFieldChange}
+                    />
+                    </div>
+                    <div className="panel-right">
+                    </div>
+
+
+
+                    </div>
+
                     <br />
                     <EditableField
                         key="email"
