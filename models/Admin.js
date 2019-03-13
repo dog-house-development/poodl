@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
+const keyError = require('../utility/schemaMiddleware');
 
 // Create Schema
-const AdminSchema = new Schema(
+const schema = new Schema(
     {
         firstName: {
             type: String,
@@ -191,4 +192,6 @@ const AdminSchema = new Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model('admins', AdminSchema);
+schema.post('save', keyError({ email: 'Activity already exists' }));
+
+module.exports = mongoose.model('admins', schema);

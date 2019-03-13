@@ -12,6 +12,7 @@ const validateEditInputByID = require('../../validation/admin/editAdminByID');
 const validateFilterInput = require('../../validation/admin/adminFilter');
 
 //Load Utilities
+const invalid = require('../../utility/validation');
 const registerReformat = require('../../utility/reformatAdmin');
 const jsonBuilder = require('../../utility/stringConverter');
 
@@ -78,7 +79,7 @@ router.post('/register', (req, res) => {
         return res.status(400).json(errors);
     }
     const newAdmin = new Admin(registerReformat(req.body));
-    error = newAdmin.validateSync();
+    if (invalid(newAdmin, res)) return;
     // Hash password before saving in database
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newAdmin.password, salt, (err, hash) => {

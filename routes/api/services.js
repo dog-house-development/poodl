@@ -11,6 +11,7 @@ const validateEditInputByID = require('../../validation/service/editServiceByID'
 const validateFilterInput = require('../../validation/service/serviceFilter');
 
 //Load Utils
+const invalid = require('../../utility/validation');
 const jsonBuilder = require('../../utility/stringConverter');
 
 //Load model
@@ -94,7 +95,7 @@ router.post('/filter', (req, res) => {
 // @desc add a service
 router.post('/add', (req, res) => {
     const newService = new Service(req.body);
-    error = newService.validateSync();
+    if (invalid(newService, res)) return;
     newService
         .save()
         .then(Service => res.json(Service))

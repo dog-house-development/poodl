@@ -11,6 +11,7 @@ const validateEditInputById = require('../../validation/seniorCenter/editSeniorC
 const validateFilterInput = require('../../validation/seniorCenter/seniorCenterFilter');
 
 //load utilities
+const invalid = require('../../utility/validation');
 const jsonBuilder = require('../../utility/stringConverter');
 
 //load model
@@ -94,7 +95,7 @@ router.post('/filter', (req, res) => {
 // @access Public
 router.post('/add', (req, res) => {
     const newSeniorCenter = new SeniorCenter(req.body);
-    errors = newSeniorCenter.validateSync();
+    if (invalid(newSeniorCenter, res)) return;
     newSeniorCenter
         .save()
         .then(SeniorCenter => res.json(SeniorCenter))
