@@ -33,7 +33,7 @@ export class Dashboard extends Component {
             <div className="dashboard-container">
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
-                <div className="panel">
+                <div className="panel dashboard-panel">
                     <h1 className="panel-title">View</h1>
                     <Link to="/admins" className="button primary medium">
                         Admins
@@ -47,10 +47,13 @@ export class Dashboard extends Component {
                         Members
                     </Link>
                 </div>
-                <div className="panel">
+                <div className="panel dashboard-panel">
                     <h1 className="panel-title">Register New</h1>
                     <Link to="/register" className="button primary medium">
                         Admin
+                    </Link>
+                    <Link to="/activities/add" className="link primary">
+                        Activity
                     </Link>
                 </div>
                 <h2>Activities</h2>

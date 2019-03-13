@@ -1,49 +1,46 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var ObjectId = mongoose.Schema.Types.ObjectId;
+const keyError = require('../utility/schemaMiddleware');
 
-const ActivitySchema = new Schema(
+const schema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            required: [true, 'Name is required']
         },
-        time: {
+        description: {
             type: String,
-            required: true
+            required: [true, 'Description is required']
         },
-        duration: {
-            type: String,
-            required: true
+        startDate: {
+            type: Date,
+            required: [true, 'Start Date is required']
         },
-        date: {
-            type: String,
-            required: true
+        endDate: {
+            type: Date,
+            required: [true, 'End Date is required']
         },
-        //The plan is to have admin and volunteer list be IDs
-        admins: [
-            {
-                type: String
-            }
-        ],
-        volunteers: [
-            {
-                type: String
-            }
-        ],
-        members: [
-            {
-                type: String
-            }
-        ],
+        admins: [ObjectId],
+        members: [ObjectId],
         seniorCenter: {
-            type: String,
+            type: ObjectId,
             required: true
-        },
-        maxCapacity: {
-            type: String
         }
     },
     { timestamps: true }
 );
 
-module.exports = mongoose.model('activities', ActivitySchema);
+// remove later because activity name will be shared with others
+// this exists now for an example for other schemas
+schema.post('save', keyError({ name: 'Activity already exists' }));
+
+schema.pre('save', function(next) {
+    if (this.startDate > this.endDate) {
+        next({ startDate: 'Start date must be before end date', endDate: 'End date must be after start date' });
+    }
+
+    next();
+});
+
+module.exports = mongoose.model('activities', schema);
