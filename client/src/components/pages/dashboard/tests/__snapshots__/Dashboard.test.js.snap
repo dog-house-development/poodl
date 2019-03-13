@@ -12,7 +12,7 @@ exports[`Dashboard tests render should render correctly 1`] = `
     .
   </h1>
   <div
-    className="panel"
+    className="panel dashboard-panel"
   >
     <h1
       className="panel-title"
@@ -26,7 +26,6 @@ exports[`Dashboard tests render should render correctly 1`] = `
     >
       Admins
     </Link>
-    <br />
     <Link
       className="link primary"
       replace={false}
@@ -34,7 +33,6 @@ exports[`Dashboard tests render should render correctly 1`] = `
     >
       Volunteers
     </Link>
-    <br />
     <Link
       className="link primary"
       replace={false}
@@ -44,7 +42,7 @@ exports[`Dashboard tests render should render correctly 1`] = `
     </Link>
   </div>
   <div
-    className="panel"
+    className="panel dashboard-panel"
   >
     <h1
       className="panel-title"
@@ -57,6 +55,13 @@ exports[`Dashboard tests render should render correctly 1`] = `
       to="/register"
     >
       Admin
+    </Link>
+    <Link
+      className="link primary"
+      replace={false}
+      to="/activities/add"
+    >
+      Activity
     </Link>
   </div>
 </div>
