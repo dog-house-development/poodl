@@ -4,4 +4,10 @@
   max-width: 60vw;
   margin: auto;
   padding: 0 24px;
+
+  .dashboard-panel {
+    * {
+      display: block;
+    }
+  }
 }
