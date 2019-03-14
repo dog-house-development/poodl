@@ -9,7 +9,13 @@ module.exports = function formatFilterString(data) {
             }
             else if (key === 'pageSize') {
               pageSize = data[key]
-            }else{
+            }
+            else  if (key === 'dateRange'){
+              //this will be set up to send dat dateRange
+              dates = data[key].split(',')
+              request += '\"startDate\" : {\"\$gte\" : \"' + dates[0] + 'T00:00:00.000Z\",\"\$lt\": \"' + dates[1] + '\"}}'
+            }
+            else{
             request += '\"' + key + '\":\"' + data[key] + '\",';
           }
         }
