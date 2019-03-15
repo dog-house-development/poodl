@@ -67,35 +67,7 @@ export class MemberProfile extends Component {
         if (!_.isEqual(prevProps.member, this.props.member)) {
             this.setState({
                 fields: {
-                    email: this.props.member.email,
-                    birthDate: this.props.member.birthDate,
-                    phoneNumber: this.props.member.phoneNumber,
-                    address: this.props.member.address,
-                    emergencyContact: this.props.member.emergencyContact,
-                    seniorCenter: this.props.member.seniorCenter,
-                    emergencyContact: this.props.member.emergencyContact,
-                    memberisNewOrRenewal: this.props.member.memberisNewOrRenewal, //
-                    formOfPayment: this.props.member.formOfPayment, // Cash
-                    bankCheckNumber: this.props.member.bankCheckNumber,
-                    includedInEstatePlans: this.props.member.includedInEstatePlans,
-                    wantsEstateInfo: this.props.member.wantsEstateInfo,
-                    renewalDate: this.props.member.renewalDate,
-                    specialDiet: this.props.member.specialDiet,
-                    medicalIssues: this.props.member.medical,
-                    disabilities: this.props.member.disabilities,
-                    mealPreference: this.props.member.mealPreference,
-                    race: this.props.member.race,
-                    ethnicity: this.props.member.ethnicity,
-                    numberInHousehold: this.props.member.numberInHousehold,
-                    isPersonCaregiver: this.props.member.isPersonCaregiver,
-                    monthlyIncome: this.props.member.monthlyIncome,
-                    isDisabled: this.props.member.isDisabled,
-                    isVeteran: this.props.member.isVeteran,
-                    isSpouse60: this.props.member.isSpouse60,
-                    isDisabled60: this.props.member.isDisabled60,
-                    caregiver: this.props.member.caregiver,
-                    needsAADL: this.props.member.needsAADL,
-                    needsIADL: this.props.member.needsIADL
+                    ...this.props.member
                 }
             });
         }
@@ -197,7 +169,7 @@ export class MemberProfile extends Component {
                         />
                     </div>
                     <div className="panel">
-                        <h3>Member Info: </h3>
+                        <h3>Personal Information: </h3>
                         <h5>Birth Date: </h5>
                         <EditableField
                             key="birthDate"
@@ -249,7 +221,7 @@ export class MemberProfile extends Component {
                         />
                     </div>
                     <div className="panel">
-                        <h3>Mebership Information</h3>
+                        <h3>Membership Information</h3>
                         <h5>Membership: </h5>
                         <EditableBoolean
                             key="memberisNewOrRenewal"
