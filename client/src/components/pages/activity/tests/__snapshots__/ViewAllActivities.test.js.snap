@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewAllVolunteers tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/dashboard"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to home
+  </Link>
+  <div
+    className="view-all-header"
+  >
+    <h1>
+      View All Activities
+    </h1>
+    <Link
+      className="button small primary"
+      replace={false}
+      to="/activities/add"
+    >
+      Add Activity
+    </Link>
+  </div>
+  <DataGrid
+    data={
+      Array [
+        Object {
+          "endDate": "December 31st, 1969",
+          "key": "1",
+          "name": "Fun",
+          "startDate": "December 31st, 1969",
+        },
+        Object {
+          "endDate": "December 31st, 1969",
+          "key": "2",
+          "name": "Stuff",
+          "startDate": "December 31st, 1969",
+        },
+      ]
+    }
+    loading={false}
+    onRowClick={[Function]}
+  />
+</div>
+`;
