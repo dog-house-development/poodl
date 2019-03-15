@@ -4,8 +4,6 @@ import _ from 'lodash';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 
-import Loading from './Loading';
-
 const propTypes = {
     dateData: PropTypes.object.isRequired,
     requestDate: PropTypes.func,
@@ -44,11 +42,11 @@ class ViewByDate extends Component {
             <div className="view-by-date-header">
                 <button
                     className="button view-by-date-header-button"
-                    onClick={() => this.props.requestDate(currentDate - DAY_LENGTH)}
+                    onClick={() => this.props.requestDate(new Date(currentDate.getTime() - DAY_LENGTH))}
                 >
                     <span>
-                        <i className="material-icons">keyboard_arrow_left</i>
-                        {moment(currentDate - DAY_LENGTH).format('dddd')}
+                        <i className="material-icons view-by-date-header-button-arrow">keyboard_arrow_left</i>
+                        {moment(currentDate.getTime() - DAY_LENGTH).format('dddd')}
                     </span>
                 </button>
                 <div className="view-by-date-header-title">
@@ -61,11 +59,11 @@ class ViewByDate extends Component {
                 </div>
                 <button
                     className="button view-by-date-header-button"
-                    onClick={() => this.props.requestDate(currentDate + DAY_LENGTH)}
+                    onClick={() => this.props.requestDate(new Date(currentDate.getTime() + DAY_LENGTH))}
                 >
                     <span>
-                        {moment(currentDate + DAY_LENGTH).format('dddd')}
-                        <i className="material-icons">keyboard_arrow_right</i>
+                        {moment(currentDate.getTime() + DAY_LENGTH).format('dddd')}
+                        <i className="material-icons view-by-date-header-button-arrow">keyboard_arrow_right</i>
                     </span>
                 </button>
             </div>
@@ -102,7 +100,7 @@ class ViewByDate extends Component {
 
     getTableMarkup() {
         if (this.props.loading) {
-            return <Loading />;
+            return <div />;
         } else if (!_.isEmpty(this.props.errors)) {
             return <p>Error time</p>;
         }

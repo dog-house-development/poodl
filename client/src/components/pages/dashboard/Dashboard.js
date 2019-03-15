@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { filterActivities } from '../../../actions/activityActions';
 import ViewByDate from '../../ui/ViewByDate';
+import moment from 'moment';
 
 const propTypes = {
     auth: PropTypes.object.isRequired
@@ -13,17 +14,22 @@ export class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activitiesDate: Date.now()
+            activitiesStartDate: new Date()
         };
     }
 
+    getDateRangeText(startDate) {
+        const endDate = new Date(startDate.getTime() + 1 * 86400000);
+        return moment(startDate).format('YYYY-MM-DD') + ',' + moment(endDate).format('YYYY-MM-DD');
+    }
+
     componentDidMount() {
-        this.props.getActivities({ startDate: this.state.activitiesDate });
+        this.props.getActivities({ dateRange: this.getDateRangeText(this.state.activitiesStartDate) });
     }
 
     requestDate = date => {
-        this.setState({ activitiesDate: date });
-        this.props.getActivities({ startDate: this.state.activitiesDate });
+        this.setState({ activitiesStartDate: date });
+        this.props.getActivities({ dateRange: this.getDateRangeText(date) });
     };
 
     render() {
@@ -52,7 +58,8 @@ export class Dashboard extends Component {
                     <Link to="/register" className="button primary medium">
                         Admin
                     </Link>
-                    <Link to="/activities/add" className="link primary">
+                    <span> </span>
+                    <Link to="/activities/add" className="button primary medium">
                         Activity
                     </Link>
                 </div>
@@ -61,7 +68,7 @@ export class Dashboard extends Component {
                     requestDate={this.requestDate}
                     loading={this.props.activitiesLoading}
                     dateData={{
-                        date: this.state.activitiesDate,
+                        date: this.state.activitiesStartDate,
                         data: this.props.activities
                     }}
                     clickableRowRoute="activity/"

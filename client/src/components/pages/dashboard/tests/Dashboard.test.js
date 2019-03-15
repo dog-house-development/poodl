@@ -4,7 +4,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { Dashboard, mapStateToProps } from '../Dashboard';
+import { Dashboard, mapStateToProps, mapDispatchToProps } from '../Dashboard';
 
 configure({ adapter: new Adapter() });
 
@@ -22,13 +22,24 @@ describe('Dashboard tests', () => {
                         name: 'Sandwich Man'
                     }
                 },
+                activities: { all: [], loading: false },
                 errors: {}
             },
             _state
         );
         props = _.assign({}, _props);
-        wrapper = shallow(<Dashboard {..._.assign({}, props, mapStateToProps(state, props))} />);
+        wrapper = shallow(
+            <Dashboard
+                {..._.assign(
+                    {},
+                    props,
+                    mapStateToProps(state, props),
+                    mapDispatchToProps(jasmine.createSpy('dispatch'))
+                )}
+            />
+        );
         instance = wrapper.instance();
+        instance.setState({ activitiesStartDate: new Date('01-14-2019') });
     };
 
     beforeEach(() => {
@@ -45,17 +56,20 @@ describe('Dashboard tests', () => {
                         id: '5c52379d9be6fc0017afd46e',
                         name: 'Sandwich Man'
                     }
-                }
+                },
+                activities: [],
+                activitiesLoading: false,
+                errors: {}
             });
         });
     });
 
-    // describe('mapDispatchToProps', () => {
-    //     it('should map dispatch to props', () => {
-    //         const dispatch = jest.fn();
-    //         expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
-    //     });
-    // });
+    describe('mapDispatchToProps', () => {
+        it('should map dispatch to props', () => {
+            const dispatch = jest.fn();
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getActivities: () => {} }));
+        });
+    });
 
     describe('render', () => {
         it('should render correctly', () => {

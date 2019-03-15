@@ -9,7 +9,7 @@
     height: 3.25em;
 
     .view-by-date-header-title {
-      flex-grow: 2;
+      flex: 2;
       text-align: center;
       margin-top: 0.3em;
 
@@ -24,7 +24,7 @@
     }
 
     .view-by-date-header-button {
-      flex-shrink: 1;
+      flex: 1;
       font-size: 0.8em;
       border: none;
       border-radius: 0;
@@ -49,14 +49,26 @@
         // border-right: 2px solid $gray-1;
         text-align: left;
         padding-right: 1.25vw;
-        padding-left: 1.5vw;
+        padding-left: 1vw;
       }
 
       &:last-child {
         // border-left: 2px solid $gray-1;
         text-align: right;
         padding-left: 1.25vw;
-        padding-right: 1.5vw;
+        padding-right: 1vw;
+      }
+
+      &:focus {
+        box-shadow: none;
+
+        .view-by-date-header-button-arrow {
+          color: $button-primary;
+        }
+      }
+
+      .view-by-date-header-button-arrow {
+        margin-top: -4px;
       }
     }
   }
