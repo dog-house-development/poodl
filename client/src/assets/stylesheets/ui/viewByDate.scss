@@ -1,0 +1,116 @@
+@import '_presets.scss';
+
+.view-by-date {
+  padding: 0;
+
+  .view-by-date-header {
+    border-bottom: 2px solid $gray-1;
+    display: flex;
+    height: 3.25em;
+
+    .view-by-date-header-title {
+      flex: 2;
+      text-align: center;
+      margin-top: 0.3em;
+
+      .view-by-date-title-main {
+        font-size: 1.4em;
+      }
+
+      .view-by-date-title-secondary {
+        font-size: 0.85em;
+        color: $gray-6;
+      }
+    }
+
+    .view-by-date-header-button {
+      flex: 1;
+      font-size: 0.8em;
+      border: none;
+      border-radius: 0;
+      white-space: nowrap;
+      text-transform: uppercase;
+      color: $gray-4;
+      background-color: transparent;
+
+      &:hover {
+        color: $gray-5;
+      }
+
+      &:active {
+        color: $gray-6;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 3pt $blue-outline inset;
+      }
+
+      &:first-child {
+        // border-right: 2px solid $gray-1;
+        text-align: left;
+        padding-right: 1.25vw;
+        padding-left: 1vw;
+      }
+
+      &:last-child {
+        // border-left: 2px solid $gray-1;
+        text-align: right;
+        padding-left: 1.25vw;
+        padding-right: 1vw;
+      }
+
+      &:focus {
+        box-shadow: none;
+
+        .view-by-date-header-button-arrow {
+          color: $button-primary;
+        }
+      }
+
+      .view-by-date-header-button-arrow {
+        margin-top: -4px;
+      }
+    }
+  }
+
+  .view-by-date-body {
+    .view-by-date-row {
+      padding: 1em 2vw;
+      cursor: pointer;
+      border-top: 1px solid $gray-1;
+
+      &:first-child {
+        border-top-color: transparent;
+      }
+
+      &:hover {
+        background-color: $gray-1;
+      }
+
+      &:active {
+        background-color: $gray-2;
+      }
+
+      .vbd-row-title {
+        font-size: 1em;
+      }
+
+      .vbd-row-time {
+        display: inline-block;
+        width: 50%;
+        font-size: 0.9em;
+      }
+
+      .vbd-row-attendance {
+        font-size: 0.9em;
+        display: inline-block;
+        width: 50%;
+        text-align: right;
+
+        .vbd-row-attendance-icon {
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+}

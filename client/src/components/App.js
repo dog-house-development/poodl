@@ -30,6 +30,9 @@ import AdminProfile from './pages/views/AdminProfile';
 import VolunteerProfile from './pages/views/VolunteerProfile';
 import MemberProfile from './pages/views/MemberProfile';
 
+// activity page
+import RegisterActivity from './pages/activity/AddActivity';
+
 import PrivateRoute from './private-route/PrivateRoute';
 
 import '../assets/stylesheets/App.scss';
@@ -73,6 +76,8 @@ class App extends Component {
                             <PrivateRoute exact path="/admin/:id" component={AdminProfile} />
                             <PrivateRoute exact path="/volunteer/:id" component={VolunteerProfile} />
                             <PrivateRoute exact path="/member/:id" component={MemberProfile} />
+                            <PrivateRoute exact path="/activities/add" component={RegisterActivity} />
+
                             {/* PageNotFound route must stay at bottom */}
                             <Route component={PageNotFound} />
                         </Switch>

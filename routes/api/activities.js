@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
-const validateRegisterInput = require('../../validation/addActivity');
+const invalid = require('../../utility/validation');
 const validateEditInputByID = require('../../validation/editActivityByID');
 const validateFilterInput = require('../../validation/activityFilter');
 
@@ -95,7 +95,6 @@ router.post('/edit/:id', (req, res) => {
 // should return filtered results from json
 router.post('/filter', (req, res) => {
     const request = jsonBuilder(req.body);
-
     Activity.find(request[0], (err, activities) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: activities });
@@ -107,12 +106,13 @@ router.post('/filter', (req, res) => {
 // @route POST api/activities/add
 // @desc add a activity
 router.post('/add', (req, res) => {
-    const newActivity = new Activity(req.body);
-    errors = newActivity.validateSync();
-    newActivity
+    const activity = new Activity(req.body);
+    if (invalid(activity, res)) return;
+
+    new Activity(req.body)
         .save()
         .then(Activity => res.json(Activity))
-        .catch(err => console.log(err));
+        .catch(err => res.status(400).json(err));
 });
 
 module.exports = router;

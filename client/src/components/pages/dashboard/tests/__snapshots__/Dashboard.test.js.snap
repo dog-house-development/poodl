@@ -12,31 +12,35 @@ exports[`Dashboard tests render should render correctly 1`] = `
     .
   </h1>
   <div
-    className="panel"
+    className="panel dashboard-panel"
   >
     <h1
       className="panel-title"
     >
-      View All
+      View
     </h1>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/admins"
     >
       Admins
     </Link>
-    <br />
+    <span>
+       
+    </span>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/volunteers"
     >
       Volunteers
     </Link>
-    <br />
+    <span>
+       
+    </span>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/members"
     >
@@ -44,7 +48,7 @@ exports[`Dashboard tests render should render correctly 1`] = `
     </Link>
   </div>
   <div
-    className="panel"
+    className="panel dashboard-panel"
   >
     <h1
       className="panel-title"
@@ -52,12 +56,37 @@ exports[`Dashboard tests render should render correctly 1`] = `
       Register New
     </h1>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/register"
     >
       Admin
     </Link>
+    <span>
+       
+    </span>
+    <Link
+      className="button primary medium"
+      replace={false}
+      to="/activities/add"
+    >
+      Activity
+    </Link>
   </div>
+  <h2>
+    Activities
+  </h2>
+  <withRouter(ViewByDate)
+    clickableRowRoute="activity/"
+    dateData={
+      Object {
+        "data": Array [],
+        "date": 2019-01-14T07:00:00.000Z,
+      }
+    }
+    errors={Object {}}
+    loading={false}
+    requestDate={[Function]}
+  />
 </div>
 `;
