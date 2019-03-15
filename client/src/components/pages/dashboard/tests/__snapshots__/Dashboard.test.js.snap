@@ -40,6 +40,13 @@ exports[`Dashboard tests render should render correctly 1`] = `
     >
       Members
     </Link>
+    <Link
+      className="link primary"
+      replace={false}
+      to="/activities"
+    >
+      Activities
+    </Link>
   </div>
   <div
     className="panel dashboard-panel"

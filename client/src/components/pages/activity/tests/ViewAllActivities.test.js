@@ -21,14 +21,14 @@ describe('ViewAllVolunteers tests', () => {
                         {
                             _id: '1',
                             name: 'Fun',
-                            startDate: '1970-01-01T00:00:00.000Z',
-                            endDate: '1970-01-01T00:00:00.000Z'
+                            startDate: '1970-01-01T07:00:00.000Z',
+                            endDate: '1970-01-01T07:00:00.000Z'
                         },
                         {
                             _id: '2',
                             name: 'Stuff',
-                            startDate: '1970-01-01T00:00:00.000Z',
-                            endDate: '1970-01-01T00:00:00.000Z'
+                            startDate: '1970-01-01T07:00:00.000Z',
+                            endDate: '1970-01-01T07:00:00.000Z'
                         }
                     ]
                 },

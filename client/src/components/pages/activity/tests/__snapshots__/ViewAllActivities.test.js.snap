@@ -34,16 +34,16 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
     data={
       Array [
         Object {
-          "endDate": "December 31st, 1969",
+          "endDate": "January 1st, 1970",
           "key": "1",
           "name": "Fun",
-          "startDate": "December 31st, 1969",
+          "startDate": "January 1st, 1970",
         },
         Object {
-          "endDate": "December 31st, 1969",
+          "endDate": "January 1st, 1970",
           "key": "2",
           "name": "Stuff",
-          "startDate": "December 31st, 1969",
+          "startDate": "January 1st, 1970",
         },
       ]
     }
