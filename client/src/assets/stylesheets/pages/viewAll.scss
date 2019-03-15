@@ -18,4 +18,15 @@
       float: right;
     }
   }
+
+  .profile-section-title {
+    margin-bottom: 0.5em;
+  }
+
+  h5 {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    color: $gray-4;
+    margin-top: 0.5em;
+  }
 }

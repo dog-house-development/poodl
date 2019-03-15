@@ -7,6 +7,7 @@ import Loading from '../../ui/Loading';
 import EditableField from '../../ui/EditableField';
 import EditableBoolean from '../../ui/EditableBoolean';
 import { Link } from 'react-router-dom';
+import Button from '../../ui/Button';
 
 export class MemberProfile extends Component {
     constructor(props) {
@@ -134,269 +135,295 @@ export class MemberProfile extends Component {
                     </h1>
 
                     <div className="panel">
-                        <h3>Contact Info</h3>
-                        <h5>Email: </h5>
+                        <h3 className="profile-section-title">Contact Info</h3>
+                        <Button
+                            onClick={() => {
+                                this.setState({ editContactMode: !this.state.editContactMode });
+                            }}
+                            content={this.state.editContactMode ? 'Done' : 'Edit'}
+                            size="small"
+                        />
                         <EditableField
                             key="email"
                             defaultValue={this.state.fields.email}
-                            id={'email'}
+                            id="email"
                             editMode={this.state.editContactMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Email:"
                         />
-                        <h5>Phone Number: </h5>
                         <EditableField
                             key="phoneNumber"
                             defaultValue={this.state.fields.phoneNumber}
-                            id={'phoneNumber'}
+                            id="phoneNumber"
                             editMode={this.state.editContactMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Phone Number:"
                         />
-                        <h5>Address: </h5>
                         <EditableField
                             key="address"
                             defaultValue={this.state.fields.address}
-                            id={'address'}
+                            id="address"
                             editMode={this.state.editContactMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Address:"
                         />
-                        <h5>Emergency Contact: </h5>
                         <EditableField
                             key="emergencyContact"
                             defaultValue={this.state.fields.emergencyContact}
-                            id={'emergencyContact'}
+                            id="emergencyContact"
                             editMode={this.state.editContactMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Emergency Contact:"
                         />
                     </div>
                     <div className="panel">
-                        <h3>Personal Information: </h3>
-                        <h5>Birth Date: </h5>
+                        <h3 className="profile-section-title">Personal Information </h3>
+                        <Button
+                            onClick={() => {
+                                this.setState({ editMemberMode: !this.state.editMemberMode });
+                            }}
+                            content={this.state.editMemberMode ? 'Done' : 'Edit'}
+                            size="small"
+                        />
                         <EditableField
                             key="birthDate"
                             defaultValue={this.state.fields.birthDate}
-                            id={'birthDate'}
+                            id="birthDate"
                             editMode={this.state.editMemberMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Birth Date:"
                         />
-                        <h5>Senior Center: </h5>
                         <EditableField
                             key="seniorCenter"
                             defaultValue={this.state.fields.seniorCenter}
-                            id={'seniorCenter'}
+                            id="seniorCenter"
                             editMode={this.state.editMemberMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Senior Center:"
                         />
-                        <h5>Special Diet: </h5>
                         <EditableField
                             key="specialDiet"
                             defaultValue={this.state.fields.specialDiet}
-                            id={'specialDiet'}
+                            id="specialDiet"
                             editMode={this.state.editMemberMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Special Diet:"
                         />
-                        <h5>Medical Issues: </h5>
                         <EditableField
                             key="ethnicity"
                             defaultValue={this.state.fields.ethnicity}
-                            id={'ethnicity'}
+                            id="ethnicity"
                             editMode={this.state.editMemberMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Medical Issues:"
                         />
-
-                        <h5>Disabilities: </h5>
                         <EditableField
                             key="disabilities"
                             defaultValue={this.state.fields.disabilities}
-                            id={'disabilities'}
+                            id="disabilities"
                             editMode={this.state.editMemberMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Disabilities:"
                         />
-                        <h5>Meal Preference: </h5>
                         <EditableField
                             key="mealPreference"
                             defaultValue={this.state.fields.mealPreference}
-                            id={'mealPreference'}
+                            id="mealPreference"
                             editMode={this.state.editMemberMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Meal Preference:"
                         />
                     </div>
                     <div className="panel">
-                        <h3>Membership Information</h3>
-                        <h5>Membership: </h5>
+                        <h3 className="profile-section-title">Membership Information</h3>
+                        <Button
+                            onClick={() => {
+                                this.setState({ editMembershipMode: !this.state.editMembershipMode });
+                            }}
+                            content={this.state.editMembershipMode ? 'Done' : 'Edit'}
+                            size="small"
+                        />
                         <EditableBoolean
                             key="memberisNewOrRenewal"
                             defaultValue={this.state.fields.memberisNewOrRenewal}
                             optionValues={['New', 'Renewal']}
-                            name={'memberIsNewOrRenewal'}
-                            id={'memberisNewOrRenewal'}
+                            name="memberIsNewOrRenewal"
+                            id="memberisNewOrRenewal"
                             editMode={this.state.editMembershipMode}
                             handleChange={this.onHandleOptionChange}
+                            label="Membership:"
                         />
-                        <h5>Membership Date: </h5>
                         <EditableField
                             key="membershipDate"
                             defaultValue={this.state.fields.membershipDate}
-                            id={'membershipDate'}
+                            id="membershipDate"
                             editMode={this.state.editMembershipMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Membership Date:"
                         />
-                        <h5>Renewal Date: </h5>
                         <EditableField
                             key="renewalDate"
                             defaultValue={this.state.fields.renewalDate}
-                            id={'renewalDate'}
+                            id="renewalDate"
                             editMode={this.state.editMembershipMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Renewal Date:"
                         />
-                        <h5>Payment Form: </h5>
                         <EditableBoolean
                             key="formOfPayment"
                             defaultValue={this.state.fields.formOfPayment}
                             optionValues={['Cash', 'Check']}
-                            name={'formOfPayment'}
-                            id={'formOfPayment'}
+                            name="formOfPayment"
+                            id="formOfPayment"
                             editMode={this.state.editMembershipMode}
                             handleChange={this.onHandleOptionChange}
+                            label="Payment Form:"
                         />
-                        <h5>Bank Check Number: </h5>
                         <EditableField
                             key="bankCheckNumber"
                             defaultValue={this.state.fields.bankCheckNumber}
-                            id={'bankCheckNumber'}
+                            id="bankCheckNumber"
                             editMode={this.state.editMembershipMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Bank Check Number:"
                         />
-                        <h5>Member Included Senior Center In Estate Plans: </h5>
                         <EditableBoolean
                             key="includedInEstatePlans"
                             defaultValue={this.state.fields.includedInEstatePlans}
                             optionValues={['Yes', 'No']}
-                            name={'includedInEstatePlans'}
-                            id={'includedInEstatePlans'}
+                            name="includedInEstatePlans"
+                            id="includedInEstatePlans"
                             editMode={this.state.editMembershipMode}
                             handleChange={this.onHandleOptionChange}
+                            label="Member Included Senior Center In Estate Plans:"
                         />
-                        <h5>Member Wants Info About Including Senior Center In Estate Plans: </h5>
                         <EditableBoolean
                             key="wantsEstateInfo"
                             defaultValue={this.state.fields.wantsEstateInfo}
                             optionValues={['Yes', 'No']}
-                            name={'wantsEstateInfo'}
-                            id={'wantsEstateInfo'}
+                            name="wantsEstateInfo"
+                            id="wantsEstateInfo"
                             editMode={this.state.editMembershipMode}
                             handleChange={this.onHandleOptionChange}
+                            label="Member Wants Info About Including Senior Center In Estate Plans:"
                         />
                     </div>
                     <div className="panel">
-                        <h3>Demographic Information: </h3>
-                        <h5>Race: </h5>
+                        <h3 className="profile-section-title">Demographic Information</h3>
+                        <Button
+                            onClick={() => {
+                                this.setState({ editDemographicMode: !this.state.editDemographicMode });
+                            }}
+                            content={this.state.editDemographicMode ? 'Done' : 'Edit'}
+                            size="small"
+                        />
                         <EditableField
                             key="race"
                             defaultValue={this.state.fields.race}
-                            id={'race'}
+                            id="race"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Race:"
                         />
-
-                        <h5>Ethnicity: </h5>
                         <EditableField
                             key="ethnicity"
                             defaultValue={this.state.fields.ethnicity}
-                            id={'ethnicity'}
+                            id="ethnicity"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Ethnicity:"
                         />
-                        <h5>Number In Household: </h5>
                         <EditableField
                             key="numberInHousehold"
                             defaultValue={this.state.fields.numberInHousehold}
-                            id={'numberInHousehold'}
+                            id="numberInHousehold"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Number In Household:"
                         />
-                        <h5>Monthly Income: </h5>
                         <EditableField
                             key="monthlyIncome"
                             defaultValue={this.state.fields.monthlyIncome}
-                            id={'monthlyIncome'}
+                            id="monthlyIncome"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Monthly Income:"
                         />
-                        <h5>Disabled: </h5>
                         <EditableBoolean
                             key="Disabled"
                             defaultValue={this.state.fields.Disabled}
                             optionValues={['Yes', 'No']}
-                            name={'Disabled'}
-                            id={'Disabled'}
+                            name="Disabled"
+                            id="Disabled"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
+                            label="Disabled:"
                         />
-                        <h5>Veteran: </h5>
                         <EditableBoolean
                             key="Veteran"
                             defaultValue={this.state.fields.Veteran}
                             optionValues={['Yes', 'No']}
-                            name={'Veteran'}
-                            id={'Veteran'}
+                            name="Veteran"
+                            id="Veteran"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
+                            label="Veteran:"
                         />
-                        <h5>Spouse Over 60: </h5>
                         <EditableBoolean
                             key="isSpouse60"
                             defaultValue={this.state.fields.isSpouse60}
                             optionValues={['Yes', 'No']}
-                            name={'isSpouse60'}
-                            id={'isSpouse60'}
+                            name="isSpouse60"
+                            id="isSpouse60"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
+                            label="Spouse Over 60:"
                         />
-                        <h5>Disabled & Living With Someone Over 60: </h5>
                         <EditableBoolean
                             key="wantsEstateInfo"
                             defaultValue={this.state.fields.wantsEstateInfo}
                             optionValues={['Yes', 'No']}
-                            name={'wantsEstateInfo'}
-                            id={'wantsEstateInfo'}
+                            name="wantsEstateInfo"
+                            id="wantsEstateInfo"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
+                            label="Disabled & Living With Someone Over 60:"
                         />
-                        <h5>Caregiver: </h5>
                         <EditableField
                             key="caregiver"
                             defaultValue={this.state.fields.caregiver}
-                            id={'caregiver'}
+                            id="caregiver"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Caregiver:"
                         />
-                        <h5>Grandparent: </h5>
                         <EditableField
                             key="grandparent"
                             defaultValue={this.state.fields.grandparent}
-                            id={'grandparent'}
+                            id="grandparent"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
+                            label="Grandparent:"
                         />
-                        <h5>needsAADL: </h5>
                         <EditableBoolean
                             key="needsAADL"
                             defaultValue={this.state.fields.needsAADL}
                             optionValues={['Yes', 'No']}
-                            name={'needsAADL'}
-                            id={'needsAADL'}
+                            name="needsAADL"
+                            id="needsAADL"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
+                            label="needsAADL:"
                         />
-                        <h5>needsIADL: </h5>
                         <EditableBoolean
                             key="needsIADL"
                             defaultValue={this.state.fields.needsIADL}
                             optionValues={['Yes', 'No']}
-                            name={'needsIADL'}
-                            id={'needsIADL'}
+                            name="needsIADL"
+                            id="needsIADL"
                             editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
+                            label="needsIADL:"
                         />
                     </div>
                 </div>
@@ -410,7 +437,7 @@ export class MemberProfile extends Component {
                 <Link to="/members" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all members
                 </Link>
-                <div className="panel">{this.getPageMarkup()}</div>
+                <div>{this.getPageMarkup()}</div>
             </div>
         );
     }
