@@ -95,7 +95,6 @@ router.post('/edit/:id', (req, res) => {
 // should return filtered results from json
 router.post('/filter', (req, res) => {
     const request = jsonBuilder(req.body);
-
     Activity.find(request[0], (err, activities) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: activities });

@@ -2,7 +2,9 @@ import {
     FETCH_ACTIVITIES_BEGIN,
     FETCH_ACTIVITIES_SUCCESS,
     FETCH_ACTIVITY_BEGIN,
-    FETCH_ACTIVITY_SUCCESS
+    FETCH_ACTIVITY_SUCCESS,
+    FILTER_ACTIVITIES_BEGIN,
+    FILTER_ACTIVITIES_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -19,6 +21,17 @@ export default function(state = initialState, action) {
                 loading: true
             };
         case FETCH_ACTIVITIES_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                all: action.payload.data
+            };
+        case FILTER_ACTIVITIES_BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case FILTER_ACTIVITIES_SUCCESS:
             return {
                 ...state,
                 loading: false,

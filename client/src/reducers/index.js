@@ -11,6 +11,6 @@ export default combineReducers({
     admins: adminsReducer,
     volunteers: volunteersReducer,
     members: membersReducer,
-    errors: errorReducer,
-    activities: activitiesReducer
+    activities: activitiesReducer,
+    errors: errorReducer
 });
