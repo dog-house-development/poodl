@@ -134,8 +134,8 @@ export class MemberProfile extends Component {
 
     handleEditDemographicClick(e) {
         e.preventDefault();
-        this.setState({ editDemographic: !this.state.editDemographic });
-        if (this.state.editDemographic) {
+        this.setState({ editDemographicMode: !this.state.editDemographicMode });
+        if (this.state.editDemographicMode) {
             console.log(this.state.fields);
             // send the api edit request with this.state as the information
             this.props.editMember(this.state);
@@ -344,7 +344,7 @@ export class MemberProfile extends Component {
                             key="race"
                             defaultValue={this.state.fields.race}
                             id={'race'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
                         />
 
@@ -353,7 +353,7 @@ export class MemberProfile extends Component {
                             key="ethnicity"
                             defaultValue={this.state.fields.ethnicity}
                             id={'ethnicity'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
                         />
                         <h5>Number In Household: </h5>
@@ -361,7 +361,7 @@ export class MemberProfile extends Component {
                             key="numberInHousehold"
                             defaultValue={this.state.fields.numberInHousehold}
                             id={'numberInHousehold'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
                         />
                         <h5>Monthly Income: </h5>
@@ -369,7 +369,7 @@ export class MemberProfile extends Component {
                             key="monthlyIncome"
                             defaultValue={this.state.fields.monthlyIncome}
                             id={'monthlyIncome'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
                         />
                         <h5>Disabled: </h5>
@@ -379,7 +379,7 @@ export class MemberProfile extends Component {
                             optionValues={['Yes', 'No']}
                             name={'Disabled'}
                             id={'Disabled'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
                         />
                         <h5>Veteran: </h5>
@@ -389,7 +389,7 @@ export class MemberProfile extends Component {
                             optionValues={['Yes', 'No']}
                             name={'Veteran'}
                             id={'Veteran'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
                         />
                         <h5>Spouse Over 60: </h5>
@@ -399,7 +399,7 @@ export class MemberProfile extends Component {
                             optionValues={['Yes', 'No']}
                             name={'isSpouse60'}
                             id={'isSpouse60'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
                         />
                         <h5>Disabled & Living With Someone Over 60: </h5>
@@ -409,7 +409,7 @@ export class MemberProfile extends Component {
                             optionValues={['Yes', 'No']}
                             name={'wantsEstateInfo'}
                             id={'wantsEstateInfo'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
                         />
                         <h5>Caregiver: </h5>
@@ -417,7 +417,7 @@ export class MemberProfile extends Component {
                             key="caregiver"
                             defaultValue={this.state.fields.caregiver}
                             id={'caregiver'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
                         />
                         <h5>Grandparent: </h5>
@@ -425,7 +425,7 @@ export class MemberProfile extends Component {
                             key="grandparent"
                             defaultValue={this.state.fields.grandparent}
                             id={'grandparent'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleFieldChange}
                         />
                         <h5>needsAADL: </h5>
@@ -435,17 +435,17 @@ export class MemberProfile extends Component {
                             optionValues={['Yes', 'No']}
                             name={'needsAADL'}
                             id={'needsAADL'}
-                            editMode={this.state.editMembershipMode}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
                         />
                         <h5>needsIADL: </h5>
                         <EditableBoolean
-                            key="needsIadl"
-                            defaultValue={this.state.fields.needsIadl}
+                            key="needsIADL"
+                            defaultValue={this.state.fields.needsIADL}
                             optionValues={['Yes', 'No']}
-                            name={'needsIadl'}
-                            id={'needsIadl'}
-                            editMode={this.state.editMembershipMode}
+                            name={'needsIADL'}
+                            id={'needsIADL'}
+                            editMode={this.state.editDemographicMode}
                             handleChange={this.onHandleOptionChange}
                         />
                     </div>

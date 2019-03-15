@@ -146,14 +146,14 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 res.body.should.have.property('memberisNewOrRenewal').eql(true);
                 res.body.should.have.property('renewalDate').eql('Today');
                 res.body.should.have.property('formOfPayment').eql(true);
-                res.body.should.have.property('bankCheckNumber').eql('');
+                res.body.should.have.property('bankCheckNumber');
                 res.body.should.have.property('includedInEstatePlans').eql(true);
                 res.body.should.have.property('wantsEstateInfo').eql(false);
 
                 //Demographic Info
                 res.body.should.have.property('race').eql('White');
                 res.body.should.have.property('ethnicity').eql('Non-Hispanic/Latino');
-                res.body.should.have.property('numberInHousehold').eql(3);
+                res.body.should.have.property('numberInHousehold');
                 res.body.should.have.property('isPersonCaregiver').eql(true);
                 res.body.should.have.property('monthlyIncome').eql('Over $3,172');
                 res.body.should.have.property('isDisabled').eql(false);
@@ -164,7 +164,6 @@ describe('Members suite /ADD,/GET,/GET/:ID,/EDIT/:ID, /EDIT,/DELETE', () => {
                 res.body.should.have.property('grandparent').eql('Grandparent');
                 res.body.should.have.property('needsAADL').eql(['None']);
                 res.body.should.have.property('needsIADL').eql(['None']);
-
                 done();
             });
     });
