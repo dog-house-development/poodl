@@ -3,6 +3,7 @@ import authReducer from './authReducer';
 import adminsReducer from './adminsReducer';
 import volunteersReducer from './volunteersReducer';
 import membersReducer from './membersReducer';
+import activitiesReducer from './activitiesReducer';
 import errorReducer from './errorReducer';
 
 export default combineReducers({
@@ -10,5 +11,6 @@ export default combineReducers({
     admins: adminsReducer,
     volunteers: volunteersReducer,
     members: membersReducer,
+    activities: activitiesReducer,
     errors: errorReducer
 });

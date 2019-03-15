@@ -32,6 +32,7 @@ import MemberProfile from './pages/views/MemberProfile';
 
 // activity page
 import RegisterActivity from './pages/activity/AddActivity';
+import ViewAllActivities from './pages/activity/ViewAllActivities';
 
 import PrivateRoute from './private-route/PrivateRoute';
 
@@ -76,6 +77,7 @@ class App extends Component {
                             <PrivateRoute exact path="/admin/:id" component={AdminProfile} />
                             <PrivateRoute exact path="/volunteer/:id" component={VolunteerProfile} />
                             <PrivateRoute exact path="/member/:id" component={MemberProfile} />
+                            <PrivateRoute exact path="/activities" component={ViewAllActivities} />
                             <PrivateRoute exact path="/activities/add" component={RegisterActivity} />
 
                             {/* PageNotFound route must stay at bottom */}

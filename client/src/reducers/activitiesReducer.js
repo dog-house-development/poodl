@@ -1,10 +1,10 @@
 import {
-    FETCH_MEMBERS_BEGIN,
-    FETCH_MEMBERS_SUCCESS,
-    FETCH_MEMBER_BEGIN,
-    FETCH_MEMBER_SUCCESS,
-    MODIFY_MEMBER_BEGIN,
-    MODIFY_MEMBER_SUCCESS
+    FETCH_ACTIVITIES_BEGIN,
+    FETCH_ACTIVITIES_SUCCESS,
+    FETCH_ACTIVITY_BEGIN,
+    FETCH_ACTIVITY_SUCCESS,
+    FILTER_ACTIVITIES_BEGIN,
+    FILTER_ACTIVITIES_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -15,34 +15,34 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case FETCH_MEMBERS_BEGIN:
+        case FETCH_ACTIVITIES_BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_MEMBERS_SUCCESS:
+        case FETCH_ACTIVITIES_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 all: action.payload.data
             };
-        case FETCH_MEMBER_BEGIN:
+        case FILTER_ACTIVITIES_BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_MEMBER_SUCCESS:
+        case FILTER_ACTIVITIES_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                one: action.payload
+                all: action.payload.data
             };
-        case MODIFY_MEMBER_BEGIN:
+        case FETCH_ACTIVITY_BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case MODIFY_MEMBER_SUCCESS:
+        case FETCH_ACTIVITY_SUCCESS:
             return {
                 ...state,
                 loading: false,

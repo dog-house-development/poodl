@@ -86,6 +86,9 @@ router.post('/edit', (req, res) => {
             if (req.body.email != '') {
                 members.email = req.body.email;
             }
+            if (req.body.birthDate != '') {
+                members.email = req.body.email;
+            }
             if (req.body.seniorCenter != '') {
                 members.seniorCenter = req.body.seniorCenter;
             }
@@ -137,6 +140,31 @@ router.post('/edit/:id', (req, res) => {
             if (req.body.email != '') {
                 members.email = req.body.email;
             }
+            if (req.body.birthDate != '') {
+                members.birthDate = req.body.birthDate;
+            }
+            if (req.body.phoneNumber != '') {
+                members.phoneNumber = req.body.phoneNumber;
+            }
+            if (req.body.emergencyContact != '') {
+                members.emergencyContact = req.body.emergencyContact;
+            }
+            if (req.body.memberisNewOrRenewal != '') {
+                members.memberisNewOrRenewal = req.body.memberisNewOrRenewal;
+            }
+            if (req.body.formOfPayment != '') {
+                members.formOfPayment = req.body.formOfPayment;
+            }
+            if (req.body.bankCheckNumber != '') {
+                members.bankCheckNumber = req.body.bankCheckNumber;
+            }
+            if (req.body.includedInEstatePlans != '') {
+                members.includedInEstatePlans = req.body.includedInEstatePlans;
+            }
+            if (req.body.wantsEstateInfo != '') {
+                members.wantsEstateInfo = req.body.wantsEstateInfo;
+            }
+
             if (req.body.seniorCenter != '') {
                 members.seniorCenter = req.body.seniorCenter;
             }
@@ -160,6 +188,47 @@ router.post('/edit/:id', (req, res) => {
             }
             if (req.body.mealPreference != '') {
                 members.mealPreference = req.body.mealPreference;
+            }
+
+            //Demographic info
+            if (req.body.race != '') {
+                members.race = req.body.race;
+            }
+            if (req.body.ethnicity != '') {
+                members.ethnicity = req.body.ethnicity;
+            }
+            if (req.body.numberInHousehold != '') {
+                members.numberInHousehold = req.body.numberInHousehold;
+            }
+            if (req.body.isPersonCaregiver != '') {
+                members.isPersonCaregiver = req.body.isPersonCaregiver;
+            }
+            if (req.body.monthlyIncome != '') {
+                members.monthlyIncome = req.body.monthlyIncome;
+            }
+            if (req.body.isDisabled != '') {
+                members.isDisabled = req.body.isDisabled;
+            }
+            if (req.body.isVeteran != '') {
+                members.isVeteran = req.body.isVeteran;
+            }
+            if (req.body.isSpouse60 != '') {
+                members.isSpouse60 = req.body.isSpouse60;
+            }
+            if (req.body.isDisabled60 != '') {
+                members.isDisabled60 = req.body.isDisabled60;
+            }
+            if (req.body.caregiver != '') {
+                members.caregiver = req.body.caregiver;
+            }
+            if (req.body.grandparent != '') {
+                members.grandparent = req.body.grandparent;
+            }
+            if (req.body.needsAADL != '') {
+                members.needsAADL = req.body.needsAADL;
+            }
+            if (req.body.needsIADL != '') {
+                members.needsIADL = req.body.needsIADL;
             }
 
             members

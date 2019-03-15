@@ -17,28 +17,44 @@ exports[`Dashboard tests render should render correctly 1`] = `
     <h1
       className="panel-title"
     >
-      View All
+      View
     </h1>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/admins"
     >
       Admins
     </Link>
+    <span>
+       
+    </span>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/volunteers"
     >
       Volunteers
     </Link>
+    <span>
+       
+    </span>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/members"
     >
       Members
+    </Link>
+    <span>
+       
+    </span>
+    <Link
+      className="button primary medium"
+      replace={false}
+      to="/activities"
+    >
+      Activities
     </Link>
   </div>
   <div
@@ -50,19 +66,37 @@ exports[`Dashboard tests render should render correctly 1`] = `
       Register New
     </h1>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/register"
     >
       Admin
     </Link>
+    <span>
+       
+    </span>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/activities/add"
     >
       Activity
     </Link>
   </div>
+  <h2>
+    Activities
+  </h2>
+  <withRouter(ViewByDate)
+    clickableRowRoute="activity/"
+    dateData={
+      Object {
+        "data": Array [],
+        "date": 2019-01-14T07:00:00.000Z,
+      }
+    }
+    errors={Object {}}
+    loading={false}
+    requestDate={[Function]}
+  />
 </div>
 `;
