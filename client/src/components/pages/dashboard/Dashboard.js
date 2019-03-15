@@ -52,6 +52,10 @@ export class Dashboard extends Component {
                     <Link to="/members" className="button primary medium">
                         Members
                     </Link>
+                    <span> </span>
+                    <Link to="/activities" className="button primary medium">
+                        Activities
+                    </Link>
                 </div>
                 <div className="panel dashboard-panel">
                     <h1 className="panel-title">Register New</h1>

@@ -112,7 +112,10 @@ router.post('/add', (req, res) => {
     new Activity(req.body)
         .save()
         .then(Activity => res.json(Activity))
-        .catch(err => res.status(400).json(err));
+        .catch(err => {
+            console.log(err);
+            return res.status(400).json(err);
+        });
 });
 
 module.exports = router;
