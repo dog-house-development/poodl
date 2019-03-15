@@ -7,7 +7,6 @@ import Loading from '../../ui/Loading';
 import EditableField from '../../ui/EditableField';
 import EditableBoolean from '../../ui/EditableBoolean';
 import { Link } from 'react-router-dom';
-import Button from '../../ui/Button';
 
 export class MemberProfile extends Component {
     constructor(props) {
@@ -164,11 +163,6 @@ export class MemberProfile extends Component {
                     </h1>
 
                     <div className="panel">
-                        <Button
-                            onClick={this.handleEditContactClick}
-                            content={this.state.editContactMode ? 'Done' : 'Edit'}
-                            size="small"
-                        />
                         <h3>Contact Info</h3>
                         <h5>Email: </h5>
                         <EditableField
@@ -204,11 +198,6 @@ export class MemberProfile extends Component {
                         />
                     </div>
                     <div className="panel">
-                        <Button
-                            onClick={this.handleEditMemberClick}
-                            content={this.state.editMemberMode ? 'Done' : 'Edit'}
-                            size="small"
-                        />
                         <h3>Member Info: </h3>
                         <h5>Birth Date: </h5>
                         <EditableField
@@ -261,11 +250,6 @@ export class MemberProfile extends Component {
                         />
                     </div>
                     <div className="panel">
-                        <Button
-                            onClick={this.handleEditMembershipClick}
-                            content={this.state.editMembershipMode ? 'Done' : 'Edit'}
-                            size="small"
-                        />
                         <h3>Mebership Information</h3>
                         <h5>Membership: </h5>
                         <EditableBoolean
@@ -333,11 +317,6 @@ export class MemberProfile extends Component {
                         />
                     </div>
                     <div className="panel">
-                        <Button
-                            onClick={this.handleEditDemographicClick}
-                            content={this.state.editDemographicMode ? 'Done' : 'Edit'}
-                            size="small"
-                        />
                         <h3>Demographic Information: </h3>
                         <h5>Race: </h5>
                         <EditableField
