@@ -46,8 +46,11 @@ exports[`Dashboard tests render should render correctly 1`] = `
     >
       Members
     </Link>
+    <span>
+       
+    </span>
     <Link
-      className="link primary"
+      className="button primary medium"
       replace={false}
       to="/activities"
     >
