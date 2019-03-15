@@ -5,25 +5,11 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 // Create Schema
 const MemberSchema = new Schema(
     {
-        firstName: {
-            type: String,
-            required: true
-        },
-        lastName: {
-            type: String,
-            required: true
-        },
+        //Contact Info
         email: {
             type: String
         },
         address: {
-            type: String
-        },
-        birthDate: {
-            type: Date,
-            default: Date.now
-        },
-        seniorCenter: {
             type: String
         },
         phoneNumber: {
@@ -34,6 +20,44 @@ const MemberSchema = new Schema(
                 type: String
             }
         ],
+        //Member Info
+
+        firstName: {
+            type: String,
+            required: true
+        },
+        lastName: {
+            type: String,
+            required: true
+        },
+
+        birthDate: {
+            type: Date,
+            default: Date.now
+        },
+        seniorCenter: {
+            type: String
+        },
+        specialDiet: [
+            {
+                type: String
+            }
+        ],
+        medicalIssues: [
+            {
+                type: String
+            }
+        ],
+        disabilities: [
+            {
+                type: String
+            }
+        ],
+        mealPreference: {
+            type: String
+        },
+
+        //Membership Information
         memberisNewOrRenewal: {
             type: Boolean //True = New, False = Renewal
         },
@@ -54,24 +78,6 @@ const MemberSchema = new Schema(
             default: Date.now
         },
         renewalDate: {
-            type: String
-        },
-        specialDiet: [
-            {
-                type: String
-            }
-        ],
-        medicalIssues: [
-            {
-                type: String
-            }
-        ],
-        disabilities: [
-            {
-                type: String
-            }
-        ],
-        mealPreference: {
             type: String
         },
 
@@ -109,12 +115,16 @@ const MemberSchema = new Schema(
         grandparent: {
             type: String
         },
-        needsAADL: {
-            type: Boolean
-        },
-        needsIADL: {
-            type: Boolean
-        }
+        needsAADL: [
+            {
+                type: String
+            }
+        ],
+        needsIADL: [
+            {
+                type: String
+            }
+        ]
     },
     { timestamps: true }
 );
