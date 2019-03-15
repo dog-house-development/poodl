@@ -126,8 +126,8 @@ describe('Register tests', () => {
                     type: 'text',
                     label: 'First name',
                     placeholder: 'John...',
-                    sideBySide: 1,
-                    autocomplete: 'off',
+                    sidebyside: 1,
+                    autoComplete: 'off',
                     error: undefined
                 },
                 {
@@ -136,8 +136,8 @@ describe('Register tests', () => {
                     type: 'text',
                     label: 'Last name',
                     placeholder: 'Smith...',
-                    sideBySide: 2,
-                    autocomplete: 'off',
+                    sidebyside: 2,
+                    autoComplete: 'off',
                     error: undefined
                 },
                 {
@@ -146,7 +146,7 @@ describe('Register tests', () => {
                     type: 'email',
                     label: 'Email',
                     placeholder: 'example@poodl.com...',
-                    autocomplete: 'off',
+                    autoComplete: 'off',
                     error: 'Invalid email'
                 },
                 {
@@ -155,7 +155,7 @@ describe('Register tests', () => {
                     type: 'password',
                     label: 'Password',
                     placeholder: 'Shhhhh...',
-                    autocomplete: 'off',
+                    autoComplete: 'off',
                     error: undefined
                 },
                 {
@@ -164,7 +164,7 @@ describe('Register tests', () => {
                     type: 'password',
                     label: 'Confirm Password',
                     placeholder: 'Again...',
-                    autocomplete: 'off',
+                    autoComplete: 'off',
                     error: undefined
                 }
             ]);
@@ -179,8 +179,8 @@ describe('Register tests', () => {
                     type: 'text',
                     label: 'First name',
                     placeholder: 'John...',
-                    sideBySide: 1,
-                    autocomplete: 'off',
+                    sidebyside: 1,
+                    autoComplete: 'off',
                     error: undefined
                 },
                 {
@@ -189,8 +189,8 @@ describe('Register tests', () => {
                     type: 'text',
                     label: 'Last name',
                     placeholder: 'Smith...',
-                    sideBySide: 2,
-                    autocomplete: 'off',
+                    sidebyside: 2,
+                    autoComplete: 'off',
                     error: undefined
                 },
                 {
@@ -199,7 +199,7 @@ describe('Register tests', () => {
                     type: 'email',
                     label: 'Email',
                     placeholder: 'example@poodl.com...',
-                    autocomplete: 'off',
+                    autoComplete: 'off',
                     error: 'Invalid email'
                 },
                 {
@@ -208,7 +208,7 @@ describe('Register tests', () => {
                     type: 'password',
                     label: 'Password',
                     placeholder: 'Shhhhh...',
-                    autocomplete: 'off',
+                    autoComplete: 'off',
                     error: undefined
                 },
                 {
@@ -217,7 +217,7 @@ describe('Register tests', () => {
                     type: 'password',
                     label: 'Confirm Password',
                     placeholder: 'Again...',
-                    autocomplete: 'off',
+                    autoComplete: 'off',
                     error: undefined
                 },
                 {

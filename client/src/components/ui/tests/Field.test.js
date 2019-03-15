@@ -55,12 +55,12 @@ describe('Field tests', () => {
         });
 
         it('should render the first side by side input', () => {
-            setInstanceAndWrapper({ sideBySide: 1 });
+            setInstanceAndWrapper({ sidebyside: 1 });
             expect(wrapper).toMatchSnapshot();
         });
 
         it('should render the second side by side input', () => {
-            setInstanceAndWrapper({ sideBySide: 2 });
+            setInstanceAndWrapper({ sidebyside: 2 });
             expect(wrapper).toMatchSnapshot();
         });
 

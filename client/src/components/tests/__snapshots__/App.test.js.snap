@@ -68,6 +68,11 @@ exports[`Navbar tests render should render correctly 1`] = `
           exact={true}
           path="/member/:id"
         />
+        <Connect(PrivateRoute)
+          component={[Function]}
+          exact={true}
+          path="/activities/add"
+        />
         <Route
           component={[Function]}
         />
