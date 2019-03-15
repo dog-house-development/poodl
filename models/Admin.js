@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Create Schema
 const AdminSchema = new Schema(
@@ -28,10 +29,6 @@ const AdminSchema = new Schema(
             type: Boolean,
             required: true,
             default: false
-        },
-        date: {
-            type: Date,
-            default: Date.now
         }
     },
     { timestamps: true }

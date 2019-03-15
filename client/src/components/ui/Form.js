@@ -28,19 +28,7 @@ class Form extends Component {
     }
 
     getFieldsMarkup() {
-        return _.map(this.props.fields, field => (
-            <Field
-                key={field.id}
-                id={field.id}
-                type={field.type}
-                name={field.name}
-                label={field.label}
-                content={field.content}
-                placeholder={field.placeholder}
-                onChange={field.onChange}
-                error={field.error}
-            />
-        ));
+        return _.map(this.props.fields, field => <Field key={field.id} {...field} />);
     }
 
     render() {

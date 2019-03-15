@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Create Schema
 const SeniorCenterSchema = new Schema(
@@ -23,10 +24,6 @@ const SeniorCenterSchema = new Schema(
         operationHours: {
             type: String,
             required: true
-        },
-        date: {
-            type: Date,
-            default: Date.now
         }
     },
     { timestamps: true }

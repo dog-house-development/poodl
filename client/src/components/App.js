@@ -20,12 +20,19 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Landing from './pages/Landing';
 import PageNotFound from './pages/PageNotFound';
 
-// views
+// view all pages
 import ViewAllAdmins from './pages/views/ViewAllAdmins';
 import ViewAllVolunteers from './pages/views/ViewAllVolunteers';
 import ViewAllMembers from './pages/views/ViewAllMembers';
-import MemberProfile from './pages/views/MemberProfile';
+
+// profile pages
+import AdminProfile from './pages/views/AdminProfile';
 import VolunteerProfile from './pages/views/VolunteerProfile';
+import MemberProfile from './pages/views/MemberProfile';
+
+// activity page
+import RegisterActivity from './pages/activity/AddActivity';
+import ViewAllActivities from './pages/activity/ViewAllActivities';
 
 import PrivateRoute from './private-route/PrivateRoute';
 
@@ -62,11 +69,17 @@ class App extends Component {
                             <Route exact path="/login" component={Login} />
                             <PrivateRoute exact path="/register" component={Register} />
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                            {/* View all pages */}
                             <PrivateRoute exact path="/admins" component={ViewAllAdmins} />
                             <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />
                             <PrivateRoute exact path="/members" component={ViewAllMembers} />
-                            <PrivateRoute exact path="/member/:id" component={MemberProfile} />
+                            {/* Profile pages */}
+                            <PrivateRoute exact path="/admin/:id" component={AdminProfile} />
                             <PrivateRoute exact path="/volunteer/:id" component={VolunteerProfile} />
+                            <PrivateRoute exact path="/member/:id" component={MemberProfile} />
+                            <PrivateRoute exact path="/activities" component={ViewAllActivities} />
+                            <PrivateRoute exact path="/activities/add" component={RegisterActivity} />
+
                             {/* PageNotFound route must stay at bottom */}
                             <Route component={PageNotFound} />
                         </Switch>

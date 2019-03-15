@@ -12,6 +12,7 @@ exports[`Form tests render should render correctly 1`] = `
     onSubmit={[Function]}
   >
     <Field
+      autoComplete="on"
       error={Object {}}
       id="email"
       key="email"
@@ -23,6 +24,7 @@ exports[`Form tests render should render correctly 1`] = `
     />
     <Button
       content="Submit"
+      dropdownButton={false}
       formButton={true}
       kind="primary"
       size="medium"

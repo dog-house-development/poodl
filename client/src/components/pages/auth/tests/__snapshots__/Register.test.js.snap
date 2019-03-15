@@ -21,22 +21,27 @@ exports[`Register tests render should render correctly 1`] = `
     fields={
       Array [
         Object {
+          "autoComplete": "off",
           "error": undefined,
           "id": "firstName",
           "label": "First name",
           "onChange": [Function],
           "placeholder": "John...",
+          "sidebyside": 1,
           "type": "text",
         },
         Object {
+          "autoComplete": "off",
           "error": undefined,
           "id": "lastName",
           "label": "Last name",
           "onChange": [Function],
           "placeholder": "Smith...",
+          "sidebyside": 2,
           "type": "text",
         },
         Object {
+          "autoComplete": "off",
           "error": "Invalid email",
           "id": "email",
           "label": "Email",
@@ -45,6 +50,7 @@ exports[`Register tests render should render correctly 1`] = `
           "type": "email",
         },
         Object {
+          "autoComplete": "off",
           "error": undefined,
           "id": "password",
           "label": "Password",
@@ -53,6 +59,7 @@ exports[`Register tests render should render correctly 1`] = `
           "type": "password",
         },
         Object {
+          "autoComplete": "off",
           "error": undefined,
           "id": "password2",
           "label": "Confirm Password",

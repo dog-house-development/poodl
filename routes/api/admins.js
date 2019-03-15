@@ -8,6 +8,11 @@ const passport = require('passport');
 // Load input validation
 const validateRegisterInput = require('../../validation/registerAdmin');
 const validateLoginInput = require('../../validation/login');
+const validateEditInputByID = require('../../validation/editAdminByID');
+const validateFilterInput = require('../../validation/adminFilter');
+
+//Load Utilities
+const jsonBuilder = require('../../utility/stringConverter');
 
 // Load Admin model
 const Admin = require('../../models/Admin');
@@ -52,50 +57,69 @@ router.post('/get', (req, res) => {
 // @route POST api/admins/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    Admin.find(res.body, (err, admins) => {
+    const request = jsonBuilder(req.body);
+    Admin.find(request[0], (err, admins) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json(admins);
-    });
+        return res.json({ success: true, data: admins });
+    })
+        .skip(request[2] * request[1])
+        .limit(request[2]);
 });
 
 // @route POST api/admins/register
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
-    // Form validation
-
     const { errors, isValid } = validateRegisterInput(req.body);
 
     // Check validation
     if (!isValid) {
         return res.status(400).json(errors);
     }
+    const newAdmin = new Admin(req.body);
+    errors = newAdmin.validateSync();
+    // Hash password before saving in database
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newAdmin.password, salt, (err, hash) => {
+            if (err) throw err;
+            newAdmin.password = hash;
+            newAdmin
+                .save()
+                .then(admin => res.json(admin))
+                .catch(err => console.log(err));
+        });
+    });
+});
 
-    Admin.findOne({ email: req.body.email }).then(admin => {
-        if (admin) {
-            return res.status(400).json({ email: 'Email already exists' });
+// @route POST api/admins/edit/:id
+// should take request for admin id and make changes
+router.post('/edit/:id', (req, res) => {
+    const { errors, isValid } = validateEditInputByID(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    Admin.findOne({
+        _id: req.params.id
+    }).then(admin => {
+        if (!admin) {
+            return res.status(400).json({ _id: 'Admin does not exist' });
         } else {
-            const newAdmin = new Admin({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                password: req.body.password,
-                seniorCenter: req.body.seniorCenter,
-                superAdmin: req.body.superAdmin
-            });
-
-            // Hash password before saving in database
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newAdmin.password, salt, (err, hash) => {
-                    if (err) throw err;
-                    newAdmin.password = hash;
-                    newAdmin
-                        .save()
-                        .then(admin => res.json(admin))
-                        .catch(err => console.log(err));
-                });
-            });
+            if (req.body.email != '') {
+                admin.email = req.body.email;
+            }
+            if (req.body.seniorCenter != '') {
+                admin.seniorCenter = req.body.seniorCenter;
+            }
+            if (req.body.superAdmin != '') {
+                admin.superAdmin = req.body.superAdmin;
+            }
         }
+        admin
+            .save()
+            .then(Admin => res.json(Admin))
+            .catch(err => console.log(err));
     });
 });
 

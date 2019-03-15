@@ -4,12 +4,410 @@ exports[`MemberProfile tests render should render correctly 1`] = `
 <div
   className="view-all-container"
 >
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/members"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to all members
+  </Link>
   <div
     className="panel"
   >
-    <h1>
-       
-    </h1>
+    <div>
+      <h1>
+         
+      </h1>
+      <div
+        className="panel"
+      >
+        <h3>
+          Contact Info
+        </h3>
+        <h5>
+          Email: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="email"
+          key="email"
+        />
+        <h5>
+          Phone Number: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="phoneNumber"
+          key="phoneNumber"
+        />
+        <h5>
+          Address: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="address"
+          key="address"
+        />
+        <h5>
+          Emergency Contact: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="emergencyContact"
+          key="emergencyContact"
+        />
+      </div>
+      <div
+        className="panel"
+      >
+        <h3>
+          Personal Information: 
+        </h3>
+        <h5>
+          Birth Date: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="birthDate"
+          key="birthDate"
+        />
+        <h5>
+          Senior Center: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="seniorCenter"
+          key="seniorCenter"
+        />
+        <h5>
+          Special Diet: 
+        </h5>
+        <EditableField
+          defaultValue={
+            Array [
+              "",
+              "",
+            ]
+          }
+          editMode={false}
+          handleChange={[Function]}
+          id="specialDiet"
+          key="specialDiet"
+        />
+        <h5>
+          Medical Issues: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="ethnicity"
+          key="ethnicity"
+        />
+        <h5>
+          Disabilities: 
+        </h5>
+        <EditableField
+          defaultValue={
+            Array [
+              "",
+              "",
+            ]
+          }
+          editMode={false}
+          handleChange={[Function]}
+          id="disabilities"
+          key="disabilities"
+        />
+        <h5>
+          Meal Preference: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="mealPreference"
+          key="mealPreference"
+        />
+      </div>
+      <div
+        className="panel"
+      >
+        <h3>
+          Membership Information
+        </h3>
+        <h5>
+          Membership: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="memberisNewOrRenewal"
+          key="memberisNewOrRenewal"
+          name="memberIsNewOrRenewal"
+          optionValues={
+            Array [
+              "New",
+              "Renewal",
+            ]
+          }
+        />
+        <h5>
+          Membership Date: 
+        </h5>
+        <EditableField
+          editMode={false}
+          handleChange={[Function]}
+          id="membershipDate"
+          key="membershipDate"
+        />
+        <h5>
+          Renewal Date: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="renewalDate"
+          key="renewalDate"
+        />
+        <h5>
+          Payment Form: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="formOfPayment"
+          key="formOfPayment"
+          name="formOfPayment"
+          optionValues={
+            Array [
+              "Cash",
+              "Check",
+            ]
+          }
+        />
+        <h5>
+          Bank Check Number: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="bankCheckNumber"
+          key="bankCheckNumber"
+        />
+        <h5>
+          Member Included Senior Center In Estate Plans: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="includedInEstatePlans"
+          key="includedInEstatePlans"
+          name="includedInEstatePlans"
+          optionValues={
+            Array [
+              "Yes",
+              "No",
+            ]
+          }
+        />
+        <h5>
+          Member Wants Info About Including Senior Center In Estate Plans: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="wantsEstateInfo"
+          key="wantsEstateInfo"
+          name="wantsEstateInfo"
+          optionValues={
+            Array [
+              "Yes",
+              "No",
+            ]
+          }
+        />
+      </div>
+      <div
+        className="panel"
+      >
+        <h3>
+          Demographic Information: 
+        </h3>
+        <h5>
+          Race: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="race"
+          key="race"
+        />
+        <h5>
+          Ethnicity: 
+        </h5>
+        <EditableField
+          defaultValue=""
+          editMode={false}
+          handleChange={[Function]}
+          id="ethnicity"
+          key="ethnicity"
+        />
+        <h5>
+          Number In Household: 
+        </h5>
+        <EditableField
+          defaultValue={0}
+          editMode={false}
+          handleChange={[Function]}
+          id="numberInHousehold"
+          key="numberInHousehold"
+        />
+        <h5>
+          Monthly Income: 
+        </h5>
+        <EditableField
+          editMode={false}
+          handleChange={[Function]}
+          id="monthlyIncome"
+          key="monthlyIncome"
+        />
+        <h5>
+          Disabled: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="Disabled"
+          key="Disabled"
+          name="Disabled"
+          optionValues={
+            Array [
+              "Yes",
+              "No",
+            ]
+          }
+        />
+        <h5>
+          Veteran: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="Veteran"
+          key="Veteran"
+          name="Veteran"
+          optionValues={
+            Array [
+              "Yes",
+              "No",
+            ]
+          }
+        />
+        <h5>
+          Spouse Over 60: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="isSpouse60"
+          key="isSpouse60"
+          name="isSpouse60"
+          optionValues={
+            Array [
+              "Yes",
+              "No",
+            ]
+          }
+        />
+        <h5>
+          Disabled & Living With Someone Over 60: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="wantsEstateInfo"
+          key="wantsEstateInfo"
+          name="wantsEstateInfo"
+          optionValues={
+            Array [
+              "Yes",
+              "No",
+            ]
+          }
+        />
+        <h5>
+          Caregiver: 
+        </h5>
+        <EditableField
+          editMode={false}
+          handleChange={[Function]}
+          id="caregiver"
+          key="caregiver"
+        />
+        <h5>
+          Grandparent: 
+        </h5>
+        <EditableField
+          editMode={false}
+          handleChange={[Function]}
+          id="grandparent"
+          key="grandparent"
+        />
+        <h5>
+          needsAADL: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="needsAADL"
+          key="needsAADL"
+          name="needsAADL"
+          optionValues={
+            Array [
+              "Yes",
+              "No",
+            ]
+          }
+        />
+        <h5>
+          needsIADL: 
+        </h5>
+        <EditableBoolean
+          editMode={false}
+          handleChange={[Function]}
+          id="needsIADL"
+          key="needsIADL"
+          name="needsIADL"
+          optionValues={
+            Array [
+              "Yes",
+              "No",
+            ]
+          }
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;

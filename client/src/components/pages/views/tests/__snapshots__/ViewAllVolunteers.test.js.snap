@@ -27,30 +27,17 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
           "firstName": "Tup",
           "key": "123",
           "lastName": "Big",
-          "viewProfile": <Link
-            className="button medium primary"
-            replace={false}
-            to="/volunteer/123"
-          >
-            View
-          </Link>,
         },
         Object {
           "email": "liltup@nowhere.com",
           "firstName": "Tup",
           "key": "321",
           "lastName": "Lil",
-          "viewProfile": <Link
-            className="button medium primary"
-            replace={false}
-            to="/volunteer/321"
-          >
-            View
-          </Link>,
         },
       ]
     }
     loading={false}
+    onRowClick={[Function]}
   />
 </div>
 `;

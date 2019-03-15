@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 const ServiceSchema = new Schema(
     {
@@ -7,18 +8,18 @@ const ServiceSchema = new Schema(
             type: String,
             required: true
         },
-        times: [
-            {
-                type: String,
-                required: true
-            }
-        ],
-        dates: [
-            {
-                type: String,
-                required: true
-            }
-        ],
+        time: {
+            type: String,
+            required: true
+        },
+        duration: {
+            type: String,
+            required: true
+        },
+        date: {
+            type: String,
+            required: true
+        },
         //The plan is to have admin and volunteer list be IDs
         admins: [
             {

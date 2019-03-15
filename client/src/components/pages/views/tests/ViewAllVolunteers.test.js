@@ -98,23 +98,13 @@ describe('ViewAllVolunteers tests', () => {
                     key: '123',
                     firstName: 'Tup',
                     lastName: 'Big',
-                    email: 'bigtup@nowhere.com',
-                    viewProfile: (
-                        <Link to={'/volunteer/123'} className="button medium primary">
-                            View
-                        </Link>
-                    )
+                    email: 'bigtup@nowhere.com'
                 },
                 {
                     key: '321',
                     firstName: 'Tup',
                     lastName: 'Lil',
-                    email: 'liltup@nowhere.com',
-                    viewProfile: (
-                        <Link to={'/volunteer/321'} className="button medium primary">
-                            View
-                        </Link>
-                    )
+                    email: 'liltup@nowhere.com'
                 }
             ]);
         });

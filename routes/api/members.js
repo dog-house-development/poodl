@@ -8,11 +8,15 @@ const passport = require('passport');
 // Load Member model
 const Member = require('../../models/Member');
 
+//import utilities
+const jsonBuilder = require('../../utility/stringConverter');
+
 //Validation
 const validateEditInput = require('../../validation/editMember');
 //validator is here just for the purpose of setting all the values to '' probably a better way but this is what I want to do
 const validateEditInputByID = require('../../validation/editMemberByID');
 const validateRegisterInput = require('../../validation/addMember');
+const validateFilterInput = require('../../validation/memberFilter');
 
 // @route DELETE api/members/delete/:id
 // should delete specified member by ID
@@ -54,10 +58,13 @@ router.post('/get', (req, res) => {
 // @route POST api/members/filter
 //should filter members and return ones that you want. Builds up a query
 router.post('/filter', (req, res) => {
-    Member.find(req.body, (err, members) => {
+    const request = jsonBuilder(req.body);
+    Member.find(request[0], (err, members) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json(members);
-    });
+        return res.json({ success: true, data: members });
+    })
+        .skip(request[2] * request[1]) // paging function
+        .limit(request[2]);
 });
 
 // @route POST api/members/edit
@@ -77,6 +84,9 @@ router.post('/edit', (req, res) => {
             return res.status(400).json({ firstName: 'Member does not exist' });
         } else {
             if (req.body.email != '') {
+                members.email = req.body.email;
+            }
+            if (req.body.birthDate != '') {
                 members.email = req.body.email;
             }
             if (req.body.seniorCenter != '') {
@@ -125,11 +135,36 @@ router.post('/edit/:id', (req, res) => {
         _id: req.params.id
     }).then(members => {
         if (!members) {
-            return res.status(400).json({ firstName: 'Member does not exist' });
+            return res.status(400).json({ _id: 'Member does not exist' });
         } else {
             if (req.body.email != '') {
                 members.email = req.body.email;
             }
+            if (req.body.birthDate != '') {
+                members.birthDate = req.body.birthDate;
+            }
+            if (req.body.phoneNumber != '') {
+                members.phoneNumber = req.body.phoneNumber;
+            }
+            if (req.body.emergencyContact != '') {
+                members.emergencyContact = req.body.emergencyContact;
+            }
+            if (req.body.memberisNewOrRenewal != '') {
+                members.memberisNewOrRenewal = req.body.memberisNewOrRenewal;
+            }
+            if (req.body.formOfPayment != '') {
+                members.formOfPayment = req.body.formOfPayment;
+            }
+            if (req.body.bankCheckNumber != '') {
+                members.bankCheckNumber = req.body.bankCheckNumber;
+            }
+            if (req.body.includedInEstatePlans != '') {
+                members.includedInEstatePlans = req.body.includedInEstatePlans;
+            }
+            if (req.body.wantsEstateInfo != '') {
+                members.wantsEstateInfo = req.body.wantsEstateInfo;
+            }
+
             if (req.body.seniorCenter != '') {
                 members.seniorCenter = req.body.seniorCenter;
             }
@@ -155,6 +190,47 @@ router.post('/edit/:id', (req, res) => {
                 members.mealPreference = req.body.mealPreference;
             }
 
+            //Demographic info
+            if (req.body.race != '') {
+                members.race = req.body.race;
+            }
+            if (req.body.ethnicity != '') {
+                members.ethnicity = req.body.ethnicity;
+            }
+            if (req.body.numberInHousehold != '') {
+                members.numberInHousehold = req.body.numberInHousehold;
+            }
+            if (req.body.isPersonCaregiver != '') {
+                members.isPersonCaregiver = req.body.isPersonCaregiver;
+            }
+            if (req.body.monthlyIncome != '') {
+                members.monthlyIncome = req.body.monthlyIncome;
+            }
+            if (req.body.isDisabled != '') {
+                members.isDisabled = req.body.isDisabled;
+            }
+            if (req.body.isVeteran != '') {
+                members.isVeteran = req.body.isVeteran;
+            }
+            if (req.body.isSpouse60 != '') {
+                members.isSpouse60 = req.body.isSpouse60;
+            }
+            if (req.body.isDisabled60 != '') {
+                members.isDisabled60 = req.body.isDisabled60;
+            }
+            if (req.body.caregiver != '') {
+                members.caregiver = req.body.caregiver;
+            }
+            if (req.body.grandparent != '') {
+                members.grandparent = req.body.grandparent;
+            }
+            if (req.body.needsAADL != '') {
+                members.needsAADL = req.body.needsAADL;
+            }
+            if (req.body.needsIADL != '') {
+                members.needsIADL = req.body.needsIADL;
+            }
+
             members
                 .save()
                 .then(Member => res.json(Member))
@@ -164,38 +240,12 @@ router.post('/edit/:id', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    Member.findOne({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName
-    }).then(members => {
-        if (members) {
-            return res.status(400).json({ email: 'Member already exists' });
-        } else {
-            const newMember = new Member({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                address: req.body.address,
-                seniorCenter: req.body.seniorCenter,
-                membershipDate: req.body.membershipDate,
-                renewalDate: req.body.renewalDate,
-                specialDiet: req.body.specialDiet,
-                medicalIssues: req.body.medicalIssues,
-                disabilities: req.body.disabilities,
-                mealPreference: req.body.mealPreference
-            });
-
-            newMember
-                .save()
-                .then(Member => res.json(Member))
-                .catch(err => console.log(err));
-        }
-    });
+    const newMember = new Member(req.body);
+    error = newMember.validateSync();
+    newMember
+        .save()
+        .then(Member => res.json(Member))
+        .catch(err => console.log(err));
 });
 
 module.exports = router;

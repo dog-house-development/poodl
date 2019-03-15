@@ -7,6 +7,11 @@ const passport = require('passport');
 
 //Validation goes here
 const validateRegisterInput = require('../../validation/addService');
+const validateEditInputByID = require('../../validation/editServiceByID');
+const validateFilterInput = require('../../validation/serviceFilter');
+
+//Load Utils
+const jsonBuilder = require('../../utility/stringConverter');
 
 //Load model
 const Service = require('../../models/Service');
@@ -38,43 +43,77 @@ router.get('/get/:id', (req, res, next) => {
     });
 });
 
+//@route POST api/services/get/:id
+//should edit something by id
+router.post('/edit/:id', (req, res) => {
+    const { errors, isValid } = validateEditInputByID(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    Service.findOne({
+        _id: req.params.id
+    }).then(service => {
+        if (!service) {
+            return res.status(400).json({ _id: 'Service does not exist' });
+        } else {
+            if (req.body.name != '') {
+                service.name = req.body.name;
+            }
+            if (req.body.time != '') {
+                service.time = req.body.time;
+            }
+            if (req.body.duration != '') {
+                service.duration = req.body.duration;
+            }
+            if (req.body.date != '') {
+                service.date = req.body.date;
+            }
+            if (req.body.admins != '') {
+                service.admins = req.body.admins;
+            }
+            if (req.body.volunteers != '') {
+                service.volunteers = req.body.volunteers;
+            }
+            if (req.body.members != '') {
+                service.members = req.body.members;
+            }
+            if (req.body.seniorCenter != '') {
+                service.seniorCenter = req.body.seniorCenter;
+            }
+            if (req.body.maxCapacity != '') {
+                service.maxCapacity = req.body.maxCapacity;
+            }
+        }
+        service
+            .save()
+            .then(Service => res.json(Service))
+            .catch(err => console.log(err));
+    });
+});
+
 // @route POST api/services/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    Service.find(res.body, (err, services) => {
+    const request = jsonBuilder(req.body);
+
+    Service.find(request[0], (err, services) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json(services);
-    });
+        return res.json({ success: true, data: services });
+    })
+        .skip(request[2] * request[1]) // paging function
+        .limit(request[2]);
 });
 
 // @route POST api/services/add
 // @desc add a service
 router.post('/add', (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
-
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    Service.findOne({ name: req.body.name }).then(service => {
-        if (service) {
-            return res.status(400).json({ name: 'Service already exists' });
-        } else {
-            const newService = new Service({
-                name: req.body.name,
-                times: req.body.times,
-                dates: req.body.dates,
-                admins: req.body.admins,
-                volunteers: req.body.volunteers,
-                members: req.body.members,
-                seniorCenter: req.body.seniorCenter
-            });
-            newService
-                .save()
-                .then(Service => res.json(Service))
-                .catch(err => console.log(err));
-        }
-    });
+    const newService = new Service(req.body);
+    error = newService.validateSync();
+    newService
+        .save()
+        .then(Service => res.json(Service))
+        .catch(err => console.log(err));
 });
 
 module.exports = router;

@@ -102,24 +102,14 @@ describe('ViewAllMembers tests', () => {
                     firstName: 'Big',
                     lastName: 'Tup',
                     membershipDate: 'February 2nd, 2020',
-                    email: 'bigtup@nowhere.com',
-                    viewProfile: (
-                        <Link to={'/member/123'} className="button medium primary">
-                            View
-                        </Link>
-                    )
+                    email: 'bigtup@nowhere.com'
                 },
                 {
                     key: '321',
                     firstName: 'Lil',
                     lastName: 'Tup',
                     membershipDate: 'February 2nd, 2020',
-                    email: 'liltup@nowhere.com',
-                    viewProfile: (
-                        <Link to={'/member/321'} className="button medium primary">
-                            View
-                        </Link>
-                    )
+                    email: 'liltup@nowhere.com'
                 }
             ]);
         });

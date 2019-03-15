@@ -7,7 +7,13 @@ const passport = require('passport');
 
 // Load input validation
 const validateRegisterInput = require('../../validation/addSeniorCenter');
+const validateEditInputById = require('../../validation/editSeniorCenterByID');
+const validateFilterInput = require('../../validation/seniorCenterFilter');
 
+//load utilities
+const jsonBuilder = require('../../utility/stringConverter');
+
+//load model
 const SeniorCenter = require('../../models/SeniorCenter');
 
 //@route DELETE api/seniorCenters/delete/:id
@@ -37,46 +43,62 @@ router.get('/get/:id', (req, res) => {
     });
 });
 
+// @route POST api/seniorCenter/edit/:id
+//should edit a senior center given an id
+router.post('/edit/:id', (req, res) => {
+    const { errors, isValid } = validateEditInputById(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+    SeniorCenter.findOne({ _id: req.params.id }).then(seniorCenter => {
+        if (!seniorCenter) {
+            return res.status(400).json({ _id: 'SeniorCenter does not exist' });
+        } else {
+            if (req.body.name != '') {
+                seniorCenter.name = req.body.name;
+            }
+            if (req.body.email != '') {
+                seniorCenter.email = req.body.email;
+            }
+            if (req.body.address != '') {
+                seniorCenter.address = req.body.address;
+            }
+            if (req.body.phone != '') {
+                seniorCenter.phone = req.body.phone;
+            }
+            if (req.body.operationHours != '') {
+                seniorCenter.operationHours = req.body.operationHours;
+            }
+        }
+        seniorCenter
+            .save()
+            .then(SeniorCenter => res.json(SeniorCenter))
+            .catch(err => console.log(err));
+    });
+});
+
 // @route POST api/seniorCenters/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    SeniorCenter.find(res.body, (err, seniorCenters) => {
+    const request = jsonBuilder(req.body);
+    SeniorCenter.find(request[0], (err, seniorCenters) => {
         if (err) return res.json({ success: false, error: err });
-        return res.json(seniorCenters);
-    });
+        return res.json({ success: true, data: seniorCenters });
+    })
+        .skip(request[2] * request[1]) // paging function
+        .limit(request[2]);
 });
 
 // @route POST api/seniorCenters/add
 // @desc adding a seniorCenter
 // @access Public
 router.post('/add', (req, res) => {
-    // Form validation
-
-    const { errors, isValid } = validateRegisterInput(req.body);
-
-    // Check validation
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    SeniorCenter.findOne({ email: req.body.name }).then(seniorCenter => {
-        if (seniorCenter) {
-            return res.status(400).json({ email: 'Center already exists' });
-        } else {
-            const newSeniorCenter = new SeniorCenter({
-                name: req.body.name,
-                email: req.body.email,
-                address: req.body.address,
-                phone: req.body.phone,
-                operationHours: req.body.operationHours
-            });
-
-            newSeniorCenter
-                .save()
-                .then(seniorCenter => res.json(seniorCenter))
-                .catch(err => console.log(err));
-        }
-    });
+    const newSeniorCenter = new SeniorCenter(req.body);
+    errors = newSeniorCenter.validateSync();
+    newSeniorCenter
+        .save()
+        .then(SeniorCenter => res.json(SeniorCenter))
+        .catch(err => console.log(err));
 });
 
 module.exports = router;

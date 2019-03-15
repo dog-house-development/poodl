@@ -5,7 +5,9 @@ import {
     FETCH_MEMBERS_BEGIN,
     FETCH_MEMBERS_SUCCESS,
     FETCH_MEMBER_BEGIN,
-    FETCH_MEMBER_SUCCESS
+    FETCH_MEMBER_SUCCESS,
+    MODIFY_MEMBER_BEGIN,
+    MODIFY_MEMBER_SUCCESS
 } from './types';
 
 export const fetchMembers = () => dispatch => {
@@ -41,6 +43,23 @@ export const fetchMember = id => dispatch => {
         );
 };
 
+//Get specificied member by ID
+export const modifyMember = id => dispatch => {
+    dispatch(modifyMemberBegin());
+    axios
+        .get(`/api/members/modify/${id}`)
+        .then(res => {
+            dispatch(modifyMemberSuccess(res.data));
+            return res.data;
+        })
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        );
+};
+
 export const fetchMembersBegin = () => ({
     type: FETCH_MEMBERS_BEGIN
 });
@@ -56,5 +75,14 @@ export const fetchMemberBegin = () => ({
 
 export const fetchMemberSuccess = member => ({
     type: FETCH_MEMBER_SUCCESS,
+    payload: member
+});
+
+export const modifyMemberBegin = () => ({
+    type: MODIFY_MEMBER_BEGIN
+});
+
+export const modifyMemberSuccess = member => ({
+    type: MODIFY_MEMBER_SUCCESS,
     payload: member
 });

@@ -39,6 +39,7 @@ exports[`ViewAllAdmins tests render should render correctly 1`] = `
       ]
     }
     loading={false}
+    onRowClick={[Function]}
   />
 </div>
 `;

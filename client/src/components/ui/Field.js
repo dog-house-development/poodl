@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 const propTypes = {
     onChange: PropTypes.func.isRequired,
     name: PropTypes.string,
     id: PropTypes.string.isRequired,
     type: PropTypes.string,
+    min: PropTypes.string,
+    max: PropTypes.string,
     size: PropTypes.oneOf(['normal', 'large']),
     content: PropTypes.string,
     placeholder: PropTypes.string,
     label: PropTypes.string,
+    autoComplete: PropTypes.oneOf(['on', 'off']),
+    sidebyside: PropTypes.oneOf([1, 2]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 const defaultProps = {
     size: 'normal',
-    type: 'text'
+    type: 'text',
+    autoComplete: 'on'
 };
 
 class Field extends Component {
@@ -31,20 +37,22 @@ class Field extends Component {
 
     render() {
         return (
-            <div className="field-wrapper">
+            <div className={classnames('field-wrapper', { 'inline-field': this.props.sidebyside })}>
                 <p className="field-label">{this.props.label}</p>
-                <p className="field-error-label">{this.props.error}</p>
                 <div className="field-outer">
                     <input
-                        id={this.props.id}
-                        type={this.props.type}
-                        name={this.props.name}
+                        {...this.props}
                         defaultValue={this.props.content}
-                        placeholder={this.props.placeholder}
                         onChange={this.handleChange}
-                        className={`field ${this.props.size} ${this.props.error ? 'field-error-border' : ''}`}
-                        error={this.props.error}
+                        className={classnames(
+                            'field',
+                            this.props.size,
+                            { 'first-side-by-side-input': this.props.sidebyside === 1 },
+                            { 'second-side-by-side-input': this.props.sidebyside === 2 },
+                            { 'field-error-border': this.props.error }
+                        )}
                     />
+                    <p className="field-error-label">{this.props.error}</p>
                 </div>
             </div>
         );

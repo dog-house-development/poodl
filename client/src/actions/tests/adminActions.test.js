@@ -20,4 +20,23 @@ describe('admin actions', () => {
         };
         expect(actions.fetchAdminsSuccess(admins)).toEqual(expectedAction);
     });
+
+    it('should create an action to begin fetching specific admin', () => {
+        const expectedAction = {
+            type: types.FETCH_ADMIN_BEGIN
+        };
+        expect(actions.fetchAdminBegin()).toEqual(expectedAction);
+    });
+
+    it('should create an action when successfully fetched specific admin', () => {
+        const admin = {
+            one: {},
+            loading: false
+        };
+        const expectedAction = {
+            type: types.FETCH_ADMIN_SUCCESS,
+            payload: admin
+        };
+        expect(actions.fetchAdminSuccess(admin)).toEqual(expectedAction);
+    });
 });

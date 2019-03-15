@@ -3,4 +3,19 @@
 .view-all-container {
   max-width: 60vw;
   margin: auto;
+
+  .view-all-header {
+    width: 100%;
+    margin-top: 1rem;
+
+    h1 {
+      display: inline-block;
+    }
+
+    a {
+      margin-top: 0.55rem;
+      display: inline-block;
+      float: right;
+    }
+  }
 }

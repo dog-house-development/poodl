@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { logoutAdmin } from '../../../actions/authActions';
-import Button from '../../ui/Button';
 import { Link } from 'react-router-dom';
+import { filterActivities } from '../../../actions/activityActions';
+import ViewByDate from '../../ui/ViewByDate';
+import moment from 'moment';
 
 const propTypes = {
-    logoutAdmin: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
 
 export class Dashboard extends Component {
-    onLogoutClick = e => {
-        e.preventDefault();
-        this.props.logoutAdmin();
+    constructor(props) {
+        super(props);
+        this.state = {
+            activitiesStartDate: new Date()
+        };
+    }
+
+    getDateRangeText(startDate) {
+        const endDate = new Date(startDate.getTime() + 1 * 86400000);
+        return moment(startDate).format('YYYY-MM-DD') + ',' + moment(endDate).format('YYYY-MM-DD');
+    }
+
+    componentDidMount() {
+        this.props.getActivities({ dateRange: this.getDateRangeText(this.state.activitiesStartDate) });
+    }
+
+    requestDate = date => {
+        this.setState({ activitiesStartDate: date });
+        this.props.getActivities({ dateRange: this.getDateRangeText(date) });
     };
 
     render() {
@@ -23,28 +39,45 @@ export class Dashboard extends Component {
             <div className="dashboard-container">
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
-                <Button content="Log out" onClick={this.onLogoutClick} />
-                <br />
-                <div className="panel">
-                    <h1 className="panel-title">View All</h1>
-                    <Link to="/admins" className="link primary">
+                <div className="panel dashboard-panel">
+                    <h1 className="panel-title">View</h1>
+                    <Link to="/admins" className="button primary medium">
                         Admins
                     </Link>
-                    <br />
-                    <Link to="/volunteers" className="link primary">
+                    <span> </span>
+                    <Link to="/volunteers" className="button primary medium">
                         Volunteers
                     </Link>
-                    <br />
-                    <Link to="/members" className="link primary">
+                    <span> </span>
+                    <Link to="/members" className="button primary medium">
                         Members
                     </Link>
-                </div>
-                <div className="panel">
-                    <h1 className="panel-title">Register New</h1>
-                    <Link to="/register" className="link primary">
-                        Admin
+                    <span> </span>
+                    <Link to="/activities" className="button primary medium">
+                        Activities
                     </Link>
                 </div>
+                <div className="panel dashboard-panel">
+                    <h1 className="panel-title">Register New</h1>
+                    <Link to="/register" className="button primary medium">
+                        Admin
+                    </Link>
+                    <span> </span>
+                    <Link to="/activities/add" className="button primary medium">
+                        Activity
+                    </Link>
+                </div>
+                <h2>Activities</h2>
+                <ViewByDate
+                    requestDate={this.requestDate}
+                    loading={this.props.activitiesLoading}
+                    dateData={{
+                        date: this.state.activitiesStartDate,
+                        data: this.props.activities
+                    }}
+                    clickableRowRoute="activity/"
+                    errors={this.props.errors}
+                />
             </div>
         );
     }
@@ -52,13 +85,16 @@ export class Dashboard extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        auth: state.auth
+        auth: state.auth,
+        activities: state.activities.all,
+        activitiesLoading: state.activities.loading,
+        errors: state.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        logoutAdmin: () => dispatch(logoutAdmin())
+        getActivities: date => dispatch(filterActivities(date))
     };
 };
 

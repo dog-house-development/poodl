@@ -22,6 +22,7 @@ describe('Dashboard tests', () => {
                         name: 'Sandwich Man'
                     }
                 },
+                activities: { all: [], loading: false },
                 errors: {}
             },
             _state
@@ -38,6 +39,7 @@ describe('Dashboard tests', () => {
             />
         );
         instance = wrapper.instance();
+        instance.setState({ activitiesStartDate: new Date('01-14-2019') });
     };
 
     beforeEach(() => {
@@ -54,7 +56,10 @@ describe('Dashboard tests', () => {
                         id: '5c52379d9be6fc0017afd46e',
                         name: 'Sandwich Man'
                     }
-                }
+                },
+                activities: [],
+                activitiesLoading: false,
+                errors: {}
             });
         });
     });
@@ -62,18 +67,7 @@ describe('Dashboard tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
-        });
-    });
-
-    describe('onLogoutClick', () => {
-        it('should run without errors', () => {
-            spyOn(instance, 'onLogoutClick');
-            const e = {
-                target: { name: 'email', value: 'Moo' },
-                preventDefault: () => {}
-            };
-            wrapper.find('Button').simulate('click', e);
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getActivities: () => {} }));
         });
     });
 

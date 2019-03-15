@@ -1,5 +1,112 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Field tests render should render not side by side 1`] = `
+<div
+  className="field-wrapper"
+>
+  <p
+    className="field-label"
+  >
+    Email:
+  </p>
+  <div
+    className="field-outer"
+  >
+    <input
+      autoComplete="on"
+      className="field normal field-error-border"
+      content=""
+      defaultValue=""
+      error={Object {}}
+      id="email"
+      label="Email:"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter email..."
+      size="normal"
+      type="email"
+    />
+    <p
+      className="field-error-label"
+    >
+      <Component />
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Field tests render should render the first side by side input 1`] = `
+<div
+  className="field-wrapper inline-field"
+>
+  <p
+    className="field-label"
+  >
+    Email:
+  </p>
+  <div
+    className="field-outer"
+  >
+    <input
+      autoComplete="on"
+      className="field normal first-side-by-side-input field-error-border"
+      content=""
+      defaultValue=""
+      error={Object {}}
+      id="email"
+      label="Email:"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter email..."
+      sidebyside={1}
+      size="normal"
+      type="email"
+    />
+    <p
+      className="field-error-label"
+    >
+      <Component />
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Field tests render should render the second side by side input 1`] = `
+<div
+  className="field-wrapper inline-field"
+>
+  <p
+    className="field-label"
+  >
+    Email:
+  </p>
+  <div
+    className="field-outer"
+  >
+    <input
+      autoComplete="on"
+      className="field normal second-side-by-side-input field-error-border"
+      content=""
+      defaultValue=""
+      error={Object {}}
+      id="email"
+      label="Email:"
+      name="email"
+      onChange={[Function]}
+      placeholder="Enter email..."
+      sidebyside={2}
+      size="normal"
+      type="email"
+    />
+    <p
+      className="field-error-label"
+    >
+      <Component />
+    </p>
+  </div>
+</div>
+`;
+
 exports[`Field tests render should render with errors correctly 1`] = `
 <div
   className="field-wrapper"
@@ -9,24 +116,28 @@ exports[`Field tests render should render with errors correctly 1`] = `
   >
     Email:
   </p>
-  <p
-    className="field-error-label"
-  >
-    Big bad error
-  </p>
   <div
     className="field-outer"
   >
     <input
+      autoComplete="on"
       className="field normal field-error-border"
+      content=""
       defaultValue=""
       error="Big bad error"
       id="email"
+      label="Email:"
       name="email"
       onChange={[Function]}
       placeholder="Enter email..."
+      size="normal"
       type="email"
     />
+    <p
+      className="field-error-label"
+    >
+      Big bad error
+    </p>
   </div>
 </div>
 `;
@@ -40,21 +151,25 @@ exports[`Field tests render should render without errors correctly 1`] = `
   >
     Email:
   </p>
-  <p
-    className="field-error-label"
-  />
   <div
     className="field-outer"
   >
     <input
-      className="field normal "
+      autoComplete="on"
+      className="field normal"
+      content=""
       defaultValue=""
       error={null}
       id="email"
+      label="Email:"
       name="email"
       onChange={[Function]}
       placeholder="Enter email..."
+      size="normal"
       type="email"
+    />
+    <p
+      className="field-error-label"
     />
   </div>
 </div>

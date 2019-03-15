@@ -6,7 +6,8 @@ import Loading from './Loading';
 
 const propTypes = {
     data: PropTypes.array.isRequired,
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
+    onRowClick: PropTypes.func
 };
 
 const defaultProps = {
@@ -26,7 +27,9 @@ class DataGrid extends Component {
 
     getBodyMarkup() {
         return _.map(this.props.data, row => (
-            <tr key={row.key}>{_.map(row, (value, key) => (key !== 'key' ? <td key={key}>{value}</td> : null))}</tr>
+            <tr key={row.key} onClick={e => this.props.onRowClick(e, row.key)}>
+                {_.map(row, (value, key) => (key !== 'key' ? <td key={key}>{value}</td> : null))}
+            </tr>
         ));
     }
 
