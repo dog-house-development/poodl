@@ -26,13 +26,6 @@ exports[`MemberProfile tests render should render correctly 1`] = `
       <div
         className="panel"
       >
-        <Button
-          content="Edit"
-          dropdownButton={false}
-          kind="primary"
-          onClick={[Function]}
-          size="small"
-        />
         <h3>
           Contact Info
         </h3>
@@ -70,13 +63,7 @@ exports[`MemberProfile tests render should render correctly 1`] = `
           Emergency Contact: 
         </h5>
         <EditableField
-          defaultValue={
-            Array [
-              "",
-              "",
-              "",
-            ]
-          }
+          defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="emergencyContact"
@@ -86,15 +73,8 @@ exports[`MemberProfile tests render should render correctly 1`] = `
       <div
         className="panel"
       >
-        <Button
-          content="Edit"
-          dropdownButton={false}
-          kind="primary"
-          onClick={[Function]}
-          size="small"
-        />
         <h3>
-          Member Info: 
+          Personal Information: 
         </h3>
         <h5>
           Birth Date: 
@@ -170,15 +150,8 @@ exports[`MemberProfile tests render should render correctly 1`] = `
       <div
         className="panel"
       >
-        <Button
-          content="Edit"
-          dropdownButton={false}
-          kind="primary"
-          onClick={[Function]}
-          size="small"
-        />
         <h3>
-          Mebership Information
+          Membership Information
         </h3>
         <h5>
           Membership: 
@@ -277,13 +250,6 @@ exports[`MemberProfile tests render should render correctly 1`] = `
       <div
         className="panel"
       >
-        <Button
-          content="Edit"
-          dropdownButton={false}
-          kind="primary"
-          onClick={[Function]}
-          size="small"
-        />
         <h3>
           Demographic Information: 
         </h3>
