@@ -31,16 +31,9 @@ exports[`AdminProfile tests render should render correctly 1`] = `
           }
         }
       >
-        <h4
-          style={
-            Object {
-              "color": "#a5a9af",
-              "fontSize": "0.8em",
-            }
-          }
-        >
+        <h5>
           0
-        </h4>
+        </h5>
         <p>
           <Component />
         </p>
