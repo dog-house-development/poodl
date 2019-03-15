@@ -26,6 +26,9 @@ export class Dashboard extends Component {
                     <Link to="/members" className="link primary">
                         Members
                     </Link>
+                    <Link to="/activities" className="link primary">
+                        Activities
+                    </Link>
                 </div>
                 <div className="panel dashboard-panel">
                     <h1 className="panel-title">Register New</h1>
