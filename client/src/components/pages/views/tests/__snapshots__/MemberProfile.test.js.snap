@@ -16,9 +16,7 @@ exports[`MemberProfile tests render should render correctly 1`] = `
     </i>
      Back to all members
   </Link>
-  <div
-    className="panel"
-  >
+  <div>
     <div>
       <h1>
          
@@ -26,79 +24,82 @@ exports[`MemberProfile tests render should render correctly 1`] = `
       <div
         className="panel"
       >
-        <h3>
+        <h3
+          className="profile-section-title"
+        >
           Contact Info
         </h3>
-        <h5>
-          Email: 
-        </h5>
+        <Button
+          content="Edit"
+          dropdownButton={false}
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+        />
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="email"
           key="email"
+          label="Email:"
         />
-        <h5>
-          Phone Number: 
-        </h5>
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="phoneNumber"
           key="phoneNumber"
+          label="Phone Number:"
         />
-        <h5>
-          Address: 
-        </h5>
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="address"
           key="address"
+          label="Address:"
         />
-        <h5>
-          Emergency Contact: 
-        </h5>
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="emergencyContact"
           key="emergencyContact"
+          label="Emergency Contact:"
         />
       </div>
       <div
         className="panel"
       >
-        <h3>
-          Personal Information: 
+        <h3
+          className="profile-section-title"
+        >
+          Personal Information 
         </h3>
-        <h5>
-          Birth Date: 
-        </h5>
+        <Button
+          content="Edit"
+          dropdownButton={false}
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+        />
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="birthDate"
           key="birthDate"
+          label="Birth Date:"
         />
-        <h5>
-          Senior Center: 
-        </h5>
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="seniorCenter"
           key="seniorCenter"
+          label="Senior Center:"
         />
-        <h5>
-          Special Diet: 
-        </h5>
         <EditableField
           defaultValue={
             Array [
@@ -110,20 +111,16 @@ exports[`MemberProfile tests render should render correctly 1`] = `
           handleChange={[Function]}
           id="specialDiet"
           key="specialDiet"
+          label="Special Diet:"
         />
-        <h5>
-          Medical Issues: 
-        </h5>
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="ethnicity"
           key="ethnicity"
+          label="Medical Issues:"
         />
-        <h5>
-          Disabilities: 
-        </h5>
         <EditableField
           defaultValue={
             Array [
@@ -135,32 +132,38 @@ exports[`MemberProfile tests render should render correctly 1`] = `
           handleChange={[Function]}
           id="disabilities"
           key="disabilities"
+          label="Disabilities:"
         />
-        <h5>
-          Meal Preference: 
-        </h5>
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="mealPreference"
           key="mealPreference"
+          label="Meal Preference:"
         />
       </div>
       <div
         className="panel"
       >
-        <h3>
+        <h3
+          className="profile-section-title"
+        >
           Membership Information
         </h3>
-        <h5>
-          Membership: 
-        </h5>
+        <Button
+          content="Edit"
+          dropdownButton={false}
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+        />
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="memberisNewOrRenewal"
           key="memberisNewOrRenewal"
+          label="Membership:"
           name="memberIsNewOrRenewal"
           optionValues={
             Array [
@@ -169,33 +172,27 @@ exports[`MemberProfile tests render should render correctly 1`] = `
             ]
           }
         />
-        <h5>
-          Membership Date: 
-        </h5>
         <EditableField
           editMode={false}
           handleChange={[Function]}
           id="membershipDate"
           key="membershipDate"
+          label="Membership Date:"
         />
-        <h5>
-          Renewal Date: 
-        </h5>
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="renewalDate"
           key="renewalDate"
+          label="Renewal Date:"
         />
-        <h5>
-          Payment Form: 
-        </h5>
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="formOfPayment"
           key="formOfPayment"
+          label="Payment Form:"
           name="formOfPayment"
           optionValues={
             Array [
@@ -204,24 +201,20 @@ exports[`MemberProfile tests render should render correctly 1`] = `
             ]
           }
         />
-        <h5>
-          Bank Check Number: 
-        </h5>
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="bankCheckNumber"
           key="bankCheckNumber"
+          label="Bank Check Number:"
         />
-        <h5>
-          Member Included Senior Center In Estate Plans: 
-        </h5>
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="includedInEstatePlans"
           key="includedInEstatePlans"
+          label="Member Included Senior Center In Estate Plans:"
           name="includedInEstatePlans"
           optionValues={
             Array [
@@ -230,14 +223,12 @@ exports[`MemberProfile tests render should render correctly 1`] = `
             ]
           }
         />
-        <h5>
-          Member Wants Info About Including Senior Center In Estate Plans: 
-        </h5>
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="wantsEstateInfo"
           key="wantsEstateInfo"
+          label="Member Wants Info About Including Senior Center In Estate Plans:"
           name="wantsEstateInfo"
           optionValues={
             Array [
@@ -250,56 +241,55 @@ exports[`MemberProfile tests render should render correctly 1`] = `
       <div
         className="panel"
       >
-        <h3>
-          Demographic Information: 
+        <h3
+          className="profile-section-title"
+        >
+          Demographic Information
         </h3>
-        <h5>
-          Race: 
-        </h5>
+        <Button
+          content="Edit"
+          dropdownButton={false}
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+        />
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="race"
           key="race"
+          label="Race:"
         />
-        <h5>
-          Ethnicity: 
-        </h5>
         <EditableField
           defaultValue=""
           editMode={false}
           handleChange={[Function]}
           id="ethnicity"
           key="ethnicity"
+          label="Ethnicity:"
         />
-        <h5>
-          Number In Household: 
-        </h5>
         <EditableField
           defaultValue={0}
           editMode={false}
           handleChange={[Function]}
           id="numberInHousehold"
           key="numberInHousehold"
+          label="Number In Household:"
         />
-        <h5>
-          Monthly Income: 
-        </h5>
         <EditableField
           editMode={false}
           handleChange={[Function]}
           id="monthlyIncome"
           key="monthlyIncome"
+          label="Monthly Income:"
         />
-        <h5>
-          Disabled: 
-        </h5>
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="Disabled"
           key="Disabled"
+          label="Disabled:"
           name="Disabled"
           optionValues={
             Array [
@@ -308,14 +298,12 @@ exports[`MemberProfile tests render should render correctly 1`] = `
             ]
           }
         />
-        <h5>
-          Veteran: 
-        </h5>
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="Veteran"
           key="Veteran"
+          label="Veteran:"
           name="Veteran"
           optionValues={
             Array [
@@ -324,14 +312,12 @@ exports[`MemberProfile tests render should render correctly 1`] = `
             ]
           }
         />
-        <h5>
-          Spouse Over 60: 
-        </h5>
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="isSpouse60"
           key="isSpouse60"
+          label="Spouse Over 60:"
           name="isSpouse60"
           optionValues={
             Array [
@@ -340,14 +326,12 @@ exports[`MemberProfile tests render should render correctly 1`] = `
             ]
           }
         />
-        <h5>
-          Disabled & Living With Someone Over 60: 
-        </h5>
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="wantsEstateInfo"
           key="wantsEstateInfo"
+          label="Disabled & Living With Someone Over 60:"
           name="wantsEstateInfo"
           optionValues={
             Array [
@@ -356,32 +340,26 @@ exports[`MemberProfile tests render should render correctly 1`] = `
             ]
           }
         />
-        <h5>
-          Caregiver: 
-        </h5>
         <EditableField
           editMode={false}
           handleChange={[Function]}
           id="caregiver"
           key="caregiver"
+          label="Caregiver:"
         />
-        <h5>
-          Grandparent: 
-        </h5>
         <EditableField
           editMode={false}
           handleChange={[Function]}
           id="grandparent"
           key="grandparent"
+          label="Grandparent:"
         />
-        <h5>
-          needsAADL: 
-        </h5>
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="needsAADL"
           key="needsAADL"
+          label="needsAADL:"
           name="needsAADL"
           optionValues={
             Array [
@@ -390,14 +368,12 @@ exports[`MemberProfile tests render should render correctly 1`] = `
             ]
           }
         />
-        <h5>
-          needsIADL: 
-        </h5>
         <EditableBoolean
           editMode={false}
           handleChange={[Function]}
           id="needsIADL"
           key="needsIADL"
+          label="needsIADL:"
           name="needsIADL"
           optionValues={
             Array [
