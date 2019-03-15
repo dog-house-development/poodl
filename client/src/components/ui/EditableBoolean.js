@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Field from './Field';
 
 // make sure to do the prop types
 

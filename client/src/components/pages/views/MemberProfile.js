@@ -40,7 +40,6 @@ export class MemberProfile extends Component {
                 phoneNumber: '',
                 emergencyContact: '',
                 seniorCenter: '',
-                emergencyContact: ['', '', ''],
                 bankCheckNumber: '',
                 renewalDate: '',
                 specialDiet: ['', ''],
