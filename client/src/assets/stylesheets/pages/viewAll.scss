@@ -1,7 +1,8 @@
 @import '_presets.scss';
 
 .view-all-container {
-  max-width: 60vw;
+  width: 95%;
+  max-width: 800px;
   margin: auto;
 
   .view-all-header {

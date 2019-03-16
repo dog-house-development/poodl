@@ -40,7 +40,7 @@ export class Dashboard extends Component {
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
                 <div className="panel dashboard-panel">
-                    <h1 className="panel-title">View</h1>
+                    <h1 className="panel-title">Manage</h1>
                     <Link to="/admins" className="button primary medium">
                         Admins
                     </Link>
@@ -55,16 +55,6 @@ export class Dashboard extends Component {
                     <span> </span>
                     <Link to="/activities" className="button primary medium">
                         Activities
-                    </Link>
-                </div>
-                <div className="panel dashboard-panel">
-                    <h1 className="panel-title">Register New</h1>
-                    <Link to="/register" className="button primary medium">
-                        Admin
-                    </Link>
-                    <span> </span>
-                    <Link to="/activities/add" className="button primary medium">
-                        Activity
                     </Link>
                 </div>
                 <h2>Activities</h2>
