@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
+import Loading from './Loading';
 
 const propTypes = {
     dateData: PropTypes.object.isRequired,
@@ -54,6 +55,13 @@ class ViewByDate extends Component {
                         {moment(currentDate).format('MMM Do, YYYY') === moment(Date.now()).format('MMM Do, YYYY')
                             ? 'Today'
                             : moment(currentDate).format('dddd')}
+                        {this.props.loading ? (
+                            <div className="vbd-title-loading">
+                                <Loading content="" size="small" kind="secondary" />
+                            </div>
+                        ) : (
+                            ''
+                        )}
                     </h2>
                     <p className="view-by-date-title-secondary">{moment(currentDate).format('MMM Do, YYYY')}</p>
                 </div>
@@ -100,7 +108,7 @@ class ViewByDate extends Component {
 
     getTableMarkup() {
         if (this.props.loading) {
-            return <div />;
+            return;
         } else if (!_.isEmpty(this.props.errors)) {
             return <p>Error time</p>;
         }
