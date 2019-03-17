@@ -17,7 +17,7 @@ exports[`Dashboard tests render should render correctly 1`] = `
     <h1
       className="panel-title"
     >
-      View
+      Manage
     </h1>
     <Link
       className="button primary medium"
@@ -55,32 +55,6 @@ exports[`Dashboard tests render should render correctly 1`] = `
       to="/activities"
     >
       Activities
-    </Link>
-  </div>
-  <div
-    className="panel dashboard-panel"
-  >
-    <h1
-      className="panel-title"
-    >
-      Register New
-    </h1>
-    <Link
-      className="button primary medium"
-      replace={false}
-      to="/register"
-    >
-      Admin
-    </Link>
-    <span>
-       
-    </span>
-    <Link
-      className="button primary medium"
-      replace={false}
-      to="/activities/add"
-    >
-      Activity
     </Link>
   </div>
   <h2>

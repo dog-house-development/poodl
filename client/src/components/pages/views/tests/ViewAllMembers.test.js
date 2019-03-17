@@ -21,14 +21,14 @@ describe('ViewAllMembers tests', () => {
                             _id: '123',
                             firstName: 'Big',
                             lastName: 'Tup',
-                            membershipDate: '02/02/2020',
+                            membershipDate: '1950-03-15T20:07:42.762Z',
                             email: 'bigtup@nowhere.com'
                         },
                         {
                             _id: '321',
                             firstName: 'Lil',
                             lastName: 'Tup',
-                            membershipDate: '02/02/2020',
+                            membershipDate: '1950-03-15T20:07:42.762Z',
                             email: 'liltup@nowhere.com'
                         }
                     ]
@@ -63,14 +63,14 @@ describe('ViewAllMembers tests', () => {
                         _id: '123',
                         firstName: 'Big',
                         lastName: 'Tup',
-                        membershipDate: '02/02/2020',
+                        membershipDate: '1950-03-15T20:07:42.762Z',
                         email: 'bigtup@nowhere.com'
                     },
                     {
                         _id: '321',
                         firstName: 'Lil',
                         lastName: 'Tup',
-                        membershipDate: '02/02/2020',
+                        membershipDate: '1950-03-15T20:07:42.762Z',
                         email: 'liltup@nowhere.com'
                     }
                 ],
@@ -101,14 +101,14 @@ describe('ViewAllMembers tests', () => {
                     key: '123',
                     firstName: 'Big',
                     lastName: 'Tup',
-                    membershipDate: 'February 2nd, 2020',
+                    membershipDate: 'March 15th, 1950',
                     email: 'bigtup@nowhere.com'
                 },
                 {
                     key: '321',
                     firstName: 'Lil',
                     lastName: 'Tup',
-                    membershipDate: 'February 2nd, 2020',
+                    membershipDate: 'March 15th, 1950',
                     email: 'liltup@nowhere.com'
                 }
             ]);

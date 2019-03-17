@@ -15,6 +15,16 @@
 
       .view-by-date-title-main {
         font-size: 1.4em;
+        display: inline-block;
+        margin: 0 0.5em;
+        position: relative;
+
+        .vbd-title-loading {
+          display: inline-block;
+          position: absolute;
+          right: -25px;
+          top: 2px;
+        }
       }
 
       .view-by-date-title-secondary {
