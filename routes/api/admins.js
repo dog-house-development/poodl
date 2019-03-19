@@ -6,7 +6,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 // Load input validation
-const validateRegisterInput = require('../../validation/admin/registerAdmin');
+const validateRegisterAdmin = require('../../validation/admin/registerAdmin');
 const validateLoginInput = require('../../validation/login');
 const validateEditInputByID = require('../../validation/admin/editAdminByID');
 const validateFilterInput = require('../../validation/admin/adminFilter');
@@ -72,15 +72,13 @@ router.post('/filter', (req, res) => {
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
+    const newAdmin = new Admin(req.body);
+    if (invalid(newAdmin, res)) return;
 
-    // Check validation
+    const { errors, isValid } = validateRegisterAdmin(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
     }
-
-    const newAdmin = new Admin(registerReformat(req.body));
-    if (invalid(newAdmin, res)) return;
     // Hash password before saving in database
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newAdmin.password, salt, (err, hash) => {
@@ -89,7 +87,10 @@ router.post('/register', (req, res) => {
             newAdmin
                 .save()
                 .then(admin => res.json(admin))
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log(err);
+                    return res.status(400).json(err);
+                });
         });
     });
 });

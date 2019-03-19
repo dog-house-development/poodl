@@ -9,23 +9,23 @@ const schema = new Schema(
         name: {
             type: String,
             unique: true,
-            required: [true, 'Name field is required']
+            required: [true, 'Name is required']
         },
         email: {
             type: String,
-            required: [true, 'Email field is required']
+            required: [true, 'Email is required']
         },
         address: {
             type: String,
-            required: [true, 'Address field is required']
+            required: [true, 'Address is required']
         },
         phone: {
             type: String,
-            required: [true, 'Phone field is required']
+            required: [true, 'Phone is required']
         },
         operationHours: {
             type: String,
-            required: [true, 'operationHours field is required']
+            required: [true, 'Operation hours is required']
         }
     },
     { timestamps: true }

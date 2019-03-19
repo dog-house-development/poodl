@@ -36,7 +36,7 @@ const schema = new Schema(
 schema.post('save', keyError({ name: 'Activity already exists' }));
 
 schema.pre('save', function(next) {
-    if (this.startDate > this.endDate) {
+    if (this.startDate >= this.endDate) {
         next({ startDate: 'Start date must be before end date', endDate: 'End date must be after start date' });
     }
 

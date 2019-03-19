@@ -2,36 +2,40 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
 const keyError = require('../utility/schemaMiddleware');
+const Validator = require('validator');
 
-// Create Schema
 const schema = new Schema(
     {
         firstName: {
             type: String,
-            required: [true, 'firstName field is required']
+            required: [true, 'First name is required']
         },
         lastName: {
             type: String,
-            required: [true, 'lastName field is required']
+            required: [true, 'Last name is required']
         },
         email: {
             type: String,
             unique: true,
-            required: [true, 'email field is required']
+            required: [true, 'Email is required'],
+            validate: {
+                validator: Validator.isEmail,
+                message: 'Email is invalid'
+            }
         },
         password: {
             type: String,
-            required: [true, 'password field is required']
+            required: [true, 'Password is required']
         },
         accessLevel: {
             type: String,
             enum: ['SuperAdmin', 'Admin', 'Volunteer'],
-            default: 'None',
-            require: [true, 'accessLevel field is required']
+            default: 'Admin',
+            required: [true, 'Access Level is required']
         },
-        seniorCenterId: {
-            type: ObjectId
-            //required: [true, 'seniorCenterId field is required']
+        seniorCenter: {
+            type: ObjectId,
+            required: [true, 'Senior center is required']
         },
         middleInitial: {
             type: String
@@ -45,7 +49,7 @@ const schema = new Schema(
                 function() {
                     return this.accessLevel == 'Volunteer';
                 },
-                'streetAddress field is required'
+                'Street address is required'
             ]
         },
         city: {
@@ -54,7 +58,7 @@ const schema = new Schema(
                 function() {
                     return this.accessLevel == 'Volunteer';
                 },
-                'city field is required'
+                'City is required'
             ]
         },
         state: {
@@ -63,7 +67,7 @@ const schema = new Schema(
                 function() {
                     return this.accessLevel == 'Volunteer';
                 },
-                'state field is required'
+                'State is required'
             ]
         },
         zip: {
@@ -72,8 +76,12 @@ const schema = new Schema(
                 function() {
                     return this.accessLevel == 'Volunteer';
                 },
-                'zip field is required'
-            ]
+                'Zip is required'
+            ],
+            validate: {
+                validator: v => Validator.isPostalCode(v, 'US'),
+                message: 'Zip code is invalid'
+            }
         },
         homePhone: {
             type: Number,
@@ -81,8 +89,12 @@ const schema = new Schema(
                 function() {
                     return this.accessLevel == 'Volunteer';
                 },
-                'homePhone field is required'
-            ]
+                'Home phone is required'
+            ],
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Home phone is an invalid phone number'
+            }
         },
         cellPhone: {
             type: String,
@@ -90,8 +102,12 @@ const schema = new Schema(
                 function() {
                     return this.accessLevel == 'Volunteer';
                 },
-                'cellPhone field is required'
-            ]
+                'Cell phone is required'
+            ],
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Cell phone is an invalid phone number'
+            }
         },
         references: [
             {
@@ -100,7 +116,7 @@ const schema = new Schema(
                     function() {
                         return this.accessLevel == 'Volunteer';
                     },
-                    'references field is required'
+                    'References are required'
                 ]
             }
         ],
@@ -173,7 +189,7 @@ const schema = new Schema(
                 enum: [
                     'Create Flyers, Brochures, and/or Posters',
                     'Assist with Events',
-                    'Solicit Auction Items,Donations, Prizes, In-Kind Services',
+                    'Solicit Auction Items, Donations, Prizes, In-Kind Services',
                     'None'
                 ],
                 default: 'None'
@@ -193,6 +209,6 @@ const schema = new Schema(
     { timestamps: true }
 );
 
-schema.post('save', keyError({ email: 'Activity already exists' }));
+schema.post('save', keyError({ email: 'Email already exists' }));
 
 module.exports = mongoose.model('admins', schema);
