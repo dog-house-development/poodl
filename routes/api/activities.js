@@ -6,8 +6,8 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 const invalid = require('../../utility/validation');
-const validateEditInputByID = require('../../validation/editActivityByID');
-const validateFilterInput = require('../../validation/activityFilter');
+const validateEditInputByID = require('../../validation/activity/editActivityByID');
+const validateFilterInput = require('../../validation/activity/activityFilter');
 
 //Load Utilities
 const jsonBuilder = require('../../utility/stringConverter');
