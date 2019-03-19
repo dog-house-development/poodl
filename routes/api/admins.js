@@ -70,7 +70,7 @@ router.post('/filter', (req, res) => {
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
+    let { errors, isValid } = validateRegisterInput(req.body);
 
     // Check validation
     if (!isValid) {
