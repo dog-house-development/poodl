@@ -17,7 +17,7 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
      Back to home
   </Link>
   <h1>
-    View All Members
+    Manage Members
   </h1>
   <DataGrid
     data={
@@ -27,14 +27,14 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
           "firstName": "Big",
           "key": "123",
           "lastName": "Tup",
-          "membershipDate": "February 2nd, 2020",
+          "membershipDate": "March 15th, 1950",
         },
         Object {
           "email": "liltup@nowhere.com",
           "firstName": "Lil",
           "key": "321",
           "lastName": "Tup",
-          "membershipDate": "February 2nd, 2020",
+          "membershipDate": "March 15th, 1950",
         },
       ]
     }

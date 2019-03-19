@@ -5,7 +5,7 @@ const propTypes = {
     onClick: PropTypes.func,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     kind: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-    content: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+    content: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     type: PropTypes.string,
     formButton: PropTypes.bool,
     dropdownButton: PropTypes.bool
@@ -25,7 +25,7 @@ class Button extends Component {
                 className={`button ${this.props.size} ${this.props.kind} ${this.props.formButton ? 'form-button' : ''}`}
                 type={this.props.type}
             >
-                {this.props.content}
+                {this.props.content ? this.props.content : this.props.children}
             </button>
         );
     }

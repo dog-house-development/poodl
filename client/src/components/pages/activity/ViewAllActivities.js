@@ -41,8 +41,9 @@ export class ViewAllActivities extends Component {
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
                 <div className="view-all-header">
-                    <h1>View All Activities</h1>
+                    <h1>Manage Activities</h1>
                     <Link to="/activities/add" className="button small primary">
+                        <i className="material-icons button-icon">add</i>
                         Add Activity
                     </Link>
                 </div>

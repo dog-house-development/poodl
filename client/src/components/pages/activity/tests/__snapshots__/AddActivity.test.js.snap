@@ -7,14 +7,14 @@ exports[`Add activity tests render should render correctly 1`] = `
   <Link
     className="button small tertiary"
     replace={false}
-    to="/dashboard"
+    to="/activities"
   >
     <i
       className="material-icons"
     >
       keyboard_backspace
     </i>
-     Back to home
+     Back to all activities
   </Link>
   <Form
     buttonLabel="Add Activity"

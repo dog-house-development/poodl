@@ -20,13 +20,18 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
     className="view-all-header"
   >
     <h1>
-      View All Activities
+      Manage Activities
     </h1>
     <Link
       className="button small primary"
       replace={false}
       to="/activities/add"
     >
+      <i
+        className="material-icons button-icon"
+      >
+        add
+      </i>
       Add Activity
     </Link>
   </div>
