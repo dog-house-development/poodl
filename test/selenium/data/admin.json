@@ -1,0 +1,24 @@
+{
+    "seniorCenters": [
+        {
+            "_id": "5c75f99fe7179a3e36ddee5b",
+            "name": "Fun place",
+            "email": "EMAIL@email.com",
+            "address": "Here",
+            "phone": "123-456-7890",
+            "operationHours": "1-2"
+        }
+    ],
+
+    "admins": [
+        {
+            "_id": "5c75f8b1e7179a3e36ddee0e",
+            "firstName": "Bob",
+            "lastName": "Bub",
+            "email": "test1@test.test",
+            "password": "$2a$10$cMsQPmQcQD13WATkT8CxGOEyWDUq7CajQhxAY6FOXeJtqRRyX5nDO",
+            "seniorCenter": "5c75f99fe7179a3e36ddee5b",
+            "superAdmin": "true"
+        }
+    ]
+}
