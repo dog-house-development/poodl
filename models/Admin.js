@@ -16,7 +16,7 @@ const schema = new Schema(
         },
         email: {
             type: String,
-            unique: true,
+            unique: 'Email already exists',
             required: [true, 'Email is required'],
             validate: {
                 validator: Validator.isEmail,
@@ -47,7 +47,7 @@ const schema = new Schema(
             type: String,
             required: [
                 function() {
-                    return this.accessLevel == 'Volunteer';
+                    return this.accessLevel === 'Volunteer';
                 },
                 'Street address is required'
             ]
@@ -56,7 +56,7 @@ const schema = new Schema(
             type: String,
             required: [
                 function() {
-                    return this.accessLevel == 'Volunteer';
+                    return this.accessLevel === 'Volunteer';
                 },
                 'City is required'
             ]
@@ -65,16 +65,16 @@ const schema = new Schema(
             type: String,
             required: [
                 function() {
-                    return this.accessLevel == 'Volunteer';
+                    return this.accessLevel === 'Volunteer';
                 },
                 'State is required'
             ]
         },
         zip: {
-            type: Number,
+            type: String,
             required: [
                 function() {
-                    return this.accessLevel == 'Volunteer';
+                    return this.accessLevel === 'Volunteer';
                 },
                 'Zip is required'
             ],
@@ -84,10 +84,10 @@ const schema = new Schema(
             }
         },
         homePhone: {
-            type: Number,
+            type: String,
             required: [
                 function() {
-                    return this.accessLevel == 'Volunteer';
+                    return this.accessLevel === 'Volunteer';
                 },
                 'Home phone is required'
             ],
@@ -100,7 +100,7 @@ const schema = new Schema(
             type: String,
             required: [
                 function() {
-                    return this.accessLevel == 'Volunteer';
+                    return this.accessLevel === 'Volunteer';
                 },
                 'Cell phone is required'
             ],
@@ -109,17 +109,23 @@ const schema = new Schema(
                 message: 'Cell phone is an invalid phone number'
             }
         },
-        references: [
-            {
-                type: String,
-                required: [
-                    function() {
-                        return this.accessLevel == 'Volunteer';
-                    },
-                    'References are required'
-                ]
+        references: {
+            type: [String],
+            // required: [
+            //     function() {
+            //         return this.accessLevel === 'Volunteer';
+            //     },
+            //     'References are required'
+            // ],
+            validate: {
+                validator: function(v) {
+                    if (this.accessLevel === 'Volunteer') {
+                        return v.length > 0;
+                    }
+                },
+                message: 'References are required'
             }
-        ],
+        },
         learnAboutVolunteerProgram: {
             type: String,
             enum: [
@@ -209,6 +215,19 @@ const schema = new Schema(
     { timestamps: true }
 );
 
-schema.post('save', keyError({ email: 'Email already exists' }));
+//schema.post('save', keyError({ email: 'Email already exists' }));
+// schema.post('save', function(error, doc, next) {
+//     // console.log('post save error', error);
+//     let transformError = {};
+//     if (error.name === 'ValidationError') {
+//         Object.keys(error.errors).forEach(function(key) {
+//             transformError[key] = error.errors[key].message;
+//         });
+//         console.log(transformError);
+//         next(transformError);
+//     } else {
+//         next();
+//     }
+// });
 
 module.exports = mongoose.model('admins', schema);

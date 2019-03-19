@@ -32,6 +32,8 @@ mongoose
     .then(() => console.log('MongoDB successfully connected'))
     .catch(err => console.log(err));
 
+mongoose.plugin(require('mongoose-beautiful-unique-validation'));
+
 // Passport middleware
 app.use(passport.initialize());
 

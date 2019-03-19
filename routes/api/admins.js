@@ -73,7 +73,7 @@ router.post('/filter', (req, res) => {
 // @access Public
 router.post('/register', (req, res) => {
     const newAdmin = new Admin(req.body);
-    if (invalid(newAdmin, res)) return;
+    // if (invalid(newAdmin, res)) return;
 
     const { errors, isValid } = validateRegisterAdmin(req.body);
     if (!isValid) {
