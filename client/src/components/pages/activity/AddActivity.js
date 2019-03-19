@@ -88,8 +88,8 @@ export class AddActivity extends Component {
     render() {
         return (
             <div className="activity-container">
-                <Link to="/dashboard" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to home
+                <Link to="/activities" className="button small tertiary">
+                    <i className="material-icons">keyboard_backspace</i> Back to all activities
                 </Link>
                 <Form
                     noValidate

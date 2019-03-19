@@ -44,7 +44,7 @@ export class ViewAllMembers extends Component {
                 <Link to="/dashboard" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
-                <h1>View All Members</h1>
+                <h1>Manage Members</h1>
                 <DataGrid
                     data={this.getDataGridContent()}
                     loading={this.props.loading}

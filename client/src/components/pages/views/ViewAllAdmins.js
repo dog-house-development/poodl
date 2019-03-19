@@ -44,7 +44,13 @@ export class ViewAllAdmins extends Component {
                 <Link to="/dashboard" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
-                <h1>View All Admins</h1>
+                <div className="view-all-header">
+                    <h1>Manage Admins</h1>
+                    <Link to="/register" className="button small primary">
+                        <i className="material-icons button-icon">add</i>
+                        Add admin
+                    </Link>
+                </div>
                 <DataGrid
                     data={this.getDataGridContent()}
                     loading={this.props.loading}

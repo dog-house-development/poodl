@@ -1,6 +1,33 @@
 @import '_presets.scss';
 
 .view-all-container {
-  max-width: 60vw;
+  width: 95%;
+  max-width: 800px;
   margin: auto;
+
+  .view-all-header {
+    width: 100%;
+    margin-top: 1rem;
+
+    h1 {
+      display: inline-block;
+    }
+
+    a {
+      margin-top: 0.55rem;
+      display: inline-block;
+      float: right;
+    }
+  }
+
+  .profile-section-title {
+    margin-bottom: 0.5em;
+  }
+
+  h5 {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    color: $gray-4;
+    margin-top: 0.5em;
+  }
 }

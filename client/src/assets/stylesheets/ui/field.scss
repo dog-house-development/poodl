@@ -4,6 +4,10 @@
   position: relative;
   margin-bottom: 1.5rem;
 
+  &.editable-field-wrapper {
+    margin-bottom: 1rem;
+  }
+
   .field-label {
     font-size: 13px;
     font-weight: bold;
@@ -22,7 +26,6 @@
 
   .field-outer {
     display: flex;
-    //margin-bottom: 10px;
 
     .field {
       flex-grow: 1;

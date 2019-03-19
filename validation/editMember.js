@@ -14,7 +14,6 @@ module.exports = function validateRegisterInput(data) {
     data.renewalDate = !isEmpty(data.renewalDate) ? data.renewalDate : '';
     data.mealPreference = !isEmpty(data.mealPreference) ? data.mealPreference : '';
 
-    // Name checks
     if (Validator.isEmpty(data.firstName)) {
         errors.firstName = 'First name field is required';
     }

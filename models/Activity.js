@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
-const keyError = require('../utils/schemaMiddleware');
+const keyError = require('../utility/schemaMiddleware');
 
 const schema = new Schema(
     {

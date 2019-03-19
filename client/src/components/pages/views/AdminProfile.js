@@ -39,7 +39,7 @@ export class AdminProfile extends Component {
                             }
                             return (
                                 <div key={pair[0]} style={{ margin: '10px 0' }}>
-                                    <h4 style={{ color: '#a5a9af', fontSize: '0.8em' }}>{_.upperCase(pair[0])}</h4>
+                                    <h5>{_.upperCase(pair[0])}</h5>
                                     <p>{pair[1]}</p>
                                 </div>
                             );

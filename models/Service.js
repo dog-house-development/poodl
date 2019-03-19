@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 const ServiceSchema = new Schema(
     {
@@ -38,9 +39,6 @@ const ServiceSchema = new Schema(
         seniorCenter: {
             type: String,
             required: true
-        },
-        maxCapacity: {
-            type: String
         }
     },
     { timestamps: true }

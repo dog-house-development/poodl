@@ -2,7 +2,7 @@
 
 .panel {
   background: #fff;
-  padding: 24px;
+  padding: 2vw;
   border-radius: $border-radius-default;
   overflow: hidden;
   margin: 24px 0;
@@ -10,9 +10,26 @@
   -moz-box-shadow: 0px 0px 52px -9px rgba(194, 194, 194, 0.8);
   box-shadow: 0px 0px 52px -9px rgba(194, 194, 194, 0.8);
 
+  .h5 {
+    color: #a5a9af;
+    font-size: 0.8em;
+  }
   .panel-title {
     font-weight: bold;
     margin: 0 0 10px 0;
+  }
+  .panel-left {
+    float: left;
+  }
+  .panel-right {
+    float: right;
+  }
+  .panel-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .clear {
+    clear: both;
   }
 
   .form-error {
