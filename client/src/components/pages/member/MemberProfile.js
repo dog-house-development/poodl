@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchMember } from '../../../actions/memberActions';
 import { editMember } from '../../../actions/memberActions';
-// import Loading from '../../ui/Loading';
+import Loading from '../../ui/Loading';
 import EditableField from '../../ui/EditableField';
 import EditableRadio from '../../ui/EditableRadio';
 import EditableCheckBox from '../../ui/EditableCheckBox';
@@ -146,7 +146,8 @@ export class MemberProfile extends Component {
                 </Link>
                 <div>
                     <h1>
-                        {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
+                        {this.props.loading ? <Loading /> : _.get(this.props.member, 'firstName')}{' '}
+                        {this.props.loading ? '' : _.get(this.props.member, 'lastName')}
                     </h1>
                     <div>{this.getPanelMarkup()}</div>
                 </div>
@@ -158,6 +159,7 @@ export class MemberProfile extends Component {
 export const mapStateToProps = (state, props) => {
     return {
         member: state.members.one,
+        loading: state.members.loading,
         errors: state.errors
     };
 };
