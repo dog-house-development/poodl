@@ -5,6 +5,10 @@ const Validator = require('validator');
 
 const adminSchema = new Schema(
     {
+        seniorCenterId: {
+            type: ObjectId,
+            required: [true, 'Senior center is required']
+        },
         firstName: {
             type: String,
             required: [true, 'First name is required']
@@ -32,10 +36,7 @@ const adminSchema = new Schema(
             default: 'Admin',
             required: [true, 'Access Level is required']
         },
-        seniorCenter: {
-            type: ObjectId,
-            required: [true, 'Senior center is required']
-        },
+
         middleInitial: {
             type: String
         },
@@ -92,7 +93,7 @@ const adminSchema = new Schema(
             ],
             validate: {
                 validator: Validator.isMobilePhone,
-                message: 'Home phone is an invalid phone number'
+                message: 'Home phone is invalid'
             }
         },
         cellPhone: {
@@ -105,7 +106,7 @@ const adminSchema = new Schema(
             ],
             validate: {
                 validator: Validator.isMobilePhone,
-                message: 'Cell phone is an invalid phone number'
+                message: 'Cell phone invalid'
             }
         },
         references: {
@@ -143,8 +144,7 @@ const adminSchema = new Schema(
         houseMaintenanceAndRepairs: [
             {
                 type: String,
-                enum: ['Carpentry', 'Plumbing', 'Masonry', 'Cleaning', 'Electrical', 'Painting', 'None'],
-                default: 'None'
+                enum: ['Carpentry', 'Plumbing', 'Masonry', 'Cleaning', 'Electrical', 'Painting', 'None']
             }
         ],
         groundMaintenance: [

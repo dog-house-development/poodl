@@ -28,16 +28,16 @@ const activitySchema = new Schema(
         },
         admins: [ObjectId],
         members: [ObjectId],
-        seniorCenter: {
+        maxCapacity: {
+            type: Number,
+            min: 1
+        },
+        seniorCenterId: {
             type: ObjectId,
             required: true
         }
     },
     { timestamps: true }
 );
-
-// remove later because activity name will be shared with others
-// this exists now for an example for other activitySchemas
-activitySchema.plugin(require('./plugins/duplicateError'), { name: 'Activity already exists' });
 
 module.exports = activitySchema;

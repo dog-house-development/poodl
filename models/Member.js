@@ -1,19 +1,32 @@
 const mongoose = require('mongoose');
+const Validator = require('validator');
 const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Create Schema
 const memberSchema = new Schema(
     {
-        //Contact Info
+        seniorCenterId: {
+            type: ObjectId,
+            required: true
+        },
+        // Contact Info
         email: {
-            type: String
+            type: String,
+            validate: {
+                validator: Validator.isEmail,
+                message: 'Email is invalid'
+            }
         },
         address: {
             type: String
         },
         phoneNumber: {
-            type: String
+            type: String,
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Phone number is invalid'
+            }
         },
         emergencyContactName: {
             type: String
@@ -22,10 +35,13 @@ const memberSchema = new Schema(
             type: String
         },
         emergencyContactPhoneNumber: {
-            type: String
+            type: String,
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Phone number is invalid'
+            }
         },
-        //Member Info
-
+        // Member Info
         firstName: {
             type: String,
             required: true
@@ -36,10 +52,6 @@ const memberSchema = new Schema(
         },
         birthDate: {
             type: Date
-        },
-        seniorCenterId: {
-            type: ObjectId,
-            required: true
         },
         specialDiet: {
             type: String
@@ -58,7 +70,7 @@ const memberSchema = new Schema(
         },
 
         //Membership Information
-        memberisNewOrRenewal: {
+        memberIsNewOrRenewal: {
             type: String,
             default: 'new'
         },
