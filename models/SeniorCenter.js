@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Validator = require('validator');
 
-// Create Schema
 const seniorCenterSchema = new Schema(
     {
         name: {
@@ -12,7 +12,11 @@ const seniorCenterSchema = new Schema(
         },
         email: {
             type: String,
-            required: [true, 'Email is required']
+            required: [true, 'Email is required'],
+            validate: {
+                validator: Validator.isEmail,
+                message: 'Email is invalid'
+            }
         },
         address: {
             type: String,
@@ -20,7 +24,11 @@ const seniorCenterSchema = new Schema(
         },
         phone: {
             type: String,
-            required: [true, 'Phone is required']
+            required: [true, 'Phone is required'],
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Phone number is invalid'
+            }
         },
         operationHours: {
             type: String,

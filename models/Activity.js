@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const activitySchema = new Schema(
     {
+        seniorCenterId: {
+            type: ObjectId,
+            required: true
+        },
         name: {
             type: String,
             required: [true, 'Name is required']
@@ -31,10 +35,6 @@ const activitySchema = new Schema(
         maxCapacity: {
             type: Number,
             min: 1
-        },
-        seniorCenterId: {
-            type: ObjectId,
-            required: true
         }
     },
     { timestamps: true }

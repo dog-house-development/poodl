@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-const Validator = require('validator');
 const Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Validator = require('validator');
 
-// Create Schema
 const memberSchema = new Schema(
     {
         seniorCenterId: {
@@ -69,7 +68,7 @@ const memberSchema = new Schema(
             type: String
         },
 
-        //Membership Information
+        // Membership Information
         memberIsNewOrRenewal: {
             type: String,
             default: 'new'

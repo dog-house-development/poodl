@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 const Validator = require('validator');
 
 const adminSchema = new Schema(
     {
         seniorCenterId: {
             type: ObjectId,
-            required: [true, 'Senior center is required']
+            required: true
         },
         firstName: {
             type: String,
