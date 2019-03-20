@@ -18,8 +18,8 @@ describe('Register tests', () => {
                     isAuthenticated: true,
                     loading: false,
                     admin: {
-                        superAdmin: false,
-                        seniorCenter: 123,
+                        accessLevel: 'Admin',
+                        seniorCenterId: 123,
                         firstName: 'Frog',
                         lastName: 'Anderson'
                     }
@@ -57,13 +57,13 @@ describe('Register tests', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
                 adminIsSuper: false,
-                adminSeniorCenter: 123,
+                adminSeniorCenterId: 123,
                 auth: {
                     isAuthenticated: true,
                     loading: false,
                     admin: {
-                        superAdmin: false,
-                        seniorCenter: 123,
+                        accessLevel: 'Admin',
+                        seniorCenterId: 123,
                         firstName: 'Frog',
                         lastName: 'Anderson'
                     }
@@ -171,7 +171,7 @@ describe('Register tests', () => {
         });
 
         it('should return correct fields if super admin', () => {
-            setInstanceAndWrapper({}, { auth: { admin: { superAdmin: true, seniorCenter: '123' } } });
+            setInstanceAndWrapper({}, { auth: { admin: { accessLevel: 'Super', seniorCenterId: '123' } } });
             expect(instance.getFields()).toEqual([
                 {
                     onChange: instance.onChange,
@@ -222,10 +222,10 @@ describe('Register tests', () => {
                 },
                 {
                     onChange: instance.onChange,
-                    id: 'seniorCenter',
+                    id: 'seniorCenterId',
                     content: '123',
                     type: 'text',
-                    label: 'Senior Center',
+                    label: 'Senior Center Id',
                     placeholder: 'ID...',
                     error: undefined
                 }

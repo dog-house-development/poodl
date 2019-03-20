@@ -8,7 +8,6 @@ module.exports = {
                 .save()
                 .then(doc => res.json(doc))
                 .catch(err => {
-                    console.log(err);
                     res.status(400).json(err);
                 });
         });
@@ -65,7 +64,6 @@ module.exports = {
                 doc.save()
                     .then(doc => res.json(doc))
                     .catch(err => {
-                        console.log(err);
                         return res.status(400).json(err);
                     });
             });

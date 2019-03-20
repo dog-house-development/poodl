@@ -23,14 +23,14 @@ describe('ViewAllAdmins tests', () => {
                             firstName: 'Big',
                             lastName: 'Tup',
                             email: 'bigtup@nowhere.com',
-                            superAdmin: true
+                            accessLevel: 'Super'
                         },
                         {
                             _id: '321',
                             firstName: 'Lil',
                             lastName: 'Tup',
                             email: 'liltup@nowhere.com',
-                            superAdmin: false
+                            accessLevel: 'Volunteer'
                         }
                     ]
                 },
@@ -65,14 +65,14 @@ describe('ViewAllAdmins tests', () => {
                         firstName: 'Big',
                         lastName: 'Tup',
                         email: 'bigtup@nowhere.com',
-                        superAdmin: true
+                        accessLevel: 'Super'
                     },
                     {
                         _id: '321',
                         firstName: 'Lil',
                         lastName: 'Tup',
                         email: 'liltup@nowhere.com',
-                        superAdmin: false
+                        accessLevel: 'Volunteer'
                     }
                 ],
                 errors: {},

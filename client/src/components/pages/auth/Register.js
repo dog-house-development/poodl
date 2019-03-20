@@ -52,7 +52,7 @@ export class Register extends Component {
             seniorCenterId: this.state.seniorCenterId,
             superAdmin: this.state.superAdmin
         };
-        console.log(newAdmin);
+
         this.props.registerAdmin(newAdmin, this.props.history);
     };
 
@@ -142,7 +142,7 @@ export class Register extends Component {
 export const mapStateToProps = (state, props) => {
     return {
         auth: state.auth,
-        adminIsSuper: _.get(state.auth.admin, 'accessLevel', false),
+        adminIsSuper: _.get(state.auth.admin, 'accessLevel', false) === 'Super',
         adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.errors
     };
