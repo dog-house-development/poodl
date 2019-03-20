@@ -19,7 +19,7 @@ export class ViewAllMembers extends Component {
 
     handleRowClick(e, id) {
         e.preventDefault();
-        this.props.history.push(`/member/${id}`);
+        this.props.history.push(`/members/${id}`);
     }
 
     getDataGridContent() {

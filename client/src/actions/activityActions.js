@@ -1,17 +1,11 @@
 import axios from 'axios';
 
-import {
-    GET_ERRORS,
-    FETCH_ACTIVITIES_BEGIN,
-    FETCH_ACTIVITIES_SUCCESS,
-    FILTER_ACTIVITIES_BEGIN,
-    FILTER_ACTIVITIES_SUCCESS
-} from './types';
+import { GET_ERRORS, FILTER_ACTIVITIES_BEGIN, FILTER_ACTIVITIES_SUCCESS } from './types';
 
 // Add Activity
 export const addActivity = (activityData, history) => dispatch => {
     axios
-        .post('/api/activities/add', activityData)
+        .post('/api/activities/', activityData)
         // change to go to view single activity page instead
         .then(res => history.push('/activities'))
         .catch(err =>
@@ -22,36 +16,11 @@ export const addActivity = (activityData, history) => dispatch => {
         );
 };
 
-export const fetchActivities = () => dispatch => {
-    dispatch(fetchActivitiesBegin());
-    axios
-        .get('/api/activities/get')
-        .then(res => {
-            dispatch(fetchActivitiesSuccess(res.data));
-            return res.data;
-        })
-        .catch(err =>
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
-        );
-};
-
-export const fetchActivitiesBegin = () => ({
-    type: FETCH_ACTIVITIES_BEGIN
-});
-
-export const fetchActivitiesSuccess = activities => ({
-    type: FETCH_ACTIVITIES_SUCCESS,
-    payload: activities
-});
-
 // Filter activities
-export const filterActivities = activityData => dispatch => {
+export const filterActivities = (activityFilter = {}) => dispatch => {
     dispatch(filterActivitiesBegin());
     axios
-        .post('/api/activities/filter', activityData)
+        .post('/api/activities/filter', activityFilter)
         .then(res => {
             dispatch(filterActivitiesSuccess(res.data));
             return res.data;

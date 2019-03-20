@@ -70,10 +70,4 @@ describe('Dashboard tests', () => {
             expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getActivities: () => {} }));
         });
     });
-
-    describe('render', () => {
-        it('should render correctly', () => {
-            expect(wrapper).toMatchSnapshot();
-        });
-    });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ViewAllVolunteers tests render should render correctly 1`] = `
+exports[`View all activities tests render should render correctly 1`] = `
 <div
   className="view-all-container"
 >
@@ -39,16 +39,16 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
     data={
       Array [
         Object {
-          "endDate": "January 1st, 1970",
+          "endDate": "12:00 am, January 1st 1970",
           "key": "1",
           "name": "Fun",
-          "startDate": "January 1st, 1970",
+          "startDate": "12:00 am, January 1st 1970",
         },
         Object {
-          "endDate": "January 1st, 1970",
+          "endDate": "12:00 am, January 1st 1970",
           "key": "2",
           "name": "Stuff",
-          "startDate": "January 1st, 1970",
+          "startDate": "12:00 am, January 1st 1970",
         },
       ]
     }

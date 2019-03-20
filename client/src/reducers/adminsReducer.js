@@ -17,7 +17,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                all: action.payload.data
+                all: action.payload
             };
         case FETCH_ADMIN_BEGIN:
             return {

@@ -8,7 +8,8 @@ const propTypes = {
     content: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     type: PropTypes.string,
     formButton: PropTypes.bool,
-    dropdownButton: PropTypes.bool
+    dropdownButton: PropTypes.bool,
+    id: PropTypes.string
 };
 
 const defaultProps = {
@@ -24,6 +25,7 @@ class Button extends Component {
                 onClick={this.props.onClick}
                 className={`button ${this.props.size} ${this.props.kind} ${this.props.formButton ? 'form-button' : ''}`}
                 type={this.props.type}
+                id={this.props.id}
             >
                 {this.props.content ? this.props.content : this.props.children}
             </button>

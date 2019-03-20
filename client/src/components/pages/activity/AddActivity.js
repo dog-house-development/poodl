@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addActivity } from '../../../actions/activityActions';
 import _ from 'lodash';
+import moment from 'moment';
 
 import Form from '../../ui/Form';
 
@@ -17,7 +18,7 @@ export class AddActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            seniorCenter: props.adminSeniorCenter,
+            seniorCenterId: props.adminSeniorCenterId,
             errors: {}
         };
     }
@@ -37,7 +38,9 @@ export class AddActivity extends Component {
     onSubmit = e => {
         e.preventDefault();
         const newActivity = {
-            ...this.state
+            ...this.state,
+            startDate: moment(this.state.startDate).toISOString(),
+            endDate: moment(this.state.endDate).toISOString()
         };
 
         this.props.registerActivity(newActivity, this.props.history);
@@ -107,7 +110,7 @@ export const mapStateToProps = (state, props) => {
     return {
         auth: state.auth,
         adminIsSuper: _.get(state.auth.admin, 'superAdmin', false),
-        adminSeniorCenter: _.get(state.auth.admin, 'seniorCenter'),
+        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.errors
     };
 };
