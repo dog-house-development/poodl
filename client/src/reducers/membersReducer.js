@@ -3,8 +3,8 @@ import {
     FETCH_MEMBERS_SUCCESS,
     FETCH_MEMBER_BEGIN,
     FETCH_MEMBER_SUCCESS,
-    MODIFY_MEMBER_BEGIN,
-    MODIFY_MEMBER_SUCCESS
+    EDIT_MEMBER_BEGIN,
+    EDIT_MEMBER_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -37,16 +37,15 @@ export default function(state = initialState, action) {
                 loading: false,
                 one: action.payload
             };
-        case MODIFY_MEMBER_BEGIN:
+        case EDIT_MEMBER_BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case MODIFY_MEMBER_SUCCESS:
+        case EDIT_MEMBER_SUCCESS:
             return {
                 ...state,
-                loading: false,
-                one: action.payload
+                loading: false
             };
         default:
             return state;

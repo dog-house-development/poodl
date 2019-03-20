@@ -23,12 +23,12 @@ import PageNotFound from './pages/PageNotFound';
 // view all pages
 import ViewAllAdmins from './pages/views/ViewAllAdmins';
 import ViewAllVolunteers from './pages/views/ViewAllVolunteers';
-import ViewAllMembers from './pages/views/ViewAllMembers';
+import ViewAllMembers from './pages/member/ViewAllMembers';
 
 // profile pages
 import AdminProfile from './pages/views/AdminProfile';
 import VolunteerProfile from './pages/views/VolunteerProfile';
-import MemberProfile from './pages/views/MemberProfile';
+import MemberProfile from './pages/member/MemberProfile';
 
 // activity page
 import RegisterActivity from './pages/activity/AddActivity';

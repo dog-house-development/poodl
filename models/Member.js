@@ -15,11 +15,15 @@ const memberSchema = new Schema(
         phoneNumber: {
             type: String
         },
-        emergencyContact: [
-            {
-                type: String
-            }
-        ],
+        emergencyContactName: {
+            type: String
+        },
+        emergencyContactRelationship: {
+            type: String
+        },
+        emergencyContactPhoneNumber: {
+            type: String
+        },
         //Member Info
 
         firstName: {
@@ -30,39 +34,36 @@ const memberSchema = new Schema(
             type: String,
             required: true
         },
-
         birthDate: {
-            type: Date,
-            default: Date.now
+            type: Date
         },
-        seniorCenter: {
+        seniorCenterId: {
+            type: ObjectId,
+            required: true
+        },
+        specialDiet: {
             type: String
         },
-        specialDiet: [
-            {
-                type: String
-            }
-        ],
-        medicalIssues: [
-            {
-                type: String
-            }
-        ],
-        disabilities: [
-            {
-                type: String
-            }
-        ],
+        medicalIssues: {
+            type: String
+        },
+        disabilities: {
+            type: String
+        },
         mealPreference: {
+            type: String
+        },
+        gender: {
             type: String
         },
 
         //Membership Information
         memberisNewOrRenewal: {
-            type: Boolean //True = New, False = Renewal
+            type: String,
+            default: 'new'
         },
         formOfPayment: {
-            type: Boolean //True = Cash, False = Check
+            type: String
         },
         bankCheckNumber: {
             type: String
@@ -89,7 +90,7 @@ const memberSchema = new Schema(
             type: String
         },
         numberInHousehold: {
-            type: Number
+            type: String
         },
         isPersonCaregiver: {
             type: Boolean
@@ -115,16 +116,15 @@ const memberSchema = new Schema(
         grandparent: {
             type: String
         },
-        needsAADL: [
-            {
-                type: String
-            }
-        ],
-        needsIADL: [
-            {
-                type: String
-            }
-        ]
+        numberOfKidsUnder19: {
+            type: String
+        },
+        needsAADL: {
+            type: String
+        },
+        needsIADL: {
+            type: String
+        }
     },
     { timestamps: true }
 );
