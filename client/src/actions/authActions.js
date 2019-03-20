@@ -8,8 +8,8 @@ import { GET_ERRORS, SET_CURRENT_ADMIN, ADMIN_LOADING } from './types';
 export const registerAdmin = (adminData, history) => dispatch => {
     axios
         .post('/api/admins/', adminData)
-        // link to the new admins details page when it is created
-        .then(res => history.push('/admins'))
+        // go to the new admins details page
+        .then(res => history.push('/admins/' + res.data._id))
         .catch(err =>
             dispatch({
                 type: GET_ERRORS,
