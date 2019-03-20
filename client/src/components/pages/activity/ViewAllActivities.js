@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { fetchActivities } from '../../../actions/activityActions';
+import { filterActivities } from '../../../actions/activityActions';
 import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -27,8 +27,8 @@ export class ViewAllActivities extends Component {
             data.push({
                 name: activity.name,
                 key: activity._id,
-                startDate: moment(activity.startDate).format('MMMM Do, YYYY'),
-                endDate: moment(activity.endDate).format('MMMM Do, YYYY')
+                startDate: moment(activity.startDate).format('h:mm a, MMMM Do YYYY'),
+                endDate: moment(activity.endDate).format('h:mm a, MMMM Do YYYY')
             });
         });
         return data;
@@ -67,7 +67,7 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getActivities: () => dispatch(fetchActivities())
+        getActivities: () => dispatch(filterActivities())
     };
 };
 

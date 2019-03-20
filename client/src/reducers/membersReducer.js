@@ -24,7 +24,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                all: action.payload.data
+                all: action.payload
             };
         case FETCH_MEMBER_BEGIN:
             return {

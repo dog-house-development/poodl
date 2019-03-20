@@ -19,7 +19,7 @@ export class ViewAllAdmins extends Component {
 
     handleRowClick(e, id) {
         e.preventDefault();
-        this.props.history.push(`/admin/${id}`);
+        this.props.history.push(`/admins/${id}`);
     }
 
     getDataGridContent() {

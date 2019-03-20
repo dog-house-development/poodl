@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                all: action.payload.data
+                all: action.payload
             };
         case FETCH_VOLUNTEER_BEGIN:
             return {

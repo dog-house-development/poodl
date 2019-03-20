@@ -22,7 +22,7 @@ export const fetchAdmins = () => dispatch => {
 export const fetchAdmin = id => dispatch => {
     dispatch(fetchAdminBegin());
     axios
-        .get(`/api/admins/get/${id}`)
+        .get(`/api/admins/${id}`)
         .then(res => {
             dispatch(fetchAdminSuccess(res.data));
             return res.data;

@@ -74,9 +74,9 @@ class App extends Component {
                             <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />
                             <PrivateRoute exact path="/members" component={ViewAllMembers} />
                             {/* Profile pages */}
-                            <PrivateRoute exact path="/admin/:id" component={AdminProfile} />
-                            <PrivateRoute exact path="/volunteer/:id" component={VolunteerProfile} />
-                            <PrivateRoute exact path="/member/:id" component={MemberProfile} />
+                            <PrivateRoute exact path="/admins/:id" component={AdminProfile} />
+                            <PrivateRoute exact path="/volunteers/:id" component={VolunteerProfile} />
+                            <PrivateRoute exact path="/members/:id" component={MemberProfile} />
                             <PrivateRoute exact path="/activities" component={ViewAllActivities} />
                             <PrivateRoute exact path="/activities/add" component={RegisterActivity} />
 

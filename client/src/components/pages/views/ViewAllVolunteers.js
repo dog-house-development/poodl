@@ -18,7 +18,7 @@ export class ViewAllVolunteers extends Component {
 
     handleRowClick(e, id) {
         e.preventDefault();
-        this.props.history.push(`/volunteer/${id}`);
+        this.props.history.push(`/volunteers/${id}`);
     }
 
     getDataGridContent() {

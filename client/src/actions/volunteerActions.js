@@ -28,7 +28,7 @@ export const fetchVolunteers = () => dispatch => {
 export const fetchVolunteer = id => dispatch => {
     dispatch(fetchVolunteerBegin());
     axios
-        .get(`/api/admins/get/${id}`)
+        .get(`/api/admins/${id}`)
         .then(res => {
             dispatch(fetchVolunteerSuccess(res.data));
             return res.data;

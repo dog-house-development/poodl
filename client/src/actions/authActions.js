@@ -7,7 +7,7 @@ import { GET_ERRORS, SET_CURRENT_ADMIN, ADMIN_LOADING } from './types';
 // Register Admin
 export const registerAdmin = (adminData, history) => dispatch => {
     axios
-        .post('/api/admins/register', adminData)
+        .post('/api/admins/', adminData)
         // link to the new admins details page when it is created
         .then(res => history.push('/admins'))
         .catch(err =>
@@ -44,10 +44,10 @@ export const loginAdmin = adminData => dispatch => {
 };
 
 // Set logged in admin
-export const setCurrentAdmin = decoded => {
+export const setCurrentAdmin = admin => {
     return {
         type: SET_CURRENT_ADMIN,
-        payload: decoded
+        payload: admin
     };
 };
 
