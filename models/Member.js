@@ -1,19 +1,31 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Validator = require('validator');
 
-// Create Schema
-const MemberSchema = new Schema(
+const memberSchema = new Schema(
     {
-        //Contact Info
+        seniorCenterId: {
+            type: ObjectId,
+            required: true
+        },
+        // Contact Info
         email: {
-            type: String
+            type: String,
+            validate: {
+                validator: Validator.isEmail,
+                message: 'Email is invalid'
+            }
         },
         address: {
             type: String
         },
         phoneNumber: {
-            type: String
+            type: String,
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Phone number is invalid'
+            }
         },
         emergencyContactName: {
             type: String
@@ -22,10 +34,13 @@ const MemberSchema = new Schema(
             type: String
         },
         emergencyContactPhoneNumber: {
-            type: String
+            type: String,
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Phone number is invalid'
+            }
         },
-        //Member Info
-
+        // Member Info
         firstName: {
             type: String,
             required: true
@@ -36,10 +51,6 @@ const MemberSchema = new Schema(
         },
         birthDate: {
             type: Date
-        },
-        seniorCenterId: {
-            type: ObjectId,
-            required: true
         },
         specialDiet: {
             type: String
@@ -57,8 +68,8 @@ const MemberSchema = new Schema(
             type: String
         },
 
-        //Membership Information
-        memberisNewOrRenewal: {
+        // Membership Information
+        memberIsNewOrRenewal: {
             type: String,
             default: 'new'
         },
@@ -129,4 +140,4 @@ const MemberSchema = new Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model('members', MemberSchema);
+module.exports = memberSchema;

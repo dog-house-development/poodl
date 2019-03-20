@@ -13,7 +13,7 @@ import {
 export const fetchMembers = () => dispatch => {
     dispatch(fetchMembersBegin());
     axios
-        .get('/api/members/get')
+        .post('/api/members/filter')
         .then(res => {
             dispatch(fetchMembersSuccess(res.data));
             return res.data;
@@ -30,7 +30,7 @@ export const fetchMembers = () => dispatch => {
 export const fetchMember = id => dispatch => {
     dispatch(fetchMemberBegin());
     axios
-        .get(`/api/members/get/${id}`)
+        .get(`/api/members/${id}`)
         .then(res => {
             dispatch(fetchMemberSuccess(res.data));
             return res.data;
@@ -47,7 +47,7 @@ export const fetchMember = id => dispatch => {
 export const editMember = (id, memberData) => dispatch => {
     dispatch(editMemberBegin());
     axios
-        .patch(`/api/members/edit/${id}`, memberData)
+        .patch(`/api/members/${id}`, memberData)
         .then(res => {
             dispatch(editMemberSuccess());
         })

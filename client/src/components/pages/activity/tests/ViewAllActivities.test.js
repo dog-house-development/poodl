@@ -9,7 +9,7 @@ import { ViewAllActivities, mapStateToProps, mapDispatchToProps } from '../ViewA
 
 configure({ adapter: new Adapter() });
 
-describe('ViewAllVolunteers tests', () => {
+describe('View all activities tests', () => {
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(

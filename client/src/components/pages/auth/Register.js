@@ -22,7 +22,7 @@ export class Register extends Component {
             email: '',
             password: '',
             password2: '',
-            seniorCenter: props.adminSeniorCenter,
+            seniorCenterId: props.adminSeniorCenterId,
             superAdmin: false,
             errors: {}
         };
@@ -49,7 +49,7 @@ export class Register extends Component {
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2,
-            seniorCenter: this.state.seniorCenter,
+            seniorCenterId: this.state.seniorCenterId,
             superAdmin: this.state.superAdmin
         };
 
@@ -110,11 +110,11 @@ export class Register extends Component {
         if (this.props.adminIsSuper) {
             fields.push({
                 onChange: this.onChange,
-                content: this.props.adminSeniorCenter,
-                error: errors.seniorCenter,
-                id: 'seniorCenter',
+                content: this.props.adminSeniorCenterId,
+                error: errors.seniorCenterId,
+                id: 'seniorCenterId',
                 type: 'text',
-                label: 'Senior Center',
+                label: 'Senior Center Id',
                 placeholder: 'ID...'
             });
         }
@@ -142,8 +142,8 @@ export class Register extends Component {
 export const mapStateToProps = (state, props) => {
     return {
         auth: state.auth,
-        adminIsSuper: _.get(state.auth.admin, 'superAdmin', false),
-        adminSeniorCenter: _.get(state.auth.admin, 'seniorCenter'),
+        adminIsSuper: _.get(state.auth.admin, 'accessLevel', false) === 'Super',
+        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.errors
     };
 };

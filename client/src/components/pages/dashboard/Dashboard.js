@@ -14,22 +14,33 @@ export class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activitiesStartDate: new Date()
+            activityDate: moment().startOf('day')
         };
     }
 
-    getDateRangeText(startDate) {
-        const endDate = new Date(startDate.getTime() + 1 * 86400000);
-        return moment(startDate).format('YYYY-MM-DD') + ',' + moment(endDate).format('YYYY-MM-DD');
+    getDateRangeFilter(start) {
+        const filter = {
+            startDate: {
+                $lte: start
+                    .clone()
+                    .add(1, 'days')
+                    .toISOString()
+            },
+            endDate: {
+                $gte: start.toISOString()
+            }
+        };
+
+        return filter;
     }
 
     componentDidMount() {
-        this.props.getActivities({ dateRange: this.getDateRangeText(this.state.activitiesStartDate) });
+        this.props.getActivities(this.getDateRangeFilter(this.state.activityDate));
     }
 
     requestDate = date => {
-        this.setState({ activitiesStartDate: date });
-        this.props.getActivities({ dateRange: this.getDateRangeText(date) });
+        this.setState({ activityDate: date });
+        this.props.getActivities(this.getDateRangeFilter(date));
     };
 
     render() {
@@ -62,7 +73,7 @@ export class Dashboard extends Component {
                     requestDate={this.requestDate}
                     loading={this.props.activitiesLoading}
                     dateData={{
-                        date: this.state.activitiesStartDate,
+                        date: this.state.activityDate,
                         data: this.props.activities
                     }}
                     clickableRowRoute="activity/"

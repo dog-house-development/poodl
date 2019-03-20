@@ -10,13 +10,13 @@ module.exports = function validateRegisterInput(data) {
 
     // Email checks
     if (Validator.isEmpty(data.email)) {
-        errors.email = 'Email field is required';
+        errors.email = 'Email is required';
     } else if (!Validator.isEmail(data.email)) {
         errors.email = 'Email is invalid';
     }
     // Password checks
     if (Validator.isEmpty(data.password)) {
-        errors.password = 'Password field is required';
+        errors.password = 'Password is required';
     }
 
     return {

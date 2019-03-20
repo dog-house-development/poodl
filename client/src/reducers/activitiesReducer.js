@@ -1,6 +1,4 @@
 import {
-    FETCH_ACTIVITIES_BEGIN,
-    FETCH_ACTIVITIES_SUCCESS,
     FETCH_ACTIVITY_BEGIN,
     FETCH_ACTIVITY_SUCCESS,
     FILTER_ACTIVITIES_BEGIN,
@@ -15,17 +13,6 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case FETCH_ACTIVITIES_BEGIN:
-            return {
-                ...state,
-                loading: true
-            };
-        case FETCH_ACTIVITIES_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                all: action.payload.data
-            };
         case FILTER_ACTIVITIES_BEGIN:
             return {
                 ...state,
@@ -35,7 +22,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                all: action.payload.data
+                all: action.payload
             };
         case FETCH_ACTIVITY_BEGIN:
             return {
