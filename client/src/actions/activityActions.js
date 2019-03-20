@@ -25,7 +25,7 @@ export const addActivity = (activityData, history) => dispatch => {
 export const fetchActivities = () => dispatch => {
     dispatch(fetchActivitiesBegin());
     axios
-        .get('/api/activities/get')
+        .post('/api/activities/filter')
         .then(res => {
             dispatch(fetchActivitiesSuccess(res.data));
             return res.data;

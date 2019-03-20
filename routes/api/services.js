@@ -5,17 +5,8 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
-//Validation goes here
-const validateRegisterInput = require('../../validation/service/addService');
-const validateEditInputByID = require('../../validation/service/editServiceByID');
-const validateFilterInput = require('../../validation/service/serviceFilter');
-
-//Load Utils
-const invalid = require('../../utility/validation');
-const jsonBuilder = require('../../utility/stringConverter');
-
 //Load model
-const Service = require('../../models/Service');
+const Service = require('mongoose').model('Service');
 
 //@router DELETE api/services/delete/:id
 //should delete a service based on the id

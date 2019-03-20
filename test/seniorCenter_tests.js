@@ -1,14 +1,14 @@
 process.env.NODE_ENV = 'test';
 
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-let Mockgoose = require('mockgoose').Mockgoose;
-let mockgoose = new Mockgoose(mongoose);
-const SeniorCenter = require('../models/SeniorCenter');
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server');
-let should = chai.should();
+const Mockgoose = require('mockgoose').Mockgoose;
+const mockgoose = new Mockgoose(mongoose);
+const SeniorCenter = mongoose.model('SeniorCenter');
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../server');
+const should = chai.should();
 
 chai.use(chaiHttp);
 

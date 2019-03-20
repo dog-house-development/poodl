@@ -6,42 +6,23 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 // Load Member model
-const Member = require('../../models/Member');
-
-//import utilities
-const jsonBuilder = require('../../utility/stringConverter');
-
-//Validation
-const validateEditInput = require('../../validation/member/editMember');
-//validator is here just for the purpose of setting all the values to '' probably a better way but this is what I want to do
-const validateEditInputByID = require('../../validation/member/editMemberByID');
-const validateRegisterInput = require('../../validation/member/addMember');
-const validateFilterInput = require('../../validation/member/memberFilter');
+const Member = require('mongoose').model('Member');
 
 // @route DELETE api/members/delete/:id
 // should delete specified member by ID
 router.delete('/delete/:id', (req, res) => {
-    Member.findOneAndDelete({ _id: req.params.id }, (err, item) => {
+    Member.findByIdAndDelete(req.params.id, (err, item) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });
     });
 });
 
 // @route GET api/members/get/:id
-// should return specifi members
+// should return specific members
 router.get('/get/:id', (req, res) => {
-    Member.findOne({ _id: req.params.id }, (err, post) => {
+    Member.findById(req.params.id, (err, member) => {
         if (err) return next(err);
-        return res.json(post);
-    });
-});
-
-// @route GET api/members/get
-// should return all Members
-router.get('/get', (req, res) => {
-    Member.find((err, members) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true, data: members });
+        return res.json(member);
     });
 });
 
@@ -58,13 +39,10 @@ router.post('/get', (req, res) => {
 // @route POST api/members/filter
 //should filter members and return ones that you want. Builds up a query
 router.post('/filter', (req, res) => {
-    const request = jsonBuilder(req.body);
-    Member.find(request[0], (err, members) => {
+    Member.find(req.body, (err, members) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: members });
-    })
-        .skip(request[2] * request[1]) // paging function
-        .limit(request[2]);
+    });
 });
 
 // @route POST api/members/edit

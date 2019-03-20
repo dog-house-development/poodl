@@ -11,7 +11,7 @@ import {
 export const fetchVolunteers = () => dispatch => {
     dispatch(fetchVolunteersBegin());
     axios
-        .get('/api/volunteers/get')
+        .post('/api/admins/filter', { accessLevel: 'Volunteer' })
         .then(res => {
             dispatch(fetchVolunteersSuccess(res.data));
             return res.data;
@@ -28,7 +28,7 @@ export const fetchVolunteers = () => dispatch => {
 export const fetchVolunteer = id => dispatch => {
     dispatch(fetchVolunteerBegin());
     axios
-        .get(`/api/volunteers/get/${id}`)
+        .get(`/api/admins/get/${id}`)
         .then(res => {
             dispatch(fetchVolunteerSuccess(res.data));
             return res.data;

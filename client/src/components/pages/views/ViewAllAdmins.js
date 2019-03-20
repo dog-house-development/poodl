@@ -31,7 +31,7 @@ export class ViewAllAdmins extends Component {
                 firstName: admin.firstName,
                 lastName: admin.lastName,
                 email: admin.email,
-                super: admin.superAdmin ? 'Yes' : 'No',
+                super: admin.accessLevel === 'Super' ? 'Yes' : 'No',
                 key: admin._id
             });
         });

@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
-const keyError = require('../utility/schemaMiddleware');
 const Validator = require('validator');
 
-const schema = new Schema(
+const adminSchema = new Schema(
     {
         firstName: {
             type: String,
@@ -16,7 +15,7 @@ const schema = new Schema(
         },
         email: {
             type: String,
-            unique: 'Email already exists',
+            unique: true,
             required: [true, 'Email is required'],
             validate: {
                 validator: Validator.isEmail,
@@ -29,7 +28,7 @@ const schema = new Schema(
         },
         accessLevel: {
             type: String,
-            enum: ['SuperAdmin', 'Admin', 'Volunteer'],
+            enum: ['Super', 'Admin', 'Volunteer'],
             default: 'Admin',
             required: [true, 'Access Level is required']
         },
@@ -111,12 +110,6 @@ const schema = new Schema(
         },
         references: {
             type: [String],
-            // required: [
-            //     function() {
-            //         return this.accessLevel === 'Volunteer';
-            //     },
-            //     'References are required'
-            // ],
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
@@ -215,19 +208,6 @@ const schema = new Schema(
     { timestamps: true }
 );
 
-//schema.post('save', keyError({ email: 'Email already exists' }));
-// schema.post('save', function(error, doc, next) {
-//     // console.log('post save error', error);
-//     let transformError = {};
-//     if (error.name === 'ValidationError') {
-//         Object.keys(error.errors).forEach(function(key) {
-//             transformError[key] = error.errors[key].message;
-//         });
-//         console.log(transformError);
-//         next(transformError);
-//     } else {
-//         next();
-//     }
-// });
+adminSchema.plugin(require('./plugins/duplicateError'), { email: 'Email already exists' });
 
-module.exports = mongoose.model('admins', schema);
+module.exports = adminSchema;

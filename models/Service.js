@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
-const keyError = require('../utility/schemaMiddleware');
 
-const schema = new Schema(
+const serviceSchema = new Schema(
     {
         name: {
             type: String,
@@ -23,4 +22,5 @@ const schema = new Schema(
     },
     { timestamps: true }
 );
-module.exports = mongoose.model('services', schema);
+
+module.exports = serviceSchema;

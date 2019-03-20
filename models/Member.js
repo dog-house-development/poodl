@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Create Schema
-const MemberSchema = new Schema(
+const memberSchema = new Schema(
     {
         //Contact Info
         email: {
@@ -129,4 +129,4 @@ const MemberSchema = new Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model('members', MemberSchema);
+module.exports = memberSchema;

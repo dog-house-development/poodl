@@ -5,7 +5,7 @@ import { GET_ERRORS, FETCH_ADMINS_BEGIN, FETCH_ADMINS_SUCCESS, FETCH_ADMIN_BEGIN
 export const fetchAdmins = () => dispatch => {
     dispatch(fetchAdminsBegin());
     axios
-        .get('/api/admins/get')
+        .post('/api/admins/filter', { accessLevel: { $ne: 'Volunteer' } })
         .then(res => {
             dispatch(fetchAdminsSuccess(res.data));
             return res.data;

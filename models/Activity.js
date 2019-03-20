@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
-const keyError = require('../utility/schemaMiddleware');
 
-const schema = new Schema(
+const activitySchema = new Schema(
     {
         name: {
             type: String,
@@ -15,7 +14,13 @@ const schema = new Schema(
         },
         startDate: {
             type: Date,
-            required: [true, 'Start Date is required']
+            required: [true, 'Start Date is required'],
+            validate: {
+                validator: function(v) {
+                    return v < this.endDate;
+                },
+                message: 'Start date must be before end date'
+            }
         },
         endDate: {
             type: Date,
@@ -32,15 +37,7 @@ const schema = new Schema(
 );
 
 // remove later because activity name will be shared with others
-// this exists now for an example for other schemas
-schema.post('save', keyError({ name: 'Activity already exists' }));
+// this exists now for an example for other activitySchemas
+activitySchema.plugin(require('./plugins/duplicateError'), { name: 'Activity already exists' });
 
-schema.pre('save', function(next) {
-    if (this.startDate >= this.endDate) {
-        next({ startDate: 'Start date must be before end date', endDate: 'End date must be after start date' });
-    }
-
-    next();
-});
-
-module.exports = mongoose.model('activities', schema);
+module.exports = activitySchema;

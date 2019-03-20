@@ -13,7 +13,7 @@ import {
 export const fetchMembers = () => dispatch => {
     dispatch(fetchMembersBegin());
     axios
-        .get('/api/members/get')
+        .post('/api/members/filter')
         .then(res => {
             dispatch(fetchMembersSuccess(res.data));
             return res.data;

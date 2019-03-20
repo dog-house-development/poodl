@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
-const keyError = require('../utility/schemaMiddleware');
 
 // Create Schema
-const schema = new Schema(
+const seniorCenterSchema = new Schema(
     {
         name: {
             type: String,
@@ -31,6 +30,6 @@ const schema = new Schema(
     { timestamps: true }
 );
 
-schema.post('save', keyError({ name: 'Senior Center already exists' }));
+seniorCenterSchema.plugin(require('./plugins/duplicateError'), { name: 'Senior center already exists' });
 
-module.exports = mongoose.model('seniorCenters', schema);
+module.exports = seniorCenterSchema;

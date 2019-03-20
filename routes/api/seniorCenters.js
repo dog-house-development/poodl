@@ -5,17 +5,8 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
-// Load input validation
-const validateRegisterInput = require('../../validation/seniorCenter/addSeniorCenter');
-const validateEditInputById = require('../../validation/seniorCenter/editSeniorCenterByID');
-const validateFilterInput = require('../../validation/seniorCenter/seniorCenterFilter');
-
-//load utilities
-const invalid = require('../../utility/validation');
-const jsonBuilder = require('../../utility/stringConverter');
-
 //load model
-const SeniorCenter = require('../../models/SeniorCenter');
+const SeniorCenter = require('mongoose').model('SeniorCenter');
 
 //@route DELETE api/seniorCenters/delete/:id
 // should delete a specified seniorCenter by id

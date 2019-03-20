@@ -7,17 +7,10 @@ const passport = require('passport');
 
 // Load input validation
 const validateRegisterAdmin = require('../../validation/admin/registerAdmin');
-const validateLoginInput = require('../../validation/login');
-const validateEditInputByID = require('../../validation/admin/editAdminByID');
-const validateFilterInput = require('../../validation/admin/adminFilter');
-
-//Load Utilities
-const invalid = require('../../utility/validation');
-const registerReformat = require('../../utility/reformatAdmin');
-const jsonBuilder = require('../../utility/stringConverter');
+const validateLoginInput = require('../../validation/admin/login');
 
 // Load Admin model
-const Admin = require('../../models/Admin');
+const Admin = require('mongoose').model('Admin');
 
 //@route DELETE api/admins/delete/:id
 // should delete specified admin by ID
@@ -25,15 +18,6 @@ router.delete('/delete/:id', (req, res) => {
     Admin.findOneAndDelete({ _id: req.params.id }, (err, item) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });
-    });
-});
-
-// @route GET api/admins/get
-// should return all admins
-router.get('/get', (req, res) => {
-    Admin.find((err, admins) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true, data: admins });
     });
 });
 
@@ -46,26 +30,17 @@ router.get('/get/:id', (req, res, next) => {
     });
 });
 
-//@route GET api/admins/get
-//should return admins with ids from list
-//takes json _id: []
-router.post('/get', (req, res) => {
-    Admin.find({ _id: req.body._id }, (err, admins) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json(admins);
-    });
-});
-
 // @route POST api/admins/filter
 // should return filtered results from json
 router.post('/filter', (req, res) => {
-    const request = jsonBuilder(req.body);
-    Admin.find(request[0], (err, admins) => {
+    //const request = jsonBuilder(req.body);
+
+    Admin.find(req.body, (err, admins) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true, data: admins });
-    })
-        .skip(request[2] * request[1])
-        .limit(request[2]);
+    });
+    //.skip(request[2] * request[1])
+    //.limit(request[2]);
 });
 
 // @route POST api/admins/register
@@ -88,7 +63,7 @@ router.post('/register', (req, res) => {
                 .save()
                 .then(admin => res.json(admin))
                 .catch(err => {
-                    console.log(err);
+                    console.log('save error', err);
                     return res.status(400).json(err);
                 });
         });
