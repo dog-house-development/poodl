@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Field from './Field';
 
-// make sure to do the prop types
+const propTypes = {
+    label: PropTypes.string,
+    handleChange: PropTypes.func.isRequired,
+    defaultValue: PropTypes.string,
+    id: PropTypes.string.isRequired
+};
+
+const defaultProps = {};
 
 class EditableField extends Component {
     render() {
@@ -24,4 +32,6 @@ class EditableField extends Component {
     }
 }
 
+EditableField.propTypes = propTypes;
+EditableField.defaultProps = defaultProps;
 export default EditableField;

@@ -20,8 +20,20 @@
     }
   }
 
-  .profile-section-title {
-    margin-bottom: 0.5em;
+  .profile-section-header {
+    display: flex;
+
+    .profile-section-title-and-description {
+      flex-grow: 2;
+
+      .profile-section-title {
+        margin-bottom: 0.5em;
+      }
+    }
+
+    .profile-section-button {
+      flex-shrink: 1;
+    }
   }
 
   h5 {
