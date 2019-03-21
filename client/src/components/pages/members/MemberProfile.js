@@ -59,7 +59,7 @@ export class MemberProfile extends Component {
         e.preventDefault();
         if (this.state.editMode[e.target.id] && !_.isEmpty(this.state.modifiedFields)) {
             this.props.memberActions.edit(this.routeParam, this.state.modifiedFields);
-            this.setState({ fields: {}, modifiedFields: {} });
+            this.setState({ modifiedFields: {} });
         }
         this.setState({ editMode: { [e.target.id]: !this.state.editMode[e.target.id] } });
     }
