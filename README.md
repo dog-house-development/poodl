@@ -19,7 +19,7 @@ _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https
 
 ### Read development documentation
 
-Please read our [development documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation) 
+Please read our [development documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation)
 before starting to develop for our project.
 
 ### Ensure that you have yarn, npm, and node installed
@@ -64,16 +64,10 @@ To install all dependencies, run:
 yarn install-all
 ```
 
-Install nodemon globally
-
-```bash
-yarn global add nodemon
-```
-
 ### Add config/secrets.js
 
-We keep our database key secret, ask doghousedevelop@gmail.com to 
-join our slack to have access to our keys. 
+We keep our database key secret, ask doghousedevelop@gmail.com to
+join our slack to have access to our keys.
 Make sure you only use our dev database.
 
 ```js
@@ -83,7 +77,7 @@ module.exports = {
 };
 ```
 
-You can also start a local mongo database and use that key instead. 
+You can also start a local mongo database and use that key instead.
 See [installing mongodb](https://docs.mongodb.com/manual/installation/).
 
 ### Start development server
@@ -113,6 +107,20 @@ To run API tests (located in `/test/`):
 
 ```bash
 yarn test:server
+```
+
+To run selenium tests (located in `/test/selenium`):
+
+Start the client app
+
+```bash
+yarn start:client
+```
+
+In a separate shell run the tests:
+
+```bash
+yarn test:selenium
 ```
 
 ### Publish your changes
