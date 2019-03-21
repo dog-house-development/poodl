@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 
-import { setCurrentAdmin, logoutAdmin } from '../actions/authActions';
+import AuthActions from '../actions/authActions';
 import { Provider } from 'react-redux';
 import store from '../store';
 
@@ -46,12 +46,12 @@ if (localStorage.jwtToken) {
     // Decode token and get admin info and exp
     const decoded = jwt_decode(token);
     // Set admin and isAuthenticated
-    store.dispatch(setCurrentAdmin(decoded));
+    store.dispatch(AuthActions.setCurrentAdmin(decoded));
     // Check for expired token
     const currentTime = Date.now() / 1000; // to get in milliseconds
     if (decoded.exp < currentTime) {
         // Logout admin
-        store.dispatch(logoutAdmin());
+        store.dispatch(AuthActions.logoutAdmin());
 
         // Redirect to login
         window.location.href = './login';
