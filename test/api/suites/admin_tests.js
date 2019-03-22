@@ -1,11 +1,5 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('../../../../server');
-const should = chai.should();
-const expect = chai.expect;
-const assert = chai.assert;
+const expect = require('chai').expect;
 const mongoUnit = require('mongo-unit');
-const testMongoUrl = process.env.MONGODB_URI;
 
 module.exports = function() {
     it('it should create a new admin', done => {

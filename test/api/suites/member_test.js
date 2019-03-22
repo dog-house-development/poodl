@@ -5,8 +5,6 @@ const should = chai.should();
 const expect = chai.expect;
 const assert = chai.assert;
 
-chai.use(chaiHttp);
-
 module.exports = function() {
     it('it should add a new member', done => {
         let testMember1 = {

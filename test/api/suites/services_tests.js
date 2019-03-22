@@ -5,8 +5,6 @@ const should = chai.should();
 const expect = chai.expect;
 const assert = chai.assert;
 
-chai.use(chaiHttp);
-
 module.exports = function() {
     describe('Services suite /ADD./GET, /GET/:ID,/DELETE', () => {
         it('it should add a new service', done => {
