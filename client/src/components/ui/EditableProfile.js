@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-//import Loading from '../../ui/Loading';
 import EditableField from './EditableField';
 import EditableRadio from './EditableRadio';
 import EditableCheckBox from './EditableCheckBox';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import Button from './Button';
 
@@ -15,7 +13,7 @@ export class EditableProfile extends Component {
         fields: PropTypes.array.isRequired,
         editProfile: PropTypes.func.isRequired,
         getProfile: PropTypes.func.isRequired,
-        profile: PropTypes.object.isRequired
+        profile: PropTypes.object
     };
 
     constructor(props) {
@@ -30,27 +28,16 @@ export class EditableProfile extends Component {
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
 
-        this.profileId = _.get(this.props.profile, '_id');
         this.routeParam = props.match.params.id;
-
-        if (this.profileId === this.routeParam) {
-            this.state.fields = { ...this.props.profile };
-        }
     }
 
     componentDidMount() {
         // call redux action to retrieve specified profile from api
-        console.log('did mount');
-        if (this.profileId !== this.routeParam) {
-            console.log('hi');
-            this.props.getProfile(this.routeParam);
-        }
+        this.props.getProfile(this.routeParam);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('did update');
         if (_.get(prevProps.profile, '_id') !== _.get(this.props.profile, '_id')) {
-            console.log('set state');
             this.setState({
                 fields: {
                     ...this.props.profile
@@ -58,8 +45,6 @@ export class EditableProfile extends Component {
             });
         }
     }
-
-    componentWillUnmount() {}
 
     handleFieldChange(e) {
         if (e.target.type === 'checkbox') {
@@ -159,9 +144,9 @@ export class EditableProfile extends Component {
     }
 
     render() {
-        console.log('render');
         return <div>{this.getPanelMarkup()}</div>;
     }
 }
 
+// withRouter because you need access to props.match
 export default withRouter(EditableProfile);

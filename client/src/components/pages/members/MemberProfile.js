@@ -24,8 +24,8 @@ export class MemberProfile extends Component {
                     <EditableProfile
                         fields={memberFields}
                         categories={Categories}
-                        editProfile={this.props.editMember}
-                        getProfile={this.props.getMember}
+                        editProfile={this.props.memberActions.edit}
+                        getProfile={this.props.memberActions.get}
                         profile={this.props.member}
                     />
                 </div>
