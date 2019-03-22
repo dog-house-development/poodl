@@ -1,0 +1,17 @@
+.side-by-side {
+  display: inline-block;
+  width: 100%;
+
+  > * {
+    // display: inline-block;
+
+    &:first-child {
+      //margin-right: 1em;//
+      float: left;
+    }
+
+    &:nth-child(2) {
+      float: right;
+    }
+  }
+}
