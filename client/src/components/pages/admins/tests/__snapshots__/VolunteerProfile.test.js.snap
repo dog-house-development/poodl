@@ -20,7 +20,9 @@ exports[`VolunteerProfile tests render should render correctly 1`] = `
     className="panel"
   >
     <h1>
+      Big
        
+      Tup
     </h1>
   </div>
 </div>

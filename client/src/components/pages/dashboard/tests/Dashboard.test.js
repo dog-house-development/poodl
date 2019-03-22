@@ -20,10 +20,10 @@ describe('Dashboard tests', () => {
                     admin: {
                         id: '5c52379d9be6fc0017afd46e',
                         name: 'Sandwich Man'
-                    }
+                    },
+                    errors: {}
                 },
-                activities: { all: [], loading: false },
-                errors: {}
+                activities: { all: [], loading: false, errors: {} }
             },
             _state
         );
@@ -55,7 +55,8 @@ describe('Dashboard tests', () => {
                     admin: {
                         id: '5c52379d9be6fc0017afd46e',
                         name: 'Sandwich Man'
-                    }
+                    },
+                    errors: {}
                 },
                 activities: [],
                 activitiesLoading: false,
@@ -67,7 +68,7 @@ describe('Dashboard tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getActivities: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ activityActions: {} }));
         });
     });
 });

@@ -18,7 +18,9 @@ exports[`MemberProfile tests render should render correctly 1`] = `
   </Link>
   <div>
     <h1>
+      Big
        
+      Tup
     </h1>
     <div>
       <div

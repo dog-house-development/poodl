@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { filterActivities } from '../../../actions/activityActions';
+import ActivityActions from '../../../actions/activityActions';
 import ViewByDate from '../../ui/ViewByDate';
 import moment from 'moment';
 
@@ -35,12 +36,12 @@ export class Dashboard extends Component {
     }
 
     componentDidMount() {
-        this.props.getActivities(this.getDateRangeFilter(this.state.activityDate));
+        this.props.activityActions.filter(this.getDateRangeFilter(this.state.activityDate));
     }
 
     requestDate = date => {
         this.setState({ activityDate: date });
-        this.props.getActivities(this.getDateRangeFilter(date));
+        this.props.activityActions.filter(this.getDateRangeFilter(date));
     };
 
     render() {
@@ -51,7 +52,6 @@ export class Dashboard extends Component {
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
                 <div className="panel dashboard-panel">
-                    <h1 className="panel-title">Manage</h1>
                     <Link to="/admins" className="button primary medium">
                         Admins
                     </Link>
@@ -89,13 +89,13 @@ export const mapStateToProps = (state, props) => {
         auth: state.auth,
         activities: state.activities.all,
         activitiesLoading: state.activities.loading,
-        errors: state.errors
+        errors: state.activities.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getActivities: date => dispatch(filterActivities(date))
+        activityActions: bindActionCreators(ActivityActions, dispatch)
     };
 };
 

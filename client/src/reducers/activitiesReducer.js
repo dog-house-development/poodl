@@ -1,39 +1,42 @@
-import {
-    FETCH_ACTIVITY_BEGIN,
-    FETCH_ACTIVITY_SUCCESS,
-    FILTER_ACTIVITIES_BEGIN,
-    FILTER_ACTIVITIES_SUCCESS
-} from '../actions/types';
+import Types from '../actions/types';
 
 const initialState = {
     loading: false,
     all: [],
-    one: {}
+    errors: {}
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case FILTER_ACTIVITIES_BEGIN:
+        case Types.activity.ERROR:
+            return {
+                ...state,
+                loading: false,
+                errors: action.payload
+            };
+        case Types.activity.filter.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FILTER_ACTIVITIES_SUCCESS:
+        case Types.activity.filter.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                all: action.payload
+                all: action.payload,
+                errors: {}
             };
-        case FETCH_ACTIVITY_BEGIN:
+        case Types.activity.get.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_ACTIVITY_SUCCESS:
+        case Types.activity.get.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                one: action.payload
+                all: { [action.payload._id]: action.payload },
+                errors: {}
             };
         default:
             return state;

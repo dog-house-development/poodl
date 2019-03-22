@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { registerAdmin } from '../../../actions/authActions';
+import AdminActions from '../../../actions/adminActions';
 import _ from 'lodash';
 
 import Form from '../../ui/Form';
 
 const propTypes = {
-    registerAdmin: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
@@ -23,17 +23,8 @@ export class Register extends Component {
             password: '',
             password2: '',
             seniorCenterId: props.adminSeniorCenterId,
-            superAdmin: false,
-            errors: {}
+            superAdmin: false
         };
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-        }
     }
 
     onChange = e => {
@@ -53,11 +44,11 @@ export class Register extends Component {
             superAdmin: this.state.superAdmin
         };
 
-        this.props.registerAdmin(newAdmin, this.props.history);
+        this.props.adminActions.create(newAdmin, this.props.history);
     };
 
     getFields = () => {
-        const { errors } = this.state;
+        const { errors } = this.props;
         const fields = [
             {
                 onChange: this.onChange,
@@ -144,13 +135,13 @@ export const mapStateToProps = (state, props) => {
         auth: state.auth,
         adminIsSuper: _.get(state.auth.admin, 'accessLevel', false) === 'Super',
         adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
-        errors: state.errors
+        errors: state.admins.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        registerAdmin: (adminData, history) => dispatch(registerAdmin(adminData, history))
+        adminActions: bindActionCreators(AdminActions, dispatch)
     };
 };
 

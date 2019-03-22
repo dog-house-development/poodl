@@ -1,32 +1,108 @@
-// error action types
-export const GET_ERRORS = 'GET_ERRORS';
-
-// auth action types
-export const ADMIN_LOADING = 'ADMIN_LOADING';
-export const SET_CURRENT_ADMIN = 'SET_CURRENT_ADMIN';
-
-// admin action types
-export const FETCH_ADMINS_BEGIN = 'FETCH_ADMINS_BEGIN';
-export const FETCH_ADMINS_SUCCESS = 'FETCH_ADMINS_SUCCESS';
-export const FETCH_ADMIN_BEGIN = 'FETCH_ADMIN_BEGIN';
-export const FETCH_ADMIN_SUCCESS = 'FETCH_ADMIN_SUCCESS';
-
-// volunteer action types
-export const FETCH_VOLUNTEERS_BEGIN = 'FETCH_VOLUNTEERS_BEGIN';
-export const FETCH_VOLUNTEERS_SUCCESS = 'FETCH_VOLUNTEERS_SUCCESS';
-export const FETCH_VOLUNTEER_BEGIN = 'FETCH_VOLUNTEER_BEGIN';
-export const FETCH_VOLUNTEER_SUCCESS = 'FETCH_VOLUNTEER_SUCCESS';
-
-// member action types
-export const FETCH_MEMBERS_BEGIN = 'FETCH_MEMBERS_BEGIN';
-export const FETCH_MEMBERS_SUCCESS = 'FETCH_MEMBERS_SUCCESS';
-export const FETCH_MEMBER_BEGIN = 'FETCH_MEMBER_BEGIN';
-export const FETCH_MEMBER_SUCCESS = 'FETCH_MEMBER_SUCCESS';
-export const EDIT_MEMBER_BEGIN = 'EDIT_MEMBER_BEGIN';
-export const EDIT_MEMBER_SUCCESS = 'EDIT_MEMBER_SUCCESS';
-
-// activity action Types
-export const FETCH_ACTIVITY_BEGIN = 'FETCH_ACTIVITY_BEGIN';
-export const FETCH_ACTIVITY_SUCCESS = 'FETCH_ACTIVITY_SUCCESS';
-export const FILTER_ACTIVITIES_BEGIN = 'FILTER_ACTIVITIES_BEGIN';
-export const FILTER_ACTIVITIES_SUCCESS = 'FILTER_ACTIVITIES_SUCCESS';
+export default {
+    auth: {
+        SET_CURRENT_ADMIN: 'SET_CURRENT_ADMIN',
+        login: {
+            SUCCESS: 'LOGIN_ADMIN_SUCCESS'
+        },
+        logout: {
+            SUCCESS: 'LOGOUT_ADMIN_SUCCESS'
+        },
+        ERROR: 'GET_AUTH_ERRORS'
+    },
+    admin: {
+        url: 'admins',
+        create: {
+            BEGIN: 'CREATE_ADMIN_BEGIN',
+            SUCCESS: 'CREATE_ADMIN_SUCCESS'
+        },
+        filter: {
+            BEGIN: 'FILTER_ADMINS_BEGIN',
+            SUCCESS: 'FILTER_ADMINS_SUCCESS'
+        },
+        get: {
+            BEGIN: 'GET_ADMIN_BEGIN',
+            SUCCESS: 'GET_ADMIN_SUCCESS'
+        },
+        edit: {
+            BEGIN: 'EDIT_ADMIN_BEGIN',
+            SUCCESS: 'EDIT_ADMIN_SUCCESS'
+        },
+        delete: {
+            BEGIN: 'DELETE_ADMIN_BEGIN',
+            SUCCESS: 'DELETE_ADMIN_SUCCESS'
+        },
+        ERROR: 'GET_ADMIN_ERRORS'
+    },
+    volunteer: {
+        url: 'admins',
+        create: {
+            BEGIN: 'CREATE_VOLUNTEER_BEGIN',
+            SUCCESS: 'CREATE_VOLUNTEER_SUCCESS'
+        },
+        filter: {
+            BEGIN: 'FILTER_VOLUNTEERS_BEGIN',
+            SUCCESS: 'FILTER_VOLUNTEERS_SUCCESS'
+        },
+        get: {
+            BEGIN: 'GET_VOLUNTEER_BEGIN',
+            SUCCESS: 'GET_VOLUNTEER_SUCCESS'
+        },
+        edit: {
+            BEGIN: 'EDIT_VOLUNTEER_BEGIN',
+            SUCCESS: 'EDIT_VOLUNTEER_SUCCESS'
+        },
+        delete: {
+            BEGIN: 'DELETE_VOLUNTEER_BEGIN',
+            SUCCESS: 'DELETE_VOLUNTEER_SUCCESS'
+        },
+        ERROR: 'GET_VOLUNTEER_ERRORS'
+    },
+    member: {
+        url: 'members',
+        create: {
+            BEGIN: 'CREATE_MEMBER_BEGIN',
+            SUCCESS: 'CREATE_MEMBER_SUCCESS'
+        },
+        filter: {
+            BEGIN: 'FILTER_MEMBERS_BEGIN',
+            SUCCESS: 'FILTER_MEMBERS_SUCCESS'
+        },
+        get: {
+            BEGIN: 'GET_MEMBER_BEGIN',
+            SUCCESS: 'GET_MEMBER_SUCCESS'
+        },
+        edit: {
+            BEGIN: 'EDIT_MEMBER_BEGIN',
+            SUCCESS: 'EDIT_MEMBER_SUCCESS'
+        },
+        delete: {
+            BEGIN: 'DELETE_MEMBER_BEGIN',
+            SUCCESS: 'DELETE_MEMBER_SUCCESS'
+        },
+        ERROR: 'GET_MEMBER_ERRORS'
+    },
+    activity: {
+        url: 'activities',
+        create: {
+            BEGIN: 'CREATE_ACTIVITY_BEGIN',
+            SUCCESS: 'CREATE_ACTIVITY_SUCCESS'
+        },
+        filter: {
+            BEGIN: 'FILTER_ACTIVITIES_BEGIN',
+            SUCCESS: 'FILTER_ACTIVITIES_SUCCESS'
+        },
+        get: {
+            BEGIN: 'GET_ACTIVITY_BEGIN',
+            SUCCESS: 'GET_ACTIVITY_SUCCESS'
+        },
+        edit: {
+            BEGIN: 'EDIT_ACTIVITY_BEGIN',
+            SUCCESS: 'EDIT_ACTIVITY_SUCCESS'
+        },
+        delete: {
+            BEGIN: 'DELETE_ACTIVITY_BEGIN',
+            SUCCESS: 'DELETE_ACTIVITY_SUCCESS'
+        },
+        ERROR: 'GET_ACTIVITY_ERRORS'
+    }
+};

@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { fetchVolunteer } from '../../../actions/volunteerActions';
+import VolunteerActions from '../../../actions/volunteerActions';
 import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
 
 export class VolunteerProfile extends Component {
-    constructor(props) {
-        super(props);
-        this.routeParam = props.match.params.id;
-    }
-
     componentDidMount() {
-        // call redux action to retrieve specified volunteer from api
-        this.props.getVolunteer(this.routeParam);
+        this.props.volunteerActions.get(this.props.match.params.id);
     }
 
     getPageMarkup() {
@@ -42,14 +37,14 @@ export class VolunteerProfile extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        volunteer: state.volunteers.one,
-        errors: state.errors
+        volunteer: state.volunteers.all[props.match.params.id],
+        errors: state.volunteers.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getVolunteer: id => dispatch(fetchVolunteer(id))
+        volunteerActions: bindActionCreators(VolunteerActions, dispatch)
     };
 };
 

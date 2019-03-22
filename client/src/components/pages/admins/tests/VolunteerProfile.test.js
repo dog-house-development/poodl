@@ -20,20 +20,20 @@ describe('VolunteerProfile tests', () => {
             {},
             {
                 volunteers: {
-                    one: [
-                        {
+                    all: {
+                        123: {
                             _id: '123',
                             firstName: 'Big',
                             lastName: 'Tup',
                             email: 'bigtup@nowhere.com'
                         }
-                    ]
-                },
-                errors: {}
+                    },
+                    errors: {}
+                }
             },
             _state
         );
-        props = _.assign({}, _props);
+        props = _.assign({}, { match: { params: { id: 123 } } }, _props);
         wrapper = shallow(
             <VolunteerProfile
                 match={match}
@@ -55,14 +55,12 @@ describe('VolunteerProfile tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                volunteer: [
-                    {
-                        _id: '123',
-                        firstName: 'Big',
-                        lastName: 'Tup',
-                        email: 'bigtup@nowhere.com'
-                    }
-                ],
+                volunteer: {
+                    _id: '123',
+                    firstName: 'Big',
+                    lastName: 'Tup',
+                    email: 'bigtup@nowhere.com'
+                },
                 errors: {}
             });
         });
@@ -71,7 +69,7 @@ describe('VolunteerProfile tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getVolunteers: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ volunteerActions: {} }));
         });
     });
 

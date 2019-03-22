@@ -1,60 +1,22 @@
-import axios from 'axios';
+import ActionHelper from './utils/ActionHelper';
+import Types from './types';
 
-import {
-    GET_ERRORS,
-    FETCH_VOLUNTEERS_BEGIN,
-    FETCH_VOLUNTEERS_SUCCESS,
-    FETCH_VOLUNTEER_BEGIN,
-    FETCH_VOLUNTEER_SUCCESS
-} from './types';
+export default {
+    create: (data, history) => dispatch => {
+        data.accessLevel = 'Volunteer';
+        ActionHelper.create(dispatch, Types.volunteer, data, history);
+    },
 
-export const fetchVolunteers = () => dispatch => {
-    dispatch(fetchVolunteersBegin());
-    axios
-        .post('/api/admins/filter', { accessLevel: 'Volunteer' })
-        .then(res => {
-            dispatch(fetchVolunteersSuccess(res.data));
-            return res.data;
-        })
-        .catch(err =>
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
-        );
+    filter: data => dispatch => {
+        data = { ...data, accessLevel: 'Volunteer' };
+        ActionHelper.filter(dispatch, Types.volunteer, data);
+    },
+
+    get: id => dispatch => {
+        ActionHelper.get(dispatch, Types.volunteer, id);
+    },
+
+    edit: (id, data) => dispatch => {
+        ActionHelper.edit(dispatch, Types.volunteer, id, data);
+    }
 };
-
-//Get specificied volunteer by ID
-export const fetchVolunteer = id => dispatch => {
-    dispatch(fetchVolunteerBegin());
-    axios
-        .get(`/api/admins/${id}`)
-        .then(res => {
-            dispatch(fetchVolunteerSuccess(res.data));
-            return res.data;
-        })
-        .catch(err =>
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
-        );
-};
-
-export const fetchVolunteersBegin = () => ({
-    type: FETCH_VOLUNTEERS_BEGIN
-});
-
-export const fetchVolunteersSuccess = volunteers => ({
-    type: FETCH_VOLUNTEERS_SUCCESS,
-    payload: volunteers
-});
-
-export const fetchVolunteerBegin = () => ({
-    type: FETCH_VOLUNTEER_BEGIN
-});
-
-export const fetchVolunteerSuccess = volunteer => ({
-    type: FETCH_VOLUNTEER_SUCCESS,
-    payload: volunteer
-});

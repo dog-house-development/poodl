@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { fetchMember } from '../../../actions/memberActions';
-import { editMember } from '../../../actions/memberActions';
+import MemberActions from '../../../actions/memberActions';
 import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
 import Button from '../../ui/Button';
@@ -36,16 +36,15 @@ export class MemberProfile extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        member: state.members.one,
+        member: state.members.all[props.match.params.id],
         loading: state.members.loading,
-        errors: state.errors
+        errors: state.members.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getMember: id => dispatch(fetchMember(id)),
-        editMember: (id, memberData) => dispatch(editMember(id, memberData))
+        memberActions: bindActionCreators(MemberActions, dispatch)
     };
 };
 

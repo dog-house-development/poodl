@@ -22,9 +22,12 @@ describe('Add activity tests', () => {
                         seniorCenter: 123,
                         firstName: 'Frog',
                         lastName: 'Anderson'
-                    }
+                    },
+                    errors: {}
                 },
-                errors: {}
+                activities: {
+                    errors: {}
+                }
             },
             _state
         );
