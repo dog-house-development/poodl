@@ -16,9 +16,9 @@ describe('Login tests', () => {
             {
                 auth: {
                     isAuthenticated: false,
-                    loading: false
-                },
-                errors: {}
+                    loading: false,
+                    errors: {}
+                }
             },
             _state
         );
@@ -48,7 +48,7 @@ describe('Login tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                auth: { isAuthenticated: false, loading: false },
+                auth: { isAuthenticated: false, loading: false, errors: {} },
                 errors: {}
             });
         });
@@ -57,7 +57,7 @@ describe('Login tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ loginAdmin: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ authActions: {} }));
         });
     });
 
@@ -118,16 +118,16 @@ describe('Login tests', () => {
         });
 
         it('should return correct errors when they exist', () => {
-            setInstanceAndWrapper({}, { errors: { emailnotfound: 'Email not found' } });
+            setInstanceAndWrapper({}, { auth: { errors: { emailnotfound: 'Email not found' } } });
             expect(instance.getFormErrors()).toEqual(['Email and password combination not found']);
 
-            setInstanceAndWrapper({}, { errors: { passwordincorrect: 'Password incorrect' } });
+            setInstanceAndWrapper({}, { auth: { errors: { passwordincorrect: 'Password incorrect' } } });
             expect(instance.getFormErrors()).toEqual(['Email and password combination not found']);
 
-            setInstanceAndWrapper({}, { errors: { email: 'Invalid email' } });
+            setInstanceAndWrapper({}, { auth: { errors: { email: 'Invalid email' } } });
             expect(instance.getFormErrors()).toEqual([]);
 
-            setInstanceAndWrapper({}, { errors: { party: 'Party time' } });
+            setInstanceAndWrapper({}, { auth: { errors: { party: 'Party time' } } });
             expect(instance.getFormErrors()).toEqual(['Party time']);
         });
     });

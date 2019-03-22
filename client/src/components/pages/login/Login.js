@@ -9,8 +9,7 @@ import AuthActions from '../../../actions/authActions';
 import Form from '../../ui/Form';
 
 const propTypes = {
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired
 };
 
 export class Login extends Component {

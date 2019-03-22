@@ -32,9 +32,9 @@ describe('ViewAllAdmins tests', () => {
                             email: 'liltup@nowhere.com',
                             accessLevel: 'Volunteer'
                         }
-                    ]
-                },
-                errors: {}
+                    ],
+                    errors: {}
+                }
             },
             _state
         );
@@ -84,7 +84,7 @@ describe('ViewAllAdmins tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getAdmins: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ adminActions: {} }));
         });
     });
 

@@ -30,9 +30,9 @@ describe('ViewAllVolunteers tests', () => {
                             lastName: 'Lil',
                             email: 'liltup@nowhere.com'
                         }
-                    ]
-                },
-                errors: {}
+                    ],
+                    errors: {}
+                }
             },
             _state
         );
@@ -80,7 +80,7 @@ describe('ViewAllVolunteers tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getVolunteers: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ volunteerActions: {} }));
         });
     });
 

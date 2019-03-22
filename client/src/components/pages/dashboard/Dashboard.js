@@ -89,7 +89,7 @@ export const mapStateToProps = (state, props) => {
         auth: state.auth,
         activities: state.activities.all,
         activitiesLoading: state.activities.loading,
-        errors: state.errors
+        errors: state.activities.errors
     };
 };
 

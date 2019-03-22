@@ -39,16 +39,16 @@ exports[`View all activities tests render should render correctly 1`] = `
     data={
       Array [
         Object {
-          "endDate": "12:00 am, January 1st 1970",
+          "endDate": "11:00 pm, December 31st 1969",
           "key": "1",
           "name": "Fun",
-          "startDate": "12:00 am, January 1st 1970",
+          "startDate": "11:00 pm, December 31st 1969",
         },
         Object {
-          "endDate": "12:00 am, January 1st 1970",
+          "endDate": "11:00 pm, December 31st 1969",
           "key": "2",
           "name": "Stuff",
-          "startDate": "12:00 am, January 1st 1970",
+          "startDate": "11:00 pm, December 31st 1969",
         },
       ]
     }
