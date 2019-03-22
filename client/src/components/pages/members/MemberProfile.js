@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { fetchMember } from '../../../actions/memberActions';
-import { editMember } from '../../../actions/memberActions';
+import MemberActions from '../../../actions/memberActions';
 import Loading from '../../ui/Loading';
 import EditableField from '../../ui/EditableField';
 import EditableRadio from '../../ui/EditableRadio';
@@ -28,7 +28,7 @@ export class MemberProfile extends Component {
 
     componentDidMount() {
         // call redux action to retrieve specified member from api
-        this.props.getMember(this.routeParam);
+        this.props.memberActions.get(this.routeParam);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -58,7 +58,8 @@ export class MemberProfile extends Component {
     handleEditClick(e) {
         e.preventDefault();
         if (this.state.editMode[e.target.id] && !_.isEmpty(this.state.modifiedFields)) {
-            this.props.editMember(this.routeParam, this.state.modifiedFields);
+            this.props.memberActions.edit(this.routeParam, this.state.modifiedFields);
+            this.setState({ modifiedFields: {} });
         }
         this.setState({ editMode: { [e.target.id]: !this.state.editMode[e.target.id] } });
     }
@@ -158,16 +159,15 @@ export class MemberProfile extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        member: state.members.one,
+        member: state.members.all[props.match.params.id],
         loading: state.members.loading,
-        errors: state.errors
+        errors: state.members.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getMember: id => dispatch(fetchMember(id)),
-        editMember: (id, memberData) => dispatch(editMember(id, memberData))
+        memberActions: bindActionCreators(MemberActions, dispatch)
     };
 };
 

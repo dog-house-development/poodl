@@ -24,7 +24,8 @@ describe('Navbar tests', () => {
             {
                 auth: {
                     isAuthenticated: false,
-                    loading: false
+                    loading: false,
+                    errors: {}
                 }
             },
             _state
@@ -49,7 +50,7 @@ describe('Navbar tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                auth: { isAuthenticated: false, loading: false }
+                auth: { isAuthenticated: false, loading: false, errors: {} }
             });
         });
     });
@@ -57,7 +58,7 @@ describe('Navbar tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ logoutAdmin: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ authActions: {} }));
         });
     });
 

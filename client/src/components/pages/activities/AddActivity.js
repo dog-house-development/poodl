@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addActivity } from '../../../actions/activityActions';
+import ActivityActions from '../../../actions/activityActions';
 import _ from 'lodash';
 import moment from 'moment';
 
 import Form from '../../ui/Form';
 
 const propTypes = {
-    registerActivity: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
@@ -43,7 +43,7 @@ export class AddActivity extends Component {
             endDate: moment(this.state.endDate).toISOString()
         };
 
-        this.props.registerActivity(newActivity, this.props.history);
+        this.props.activityActions.create(newActivity, this.props.history);
     };
 
     getFields = () => {
@@ -111,13 +111,13 @@ export const mapStateToProps = (state, props) => {
         auth: state.auth,
         adminIsSuper: _.get(state.auth.admin, 'superAdmin', false),
         adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
-        errors: state.errors
+        errors: state.activities.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        registerActivity: (activityData, history) => dispatch(addActivity(activityData, history))
+        activityActions: bindActionCreators(ActivityActions, dispatch)
     };
 };
 

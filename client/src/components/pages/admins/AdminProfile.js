@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { fetchAdmin } from '../../../actions/adminActions';
+import AdminActions from '../../../actions/adminActions';
 import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 export class AdminProfile extends Component {
-    constructor(props) {
-        super(props);
-        this.routeParam = props.match.params.id;
-    }
-
     componentDidMount() {
         // call redux action to retrieve specified admin from api
-        this.props.getAdmin(this.routeParam);
+        this.props.adminActions.get(this.props.match.params.id);
     }
 
     getPageMarkup() {
@@ -64,15 +60,15 @@ export class AdminProfile extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        admin: state.admins.one,
+        admin: state.admins.all[props.match.params.id],
         currentAdminIsSuper: _.get(state.auth.admin, 'superAdmin'),
-        errors: state.errors
+        errors: state.admins.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getAdmin: id => dispatch(fetchAdmin(id))
+        adminActions: bindActionCreators(AdminActions, dispatch)
     };
 };
 

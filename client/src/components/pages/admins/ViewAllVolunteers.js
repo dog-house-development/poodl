@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { fetchVolunteers } from '../../../actions/volunteerActions';
+import VolunteerActions from '../../../actions/volunteerActions';
 import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ export class ViewAllVolunteers extends Component {
 
     componentDidMount() {
         // call redux action to retrieve all volunteers from api
-        this.props.getVolunteers();
+        this.props.volunteerActions.filter();
     }
 
     handleRowClick(e, id) {
@@ -57,13 +58,13 @@ export const mapStateToProps = (state, props) => {
     return {
         volunteers: state.volunteers.all,
         loading: state.volunteers.loading,
-        errors: state.errors
+        errors: state.volunteers.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getVolunteers: () => dispatch(fetchVolunteers())
+        volunteerActions: bindActionCreators(VolunteerActions, dispatch)
     };
 };
 

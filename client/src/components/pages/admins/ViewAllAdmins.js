@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Link, withRouter } from 'react-router-dom';
 
-import { fetchAdmins } from '../../../actions/adminActions';
+import AdminActions from '../../../actions/adminActions';
 import DataGrid from '../../ui/DataGrid';
 
 export class ViewAllAdmins extends Component {
@@ -14,7 +15,7 @@ export class ViewAllAdmins extends Component {
 
     componentDidMount() {
         // call redux action to retrieve all admins from api
-        this.props.getAdmins();
+        this.props.adminActions.filter();
     }
 
     handleRowClick(e, id) {
@@ -65,13 +66,13 @@ export const mapStateToProps = (state, props) => {
     return {
         admins: state.admins.all,
         loading: state.admins.loading,
-        errors: state.errors
+        errors: state.admins.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getAdmins: () => dispatch(fetchAdmins())
+        adminActions: bindActionCreators(AdminActions, dispatch)
     };
 };
 
