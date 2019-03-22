@@ -77,13 +77,6 @@ describe('MemberProfile tests', () => {
         });
     });
 
-    describe('componentDidMount', () => {
-        it('should run without breaking', () => {
-            spyOn(instance, 'componentDidMount');
-            instance.componentDidMount();
-        });
-    });
-
     describe('render', () => {
         it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();
