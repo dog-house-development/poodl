@@ -40,7 +40,7 @@ export class Navbar extends Component {
                                 {
                                     content: 'My profile',
                                     onClick: () => {
-                                        this.props.history.push(`/admin/${this.props.auth.admin.id}`);
+                                        this.props.history.push(`/admins/${this.props.auth.admin.id}`);
                                     }
                                 },
                                 { type: 'divider' },

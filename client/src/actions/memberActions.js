@@ -5,13 +5,15 @@ import {
     FETCH_MEMBERS_BEGIN,
     FETCH_MEMBERS_SUCCESS,
     FETCH_MEMBER_BEGIN,
-    FETCH_MEMBER_SUCCESS
+    FETCH_MEMBER_SUCCESS,
+    EDIT_MEMBER_BEGIN,
+    EDIT_MEMBER_SUCCESS
 } from './types';
 
 export const fetchMembers = () => dispatch => {
     dispatch(fetchMembersBegin());
     axios
-        .get('/api/members/get')
+        .post('/api/members/filter')
         .then(res => {
             dispatch(fetchMembersSuccess(res.data));
             return res.data;
@@ -24,14 +26,30 @@ export const fetchMembers = () => dispatch => {
         );
 };
 
-//Get specificied member by ID
+// Get specificied member by ID
 export const fetchMember = id => dispatch => {
     dispatch(fetchMemberBegin());
     axios
-        .get(`/api/members/get/${id}`)
+        .get(`/api/members/${id}`)
         .then(res => {
             dispatch(fetchMemberSuccess(res.data));
             return res.data;
+        })
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        );
+};
+
+// Edit specificied member by ID
+export const editMember = (id, memberData) => dispatch => {
+    dispatch(editMemberBegin());
+    axios
+        .patch(`/api/members/${id}`, memberData)
+        .then(res => {
+            dispatch(editMemberSuccess());
         })
         .catch(err =>
             dispatch({
@@ -57,4 +75,12 @@ export const fetchMemberBegin = () => ({
 export const fetchMemberSuccess = member => ({
     type: FETCH_MEMBER_SUCCESS,
     payload: member
+});
+
+export const editMemberBegin = () => ({
+    type: EDIT_MEMBER_BEGIN
+});
+
+export const editMemberSuccess = () => ({
+    type: EDIT_MEMBER_SUCCESS
 });

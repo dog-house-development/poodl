@@ -1,82 +1,21 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
-const passport = require('passport');
+const ApiHelper = require('./utils/apiHelper');
 
-//Validation goes here
-const validateRegisterInput = require('../../validation/addService');
+const router = require('express').Router();
+const Service = require('mongoose').model('Service');
 
-//Load model
-const Service = require('../../models/Service');
-
-//@router DELETE api/services/delete/:id
-//should delete a service based on the id
-router.delete('/delete/:id', (req, res) => {
-    Service.findOneAndDelete({ _id: req.params.id }, (err, item) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true });
-    });
-});
-
-//@route GET api/services/get
-//should return all services
-router.get('/get', (req, res) => {
-    Service.find((err, services) => {
-        if (err) return res.json({ sucess: false, error: err });
-        return res.json({ success: true, data: services });
-    });
-});
-
-//@route GET api/services/get/:id
-//should return service by id
-router.get('/get/:id', (req, res, next) => {
-    Service.findOne({ _id: req.params.id }, (err, post) => {
-        if (err) return next(err);
-        return res.json(post);
-    });
-});
+// @route POST api/services/
+ApiHelper.create(router, Service);
 
 // @route POST api/services/filter
-// should return filtered results from json
-router.post('/filter', (req, res) => {
-    Service.find(res.body, (err, services) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true, data: services });
-    });
-});
+ApiHelper.filter(router, Service);
 
-// @route POST api/services/add
-// @desc add a service
-router.post('/add', (req, res) => {
-    const { errors, isValid } = validateRegisterInput(req.body);
+// @route GET api/services/:id
+ApiHelper.get(router, Service);
 
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
+// @route PATCH api/services/:id
+ApiHelper.edit(router, Service);
 
-    Service.findOne({ name: req.body.name }).then(service => {
-        if (service) {
-            return res.status(400).json({ name: 'Service already exists' });
-        } else {
-            const newService = new Service({
-                name: req.body.name,
-                time: req.body.time,
-                duration: req.body.duration,
-                date: req.body.date,
-                admins: req.body.admins,
-                volunteers: req.body.volunteers,
-                members: req.body.members,
-                seniorCenter: req.body.seniorCenter,
-                maxCapacity: req.body.maxCapacity
-            });
-            newService
-                .save()
-                .then(Service => res.json(Service))
-                .catch(err => console.log(err));
-        }
-    });
-});
+// @router DELETE api/services/:id
+ApiHelper.delete(router, Service);
 
 module.exports = router;

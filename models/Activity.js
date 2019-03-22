@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
-const keyError = require('../utils/schemaMiddleware');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const schema = new Schema(
+const activitySchema = new Schema(
     {
+        seniorCenterId: {
+            type: ObjectId,
+            required: true
+        },
         name: {
             type: String,
             required: [true, 'Name is required']
@@ -15,7 +18,13 @@ const schema = new Schema(
         },
         startDate: {
             type: Date,
-            required: [true, 'Start Date is required']
+            required: [true, 'Start Date is required'],
+            validate: {
+                validator: function(v) {
+                    return v < this.endDate;
+                },
+                message: 'Start date must be before end date'
+            }
         },
         endDate: {
             type: Date,
@@ -23,24 +32,12 @@ const schema = new Schema(
         },
         admins: [ObjectId],
         members: [ObjectId],
-        seniorCenter: {
-            type: ObjectId,
-            required: true
+        maxCapacity: {
+            type: Number,
+            min: 1
         }
     },
     { timestamps: true }
 );
 
-// remove later because activity name will be shared with others
-// this exists now for an example for other schemas
-schema.post('save', keyError({ name: 'Activity already exists' }));
-
-schema.pre('save', function(next) {
-    if (this.startDate > this.endDate) {
-        next({ startDate: 'Start date must be before end date', endDate: 'End date must be after start date' });
-    }
-
-    next();
-});
-
-module.exports = mongoose.model('activities', schema);
+module.exports = activitySchema;

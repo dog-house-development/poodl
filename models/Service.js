@@ -1,48 +1,26 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const ServiceSchema = new Schema(
+const serviceSchema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            required: [true, 'Name field is required']
         },
-        time: {
-            type: String,
-            required: true
+        seniorCenterId: {
+            type: ObjectId,
+            required: [true, 'seniorCenterId field is required']
         },
-        duration: {
-            type: String,
-            required: true
+        memberId: {
+            type: ObjectId,
+            required: [true, 'memberId field is required']
         },
-        date: {
-            type: String,
-            required: true
-        },
-        //The plan is to have admin and volunteer list be IDs
-        admins: [
-            {
-                type: String
-            }
-        ],
-        volunteers: [
-            {
-                type: String
-            }
-        ],
-        members: [
-            {
-                type: String
-            }
-        ],
-        seniorCenter: {
-            type: String,
-            required: true
-        },
-        maxCapacity: {
+        description: {
             type: String
         }
     },
     { timestamps: true }
 );
-module.exports = mongoose.model('services', ServiceSchema);
+
+module.exports = serviceSchema;

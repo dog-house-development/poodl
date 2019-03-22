@@ -1,101 +1,53 @@
+// libraries
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
 const passport = require('passport');
 
-// Load input validation
-const validateRegisterInput = require('../../validation/registerAdmin');
-const validateLoginInput = require('../../validation/login');
+// misc
+const keys = require('../../config/keys');
+const ApiHelper = require('./utils/apiHelper');
 
-// Load Admin model
-const Admin = require('../../models/Admin');
+// input validation
+const validateRegisterAdmin = require('./validation/admin/registerAdmin');
+const validateLoginInput = require('./validation/admin/login');
 
-//@route DELETE api/admins/delete/:id
-// should delete specified admin by ID
-router.delete('/delete/:id', (req, res) => {
-    Admin.findOneAndDelete({ _id: req.params.id }, (err, item) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true });
-    });
-});
-
-// @route GET api/admins/get
-// should return all admins
-router.get('/get', (req, res) => {
-    Admin.find((err, admins) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true, data: admins });
-    });
-});
-
-//@route GET api/admins/get/:id
-//should return admin with given id
-router.get('/get/:id', (req, res, next) => {
-    Admin.findOne({ _id: req.params.id }, (err, admin) => {
-        if (err) return next(err);
-        return res.json(admin);
-    });
-});
-
-//@route GET api/admins/get
-//should return admins with ids from list
-//takes json _id: []
-router.post('/get', (req, res) => {
-    Admin.find({ _id: req.body._id }, (err, admins) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json(admins);
-    });
-});
+const router = express.Router();
+const Admin = require('mongoose').model('Admin');
 
 // @route POST api/admins/filter
-// should return filtered results from json
-router.post('/filter', (req, res) => {
-    Admin.find(res.body, (err, admins) => {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true, data: admins });
-    });
-});
+ApiHelper.filter(router, Admin);
 
-// @route POST api/admins/register
-// @desc Register user
-// @access Public
-router.post('/register', (req, res) => {
-    // Form validation
+// @route GET api/admins/:id
+ApiHelper.get(router, Admin);
 
-    const { errors, isValid } = validateRegisterInput(req.body);
+// @route PATCH api/admins/:id
+ApiHelper.edit(router, Admin);
 
-    // Check validation
+// @route DELETE api/admins/:id
+ApiHelper.delete(router, Admin);
+
+// @route POST api/admins/
+router.post('/', (req, res) => {
+    const newAdmin = new Admin(req.body);
+
+    const { errors, isValid } = validateRegisterAdmin(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
     }
 
-    Admin.findOne({ email: req.body.email }).then(admin => {
-        if (admin) {
-            return res.status(400).json({ email: 'Email already exists' });
-        } else {
-            const newAdmin = new Admin({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                password: req.body.password,
-                seniorCenter: req.body.seniorCenter,
-                superAdmin: req.body.superAdmin
-            });
-
-            // Hash password before saving in database
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newAdmin.password, salt, (err, hash) => {
-                    if (err) throw err;
-                    newAdmin.password = hash;
-                    newAdmin
-                        .save()
-                        .then(admin => res.json(admin))
-                        .catch(err => console.log(err));
+    // Hash password before saving in database
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newAdmin.password, salt, (err, hash) => {
+            if (err) throw err;
+            newAdmin.password = hash;
+            newAdmin
+                .save()
+                .then(admin => res.json(admin))
+                .catch(err => {
+                    return res.status(400).json(err);
                 });
-            });
-        }
+        });
     });
 });
 
@@ -131,8 +83,8 @@ router.post('/login', (req, res) => {
                     id: admin.id,
                     firstName: admin.firstName,
                     lastName: admin.lastName,
-                    seniorCenter: admin.seniorCenter,
-                    superAdmin: admin.superAdmin
+                    seniorCenterId: admin.seniorCenterId,
+                    accessLevel: admin.accessLevel
                 };
 
                 // Sign token

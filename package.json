@@ -5,17 +5,18 @@
     "main": "server.js",
     "scripts": {
         "install-all": "yarn && yarn --cwd client",
-        "start": "node server.js",
+        "start:server": "node server.js",
         "test:client": "yarn --cwd client test",
         "test:server": "mocha",
+        "test:selenium": "mocha test/selenium/",
         "server": "nodemon server.js",
-        "client": "yarn --cwd client start",
+        "start:client": "yarn --cwd client start",
         "client:coverage": "yarn test:client -- --coverage",
         "server:coverage": "nyc --reporter=lcovonly yarn test:server",
         "coverage": "yarn client:coverage && yarn server:coverage",
         "combine-coverage-files": "lcov -a client/coverage/lcov.info -a coverage/lcov.info -o coverage/total.info",
         "coveralls": "yarn combine-coverage-files && cat coverage/total.info | coveralls",
-        "start:dev": "concurrently \"yarn server\" \"yarn client\"",
+        "start:dev": "concurrently \"yarn server\" \"yarn start:client\"",
         "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
     },
     "author": "",
@@ -35,12 +36,15 @@
     "devDependencies": {
         "chai": "^4.2.0",
         "chai-http": "^4.2.1",
+        "chromedriver": "^2.46.0",
         "codacy-coverage": "^3.4.0",
         "coveralls": "^3.0.2",
         "mocha": "^5.2.0",
         "mocha-prepare": "^0.1.0",
         "mockgoose": "^8.0.1",
         "mongo-unit": "^1.4.4",
+        "selenium-webdriver": "^4.0.0-alpha.1",
+        "nodemon": "^1.18.10",
         "nyc": "^13.2.0"
     }
 }

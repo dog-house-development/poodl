@@ -1,32 +1,44 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('../../../server');
+const server = require('../../../../server');
 const should = chai.should();
 const expect = chai.expect;
 const assert = chai.assert;
-
-chai.use(chaiHttp);
+const mongoUnit = require('mongo-unit');
+const testMongoUrl = process.env.MONGODB_URI;
 
 module.exports = function() {
     it('it should create a new admin', done => {
-        const admin1 = {
+        const admin1 = new Admin({
             firstName: 'testy',
             lastName: 'boy',
             email: 'test@gmail.com',
             password: 'greatpassword1!@',
             password2: 'greatpassword1!@',
-            seniorCenter: 'test center',
-            superAdmin: true
-        };
+            accessLevel: 'Volunteer',
+            seniorCenterId: '5c78d41c24952d2828f880ea',
+            middleInitial: 'L',
+            streetAddress: '123 This Street',
+            city: 'Bozeman',
+            state: 'MT',
+            zip: '59715',
+            homePhone: '818-854-9090',
+            cellPhone: '123-456-7890',
+            howOften: '5 hours',
+            houseMaintenanceAndRepairs: 'Carpentry',
+            references: 'My Father',
+            learnAboutVolunteerProgram: 'Other'
+        });
 
-        const admin2 = {
-            firstName: 'testy',
+        const admin2 = new Admin({
+            firstName: 'testy2',
             lastName: 'boy2',
             email: 'test2@gmail.com',
             password: 'greatpassword2!@',
             password2: 'greatpassword2!@',
-            seniorCenter: 'test center2'
-        };
+            accessLevel: 'Admin',
+            seniorCenterId: '5c78d41c24952d2828f880ea'
+        });
 
         chai.request(server)
             .post('/api/admins/register')
@@ -42,7 +54,7 @@ module.exports = function() {
                 res.body.should.have.property('firstName').eql('testy');
                 res.body.should.have.property('lastName').eql('boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
-                res.body.should.have.property('seniorCenter').eql('test center');
+                res.body.should.have.property('seniorCenterId');
                 done();
             });
     });
@@ -70,23 +82,20 @@ module.exports = function() {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('success').eql(true);
-                tempId = res.body.data[1]._id;
+                tempId = res.body.data[0]._id;
+                //console.log(res.body.data[1]);
                 res.body.should.have.property('data');
-                res.body.data[1].should.have.property('_id');
-                res.body.data[1].should.have.property('firstName').eql('testy');
-                res.body.data[1].should.have.property('lastName').eql('boy');
-                res.body.data[1].should.have.property('email').eql('test@gmail.com');
-                res.body.data[1].should.have.property('password');
-                res.body.data[1].should.have.property('superAdmin').eql(true);
-                res.body.data[1].should.have.property('seniorCenter').eql('test center');
-
                 res.body.data[0].should.have.property('_id');
                 res.body.data[0].should.have.property('firstName').eql('testy');
-                res.body.data[0].should.have.property('lastName').eql('boy2');
-                res.body.data[0].should.have.property('email').eql('test2@gmail.com');
-                res.body.data[0].should.have.property('password');
-                res.body.data[0].should.have.property('superAdmin').eql(false);
-                res.body.data[0].should.have.property('seniorCenter').eql('test center2');
+                res.body.data[0].should.have.property('lastName').eql('boy');
+                res.body.data[0].should.have.property('email').eql('test@gmail.com');
+                res.body.data[0].should.have.property('seniorCenterId');
+                // //
+                res.body.data[1].should.have.property('_id');
+                res.body.data[1].should.have.property('firstName').eql('testy2');
+                res.body.data[1].should.have.property('lastName').eql('boy2');
+                res.body.data[1].should.have.property('email').eql('test2@gmail.com');
+                res.body.data[1].should.have.property('seniorCenterId');
 
                 done();
             });
@@ -102,7 +111,7 @@ module.exports = function() {
                 res.body.should.have.property('firstName').eql('testy');
                 res.body.should.have.property('lastName').eql('boy');
                 res.body.should.have.property('email').eql('test@gmail.com');
-                res.body.should.have.property('seniorCenter').eql('test center');
+                res.body.should.have.property('seniorCenterId');
                 done();
             });
     });
@@ -122,7 +131,9 @@ module.exports = function() {
 
     it('it should filter list of admins', done => {
         let request = {
-            seniorCenter: 'test center'
+            firstName: 'testy2',
+            page: 0,
+            pageSize: 1
         };
         chai.request(server)
             .post('/api/admins/filter')
@@ -130,12 +141,29 @@ module.exports = function() {
             .end((err, res) => {
                 res.should.have.status(200);
                 res.body.data[0].should.have.property('_id');
-                res.body.data[0].should.have.property('firstName').eql('testy');
+                res.body.data[0].should.have.property('firstName').eql('testy2');
                 res.body.data[0].should.have.property('lastName').eql('boy2');
                 res.body.data[0].should.have.property('email').eql('test2@gmail.com');
                 res.body.data[0].should.have.property('password');
-                res.body.data[0].should.have.property('superAdmin').eql(false);
-                res.body.data[0].should.have.property('seniorCenter');
+                done();
+            });
+    });
+
+    it('it should edit a specific admin by id', done => {
+        let request = {
+            city: 'Agoura'
+        };
+        chai.request(server)
+            .post('/api/admins/edit/' + tempId)
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.not.have.property('data');
+                res.body.should.have.property('_id');
+                res.body.should.have.property('firstName').eql('testy');
+                res.body.should.have.property('lastName').eql('boy');
+                res.body.should.have.property('email').eql('test@gmail.com');
+                res.body.should.have.property('city').eql('Agoura');
                 done();
             });
     });

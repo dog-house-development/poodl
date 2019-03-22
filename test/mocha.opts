@@ -1,5 +1,3 @@
 --timeout 120000
 --full-trace
---recursive
---require test/api/prepareMongoUnit
 --exit

@@ -4,23 +4,6 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 
-const admins = require('./routes/api/admins');
-const members = require('./routes/api/members');
-const seniorCenters = require('./routes/api/seniorCenters');
-const volunteers = require('./routes/api/volunteers');
-const services = require('./routes/api/services');
-const activities = require('./routes/api/activities');
-
-const app = express();
-
-// Bodyparser middleware
-app.use(
-    bodyParser.urlencoded({
-        extended: false
-    })
-);
-app.use(bodyParser.json());
-
 // MongoDB URI
 const mongoURI = process.env.MONGODB_URI || require('./config/secrets').mongoURI;
 
@@ -33,6 +16,27 @@ mongoose
     .then(() => console.log('MongoDB successfully connected'))
     .catch(err => console.log(err));
 
+// Add the validation error plugin to make the model validation
+// errors look nice.
+mongoose.plugin(require('./models/plugins/validationError'));
+
+// Add models to mongoose
+mongoose.model('Activity', require('./models/Activity'));
+mongoose.model('Admin', require('./models/Admin'));
+mongoose.model('Member', require('./models/Member'));
+mongoose.model('SeniorCenter', require('./models/SeniorCenter'));
+mongoose.model('Service', require('./models/Service'));
+
+const app = express();
+
+// Bodyparser middleware
+app.use(
+    bodyParser.urlencoded({
+        extended: false
+    })
+);
+app.use(bodyParser.json());
+
 // Passport middleware
 app.use(passport.initialize());
 
@@ -40,12 +44,11 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 // Routes
-app.use('/api/admins', admins);
-app.use('/api/members', members);
-app.use('/api/seniorCenters', seniorCenters);
-app.use('/api/volunteers', volunteers);
-app.use('/api/services', services);
-app.use('/api/activities', activities);
+app.use('/api/admins', require('./routes/api/admins'));
+app.use('/api/members', require('./routes/api/members'));
+app.use('/api/seniorCenters', require('./routes/api/seniorCenters'));
+app.use('/api/services', require('./routes/api/services'));
+app.use('/api/activities', require('./routes/api/activities'));
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

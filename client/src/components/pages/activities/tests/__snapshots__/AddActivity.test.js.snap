@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add activity tests render should render correctly 1`] = `
+<div
+  className="activity-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/activities"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to all activities
+  </Link>
+  <Form
+    buttonLabel="Add Activity"
+    fields={
+      Array [
+        Object {
+          "autoComplete": "off",
+          "error": undefined,
+          "id": "name",
+          "label": "Name",
+          "onChange": [Function],
+          "placeholder": "Name",
+          "type": "text",
+        },
+        Object {
+          "autoComplete": "off",
+          "error": "Description is required",
+          "id": "description",
+          "label": "Description",
+          "onChange": [Function],
+          "placeholder": "Description",
+          "type": "text",
+        },
+        Object {
+          "error": undefined,
+          "id": "startDate",
+          "label": "Start date",
+          "onChange": [Function],
+          "sidebyside": 1,
+          "type": "datetime-local",
+        },
+        Object {
+          "error": undefined,
+          "id": "endDate",
+          "label": "End Date",
+          "onChange": [Function],
+          "sidebyside": 2,
+          "type": "datetime-local",
+        },
+      ]
+    }
+    formTitle="Add Activity"
+    noValidate={true}
+    onSubmit={[Function]}
+  />
+</div>
+`;

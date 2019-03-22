@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewAllAdmins tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/dashboard"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to home
+  </Link>
+  <div
+    className="view-all-header"
+  >
+    <h1>
+      Manage Admins
+    </h1>
+    <Link
+      className="button small primary"
+      replace={false}
+      to="/register"
+    >
+      <i
+        className="material-icons button-icon"
+      >
+        add
+      </i>
+      Add admin
+    </Link>
+  </div>
+  <DataGrid
+    data={
+      Array [
+        Object {
+          "email": "bigtup@nowhere.com",
+          "firstName": "Big",
+          "key": "123",
+          "lastName": "Tup",
+          "super": "Yes",
+        },
+        Object {
+          "email": "liltup@nowhere.com",
+          "firstName": "Lil",
+          "key": "321",
+          "lastName": "Tup",
+          "super": "No",
+        },
+      ]
+    }
+    loading={false}
+    onRowClick={[Function]}
+  />
+</div>
+`;
