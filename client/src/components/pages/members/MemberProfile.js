@@ -5,7 +5,6 @@ import _ from 'lodash';
 import MemberActions from '../../../actions/memberActions';
 import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
-import Button from '../../ui/Button';
 import memberFields, { Categories } from './memberFields';
 import EditableProfile from '../../ui/EditableProfile';
 
