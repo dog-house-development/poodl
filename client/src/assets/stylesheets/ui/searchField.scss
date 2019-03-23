@@ -1,0 +1,11 @@
+@import './_presets.scss';
+
+.search-wrapper {
+  display: block;
+
+  .dropdown-content {
+    max-width: 100%;
+    width: 100%;
+    top: 100%;
+  }
+}

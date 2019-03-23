@@ -15,7 +15,8 @@ const propTypes = {
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),
     sidebyside: PropTypes.oneOf([1, 2]),
-    error: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    onClick: PropTypes.func
 };
 
 const defaultProps = {
@@ -44,6 +45,7 @@ class Field extends Component {
                         {...this.props}
                         defaultValue={this.props.content}
                         onChange={this.handleChange}
+                        onClick={this.props.onClick}
                         className={classnames(
                             'field',
                             this.props.size,
