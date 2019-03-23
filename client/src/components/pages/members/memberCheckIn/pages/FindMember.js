@@ -30,6 +30,7 @@ export class FindMember extends Component {
                     size="large"
                     id="find-member-search"
                     data={this.props.members}
+                    autoFocus="on"
                     searchRule={(param, value) => {
                         param = _.lowerCase(param);
                         return (
@@ -37,7 +38,12 @@ export class FindMember extends Component {
                             _.includes(_.lowerCase(value.lastName), param)
                         );
                     }}
-                    displayRow={row => row.firstName + ' ' + row.lastName}
+                    displayRow={row => (
+                        <>
+                            {row.firstName + ' ' + row.lastName}
+                            <i className="material-icons arrow-icon">arrow_forward</i>
+                        </>
+                    )}
                     onSearchResultClick={this.handleSearchResultClick}
                 />
             </div>

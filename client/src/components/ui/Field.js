@@ -14,6 +14,7 @@ const propTypes = {
     placeholder: PropTypes.string,
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),
+    autoFocus: PropTypes.oneOf(['on', 'off']),
     sidebyside: PropTypes.oneOf([1, 2]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     onClick: PropTypes.func
@@ -22,7 +23,8 @@ const propTypes = {
 const defaultProps = {
     size: 'normal',
     type: 'text',
-    autoComplete: 'on'
+    autoComplete: 'on',
+    autoFocus: 'off'
 };
 
 class Field extends Component {

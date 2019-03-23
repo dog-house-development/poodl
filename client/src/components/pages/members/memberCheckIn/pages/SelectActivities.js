@@ -32,9 +32,10 @@ export class SelectActivities extends Component {
                             members: [..._.remove(activity.members, this.props.memberId)]
                         });
                     }}
-                    content={'Un sign up'}
-                    kind="secondary"
-                />
+                    kind="secondary">
+                    <i class="material-icons button-icon">assignment_turned_in</i>
+                    Signed up
+                </Button>
             );
         }
         return (
@@ -43,9 +44,10 @@ export class SelectActivities extends Component {
                     this.props.activityActions.edit(activity._id, {
                         members: [...activity.members, this.props.memberId]
                     })
-                }
-                content={'Sign up'}
-            />
+                }>
+                <i className="material-icons button-icon">assignment</i>
+                Sign up
+            </Button>
         );
     }
 

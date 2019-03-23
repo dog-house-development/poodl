@@ -13,11 +13,13 @@ const propTypes = {
     searchRule: PropTypes.func.isRequired,
     displayRow: PropTypes.func,
     onSearchResultClick: PropTypes.func.isRequired,
+    autoFocus: PropTypes.oneOf(['on', 'off']),
     data: PropTypes.array
 };
 
 const defaultProps = {
-    size: 'normal'
+    size: 'normal',
+    autoFocus: 'off'
 };
 
 class SearchField extends Component {
@@ -92,6 +94,8 @@ class SearchField extends Component {
                     size={this.props.size}
                     content={this.props.content}
                     onClick={this.handleFieldClick}
+                    autoComplete="off"
+                    autoFocus={this.props.autoFocus}
                 />
                 {this.getSearchResultsMarkup()}
             </div>

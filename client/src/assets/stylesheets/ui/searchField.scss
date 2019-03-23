@@ -7,5 +7,30 @@
     max-width: 100%;
     width: 100%;
     top: 100%;
+    font-size: 1em;
+
+    .dropdown-content-row {
+      font-weight: bold;
+      padding: 0 15px;
+
+      &:hover {
+        .arrow-icon {
+          visibility: visible;
+        }
+      }
+
+      .arrow-icon {
+        margin-top: -4px;
+        margin-right: 2px;
+        height: 17px;
+        width: 18px;
+        float: right;
+        visibility: hidden;
+      }
+
+      .person-icon {
+        font-size: inherit;
+      }
+    }
   }
 }
