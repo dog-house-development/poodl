@@ -23,13 +23,39 @@ export class SelectActivities extends Component {
         });
     }
 
+    getActivityButtonMarkup(activity) {
+        if (_.includes(activity.members, this.props.memberId)) {
+            return (
+                <Button
+                    onClick={() => {
+                        this.props.activityActions.edit(activity._id, {
+                            members: [..._.remove(activity.members, this.props.memberId)]
+                        });
+                    }}
+                    content={'Un sign up'}
+                    kind="secondary"
+                />
+            );
+        }
+        return (
+            <Button
+                onClick={() =>
+                    this.props.activityActions.edit(activity._id, {
+                        members: [...activity.members, this.props.memberId]
+                    })
+                }
+                content={'Sign up'}
+            />
+        );
+    }
+
     getActivitiesMarkup() {
         return _.map(this.props.activities, activity => {
             return (
                 <div key={activity._id} className="panel">
                     <h3>{activity.name}</h3>
                     <p>{activity.description}</p>
-                    <Button onClick={() => console.log('sign up for this activity')} content="Sign up" />
+                    {this.getActivityButtonMarkup(activity)}
                 </div>
             );
         });
