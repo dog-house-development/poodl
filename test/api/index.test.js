@@ -1,4 +1,8 @@
 const activities = require('./suites/activities/activities.test.js');
+const members = require('./suites/members/members.test.js');
+const admins = require('./suites/admins/admins.test.js');
+const seniorCenters = require('./suites/seniorCenters/seniorCenters.test.js');
+const services = require('./suites/services/services.test.js');
 const mongoUnit = require('mongo-unit');
 const chai = require('chai');
 chai.use(require('chai-http'));
@@ -20,4 +24,8 @@ describe('API tests', function() {
     });
 
     describe('activities', activities.bind(this));
+    describe('members', members.bind(this));
+    describe('admins', admins.bind(this));
+    describe('seniorCenters', seniorCenters.bind(this));
+    describe('services', services.bind(this));
 });
