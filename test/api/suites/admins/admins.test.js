@@ -6,7 +6,8 @@ const mongoUnit = require('mongo-unit');
 const expectNoErrors = require('../../utils/expectNoErrors');
 const DATA = require('./admins');
 const admins = DATA.admins;
-const admin1 = admins[0];
+const firstPassword = admins[0].password;
+const secondPassword = admins[1].password;
 
 module.exports = function() {
     describe('POST /api/admins/', function() {
@@ -16,8 +17,8 @@ module.exports = function() {
                 .post('/api/admins/')
                 .send(admins[0]);
 
-            res.body.password = 'TETSTETST';
-            res.body.password2 = 'TETSTETST';
+            res.body.password = firstPassword;
+            res.body.password2 = firstPassword;
             expectNoErrors(res);
             expect(res).to.have.status(200);
             expect(res.body).to.deep.include(admins[0]);
@@ -35,10 +36,10 @@ module.exports = function() {
 
             expectNoErrors(res);
             expect(res).to.have.status(200);
-            admins[0].password = 'TETSTETST';
-            admins[0].password2 = 'TETSTETST';
-            admins[1].password = 'TETSTETST123';
-            admins[1].password2 = 'TETSTETST123';
+            admins[0].password = firstPassword;
+            admins[0].password2 = firstPassword;
+            admins[1].password = secondPassword;
+            admins[1].password2 = secondPassword;
             delete admins[0]._id;
             delete admins[1]._id;
             expect(res.body[0]).to.deep.include(admins[0]);
@@ -55,8 +56,8 @@ module.exports = function() {
 
             const id = res1.body._id;
             const res = await chai.request(require('../../../../server')).get('/api/admins/' + id);
-            res.body.password = 'TETSTETST';
-            res.body.password2 = 'TETSTETST';
+            res.body.password = firstPassword;
+            res.body.password2 = firstPassword;
             expectNoErrors(res);
             expect(res).to.have.status(200);
             expect(res.body).to.deep.include(admins[0]);
@@ -72,8 +73,8 @@ module.exports = function() {
 
             const id = res1.body._id;
             const res = await chai.request(require('../../../../server')).delete('/api/admins/' + id);
-            res.body.password = 'TETSTETST';
-            res.body.password2 = 'TETSTETST';
+            res.body.password = firstPassword;
+            res.body.password2 = firstPassword;
 
             expectNoErrors(res);
             expect(res).to.have.status(200);
