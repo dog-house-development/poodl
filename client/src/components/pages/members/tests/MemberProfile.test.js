@@ -20,21 +20,22 @@ describe('MemberProfile tests', () => {
             {},
             {
                 members: {
-                    one: [
-                        {
+                    all: {
+                        123: {
                             _id: '123',
                             firstName: 'Big',
                             lastName: 'Tup',
                             membershipDate: '02/20/2020',
                             email: 'bigtup@nowhere.com'
                         }
-                    ]
-                },
-                errors: {}
+                    },
+                    errors: {},
+                    loading: false
+                }
             },
             _state
         );
-        props = _.assign({}, _props);
+        props = _.assign({}, { match: { params: { id: 123 } } }, _props);
         wrapper = shallow(
             <MemberProfile
                 match={match}
@@ -56,15 +57,14 @@ describe('MemberProfile tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                member: [
-                    {
-                        _id: '123',
-                        firstName: 'Big',
-                        lastName: 'Tup',
-                        membershipDate: '02/20/2020',
-                        email: 'bigtup@nowhere.com'
-                    }
-                ],
+                member: {
+                    _id: '123',
+                    firstName: 'Big',
+                    lastName: 'Tup',
+                    membershipDate: '02/20/2020',
+                    email: 'bigtup@nowhere.com'
+                },
+                loading: false,
                 errors: {}
             });
         });
@@ -73,14 +73,7 @@ describe('MemberProfile tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getMembers: () => {} }));
-        });
-    });
-
-    describe('componentDidMount', () => {
-        it('should run without breaking', () => {
-            spyOn(instance, 'componentDidMount');
-            instance.componentDidMount();
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ memberActions: {} }));
         });
     });
 

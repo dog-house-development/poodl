@@ -22,24 +22,25 @@ describe('AdminProfile tests', () => {
                 auth: {
                     admin: {
                         superAdmin: true
-                    }
+                    },
+                    errors: {}
                 },
                 admins: {
-                    one: [
-                        {
+                    all: {
+                        123: {
                             _id: '123',
                             firstName: 'Moose',
                             lastName: 'Man',
                             email: 'mooseman@nowhere.com',
                             superAdmin: true
                         }
-                    ]
-                },
-                errors: {}
+                    },
+                    errors: {}
+                }
             },
             _state
         );
-        props = _.assign({}, _props);
+        props = _.assign({}, { match: { params: { id: 123 } } }, _props);
         wrapper = shallow(
             <AdminProfile
                 match={match}
@@ -61,15 +62,13 @@ describe('AdminProfile tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
-                admin: [
-                    {
-                        _id: '123',
-                        firstName: 'Moose',
-                        lastName: 'Man',
-                        email: 'mooseman@nowhere.com',
-                        superAdmin: true
-                    }
-                ],
+                admin: {
+                    _id: '123',
+                    firstName: 'Moose',
+                    lastName: 'Man',
+                    email: 'mooseman@nowhere.com',
+                    superAdmin: true
+                },
                 currentAdminIsSuper: true,
                 errors: {}
             });
@@ -79,7 +78,7 @@ describe('AdminProfile tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getAdmin: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ adminActions: {} }));
         });
     });
 

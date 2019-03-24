@@ -1,39 +1,42 @@
-import {
-    FETCH_VOLUNTEERS_BEGIN,
-    FETCH_VOLUNTEERS_SUCCESS,
-    FETCH_VOLUNTEER_BEGIN,
-    FETCH_VOLUNTEER_SUCCESS
-} from '../actions/types';
+import Types from '../actions/types';
 
 const initialState = {
     loading: false,
     all: [],
-    one: {}
+    errors: {}
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case FETCH_VOLUNTEERS_BEGIN:
+        case Types.volunteer.ERROR:
+            return {
+                ...state,
+                loading: false,
+                errors: action.payload
+            };
+        case Types.volunteer.filter.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_VOLUNTEERS_SUCCESS:
+        case Types.volunteer.filter.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                all: action.payload
+                all: action.payload,
+                errors: {}
             };
-        case FETCH_VOLUNTEER_BEGIN:
+        case Types.volunteer.get.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_VOLUNTEER_SUCCESS:
+        case Types.volunteer.get.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                one: action.payload
+                all: { [action.payload._id]: action.payload },
+                errors: {}
             };
         default:
             return state;

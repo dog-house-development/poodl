@@ -18,332 +18,211 @@ exports[`MemberProfile tests render should render correctly 1`] = `
   </Link>
   <div>
     <h1>
+      Big
        
+      Tup
     </h1>
-    <div>
-      <div
-        className="panel"
-        key="personal"
-      >
-        <div
-          className="profile-section-header"
-          key="personal"
-        >
-          <div
-            className="profile-section-title-and-description"
-          >
-            <h3
-              className="profile-section-title"
-            >
-              Personal Info
-            </h3>
-          </div>
-          <div
-            className="profile-section-button"
-          >
-            <Button
-              content="Edit"
-              dropdownButton={false}
-              id="personal"
-              key="edit-button-19"
-              kind="primary"
-              onClick={[Function]}
-              size="small"
-            />
-          </div>
-        </div>
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="firstName"
-          key="firstName"
-          label="First name"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="lastName"
-          key="lastName"
-          label="Last name"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="birthDate"
-          key="birthDate"
-          label="Date of Birth"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="email"
-          key="email"
-          label="Email"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="address"
-          key="address"
-          label="Address"
-        />
-        <EditableRadio
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="gender"
-          key="gender"
-          label="Gender"
-          options={
-            Array [
+    <withRouter(EditableProfile)
+      categories={
+        Object {
+          "demographic": Object {
+            "id": "demographic",
+            "title": "Demographic Info",
+          },
+          "emergencyContact": Object {
+            "id": "emergencyContact",
+            "title": "Emergency Contact Info",
+          },
+          "health": Object {
+            "id": "health",
+            "title": "Health Info",
+          },
+          "membership": Object {
+            "id": "membership",
+            "title": "Membership Details",
+          },
+          "nfcsp": Object {
+            "description": "If client is receiving services under National Family Caregiver Support Program, complete the following",
+            "id": "nfcsp",
+            "title": "National Family Caregiver Support Program",
+          },
+          "personal": Object {
+            "id": "personal",
+            "title": "Personal Info",
+          },
+        }
+      }
+      editProfile={[Function]}
+      fields={
+        Array [
+          Object {
+            "category": "personal",
+            "id": "firstName",
+            "label": "First name",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "lastName",
+            "label": "Last name",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "birthDate",
+            "label": "Date of Birth",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "email",
+            "label": "Email",
+            "type": "email",
+          },
+          Object {
+            "category": "personal",
+            "id": "address",
+            "label": "Address",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "gender",
+            "label": "Gender",
+            "options": Array [
               "male",
               "female",
               "other",
-            ]
-          }
-        />
-      </div>
-      <div
-        className="panel"
-        key="emergencyContact"
-      >
-        <div
-          className="profile-section-header"
-          key="emergencyContact"
-        >
-          <div
-            className="profile-section-title-and-description"
-          >
-            <h3
-              className="profile-section-title"
-            >
-              Emergency Contact Info
-            </h3>
-          </div>
-          <div
-            className="profile-section-button"
-          >
-            <Button
-              content="Edit"
-              dropdownButton={false}
-              id="emergencyContact"
-              key="edit-button-20"
-              kind="primary"
-              onClick={[Function]}
-              size="small"
-            />
-          </div>
-        </div>
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="emergencyContactName"
-          key="emergencyContactName"
-          label="Emergency Contact Name"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="emergencyContactRelationship"
-          key="emergencyContactRelationship"
-          label="Emergency Contact Relationship"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="emergencyContactPhoneNumber"
-          key="emergencyContactPhoneNumber"
-          label="Emergency Contact Phone Number"
-        />
-      </div>
-      <div
-        className="panel"
-        key="membership"
-      >
-        <div
-          className="profile-section-header"
-          key="membership"
-        >
-          <div
-            className="profile-section-title-and-description"
-          >
-            <h3
-              className="profile-section-title"
-            >
-              Membership Details
-            </h3>
-          </div>
-          <div
-            className="profile-section-button"
-          >
-            <Button
-              content="Edit"
-              dropdownButton={false}
-              id="membership"
-              key="edit-button-21"
-              kind="primary"
-              onClick={[Function]}
-              size="small"
-            />
-          </div>
-        </div>
-        <EditableRadio
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="memberisNewOrRenewal"
-          key="memberisNewOrRenewal"
-          label="Member is new or renewal"
-          options={
-            Array [
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "emergencyContact",
+            "id": "emergencyContactName",
+            "label": "Emergency Contact Name",
+            "type": "text",
+          },
+          Object {
+            "category": "emergencyContact",
+            "id": "emergencyContactRelationship",
+            "label": "Emergency Contact Relationship",
+            "type": "text",
+          },
+          Object {
+            "category": "emergencyContact",
+            "id": "emergencyContactPhoneNumber",
+            "label": "Emergency Contact Phone Number",
+            "type": "text",
+          },
+          Object {
+            "category": "health",
+            "id": "specialDiet",
+            "label": "Special Diet",
+            "type": "text",
+          },
+          Object {
+            "category": "health",
+            "id": "medicalIssues",
+            "label": "Medical Issues",
+            "type": "text",
+          },
+          Object {
+            "category": "health",
+            "id": "disabilities",
+            "label": "Disabilities",
+            "type": "text",
+          },
+          Object {
+            "category": "health",
+            "id": "mealPreference",
+            "label": "Meal Preference",
+            "type": "text",
+          },
+          Object {
+            "category": "membership",
+            "id": "memberisNewOrRenewal",
+            "label": "Member is new or renewal",
+            "options": Array [
               "new",
               "renewal",
-            ]
-          }
-        />
-        <EditableRadio
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="formOfPayment"
-          key="formOfPayment"
-          label="Method of payment"
-          options={
-            Array [
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "membership",
+            "id": "formOfPayment",
+            "label": "Method of payment",
+            "options": Array [
               "cash",
               "check",
               "card",
               "other",
-            ]
-          }
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="bankCheckNumber"
-          key="bankCheckNumber"
-          label="Bank Check Number"
-        />
-        <EditableCheckBox
-          defaultValue={false}
-          editMode={false}
-          handleChange={[Function]}
-          id="includedInEstatePlans"
-          key="includedInEstatePlans"
-          label="Includedn in Estate Plans"
-        />
-        <EditableCheckBox
-          defaultValue={false}
-          editMode={false}
-          handleChange={[Function]}
-          id="wantsEstateInfo"
-          key="wantsEstateInfo"
-          label="Member Wants Estate Info"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="membershipDate"
-          key="membershipDate"
-          label="Membership Date"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="renewalDate"
-          key="renewalDate"
-          label="Renewal Date"
-        />
-      </div>
-      <div
-        className="panel"
-        key="demographic"
-      >
-        <div
-          className="profile-section-header"
-          key="demographic"
-        >
-          <div
-            className="profile-section-title-and-description"
-          >
-            <h3
-              className="profile-section-title"
-            >
-              Demographic Info
-            </h3>
-          </div>
-          <div
-            className="profile-section-button"
-          >
-            <Button
-              content="Edit"
-              dropdownButton={false}
-              id="demographic"
-              key="edit-button-22"
-              kind="primary"
-              onClick={[Function]}
-              size="small"
-            />
-          </div>
-        </div>
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="race"
-          key="race"
-          label="Race"
-        />
-        <EditableRadio
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="ethnicity"
-          key="ethnicity"
-          label="Ethnicity"
-          options={
-            Array [
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "membership",
+            "id": "bankCheckNumber",
+            "label": "Bank Check Number",
+            "type": "text",
+          },
+          Object {
+            "category": "membership",
+            "id": "includedInEstatePlans",
+            "label": "Includedn in Estate Plans",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "membership",
+            "id": "wantsEstateInfo",
+            "label": "Member Wants Estate Info",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "membership",
+            "id": "membershipDate",
+            "label": "Membership Date",
+            "type": "text",
+          },
+          Object {
+            "category": "membership",
+            "id": "renewalDate",
+            "label": "Renewal Date",
+            "type": "text",
+          },
+          Object {
+            "category": "demographic",
+            "id": "race",
+            "label": "Race",
+            "type": "text",
+          },
+          Object {
+            "category": "demographic",
+            "id": "ethnicity",
+            "label": "Ethnicity",
+            "options": Array [
               "Non-Hispanic/Latino",
               "Hispanic/Latino",
-            ]
-          }
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="numberInHousehold"
-          key="numberInHousehold"
-          label="Number in Household"
-        />
-        <EditableCheckBox
-          defaultValue={false}
-          editMode={false}
-          handleChange={[Function]}
-          id="isPersonCaregiver"
-          key="isPersonCaregiver"
-          label="If number in household is 2 or more, is one person a caregiver?"
-        />
-        <EditableRadio
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="monthlyIncome"
-          key="monthlyIncome"
-          label="Monthly Household Income"
-          options={
-            Array [
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "demographic",
+            "id": "numberInHousehold",
+            "label": "Number in Household",
+            "type": "text",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isPersonCaregiver",
+            "label": "If number in household is 2 or more, is one person a caregiver?",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "demographic",
+            "id": "monthlyIncome",
+            "label": "Monthly Household Income",
+            "options": Array [
               "Under $1,012",
               "Under $1,372",
               "Under $1,732",
@@ -351,190 +230,69 @@ exports[`MemberProfile tests render should render correctly 1`] = `
               "Under $2,452",
               "Under $2,812",
               "Over $3,172",
-            ]
-          }
-        />
-        <EditableCheckBox
-          defaultValue={false}
-          editMode={false}
-          handleChange={[Function]}
-          id="isDisabled"
-          key="isDisabled"
-          label="Disabled"
-        />
-        <EditableCheckBox
-          defaultValue={false}
-          editMode={false}
-          handleChange={[Function]}
-          id="isVeteran"
-          key="isVeteran"
-          label="Veteran"
-        />
-        <EditableCheckBox
-          defaultValue={false}
-          editMode={false}
-          handleChange={[Function]}
-          id="isSpouse60"
-          key="isSpouse60"
-          label="If under 60, is spouse over 60?"
-        />
-        <EditableCheckBox
-          defaultValue={false}
-          editMode={false}
-          handleChange={[Function]}
-          id="isDisabled60"
-          key="isDisabled60"
-          label="If under 60, are you disabled and living with someone over 60?"
-        />
-      </div>
-      <div
-        className="panel"
-        key="health"
-      >
-        <div
-          className="profile-section-header"
-          key="health"
-        >
-          <div
-            className="profile-section-title-and-description"
-          >
-            <h3
-              className="profile-section-title"
-            >
-              Health Info
-            </h3>
-          </div>
-          <div
-            className="profile-section-button"
-          >
-            <Button
-              content="Edit"
-              dropdownButton={false}
-              id="health"
-              key="edit-button-23"
-              kind="primary"
-              onClick={[Function]}
-              size="small"
-            />
-          </div>
-        </div>
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="specialDiet"
-          key="specialDiet"
-          label="Special Diet"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="medicalIssues"
-          key="medicalIssues"
-          label="Medical Issues"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="disabilities"
-          key="disabilities"
-          label="Disabilities"
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="mealPreference"
-          key="mealPreference"
-          label="Meal Preference"
-        />
-      </div>
-      <div
-        className="panel"
-        key="nfcsp"
-      >
-        <div
-          className="profile-section-header"
-          key="nfcsp"
-        >
-          <div
-            className="profile-section-title-and-description"
-          >
-            <h3
-              className="profile-section-title"
-            >
-              National Family Caregiver Support Program
-            </h3>
-            <p>
-              If client is receiving services under National Family Caregiver Support Program, complete the following
-            </p>
-          </div>
-          <div
-            className="profile-section-button"
-          >
-            <Button
-              content="Edit"
-              dropdownButton={false}
-              id="nfcsp"
-              key="edit-button-24"
-              kind="primary"
-              onClick={[Function]}
-              size="small"
-            />
-          </div>
-        </div>
-        <EditableRadio
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="caregiver"
-          key="caregiver"
-          label="Caregiver"
-          options={
-            Array [
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isDisabled",
+            "label": "Disabled",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isVeteran",
+            "label": "Veteran",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isSpouse60",
+            "label": "If under 60, is spouse over 60?",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isDisabled60",
+            "label": "If under 60, are you disabled and living with someone over 60?",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "caregiver",
+            "label": "Caregiver",
+            "options": Array [
               "Husband",
               "Wife",
               "Daughter/DIL",
               "Son/SIL",
               "Other Relative",
               "Other",
-            ]
-          }
-        />
-        <EditableRadio
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="grandparent"
-          key="grandparent"
-          label="Grandparent"
-          options={
-            Array [
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "grandparent",
+            "label": "Grandparent",
+            "options": Array [
               "Grandparent",
               "Other elder relative",
               "Other elder non relative",
-            ]
-          }
-        />
-        <EditableField
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="numberOfKidsUnder19"
-          key="numberOfKidsUnder19"
-          label="Number of kids younger than 19"
-        />
-        <EditableRadio
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="needsAADL"
-          key="needsAADL"
-          label="Needs Assistance with Activities of Daily Living (ADLs)"
-          options={
-            Array [
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "numberOfKidsUnder19",
+            "label": "Number of kids younger than 19",
+            "type": "text",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "needsAADL",
+            "label": "Needs Assistance with Activities of Daily Living (ADLs)",
+            "options": Array [
               "None",
               "Eating",
               "Dressing",
@@ -542,18 +300,14 @@ exports[`MemberProfile tests render should render correctly 1`] = `
               "Toileting",
               "Transferring",
               "Walking",
-            ]
-          }
-        />
-        <EditableRadio
-          defaultValue=""
-          editMode={false}
-          handleChange={[Function]}
-          id="needsIADL"
-          key="needsIADL"
-          label="Needs Assistance with Instrumental Activities of Daily Living (IADLs)"
-          options={
-            Array [
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "needsIADL",
+            "label": "Needs Assistance with Instrumental Activities of Daily Living (IADLs)",
+            "options": Array [
               "None",
               "Meal preparation",
               "Money management",
@@ -563,11 +317,22 @@ exports[`MemberProfile tests render should render correctly 1`] = `
               "Medication management",
               "Light housework",
               "Heavy housework",
-            ]
-          }
-        />
-      </div>
-    </div>
+            ],
+            "type": "radio",
+          },
+        ]
+      }
+      getProfile={[Function]}
+      profile={
+        Object {
+          "_id": "123",
+          "email": "bigtup@nowhere.com",
+          "firstName": "Big",
+          "lastName": "Tup",
+          "membershipDate": "02/20/2020",
+        }
+      }
+    />
   </div>
 </div>
 `;

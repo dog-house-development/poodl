@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { fetchMembers } from '../../../actions/memberActions';
+import MemberActions from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -14,7 +15,7 @@ export class ViewAllMembers extends Component {
 
     componentDidMount() {
         // call redux action to retrieve all members from api
-        this.props.getMembers();
+        this.props.memberActions.filter();
     }
 
     handleRowClick(e, id) {
@@ -59,13 +60,13 @@ export const mapStateToProps = (state, props) => {
     return {
         members: state.members.all,
         loading: state.members.loading,
-        errors: state.errors
+        errors: state.members.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getMembers: () => dispatch(fetchMembers())
+        memberActions: bindActionCreators(MemberActions, dispatch)
     };
 };
 

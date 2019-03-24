@@ -18,13 +18,15 @@ exports[`AdminProfile tests render should render correctly 1`] = `
   </Link>
   <div>
     <h1>
+      Moose
        
+      Man
     </h1>
     <div
       className="panel"
     >
       <div
-        key="0"
+        key="_id"
         style={
           Object {
             "margin": "10px 0",
@@ -32,10 +34,70 @@ exports[`AdminProfile tests render should render correctly 1`] = `
         }
       >
         <h5>
-          0
+          ID
         </h5>
         <p>
-          <Component />
+          123
+        </p>
+      </div>
+      <div
+        key="firstName"
+        style={
+          Object {
+            "margin": "10px 0",
+          }
+        }
+      >
+        <h5>
+          FIRST NAME
+        </h5>
+        <p>
+          Moose
+        </p>
+      </div>
+      <div
+        key="lastName"
+        style={
+          Object {
+            "margin": "10px 0",
+          }
+        }
+      >
+        <h5>
+          LAST NAME
+        </h5>
+        <p>
+          Man
+        </p>
+      </div>
+      <div
+        key="email"
+        style={
+          Object {
+            "margin": "10px 0",
+          }
+        }
+      >
+        <h5>
+          EMAIL
+        </h5>
+        <p>
+          mooseman@nowhere.com
+        </p>
+      </div>
+      <div
+        key="superAdmin"
+        style={
+          Object {
+            "margin": "10px 0",
+          }
+        }
+      >
+        <h5>
+          SUPER ADMIN
+        </h5>
+        <p>
+          Yes
         </p>
       </div>
     </div>

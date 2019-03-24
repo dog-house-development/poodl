@@ -31,9 +31,9 @@ describe('ViewAllMembers tests', () => {
                             membershipDate: '1950-03-15T20:07:42.762Z',
                             email: 'liltup@nowhere.com'
                         }
-                    ]
-                },
-                errors: {}
+                    ],
+                    errors: {}
+                }
             },
             _state
         );
@@ -83,7 +83,7 @@ describe('ViewAllMembers tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ getMembers: () => {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ memberActions: {} }));
         });
     });
 

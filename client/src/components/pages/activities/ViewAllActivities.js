@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { filterActivities } from '../../../actions/activityActions';
+import ActivityActions from '../../../actions/activityActions';
 import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -13,7 +14,7 @@ export class ViewAllActivities extends Component {
     }
 
     componentDidMount() {
-        this.props.getActivities();
+        this.props.activityActions.filter();
     }
 
     handleRowClick(e, id) {
@@ -61,13 +62,13 @@ export const mapStateToProps = (state, props) => {
     return {
         activities: state.activities.all,
         loading: state.activities.loading,
-        errors: state.errors
+        errors: state.activities.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getActivities: () => dispatch(filterActivities())
+        activityActions: bindActionCreators(ActivityActions, dispatch)
     };
 };
 

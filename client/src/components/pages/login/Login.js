@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { loginAdmin } from '../../../actions/authActions';
+import AuthActions from '../../../actions/authActions';
 import Form from '../../ui/Form';
 
 const propTypes = {
-    loginAdmin: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired
 };
 
 export class Login extends Component {
@@ -54,7 +53,7 @@ export class Login extends Component {
             password: this.state.password
         };
 
-        this.props.loginAdmin(adminData);
+        this.props.authActions.loginAdmin(adminData);
     };
 
     getFields = () => {
@@ -124,13 +123,13 @@ export class Login extends Component {
 export const mapStateToProps = (state, props) => {
     return {
         auth: state.auth,
-        errors: state.errors
+        errors: state.auth.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        loginAdmin: adminData => dispatch(loginAdmin(adminData))
+        authActions: bindActionCreators(AuthActions, dispatch)
     };
 };
 

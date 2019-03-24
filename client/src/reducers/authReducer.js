@@ -1,25 +1,37 @@
-import { SET_CURRENT_ADMIN, ADMIN_LOADING } from '../actions/types';
-
-const isEmpty = require('is-empty');
+import Types from '../actions/types';
+import _ from 'lodash';
 
 const initialState = {
     isAuthenticated: false,
     admin: {},
-    loading: false
+    loading: false,
+    errors: {}
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case SET_CURRENT_ADMIN:
+        case Types.auth.SET_CURRENT_ADMIN:
             return {
                 ...state,
-                isAuthenticated: !isEmpty(action.payload),
+                isAuthenticated: !_.isEmpty(action.payload),
                 admin: action.payload
             };
-        case ADMIN_LOADING:
+        case Types.auth.login.SUCCESS:
             return {
                 ...state,
-                loading: true
+                isAuthenticated: !_.isEmpty(action.payload),
+                admin: action.payload
+            };
+        case Types.auth.logout.SUCCESS:
+            return {
+                ...state,
+                isAuthenticated: false,
+                admin: {}
+            };
+        case Types.auth.ERROR:
+            return {
+                ...state,
+                errors: action.payload
             };
         default:
             return state;

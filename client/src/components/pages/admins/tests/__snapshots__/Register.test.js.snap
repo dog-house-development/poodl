@@ -42,7 +42,7 @@ exports[`Register tests render should render correctly 1`] = `
         },
         Object {
           "autoComplete": "off",
-          "error": "Invalid email",
+          "error": undefined,
           "id": "email",
           "label": "Email",
           "onChange": [Function],
