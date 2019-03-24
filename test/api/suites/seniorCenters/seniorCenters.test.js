@@ -23,13 +23,20 @@ module.exports = function() {
     });
 
     describe('POST /api/seniorCenters/filter', function() {
-        beforeEach(() => mongoUnit.initDb(process.env.MONGODB_URI, DATA));
-
         it('should get all seniorCenters', async () => {
+            const res1 = await chai
+                .request(require('../../../../server'))
+                .post('/api/seniorCenters/')
+                .send(seniorCenters[0]);
+            const res2 = await chai
+                .request(require('../../../../server'))
+                .post('/api/seniorCenters/')
+                .send(seniorCenters[1]);
             const res = await chai
                 .request(require('../../../../server'))
                 .post('/api/seniorCenters/filter')
                 .send();
+
             expectNoErrors(res);
             expect(res).to.have.status(200);
 
