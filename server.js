@@ -13,7 +13,7 @@ mongoose
         mongoURI,
         { useNewUrlParser: true }
     )
-    .then(() => console.log('MongoDB successfully connected'))
+    .then(() => console.log('MongoDB successfully connected at ' + mongoURI))
     .catch(err => console.log(err));
 
 // Add the validation error plugin to make the model validation

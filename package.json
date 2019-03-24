@@ -7,8 +7,8 @@
         "install-all": "yarn && yarn --cwd client",
         "start:server": "node server.js",
         "test:client": "yarn --cwd client test",
-        "test:server": "mocha",
-        "test:selenium": "mocha test/selenium/",
+        "test:server": "mocha test/api",
+        "test:selenium": "mocha test/selenium",
         "server": "nodemon server.js",
         "start:client": "yarn --cwd client start",
         "client:coverage": "yarn test:client -- --coverage",
@@ -42,8 +42,8 @@
         "mocha": "^5.2.0",
         "mockgoose": "^8.0.1",
         "mongo-unit": "^1.4.4",
-        "selenium-webdriver": "^4.0.0-alpha.1",
         "nodemon": "^1.18.10",
-        "nyc": "^13.2.0"
+        "nyc": "^13.2.0",
+        "selenium-webdriver": "^4.0.0-alpha.1"
     }
 }
