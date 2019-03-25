@@ -11,6 +11,9 @@
 @import 'ui/datagrid.scss';
 @import 'ui/viewByDate.scss';
 @import 'ui/loading.scss';
+@import 'ui/select.scss';
+@import 'ui/picker.scss';
+@import 'ui/combobox.scss';
 
 // pages
 @import 'pages/register.scss';
@@ -19,6 +22,9 @@
 @import 'pages/dashboard.scss';
 @import 'pages/viewAll.scss';
 @import 'pages/addActivity.scss';
+
+// other
+@import 'misc.scss';
 
 // global styles
 * {

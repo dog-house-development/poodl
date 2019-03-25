@@ -59,6 +59,8 @@
         td {
           &:first-child {
             padding-left: 2vw;
+            overflow-wrap: break-word;
+            max-width: 10em;
           }
 
           &:last-child {

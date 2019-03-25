@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Checkbox from './CheckBox';
 
-class EditableCheckBox extends Component {
+class CheckBox extends Component {
     static propTypes = {
         label: PropTypes.string,
         handleChange: PropTypes.func.isRequired,
@@ -11,16 +10,18 @@ class EditableCheckBox extends Component {
     };
 
     render() {
-        if (this.props.editMode) {
-            return <Checkbox {...this.props} />;
-        }
         return (
             <div className="field-wrapper editable-field-wrapper">
                 <p className="field-label">{this.props.label}</p>
-                <p>{this.props.defaultValue ? 'Yes' : 'No'}</p>
+                <input
+                    type="checkbox"
+                    id={this.props.id}
+                    defaultChecked={this.props.defaultValue}
+                    onChange={this.props.handleChange}
+                />
             </div>
         );
     }
 }
 
-export default EditableCheckBox;
+export default CheckBox;
