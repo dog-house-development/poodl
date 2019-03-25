@@ -169,7 +169,7 @@ exports[`MemberProfile tests render should render correctly 1`] = `
           Object {
             "category": "membership",
             "id": "includedInEstatePlans",
-            "label": "Includedn in Estate Plans",
+            "label": "Included in Estate Plans",
             "type": "checkbox",
           },
           Object {

@@ -22,9 +22,9 @@ class Button extends Component {
     render() {
         return (
             <button
+                onClick={this.props.onClick}
                 className={`button ${this.props.size} ${this.props.kind} ${this.props.formButton ? 'form-button' : ''}`}
                 type={this.props.type}
-                onClick={this.props.onClick}
                 id={this.props.id}
             >
                 {this.props.content ? this.props.content : this.props.children}

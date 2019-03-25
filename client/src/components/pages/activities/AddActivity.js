@@ -62,7 +62,6 @@ export class AddActivity extends Component {
             startDate: start.toISOString(),
             endDate: end.toISOString()
         };
-        console.log(newActivity);
         this.props.activityActions.create(newActivity, this.props.history);
     };
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class EditableCheckBox extends Component {
+class CheckBox extends Component {
     static propTypes = {
         label: PropTypes.string,
         handleChange: PropTypes.func.isRequired,
@@ -24,4 +24,4 @@ class EditableCheckBox extends Component {
     }
 }
 
-export default EditableCheckBox;
+export default CheckBox;
