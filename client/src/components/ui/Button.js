@@ -23,7 +23,9 @@ class Button extends Component {
         return (
             <button
                 className={`button ${this.props.size} ${this.props.kind} ${this.props.formButton ? 'form-button' : ''}`}
-                {...this.props}
+                type={this.props.type}
+                onClick={this.props.onClick}
+                id={this.props.id}
             >
                 {this.props.content ? this.props.content : this.props.children}
             </button>

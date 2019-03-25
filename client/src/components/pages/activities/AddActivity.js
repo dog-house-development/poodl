@@ -10,42 +10,36 @@ import DatePicker from '../../ui/DatePicker';
 import TimePicker from '../../ui/TimePicker';
 import Field from '../../ui/Field';
 import Button from '../../ui/Button';
-
-import Form from '../../ui/Form';
+import ComboBox from '../../ui/ComboBox';
 
 const propTypes = {
     auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
+    errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
 };
 
 export class AddActivity extends Component {
     constructor(props) {
         super(props);
-        const today = moment();
         this.state = {
             seniorCenterId: props.adminSeniorCenterId,
-            errors: {},
             multiDay: false,
             startDate: moment().startOf('day'),
             endDate: moment()
                 .startOf('day')
                 .add(1, 'day'),
+            name: '',
             startTime: moment(moment().get('hours'), 'h')
         };
 
         this.state.endTime = this.state.startTime.clone().add(1, 'hour');
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-        }
+    componentDidMount() {
+        this.props.activityActions.filter();
     }
 
-    onPickerChange = (name, date) => {
-        this.setState({ [name]: date });
+    onValueChange = (name, value) => {
+        this.setState({ [name]: value });
     };
 
     onChange = e => {
@@ -68,25 +62,15 @@ export class AddActivity extends Component {
             startDate: start.toISOString(),
             endDate: end.toISOString()
         };
-
+        console.log(newActivity);
         this.props.activityActions.create(newActivity, this.props.history);
     };
 
     getFields = () => {
-        const { errors } = this.state;
         const fields = [
             {
                 onChange: this.onChange,
-                error: errors.name,
-                id: 'name',
-                type: 'text',
-                label: 'Name',
-                placeholder: 'Name',
-                autoComplete: 'off'
-            },
-            {
-                onChange: this.onChange,
-                error: errors.description,
+                error: this.props.errors.description,
                 id: 'description',
                 type: 'text',
                 label: 'Description',
@@ -102,16 +86,10 @@ export class AddActivity extends Component {
         return _.map(this.getFields(), field => <Field key={field.id} {...field} />);
     }
 
-    getErrorMarkup() {
-        if (this.state.errors.startDate) {
-            return <div className="form-error">{this.state.errors.startDate}</div>;
-        }
-    }
-
     getDateErrorMarkup() {
-        if (this.state.errors.startDate) {
+        if (this.props.errors.startDate) {
             if (this.state.multiDay) {
-                return this.state.errors.startDate;
+                return this.props.errors.startDate;
             }
 
             return 'Start time must be before end time';
@@ -127,7 +105,7 @@ export class AddActivity extends Component {
     getEndDateMarkup() {
         if (this.state.multiDay) {
             return (
-                <DatePicker title="End Date" name="endDate" date={this.state.endDate} onChange={this.onPickerChange} />
+                <DatePicker title="End Date" name="endDate" date={this.state.endDate} onChange={this.onValueChange} />
             );
         }
     }
@@ -140,7 +118,7 @@ export class AddActivity extends Component {
                         title={this.state.multiDay ? 'Start Date' : 'Date'}
                         name="startDate"
                         date={this.state.startDate}
-                        onChange={this.onPickerChange}
+                        onChange={this.onValueChange}
                         error={this.state.multiDay ? this.getDateErrorMarkup() : ''}
                     />
                     {this.getEndDateMarkup()}
@@ -163,27 +141,36 @@ export class AddActivity extends Component {
 
     render() {
         return (
-            <div className="activity-container">
+            <div className="add-activity-container">
                 <Link to="/activities" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all activities
                 </Link>
-                <div className="panel">
+                <div className="add-activity-panel panel">
                     <h1 className="panel-title">Add Activity</h1>
                     <form noValidate onSubmit={this.onSubmit}>
+                        <ComboBox
+                            data={this.props.activities}
+                            label="Name"
+                            placeholder="Name"
+                            id="name"
+                            value={this.state.name}
+                            onChange={this.onChange}
+                            error={this.props.errors.name}
+                        />
                         {this.getFieldsMarkup()}
                         <div className="side-by-side">
                             <TimePicker
                                 title="Start Time"
                                 name="startTime"
                                 time={this.state.startTime}
-                                onChange={this.onPickerChange}
+                                onChange={this.onValueChange}
                                 error={this.state.multiDay ? '' : this.getDateErrorMarkup()}
                             />
                             <TimePicker
                                 title="End Time"
                                 name="endTime"
                                 time={this.state.endTime}
-                                onChange={this.onPickerChange}
+                                onChange={this.onValueChange}
                             />
                         </div>
                         {this.getDatePickersMarkup()}
@@ -200,7 +187,8 @@ export const mapStateToProps = (state, props) => {
         auth: state.auth,
         adminIsSuper: _.get(state.auth.admin, 'superAdmin', false),
         adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
-        errors: state.activities.errors
+        errors: state.activities.errors,
+        activities: _.get(state.activities, 'all')
     };
 };
 
