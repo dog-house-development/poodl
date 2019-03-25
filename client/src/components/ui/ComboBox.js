@@ -9,7 +9,11 @@ class ComboBox extends React.Component {
     static propTypes = {
         onChange: PropTypes.func.isRequired,
         data: PropTypes.array.isRequired,
-        error: PropTypes.string
+        error: PropTypes.string,
+        label: PropTypes.string,
+        placeholder: PropTypes.string,
+        id: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired
     };
 
     constructor(props) {
@@ -67,7 +71,7 @@ class ComboBox extends React.Component {
                 <Field
                     label={this.props.label}
                     placeholder={this.props.placeholder}
-                    id="combobox-field"
+                    id={this.props.id}
                     onChange={this.props.onChange}
                     value={this.props.value}
                     error={this.props.error}
