@@ -23,6 +23,7 @@ export default {
      */
     create: (dispatch, type, data, history) => {
         dispatch({ type: type.create.BEGIN });
+        console.log(data);
         axios
             .post(`/api/${type.url}/`, data)
             .then(res => {
@@ -31,7 +32,7 @@ export default {
                     payload: res.data
                 });
                 if (history) {
-                    history.push(`/${type.url}/${res.data._id}`);
+                    history.push(`/${type.clientUrl || type.url}/${res.data._id}`);
                 }
                 return res.data;
             })

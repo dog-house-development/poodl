@@ -35,6 +35,7 @@ export default {
     },
     volunteer: {
         url: 'admins',
+        clientUrl: 'volunteers',
         create: {
             BEGIN: 'CREATE_VOLUNTEER_BEGIN',
             SUCCESS: 'CREATE_VOLUNTEER_SUCCESS'

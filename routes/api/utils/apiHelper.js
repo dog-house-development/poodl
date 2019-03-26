@@ -18,6 +18,8 @@ module.exports = {
     // @param model     the mongoose model for the api
     filter: (router, model) => {
         router.post('/filter', (req, res) => {
+            console.log(req.body);
+
             model.find(req.body, (err, docs) => {
                 if (err) {
                     return res.status(400).json(err);

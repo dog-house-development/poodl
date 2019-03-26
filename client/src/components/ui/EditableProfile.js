@@ -97,7 +97,7 @@ export class EditableProfile extends Component {
                             key={field.id}
                             defaultValue={this.state.fields[field.id]}
                             editMode={this.state.editMode[field.category]}
-                            handleChange={this.handleFieldChange}
+                            onChange={this.handleFieldChange}
                             label={field.label}
                         />
                     );
