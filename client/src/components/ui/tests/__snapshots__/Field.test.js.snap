@@ -14,6 +14,7 @@ exports[`Field tests render should render not side by side 1`] = `
   >
     <input
       autoComplete="on"
+      autoFocus="off"
       className="field normal field-error-border"
       content=""
       defaultValue=""
@@ -49,6 +50,7 @@ exports[`Field tests render should render the first side by side input 1`] = `
   >
     <input
       autoComplete="on"
+      autoFocus="off"
       className="field normal first-side-by-side-input field-error-border"
       content=""
       defaultValue=""
@@ -85,6 +87,7 @@ exports[`Field tests render should render the second side by side input 1`] = `
   >
     <input
       autoComplete="on"
+      autoFocus="off"
       className="field normal second-side-by-side-input field-error-border"
       content=""
       defaultValue=""
@@ -121,6 +124,7 @@ exports[`Field tests render should render with errors correctly 1`] = `
   >
     <input
       autoComplete="on"
+      autoFocus="off"
       className="field normal field-error-border"
       content=""
       defaultValue=""
@@ -156,6 +160,7 @@ exports[`Field tests render should render without errors correctly 1`] = `
   >
     <input
       autoComplete="on"
+      autoFocus="off"
       className="field normal"
       content=""
       defaultValue=""

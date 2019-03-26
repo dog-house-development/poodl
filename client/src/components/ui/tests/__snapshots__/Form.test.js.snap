@@ -13,6 +13,7 @@ exports[`Form tests render should render correctly 1`] = `
   >
     <Field
       autoComplete="on"
+      autoFocus="off"
       error={Object {}}
       id="email"
       key="email"
