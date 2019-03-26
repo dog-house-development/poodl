@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 // import { Link } from 'react-router-dom';
 import MemberActions from '../../../../../actions/memberActions';
 // import Loading from '../../../../ui/Loading';
 import SearchField from '../../../../ui/SearchField';
+
+const propTypes = {
+    setMemberId: PropTypes.func
+};
 
 export class FindMember extends Component {
     constructor(props) {
@@ -24,7 +29,7 @@ export class FindMember extends Component {
 
     render() {
         return (
-            <div>
+            <div className="panel finished-panel">
                 <h2 className="panel-title">Enter your name to check in</h2>
                 <SearchField
                     size="large"
@@ -64,6 +69,8 @@ export const mapDispatchToProps = dispatch => {
         memberActions: bindActionCreators(MemberActions, dispatch)
     };
 };
+
+FindMember.propTypes = propTypes;
 
 export default connect(
     mapStateToProps,

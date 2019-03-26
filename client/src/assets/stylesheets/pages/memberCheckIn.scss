@@ -8,6 +8,7 @@
     display: flex;
     margin: auto;
     max-width: 35em;
+    margin-bottom: 1.5em;
 
     .back-button-container {
       flex-grow: 1;
@@ -21,6 +22,18 @@
 
   .check-in-panel {
     overflow: visible;
+
+    .finished-panel {
+      max-width: 40em;
+      margin: auto;
+      overflow: visible;
+    }
+
+    .last-check-in {
+      margin-top: 0.5em;
+      color: $gray-4;
+      font-weight: bold;
+    }
 
     .selected-activities-panel {
       width: 32%;
@@ -107,4 +120,31 @@
       }
     }
   }
+}
+
+.activity-ended,
+.activity-ending-soon,
+.activity-happening,
+.activity-starting-soon,
+.activity-starting-not-soon {
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.activity-ended,
+.activity-ending-soon {
+  color: $red-2;
+}
+
+.activity-happening,
+.activity-starting-soon {
+  color: $orange-1;
+}
+
+.activity-starting-soon {
+  color: #96c400;
+}
+
+.activity-starting-not-soon {
+  color: $green-3;
 }

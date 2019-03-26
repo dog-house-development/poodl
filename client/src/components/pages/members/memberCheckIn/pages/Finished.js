@@ -5,8 +5,8 @@ import React, { Component } from 'react';
 class Finished extends Component {
     render() {
         return (
-            <div>
-                <h3>All done!</h3>
+            <div className="panel">
+                <h2 className="panel-title">All done!</h2>
                 <p>Have a great day!</p>
             </div>
         );

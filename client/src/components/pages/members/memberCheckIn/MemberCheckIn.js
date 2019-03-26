@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import classnames from 'classnames';
 
 import MemberActions from '../../../../actions/memberActions';
 // import ActivityActions from '../../../../actions/activityActions';
@@ -112,12 +111,8 @@ class MemberCheckIn extends Component {
             <div className="member-check-in-container">
                 <div>
                     <h1>Check in</h1>
-                    <div
-                        className={classnames('check-in-panel', {
-                            panel: this.state.currentPage !== pages.selectActivities
-                        })}>
-                        {this.getPageMarkup()}
-                    </div>
+                    <hr />
+                    <div className="check-in-panel">{this.getPageMarkup()}</div>
                     <div className="navigation-buttons-container">
                         <div className="back-button-container">{this.getBackButtonMarkup()}</div>
                         <div className="next-button-container">{this.getNextButtonMarkup()}</div>
