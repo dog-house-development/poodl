@@ -19,13 +19,6 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
   <h1>
     Manage Members
   </h1>
-  <Link
-    className="button medium primary"
-    replace={false}
-    to="/member-check-in"
-  >
-    Member check-in
-  </Link>
   <DataGrid
     data={
       Array [
