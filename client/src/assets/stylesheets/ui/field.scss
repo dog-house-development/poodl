@@ -1,5 +1,14 @@
 @import './_presets.scss';
 
+.field-label {
+  font-size: 13px;
+  font-weight: bold;
+  color: $gray-6;
+  display: inline-block;
+  margin: 0.4em 0;
+  text-transform: uppercase;
+}
+
 .field-wrapper {
   position: relative;
   margin-bottom: 1.5rem;
@@ -8,19 +17,11 @@
     margin-bottom: 1rem;
   }
 
-  .field-label {
-    font-size: 13px;
-    font-weight: bold;
-    color: $gray-6;
-    display: inline-block;
-    margin: 0.4em 0;
-    text-transform: uppercase;
-  }
-
   .field-error-label {
     color: $red-2;
     font-size: 12px;
     position: absolute;
+    white-space: nowrap;
     bottom: -1.5em;
   }
 

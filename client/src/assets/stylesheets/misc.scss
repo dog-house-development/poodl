@@ -1,0 +1,14 @@
+.side-by-side {
+  display: inline-block;
+  width: 100%;
+
+  > * {
+    &:first-child {
+      float: left;
+    }
+
+    &:nth-child(2) {
+      float: right;
+    }
+  }
+}

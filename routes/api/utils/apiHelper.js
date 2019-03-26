@@ -37,6 +37,9 @@ module.exports = {
                 if (err) {
                     return res.status(400).json(err);
                 }
+                if (!doc) {
+                    return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
+                }
 
                 return res.json(doc);
             });
@@ -78,6 +81,9 @@ module.exports = {
             model.findByIdAndDelete(req.params.id, (err, doc) => {
                 if (err) {
                     return res.status(400).json(err);
+                }
+                if (!doc) {
+                    return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
                 }
 
                 return res.json(doc);

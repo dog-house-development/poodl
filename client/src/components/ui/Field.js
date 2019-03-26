@@ -15,6 +15,7 @@ const propTypes = {
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),
     autoFocus: PropTypes.oneOf(['on', 'off']),
+    spellCheck: PropTypes.oneOf(['true', 'false']),
     sidebyside: PropTypes.oneOf([1, 2]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     onClick: PropTypes.func
@@ -55,6 +56,7 @@ class Field extends Component {
                             { 'second-side-by-side-input': this.props.sidebyside === 2 },
                             { 'field-error-border': this.props.error }
                         )}
+                        value={this.props.value}
                     />
                     <p className="field-error-label">{this.props.error}</p>
                 </div>

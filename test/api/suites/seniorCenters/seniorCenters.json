@@ -1,0 +1,20 @@
+{
+    "seniorCenters": [
+        {
+            "_id": "5c96bba5f98db51bf700285c",
+            "operationHours": "10am-5pm",
+            "phone": "4043213213",
+            "address": "321 this way",
+            "email": "tes555@test.com",
+            "name": "Test 2 Center"
+        },
+        {
+            "_id": "5c96bb1e8365dc1b57221e6f",
+            "operationHours": "10am-3pm",
+            "phone": "4057685768",
+            "address": "123 this way",
+            "email": "test@test.com",
+            "name": "Test  Center"
+        }
+    ]
+}
