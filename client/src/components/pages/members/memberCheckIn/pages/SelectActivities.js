@@ -65,7 +65,7 @@ export class SelectActivities extends Component {
 
                             {this.getActivityNoticeMarkup(activity)}
 
-                            <div className="activity-button">{this.getActivityButtonMarkup(activity)}</div>
+                            <div className="activity-button">{this.getActivityButtonMarkup(activity, true)}</div>
                         </div>
                     </div>
                 );
@@ -79,7 +79,7 @@ export class SelectActivities extends Component {
         return <p>Activities that you are signed up for will appear here</p>;
     }
 
-    getActivityButtonMarkup(activity) {
+    getActivityButtonMarkup(activity, selected) {
         if (_.includes(activity.members, this.props.memberId)) {
             return (
                 <div className="activity-button-wrapper">
@@ -90,8 +90,17 @@ export class SelectActivities extends Component {
                             });
                         }}
                         kind="secondary">
-                        <i className="material-icons button-icon">assignment_turned_in</i>
-                        Signed up
+                        {selected ? (
+                            <>
+                                <i className="material-icons button-icon">remove_circle</i>
+                                Remove
+                            </>
+                        ) : (
+                            <>
+                                <i className="material-icons button-icon">assignment_turned_in</i>
+                                Signed up
+                            </>
+                        )}
                     </Button>
                 </div>
             );
