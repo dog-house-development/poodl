@@ -22,13 +22,13 @@ export class Dashboard extends Component {
     getDateRangeFilter(start) {
         const filter = {
             startDate: {
-                $lte: start
+                $lt: start
                     .clone()
                     .add(1, 'days')
                     .toISOString()
             },
             endDate: {
-                $gte: start.toISOString()
+                $gt: start.toISOString()
             }
         };
 

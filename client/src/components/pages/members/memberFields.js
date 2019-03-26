@@ -115,7 +115,7 @@ const memberFields = [
     {
         id: 'includedInEstatePlans',
         type: 'checkbox',
-        label: 'Includedn in Estate Plans',
+        label: 'Included in Estate Plans',
         category: Categories.membership.id
     },
     {
