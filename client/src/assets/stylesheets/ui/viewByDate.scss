@@ -103,6 +103,9 @@
 
       .vbd-row-title {
         font-size: 1em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.2em;
       }
 
       .vbd-row-time {

@@ -1,0 +1,150 @@
+@import '_presets.scss';
+
+.member-check-in-container {
+  width: 95%;
+  margin: auto;
+
+  .navigation-buttons-container {
+    display: flex;
+    margin: auto;
+    max-width: 35em;
+    margin-bottom: 1.5em;
+
+    .back-button-container {
+      flex-grow: 1;
+    }
+
+    .next-button-container {
+      flex-grow: 1;
+      text-align: right;
+    }
+  }
+
+  .check-in-panel {
+    overflow: visible;
+
+    .finished-panel {
+      max-width: 40em;
+      margin: auto;
+      overflow: visible;
+    }
+
+    .last-check-in {
+      margin-top: 0.5em;
+      color: $gray-4;
+      font-weight: bold;
+    }
+
+    .selected-activities-panel {
+      width: 32%;
+      float: left;
+
+      .selected-activity-panel-wrapper {
+        margin: 0 -0.5em;
+
+        .selected-activity-panel {
+          border-radius: $border-radius-default;
+          border: 1px solid $gray-4;
+          padding: 15px;
+          margin: 0.5em;
+
+          .activity-name {
+            overflow: hidden;
+            overflow-wrap: break-word;
+            margin-bottom: 0.25em;
+          }
+
+          .activity-description {
+            overflow: hidden;
+            margin-bottom: 0.5em;
+            line-height: 1.25em;
+            overflow-wrap: break-word;
+            // max-height: 2.5em;
+          }
+
+          .activity-button-wrapper {
+            text-align: right;
+
+            .activity-button {
+              // float: right;
+            }
+          }
+        }
+      }
+    }
+
+    .selectable-activities-panel {
+      width: 66%;
+      float: right;
+
+      .select-activity-panels-container {
+        margin: 0 -0.5em;
+
+        .select-activity-panel-wrapper {
+          display: inline-block;
+          width: 33%;
+
+          .select-activity-panel {
+            border-radius: $border-radius-default;
+            border: 1px solid $gray-4;
+            padding: 15px;
+            margin: 0.5em;
+
+            .activity-name {
+              overflow: hidden;
+              overflow-wrap: break-word;
+              margin-bottom: 0.25em;
+            }
+
+            .activity-description {
+              overflow: hidden;
+              overflow-wrap: break-word;
+              margin-bottom: 0.5em;
+              line-height: 1.25em;
+              // max-height: 2.5em;
+            }
+
+            .activity-button-wrapper {
+              text-align: right;
+
+              .activity-button {
+                // float: right;
+              }
+            }
+
+            &.signed-up-activity {
+              border-color: $button-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.activity-ended,
+.activity-ending-soon,
+.activity-happening,
+.activity-starting-soon,
+.activity-starting-not-soon {
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.activity-ended,
+.activity-ending-soon {
+  color: $red-2;
+}
+
+.activity-happening,
+.activity-starting-soon {
+  color: $orange-1;
+}
+
+.activity-starting-soon {
+  color: #96c400;
+}
+
+.activity-starting-not-soon {
+  color: $green-3;
+}
