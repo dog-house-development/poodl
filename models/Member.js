@@ -135,7 +135,8 @@ const memberSchema = new Schema(
         },
         needsIADL: {
             type: String
-        }
+        },
+        checkIns: [Date]
     },
     { timestamps: true }
 );
