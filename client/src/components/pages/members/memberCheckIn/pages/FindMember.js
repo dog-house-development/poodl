@@ -25,7 +25,7 @@ export class FindMember extends Component {
     render() {
         return (
             <div>
-                <h3>Find yourself</h3>
+                <h2 className="panel-title">Enter your name to check in</h2>
                 <SearchField
                     size="large"
                     id="find-member-search"

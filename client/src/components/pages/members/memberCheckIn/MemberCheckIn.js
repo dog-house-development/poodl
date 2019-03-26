@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-// import { bindActionCreators } from 'redux';
-// import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import _ from 'lodash';
+import classnames from 'classnames';
 
-// import MemberActions from '../../../../actions/memberActions';
+import MemberActions from '../../../../actions/memberActions';
 // import ActivityActions from '../../../../actions/activityActions';
 // import Loading from '../../../ui/Loading';
 import Button from '../../../ui/Button';
@@ -54,6 +55,12 @@ class MemberCheckIn extends Component {
         } else {
             this.setState({ currentPage: _.find(pages, { index: this.state.currentPage.index + 1 }) });
         }
+        // update the member checkins
+        if (this.state.currentPage === pages.selectActivities) {
+            this.props.memberActions.edit(this.state.memberId, {
+                checkIns: [..._.get(this.props.member, 'checkIns', []), new Date()]
+            });
+        }
     }
 
     getNextButtonMarkup() {
@@ -66,7 +73,8 @@ class MemberCheckIn extends Component {
                         </>
                     ) : (
                         <>
-                            Next <i className="material-icons">arrow_forward</i>
+                            {this.state.currentPage === pages.selectActivities ? 'Finish' : 'Next'}{' '}
+                            <i className="material-icons">arrow_forward</i>
                         </>
                     )}
                 </Button>
@@ -101,35 +109,42 @@ class MemberCheckIn extends Component {
 
     render() {
         return (
-            <div className="view-all-container">
+            <div className="member-check-in-container">
                 <div>
                     <h1>Check in</h1>
-                    {this.getPageMarkup()}
-                    {this.getBackButtonMarkup()}
-                    {this.getNextButtonMarkup()}
+                    <div
+                        className={classnames('check-in-panel', {
+                            panel: this.state.currentPage !== pages.selectActivities
+                        })}>
+                        {this.getPageMarkup()}
+                    </div>
+                    <div className="navigation-buttons-container">
+                        <div className="back-button-container">{this.getBackButtonMarkup()}</div>
+                        <div className="next-button-container">{this.getNextButtonMarkup()}</div>
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-// export const mapStateToProps = (state, props) => {
-//     return {
-//         members: state.members.all[props.match.params.id],
-//         loading: state.members.loading,
-//         errors: state.members.errors
-//     };
-// };
-//
-// export const mapDispatchToProps = dispatch => {
-//     return {
-//         memberActions: bindActionCreators(MemberActions, dispatch)
-//     };
-// };
-//
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-// )(MemberCheckIn);
+export const mapStateToProps = (state, props) => {
+    return {
+        member: state.members.all[props.match.params.id],
+        loading: state.members.loading,
+        errors: state.members.errors
+    };
+};
 
-export default MemberCheckIn;
+export const mapDispatchToProps = dispatch => {
+    return {
+        memberActions: bindActionCreators(MemberActions, dispatch)
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MemberCheckIn);
+
+// export default MemberCheckIn;

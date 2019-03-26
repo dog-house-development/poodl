@@ -14,7 +14,7 @@ const propTypes = {
     displayRow: PropTypes.func,
     onSearchResultClick: PropTypes.func.isRequired,
     autoFocus: PropTypes.oneOf(['on', 'off']),
-    data: PropTypes.array
+    data: PropTypes.object
 };
 
 const defaultProps = {

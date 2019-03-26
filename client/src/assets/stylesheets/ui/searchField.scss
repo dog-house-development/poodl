@@ -3,6 +3,10 @@
 .search-wrapper {
   display: block;
 
+  .field {
+    font-weight: bold;
+  }
+
   .dropdown-content {
     max-width: 100%;
     width: 100%;
@@ -13,19 +17,20 @@
       font-weight: bold;
       padding: 0 15px;
 
-      &:hover {
+      &:hover,
+      &:focus {
         .arrow-icon {
           visibility: visible;
         }
       }
 
       .arrow-icon {
-        margin-top: -4px;
         margin-right: 2px;
         height: 17px;
         width: 18px;
         float: right;
         visibility: hidden;
+        font-size: 1.25em;
       }
 
       .person-icon {
