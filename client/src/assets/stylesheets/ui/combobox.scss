@@ -38,19 +38,19 @@
       font-size: 1em;
 
       &:hover {
-        background-color: #1e90ff;
+        background-color: $blue-dropdown;
         color: #fff;
       }
 
       &:active {
-        background-color: #1e90ff;
+        background-color: $blue-dropdown;
         color: #fff;
       }
 
       &:focus {
         outline: none;
         color: #fff;
-        background-color: #1e90ff;
+        background-color: $blue-dropdown;
       }
     }
   }

@@ -30,7 +30,7 @@ exports[`ViewAllAdmins tests render should render correctly 1`] = `
       <i
         className="material-icons button-icon"
       >
-        add
+        person_add
       </i>
       Add admin
     </Link>

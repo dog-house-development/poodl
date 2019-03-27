@@ -60,6 +60,9 @@ export class Navbar extends Component {
                     <li className="right">
                         <Link to="/activities">Activities</Link>
                     </li>
+                    <li className="right">
+                        <Link to="/member-check-in">Member check-in</Link>
+                    </li>
                 </>
             );
         }
