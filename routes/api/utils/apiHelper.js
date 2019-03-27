@@ -1,3 +1,4 @@
+passport = require('passport');
 module.exports = {
     // Create api helper
     // @param router    the express Router
@@ -17,7 +18,7 @@ module.exports = {
     // @param router    the express Router
     // @param model     the mongoose model for the api
     filter: (router, model) => {
-        router.post('/filter', (req, res) => {
+        router.post('/filter', passport.authenticate('jwt', { session: false }), (req, res) => {
             model.find(req.body, (err, docs) => {
                 if (err) {
                     return res.status(400).json(err);
@@ -32,7 +33,7 @@ module.exports = {
     // @param router    the express Router
     // @param model     the mongoose model for the api
     get: (router, model) => {
-        router.get('/:id', (req, res, next) => {
+        router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
             model.findById(req.params.id, (err, doc) => {
                 if (err) {
                     return res.status(400).json(err);
@@ -50,7 +51,7 @@ module.exports = {
     // @param router    the express Router
     // @param model     the mongoose model for the api
     edit: (router, model) => {
-        router.patch('/:id', (req, res) => {
+        router.patch('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
             model.findById(req.params.id, (err, doc) => {
                 if (err) {
                     return res.status(400).json(err);
@@ -77,7 +78,7 @@ module.exports = {
     // @param router    the express Router
     // @param model     the mongoose model for the api
     delete: (router, model) => {
-        router.delete('/:id', (req, res) => {
+        router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
             model.findByIdAndDelete(req.params.id, (err, doc) => {
                 if (err) {
                     return res.status(400).json(err);
