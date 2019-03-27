@@ -4,7 +4,7 @@ module.exports = {
     // @param router    the express Router
     // @param model     the mongoose model for the api
     create: (router, model) => {
-        router.post('/', (req, res) => {
+        router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
             new model(req.body)
                 .save()
                 .then(doc => res.json(doc))

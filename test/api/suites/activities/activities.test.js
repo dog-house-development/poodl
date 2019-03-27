@@ -7,6 +7,12 @@ const expectNoErrors = require('../../utils/expectNoErrors');
 const DATA = require('./activities');
 const activities = DATA.activities;
 const activity1 = activities[0];
+const ADMIN_DATA = require('../admins/admins');
+const admin = ADMIN_DATA[0];
+const token = null;
+const server = require('../../../../server');
+
+//const userCredentials = { email: admin.body.email, password: admin.body.password };
 
 module.exports = function() {
     describe('POST /api/activities/', function() {
@@ -14,6 +20,7 @@ module.exports = function() {
             const res = await chai
                 .request(require('../../../../server'))
                 .post('/api/activities/')
+                .set('Authorization', token)
                 .send(activities[0]);
 
             expectNoErrors(res);
@@ -71,3 +78,16 @@ module.exports = function() {
         });
     });
 };
+
+function getToken() {
+    chai.request(require('../../../../server'))
+        .post('/api/admins/')
+        .send(admin);
+
+    const token = chai
+        .request(require('../../../../server'))
+        .post('/api/admins/login')
+        .send('{' + admin.email + ',' + admin.password + '}');
+
+    return token;
+}

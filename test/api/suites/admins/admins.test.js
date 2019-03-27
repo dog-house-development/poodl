@@ -9,6 +9,8 @@ const admins = DATA.admins;
 const firstPassword = admins[0].password;
 const secondPassword = admins[1].password;
 
+const userCredentials = { email: admins[0].email, password: admins[0].password };
+
 module.exports = function() {
     describe('POST /api/admins/', function() {
         it('should add a new admin', async () => {
@@ -16,12 +18,26 @@ module.exports = function() {
                 .request(require('../../../../server'))
                 .post('/api/admins/')
                 .send(admins[0]);
-
+            console.log(res.body);
             res.body.password = firstPassword;
             res.body.password2 = firstPassword;
             expectNoErrors(res);
             expect(res).to.have.status(200);
             expect(res.body).to.deep.include(admins[0]);
+        });
+    });
+
+    describe('POST /api/admins/login', function() {
+        it('should login an admin', async () => {
+            const res = await chai
+                .request(require('../../../../server'))
+                .post('/api/admins/login')
+                .send(userCredentials);
+
+            expectNoErrors(res);
+            expect(res).to.have.status(200);
+            const token = res.body.token;
+            console.log(token);
         });
     });
 
