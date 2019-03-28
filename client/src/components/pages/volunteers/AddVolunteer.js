@@ -26,12 +26,10 @@ class AddVolunteer extends React.Component {
     }
 
     onChange = e => {
-        // console.log(e.target.id, e.target.value);
         this.setState({ [e.target.id]: e.target.value });
     };
 
     onSubmit = () => {
-        console.log(this.state);
         const volunteer = {
             ...this.state,
             occasionalOneDayProjects: this.state.occasionalOneDayProjects === 'Yes',

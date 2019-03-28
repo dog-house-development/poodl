@@ -34,7 +34,6 @@ class Radio extends Component {
     }
     onChange = e => {
         this.setState({ selectedOption: e.target.name });
-        console.log(e);
     };
 
     getOptionMarkup = option => {

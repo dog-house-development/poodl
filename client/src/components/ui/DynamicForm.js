@@ -64,7 +64,6 @@ class DynamicForm extends React.Component {
     }
 
     getInput = input => {
-        // console.log(this.props.errors);
         return this.getInputKind()[input.kind]({
             ...input,
             key: input.id,

@@ -23,7 +23,6 @@ export default {
      */
     create: (dispatch, type, data, history) => {
         dispatch({ type: type.create.BEGIN });
-        console.log(data);
         axios
             .post(`/api/${type.url}/`, data)
             .then(res => {

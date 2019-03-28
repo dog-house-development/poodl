@@ -13,7 +13,6 @@ class MultiCheckbox extends React.Component {
             },
             {}
         );
-        // console.log(this.state);
     }
 
     stateAsArray() {
@@ -22,7 +21,6 @@ class MultiCheckbox extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state !== prevState) {
-            // console.log(this.stateAsArray());
             this.props.onChange({
                 target: {
                     id: this.props.id,
@@ -33,7 +31,6 @@ class MultiCheckbox extends React.Component {
     }
 
     onChange = e => {
-        // console.log(e.target.checked);
         this.setState({ [e.target.id]: e.target.checked });
     };
 
