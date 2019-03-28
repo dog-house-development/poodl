@@ -48,7 +48,7 @@ export class ViewAllAdmins extends Component {
                 <div className="view-all-header">
                     <h1>Manage Admins</h1>
                     <Link to="/register" className="button small primary">
-                        <i className="material-icons button-icon">add</i>
+                        <i className="material-icons button-icon">person_add</i>
                         Add admin
                     </Link>
                 </div>

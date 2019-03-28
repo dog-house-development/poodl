@@ -8,7 +8,7 @@ import classnames from 'classnames';
 class ComboBox extends React.Component {
     static propTypes = {
         onChange: PropTypes.func.isRequired,
-        data: PropTypes.array.isRequired,
+        data: PropTypes.object.isRequired,
         error: PropTypes.string,
         label: PropTypes.string,
         placeholder: PropTypes.string,
@@ -55,8 +55,7 @@ class ComboBox extends React.Component {
                             className={classnames('combobox-row')}
                             onClick={this.onRowClick}
                             value={item}
-                            id={this.props.id}
-                        >
+                            id={this.props.id}>
                             {item}
                         </button>
                     ))}

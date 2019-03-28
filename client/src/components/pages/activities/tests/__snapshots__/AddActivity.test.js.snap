@@ -47,6 +47,7 @@ exports[`Add activity tests render should render correctly 1`] = `
       />
       <Field
         autoComplete="off"
+        autoFocus="off"
         id="description"
         key="description"
         label="Description"
@@ -64,7 +65,7 @@ exports[`Add activity tests render should render correctly 1`] = `
           minuteLabel=""
           name="startTime"
           onChange={[Function]}
-          time={"2019-03-25T05:00:00.000Z"}
+          time={"2019-03-26T03:00:00.000Z"}
           title="Start Time"
         />
         <TimePicker
@@ -73,7 +74,7 @@ exports[`Add activity tests render should render correctly 1`] = `
           minuteLabel=""
           name="endTime"
           onChange={[Function]}
-          time={"2019-03-25T06:00:00.000Z"}
+          time={"2019-03-26T04:00:00.000Z"}
           title="End Time"
         />
       </div>
