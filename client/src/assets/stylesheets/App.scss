@@ -15,6 +15,9 @@
 @import 'ui/select.scss';
 @import 'ui/picker.scss';
 @import 'ui/combobox.scss';
+@import 'ui/dynamicForm.scss';
+@import 'ui/checkbox.scss';
+@import 'ui/multiCheckbox.scss';
 
 // pages
 @import 'pages/register.scss';
@@ -23,6 +26,7 @@
 @import 'pages/dashboard.scss';
 @import 'pages/viewAll.scss';
 @import 'pages/addActivity.scss';
+@import 'pages/addVolunteer.scss';
 @import 'pages/memberCheckIn.scss';
 
 // other

@@ -19,15 +19,15 @@
             "cellPhone": "1234567890",
             "references": ["Carol"],
             "learnAboutVolunteerProgram": "Other",
-            "howOften": "Once a week",
-            "availability": "10am-2pm MFW ",
+            "volunteerFrequency": "Once a week",
+            "availabilitySchedule": "10am-2pm MFW ",
             "houseMaintenanceAndRepairs": ["Plumbing"],
             "groundMaintenance": ["Snow Removal"],
             "clericalAssistance": ["Data Entry"],
             "nutritionProgram": ["Food Prep", "Dishes"],
             "specialEventsAndFundRaising": ["Assist with Events"],
             "interpretingTeachingClassesOrWorkshops": ["Computer"],
-            "otherInterests": "Volleyball"
+            "proposedActivities": "Volleyball"
         },
         {
             "_id": "5f75671e717u353ktt03",

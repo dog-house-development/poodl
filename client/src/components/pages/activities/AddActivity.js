@@ -73,8 +73,7 @@ export class AddActivity extends Component {
                 id: 'description',
                 type: 'text',
                 label: 'Description',
-                placeholder: 'Description',
-                autoComplete: 'off'
+                placeholder: 'Description'
             }
         ];
 

@@ -1,9 +1,11 @@
 .select {
   display: inline-block;
-
-  select {
-    &.medium-width {
-      min-width: 4em;
+  .field-outer {
+    .field {
+      flex-grow: 0;
+      &.medium-width {
+        min-width: 4em;
+      }
     }
   }
 }

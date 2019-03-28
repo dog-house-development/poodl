@@ -1,0 +1,35 @@
+.dynamic-form {
+  .inline-input {
+    display: flex;
+
+    .field-wrapper {
+      //   display: inline-block;
+      flex-grow: 1;
+      margin-left: 0.7em;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      .field-outer {
+        input {
+          //   min-width: 0;
+          width: 0;
+        }
+      }
+    }
+  }
+
+  .input-group {
+    .input-group-label {
+      color: $gray-7;
+      font-size: 1.2em;
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+      border-color: $gray-6;
+      // padding: 0.5em 1em;
+      margin-bottom: 1em;
+    }
+    // padding: 1em
+  }
+}
