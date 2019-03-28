@@ -23,7 +23,8 @@ const propTypes = {
 
 const defaultProps = {
     size: 'normal',
-    type: 'text'
+    type: 'text',
+    autoComplete: 'on'
 };
 
 class Field extends Component {
