@@ -1,0 +1,41 @@
+@import './_presets.scss';
+
+.search-wrapper {
+  display: block;
+
+  .field {
+    font-weight: bold;
+  }
+
+  .dropdown-content {
+    max-width: 100%;
+    width: 100%;
+    top: 100%;
+    font-size: 1em;
+
+    .dropdown-content-row {
+      font-weight: bold;
+      padding: 0 15px;
+
+      &:hover,
+      &:focus {
+        .arrow-icon {
+          visibility: visible;
+        }
+      }
+
+      .arrow-icon {
+        margin-right: 2px;
+        height: 17px;
+        width: 18px;
+        float: right;
+        visibility: hidden;
+        font-size: 1.25em;
+      }
+
+      .person-icon {
+        font-size: inherit;
+      }
+    }
+  }
+}

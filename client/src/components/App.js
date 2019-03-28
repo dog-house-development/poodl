@@ -37,6 +37,9 @@ import MemberProfile from './pages/members/MemberProfile';
 import AddActivity from './pages/activities/AddActivity';
 import ViewAllActivities from './pages/activities/ViewAllActivities';
 
+// check in
+import MemberCheckIn from './pages/members/memberCheckIn/MemberCheckIn';
+
 import PrivateRoute from './private-route/PrivateRoute';
 
 import '../assets/stylesheets/App.scss';
@@ -85,6 +88,8 @@ class App extends Component {
                             {/* Activity pages */}
                             <PrivateRoute exact path="/activities" component={ViewAllActivities} />
                             <PrivateRoute exact path="/activities/add" component={AddActivity} />
+                            {/* Member check in */}
+                            <PrivateRoute exact path="/member-check-in" component={MemberCheckIn} />
                             {/* PageNotFound route must stay at bottom */}
                             <Route component={PageNotFound} />
                         </Switch>

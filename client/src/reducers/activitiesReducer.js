@@ -1,8 +1,9 @@
 import Types from '../actions/types';
+import _ from 'lodash';
 
 const initialState = {
     loading: false,
-    all: [],
+    all: {},
     errors: {}
 };
 
@@ -23,7 +24,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                all: action.payload,
+                all: _.keyBy(action.payload, '_id'),
                 errors: {}
             };
         case Types.activity.get.BEGIN:
@@ -35,7 +36,19 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                all: { [action.payload._id]: action.payload },
+                all: { ...state.all, [action.payload._id]: action.payload },
+                errors: {}
+            };
+        case Types.activity.edit.BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case Types.activity.edit.SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                all: { ...state.all, [action.payload._id]: action.payload },
                 errors: {}
             };
         default:

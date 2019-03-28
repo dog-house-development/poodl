@@ -20,9 +20,7 @@ export class EditableProfile extends Component {
         super(props);
         this.state = {
             editMode: _.fromPairs(_.map(_.values(this.props.categories), category => [category.id, false])),
-            fields: _.fromPairs(
-                _.map(this.props.fields, field => (field.type === 'checkbox' ? [field.id, false] : [field.id, '']))
-            ),
+            fields: { ...this.props.profile },
             modifiedFields: {}
         };
         this.handleFieldChange = this.handleFieldChange.bind(this);
@@ -37,7 +35,7 @@ export class EditableProfile extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (_.get(prevProps.profile, '_id') !== _.get(this.props.profile, '_id')) {
+        if (!_.isEqual(prevProps.profile, this.props.profile)) {
             this.setState({
                 fields: {
                     ...this.props.profile
