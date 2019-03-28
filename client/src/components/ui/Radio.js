@@ -6,19 +6,19 @@ class Radio extends Component {
     static propTypes = {
         label: PropTypes.string,
         onChange: PropTypes.func.isRequired,
-        defaultValue: PropTypes.string,
+        value: PropTypes.string,
         id: PropTypes.string.isRequired,
         options: PropTypes.array
     };
 
     static defaultProps = {
-        selectedOption: ''
+        value: ''
     };
 
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption: props.selectedOption
+            value: props.value
         };
     }
 
@@ -27,26 +27,21 @@ class Radio extends Component {
             this.props.onChange({
                 target: {
                     id: this.props.id,
-                    value: this.state.selectedOption
+                    value: this.state.value
                 }
             });
         }
     }
+
     onChange = e => {
-        this.setState({ selectedOption: e.target.name });
+        this.setState({ value: e.target.name });
     };
 
     getOptionMarkup = option => {
         return (
             <div key={option}>
                 <label>
-                    <input
-                        type="radio"
-                        name={option}
-                        value={option}
-                        checked={this.state.selectedOption === option}
-                        onChange={this.onChange}
-                    />
+                    <input type="radio" name={option} checked={this.state.value === option} onChange={this.onChange} />
                     {' ' + option}
                 </label>
             </div>
