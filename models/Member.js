@@ -43,11 +43,11 @@ const memberSchema = new Schema(
         // Member Info
         firstName: {
             type: String,
-            required: true
+            required: [true, 'First name is required']
         },
         lastName: {
             type: String,
-            required: true
+            required: [true, 'Last name is required']
         },
         birthDate: {
             type: Date
@@ -80,17 +80,20 @@ const memberSchema = new Schema(
             type: String
         },
         includedInEstatePlans: {
-            type: Boolean // If True, means the member has included the center
-        }, // in their estate plans
+            // The member has included the center in their estate plans
+            type: Boolean,
+            default: false
+        },
         wantsEstateInfo: {
-            type: Boolean // True = Member would like more info
-        }, // False = Member does not want more info
+            type: Boolean,
+            default: false
+        },
         membershipDate: {
             type: Date,
             default: Date.now
         },
         renewalDate: {
-            type: String
+            type: Date
         },
 
         //Demographic info from Intake Form
@@ -128,13 +131,15 @@ const memberSchema = new Schema(
             type: String
         },
         numberOfKidsUnder19: {
-            type: String
+            type: Number,
+            min: 0,
+            default: 0
         },
         needsAADL: {
-            type: String
+            type: [String]
         },
         needsIADL: {
-            type: String
+            type: [String]
         },
         checkIns: [Date]
     },

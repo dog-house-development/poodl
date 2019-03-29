@@ -29,6 +29,7 @@ exports[`Register tests render should render correctly 1`] = `
           "placeholder": "John...",
           "sidebyside": 1,
           "type": "text",
+          "value": "",
         },
         Object {
           "autoComplete": "off",
@@ -39,6 +40,7 @@ exports[`Register tests render should render correctly 1`] = `
           "placeholder": "Smith...",
           "sidebyside": 2,
           "type": "text",
+          "value": "",
         },
         Object {
           "autoComplete": "off",
@@ -48,6 +50,7 @@ exports[`Register tests render should render correctly 1`] = `
           "onChange": [Function],
           "placeholder": "example@poodl.com...",
           "type": "email",
+          "value": "sam@test.com",
         },
         Object {
           "autoComplete": "off",
@@ -57,6 +60,7 @@ exports[`Register tests render should render correctly 1`] = `
           "onChange": [Function],
           "placeholder": "Shhhhh...",
           "type": "password",
+          "value": "abc123",
         },
         Object {
           "autoComplete": "off",
@@ -66,6 +70,7 @@ exports[`Register tests render should render correctly 1`] = `
           "onChange": [Function],
           "placeholder": "Again...",
           "type": "password",
+          "value": "abc123",
         },
       ]
     }

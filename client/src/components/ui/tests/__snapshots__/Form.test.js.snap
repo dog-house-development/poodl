@@ -21,6 +21,7 @@ exports[`Form tests render should render correctly 1`] = `
       placeholder="Enter email..."
       size="normal"
       type="email"
+      value=""
     />
     <Button
       content="Submit"

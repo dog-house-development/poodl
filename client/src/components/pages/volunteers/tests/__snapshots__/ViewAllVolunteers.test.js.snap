@@ -16,9 +16,25 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
     </i>
      Back to home
   </Link>
-  <h1>
-    View All Volunteers
-  </h1>
+  <div
+    className="view-all-header"
+  >
+    <h1>
+      Manage Volunteers
+    </h1>
+    <Link
+      className="button small primary"
+      replace={false}
+      to="/volunteers/register"
+    >
+      <i
+        className="material-icons button-icon"
+      >
+        add
+      </i>
+      Register Volunteer
+    </Link>
+  </div>
   <DataGrid
     data={
       Array [

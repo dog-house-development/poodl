@@ -66,7 +66,8 @@ export class Login extends Component {
                 value: this.state.email,
                 onChange: this.onChange,
                 error: errors.email,
-                placeholder: 'Email...'
+                placeholder: 'Email...',
+                autoComplete: 'on'
             },
             {
                 id: 'password',
@@ -75,7 +76,8 @@ export class Login extends Component {
                 value: this.state.password,
                 onChange: this.onChange,
                 error: errors.password,
-                placeholder: 'Password......'
+                placeholder: 'Password......',
+                autoComplete: 'on'
             }
         ];
         return fields;

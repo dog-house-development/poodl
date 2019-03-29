@@ -5,12 +5,16 @@ import classnames from 'classnames';
 
 class Select extends React.Component {
     static propTypes = {
-        name: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired,
+        error: PropTypes.any,
+        id: PropTypes.string,
+        label: PropTypes.string,
+        name: PropTypes.string,
         onChange: PropTypes.func.isRequired,
         options: PropTypes.array.isRequired,
-        size: PropTypes.oneOf(['normal', 'large']),
-        padStart: PropTypes.number
+        padStart: PropTypes.number,
+        size: PropTypes.string,
+        value: PropTypes.string,
+        width: PropTypes.oneOf(['small', 'medium', 'large'])
     };
 
     static defaultProps = {
@@ -24,26 +28,38 @@ class Select extends React.Component {
         }
     }
 
+    getOptionsMarkup() {
+        return _.map(this.props.options, option => (
+            <option key={option} value={option}>
+                {_.padStart(option, this.props.padStart, '0')}
+            </option>
+        ));
+    }
+
+    getSelectMarkup() {
+        return (
+            <select
+                className={classnames('field', this.props.size, `${this.props.width}-width`)}
+                name={this.props.name}
+                value={this.props.value}
+                onChange={this.props.onChange}
+                id={this.props.id}>
+                {this.getOptionsMarkup()}
+            </select>
+        );
+    }
+
     render() {
         return (
-            <label className="select field-wrapper">
-                {this.getLabelMarkup()}
-                <div className="field-outer">
-                    <select
-                        className={classnames('field', this.props.size, this.props.width)}
-                        name={this.props.name}
-                        value={this.props.value}
-                        onChange={this.props.onChange}
-                    >
-                        {_.map(this.props.options, option => (
-                            <option key={option} value={option}>
-                                {_.padStart(option, this.props.padStart, '0')}
-                            </option>
-                        ))}
-                    </select>
-                    <p className="field-error-label">{this.props.error}</p>
-                </div>
-            </label>
+            <div className="select field-wrapper">
+                <label>
+                    {this.getLabelMarkup()}
+                    <div className="field-outer">
+                        {this.getSelectMarkup()}
+                        <p className="field-error-label">{this.props.error}</p>
+                    </div>
+                </label>
+            </div>
         );
     }
 }

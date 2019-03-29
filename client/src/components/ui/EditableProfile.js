@@ -4,6 +4,7 @@ import _ from 'lodash';
 import EditableField from './EditableField';
 import EditableRadio from './EditableRadio';
 import EditableCheckBox from './EditableCheckBox';
+import EditableMultiCheckbox from './EditableMultiCheckbox';
 import { withRouter } from 'react-router';
 import Button from './Button';
 
@@ -93,9 +94,9 @@ export class EditableProfile extends Component {
                         <EditableCheckBox
                             id={field.id}
                             key={field.id}
-                            defaultValue={this.state.fields[field.id]}
+                            value={this.state.fields[field.id]}
                             editMode={this.state.editMode[field.category]}
-                            handleChange={this.handleFieldChange}
+                            onChange={this.handleFieldChange}
                             label={field.label}
                         />
                     );
@@ -104,10 +105,22 @@ export class EditableProfile extends Component {
                         <EditableRadio
                             id={field.id}
                             key={field.id}
-                            defaultValue={this.state.fields[field.id]}
+                            value={this.state.fields[field.id]}
                             options={field.options}
                             editMode={this.state.editMode[field.category]}
-                            handleChange={this.handleFieldChange}
+                            onChange={this.handleFieldChange}
+                            label={field.label}
+                        />
+                    );
+                } else if (field.type === 'multibox') {
+                    return (
+                        <EditableMultiCheckbox
+                            id={field.id}
+                            key={field.id}
+                            value={this.state.fields[field.id]}
+                            options={field.options}
+                            editMode={this.state.editMode[field.category]}
+                            onChange={this.handleFieldChange}
                             label={field.label}
                         />
                     );
@@ -116,7 +129,7 @@ export class EditableProfile extends Component {
                         <EditableField
                             id={field.id}
                             key={field.id}
-                            defaultValue={this.state.fields[field.id]}
+                            value={this.state.fields[field.id]}
                             editMode={this.state.editMode[field.category]}
                             handleChange={this.handleFieldChange}
                             label={field.label}
