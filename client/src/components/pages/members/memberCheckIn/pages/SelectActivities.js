@@ -14,6 +14,12 @@ const propTypes = {
 };
 
 export class SelectActivities extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showEndedActivities: false
+        };
+    }
     componentDidMount() {
         const today = moment().startOf('day');
         this.props.activityActions.filter({
@@ -122,17 +128,21 @@ export class SelectActivities extends Component {
 
     getActivitiesMarkup() {
         return _.map(this.props.activities, activity => {
-            return (
-                <div key={activity._id} className="select-activity-panel-wrapper">
-                    <div className="select-activity-panel">
-                        <h3 className="activity-name">{activity.name}</h3>
-                        <p className="activity-description">{activity.description}</p>
-                        <p className="activity-description">{formatDateRange(activity.startDate, activity.endDate)}</p>
-                        {this.getActivityNoticeMarkup(activity)}
-                        <div className="activity-button">{this.getActivityButtonMarkup(activity)}</div>
+            if (moment(activity.endDate).isAfter(moment()) || this.state.showEndedActivities) {
+                return (
+                    <div key={activity._id} className="select-activity-panel-wrapper">
+                        <div className="select-activity-panel">
+                            <h3 className="activity-name">{activity.name}</h3>
+                            <p className="activity-description">{activity.description}</p>
+                            <p className="activity-description">
+                                {formatDateRange(activity.startDate, activity.endDate)}
+                            </p>
+                            {this.getActivityNoticeMarkup(activity)}
+                            <div className="activity-button">{this.getActivityButtonMarkup(activity)}</div>
+                        </div>
                     </div>
-                </div>
-            );
+                );
+            }
         });
     }
 
@@ -159,6 +169,11 @@ export class SelectActivities extends Component {
                 <div className="selectable-activities-panel">
                     <div className="panel">
                         <h2 className="panel-title">Sign up for activities happening today</h2>
+                        <Button
+                            size="small"
+                            content={this.state.showEndedActivities ? 'Hide ended activities' : 'Show ended activities'}
+                            onClick={() => this.setState({ showEndedActivities: !this.state.showEndedActivities })}
+                        />
                         <hr />
                         <div className="select-activity-panels-container">{this.getActivitiesMarkup()}</div>
                     </div>
