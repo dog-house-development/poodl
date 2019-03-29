@@ -160,7 +160,7 @@ const volunteerFields = [
         category: Categories.volunteer.id
     },
     {
-        id: 'occasionalOneDayProjects',
+        id: 'singleDayActivity',
         type: 'checkbox',
         label: 'Would like to volunteer for a single day activity',
         category: Categories.volunteer.id
@@ -175,7 +175,7 @@ const volunteerFields = [
         id: 'houseMaintenanceAndRepairs',
         type: 'multibox',
         label: 'Housing Maintenance and Repairs (weekday and weekend days)',
-        options: ['Carpentry ', 'Plumbing ', 'Masonry ', 'Cleaning ', 'Electrical ', 'Painting ', 'None '],
+        options: ['Carpentry', 'Plumbing', 'Masonry', 'Cleaning', 'Electrical', 'Painting'],
         category: Categories.skillsAndTraining.id
     },
     {
@@ -183,11 +183,11 @@ const volunteerFields = [
         type: 'multibox',
         label: 'Grounds Maintenance (any time)',
         options: [
-            'Lawn Maintenance ',
-            'Grounds Cleanup ',
-            'Pruning Trees and Shrubs ',
-            'Planting and Maintaining Flower Beds ',
-            'Snow Removal '
+            'Lawn Maintenance',
+            'Grounds Cleanup',
+            'Pruning Trees and Shrubs',
+            'Planting and Maintaining Flower Beds',
+            'Snow Removal'
         ],
         category: Categories.skillsAndTraining.id
     },
@@ -195,35 +195,39 @@ const volunteerFields = [
         id: 'clericalAssistance',
         type: 'multibox',
         label: 'Clerical Assistance (week days)',
-        options: ['Data Entry ', 'Folding Brochures ', 'General Office ', 'Preparing Bulk Mailings ', 'Front Desk '],
+        options: ['Data Entry', 'Folding Brochures', 'General Office', 'Preparing Bulk Mailings', 'Front Desk'],
         category: Categories.skillsAndTraining.id
     },
     {
         id: 'nutritionProgram',
         type: 'multibox',
         label: 'Nutrition Program',
-        options: ['Food Prep ', 'Dishes ', 'Deliver Meals on Wheels ', 'Dining Room Setup '],
+        options: ['Food Prep', 'Dishes', 'Deliver Meals on Wheels', 'Dining Room Setup'],
         category: Categories.skillsAndTraining.id
     },
     {
         id: 'specialEventsAndFundRaising',
         type: 'multibox',
         label: 'Special Events and Fundraising',
-        options: ['Food Prep ', 'Dishes ', 'Deliver Meals on Wheels ', 'Dining Room Setup '],
+        options: [
+            'Create Flyers, Brochures, and/or Posters',
+            'Assist with Events',
+            'Solicit Auction Items, Donations, Prizes, In-Kind Services'
+        ],
         category: Categories.skillsAndTraining.id
     },
     {
         id: 'interpretingTeachingClassesOrWorkshops',
         type: 'multibox',
         label: 'Interpreting, Teaching Classes or Workshops',
-        options: ['Food Prep ', 'Dishes ', 'Deliver Meals on Wheels ', 'Dining Room Setup '],
+        options: ['Life Skill Classes', 'Painting, Crafts', 'Computer', 'Exercise'],
         category: Categories.skillsAndTraining.id
     },
 
     {
         id: 'proposedActivities',
         type: 'text',
-        label: 'Any proposed activitie(s)',
+        label: 'Any proposed activities',
         category: Categories.skillsAndTraining.id
     },
     {
