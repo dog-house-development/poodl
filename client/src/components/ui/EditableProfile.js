@@ -4,16 +4,21 @@ import _ from 'lodash';
 import EditableField from './EditableField';
 import EditableRadio from './EditableRadio';
 import EditableCheckBox from './EditableCheckBox';
+import EditableComboBox from './EditableComboBox';
+import EditableDatePicker from './EditableDatePicker';
 import { withRouter } from 'react-router';
+import moment from 'moment';
 import Button from './Button';
 
 export class EditableProfile extends Component {
     static propTypes = {
+        date: PropTypes.object.isRequired,
         categories: PropTypes.object.isRequired,
         fields: PropTypes.array.isRequired,
         editProfile: PropTypes.func.isRequired,
         getProfile: PropTypes.func.isRequired,
-        profile: PropTypes.object
+        profile: PropTypes.object,
+        data: PropTypes.array
     };
 
     constructor(props) {
@@ -21,7 +26,13 @@ export class EditableProfile extends Component {
         this.state = {
             editMode: _.fromPairs(_.map(_.values(this.props.categories), category => [category.id, false])),
             fields: { ...this.props.profile },
-            modifiedFields: {}
+            modifiedFields: {},
+            multiDay: false,
+            startDate: moment().startOf('day'),
+            endDate: moment()
+                .startOf('day')
+                .add(1, 'day'),
+            startTime: moment(moment().get('hours'), 'h')
         };
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
@@ -105,6 +116,38 @@ export class EditableProfile extends Component {
                             id={field.id}
                             key={field.id}
                             value={this.state.fields[field.id]}
+                            options={field.options}
+                            editMode={this.state.editMode[field.category]}
+                            onChange={this.handleFieldChange}
+                            label={field.label}
+                        />
+                    );
+                } else if (field.type === 'combobox') {
+                    return (
+                        <EditableComboBox
+                            data={this.props.data}
+                            placeholder={field.placeholder}
+                            id={field.id}
+                            key={field.id}
+                            value={this.state.fields[field.id]}
+                            options={field.options}
+                            editMode={this.state.editMode[field.category]}
+                            onChange={this.handleFieldChange}
+                            label={field.label}
+                        />
+                    );
+                } else if (field.type === 'datepicker') {
+                    return (
+                        <EditableDatePicker
+                            //date: PropTypes.object.isRequired,
+                            //error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+                            //name: PropTypes.string.isRequired,
+                            //value: PropTypes.string,
+                            //title: PropTypes.string.isRequired,
+                            //id: PropTypes.string.isRequired
+                            id={field.id}
+                            key={field.id}
+                            date={this.state.fields[field.id]}
                             options={field.options}
                             editMode={this.state.editMode[field.category]}
                             onChange={this.handleFieldChange}
