@@ -2,35 +2,53 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Select from './Select';
-
+import assert from 'assert';
 class DatePicker extends Component {
     static propTypes = {
-        onChange: PropTypes.func.isRequired,
-        date: PropTypes.object.isRequired,
+        value: PropTypes.object.isRequired,
+        id: PropTypes.string.isRequired,
         error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-        name: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
+        label: PropTypes.string.isRequired,
+        dayLabel: PropTypes.string,
+        onChange: PropTypes.func.isRequired,
+        yearLabel: PropTypes.string,
+        monthLabel: PropTypes.string,
+        minYear: PropTypes.number,
+        maxYear: PropTypes.number
     };
 
     static defaultProps = {
+        value: moment().startOf('day'),
         dayLabel: '',
-        monthLabel: '',
         yearLabel: '',
-        date: moment().startOf('day')
+        monthLabel: ''
     };
 
     constructor(props) {
         super(props);
         this.state = {
-            day: this.props.date.format('DD'),
-            month: this.props.date.format('MMMM'),
-            year: this.props.date.format('YYYY')
+            day: this.props.value.format('DD'),
+            month: this.props.value.format('MMMM'),
+            year: this.props.value.format('YYYY')
         };
+
+        // Make sure the parent has the correct value
+        this.props.onChange({
+            target: {
+                id: this.props.id,
+                value: this.currentDate()
+            }
+        });
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(_, prevState) {
         if (prevState !== this.state) {
-            this.props.onChange(this.props.name, this.currentDate());
+            this.props.onChange({
+                target: {
+                    id: this.props.id,
+                    value: this.currentDate()
+                }
+            });
         }
     }
 
@@ -41,11 +59,13 @@ class DatePicker extends Component {
 
     onChange = e => {
         e.preventDefault();
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     };
 
     getDayDropdown() {
-        const days = Array.from(Array(this.currentDate().daysInMonth()), (x, index) => index + 1);
+        const days = Array.from(Array(this.currentDate().daysInMonth()), (_x, index) => index + 1);
         return (
             <Select
                 label={this.props.dayLabel}
@@ -53,7 +73,7 @@ class DatePicker extends Component {
                 value={this.state.day}
                 onChange={this.onChange}
                 options={days}
-                width="medium-width\"
+                width="medium"
             />
         );
     }
@@ -73,8 +93,15 @@ class DatePicker extends Component {
     }
 
     getYearDropdown() {
-        const yearOffset = moment().year() - 5;
-        const years = Array.from(Array(10), (x, index) => index + yearOffset);
+        let years;
+        const { minYear, maxYear } = this.props;
+        if (minYear && maxYear) {
+            assert(maxYear > minYear, 'Max year must be more than min year');
+            years = Array.from(Array(maxYear - minYear), (_, index) => index + minYear);
+        } else {
+            const yearOffset = moment().year() - 5;
+            years = Array.from(Array(10), (_, index) => index + yearOffset);
+        }
         return (
             <Select
                 label={this.props.yearLabel}
@@ -89,7 +116,7 @@ class DatePicker extends Component {
     render() {
         return (
             <div className="picker">
-                <p className="picker-title field-label">{this.props.title}</p>
+                <p className="picker-label field-label">{this.props.label}</p>
                 {this.getMonthDropdown()}
                 {this.getDayDropdown()}
                 {this.getYearDropdown()}

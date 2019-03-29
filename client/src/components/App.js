@@ -22,16 +22,17 @@ import PageNotFound from './pages/PageNotFound';
 // Admin pages
 import ViewAllAdmins from './pages/admins/ViewAllAdmins';
 import AdminProfile from './pages/admins/AdminProfile';
-import AddAdmin from './pages/admins/Register';
+import RegisterAdmin from './pages/admins/RegisterAdmin';
 
 // Volunteer pages
 import ViewAllVolunteers from './pages/volunteers/ViewAllVolunteers';
 import VolunteerProfile from './pages/volunteers/VolunteerProfile';
-import AddVolunteer from './pages/volunteers/AddVolunteer';
+import RegisterVolunteer from './pages/volunteers/RegisterVolunteer';
 
 // Member pages
 import ViewAllMembers from './pages/members/ViewAllMembers';
 import MemberProfile from './pages/members/MemberProfile';
+import RegisterMember from './pages/members/RegisterMember';
 
 // Activity pages
 import AddActivity from './pages/activities/AddActivity';
@@ -40,6 +41,9 @@ import ViewAllActivities from './pages/activities/ViewAllActivities';
 
 // check in
 import MemberCheckIn from './pages/members/memberCheckIn/MemberCheckIn';
+
+// Reports
+import Reports from './pages/reports/Reports';
 
 import PrivateRoute from './private-route/PrivateRoute';
 
@@ -77,14 +81,15 @@ class App extends Component {
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
                             {/* Admin pages */}
                             <PrivateRoute exact path="/admins" component={ViewAllAdmins} />
-                            <PrivateRoute exact path="/register" component={AddAdmin} />
+                            <PrivateRoute exact path="/admins/register" component={RegisterAdmin} />
                             <PrivateRoute exact path="/admins/:id" component={AdminProfile} />
                             {/* Volunteer pages */}
                             <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />
-                            <PrivateRoute exact path="/volunteers/add" component={AddVolunteer} />
+                            <PrivateRoute exact path="/volunteers/register" component={RegisterVolunteer} />
                             <PrivateRoute exact path="/volunteers/:id" component={VolunteerProfile} />
                             {/* Member pages */}
                             <PrivateRoute exact path="/members" component={ViewAllMembers} />
+                            <PrivateRoute exact path="/members/register" component={RegisterMember} />
                             <PrivateRoute exact path="/members/:id" component={MemberProfile} />
                             {/* Activity pages */}
                             <PrivateRoute exact path="/activities" component={ViewAllActivities} />
@@ -94,6 +99,8 @@ class App extends Component {
 
                             {/* Member check in */}
                             <PrivateRoute exact path="/member-check-in" component={MemberCheckIn} />
+                            {/* Reports */}
+                            <PrivateRoute exact path="/reports" component={Reports} />
                             {/* PageNotFound route must stay at bottom */}
                             <Route component={PageNotFound} />
                         </Switch>

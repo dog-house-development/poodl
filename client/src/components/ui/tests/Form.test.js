@@ -21,6 +21,7 @@ describe('Form tests', () => {
                         onChange: () => {},
                         error: {},
                         id: 'email',
+                        value: '',
                         type: 'email',
                         label: 'Email:',
                         placeholder: 'Enter email...'
@@ -65,6 +66,7 @@ describe('Form tests', () => {
                             id="email"
                             type="email"
                             name={undefined}
+                            value=""
                             label="Email:"
                             placeholder="Enter email..."
                             onChange={() => {}}

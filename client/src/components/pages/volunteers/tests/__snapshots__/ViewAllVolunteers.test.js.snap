@@ -25,14 +25,14 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
     <Link
       className="button small primary"
       replace={false}
-      to="/volunteers/add"
+      to="/volunteers/register"
     >
       <i
         className="material-icons button-icon"
       >
         add
       </i>
-      Add Volunteer
+      Register Volunteer
     </Link>
   </div>
   <DataGrid

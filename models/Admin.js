@@ -116,17 +116,106 @@ const adminSchema = new Schema(
                 message: 'Cell phone is invalid'
             }
         },
-        references: {
-            type: [String],
+        reference1Name: {
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
                         return v.length > 0;
                     }
                 },
-                message: 'References are required'
+                message: 'Reference Name is required'
             }
         },
+        reference1Relationship: {
+            type: String,
+            validate: {
+                validator: function(v) {
+                    if (this.accessLevel === 'Volunteer') {
+                        return v.length > 0;
+                    }
+                },
+                message: 'References Relationship is required'
+            }
+        },
+        reference1Phone: {
+            type: String,
+            validate: {
+                validator: function(v) {
+                    if (this.accessLevel === 'Volunteer') {
+                        return v.length > 0;
+                    }
+                },
+                message: 'Reference Number is required'
+            }
+        },
+        reference2Name: {
+            type: String,
+            validate: {
+                validator: function(v) {
+                    if (this.accessLevel === 'Volunteer') {
+                        return v.length > 0;
+                    }
+                },
+                message: 'Reference Name is required'
+            }
+        },
+        reference2Relationship: {
+            type: String,
+            validate: {
+                validator: function(v) {
+                    if (this.accessLevel === 'Volunteer') {
+                        return v.length > 0;
+                    }
+                },
+                message: 'References Relationship is required'
+            }
+        },
+        reference2Phone: {
+            type: String,
+            validate: {
+                validator: function(v) {
+                    if (this.accessLevel === 'Volunteer') {
+                        return v.length > 0;
+                    }
+                },
+                message: 'Reference Number is required'
+            }
+        },
+        reference3Name: {
+            type: String,
+            validate: {
+                validator: function(v) {
+                    if (this.accessLevel === 'Volunteer') {
+                        return v.length > 0;
+                    }
+                },
+                message: 'Reference Name is required'
+            }
+        },
+        reference3Relationship: {
+            type: String,
+            validate: {
+                validator: function(v) {
+                    if (this.accessLevel === 'Volunteer') {
+                        return v.length > 0;
+                    }
+                },
+                message: 'References Relationship is required'
+            }
+        },
+        reference3Phone: {
+            type: String,
+            validate: {
+                validator: function(v) {
+                    if (this.accessLevel === 'Volunteer') {
+                        return v.length > 0;
+                    }
+                },
+                message: 'Reference Number is required'
+            }
+        },
+
         learnAboutVolunteerProgram: {
             type: String,
             enum: [

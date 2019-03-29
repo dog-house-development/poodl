@@ -28,6 +28,7 @@ export class AddActivity extends Component {
                 .startOf('day')
                 .add(1, 'day'),
             name: '',
+            description: '',
             startTime: moment(moment().get('hours'), 'h')
         };
 
@@ -42,7 +43,7 @@ export class AddActivity extends Component {
         this.setState({ [name]: value });
     };
 
-    onChange = e => {
+    handleChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
 
@@ -62,13 +63,14 @@ export class AddActivity extends Component {
             startDate: start.toISOString(),
             endDate: end.toISOString()
         };
+
         this.props.activityActions.create(newActivity, this.props.history);
     };
 
     getFields = () => {
         const fields = [
             {
-                onChange: this.onChange,
+                onChange: this.handleChange,
                 error: this.props.errors.description,
                 id: 'description',
                 type: 'text',
@@ -102,9 +104,7 @@ export class AddActivity extends Component {
 
     getEndDateMarkup() {
         if (this.state.multiDay) {
-            return (
-                <DatePicker title="End Date" name="endDate" date={this.state.endDate} onChange={this.onValueChange} />
-            );
+            return <DatePicker label="End Date" id="endDate" date={this.state.endDate} onChange={this.handleChange} />;
         }
     }
 
@@ -113,10 +113,10 @@ export class AddActivity extends Component {
             <>
                 <div className="side-by-side">
                     <DatePicker
-                        title={this.state.multiDay ? 'Start Date' : 'Date'}
-                        name="startDate"
+                        label={this.state.multiDay ? 'Start Date' : 'Date'}
+                        id="startDate"
                         date={this.state.startDate}
-                        onChange={this.onValueChange}
+                        onChange={this.handleChange}
                         error={this.state.multiDay ? this.getDateErrorMarkup() : ''}
                     />
                     {this.getEndDateMarkup()}
@@ -152,23 +152,23 @@ export class AddActivity extends Component {
                             placeholder="Name"
                             id="name"
                             value={this.state.name}
-                            onChange={this.onChange}
+                            onChange={this.handleChange}
                             error={this.props.errors.name}
                         />
                         {this.getFieldsMarkup()}
                         <div className="side-by-side">
                             <TimePicker
-                                title="Start Time"
-                                name="startTime"
+                                label="Start Time"
+                                id="startTime"
                                 time={this.state.startTime}
-                                onChange={this.onValueChange}
+                                onChange={this.handleChange}
                                 error={this.state.multiDay ? '' : this.getDateErrorMarkup()}
                             />
                             <TimePicker
-                                title="End Time"
-                                name="endTime"
+                                label="End Time"
+                                id="endTime"
                                 time={this.state.endTime}
-                                onChange={this.onValueChange}
+                                onChange={this.handleChange}
                             />
                         </div>
                         {this.getDatePickersMarkup()}

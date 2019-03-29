@@ -13,7 +13,7 @@ const propTypes = {
     errors: PropTypes.object.isRequired
 };
 
-export class Register extends Component {
+export class RegisterAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -53,6 +53,7 @@ export class Register extends Component {
             {
                 onChange: this.onChange,
                 error: errors.firstName,
+                value: this.state.firstName,
                 id: 'firstName',
                 type: 'text',
                 label: 'First name',
@@ -62,6 +63,7 @@ export class Register extends Component {
             },
             {
                 onChange: this.onChange,
+                value: this.state.lastName,
                 error: errors.lastName,
                 id: 'lastName',
                 type: 'text',
@@ -72,6 +74,7 @@ export class Register extends Component {
             },
             {
                 onChange: this.onChange,
+                value: this.state.email,
                 error: errors.email,
                 id: 'email',
                 type: 'email',
@@ -81,6 +84,7 @@ export class Register extends Component {
             },
             {
                 onChange: this.onChange,
+                value: this.state.password,
                 error: errors.password,
                 id: 'password',
                 type: 'password',
@@ -90,6 +94,7 @@ export class Register extends Component {
             },
             {
                 onChange: this.onChange,
+                value: this.state.password2,
                 error: errors.password2,
                 id: 'password2',
                 type: 'password',
@@ -101,7 +106,7 @@ export class Register extends Component {
         if (this.props.adminIsSuper) {
             fields.push({
                 onChange: this.onChange,
-                content: this.props.adminSeniorCenterId,
+                value: this.props.adminSeniorCenterId,
                 error: errors.seniorCenterId,
                 id: 'seniorCenterId',
                 type: 'text',
@@ -145,8 +150,8 @@ export const mapDispatchToProps = dispatch => {
     };
 };
 
-Register.propTypes = propTypes;
+RegisterAdmin.propTypes = propTypes;
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(withRouter(Register));
+)(withRouter(RegisterAdmin));

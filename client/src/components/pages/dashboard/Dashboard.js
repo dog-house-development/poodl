@@ -55,17 +55,17 @@ export class Dashboard extends Component {
                     <Link to="/admins" className="button primary medium">
                         Admins
                     </Link>
-                    <span> </span>
                     <Link to="/volunteers" className="button primary medium">
                         Volunteers
                     </Link>
-                    <span> </span>
                     <Link to="/members" className="button primary medium">
                         Members
                     </Link>
-                    <span> </span>
                     <Link to="/activities" className="button primary medium">
                         Activities
+                    </Link>
+                    <Link to="/reports" className="button primary medium">
+                        Reports
                     </Link>
                 </div>
                 <h2>Activities</h2>

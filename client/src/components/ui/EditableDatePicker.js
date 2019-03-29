@@ -7,7 +7,6 @@ const propTypes = {
     date: PropTypes.object.isRequired,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     name: PropTypes.string.isRequired,
-    value: PropTypes.string,
     title: PropTypes.string.isRequired,
     label: PropTypes.string,
     id: PropTypes.string.isRequired
@@ -23,7 +22,7 @@ class EditableDatePicker extends Component {
         return (
             <div className="field-wrapper editable-field-wrapper">
                 <p className="field-label">{this.props.label}</p>
-                <p>{this.props.defaultValue}</p>
+                <p>{this.props.date}</p>
             </div>
         );
     }

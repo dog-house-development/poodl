@@ -19,6 +19,7 @@ describe('Field tests', () => {
                 id: 'email',
                 type: 'email',
                 size: 'normal',
+                value: '',
                 content: '',
                 placeholder: 'Enter email...',
                 label: 'Email:',
