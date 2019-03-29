@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import VolunteerActions from '../../../actions/volunteerActions';
 import _ from 'lodash';
 
-class RegisterVolunteer extends React.Component {
+export class RegisterVolunteer extends React.Component {
     static propTypes = {
         errors: PropTypes.object
     };
