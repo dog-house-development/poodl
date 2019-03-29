@@ -4,6 +4,7 @@ import _ from 'lodash';
 import EditableField from './EditableField';
 import EditableRadio from './EditableRadio';
 import EditableCheckBox from './EditableCheckBox';
+import EditableDatePicker from './EditableDatePicker';
 import { withRouter } from 'react-router';
 import Button from './Button';
 
@@ -105,6 +106,24 @@ export class EditableProfile extends Component {
                             id={field.id}
                             key={field.id}
                             value={this.state.fields[field.id]}
+                            options={field.options}
+                            editMode={this.state.editMode[field.category]}
+                            onChange={this.handleFieldChange}
+                            label={field.label}
+                        />
+                    );
+                } else if (field.type === 'radio') {
+                    return (
+                        <EditableDatePicker
+                            //date: PropTypes.object.isRequired,
+                            //error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+                            //name: PropTypes.string.isRequired,
+                            //value: PropTypes.string,
+                            //title: PropTypes.string.isRequired,
+                            //id: PropTypes.string.isRequired
+                            id={field.id}
+                            key={field.id}
+                            date={this.state.fields[field.id]}
                             options={field.options}
                             editMode={this.state.editMode[field.category]}
                             onChange={this.handleFieldChange}
