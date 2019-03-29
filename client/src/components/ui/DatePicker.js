@@ -46,7 +46,11 @@ class DatePicker extends Component {
             this.props.onChange({
                 target: {
                     id: this.props.id,
+<<<<<<< HEAD
                     value: this.currentDate()
+=======
+                    value: 'this.currentDate()'
+>>>>>>> d5231b8a0154ba890a7322b641c4eda64b4ee149
                 }
             });
         }
