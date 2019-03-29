@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 
-import { setCurrentAdmin, logoutAdmin } from '../actions/authActions';
+import AuthActions from '../actions/authActions';
 import { Provider } from 'react-redux';
 import store from '../store';
 
@@ -12,27 +12,37 @@ import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
 
 // auth
-import Register from './pages/auth/Register';
-import Login from './pages/auth/Login';
+import Login from './pages/login/Login';
 
 // basic
 import Dashboard from './pages/dashboard/Dashboard';
 import Landing from './pages/Landing';
 import PageNotFound from './pages/PageNotFound';
 
-// view all pages
-import ViewAllAdmins from './pages/views/ViewAllAdmins';
-import ViewAllVolunteers from './pages/views/ViewAllVolunteers';
-import ViewAllMembers from './pages/views/ViewAllMembers';
+// Admin pages
+import ViewAllAdmins from './pages/admins/ViewAllAdmins';
+import AdminProfile from './pages/admins/AdminProfile';
+import RegisterAdmin from './pages/admins/RegisterAdmin';
 
-// profile pages
-import AdminProfile from './pages/views/AdminProfile';
-import VolunteerProfile from './pages/views/VolunteerProfile';
-import MemberProfile from './pages/views/MemberProfile';
+// Volunteer pages
+import ViewAllVolunteers from './pages/volunteers/ViewAllVolunteers';
+import VolunteerProfile from './pages/volunteers/VolunteerProfile';
+import RegisterVolunteer from './pages/volunteers/RegisterVolunteer';
 
-// activity page
-import RegisterActivity from './pages/activity/AddActivity';
-import ViewAllActivities from './pages/activity/ViewAllActivities';
+// Member pages
+import ViewAllMembers from './pages/members/ViewAllMembers';
+import MemberProfile from './pages/members/MemberProfile';
+import RegisterMember from './pages/members/RegisterMember';
+
+// Activity pages
+import AddActivity from './pages/activities/AddActivity';
+import ViewAllActivities from './pages/activities/ViewAllActivities';
+
+// check in
+import MemberCheckIn from './pages/members/memberCheckIn/MemberCheckIn';
+
+// Reports
+import Reports from './pages/reports/Reports';
 
 import PrivateRoute from './private-route/PrivateRoute';
 
@@ -46,12 +56,12 @@ if (localStorage.jwtToken) {
     // Decode token and get admin info and exp
     const decoded = jwt_decode(token);
     // Set admin and isAuthenticated
-    store.dispatch(setCurrentAdmin(decoded));
+    store.dispatch(AuthActions.setCurrentAdmin(decoded));
     // Check for expired token
     const currentTime = Date.now() / 1000; // to get in milliseconds
     if (decoded.exp < currentTime) {
         // Logout admin
-        store.dispatch(logoutAdmin());
+        store.dispatch(AuthActions.logoutAdmin());
 
         // Redirect to login
         window.location.href = './login';
@@ -67,19 +77,26 @@ class App extends Component {
                         <Switch>
                             <Route exact path="/" component={Landing} />
                             <Route exact path="/login" component={Login} />
-                            <PrivateRoute exact path="/register" component={Register} />
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                            {/* View all pages */}
+                            {/* Admin pages */}
                             <PrivateRoute exact path="/admins" component={ViewAllAdmins} />
+                            <PrivateRoute exact path="/admins/register" component={RegisterAdmin} />
+                            <PrivateRoute exact path="/admins/:id" component={AdminProfile} />
+                            {/* Volunteer pages */}
                             <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />
+                            <PrivateRoute exact path="/volunteers/register" component={RegisterVolunteer} />
+                            <PrivateRoute exact path="/volunteers/:id" component={VolunteerProfile} />
+                            {/* Member pages */}
                             <PrivateRoute exact path="/members" component={ViewAllMembers} />
-                            {/* Profile pages */}
-                            <PrivateRoute exact path="/admin/:id" component={AdminProfile} />
-                            <PrivateRoute exact path="/volunteer/:id" component={VolunteerProfile} />
-                            <PrivateRoute exact path="/member/:id" component={MemberProfile} />
+                            <PrivateRoute exact path="/members/register" component={RegisterMember} />
+                            <PrivateRoute exact path="/members/:id" component={MemberProfile} />
+                            {/* Activity pages */}
                             <PrivateRoute exact path="/activities" component={ViewAllActivities} />
-                            <PrivateRoute exact path="/activities/add" component={RegisterActivity} />
-
+                            <PrivateRoute exact path="/activities/add" component={AddActivity} />
+                            {/* Member check in */}
+                            <PrivateRoute exact path="/member-check-in" component={MemberCheckIn} />
+                            {/* Reports */}
+                            <PrivateRoute exact path="/reports" component={Reports} />
                             {/* PageNotFound route must stay at bottom */}
                             <Route component={PageNotFound} />
                         </Switch>

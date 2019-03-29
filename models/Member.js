@@ -1,84 +1,99 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Validator = require('validator');
 
-// Create Schema
-const MemberSchema = new Schema(
+const memberSchema = new Schema(
     {
-        //Contact Info
+        seniorCenterId: {
+            type: ObjectId,
+            required: true
+        },
+        // Contact Info
         email: {
-            type: String
+            type: String,
+            validate: {
+                validator: Validator.isEmail,
+                message: 'Email is invalid'
+            }
         },
         address: {
             type: String
         },
         phoneNumber: {
+            type: String,
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Phone number is invalid'
+            }
+        },
+        emergencyContactName: {
             type: String
         },
-        emergencyContact: [
-            {
-                type: String
+        emergencyContactRelationship: {
+            type: String
+        },
+        emergencyContactPhoneNumber: {
+            type: String,
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Phone number is invalid'
             }
-        ],
-        //Member Info
-
+        },
+        // Member Info
         firstName: {
             type: String,
-            required: true
+            required: [true, 'First name is required']
         },
         lastName: {
             type: String,
-            required: true
+            required: [true, 'Last name is required']
         },
-
         birthDate: {
-            type: Date,
-            default: Date.now
+            type: Date
         },
-        seniorCenter: {
+        specialDiet: {
             type: String
         },
-        specialDiet: [
-            {
-                type: String
-            }
-        ],
-        medicalIssues: [
-            {
-                type: String
-            }
-        ],
-        disabilities: [
-            {
-                type: String
-            }
-        ],
+        medicalIssues: {
+            type: String
+        },
+        disabilities: {
+            type: String
+        },
         mealPreference: {
             type: String
         },
+        gender: {
+            type: String
+        },
 
-        //Membership Information
-        memberisNewOrRenewal: {
-            type: Boolean //True = New, False = Renewal
+        // Membership Information
+        memberIsNewOrRenewal: {
+            type: String,
+            default: 'new'
         },
         formOfPayment: {
-            type: Boolean //True = Cash, False = Check
+            type: String
         },
         bankCheckNumber: {
             type: String
         },
         includedInEstatePlans: {
-            type: Boolean // If True, means the member has included the center
-        }, // in their estate plans
+            // The member has included the center in their estate plans
+            type: Boolean,
+            default: false
+        },
         wantsEstateInfo: {
-            type: Boolean // True = Member would like more info
-        }, // False = Member does not want more info
+            type: Boolean,
+            default: false
+        },
         membershipDate: {
             type: Date,
             default: Date.now
         },
         renewalDate: {
-            type: String
+            type: Date
         },
 
         //Demographic info from Intake Form
@@ -89,7 +104,7 @@ const MemberSchema = new Schema(
             type: String
         },
         numberInHousehold: {
-            type: Number
+            type: String
         },
         isPersonCaregiver: {
             type: Boolean
@@ -115,18 +130,20 @@ const MemberSchema = new Schema(
         grandparent: {
             type: String
         },
-        needsAADL: [
-            {
-                type: String
-            }
-        ],
-        needsIADL: [
-            {
-                type: String
-            }
-        ]
+        numberOfKidsUnder19: {
+            type: Number,
+            min: 0,
+            default: 0
+        },
+        needsAADL: {
+            type: [String]
+        },
+        needsIADL: {
+            type: [String]
+        },
+        checkIns: [Date]
     },
     { timestamps: true }
 );
 
-module.exports = mongoose.model('members', MemberSchema);
+module.exports = memberSchema;

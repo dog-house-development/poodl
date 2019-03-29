@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`View all activities tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/dashboard"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to home
+  </Link>
+  <div
+    className="view-all-header"
+  >
+    <h1>
+      Manage Activities
+    </h1>
+    <Link
+      className="button small primary"
+      replace={false}
+      to="/activities/add"
+    >
+      <i
+        className="material-icons button-icon"
+      >
+        add
+      </i>
+      Add Activity
+    </Link>
+  </div>
+  <DataGrid
+    data={
+      Array [
+        Object {
+          "endDate": "11:00 pm, December 31st 1969",
+          "key": "1",
+          "name": "Fun",
+          "startDate": "11:00 pm, December 31st 1969",
+        },
+        Object {
+          "endDate": "11:00 pm, December 31st 1969",
+          "key": "2",
+          "name": "Stuff",
+          "startDate": "11:00 pm, December 31st 1969",
+        },
+      ]
+    }
+    loading={false}
+    onRowClick={[Function]}
+  />
+</div>
+`;

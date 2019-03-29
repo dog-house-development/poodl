@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewAllMembers tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/dashboard"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to home
+  </Link>
+  <div
+    className="view-all-header"
+  >
+    <h1>
+      Manage Members
+    </h1>
+    <Link
+      className="button small primary"
+      replace={false}
+      to="/members/register"
+    >
+      <i
+        className="material-icons button-icon"
+      >
+        add
+      </i>
+      Register Member
+    </Link>
+  </div>
+  <DataGrid
+    data={
+      Array [
+        Object {
+          "email": "bigtup@nowhere.com",
+          "firstName": "Big",
+          "key": "123",
+          "lastName": "Tup",
+          "membershipDate": "March 15th, 1950",
+        },
+        Object {
+          "email": "liltup@nowhere.com",
+          "firstName": "Lil",
+          "key": "321",
+          "lastName": "Tup",
+          "membershipDate": "March 15th, 1950",
+        },
+      ]
+    }
+    loading={false}
+    onRowClick={[Function]}
+  />
+</div>
+`;

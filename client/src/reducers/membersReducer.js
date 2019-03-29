@@ -1,52 +1,55 @@
-import {
-    FETCH_MEMBERS_BEGIN,
-    FETCH_MEMBERS_SUCCESS,
-    FETCH_MEMBER_BEGIN,
-    FETCH_MEMBER_SUCCESS,
-    MODIFY_MEMBER_BEGIN,
-    MODIFY_MEMBER_SUCCESS
-} from '../actions/types';
+import Types from '../actions/types';
+import _ from 'lodash';
 
 const initialState = {
     loading: false,
-    all: [],
-    one: {}
+    all: {},
+    errors: {}
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case FETCH_MEMBERS_BEGIN:
+        case Types.member.ERROR:
+            return {
+                ...state,
+                loading: false,
+                errors: action.payload
+            };
+        case Types.member.filter.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_MEMBERS_SUCCESS:
+        case Types.member.filter.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                all: action.payload.data
+                all: _.keyBy(action.payload, '_id'),
+                errors: {}
             };
-        case FETCH_MEMBER_BEGIN:
+        case Types.member.get.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_MEMBER_SUCCESS:
+        case Types.member.get.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                one: action.payload
+                all: { ...state.all, [action.payload._id]: action.payload },
+                errors: {}
             };
-        case MODIFY_MEMBER_BEGIN:
+        case Types.member.edit.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case MODIFY_MEMBER_SUCCESS:
+        case Types.member.edit.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                one: action.payload
+                all: { ...state.all, [action.payload._id]: action.payload },
+                errors: {}
             };
         default:
             return state;

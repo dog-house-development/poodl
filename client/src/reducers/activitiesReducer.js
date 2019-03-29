@@ -1,52 +1,55 @@
-import {
-    FETCH_ACTIVITIES_BEGIN,
-    FETCH_ACTIVITIES_SUCCESS,
-    FETCH_ACTIVITY_BEGIN,
-    FETCH_ACTIVITY_SUCCESS,
-    FILTER_ACTIVITIES_BEGIN,
-    FILTER_ACTIVITIES_SUCCESS
-} from '../actions/types';
+import Types from '../actions/types';
+import _ from 'lodash';
 
 const initialState = {
     loading: false,
-    all: [],
-    one: {}
+    all: {},
+    errors: {}
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case FETCH_ACTIVITIES_BEGIN:
+        case Types.activity.ERROR:
+            return {
+                ...state,
+                loading: false,
+                errors: action.payload
+            };
+        case Types.activity.filter.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_ACTIVITIES_SUCCESS:
+        case Types.activity.filter.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                all: action.payload.data
+                all: _.keyBy(action.payload, '_id'),
+                errors: {}
             };
-        case FILTER_ACTIVITIES_BEGIN:
+        case Types.activity.get.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FILTER_ACTIVITIES_SUCCESS:
+        case Types.activity.get.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                all: action.payload.data
+                all: { ...state.all, [action.payload._id]: action.payload },
+                errors: {}
             };
-        case FETCH_ACTIVITY_BEGIN:
+        case Types.activity.edit.BEGIN:
             return {
                 ...state,
                 loading: true
             };
-        case FETCH_ACTIVITY_SUCCESS:
+        case Types.activity.edit.SUCCESS:
             return {
                 ...state,
                 loading: false,
-                one: action.payload
+                all: { ...state.all, [action.payload._id]: action.payload },
+                errors: {}
             };
         default:
             return state;

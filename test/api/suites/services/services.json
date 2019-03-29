@@ -1,0 +1,18 @@
+{
+    "services": [
+        {
+            "_id": "5c897ad0e6feff79679b2933",
+            "name": "FIRST_NAME",
+            "seniorCenterId": "5c7f2d1b01c4842d2d8e7637",
+            "memberId": "5c7f2d1b01c4842d2d8e7637",
+            "description": "test"
+        },
+        {
+            "_id": "5c80b64c8b3e02485620ec53",
+            "name": "FIRST_NAME",
+            "seniorCenterId": "5c7f2d1b01c4842d2d8e7637",
+            "memberId": "5c7f2d1b01c4842d2d8e7637",
+            "description": "food delivery"
+        }
+    ]
+}

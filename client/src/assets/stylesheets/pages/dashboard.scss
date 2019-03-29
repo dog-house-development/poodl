@@ -1,7 +1,13 @@
 @import '_presets.scss';
 
 .dashboard-container {
-  max-width: 60vw;
+  width: 95%;
+  max-width: 800px;
   margin: auto;
-  padding: 0 24px;
+
+  .dashboard-panel {
+    .button {
+      margin: 0.2em;
+    }
+  }
 }

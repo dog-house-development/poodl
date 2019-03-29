@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { filterActivities } from '../../../actions/activityActions';
+import ActivityActions from '../../../actions/activityActions';
 import ViewByDate from '../../ui/ViewByDate';
 import moment from 'moment';
 
@@ -14,22 +15,33 @@ export class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activitiesStartDate: new Date()
+            activityDate: moment().startOf('day')
         };
     }
 
-    getDateRangeText(startDate) {
-        const endDate = new Date(startDate.getTime() + 1 * 86400000);
-        return moment(startDate).format('YYYY-MM-DD') + ',' + moment(endDate).format('YYYY-MM-DD');
+    getDateRangeFilter(start) {
+        const filter = {
+            startDate: {
+                $lt: start
+                    .clone()
+                    .add(1, 'days')
+                    .toISOString()
+            },
+            endDate: {
+                $gt: start.toISOString()
+            }
+        };
+
+        return filter;
     }
 
     componentDidMount() {
-        this.props.getActivities({ dateRange: this.getDateRangeText(this.state.activitiesStartDate) });
+        this.props.activityActions.filter(this.getDateRangeFilter(this.state.activityDate));
     }
 
     requestDate = date => {
-        this.setState({ activitiesStartDate: date });
-        this.props.getActivities({ dateRange: this.getDateRangeText(date) });
+        this.setState({ activityDate: date });
+        this.props.activityActions.filter(this.getDateRangeFilter(date));
     };
 
     render() {
@@ -40,31 +52,20 @@ export class Dashboard extends Component {
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
                 <div className="panel dashboard-panel">
-                    <h1 className="panel-title">View</h1>
                     <Link to="/admins" className="button primary medium">
                         Admins
                     </Link>
-                    <span> </span>
                     <Link to="/volunteers" className="button primary medium">
                         Volunteers
                     </Link>
-                    <span> </span>
                     <Link to="/members" className="button primary medium">
                         Members
                     </Link>
-                    <span> </span>
                     <Link to="/activities" className="button primary medium">
                         Activities
                     </Link>
-                </div>
-                <div className="panel dashboard-panel">
-                    <h1 className="panel-title">Register New</h1>
-                    <Link to="/register" className="button primary medium">
-                        Admin
-                    </Link>
-                    <span> </span>
-                    <Link to="/activities/add" className="button primary medium">
-                        Activity
+                    <Link to="/reports" className="button primary medium">
+                        Reports
                     </Link>
                 </div>
                 <h2>Activities</h2>
@@ -72,7 +73,7 @@ export class Dashboard extends Component {
                     requestDate={this.requestDate}
                     loading={this.props.activitiesLoading}
                     dateData={{
-                        date: this.state.activitiesStartDate,
+                        date: this.state.activityDate,
                         data: this.props.activities
                     }}
                     clickableRowRoute="activity/"
@@ -88,13 +89,13 @@ export const mapStateToProps = (state, props) => {
         auth: state.auth,
         activities: state.activities.all,
         activitiesLoading: state.activities.loading,
-        errors: state.errors
+        errors: state.activities.errors
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        getActivities: date => dispatch(filterActivities(date))
+        activityActions: bindActionCreators(ActivityActions, dispatch)
     };
 };
 

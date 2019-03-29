@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VolunteerProfile tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/volunteers"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to all volunteers
+  </Link>
+  <div>
+    <h1>
+       
+    </h1>
+    <withRouter(EditableProfile)
+      categories={
+        Object {
+          "contact": Object {
+            "id": "contact",
+            "title": "Contact Info",
+          },
+          "personal": Object {
+            "id": "personal",
+            "title": "Personal Info",
+          },
+          "references": Object {
+            "id": "references",
+            "title": "Reference Info",
+          },
+          "skillsAndTraining": Object {
+            "description": "Please check all that apply",
+            "id": "skillsAndTraining",
+            "title": "Skills and Training",
+          },
+          "volunteer": Object {
+            "id": "volunteer",
+            "title": "Volunteer Info",
+          },
+        }
+      }
+      editProfile={[Function]}
+      fields={
+        Array [
+          Object {
+            "category": "personal",
+            "id": "firstName",
+            "label": "First name",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "middleInitial",
+            "label": "Middle Initial",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "lastName",
+            "label": "Last name",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "nickName",
+            "label": "Nickname or Preferred Name",
+            "type": "text",
+          },
+          Object {
+            "category": "contact",
+            "id": "email",
+            "label": "Email",
+            "type": "email",
+          },
+          Object {
+            "category": "contact",
+            "id": "streetAddress",
+            "label": "Address",
+            "type": "text",
+          },
+          Object {
+            "category": "contact",
+            "id": "city",
+            "label": "City",
+            "type": "text",
+          },
+          Object {
+            "category": "contact",
+            "id": "state",
+            "label": "State",
+            "type": "text",
+          },
+          Object {
+            "category": "contact",
+            "id": "zip",
+            "label": "Zip Code",
+            "type": "text",
+          },
+          Object {
+            "category": "contact",
+            "id": "homePhone",
+            "label": "Home Phone",
+            "type": "text",
+          },
+          Object {
+            "category": "contact",
+            "id": "cellPhone",
+            "label": "Cell Phone",
+            "type": "text",
+          },
+          Object {
+            "category": "references",
+            "id": "reference1Name",
+            "label": "#1 Name",
+            "type": "text",
+          },
+          Object {
+            "category": "references",
+            "id": "reference1Relationship",
+            "label": "#1 Relationship",
+            "type": "text",
+          },
+          Object {
+            "category": "references",
+            "id": "reference1Phone",
+            "label": "#1 Phone Number",
+            "type": "text",
+          },
+          Object {
+            "category": "references",
+            "id": "reference2Name",
+            "label": "#2 Name",
+            "type": "text",
+          },
+          Object {
+            "category": "references",
+            "id": "reference2Relationship",
+            "label": "#2 Relationship",
+            "type": "text",
+          },
+          Object {
+            "category": "references",
+            "id": "reference2Phone",
+            "label": "#2 Phone Number",
+            "type": "text",
+          },
+          Object {
+            "category": "references",
+            "id": "reference3Name",
+            "label": "#3 Name",
+            "type": "text",
+          },
+          Object {
+            "category": "references",
+            "id": "reference3Relationship",
+            "label": "#3 Relationship",
+            "type": "text",
+          },
+          Object {
+            "category": "references",
+            "id": "reference3Phone",
+            "label": "#3 Phone Number",
+            "type": "text",
+          },
+          Object {
+            "category": "volunteer",
+            "id": "learnAboutVolunteerProgram",
+            "label": "Learned about Belgrade Senior Centers volunteer program from",
+            "options": Array [
+              "Friend or Relative",
+              "Brochure/Poster",
+              "Newspaper, Television or Radio",
+              "School or College",
+              "Belgrade Senior Center",
+              "United Way",
+              "Community Event",
+              "Other",
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "volunteer",
+            "id": "volunteerFrequency",
+            "label": "Volunteer Frequency",
+            "type": "text",
+          },
+          Object {
+            "category": "volunteer",
+            "id": "occasionalOneDayProjects",
+            "label": "Would like to be contacted about one day projects",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "volunteer",
+            "id": "singleDayActivity",
+            "label": "Would like to volunteer for a single day activity",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "volunteer",
+            "id": "availabilitySchedule",
+            "label": "Availability Schedule",
+            "type": "text",
+          },
+          Object {
+            "category": "skillsAndTraining",
+            "id": "houseMaintenanceAndRepairs",
+            "label": "Housing Maintenance and Repairs (weekday and weekend days)",
+            "options": Array [
+              "Carpentry",
+              "Plumbing",
+              "Masonry",
+              "Cleaning",
+              "Electrical",
+              "Painting",
+            ],
+            "type": "multibox",
+          },
+          Object {
+            "category": "skillsAndTraining",
+            "id": "groundMaintenance",
+            "label": "Grounds Maintenance (any time)",
+            "options": Array [
+              "Lawn Maintenance",
+              "Grounds Cleanup",
+              "Pruning Trees and Shrubs",
+              "Planting and Maintaining Flower Beds",
+              "Snow Removal",
+            ],
+            "type": "multibox",
+          },
+          Object {
+            "category": "skillsAndTraining",
+            "id": "clericalAssistance",
+            "label": "Clerical Assistance (week days)",
+            "options": Array [
+              "Data Entry",
+              "Folding Brochures",
+              "General Office",
+              "Preparing Bulk Mailings",
+              "Front Desk",
+            ],
+            "type": "multibox",
+          },
+          Object {
+            "category": "skillsAndTraining",
+            "id": "nutritionProgram",
+            "label": "Nutrition Program",
+            "options": Array [
+              "Food Prep",
+              "Dishes",
+              "Deliver Meals on Wheels",
+              "Dining Room Setup",
+            ],
+            "type": "multibox",
+          },
+          Object {
+            "category": "skillsAndTraining",
+            "id": "specialEventsAndFundRaising",
+            "label": "Special Events and Fundraising",
+            "options": Array [
+              "Create Flyers, Brochures, and/or Posters",
+              "Assist with Events",
+              "Solicit Auction Items, Donations, Prizes, In-Kind Services",
+            ],
+            "type": "multibox",
+          },
+          Object {
+            "category": "skillsAndTraining",
+            "id": "interpretingTeachingClassesOrWorkshops",
+            "label": "Interpreting, Teaching Classes or Workshops",
+            "options": Array [
+              "Life Skill Classes",
+              "Painting, Crafts",
+              "Computer",
+              "Exercise",
+            ],
+            "type": "multibox",
+          },
+          Object {
+            "category": "skillsAndTraining",
+            "id": "proposedActivities",
+            "label": "Any proposed activities",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "seniorCenterId",
+            "label": "Senior Center ID",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "accessLevel",
+            "label": "Access Level",
+            "options": Array [
+              "Super",
+              "Admin",
+              "Volunteer",
+            ],
+            "type": "radio",
+          },
+        ]
+      }
+      getProfile={[Function]}
+      profile={
+        Object {
+          "_id": "123",
+          "email": "bigtup@nowhere.com",
+          "firstName": "Big",
+          "lastName": "Tup",
+        }
+      }
+    />
+  </div>
+</div>
+`;

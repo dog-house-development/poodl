@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register tests render should render correctly 1`] = `
+<div
+  className="register-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/dashboard"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to home
+  </Link>
+  <Form
+    buttonLabel="Register"
+    fields={
+      Array [
+        Object {
+          "autoComplete": "off",
+          "error": undefined,
+          "id": "firstName",
+          "label": "First name",
+          "onChange": [Function],
+          "placeholder": "John...",
+          "sidebyside": 1,
+          "type": "text",
+          "value": "",
+        },
+        Object {
+          "autoComplete": "off",
+          "error": undefined,
+          "id": "lastName",
+          "label": "Last name",
+          "onChange": [Function],
+          "placeholder": "Smith...",
+          "sidebyside": 2,
+          "type": "text",
+          "value": "",
+        },
+        Object {
+          "autoComplete": "off",
+          "error": undefined,
+          "id": "email",
+          "label": "Email",
+          "onChange": [Function],
+          "placeholder": "example@poodl.com...",
+          "type": "email",
+          "value": "sam@test.com",
+        },
+        Object {
+          "autoComplete": "off",
+          "error": undefined,
+          "id": "password",
+          "label": "Password",
+          "onChange": [Function],
+          "placeholder": "Shhhhh...",
+          "type": "password",
+          "value": "abc123",
+        },
+        Object {
+          "autoComplete": "off",
+          "error": undefined,
+          "id": "password2",
+          "label": "Confirm Password",
+          "onChange": [Function],
+          "placeholder": "Again...",
+          "type": "password",
+          "value": "abc123",
+        },
+      ]
+    }
+    formTitle="Register Admin"
+    noValidate={true}
+    onSubmit={[Function]}
+  />
+</div>
+`;

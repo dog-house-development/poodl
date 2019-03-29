@@ -1,0 +1,338 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberProfile tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/members"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to all members
+  </Link>
+  <div>
+    <h1>
+      Big
+       
+      Tup
+    </h1>
+    <withRouter(EditableProfile)
+      categories={
+        Object {
+          "demographic": Object {
+            "id": "demographic",
+            "title": "Demographic Info",
+          },
+          "emergencyContact": Object {
+            "id": "emergencyContact",
+            "title": "Emergency Contact Info",
+          },
+          "health": Object {
+            "id": "health",
+            "title": "Health Info",
+          },
+          "membership": Object {
+            "id": "membership",
+            "title": "Membership Details",
+          },
+          "nfcsp": Object {
+            "description": "If client is receiving services under National Family Caregiver Support Program, complete the following",
+            "id": "nfcsp",
+            "title": "National Family Caregiver Support Program",
+          },
+          "personal": Object {
+            "id": "personal",
+            "title": "Personal Info",
+          },
+        }
+      }
+      editProfile={[Function]}
+      fields={
+        Array [
+          Object {
+            "category": "personal",
+            "id": "firstName",
+            "label": "First name",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "lastName",
+            "label": "Last name",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "birthDate",
+            "label": "Date of Birth",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "email",
+            "label": "Email",
+            "type": "email",
+          },
+          Object {
+            "category": "personal",
+            "id": "address",
+            "label": "Address",
+            "type": "text",
+          },
+          Object {
+            "category": "personal",
+            "id": "gender",
+            "label": "Gender",
+            "options": Array [
+              "male",
+              "female",
+              "other",
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "emergencyContact",
+            "id": "emergencyContactName",
+            "label": "Emergency Contact Name",
+            "type": "text",
+          },
+          Object {
+            "category": "emergencyContact",
+            "id": "emergencyContactRelationship",
+            "label": "Emergency Contact Relationship",
+            "type": "text",
+          },
+          Object {
+            "category": "emergencyContact",
+            "id": "emergencyContactPhoneNumber",
+            "label": "Emergency Contact Phone Number",
+            "type": "text",
+          },
+          Object {
+            "category": "health",
+            "id": "specialDiet",
+            "label": "Special Diet",
+            "type": "text",
+          },
+          Object {
+            "category": "health",
+            "id": "medicalIssues",
+            "label": "Medical Issues",
+            "type": "text",
+          },
+          Object {
+            "category": "health",
+            "id": "disabilities",
+            "label": "Disabilities",
+            "type": "text",
+          },
+          Object {
+            "category": "health",
+            "id": "mealPreference",
+            "label": "Meal Preference",
+            "type": "text",
+          },
+          Object {
+            "category": "membership",
+            "id": "memberisNewOrRenewal",
+            "label": "Member is new or renewal",
+            "options": Array [
+              "new",
+              "renewal",
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "membership",
+            "id": "formOfPayment",
+            "label": "Method of payment",
+            "options": Array [
+              "cash",
+              "check",
+              "card",
+              "other",
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "membership",
+            "id": "bankCheckNumber",
+            "label": "Bank Check Number",
+            "type": "text",
+          },
+          Object {
+            "category": "membership",
+            "id": "includedInEstatePlans",
+            "label": "Included in Estate Plans",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "membership",
+            "id": "wantsEstateInfo",
+            "label": "Member Wants Estate Info",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "membership",
+            "id": "membershipDate",
+            "label": "Membership Date",
+            "type": "text",
+          },
+          Object {
+            "category": "membership",
+            "id": "renewalDate",
+            "label": "Renewal Date",
+            "type": "text",
+          },
+          Object {
+            "category": "demographic",
+            "id": "race",
+            "label": "Race",
+            "type": "text",
+          },
+          Object {
+            "category": "demographic",
+            "id": "ethnicity",
+            "label": "Ethnicity",
+            "options": Array [
+              "Non-Hispanic/Latino",
+              "Hispanic/Latino",
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "demographic",
+            "id": "numberInHousehold",
+            "label": "Number in Household",
+            "type": "text",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isPersonCaregiver",
+            "label": "If number in household is 2 or more, is one person a caregiver?",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "demographic",
+            "id": "monthlyIncome",
+            "label": "Monthly Household Income",
+            "options": Array [
+              "Under $1,012",
+              "Under $1,372",
+              "Under $1,732",
+              "Under $2,092",
+              "Under $2,452",
+              "Under $2,812",
+              "Over $3,172",
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isDisabled",
+            "label": "Disabled",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isVeteran",
+            "label": "Veteran",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isSpouse60",
+            "label": "If under 60, is spouse over 60?",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "demographic",
+            "id": "isDisabled60",
+            "label": "If under 60, are you disabled and living with someone over 60?",
+            "type": "checkbox",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "caregiver",
+            "label": "Caregiver",
+            "options": Array [
+              "Husband",
+              "Wife",
+              "Daughter/DIL",
+              "Son/SIL",
+              "Other Relative",
+              "Other",
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "grandparent",
+            "label": "Grandparent",
+            "options": Array [
+              "Grandparent",
+              "Other elder relative",
+              "Other elder non relative",
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "numberOfKidsUnder19",
+            "label": "Number of kids younger than 19",
+            "type": "text",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "needsAADL",
+            "label": "Needs Assistance with Activities of Daily Living (ADLs)",
+            "options": Array [
+              "None",
+              "Eating",
+              "Dressing",
+              "Bathing",
+              "Toileting",
+              "Transferring",
+              "Walking",
+            ],
+            "type": "radio",
+          },
+          Object {
+            "category": "nfcsp",
+            "id": "needsIADL",
+            "label": "Needs Assistance with Instrumental Activities of Daily Living (IADLs)",
+            "options": Array [
+              "None",
+              "Meal preparation",
+              "Money management",
+              "Shopping",
+              "Transportation",
+              "Telephone use",
+              "Medication management",
+              "Light housework",
+              "Heavy housework",
+            ],
+            "type": "radio",
+          },
+        ]
+      }
+      getProfile={[Function]}
+      profile={
+        Object {
+          "_id": "123",
+          "email": "bigtup@nowhere.com",
+          "firstName": "Big",
+          "lastName": "Tup",
+          "membershipDate": "02/20/2020",
+        }
+      }
+    />
+  </div>
+</div>
+`;

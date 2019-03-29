@@ -10,18 +10,23 @@ const propTypes = {
     min: PropTypes.string,
     max: PropTypes.string,
     size: PropTypes.oneOf(['normal', 'large']),
-    content: PropTypes.string,
+    value: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),
+    autoFocus: PropTypes.oneOf(['on', 'off']),
+    spellCheck: PropTypes.oneOf(['true', 'false']),
     sidebyside: PropTypes.oneOf([1, 2]),
-    error: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    onClick: PropTypes.func
 };
 
 const defaultProps = {
     size: 'normal',
     type: 'text',
     autoComplete: 'on'
+    // value is not default to '' because I want the warning
+    // if no value prop is given
 };
 
 class Field extends Component {
@@ -42,8 +47,8 @@ class Field extends Component {
                 <div className="field-outer">
                     <input
                         {...this.props}
-                        defaultValue={this.props.content}
-                        onChange={this.handleChange}
+                        onChange={this.props.onChange}
+                        onClick={this.props.onClick}
                         className={classnames(
                             'field',
                             this.props.size,
@@ -51,6 +56,7 @@ class Field extends Component {
                             { 'second-side-by-side-input': this.props.sidebyside === 2 },
                             { 'field-error-border': this.props.error }
                         )}
+                        value={this.props.value}
                     />
                     <p className="field-error-label">{this.props.error}</p>
                 </div>

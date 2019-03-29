@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminProfile tests render should render correctly 1`] = `
+<div
+  className="view-all-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/admins"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to all admins
+  </Link>
+  <div>
+    <h1>
+      Moose
+       
+      Man
+    </h1>
+    <div
+      className="panel"
+    >
+      <div
+        key="_id"
+        style={
+          Object {
+            "margin": "10px 0",
+          }
+        }
+      >
+        <h5>
+          ID
+        </h5>
+        <p>
+          123
+        </p>
+      </div>
+      <div
+        key="firstName"
+        style={
+          Object {
+            "margin": "10px 0",
+          }
+        }
+      >
+        <h5>
+          FIRST NAME
+        </h5>
+        <p>
+          Moose
+        </p>
+      </div>
+      <div
+        key="lastName"
+        style={
+          Object {
+            "margin": "10px 0",
+          }
+        }
+      >
+        <h5>
+          LAST NAME
+        </h5>
+        <p>
+          Man
+        </p>
+      </div>
+      <div
+        key="email"
+        style={
+          Object {
+            "margin": "10px 0",
+          }
+        }
+      >
+        <h5>
+          EMAIL
+        </h5>
+        <p>
+          mooseman@nowhere.com
+        </p>
+      </div>
+      <div
+        key="superAdmin"
+        style={
+          Object {
+            "margin": "10px 0",
+          }
+        }
+      >
+        <h5>
+          SUPER ADMIN
+        </h5>
+        <p>
+          Yes
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

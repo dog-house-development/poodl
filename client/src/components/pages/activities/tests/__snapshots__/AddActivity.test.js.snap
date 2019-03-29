@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add activity tests render should render correctly 1`] = `
+<div
+  className="add-activity-container"
+>
+  <Link
+    className="button small tertiary"
+    replace={false}
+    to="/activities"
+  >
+    <i
+      className="material-icons"
+    >
+      keyboard_backspace
+    </i>
+     Back to all activities
+  </Link>
+  <div
+    className="add-activity-panel panel"
+  >
+    <h1
+      className="panel-title"
+    >
+      Add Activity
+    </h1>
+    <form
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <OnClickOutside(ComboBox)
+        eventTypes={
+          Array [
+            "mousedown",
+            "touchstart",
+          ]
+        }
+        excludeScrollbar={false}
+        id="name"
+        label="Name"
+        onChange={[Function]}
+        outsideClickIgnoreClass="ignore-react-onclickoutside"
+        placeholder="Name"
+        preventDefault={false}
+        stopPropagation={false}
+        value="Test"
+      />
+      <Field
+        autoComplete="off"
+        autoFocus="off"
+        id="description"
+        key="description"
+        label="Description"
+        onChange={[Function]}
+        placeholder="Description"
+        size="normal"
+        type="text"
+      />
+      <div
+        className="side-by-side"
+      >
+        <TimePicker
+          ampmLabel=""
+          hourLabel=""
+          minuteLabel=""
+          name="startTime"
+          onChange={[Function]}
+          time={"2019-03-26T03:00:00.000Z"}
+          title="Start Time"
+        />
+        <TimePicker
+          ampmLabel=""
+          hourLabel=""
+          minuteLabel=""
+          name="endTime"
+          onChange={[Function]}
+          time={"2019-03-26T04:00:00.000Z"}
+          title="End Time"
+        />
+      </div>
+      <div
+        className="side-by-side"
+      >
+        <DatePicker
+          date="1111-11-11T11:11:11"
+          dayLabel=""
+          error=""
+          monthLabel=""
+          name="startDate"
+          onChange={[Function]}
+          title="Date"
+          yearLabel=""
+        />
+      </div>
+      <Button
+        content="Multiple Days"
+        dropdownButton={false}
+        kind="secondary"
+        onClick={[Function]}
+        size="small"
+        title="The activity spans multiple days"
+        type="button"
+      />
+      <Button
+        content="Add Activity"
+        dropdownButton={false}
+        formButton={true}
+        kind="primary"
+        size="medium"
+        type="submit"
+      />
+    </form>
+  </div>
+</div>
+`;

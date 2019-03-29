@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Dropdown from '../ui/Dropdown';
-import { logoutAdmin } from '../../actions/authActions';
+import AuthActions from '../../actions/authActions';
 
 export class Navbar extends Component {
     getHeaderMarkup() {
@@ -40,14 +41,14 @@ export class Navbar extends Component {
                                 {
                                     content: 'My profile',
                                     onClick: () => {
-                                        this.props.history.push(`/admin/${this.props.auth.admin.id}`);
+                                        this.props.history.push(`/admins/${this.props.auth.admin.id}`);
                                     }
                                 },
                                 { type: 'divider' },
                                 {
                                     content: 'Log out',
                                     onClick: () => {
-                                        this.props.logoutAdmin();
+                                        this.props.authActions.logoutAdmin();
                                     }
                                 }
                             ]}
@@ -58,6 +59,9 @@ export class Navbar extends Component {
                     </li>
                     <li className="right">
                         <Link to="/activities">Activities</Link>
+                    </li>
+                    <li className="right">
+                        <Link to="/member-check-in">Member check-in</Link>
                     </li>
                 </>
             );
@@ -80,7 +84,7 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
     return {
-        logoutAdmin: () => dispatch(logoutAdmin())
+        authActions: bindActionCreators(AuthActions, dispatch)
     };
 };
 

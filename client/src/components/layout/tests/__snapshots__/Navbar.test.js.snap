@@ -80,6 +80,16 @@ exports[`Navbar tests render should render links for logged in admins 1`] = `
         Activities
       </Link>
     </li>
+    <li
+      className="right"
+    >
+      <Link
+        replace={false}
+        to="/member-check-in"
+      >
+        Member check-in
+      </Link>
+    </li>
   </ul>
 </div>
 `;

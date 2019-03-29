@@ -1,32 +1,43 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var ObjectId = mongoose.Schema.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Validator = require('validator');
 
-// Create Schema
-const SeniorCenterSchema = new Schema(
+const seniorCenterSchema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            unique: true,
+            required: [true, 'Name is required']
         },
         email: {
             type: String,
-            required: true
+            required: [true, 'Email is required'],
+            validate: {
+                validator: Validator.isEmail,
+                message: 'Email is invalid'
+            }
         },
         address: {
             type: String,
-            required: true
+            required: [true, 'Address is required']
         },
         phone: {
             type: String,
-            required: true
+            required: [true, 'Phone is required'],
+            validate: {
+                validator: Validator.isMobilePhone,
+                message: 'Phone number is invalid'
+            }
         },
         operationHours: {
             type: String,
-            required: true
+            required: [true, 'Operation hours is required']
         }
     },
     { timestamps: true }
 );
 
-module.exports = mongoose.model('seniorCenters', SeniorCenterSchema);
+seniorCenterSchema.plugin(require('./plugins/duplicateError'), { name: 'Senior center already exists' });
+
+module.exports = seniorCenterSchema;

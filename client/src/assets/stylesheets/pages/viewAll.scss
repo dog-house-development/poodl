@@ -1,7 +1,8 @@
 @import '_presets.scss';
 
 .view-all-container {
-  max-width: 60vw;
+  width: 95%;
+  max-width: 800px;
   margin: auto;
 
   .view-all-header {
@@ -14,8 +15,30 @@
 
     a {
       margin-top: 0.55rem;
-      display: inline-block;
       float: right;
     }
+  }
+
+  .profile-section-header {
+    display: flex;
+
+    .profile-section-title-and-description {
+      flex-grow: 2;
+
+      .profile-section-title {
+        margin-bottom: 0.5em;
+      }
+    }
+
+    .profile-section-button {
+      flex-shrink: 1;
+    }
+  }
+
+  h5 {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    color: $gray-4;
+    margin-top: 0.5em;
   }
 }

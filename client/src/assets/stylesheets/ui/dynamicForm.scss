@@ -1,0 +1,35 @@
+.dynamic-form {
+  .inline-input {
+    display: flex;
+
+    .field-wrapper {
+      flex-grow: 1;
+      margin-left: 0.7em;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      .field-outer {
+        input {
+          width: 0;
+        }
+      }
+    }
+  }
+
+  .input-group {
+    .input-group-label {
+      color: $gray-7;
+      font-size: 1.2em;
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+      border-color: $gray-6;
+      margin-bottom: 1em;
+    }
+
+    .input-group-description {
+      margin-bottom: 1em;
+    }
+  }
+}

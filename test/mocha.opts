@@ -1,1 +1,4 @@
 --timeout 120000
+--full-trace
+--exit
+--slow 10000

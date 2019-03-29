@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
+import Loading from './Loading';
 
 const propTypes = {
     dateData: PropTypes.object.isRequired,
@@ -18,14 +19,9 @@ const defaultProps = {
     includeAttendance: true
 };
 
-const DAY_LENGTH = 86400000;
-
 class ViewByDate extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            timeLength: 'day'
-        };
         this.handleRowClick = this.handleRowClick.bind(this);
     }
 
@@ -42,27 +38,40 @@ class ViewByDate extends Component {
             <div className="view-by-date-header">
                 <button
                     className="button view-by-date-header-button"
-                    onClick={() => this.props.requestDate(new Date(currentDate.getTime() - DAY_LENGTH))}
+                    onClick={() => this.props.requestDate(currentDate.subtract(1, 'days'))}
                 >
                     <span>
                         <i className="material-icons view-by-date-header-button-arrow">keyboard_arrow_left</i>
-                        {moment(currentDate.getTime() - DAY_LENGTH).format('dddd')}
+                        {currentDate
+                            .clone()
+                            .subtract(1, 'days')
+                            .format('dddd')}
                     </span>
                 </button>
                 <div className="view-by-date-header-title">
                     <h2 className="view-by-date-title-main">
-                        {moment(currentDate).format('MMM Do, YYYY') === moment(Date.now()).format('MMM Do, YYYY')
+                        {currentDate.format('MMM Do, YYYY') === moment().format('MMM Do, YYYY')
                             ? 'Today'
-                            : moment(currentDate).format('dddd')}
+                            : currentDate.format('dddd')}
+                        {this.props.loading ? (
+                            <div className="vbd-title-loading">
+                                <Loading content="" size="small" kind="secondary" />
+                            </div>
+                        ) : (
+                            ''
+                        )}
                     </h2>
-                    <p className="view-by-date-title-secondary">{moment(currentDate).format('MMM Do, YYYY')}</p>
+                    <p className="view-by-date-title-secondary">{currentDate.format('MMMM Do, YYYY')}</p>
                 </div>
                 <button
                     className="button view-by-date-header-button"
-                    onClick={() => this.props.requestDate(new Date(currentDate.getTime() + DAY_LENGTH))}
+                    onClick={() => this.props.requestDate(currentDate.add(1, 'days'))}
                 >
                     <span>
-                        {moment(currentDate.getTime() + DAY_LENGTH).format('dddd')}
+                        {currentDate
+                            .clone()
+                            .add(1, 'days')
+                            .format('dddd')}
                         <i className="material-icons view-by-date-header-button-arrow">keyboard_arrow_right</i>
                     </span>
                 </button>
@@ -100,7 +109,7 @@ class ViewByDate extends Component {
 
     getTableMarkup() {
         if (this.props.loading) {
-            return <div />;
+            return;
         } else if (!_.isEmpty(this.props.errors)) {
             return <p>Error time</p>;
         }

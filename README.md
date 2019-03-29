@@ -4,8 +4,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/dog-house-development/poodl/badge.svg?branch=dev&service=github)](https://coveralls.io/github/dog-house-development/poodl?branch=dev&service=github)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/63b5098b43bc458ea3e5ef8de9f5bc8b)](https://www.codacy.com/app/DogHouseDevelopment/poodl?utm_source=github.com&utm_medium=referral&utm_content=dog-house-development/poodl&utm_campaign=Badge_Grade)
 [![Github Version](https://img.shields.io/github/release/dog-house-development/poodl.svg?style=flat)](https://github.com/dog-house-development/poodl/releases)
-[![Uptime Robot 30 Days](https://img.shields.io/uptimerobot/ratio/m781947640-2764269a69a56d48f8edc5db.svg?style=flat)](https://poodl.herokuapp.com/)
-[![Uptime Robot Status](https://img.shields.io/uptimerobot/status/m781947640-2764269a69a56d48f8edc5db.svg?style=flat)](https://poodl.herokuapp.com/)
 
 _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
 
@@ -19,7 +17,7 @@ _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https
 
 ### Read development documentation
 
-Please read our [development documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation) 
+Please read our [development documentation](https://github.com/dog-house-development/poodl/wiki/Developer-Documentation)
 before starting to develop for our project.
 
 ### Ensure that you have yarn, npm, and node installed
@@ -64,16 +62,10 @@ To install all dependencies, run:
 yarn install-all
 ```
 
-Install nodemon globally
-
-```bash
-yarn global add nodemon
-```
-
 ### Add config/secrets.js
 
-We keep our database key secret, ask doghousedevelop@gmail.com to 
-join our slack to have access to our keys. 
+We keep our database key secret, ask doghousedevelop@gmail.com to
+join our slack to have access to our keys.
 Make sure you only use our dev database.
 
 ```js
@@ -83,7 +75,7 @@ module.exports = {
 };
 ```
 
-You can also start a local mongo database and use that key instead. 
+You can also start a local mongo database and use that key instead.
 See [installing mongodb](https://docs.mongodb.com/manual/installation/).
 
 ### Start development server
@@ -113,6 +105,20 @@ To run API tests (located in `/test/`):
 
 ```bash
 yarn test:server
+```
+
+To run selenium tests (located in `/test/selenium`):
+
+Start the client app
+
+```bash
+yarn start:client
+```
+
+In a separate shell run the tests:
+
+```bash
+yarn test:selenium
 ```
 
 ### Publish your changes

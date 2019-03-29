@@ -29,5 +29,6 @@
 # secrets
 /config/secrets.js
 
-# karl's webstorm idea
+# ide files
 /.idea
+/.vscode

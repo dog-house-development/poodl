@@ -1,54 +1,21 @@
-import axios from 'axios';
+import ActionHelper from './utils/ActionHelper';
+import Types from './types';
 
-import { GET_ERRORS, FETCH_ADMINS_BEGIN, FETCH_ADMINS_SUCCESS, FETCH_ADMIN_BEGIN, FETCH_ADMIN_SUCCESS } from './types';
+export default {
+    create: (data, history) => dispatch => {
+        ActionHelper.create(dispatch, Types.admin, data, history);
+    },
 
-export const fetchAdmins = () => dispatch => {
-    dispatch(fetchAdminsBegin());
-    axios
-        .get('/api/admins/get')
-        .then(res => {
-            dispatch(fetchAdminsSuccess(res.data));
-            return res.data;
-        })
-        .catch(err =>
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
-        );
+    filter: data => dispatch => {
+        data = { ...data, accessLevel: { $ne: 'Volunteer' } };
+        ActionHelper.filter(dispatch, Types.admin, data);
+    },
+
+    get: id => dispatch => {
+        ActionHelper.get(dispatch, Types.admin, id);
+    },
+
+    edit: (id, data) => dispatch => {
+        ActionHelper.edit(dispatch, Types.admin, id, data);
+    }
 };
-
-//Get specificied admin by ID
-export const fetchAdmin = id => dispatch => {
-    dispatch(fetchAdminBegin());
-    axios
-        .get(`/api/admins/get/${id}`)
-        .then(res => {
-            dispatch(fetchAdminSuccess(res.data));
-            return res.data;
-        })
-        .catch(err =>
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
-        );
-};
-
-export const fetchAdminsBegin = () => ({
-    type: FETCH_ADMINS_BEGIN
-});
-
-export const fetchAdminsSuccess = admins => ({
-    type: FETCH_ADMINS_SUCCESS,
-    payload: admins
-});
-
-export const fetchAdminBegin = () => ({
-    type: FETCH_ADMIN_BEGIN
-});
-
-export const fetchAdminSuccess = admin => ({
-    type: FETCH_ADMIN_SUCCESS,
-    payload: admin
-});
