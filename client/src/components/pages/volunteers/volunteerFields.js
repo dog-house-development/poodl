@@ -1,5 +1,6 @@
 export const Categories = {
     personal: { id: 'personal', title: 'Personal Info' },
+    contact: { id: 'contact', title: 'Contact Info' },
     references: { id: 'references', title: 'Reference Info' },
     volunteer: { id: 'volunteer', title: 'Volunteer Info' },
     skillsAndTraining: {
@@ -38,48 +39,96 @@ const volunteerFields = [
         id: 'email',
         type: 'email',
         label: 'Email',
-        category: Categories.personal.id
+        category: Categories.contact.id
     },
     {
         id: 'streetAddress',
         type: 'text',
         label: 'Address',
-        category: Categories.personal.id
+        category: Categories.contact.id
     },
     {
         id: 'city',
         type: 'text',
         label: 'City',
-        category: Categories.personal.id
+        category: Categories.contact.id
     },
     {
         id: 'state',
         type: 'text',
         label: 'State',
-        category: Categories.personal.id
+        category: Categories.contact.id
     },
     {
         id: 'zip',
         type: 'text',
         label: 'Zip Code',
-        category: Categories.personal.id
+        category: Categories.contact.id
     },
     {
         id: 'homePhone',
         type: 'text',
         label: 'Home Phone',
-        category: Categories.personal.id
+        category: Categories.contact.id
     },
     {
         id: 'cellPhone',
         type: 'text',
         label: 'Cell Phone',
-        category: Categories.personal.id
+        category: Categories.contact.id
     },
     {
-        id: 'references',
+        id: 'reference1Name',
         type: 'text',
-        label: 'References',
+        label: '#1 Name',
+        category: Categories.references.id
+    },
+    {
+        id: 'reference1Relationship',
+        type: 'text',
+        label: '#1 Relationship',
+        category: Categories.references.id
+    },
+    {
+        id: 'reference1Phone',
+        type: 'text',
+        label: '#1 Phone Number',
+        category: Categories.references.id
+    },
+    {
+        id: 'reference2Name',
+        type: 'text',
+        label: '#2 Name',
+        category: Categories.references.id
+    },
+    {
+        id: 'reference2Relationship',
+        type: 'text',
+        label: '#2 Relationship',
+        category: Categories.references.id
+    },
+    {
+        id: 'reference2Phone',
+        type: 'text',
+        label: '#2 Phone Number',
+        category: Categories.references.id
+    },
+    {
+        id: 'reference3Name',
+        type: 'text',
+        label: '#3 Name',
+        category: Categories.references.id
+    },
+    {
+        id: 'reference3Relationship',
+        type: 'text',
+        label: '#3 Relationship',
+        category: Categories.references.id
+    },
+    {
+        id: 'reference3Phone',
+        type: 'text',
+        label: '#3 Phone Number',
         category: Categories.references.id
     },
     {

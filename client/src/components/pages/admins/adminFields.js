@@ -2,7 +2,7 @@ export const Categories = {
     admin: { id: 'admin', title: 'Admin Info' }
 };
 
-const memberFields = [
+const adminFields = [
     {
         id: 'firstName',
         type: 'text',
