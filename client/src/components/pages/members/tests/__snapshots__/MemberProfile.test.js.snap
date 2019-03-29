@@ -140,7 +140,7 @@ exports[`MemberProfile tests render should render correctly 1`] = `
           },
           Object {
             "category": "membership",
-            "id": "memberisNewOrRenewal",
+            "id": "memberIsNewOrRenewal",
             "label": "Member is new or renewal",
             "options": Array [
               "new",
