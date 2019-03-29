@@ -35,8 +35,7 @@ describe('AdminProfile tests', () => {
                             superAdmin: true
                         }
                     },
-                    errors: {},
-                    loading: false
+                    errors: {}
                 }
             },
             _state
@@ -70,7 +69,7 @@ describe('AdminProfile tests', () => {
                     email: 'mooseman@nowhere.com',
                     superAdmin: true
                 },
-                loading: false,
+                currentAdminIsSuper: true,
                 errors: {}
             });
         });
@@ -80,6 +79,13 @@ describe('AdminProfile tests', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
             expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ adminActions: {} }));
+        });
+    });
+
+    describe('componentDidMount', () => {
+        it('should run without breaking', () => {
+            spyOn(instance, 'componentDidMount');
+            instance.componentDidMount();
         });
     });
 
