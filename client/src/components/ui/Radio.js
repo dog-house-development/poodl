@@ -54,9 +54,9 @@ class Radio extends Component {
 
     render() {
         return (
-            <div className="field-wrapper editable-field-wrapper">
+            <div className="field-wrapper radio">
                 <p className="field-label">{this.props.label}</p>
-                {this.getOptionListMarkup()}
+                <div className="radio-content">{this.getOptionListMarkup()}</div>
             </div>
         );
     }

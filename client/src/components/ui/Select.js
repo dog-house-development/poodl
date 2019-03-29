@@ -5,12 +5,16 @@ import classnames from 'classnames';
 
 class Select extends React.Component {
     static propTypes = {
+        error: PropTypes.any,
+        id: PropTypes.string,
+        label: PropTypes.string,
         name: PropTypes.string,
-        value: PropTypes.string,
         onChange: PropTypes.func.isRequired,
         options: PropTypes.array.isRequired,
-        size: PropTypes.oneOf(['normal', 'large']),
-        padStart: PropTypes.number
+        padStart: PropTypes.number,
+        size: PropTypes.string,
+        value: PropTypes.string,
+        width: PropTypes.oneOf(['small', 'medium', 'large'])
     };
 
     static defaultProps = {
@@ -35,12 +39,11 @@ class Select extends React.Component {
     getSelectMarkup() {
         return (
             <select
-                className={classnames('field', this.props.size, this.props.width)}
+                className={classnames('field', this.props.size, `${this.props.width}-width`)}
                 name={this.props.name}
                 value={this.props.value}
                 onChange={this.props.onChange}
-                id={this.props.id}
-            >
+                id={this.props.id}>
                 {this.getOptionsMarkup()}
             </select>
         );
@@ -48,13 +51,15 @@ class Select extends React.Component {
 
     render() {
         return (
-            <label className="select field-wrapper">
-                {this.getLabelMarkup()}
-                <div className="field-outer">
-                    {this.getSelectMarkup()}
-                    <p className="field-error-label">{this.props.error}</p>
-                </div>
-            </label>
+            <div className="select field-wrapper">
+                <label>
+                    {this.getLabelMarkup()}
+                    <div className="field-outer">
+                        {this.getSelectMarkup()}
+                        <p className="field-error-label">{this.props.error}</p>
+                    </div>
+                </label>
+            </div>
         );
     }
 }

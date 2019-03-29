@@ -9,6 +9,8 @@ import MultiCheckbox from './MultiCheckbox';
 import Select from './Select';
 import Radio from './Radio';
 import Button from './Button';
+import SelectBoolean from './SelectBoolean';
+import assert from 'assert';
 
 class DynamicForm extends React.Component {
     static propTypes = {
@@ -36,7 +38,8 @@ class DynamicForm extends React.Component {
     getGroupInput(input) {
         return (
             <div className="input-group" key={input.id}>
-                <h3 className="input-group-label">{input.label}</h3>
+                <h3 className="input-group-label">{input.label || input.id}</h3>
+                <p className="input-group-description">{input.description}</p>
                 {this.getInputMarkup(input.inputs)}
             </div>
         );
@@ -50,26 +53,47 @@ class DynamicForm extends React.Component {
         );
     }
 
+    possibleKinds() {
+        return [
+            'field',
+            'checkbox',
+            'multiCheckbox',
+            'select',
+            'datePicker',
+            'radio',
+            'selectBoolean',
+            'flex',
+            'group'
+        ];
+    }
+
     getInputKind() {
         return {
-            field: input => <Field {...input} />,
+            // At least send in '' for field value because if you send in
+            // undefined it will make the component uncontrolled at first,
+            // which results in an error
+            field: input => <Field {...input} value={this.props.values[input.id] || input.value || ''} />,
             checkbox: input => <CheckBox {...input} />,
             multiCheckbox: input => <MultiCheckbox {...input} />,
             datePicker: input => <DatePicker {...input} />,
             select: input => <Select {...input} />,
             radio: input => <Radio {...input} />,
+            selectBoolean: input => <SelectBoolean {...input} />,
             flex: input => this.getFlexInput(input),
             group: input => this.getGroupInput(input)
         };
     }
 
     getInput = input => {
+        assert.ok(input.kind, `The input ${input.id} must have a kind`);
+        assert(_.includes(this.possibleKinds(), input.kind), `The input ${input.id} must have a kind`);
+        assert(input.id, `The input ${input.kind} must have an id`);
         return this.getInputKind()[input.kind]({
             ...input,
             key: input.id,
             error: this.props.errors[input.id],
             onChange: this.props.onChange,
-            value: this.props.values[input.id]
+            value: this.props.values[input.id] || input.value
         });
     };
 

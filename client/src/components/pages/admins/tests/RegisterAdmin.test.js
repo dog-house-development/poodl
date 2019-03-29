@@ -4,7 +4,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import { Register, mapStateToProps, mapDispatchToProps } from '../Register';
+import { RegisterAdmin, mapStateToProps, mapDispatchToProps } from '../RegisterAdmin';
 
 configure({ adapter: new Adapter() });
 
@@ -31,9 +31,9 @@ describe('Register tests', () => {
             },
             _state
         );
-        props = _.assign({}, { history: ['/register'] }, _props);
+        props = _.assign({}, { history: ['/admins/register'] }, _props);
         wrapper = shallow(
-            <Register
+            <RegisterAdmin
                 {..._.assign(
                     {},
                     props,

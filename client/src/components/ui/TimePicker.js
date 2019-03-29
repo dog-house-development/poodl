@@ -7,9 +7,9 @@ class TimePicker extends Component {
     static propTypes = {
         onChange: PropTypes.func.isRequired,
         time: PropTypes.object.isRequired,
-        name: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
         error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-        title: PropTypes.string.isRequired
+        label: PropTypes.string.isRequired
     };
 
     static defaultProps = {
@@ -27,9 +27,14 @@ class TimePicker extends Component {
         };
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(_, prevState) {
         if (prevState !== this.state) {
-            this.props.onChange(this.props.name, this.currentTime());
+            this.props.onChange({
+                target: {
+                    id: this.props.id,
+                    value: this.currentTime()
+                }
+            });
         }
     }
 
@@ -67,7 +72,7 @@ class TimePicker extends Component {
                 onChange={this.onChange}
                 options={minutes}
                 padStart={2}
-                width="medium-width"
+                width="medium"
             />
         );
     }
@@ -88,7 +93,7 @@ class TimePicker extends Component {
     render() {
         return (
             <div className="picker">
-                <p className="picker-title field-label">{this.props.title}</p>
+                <p className="picker-label field-label">{this.props.label}</p>
                 {this.getHourDropdown()} : {this.getMinuteDropdown()}
                 {this.getAMPMDropdown()}
             </div>

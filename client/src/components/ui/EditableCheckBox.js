@@ -6,7 +6,7 @@ class EditableCheckBox extends Component {
     static propTypes = {
         label: PropTypes.string,
         onChange: PropTypes.func.isRequired,
-        defaultValue: PropTypes.bool,
+        value: PropTypes.bool,
         id: PropTypes.string.isRequired
     };
 
@@ -17,7 +17,7 @@ class EditableCheckBox extends Component {
         return (
             <div className="field-wrapper editable-field-wrapper">
                 <p className="field-label">{this.props.label}</p>
-                <p>{this.props.defaultValue ? 'Yes' : 'No'}</p>
+                <p>{this.props.value ? 'Yes' : 'No'}</p>
             </div>
         );
     }
