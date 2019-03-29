@@ -72,14 +72,6 @@ describe('VolunteerProfile tests', () => {
             expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ volunteerActions: {} }));
         });
     });
-
-    describe('componentDidMount', () => {
-        it('should run without breaking', () => {
-            spyOn(instance, 'componentDidMount');
-            instance.componentDidMount();
-        });
-    });
-
     describe('render', () => {
         it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();
