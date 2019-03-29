@@ -4,7 +4,10 @@ import _ from 'lodash';
 import EditableField from './EditableField';
 import EditableRadio from './EditableRadio';
 import EditableCheckBox from './EditableCheckBox';
+<<<<<<< HEAD
 import EditableComboBox from './EditableComboBox';
+=======
+>>>>>>> 1a8a06319a7ce4005c4bf74569cda3ad265064fe
 import EditableDatePicker from './EditableDatePicker';
 import { withRouter } from 'react-router';
 import moment from 'moment';
@@ -122,6 +125,7 @@ export class EditableProfile extends Component {
                             label={field.label}
                         />
                     );
+<<<<<<< HEAD
                 } else if (field.type === 'combobox') {
                     return (
                         <EditableComboBox
@@ -137,6 +141,9 @@ export class EditableProfile extends Component {
                         />
                     );
                 } else if (field.type === 'datepicker') {
+=======
+                } else if (field.type === 'radio') {
+>>>>>>> 1a8a06319a7ce4005c4bf74569cda3ad265064fe
                     return (
                         <EditableDatePicker
                             //date: PropTypes.object.isRequired,

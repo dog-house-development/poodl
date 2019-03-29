@@ -26,8 +26,11 @@ export class ActivityProfile extends Component {
                         editProfile={this.props.activityActions.edit}
                         getProfile={this.props.activityActions.get}
                         profile={this.props.activity}
+<<<<<<< HEAD
                         data={this.props.activities}
                         date={this.props.startDate}
+=======
+>>>>>>> 1a8a06319a7ce4005c4bf74569cda3ad265064fe
                     />
                 </div>
             </div>
@@ -39,8 +42,12 @@ export const mapStateToProps = (state, props) => {
     return {
         activity: state.activities.all[props.match.params.id],
         loading: state.activities.loading,
+<<<<<<< HEAD
         errors: state.activities.errors,
         activities: _.get(state.activities, 'all')
+=======
+        errors: state.activities.errors
+>>>>>>> 1a8a06319a7ce4005c4bf74569cda3ad265064fe
     };
 };
 
