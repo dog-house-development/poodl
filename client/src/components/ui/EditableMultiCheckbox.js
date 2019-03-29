@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Radio from './Radio';
+import MultiCheckbox from './MultiCheckbox';
 
-class EditableRadio extends Component {
+class EditableMultiCheckBox extends Component {
     static propTypes = {
         label: PropTypes.string,
         onChange: PropTypes.func.isRequired,
@@ -13,7 +13,7 @@ class EditableRadio extends Component {
 
     render() {
         if (this.props.editMode) {
-            return <Radio {...this.props} />;
+            return <MultiCheckbox {...this.props} />;
         }
         return (
             <div className="field-wrapper editable-field-wrapper">
@@ -24,4 +24,4 @@ class EditableRadio extends Component {
     }
 }
 
-export default EditableRadio;
+export default EditableMultiCheckBox;

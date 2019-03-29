@@ -36,4 +36,4 @@ const memberFields = [
     }
 ];
 
-export default memberFields;
+export default adminFields;

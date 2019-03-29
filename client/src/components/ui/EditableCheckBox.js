@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Checkbox from './CheckBox';
+import MultiCheckbox from './MultiCheckbox';
 
 class EditableCheckBox extends Component {
     static propTypes = {
@@ -12,7 +12,7 @@ class EditableCheckBox extends Component {
 
     render() {
         if (this.props.editMode) {
-            return <Checkbox {...this.props} />;
+            return <MultiCheckbox {...this.props} />;
         }
         return (
             <div className="field-wrapper editable-field-wrapper">
