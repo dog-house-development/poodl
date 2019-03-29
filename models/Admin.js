@@ -117,7 +117,7 @@ const adminSchema = new Schema(
             }
         },
         reference1Name: {
-            type: [String],
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
@@ -128,7 +128,7 @@ const adminSchema = new Schema(
             }
         },
         reference1Relationship: {
-            type: [String],
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
@@ -139,7 +139,7 @@ const adminSchema = new Schema(
             }
         },
         reference1Phone: {
-            type: [String],
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
@@ -150,7 +150,7 @@ const adminSchema = new Schema(
             }
         },
         reference2Name: {
-            type: [String],
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
@@ -161,7 +161,7 @@ const adminSchema = new Schema(
             }
         },
         reference2Relationship: {
-            type: [String],
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
@@ -172,7 +172,7 @@ const adminSchema = new Schema(
             }
         },
         reference2Phone: {
-            type: [String],
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
@@ -183,7 +183,7 @@ const adminSchema = new Schema(
             }
         },
         reference3Name: {
-            type: [String],
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
@@ -194,7 +194,7 @@ const adminSchema = new Schema(
             }
         },
         reference3Relationship: {
-            type: [String],
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
@@ -205,7 +205,7 @@ const adminSchema = new Schema(
             }
         },
         reference3Phone: {
-            type: [String],
+            type: String,
             validate: {
                 validator: function(v) {
                     if (this.accessLevel === 'Volunteer') {
