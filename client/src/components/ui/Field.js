@@ -10,7 +10,7 @@ const propTypes = {
     min: PropTypes.string,
     max: PropTypes.string,
     size: PropTypes.oneOf(['normal', 'large']),
-    content: PropTypes.string,
+    value: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),
@@ -25,6 +25,8 @@ const defaultProps = {
     size: 'normal',
     type: 'text',
     autoComplete: 'on'
+    // value is not default to '' because I want the warning
+    // if no value prop is given
 };
 
 class Field extends Component {
@@ -45,8 +47,7 @@ class Field extends Component {
                 <div className="field-outer">
                     <input
                         {...this.props}
-                        defaultValue={this.props.content}
-                        onChange={this.handleChange}
+                        onChange={this.props.onChange}
                         onClick={this.props.onClick}
                         className={classnames(
                             'field',

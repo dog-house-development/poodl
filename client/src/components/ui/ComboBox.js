@@ -24,7 +24,7 @@ class ComboBox extends React.Component {
     }
 
     getFilteredData() {
-        const uniqueData = _.uniq(_.map(this.props.data, activity => activity.name));
+        const uniqueData = _.uniq(_.map(this.props.data, item => item.name));
         const sortedData = _.sortBy(uniqueData, [item => item.toLowerCase()]);
         const filteredData = _.filter(sortedData, item => new RegExp(this.props.value, 'i').test(item));
         return filteredData;

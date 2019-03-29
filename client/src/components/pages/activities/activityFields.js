@@ -5,14 +5,9 @@ export const Categories = {
 const activityFields = [
     {
         id: 'name',
-<<<<<<< HEAD
         type: 'combobox',
         label: 'Name',
         placeholder: 'Name...',
-=======
-        type: 'text',
-        label: 'Name',
->>>>>>> 1a8a06319a7ce4005c4bf74569cda3ad265064fe
         category: Categories.activity.id
     },
     {
@@ -22,18 +17,26 @@ const activityFields = [
         category: Categories.activity.id
     },
     {
+        id: 'startTime',
+        type: 'timepicker',
+        label: 'Start Time',
+        category: Categories.activity.id
+    },
+    {
+        id: 'endTime',
+        type: 'timepicker',
+        label: 'End Time',
+        category: Categories.activity.id
+    },
+    {
         id: 'startDate',
-        type: 'date',
+        type: 'datepicker',
         label: 'Start Date',
         category: Categories.activity.id
     },
     {
         id: 'endDate',
-<<<<<<< HEAD
         type: 'datepicker',
-=======
-        type: 'date',
->>>>>>> 1a8a06319a7ce4005c4bf74569cda3ad265064fe
         label: 'End Date',
         category: Categories.activity.id
     },

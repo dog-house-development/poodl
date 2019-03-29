@@ -5,7 +5,7 @@ import Field from './Field';
 const propTypes = {
     label: PropTypes.string,
     handleChange: PropTypes.func.isRequired,
-    defaultValue: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     id: PropTypes.string.isRequired
 };
 
@@ -18,7 +18,7 @@ class EditableField extends Component {
                 <Field
                     onChange={this.props.handleChange}
                     id={this.props.id}
-                    content={this.props.defaultValue}
+                    value={this.props.value}
                     label={this.props.label}
                 />
             );
@@ -26,7 +26,7 @@ class EditableField extends Component {
         return (
             <div className="field-wrapper editable-field-wrapper">
                 <p className="field-label">{this.props.label}</p>
-                <p>{this.props.defaultValue}</p>
+                <p>{this.props.value}</p>
             </div>
         );
     }

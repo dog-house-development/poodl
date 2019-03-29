@@ -25,7 +25,7 @@ exports[`ViewAllAdmins tests render should render correctly 1`] = `
     <Link
       className="button small primary"
       replace={false}
-      to="/register"
+      to="/admins/register"
     >
       <i
         className="material-icons button-icon"

@@ -92,7 +92,7 @@ class SearchField extends Component {
                     name={this.props.name}
                     placeholder={this.props.placeholder}
                     size={this.props.size}
-                    content={this.props.content}
+                    value={this.state.searchParam}
                     onClick={this.handleFieldClick}
                     autoComplete="off"
                     autoFocus={this.props.autoFocus}

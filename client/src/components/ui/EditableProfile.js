@@ -4,10 +4,8 @@ import _ from 'lodash';
 import EditableField from './EditableField';
 import EditableRadio from './EditableRadio';
 import EditableCheckBox from './EditableCheckBox';
-<<<<<<< HEAD
+import EditableMultiCheckbox from './EditableMultiCheckbox';
 import EditableComboBox from './EditableComboBox';
-=======
->>>>>>> 1a8a06319a7ce4005c4bf74569cda3ad265064fe
 import EditableDatePicker from './EditableDatePicker';
 import { withRouter } from 'react-router';
 import moment from 'moment';
@@ -30,13 +28,13 @@ export class EditableProfile extends Component {
             editMode: _.fromPairs(_.map(_.values(this.props.categories), category => [category.id, false])),
             fields: { ...this.props.profile },
             modifiedFields: {},
-            multiDay: false,
-            startDate: moment().startOf('day'),
-            endDate: moment()
-                .startOf('day')
-                .add(1, 'day'),
-            startTime: moment(moment().get('hours'), 'h')
+            multiDay: this.props.multiDay,
+            startDate: this.props.startDate,
+            endDate: this.props.endDate,
+            startTime: this.props.startTime,
+            endTime: this.props.endTime
         };
+
         this.handleFieldChange = this.handleFieldChange.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
 
@@ -107,7 +105,19 @@ export class EditableProfile extends Component {
                         <EditableCheckBox
                             id={field.id}
                             key={field.id}
-                            defaultValue={this.state.fields[field.id]}
+                            value={this.state.fields[field.id]}
+                            editMode={this.state.editMode[field.category]}
+                            onChange={this.handleFieldChange}
+                            label={field.label}
+                        />
+                    );
+                } else if (field.type === 'multibox') {
+                    return (
+                        <EditableMultiCheckbox
+                            id={field.id}
+                            key={field.id}
+                            value={this.state.fields[field.id]}
+                            options={field.options}
                             editMode={this.state.editMode[field.category]}
                             onChange={this.handleFieldChange}
                             label={field.label}
@@ -125,7 +135,6 @@ export class EditableProfile extends Component {
                             label={field.label}
                         />
                     );
-<<<<<<< HEAD
                 } else if (field.type === 'combobox') {
                     return (
                         <EditableComboBox
@@ -141,9 +150,6 @@ export class EditableProfile extends Component {
                         />
                     );
                 } else if (field.type === 'datepicker') {
-=======
-                } else if (field.type === 'radio') {
->>>>>>> 1a8a06319a7ce4005c4bf74569cda3ad265064fe
                     return (
                         <EditableDatePicker
                             //date: PropTypes.object.isRequired,
@@ -166,7 +172,7 @@ export class EditableProfile extends Component {
                         <EditableField
                             id={field.id}
                             key={field.id}
-                            defaultValue={this.state.fields[field.id]}
+                            value={this.state.fields[field.id]}
                             editMode={this.state.editMode[field.category]}
                             handleChange={this.handleFieldChange}
                             label={field.label}

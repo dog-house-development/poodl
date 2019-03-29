@@ -1,0 +1,17 @@
+.reports-container {
+  max-width: 50em;
+  margin: auto;
+  .reports-content {
+    .reports-activities {
+      .activity-report {
+        margin: 1.25em 0;
+        .activity-info {
+          padding-left: 1em;
+          p {
+            padding-left: 0.2em;
+          }
+        }
+      }
+    }
+  }
+}

@@ -18,6 +18,7 @@
 @import 'ui/dynamicForm.scss';
 @import 'ui/checkbox.scss';
 @import 'ui/multiCheckbox.scss';
+@import 'ui/radio.scss';
 
 // pages
 @import 'pages/register.scss';
@@ -26,8 +27,9 @@
 @import 'pages/dashboard.scss';
 @import 'pages/viewAll.scss';
 @import 'pages/addActivity.scss';
-@import 'pages/addVolunteer.scss';
+@import 'pages/registerContainer.scss';
 @import 'pages/memberCheckIn.scss';
+@import 'pages/reports.scss';
 
 // other
 @import 'misc.scss';
