@@ -127,15 +127,13 @@ const volunteerInputs = [
     },
     {
         id: 'occasionalOneDayProjects',
-        kind: 'select',
-        label: 'I would like to be contacted for occasional one-day projects that fit my skills and interests',
-        options: ['No', 'Yes']
+        kind: 'selectBoolean',
+        label: 'I would like to be contacted for occasional one-day projects that fit my skills and interests'
     },
     {
         id: 'singleDayActivity',
-        kind: 'select',
-        label: 'I would like to volunteer for a single day activity.',
-        options: ['No', 'Yes']
+        kind: 'selectBoolean',
+        label: 'I would like to volunteer for a single day activity.'
     },
     {
         id: 'availabilitySchedule',

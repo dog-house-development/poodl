@@ -93,7 +93,7 @@ export class EditableProfile extends Component {
                         <EditableCheckBox
                             id={field.id}
                             key={field.id}
-                            defaultValue={this.state.fields[field.id]}
+                            value={this.state.fields[field.id]}
                             editMode={this.state.editMode[field.category]}
                             onChange={this.handleFieldChange}
                             label={field.label}
@@ -116,7 +116,7 @@ export class EditableProfile extends Component {
                         <EditableField
                             id={field.id}
                             key={field.id}
-                            defaultValue={this.state.fields[field.id]}
+                            value={this.state.fields[field.id]}
                             editMode={this.state.editMode[field.category]}
                             handleChange={this.handleFieldChange}
                             label={field.label}

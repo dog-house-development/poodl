@@ -45,9 +45,9 @@ export class ViewAllVolunteers extends Component {
                 </Link>
                 <div className="view-all-header">
                     <h1>Manage Volunteers</h1>
-                    <Link to="/volunteers/add" className="button small primary">
+                    <Link to="/volunteers/register" className="button small primary">
                         <i className="material-icons button-icon">add</i>
-                        Add Volunteer
+                        Register Volunteer
                     </Link>
                 </div>
                 <DataGrid
