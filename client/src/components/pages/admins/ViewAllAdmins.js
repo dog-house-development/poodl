@@ -16,7 +16,6 @@ export class ViewAllAdmins extends Component {
     componentDidMount() {
         // call redux action to retrieve all admins from api
         this.props.adminActions.filter();
-        //this.props.adminActions.filter({ accessLevel: 'Super' });
     }
 
     handleRowClick(e, id) {
