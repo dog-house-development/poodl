@@ -22,85 +22,66 @@ exports[`AdminProfile tests render should render correctly 1`] = `
        
       Man
     </h1>
-    <div
-      className="panel"
-    >
-      <div
-        key="_id"
-        style={
-          Object {
-            "margin": "10px 0",
-          }
+    <withRouter(EditableProfile)
+      categories={
+        Object {
+          "admin": Object {
+            "id": "admin",
+            "title": "Admin Info",
+          },
         }
-      >
-        <h5>
-          ID
-        </h5>
-        <p>
-          123
-        </p>
-      </div>
-      <div
-        key="firstName"
-        style={
+      }
+      editProfile={[Function]}
+      fields={
+        Array [
           Object {
-            "margin": "10px 0",
-          }
-        }
-      >
-        <h5>
-          FIRST NAME
-        </h5>
-        <p>
-          Moose
-        </p>
-      </div>
-      <div
-        key="lastName"
-        style={
+            "category": "admin",
+            "id": "firstName",
+            "label": "First name",
+            "type": "text",
+          },
           Object {
-            "margin": "10px 0",
-          }
-        }
-      >
-        <h5>
-          LAST NAME
-        </h5>
-        <p>
-          Man
-        </p>
-      </div>
-      <div
-        key="email"
-        style={
+            "category": "admin",
+            "id": "lastName",
+            "label": "Last name",
+            "type": "text",
+          },
           Object {
-            "margin": "10px 0",
-          }
-        }
-      >
-        <h5>
-          EMAIL
-        </h5>
-        <p>
-          mooseman@nowhere.com
-        </p>
-      </div>
-      <div
-        key="superAdmin"
-        style={
+            "category": "admin",
+            "id": "email",
+            "label": "Email",
+            "type": "email",
+          },
           Object {
-            "margin": "10px 0",
-          }
+            "category": "admin",
+            "id": "seniorCenterId",
+            "label": "Senior  Center ID",
+            "type": "text",
+          },
+          Object {
+            "category": "admin",
+            "id": "accessLevel",
+            "label": "Access Level",
+            "options": Array [
+              "Super",
+              "Admin",
+              "Volunteer",
+            ],
+            "type": "radio",
+          },
+        ]
+      }
+      getProfile={[Function]}
+      profile={
+        Object {
+          "_id": "123",
+          "email": "mooseman@nowhere.com",
+          "firstName": "Moose",
+          "lastName": "Man",
+          "superAdmin": true,
         }
-      >
-        <h5>
-          SUPER ADMIN
-        </h5>
-        <p>
-          Yes
-        </p>
-      </div>
-    </div>
+      }
+    />
   </div>
 </div>
 `;
