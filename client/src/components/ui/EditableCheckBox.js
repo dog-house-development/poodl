@@ -5,7 +5,7 @@ import Checkbox from './CheckBox';
 class EditableCheckBox extends Component {
     static propTypes = {
         label: PropTypes.string,
-        handleChange: PropTypes.func.isRequired,
+        onChange: PropTypes.func.isRequired,
         defaultValue: PropTypes.bool,
         id: PropTypes.string.isRequired
     };

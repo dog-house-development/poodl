@@ -7,6 +7,7 @@ export default {
     },
 
     filter: data => dispatch => {
+        data = { ...data, accessLevel: { $ne: 'Volunteer' } };
         ActionHelper.filter(dispatch, Types.admin, data);
     },
 

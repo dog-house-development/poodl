@@ -95,7 +95,7 @@ export class EditableProfile extends Component {
                             key={field.id}
                             defaultValue={this.state.fields[field.id]}
                             editMode={this.state.editMode[field.category]}
-                            handleChange={this.handleFieldChange}
+                            onChange={this.handleFieldChange}
                             label={field.label}
                         />
                     );
@@ -104,10 +104,10 @@ export class EditableProfile extends Component {
                         <EditableRadio
                             id={field.id}
                             key={field.id}
-                            defaultValue={this.state.fields[field.id]}
+                            value={this.state.fields[field.id]}
                             options={field.options}
                             editMode={this.state.editMode[field.category]}
-                            handleChange={this.handleFieldChange}
+                            onChange={this.handleFieldChange}
                             label={field.label}
                         />
                     );

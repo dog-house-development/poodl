@@ -31,7 +31,7 @@ export default {
                     payload: res.data
                 });
                 if (history) {
-                    history.push(`/${type.url}/${res.data._id}`);
+                    history.push(`/${type.clientUrl || type.url}/${res.data._id}`);
                 }
                 return res.data;
             })

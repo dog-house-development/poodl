@@ -36,7 +36,6 @@ const adminSchema = new Schema(
             default: 'Admin',
             required: [true, 'Access Level is required']
         },
-
         middleInitial: {
             type: String
         },
@@ -87,12 +86,16 @@ const adminSchema = new Schema(
             type: String,
             required: [
                 function() {
-                    return this.accessLevel === 'Volunteer';
+                    return this.accessLevel === 'Volunteer' && !this.cellPhone;
                 },
-                'Home phone is required'
+                'At least one phone number is required'
             ],
             validate: {
-                validator: Validator.isMobilePhone,
+                validator: function(v) {
+                    if (v) {
+                        return Validator.isMobilePhone(v);
+                    }
+                },
                 message: 'Home phone is invalid'
             }
         },
@@ -100,13 +103,17 @@ const adminSchema = new Schema(
             type: String,
             required: [
                 function() {
-                    return this.accessLevel === 'Volunteer';
+                    return this.accessLevel === 'Volunteer' && !this.homePhone;
                 },
-                'Cell phone is required'
+                ' '
             ],
             validate: {
-                validator: Validator.isMobilePhone,
-                message: 'Cell phone invalid'
+                validator: function(v) {
+                    if (v) {
+                        return Validator.isMobilePhone(v);
+                    }
+                },
+                message: 'Cell phone is invalid'
             }
         },
         references: {
@@ -130,15 +137,21 @@ const adminSchema = new Schema(
                 'Belgrade Senior Center',
                 'United Way',
                 'Community Event',
-                'Other',
-                'None'
-            ],
-            default: 'None'
+                'Other'
+            ]
         },
-        howOften: {
+        volunteerFrequency: {
             type: String
         },
-        availability: {
+        occasionalOneDayProjects: {
+            type: Boolean,
+            default: false
+        },
+        singleDayActivity: {
+            type: Boolean,
+            default: false
+        },
+        availabilitySchedule: {
             type: String
         },
         houseMaintenanceAndRepairs: [
@@ -151,35 +164,24 @@ const adminSchema = new Schema(
             {
                 type: String,
                 enum: [
-                    'Lawn Maintnance',
+                    'Lawn Maintenance ',
                     'Grounds Cleanup',
                     'Pruning Trees and Shrubs',
                     'Planting and Maintaining Flower Beds',
-                    'Snow Removal',
-                    'None'
-                ],
-                default: 'None'
+                    'Snow Removal'
+                ]
             }
         ],
         clericalAssistance: [
             {
                 type: String,
-                enum: [
-                    'Data Entry',
-                    'Folding Brochures',
-                    'General Office',
-                    'Preparing Bulk Mailings',
-                    'Front Desk',
-                    'None'
-                ],
-                default: 'None'
+                enum: ['Data Entry', 'Folding Brochures', 'General Office', 'Preparing Bulk Mailings', 'Front Desk']
             }
         ],
         nutritionProgram: [
             {
                 type: String,
-                enum: ['Food Prep', 'Dishes', 'Deliver Meals on Wheels', 'Dining Room Setup', 'None'],
-                default: 'None'
+                enum: ['Food Prep', 'Dishes', 'Deliver Meals on Wheels', 'Dining Room Setup']
             }
         ],
         specialEventsAndFundRaising: [
@@ -188,20 +190,17 @@ const adminSchema = new Schema(
                 enum: [
                     'Create Flyers, Brochures, and/or Posters',
                     'Assist with Events',
-                    'Solicit Auction Items, Donations, Prizes, In-Kind Services',
-                    'None'
-                ],
-                default: 'None'
+                    'Solicit Auction Items, Donations, Prizes, In-Kind Services'
+                ]
             }
         ],
         interpretingTeachingClassesOrWorkshops: [
             {
                 type: String,
-                enum: ['Life Skill Classes', 'Painting, Crafts', 'Computer', 'Exercise', 'None'],
-                default: 'None'
+                enum: ['Life Skill Classes', 'Painting, Crafts', 'Computer', 'Exercise']
             }
         ],
-        otherInterests: {
+        proposedActivities: {
             type: String
         }
     },

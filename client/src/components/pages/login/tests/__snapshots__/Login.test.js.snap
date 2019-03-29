@@ -22,6 +22,7 @@ exports[`Login tests render should render correctly 1`] = `
     fields={
       Array [
         Object {
+          "autoComplete": "on",
           "error": undefined,
           "id": "email",
           "label": "Email",
@@ -31,6 +32,7 @@ exports[`Login tests render should render correctly 1`] = `
           "value": "test@test.test",
         },
         Object {
+          "autoComplete": "on",
           "error": undefined,
           "id": "password",
           "label": "Password",

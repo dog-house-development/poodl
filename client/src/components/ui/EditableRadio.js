@@ -5,8 +5,8 @@ import Radio from './Radio';
 class EditableRadio extends Component {
     static propTypes = {
         label: PropTypes.string,
-        handleChange: PropTypes.func.isRequired,
-        defaultValue: PropTypes.string,
+        onChange: PropTypes.func.isRequired,
+        value: PropTypes.string,
         id: PropTypes.string.isRequired,
         options: PropTypes.array
     };
@@ -18,7 +18,7 @@ class EditableRadio extends Component {
         return (
             <div className="field-wrapper editable-field-wrapper">
                 <p className="field-label">{this.props.label}</p>
-                <p>{this.props.defaultValue}</p>
+                <p>{this.props.value}</p>
             </div>
         );
     }
