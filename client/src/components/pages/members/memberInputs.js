@@ -219,7 +219,6 @@ const memberInputs = [
         ]
     },
     {
-        // National family caregiver's program
         id: 'Nation Family Caregiver Support Program',
         description:
             'If client is receiving services under National Family Caregiver Support Program, complete the following:',
