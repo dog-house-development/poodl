@@ -8,12 +8,8 @@ class EditableMultiCheckBox extends Component {
         onChange: PropTypes.func.isRequired,
         value: PropTypes.array,
         id: PropTypes.string.isRequired,
-<<<<<<< HEAD
         options: PropTypes.array,
         checked: PropTypes.array
-=======
-        options: PropTypes.array
->>>>>>> d5231b8a0154ba890a7322b641c4eda64b4ee149
     };
 
     render() {
