@@ -26,6 +26,7 @@ export class ActivityProfile extends Component {
                         editProfile={this.props.activityActions.edit}
                         getProfile={this.props.activityActions.get}
                         profile={this.props.activity}
+                        data={this.props.activities}
                     />
                 </div>
             </div>
@@ -37,7 +38,8 @@ export const mapStateToProps = (state, props) => {
     return {
         activity: state.activities.all[props.match.params.id],
         loading: state.activities.loading,
-        errors: state.activities.errors
+        errors: state.activities.errors,
+        activities: _.get(state.activities, 'all')
     };
 };
 

@@ -4,6 +4,7 @@ import _ from 'lodash';
 import EditableField from './EditableField';
 import EditableRadio from './EditableRadio';
 import EditableCheckBox from './EditableCheckBox';
+import EditableComboBox from './EditableComboBox';
 import EditableMultiCheckbox from './EditableMultiCheckbox';
 import { withRouter } from 'react-router';
 import Button from './Button';
@@ -14,7 +15,8 @@ export class EditableProfile extends Component {
         fields: PropTypes.array.isRequired,
         editProfile: PropTypes.func.isRequired,
         getProfile: PropTypes.func.isRequired,
-        profile: PropTypes.object
+        profile: PropTypes.object,
+        data: PropTypes.array
     };
 
     constructor(props) {
@@ -95,6 +97,20 @@ export class EditableProfile extends Component {
                             id={field.id}
                             key={field.id}
                             value={this.state.fields[field.id]}
+                            editMode={this.state.editMode[field.category]}
+                            onChange={this.handleFieldChange}
+                            label={field.label}
+                        />
+                    );
+                } else if (field.type === 'combobox') {
+                    return (
+                        <EditableComboBox
+                            data={this.props.data}
+                            placeholder={field.placeholder}
+                            id={field.id}
+                            key={field.id}
+                            value={this.state.fields[field.id]}
+                            options={field.options}
                             editMode={this.state.editMode[field.category]}
                             onChange={this.handleFieldChange}
                             label={field.label}
