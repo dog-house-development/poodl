@@ -37,7 +37,12 @@ class MultiCheckbox extends React.Component {
     getCheckboxMarkup = option => {
         return (
             <div className="multi-checkbox-item" key={option}>
-                <CheckBox label={option} id={option} onChange={this.onChange} />
+                <CheckBox
+                    label={option}
+                    id={option}
+                    onChange={this.onChange}
+                    value={_.includes(this.props.value, option)}
+                />
             </div>
         );
     };
