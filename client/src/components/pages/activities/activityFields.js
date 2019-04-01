@@ -17,29 +17,12 @@ const activityFields = [
         category: Categories.activity.id
     },
     {
-        id: 'startTime',
-        type: 'timepicker',
-        label: 'Start Time',
-        category: Categories.activity.id
-    },
-    {
-        id: 'endTime',
-        type: 'timepicker',
-        label: 'End Time',
-        category: Categories.activity.id
-    },
-    {
         id: 'startDate',
-        type: 'datepicker',
-        label: 'Start Date',
+        type: 'datetime',
+        label: '   DATTTEEEE  ',
         category: Categories.activity.id
     },
-    {
-        id: 'endDate',
-        type: 'datepicker',
-        label: 'End Date',
-        category: Categories.activity.id
-    },
+
     {
         id: 'admins',
         type: 'text',

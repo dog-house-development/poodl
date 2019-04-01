@@ -6,6 +6,7 @@ import EditableRadio from './EditableRadio';
 import EditableCheckBox from './EditableCheckBox';
 import EditableComboBox from './EditableComboBox';
 import EditableMultiCheckbox from './EditableMultiCheckbox';
+import EditableDateTime from './EditableDateTime';
 import { withRouter } from 'react-router';
 import Button from './Button';
 
@@ -49,6 +50,11 @@ export class EditableProfile extends Component {
 
     handleFieldChange(e) {
         if (e.target.type === 'checkbox') {
+            this.setState({
+                fields: { ...this.state.fields, [e.target.id]: e.target.checked },
+                modifiedFields: { ...this.state.modifiedFields, [e.target.id]: e.target.checked }
+            });
+        } else if (e.target.type === 'multibox') {
             this.setState({
                 fields: { ...this.state.fields, [e.target.id]: e.target.checked },
                 modifiedFields: { ...this.state.modifiedFields, [e.target.id]: e.target.checked }
@@ -114,6 +120,21 @@ export class EditableProfile extends Component {
                             editMode={this.state.editMode[field.category]}
                             onChange={this.handleFieldChange}
                             label={field.label}
+                        />
+                    );
+                } else if (field.type === 'datetime') {
+                    return (
+                        <EditableDateTime
+                            placeholder={field.placeholder}
+                            id={field.id}
+                            key={field.id}
+                            value={this.state.fields[field.id]}
+                            options={field.options}
+                            editMode={this.state.editMode[field.category]}
+                            onChange={this.handleFieldChange}
+                            label={field.label}
+                            startDate={this.props.startDate}
+                            endDate={this.props.endDate}
                         />
                     );
                 } else if (field.type === 'radio') {

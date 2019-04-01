@@ -95,6 +95,13 @@ describe('ViewAllAdmins tests', () => {
         });
     });
 
+    describe('handleRowClick', () => {
+        it('should handle the row Click', () => {
+            const dispatch = jest.fn();
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ adminActions: {} }));
+        });
+    });
+
     describe('getDataGridContent', () => {
         it('should return filtered admins data', () => {
             expect(instance.getDataGridContent()).toEqual([

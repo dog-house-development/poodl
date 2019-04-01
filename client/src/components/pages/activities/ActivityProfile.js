@@ -16,10 +16,6 @@ export class ActivityProfile extends Component {
                     <i className="material-icons">keyboard_backspace</i> Back to all activities
                 </Link>
                 <div>
-                    <h1>
-                        {this.props.loading ? <Loading /> : _.get(this.props.activity, 'firstName')}{' '}
-                        {this.props.loading ? '' : _.get(this.props.activity, 'lastName')}
-                    </h1>
                     <EditableProfile
                         fields={activityFields}
                         categories={Categories}
@@ -37,6 +33,8 @@ export class ActivityProfile extends Component {
 export const mapStateToProps = (state, props) => {
     return {
         activity: state.activities.all[props.match.params.id],
+        startDate: _.get(state.activity, 'startDate'),
+        endDate: _.get(state.activity, 'endDate'),
         loading: state.activities.loading,
         errors: state.activities.errors,
         activities: _.get(state.activities, 'all')
