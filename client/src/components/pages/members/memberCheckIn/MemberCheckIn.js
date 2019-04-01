@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import moment from 'moment';
 
 import MemberActions from '../../../../actions/memberActions';
 // import ActivityActions from '../../../../actions/activityActions';
@@ -57,7 +58,7 @@ class MemberCheckIn extends Component {
         // update the member checkins
         if (this.state.currentPage === pages.selectActivities) {
             this.props.memberActions.edit(this.state.memberId, {
-                checkIns: [..._.get(this.props.member, 'checkIns', []), new Date()]
+                checkIns: [..._.get(this.props.members[this.state.memberId], 'checkIns', []), moment()]
             });
         }
     }
@@ -125,7 +126,7 @@ class MemberCheckIn extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        member: state.members.all[props.match.params.id],
+        members: state.members.all,
         loading: state.members.loading,
         errors: state.members.errors
     };
