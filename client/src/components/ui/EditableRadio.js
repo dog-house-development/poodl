@@ -6,7 +6,7 @@ class EditableRadio extends Component {
     static propTypes = {
         label: PropTypes.string,
         onChange: PropTypes.func.isRequired,
-        value: PropTypes.array,
+        value: PropTypes.string,
         id: PropTypes.string.isRequired,
         options: PropTypes.array
     };
