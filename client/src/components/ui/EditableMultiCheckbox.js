@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MultiCheckbox from './MultiCheckbox';
+import _ from 'lodash';
 
 class EditableMultiCheckBox extends Component {
     static propTypes = {
@@ -18,7 +19,7 @@ class EditableMultiCheckBox extends Component {
         return (
             <div className="field-wrapper editable-field-wrapper">
                 <p className="field-label">{this.props.label}</p>
-                <p>{this.props.value}</p>
+                <p>{_.join(this.props.value, ', ')}</p>
             </div>
         );
     }
