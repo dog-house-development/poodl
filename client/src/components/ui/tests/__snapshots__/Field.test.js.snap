@@ -14,10 +14,11 @@ exports[`Field tests render should render not side by side 1`] = `
   >
     <input
       autoComplete="on"
-      className="field normal field-error-border"
+      className="field normal primary field-error-border"
       content=""
       error={Object {}}
       id="email"
+      kind="primary"
       label="Email:"
       name="email"
       onChange={[Function]}
@@ -49,10 +50,11 @@ exports[`Field tests render should render the first side by side input 1`] = `
   >
     <input
       autoComplete="on"
-      className="field normal first-side-by-side-input field-error-border"
+      className="field normal primary first-side-by-side-input field-error-border"
       content=""
       error={Object {}}
       id="email"
+      kind="primary"
       label="Email:"
       name="email"
       onChange={[Function]}
@@ -85,10 +87,11 @@ exports[`Field tests render should render the second side by side input 1`] = `
   >
     <input
       autoComplete="on"
-      className="field normal second-side-by-side-input field-error-border"
+      className="field normal primary second-side-by-side-input field-error-border"
       content=""
       error={Object {}}
       id="email"
+      kind="primary"
       label="Email:"
       name="email"
       onChange={[Function]}
@@ -121,10 +124,11 @@ exports[`Field tests render should render with errors correctly 1`] = `
   >
     <input
       autoComplete="on"
-      className="field normal field-error-border"
+      className="field normal primary field-error-border"
       content=""
       error="Big bad error"
       id="email"
+      kind="primary"
       label="Email:"
       name="email"
       onChange={[Function]}
@@ -156,10 +160,11 @@ exports[`Field tests render should render without errors correctly 1`] = `
   >
     <input
       autoComplete="on"
-      className="field normal"
+      className="field normal primary"
       content=""
       error={null}
       id="email"
+      kind="primary"
       label="Email:"
       name="email"
       onChange={[Function]}

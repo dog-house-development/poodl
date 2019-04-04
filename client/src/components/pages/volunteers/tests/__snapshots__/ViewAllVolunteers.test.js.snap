@@ -52,6 +52,7 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
         },
       ]
     }
+    includeFilterControls={true}
     loading={false}
     onRowClick={[Function]}
   />

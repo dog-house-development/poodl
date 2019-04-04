@@ -10,6 +10,7 @@ const propTypes = {
     min: PropTypes.string,
     max: PropTypes.string,
     size: PropTypes.oneOf(['normal', 'large']),
+    kind: PropTypes.oneOf(['primary', 'secondary']),
     value: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     label: PropTypes.string,
@@ -24,7 +25,8 @@ const propTypes = {
 const defaultProps = {
     size: 'normal',
     type: 'text',
-    autoComplete: 'on'
+    autoComplete: 'on',
+    kind: 'primary'
     // value is not default to '' because I want the warning
     // if no value prop is given
 };
@@ -42,7 +44,10 @@ class Field extends Component {
 
     render() {
         return (
-            <div className={classnames('field-wrapper', { 'inline-field': this.props.sidebyside })}>
+            <div
+                className={classnames('field-wrapper', this.props.className, {
+                    'inline-field': this.props.sidebyside
+                })}>
                 <p className="field-label">{this.props.label}</p>
                 <div className="field-outer">
                     <input
@@ -52,6 +57,7 @@ class Field extends Component {
                         className={classnames(
                             'field',
                             this.props.size,
+                            this.props.kind,
                             { 'first-side-by-side-input': this.props.sidebyside === 1 },
                             { 'second-side-by-side-input': this.props.sidebyside === 2 },
                             { 'field-error-border': this.props.error }

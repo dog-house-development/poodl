@@ -56,6 +56,21 @@
         font-size: 1.25em;
       }
 
+      &.secondary {
+        background-color: $gray-2;
+        color: $gray-7;
+
+        &:focus {
+          background-color: $gray-1;
+          border-color: $gray-1;
+          box-shadow: 0 0 0 3pt $blue-outline;
+        }
+
+        &::placeholder {
+          color: $gray-5;
+        }
+      }
+
       &.field-error-border {
         border-color: $red-1;
       }
@@ -76,6 +91,14 @@
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
+    }
+  }
+
+  &.filter-field {
+    max-width: 14em;
+
+    @media screen and (max-width: $mobile) {
+      max-width: 100%;
     }
   }
 }
