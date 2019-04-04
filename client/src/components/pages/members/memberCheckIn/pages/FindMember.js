@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 // import { Link } from 'react-router-dom';
 import MemberActions from '../../../../../actions/memberActions';
 // import Loading from '../../../../ui/Loading';
@@ -36,11 +35,10 @@ export class FindMember extends Component {
                     id="find-member-search"
                     data={this.props.members}
                     autoFocus="on"
-                    searchRule={(param, value) => {
-                        param = _.lowerCase(param);
-                        return (
-                            _.includes(_.lowerCase(value.firstName), param) ||
-                            _.includes(_.lowerCase(value.lastName), param)
+                    minCharactersBeforeResults={3}
+                    searchRule={(param, member) => {
+                        return new RegExp('(^' + param + ')|(\\s' + param + ')', 'i').test(
+                            member.firstName + ' ' + member.lastName
                         );
                     }}
                     displayRow={row => (

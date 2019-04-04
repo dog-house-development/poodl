@@ -93,7 +93,7 @@ const memberFields = [
         category: Categories.health.id
     },
     {
-        id: 'memberisNewOrRenewal',
+        id: 'memberIsNewOrRenewal',
         type: 'radio',
         label: 'Member is new or renewal',
         options: ['new', 'renewal'],

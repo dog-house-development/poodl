@@ -24,8 +24,6 @@ export class Reports extends React.Component {
 
         const unduplicatedMembers = _.uniq(duplicatedMembers);
 
-        console.log('total', duplicatedMembers);
-
         return (
             <div key={activityName} className="activity-report">
                 <h3>{activityName}</h3>
@@ -42,7 +40,6 @@ export class Reports extends React.Component {
     getUniqueActivities() {
         const uniqueData = _.uniq(_.map(this.props.activities, item => item.name));
         const sortedData = _.sortBy(uniqueData, [item => item.toLowerCase()]);
-        console.log(sortedData);
         return sortedData;
     }
 
