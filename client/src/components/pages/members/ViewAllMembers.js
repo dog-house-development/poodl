@@ -51,6 +51,10 @@ export class ViewAllMembers extends Component {
                         <i className="material-icons button-icon">add</i>
                         Register Member
                     </Link>
+                    <Link to="/member-check-in" className="button small primary">
+                        <i className="material-icons button-icon">check</i>
+                        Member check-in
+                    </Link>
                 </div>
                 <DataGrid
                     data={this.getDataGridContent()}
