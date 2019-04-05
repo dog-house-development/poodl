@@ -39,6 +39,18 @@ export default function(state = initialState, action) {
                 all: { ...state.all, [action.payload._id]: action.payload },
                 errors: {}
             };
+        case Types.admin.edit.BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case Types.admin.edit.SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                all: { ...state.all, [action.payload._id]: action.payload },
+                errors: {}
+            };
         default:
             return state;
     }
