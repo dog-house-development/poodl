@@ -63,7 +63,11 @@ class DataGrid extends Component {
     }
 
     getFilteredData = () =>
-        _.filter(this.props.data, value => new RegExp('(' + this.state.filterValue + ')', 'i').test(_.values(value)));
+        _.filter(this.props.data, value => {
+            let valueToTest = _.clone(value);
+            delete valueToTest.key;
+            return new RegExp('(' + this.state.filterValue + ')', 'i').test(_.join(_.values(valueToTest), ' '));
+        });
 
     getBodyMarkup() {
         return _.map(this.getFilteredData(), row => (
