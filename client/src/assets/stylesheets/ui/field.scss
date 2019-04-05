@@ -59,6 +59,12 @@
       &.secondary {
         background-color: $gray-2;
         color: $gray-7;
+        transition: all 0.1s ease-in-out;
+
+        &:hover {
+          background-color: $gray-1;
+          border-color: $gray-1;
+        }
 
         &:focus {
           background-color: $gray-1;
