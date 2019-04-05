@@ -55,7 +55,7 @@ class DataGrid extends Component {
                     onChange={this.handleFilterChange}
                     id="filter"
                     value={this.state.filterValue}
-                    placeholder="Filter..."
+                    placeholder="Search"
                     autoComplete="off"
                 />
             );
@@ -66,16 +66,21 @@ class DataGrid extends Component {
         _.filter(this.props.data, value => {
             let valueToTest = _.clone(value);
             delete valueToTest.key;
-            return new RegExp('(' + this.state.filterValue + ')', 'i').test(_.join(_.values(valueToTest), ' '));
+            return _.reduce(
+                _.split(this.state.filterValue, ' '),
+                (result, word) => {
+                    return new RegExp(word, 'i').test(_.values(valueToTest)) && result;
+                },
+                true
+            );
         });
 
-    getBodyMarkup() {
-        return _.map(this.getFilteredData(), row => (
+    getBodyMarkup = () =>
+        _.map(this.getFilteredData(), row => (
             <tr key={row.key} onClick={e => this.props.onRowClick(e, row.key)}>
                 {_.map(row, (value, key) => (key !== 'key' ? <td key={key}>{value}</td> : null))}
             </tr>
         ));
-    }
 
     getTableMarkup() {
         if (this.props.loading) {

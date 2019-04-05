@@ -57,18 +57,18 @@
       }
 
       &.secondary {
-        background-color: $gray-2;
+        background-color: #e1e6ed;
+        border-color: transparent;
         color: $gray-7;
-        transition: all 0.1s ease-in-out;
+        transition: all 0.15s ease-in-out;
 
         &:hover {
           background-color: $gray-1;
-          border-color: $gray-1;
+          border-color: $gray-2;
         }
 
         &:focus {
           background-color: $gray-1;
-          border-color: $gray-1;
           box-shadow: 0 0 0 3pt $blue-outline;
         }
 
