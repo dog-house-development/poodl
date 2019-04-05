@@ -28,8 +28,7 @@ const memberInputs = [
                 kind: 'datePicker',
                 label: 'Date of Birth',
                 minYear: 1900,
-                maxYear: 1990,
-                value: moment('1-1-1950', 'M-D-YYYY')
+                maxYear: 1990
             },
             {
                 id: 'email',

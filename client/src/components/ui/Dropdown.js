@@ -62,8 +62,7 @@ export class Dropdown extends Component {
                 <div
                     className={classnames('dropdown-content', `dropdown-align-${this.props.align}`, {
                         'arrow-dropdown': this.props.arrow
-                    })}
-                >
+                    })}>
                     {arrowMarkup}
                     {_.map(this.props.dropdownContent, row => {
                         if (_.get(row, 'type') === 'divider') {
@@ -73,8 +72,7 @@ export class Dropdown extends Component {
                             <button
                                 key={_.uniqueId('dropdown-row-')}
                                 className={`dropdown-content-row ${this.props.size}`}
-                                onClick={evt => this.onDropdownRowClick(row.onClick, evt)}
-                            >
+                                onClick={evt => this.onDropdownRowClick(row.onClick, evt)}>
                                 {row.content}
                             </button>
                         );
@@ -99,7 +97,6 @@ export class Dropdown extends Component {
                         </span>
                     }
                     onClick={this.onDropdownClick}
-                    dropdownButton={true}
                 />
                 {this.getDropdownContentMarkup()}
             </div>

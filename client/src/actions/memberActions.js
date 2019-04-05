@@ -14,7 +14,7 @@ export default {
         ActionHelper.get(dispatch, Types.member, id);
     },
 
-    edit: (id, data) => dispatch => {
-        ActionHelper.edit(dispatch, Types.member, id, data);
+    edit: (id, data, onSuccess) => dispatch => {
+        ActionHelper.edit(dispatch, Types.member, id, data, onSuccess);
     }
 };

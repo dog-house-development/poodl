@@ -12,6 +12,7 @@ class Select extends React.Component {
         onChange: PropTypes.func.isRequired,
         options: PropTypes.array.isRequired,
         padStart: PropTypes.number,
+        present: PropTypes.bool,
         size: PropTypes.string,
         value: PropTypes.string,
         width: PropTypes.oneOf(['small', 'medium', 'large'])
@@ -29,27 +30,48 @@ class Select extends React.Component {
     }
 
     getOptionsMarkup() {
-        return _.map(this.props.options, option => (
-            <option key={option} value={option}>
-                {_.padStart(option, this.props.padStart, '0')}
-            </option>
-        ));
+        let options = [];
+        if (this.props.placeholder) {
+            options.push(
+                <option key={this.props.placeholder} disabled value={this.props.placeholder}>
+                    {this.props.placeholder}
+                </option>
+            );
+        }
+
+        options.push(
+            _.map(this.props.options, option => {
+                const paddedOption = _.padStart(option, this.props.padStart, '0');
+                return (
+                    <option key={paddedOption} value={paddedOption}>
+                        {paddedOption}
+                    </option>
+                );
+            })
+        );
+        return options;
     }
 
     getSelectMarkup() {
+        const { present, size, width, label, padStart, ...inputProps } = this.props;
         return (
-            <select
-                className={classnames('field', this.props.size, `${this.props.width}-width`)}
-                name={this.props.name}
-                value={this.props.value}
-                onChange={this.props.onChange}
-                id={this.props.id}>
+            <select className={classnames('field', size, `${width}-width`)} {...inputProps}>
                 {this.getOptionsMarkup()}
             </select>
         );
     }
 
     render() {
+        // console.log(this.props.id, this.props.present);
+        if (this.props.present) {
+            return (
+                <div className="field-wrapper editable-field-wrapper">
+                    <p className="field-label">{this.props.label}</p>
+                    <p>{this.props.value}</p>
+                </div>
+            );
+        }
+
         return (
             <div className="select field-wrapper">
                 <label>

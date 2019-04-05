@@ -32,8 +32,8 @@ export class RegisterMember extends React.Component {
         const member = {
             ...this.state
         };
-
-        this.props.memberActions.create(member, this.props.history);
+        console.log(member);
+        //this.props.memberActions.create(member, this.props.history);
     };
 
     render() {

@@ -64,7 +64,7 @@ export class AddActivity extends Component {
             endDate: end.toISOString()
         };
 
-        this.props.activityActions.create(newActivity, this.props.history);
+        //this.props.activityActions.create(newActivity, this.props.history);
     };
 
     getFields = () => {
@@ -115,7 +115,7 @@ export class AddActivity extends Component {
                     <DatePicker
                         label={this.state.multiDay ? 'Start Date' : 'Date'}
                         id="startDate"
-                        date={this.state.startDate}
+                        value={this.state.startDate}
                         onChange={this.handleChange}
                         error={this.state.multiDay ? this.getDateErrorMarkup() : ''}
                     />

@@ -52,6 +52,15 @@ class MultiCheckbox extends React.Component {
     }
 
     render() {
+        if (this.props.present) {
+            return (
+                <div className="field-wrapper editable-field-wrapper">
+                    <p className="field-label">{this.props.label}</p>
+                    <p>{_.join(this.props.value, ', ')}</p>
+                </div>
+            );
+        }
+
         return (
             <div className="multi-checkbox field-wrapper">
                 <p className="field-label">{this.props.label}</p>

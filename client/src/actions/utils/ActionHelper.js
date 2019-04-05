@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _ from 'lodash';
 
 /**
  * Action creator for getting errors
@@ -85,7 +86,7 @@ export default {
      * @param id        {String}    id of the doc to edit
      * @param data      {Object}    data to modify the doc
      */
-    edit: (dispatch, type, id, data) => {
+    edit: (dispatch, type, id, data, onSuccess = _.noop) => {
         dispatch({ type: type.edit.BEGIN });
         axios
             .patch(`/api/${type.url}/${id}`, data)
@@ -94,6 +95,7 @@ export default {
                     type: type.edit.SUCCESS,
                     payload: res.data
                 });
+                onSuccess();
             })
             .catch(err => getErrors(dispatch, type, err));
     },

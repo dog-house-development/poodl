@@ -10,7 +10,7 @@ const propTypes = {
     min: PropTypes.string,
     max: PropTypes.string,
     size: PropTypes.oneOf(['normal', 'large']),
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     placeholder: PropTypes.string,
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),
@@ -18,15 +18,15 @@ const propTypes = {
     spellCheck: PropTypes.oneOf(['true', 'false']),
     sidebyside: PropTypes.oneOf([1, 2]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    present: PropTypes.bool
 };
 
 const defaultProps = {
     size: 'normal',
     type: 'text',
-    autoComplete: 'on'
-    // value is not default to '' because I want the warning
-    // if no value prop is given
+    autoComplete: 'on',
+    value: ''
 };
 
 class Field extends Component {
@@ -37,18 +37,27 @@ class Field extends Component {
 
     handleChange(e) {
         e.preventDefault();
+        e.persist();
         this.props.onChange(e);
     }
 
     render() {
+        const { present, ...inputProps } = this.props;
+        if (present) {
+            return (
+                <div className="field-wrapper editable-field-wrapper">
+                    <p className="field-label">{this.props.label}</p>
+                    <p>{this.props.value}</p>
+                </div>
+            );
+        }
+
         return (
             <div className={classnames('field-wrapper', { 'inline-field': this.props.sidebyside })}>
                 <p className="field-label">{this.props.label}</p>
                 <div className="field-outer">
                     <input
-                        {...this.props}
-                        onChange={this.props.onChange}
-                        onClick={this.props.onClick}
+                        {...inputProps}
                         className={classnames(
                             'field',
                             this.props.size,
@@ -56,7 +65,6 @@ class Field extends Component {
                             { 'second-side-by-side-input': this.props.sidebyside === 2 },
                             { 'field-error-border': this.props.error }
                         )}
-                        value={this.props.value}
                     />
                     <p className="field-error-label">{this.props.error}</p>
                 </div>

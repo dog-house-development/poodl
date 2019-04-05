@@ -21,15 +21,19 @@
   .input-group {
     .input-group-label {
       color: $gray-7;
-      font-size: 1.2em;
+      font-size: 1.5em;
       border-bottom-width: 2px;
       border-bottom-style: solid;
       border-color: $gray-6;
-      margin-bottom: 1em;
+      margin-bottom: 0.6em;
     }
 
     .input-group-description {
       margin-bottom: 1em;
+    }
+
+    .input-group-loading {
+      float: left;
     }
   }
 }

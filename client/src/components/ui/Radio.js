@@ -23,6 +23,12 @@ class Radio extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        if (this.props.id === 'gender') {
+            // console.log(this.props.id, this.props.value);
+        }
+        if (this.props.value !== prevProps.value) {
+            this.setState({ value: this.props.value });
+        }
         if (this.state !== prevState) {
             this.props.onChange({
                 target: {
@@ -34,14 +40,24 @@ class Radio extends Component {
     }
 
     onChange = e => {
-        this.setState({ value: e.target.name });
+        if (this.props.id === 'gender') {
+            console.log(this.props.id, e.target.id);
+        }
+
+        this.setState({ value: e.target.id });
     };
 
     getOptionMarkup = option => {
         return (
             <div key={option}>
                 <label>
-                    <input type="radio" name={option} checked={this.state.value === option} onChange={this.onChange} />
+                    <input
+                        type="radio"
+                        id={option}
+                        name={this.props.id}
+                        checked={this.state.value === option}
+                        onChange={this.onChange}
+                    />
                     {' ' + option}
                 </label>
             </div>
@@ -53,6 +69,15 @@ class Radio extends Component {
     }
 
     render() {
+        if (this.props.present) {
+            return (
+                <div className="field-wrapper editable-field-wrapper">
+                    <p className="field-label">{this.props.label}</p>
+                    <p>{this.props.value}</p>
+                </div>
+            );
+        }
+
         return (
             <div className="field-wrapper radio">
                 <p className="field-label">{this.props.label}</p>
