@@ -34,6 +34,18 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
       </i>
       Register Member
     </Link>
+    <Link
+      className="button small primary"
+      replace={false}
+      to="/member-check-in"
+    >
+      <i
+        className="material-icons button-icon"
+      >
+        check
+      </i>
+      Member check-in
+    </Link>
   </div>
   <DataGrid
     data={
