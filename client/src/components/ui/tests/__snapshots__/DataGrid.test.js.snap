@@ -1,64 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DataGrid tests render should render data 1`] = `
-<div
-  className="panel datagrid"
->
-  <table>
-    <thead>
-      <tr>
-        <th
-          key="name"
+<div>
+  <Field
+    autoComplete="off"
+    className="filter-field"
+    id="filter"
+    kind="secondary"
+    onChange={[Function]}
+    placeholder="Search"
+    size="normal"
+    type="text"
+    value=""
+  />
+  <div
+    className="panel datagrid"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            key="name"
+          >
+            Name
+          </th>
+          <th
+            key="email"
+          >
+            Email
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          key="123"
+          onClick={[Function]}
         >
-          Name
-        </th>
-        <th
-          key="email"
+          <td
+            key="name"
+          >
+            Dong Nong
+          </td>
+          <td
+            key="email"
+          >
+            dongnong@nowhere.com
+          </td>
+        </tr>
+        <tr
+          key="321"
+          onClick={[Function]}
         >
-          Email
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        key="123"
-        onClick={[Function]}
-      >
-        <td
-          key="name"
-        >
-          Dong Nong
-        </td>
-        <td
-          key="email"
-        >
-          dongnong@nowhere.com
-        </td>
-      </tr>
-      <tr
-        key="321"
-        onClick={[Function]}
-      >
-        <td
-          key="name"
-        >
-          Juck Gruck
-        </td>
-        <td
-          key="email"
-        >
-          juckgruck@nowhere.com
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <td
+            key="name"
+          >
+            Juck Gruck
+          </td>
+          <td
+            key="email"
+          >
+            juckgruck@nowhere.com
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 `;
 
 exports[`DataGrid tests render should render loading 1`] = `
-<div
-  className="panel datagrid"
->
+<div>
+  <Field
+    autoComplete="off"
+    className="filter-field"
+    id="filter"
+    kind="secondary"
+    onChange={[Function]}
+    placeholder="Search"
+    size="normal"
+    type="text"
+    value=""
+  />
   <Loading
     content="Loading..."
     kind="primary"
