@@ -94,12 +94,7 @@ class App extends Component {
                             <PrivateRoute exact path="/activities" component={ViewAllActivities} />
                             <PrivateRoute exact path="/activities/add" component={AddActivity} />
                             {/* Member check in */}
-                            <PrivateRoute
-                                exact
-                                path="/member-check-in"
-                                component={MemberCheckIn}
-                                onLeave={store.dispatch(AuthActions.logoutAdmin())}
-                            />
+                            <PrivateRoute exact path="/member-check-in" component={MemberCheckIn} />
                             {/* Reports */}
                             <PrivateRoute exact path="/reports" component={Reports} />
                             {/* PageNotFound route must stay at bottom */}

@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import moment from 'moment';
+import { withRouter } from 'react-router-dom';
 
 import MemberActions from '../../../../actions/memberActions';
 import AuthActions from '../../../../actions/authActions';
@@ -32,8 +33,14 @@ class MemberCheckIn extends Component {
         this.setMemberId = this.setMemberId.bind(this);
     }
 
+    componentDidMount() {
+        this.unlisten = this.props.history.listen(() => {
+            this.props.authActions.logoutAdmin();
+        });
+    }
+
     componentWillUnmount() {
-        this.props.authActions.logoutAdmin();
+        this.unlisten();
     }
 
     setMemberId(id) {
@@ -142,9 +149,11 @@ export const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(MemberCheckIn);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(MemberCheckIn)
+);
 
 // export default MemberCheckIn;

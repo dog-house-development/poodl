@@ -7,7 +7,7 @@ import moment from 'moment';
 import ActivityActions from '../../../../../actions/activityActions';
 // import Loading from '../../../ui/Loading';
 import Button from '../../../../ui/Button';
-import formatDateRange from '../../../../../utils/formatDateRange';
+import Utils from '../../../../../utils/Utils';
 
 const propTypes = {
     memberId: PropTypes.string
@@ -66,7 +66,7 @@ export class SelectActivities extends Component {
                             <h3 className="activity-name">{activity.name}</h3>
                             <p className="activity-description">{activity.description}</p>
                             <p className="activity-description">
-                                {formatDateRange(activity.startDate, activity.endDate)}
+                                {Utils.formatDateRange(activity.startDate, activity.endDate)}
                             </p>
 
                             {this.getActivityNoticeMarkup(activity)}
@@ -135,7 +135,7 @@ export class SelectActivities extends Component {
                             <h3 className="activity-name">{activity.name}</h3>
                             <p className="activity-description">{activity.description}</p>
                             <p className="activity-description">
-                                {formatDateRange(activity.startDate, activity.endDate)}
+                                {Utils.formatDateRange(activity.startDate, activity.endDate)}
                             </p>
                             {this.getActivityNoticeMarkup(activity)}
                             <div className="activity-button">{this.getActivityButtonMarkup(activity)}</div>
