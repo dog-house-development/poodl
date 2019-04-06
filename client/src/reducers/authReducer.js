@@ -5,7 +5,8 @@ const initialState = {
     isAuthenticated: false,
     admin: {},
     loading: false,
-    errors: {}
+    errors: {},
+    logoutWhenLeaveCheckIn: false
 };
 
 export default function(state = initialState, action) {

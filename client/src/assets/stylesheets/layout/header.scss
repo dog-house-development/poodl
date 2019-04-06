@@ -5,6 +5,14 @@
   padding: 0 24px;
   margin-bottom: 24px;
 
+  &.check-in-header {
+    .check-in-title {
+      font-size: 2em;
+      padding: 0.5em 0;
+      color: $gray-6;
+    }
+  }
+
   li {
     display: inline;
     list-style: none;
