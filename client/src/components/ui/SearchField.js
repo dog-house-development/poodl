@@ -64,7 +64,7 @@ class SearchField extends Component {
     }
 
     getSearchResultsMarkup() {
-        if (this.state.searchParam.length < this.props.minCharactersBeforeResults) {
+        if (_.trim(this.state.searchParam).length < this.props.minCharactersBeforeResults) {
             return;
         } else if (this.state.resultsOpen && !_.isEmpty(this.state.filteredData)) {
             return (

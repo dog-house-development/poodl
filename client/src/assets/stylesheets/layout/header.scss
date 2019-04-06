@@ -2,14 +2,18 @@
 
 .header {
   background: $gray-1;
-  padding: 0 24px;
-  margin-bottom: 24px;
+  padding: 0 2em;
+  margin-bottom: 4em;
 
   &.check-in-header {
+    background-color: #fff;
+    border-bottom: 3px solid $gray-3;
+    margin: 0 0 4em 2em;
+    padding: 0;
+
     .check-in-title {
       font-size: 2em;
       padding: 0.5em 0;
-      color: $gray-6;
     }
   }
 

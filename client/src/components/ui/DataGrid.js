@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import Loading from './Loading';
 import Field from './Field';
+import Utils from '../../utils/Utils';
 
 const propTypes = {
     data: PropTypes.array.isRequired,
@@ -62,18 +63,7 @@ class DataGrid extends Component {
         }
     }
 
-    getFilteredData = () =>
-        _.filter(this.props.data, value => {
-            let valueToTest = _.clone(value);
-            delete valueToTest.key;
-            return _.reduce(
-                _.split(this.state.filterValue, ' '),
-                (result, word) => {
-                    return new RegExp(word, 'i').test(_.values(valueToTest)) && result;
-                },
-                true
-            );
-        });
+    getFilteredData = () => Utils.searchCollection(this.state.filterValue, this.props.data);
 
     getBodyMarkup = () =>
         _.map(this.getFilteredData(), row => (
