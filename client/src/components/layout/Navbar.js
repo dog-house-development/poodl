@@ -87,7 +87,6 @@ export class Navbar extends Component {
     }
 
     render() {
-        // console.log(this.props.location.pathname);
         if (this.props.location.pathname === '/member-check-in') {
             return this.getMemberCheckinHeaderMarkup();
         }
