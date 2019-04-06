@@ -6,6 +6,43 @@ import Dropdown from '../ui/Dropdown';
 import AuthActions from '../../actions/authActions';
 
 export class Navbar extends Component {
+    getUserDropDownContent() {
+        return [
+            {
+                content: 'Dashboard',
+                onClick: () => {
+                    this.props.history.push('/dashboard');
+                }
+            },
+            {
+                content: 'My profile',
+                onClick: () => {
+                    this.props.history.push(`/admins/${this.props.auth.admin.id}`);
+                }
+            },
+            { type: 'divider' },
+            {
+                content: 'Log out',
+                onClick: () => {
+                    this.props.authActions.logoutAdmin();
+                }
+            }
+        ];
+    }
+
+    getUserDropDownMarkup() {
+        return (
+            <Dropdown
+                size="small"
+                kind="secondary"
+                align="right"
+                arrow
+                buttonContent={this.props.auth.admin.firstName + ' ' + this.props.auth.admin.lastName}
+                dropdownContent={this.getUserDropDownContent()}
+            />
+        );
+    }
+
     getHeaderMarkup() {
         if (!this.props.auth.isAuthenticated) {
             return (
@@ -25,34 +62,7 @@ export class Navbar extends Component {
                         <Link to="/dashboard">Poodl</Link>
                     </li>
                     <li className="right" style={{ marginTop: '12px' }}>
-                        <Dropdown
-                            size="small"
-                            kind="secondary"
-                            align="right"
-                            arrow
-                            buttonContent={this.props.auth.admin.firstName + ' ' + this.props.auth.admin.lastName}
-                            dropdownContent={[
-                                {
-                                    content: 'Dashboard',
-                                    onClick: () => {
-                                        this.props.history.push('/dashboard');
-                                    }
-                                },
-                                {
-                                    content: 'My profile',
-                                    onClick: () => {
-                                        this.props.history.push(`/admins/${this.props.auth.admin.id}`);
-                                    }
-                                },
-                                { type: 'divider' },
-                                {
-                                    content: 'Log out',
-                                    onClick: () => {
-                                        this.props.authActions.logoutAdmin();
-                                    }
-                                }
-                            ]}
-                        />
+                        {this.getUserDropDownMarkup()}
                     </li>
                     <li className="right">
                         <Link to="/dashboard">My Dashboard</Link>
@@ -67,7 +77,20 @@ export class Navbar extends Component {
             );
         }
     }
+
+    getMemberCheckinHeaderMarkup() {
+        return (
+            <div className="header check-in-header">
+                <h1 className="check-in-title">Member check in</h1>
+            </div>
+        );
+    }
+
     render() {
+        // console.log(this.props.location.pathname);
+        if (this.props.location.pathname === '/member-check-in') {
+            return this.getMemberCheckinHeaderMarkup();
+        }
         return (
             <div className="header">
                 <ul>{this.getHeaderMarkup()}</ul>
@@ -88,7 +111,9 @@ export const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withRouter(Navbar));
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Navbar)
+);
