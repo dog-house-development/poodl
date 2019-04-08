@@ -3,8 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import moment from 'moment';
+import { withRouter } from 'react-router-dom';
 
 import MemberActions from '../../../../actions/memberActions';
+import AuthActions from '../../../../actions/authActions';
 // import ActivityActions from '../../../../actions/activityActions';
 // import Loading from '../../../ui/Loading';
 import Button from '../../../ui/Button';
@@ -29,6 +31,16 @@ class MemberCheckIn extends Component {
         };
         this.onNextClick = this.onNextClick.bind(this);
         this.setMemberId = this.setMemberId.bind(this);
+    }
+
+    componentDidMount() {
+        this.unlisten = this.props.history.listen(() => {
+            this.props.authActions.logoutAdmin();
+        });
+    }
+
+    componentWillUnmount() {
+        this.unlisten();
     }
 
     setMemberId(id) {
@@ -111,8 +123,6 @@ class MemberCheckIn extends Component {
         return (
             <div className="member-check-in-container">
                 <div>
-                    <h1>Check in</h1>
-                    <hr />
                     <div className="check-in-panel">{this.getPageMarkup()}</div>
                     <div className="navigation-buttons-container">
                         <div className="back-button-container">{this.getBackButtonMarkup()}</div>
@@ -134,13 +144,16 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
     return {
-        memberActions: bindActionCreators(MemberActions, dispatch)
+        memberActions: bindActionCreators(MemberActions, dispatch),
+        authActions: bindActionCreators(AuthActions, dispatch)
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(MemberCheckIn);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(MemberCheckIn)
+);
 
 // export default MemberCheckIn;

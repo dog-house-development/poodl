@@ -22,7 +22,14 @@ describe('Login tests', () => {
             },
             _state
         );
-        props = _.assign({}, { history: ['/login'] }, _props);
+        props = _.assign(
+            {},
+            {
+                history: ['/login'],
+                location: {}
+            },
+            _props
+        );
         wrapper = shallow(
             <Login
                 {..._.assign(
@@ -76,19 +83,7 @@ describe('Login tests', () => {
         });
     });
 
-    describe('componentWillReceiveProps', () => {
-        it('should redirect if admin is authenticated', () => {
-            const authenticatedState = {
-                auth: {
-                    isAuthenticated: true,
-                    loading: false
-                }
-            };
-            const newInstanceProps = _.concat(instance.props.history, '/dashboard');
-            instance.componentWillReceiveProps(authenticatedState);
-            expect(instance.props.history).toEqual(newInstanceProps);
-        });
-    });
+    describe('componentWillReceiveProps', () => {});
 
     describe('onChange', () => {
         it('should run without errors', () => {

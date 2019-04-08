@@ -10,7 +10,12 @@ const propTypes = {
     min: PropTypes.string,
     max: PropTypes.string,
     size: PropTypes.oneOf(['normal', 'large']),
+<<<<<<< HEAD
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+=======
+    kind: PropTypes.oneOf(['primary', 'secondary']),
+    value: PropTypes.string.isRequired,
+>>>>>>> 85b21ea379eca68df5258d73418b045d30fe0e77
     placeholder: PropTypes.string,
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),
@@ -26,7 +31,8 @@ const defaultProps = {
     size: 'normal',
     type: 'text',
     autoComplete: 'on',
-    value: ''
+    value: '',
+    kind: 'primary'
 };
 
 class Field extends Component {
@@ -53,7 +59,10 @@ class Field extends Component {
         }
 
         return (
-            <div className={classnames('field-wrapper', { 'inline-field': this.props.sidebyside })}>
+            <div
+                className={classnames('field-wrapper', this.props.className, {
+                    'inline-field': this.props.sidebyside
+                })}>
                 <p className="field-label">{this.props.label}</p>
                 <div className="field-outer">
                     <input
@@ -61,6 +70,7 @@ class Field extends Component {
                         className={classnames(
                             'field',
                             this.props.size,
+                            this.props.kind,
                             { 'first-side-by-side-input': this.props.sidebyside === 1 },
                             { 'second-side-by-side-input': this.props.sidebyside === 2 },
                             { 'field-error-border': this.props.error }

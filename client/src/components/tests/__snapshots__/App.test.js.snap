@@ -16,7 +16,7 @@ exports[`Navbar tests render should render correctly 1`] = `
     <div
       className="App wrapper"
     >
-      <Connect(withRouter(Navbar)) />
+      <withRouter(Connect(Navbar)) />
       <Switch>
         <Route
           component={[Function]}
