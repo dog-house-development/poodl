@@ -11,36 +11,23 @@ const volunteerInputs = [
                         id: 'firstName',
                         kind: 'field',
                         type: 'text',
-                        label: 'First name',
-                        style: {
-                            // width: '10em',
-                            flexGrow: '5'
-                        }
+                        label: 'First name'
                     },
                     {
                         id: 'middleInitial',
                         kind: 'field',
-                        label: 'M.I.',
-                        style: {
-                            // width: '2em'
-                        }
+                        label: 'M.I.'
                     },
                     {
                         id: 'lastName',
                         kind: 'field',
                         type: 'text',
-                        label: 'Last name',
-                        style: {
-                            // width: '10em'
-                        }
+                        label: 'Last name'
                     },
                     {
                         id: 'nickName',
                         kind: 'field',
-                        label: 'Nickname or Preferred Name',
-                        style: {
-                            // width: '10em'
-                        }
+                        label: 'Nickname or Preferred Name'
                     }
                 ]
             },
