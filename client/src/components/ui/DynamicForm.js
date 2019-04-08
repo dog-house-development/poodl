@@ -191,10 +191,11 @@ class DynamicForm extends React.Component {
 
     getInputKind() {
         return {
-            // At least send in '' for field value because if you send in
-            // undefined it will make the component uncontrolled at first,
-            // which results in an error
-            field: input => <Field {...input} />,
+            field: input => {
+                // Exclude kind from field because it is an actual prop
+                const { kind, ...excludedInput } = input;
+                return <Field {...excludedInput} />;
+            },
             checkbox: input => <CheckBox {...input} />,
             multiCheckbox: input => <MultiCheckbox {...input} />,
             datePicker: input => <DatePicker {...input} />,
