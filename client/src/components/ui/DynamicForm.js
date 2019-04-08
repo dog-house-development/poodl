@@ -72,7 +72,6 @@ class DynamicForm extends React.Component {
     };
 
     onEditSuccess = () => {
-        console.log('edit success');
         this.setState({ present: this.getPresent(), modifiedInputs: {} });
     };
 
