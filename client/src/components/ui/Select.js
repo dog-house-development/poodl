@@ -15,7 +15,8 @@ class Select extends React.Component {
         present: PropTypes.bool,
         size: PropTypes.string,
         value: PropTypes.string,
-        width: PropTypes.oneOf(['small', 'medium', 'large'])
+        width: PropTypes.oneOf(['small', 'medium', 'large']),
+        noCaret: PropTypes.bool
     };
 
     static defaultProps = {
@@ -53,9 +54,11 @@ class Select extends React.Component {
     }
 
     getSelectMarkup() {
-        const { present, size, width, label, padStart, ...inputProps } = this.props;
+        const { present, size, width, label, padStart, noCaret, ...inputProps } = this.props;
         return (
-            <select className={classnames('field', size, `${width}-width`)} {...inputProps}>
+            <select
+                className={classnames('field', size, `${width}-width`, noCaret ? 'no-caret' : null)}
+                {...inputProps}>
                 {this.getOptionsMarkup()}
             </select>
         );

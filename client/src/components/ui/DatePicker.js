@@ -97,6 +97,7 @@ class DatePicker extends Component {
                 options={days}
                 width="medium"
                 placeholder="Day"
+                noCaret
             />
         );
     }
@@ -112,6 +113,7 @@ class DatePicker extends Component {
                 options={months}
                 error={this.props.error}
                 placeholder="Month"
+                noCaret
             />
         );
     }
@@ -135,6 +137,7 @@ class DatePicker extends Component {
                 onChange={this.onChange}
                 options={years}
                 placeholder="Year"
+                noCaret
             />
         );
     }

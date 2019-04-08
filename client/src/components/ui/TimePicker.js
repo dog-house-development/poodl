@@ -58,6 +58,7 @@ class TimePicker extends Component {
                 onChange={this.onChange}
                 options={hours}
                 error={this.props.error}
+                noCaret
             />
         );
     }
@@ -73,6 +74,7 @@ class TimePicker extends Component {
                 options={minutes}
                 padStart={2}
                 width="medium"
+                noCaret
             />
         );
     }
@@ -86,6 +88,7 @@ class TimePicker extends Component {
                 value={this.state.ampm}
                 onChange={this.onChange}
                 options={ampms}
+                noCaret
             />
         );
     }

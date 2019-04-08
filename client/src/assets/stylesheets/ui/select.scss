@@ -2,8 +2,14 @@
   .field-outer {
     .field {
       flex-grow: 0;
+      -webkit-appearance: menulist;
+
       &.medium-width {
         min-width: 4em;
+      }
+
+      &.no-caret {
+        -webkit-appearance: none;
       }
     }
   }
