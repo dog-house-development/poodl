@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
 import MemberActions from '../../../../../actions/memberActions';
-// import Loading from '../../../../ui/Loading';
 import SearchField from '../../../../ui/SearchField';
 import Utils from '../../../../../utils/Utils';
 
@@ -37,12 +35,7 @@ export class FindMember extends Component {
                     data={this.props.members}
                     autoFocus="on"
                     minCharactersBeforeResults={3}
-                    searchRule={(param, member) =>
-                        // new RegExp('(^' + param + ')|(\\s' + param + ')', 'i').test(
-                        //     member.firstName + ' ' + member.lastName
-                        // )
-                        Utils.searchObject(param, [member.firstName, member.lastName])
-                    }
+                    searchRule={(param, member) => Utils.searchObject(param, [member.firstName, member.lastName])}
                     displayRow={row => (
                         <>
                             {row.firstName + ' ' + row.lastName}
