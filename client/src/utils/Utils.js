@@ -23,7 +23,7 @@ const Utils = {
         _.reduce(
             _.split(param, ' '),
             (result, word) => {
-                return new RegExp(word, 'i').test(_.values(data)) && result;
+                return new RegExp(_.escapeRegExp(word), 'i').test(_.values(data)) && result;
             },
             true
         ),
