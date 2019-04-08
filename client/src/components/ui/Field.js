@@ -10,12 +10,8 @@ const propTypes = {
     min: PropTypes.string,
     max: PropTypes.string,
     size: PropTypes.oneOf(['normal', 'large']),
-<<<<<<< HEAD
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-=======
     kind: PropTypes.oneOf(['primary', 'secondary']),
-    value: PropTypes.string.isRequired,
->>>>>>> 85b21ea379eca68df5258d73418b045d30fe0e77
     placeholder: PropTypes.string,
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),

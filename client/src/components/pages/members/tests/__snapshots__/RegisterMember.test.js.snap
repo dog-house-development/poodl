@@ -55,7 +55,6 @@ exports[`Register member tests render should render correctly 1`] = `
                 "label": "Date of Birth",
                 "maxYear": 1990,
                 "minYear": 1900,
-                "value": "1950-01-01T07:00:00.000Z",
               },
               Object {
                 "id": "email",
