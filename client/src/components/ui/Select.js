@@ -64,6 +64,12 @@ class Select extends React.Component {
         );
     }
 
+    getIcon() {
+        if (!this.props.noCaret) {
+            return <i className="select-icon material-icons">arrow_drop_down</i>;
+        }
+    }
+
     render() {
         if (this.props.present) {
             return (
@@ -79,7 +85,10 @@ class Select extends React.Component {
                 <label>
                     {this.getLabelMarkup()}
                     <div className="field-outer">
-                        {this.getSelectMarkup()}
+                        <div className="select-inner">
+                            {this.getSelectMarkup()}
+                            {this.getIcon()}
+                        </div>
                         <p className="field-error-label">{this.props.error}</p>
                     </div>
                 </label>
