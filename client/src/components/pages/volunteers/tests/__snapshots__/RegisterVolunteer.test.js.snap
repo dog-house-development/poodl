@@ -128,7 +128,7 @@ exports[`Register volunteer tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
-            "label": "Personal Info",
+            "label": "",
           },
           Object {
             "id": "volunteerInfo",

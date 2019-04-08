@@ -148,11 +148,22 @@ class DynamicForm extends React.Component {
         );
     }
 
+    getGroupLabel(input) {
+        if (input.label) {
+            return (
+                <h3 className={classnames('input-group-label', this.props.editable ? 'editable' : '')}>
+                    {input.label}
+                </h3>
+            );
+        }
+
+        return <h3 />;
+    }
     getGroupTitleMarkup(input) {
         if (this.props.editable) {
             return (
                 <div className="side-by-side">
-                    <h3 className="input-group-label editable">{input.label}</h3>
+                    {this.getGroupLabel(input)}
                     <div>
                         {this.getGroupLoading()}
                         {this.getGroupButtons(input)}
@@ -161,7 +172,7 @@ class DynamicForm extends React.Component {
             );
         }
 
-        return <h3 className="input-group-label">{input.label}</h3>;
+        return this.getGroupLabel(input);
     }
 
     groupDescription(input) {
