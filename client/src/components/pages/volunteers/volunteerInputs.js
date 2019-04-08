@@ -1,7 +1,7 @@
 const volunteerInputs = [
     {
         id: 'personalInfo',
-        label: '',
+        label: 'Personal Info',
         kind: 'group',
         inputs: [
             {
