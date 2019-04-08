@@ -38,23 +38,35 @@ exports[`Register volunteer tests render should render correctly 1`] = `
                     "id": "firstName",
                     "kind": "field",
                     "label": "First name",
+                    "style": Object {
+                      "flex": 3,
+                    },
                     "type": "text",
                   },
                   Object {
                     "id": "middleInitial",
                     "kind": "field",
                     "label": "M.I.",
+                    "style": Object {
+                      "flex": 1,
+                    },
                   },
                   Object {
                     "id": "lastName",
                     "kind": "field",
                     "label": "Last name",
+                    "style": Object {
+                      "flex": 3,
+                    },
                     "type": "text",
                   },
                   Object {
                     "id": "nickName",
                     "kind": "field",
-                    "label": "Nickname or Preferred Name",
+                    "label": "Nickname",
+                    "style": Object {
+                      "flex": 2,
+                    },
                   },
                 ],
                 "kind": "flex",
@@ -121,14 +133,82 @@ exports[`Register volunteer tests render should render correctly 1`] = `
                 ],
                 "kind": "flex",
               },
+            ],
+            "kind": "group",
+            "label": "Personal Info",
+          },
+          Object {
+            "id": "references",
+            "inputs": Array [
               Object {
-                "id": "references",
-                "kind": "field",
-                "label": "References",
+                "id": "reference1",
+                "inputs": Array [
+                  Object {
+                    "id": "reference1Name",
+                    "kind": "field",
+                    "label": "Name",
+                  },
+                  Object {
+                    "id": "reference1Relationship",
+                    "kind": "field",
+                    "label": "Relationship",
+                  },
+                  Object {
+                    "id": "reference1Phone",
+                    "kind": "field",
+                    "label": "Phone",
+                  },
+                ],
+                "kind": "flex",
+                "label": "Reference #1",
+              },
+              Object {
+                "id": "reference2",
+                "inputs": Array [
+                  Object {
+                    "id": "reference2Name",
+                    "kind": "field",
+                    "label": "Name",
+                  },
+                  Object {
+                    "id": "reference2Relationship",
+                    "kind": "field",
+                    "label": "Relationship",
+                  },
+                  Object {
+                    "id": "reference2Phone",
+                    "kind": "field",
+                    "label": "Phone",
+                  },
+                ],
+                "kind": "flex",
+                "label": "Reference #2",
+              },
+              Object {
+                "id": "reference3",
+                "inputs": Array [
+                  Object {
+                    "id": "reference3Name",
+                    "kind": "field",
+                    "label": "Name",
+                  },
+                  Object {
+                    "id": "reference3Relationship",
+                    "kind": "field",
+                    "label": "Relationship",
+                  },
+                  Object {
+                    "id": "reference3Phone",
+                    "kind": "field",
+                    "label": "Phone",
+                  },
+                ],
+                "kind": "flex",
+                "label": "Reference #3",
               },
             ],
             "kind": "group",
-            "label": "",
+            "label": "References",
           },
           Object {
             "id": "volunteerInfo",
