@@ -44,7 +44,7 @@ class Field extends Component {
     }
 
     render() {
-        const { present, ...inputProps } = this.props;
+        const { present, editable, ...inputProps } = this.props;
         if (present) {
             return (
                 <div className="field-wrapper editable-field-wrapper">
