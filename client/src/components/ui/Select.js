@@ -65,7 +65,6 @@ class Select extends React.Component {
     }
 
     render() {
-        // console.log(this.props.id, this.props.present);
         if (this.props.present) {
             return (
                 <div className="field-wrapper editable-field-wrapper">

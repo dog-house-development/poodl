@@ -64,7 +64,7 @@ export class AddActivity extends Component {
             endDate: end.toISOString()
         };
 
-        //this.props.activityActions.create(newActivity, this.props.history);
+        this.props.activityActions.create(newActivity, this.props.history);
     };
 
     getFields = () => {

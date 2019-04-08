@@ -12,7 +12,6 @@ import Radio from './Radio';
 import Button from './Button';
 import SelectBoolean from './SelectBoolean';
 import assert from 'assert';
-import PageNotFound from './../pages/PageNotFound';
 import Loading from './Loading';
 
 const possibleKinds = [
@@ -39,7 +38,6 @@ const defaultProps = {
 
 class DynamicForm extends React.Component {
     constructor(props) {
-        console.log('dynamic form constructor');
         super(props);
         this.state = {
             hasErrors: false,
@@ -64,41 +62,37 @@ class DynamicForm extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log('modified inputs', this.state.modifiedInputs);
         if (this.props.errors !== prevProps.errors) {
             this.setState({ hasErrors: true });
         }
     }
 
     handleCancelClick = e => {
-        this.setState({ present: { ...this.state.present, [e.target.id]: true }, modifiedInputs: {} });
+        this.setState({ present: { ...this.state.present, [e.target.name]: true }, modifiedInputs: {} });
     };
 
-    onEditSuccess = e => () => {
+    onEditSuccess = () => {
         console.log('edit success');
-        e.persist();
         this.setState({ present: this.getPresent(), modifiedInputs: {} });
     };
 
     handleDoneClick = e => {
         e.persist();
         if (!_.isEmpty(this.state.modifiedInputs)) {
-            this.props.editValues(this.state.modifiedInputs, this.onEditSuccess(e));
+            this.props.editValues(this.state.modifiedInputs, this.onEditSuccess);
         } else {
-            console.log('empty so leave edit mode');
-            this.setState({ present: { ...this.state.present, [e.target.id]: true }, modifiedInputs: {} });
+            this.setState({ present: { ...this.state.present, [e.target.name]: true }, modifiedInputs: {} });
         }
     };
 
     handleEditClick = e => {
-        // console.log(e.target.id);
         this.setState({ present: { ...this.state.present, [e.target.id]: false } });
     };
 
     getCancelButton(group) {
         return (
             <Button
-                id={group.id}
+                name={group.id}
                 size="small"
                 kind="tertiary"
                 onClick={this.handleCancelClick}
@@ -111,7 +105,7 @@ class DynamicForm extends React.Component {
     getDoneButton(group) {
         return (
             <Button
-                id={group.id}
+                name={group.id}
                 size="small"
                 kind={_.isEmpty(this.state.modifiedInputs) ? 'secondary' : 'primary'}
                 onClick={this.handleDoneClick}
@@ -123,9 +117,11 @@ class DynamicForm extends React.Component {
 
     getEditButton(group) {
         return (
-            <Button id={group.id} size="small" onClick={this.handleEditClick}>
-                Edit
-            </Button>
+            <div className="edit">
+                <Button id={group.id} size="small" onClick={this.handleEditClick}>
+                    Edit
+                </Button>
+            </div>
         );
     }
 
@@ -145,11 +141,10 @@ class DynamicForm extends React.Component {
         }
 
         return (
-            <div>
-                {this.getGroupLoading()}
+            <>
                 {this.getCancelButton(group)}
                 {this.getDoneButton(group)}
-            </div>
+            </>
         );
     }
 
@@ -158,7 +153,10 @@ class DynamicForm extends React.Component {
             return (
                 <div className="side-by-side">
                     <h3 className="input-group-label">{input.label || input.id}</h3>
-                    {this.getGroupButtons(input)}
+                    <div>
+                        {this.getGroupLoading()}
+                        {this.getGroupButtons(input)}
+                    </div>
                 </div>
             );
         }
@@ -174,7 +172,6 @@ class DynamicForm extends React.Component {
 
     getGroupInput(input) {
         const present = _.get(this.state.present, input.id);
-        // console.log(input.id, present);
         return (
             <div className={classnames('input-group', this.props.editable ? 'panel' : null)} key={input.id}>
                 {this.getGroupTitleMarkup(input)}
@@ -230,13 +227,16 @@ class DynamicForm extends React.Component {
         assert.ok(input.kind, `The input ${input.id} must have a kind`);
         assert(_.includes(possibleKinds, input.kind), `The input ${input.id} must have a kind`);
         assert(input.id, `The input ${input.kind} must have an id`);
-        // console.log(input.id, input.present);
 
         let inputValue;
         if (!_.isNil(this.state.modifiedInputs[input.id])) {
             inputValue = this.state.modifiedInputs[input.id];
         } else {
             inputValue = this.props.values[input.id] || input.value;
+        }
+
+        if (this.props.editable && _.has(input, 'editable') && !input.editable) {
+            return;
         }
 
         return this.getInputKind()[input.kind]({
@@ -249,11 +249,9 @@ class DynamicForm extends React.Component {
     };
 
     getInputMarkup(inputs, present = false) {
-        // console.log(inputs, present);
         _.forEach(inputs, input => {
             input.present = present;
         });
-        // console.log(inputs, present);
         return _.map(inputs, this.getInput);
     }
 

@@ -3,10 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import MemberActions from '../../../actions/memberActions';
-import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
-import memberFields, { Categories } from './memberFields';
-import EditableProfile from '../../ui/EditableProfile';
 import DynamicForm from '../../ui/DynamicForm';
 import memberInputs from './memberInputs';
 
@@ -18,10 +15,6 @@ export class MemberProfile extends Component {
     componentDidMount() {
         // call redux action to retrieve specified profile from api
         this.props.memberActions.get(this.props.match.params.id);
-    }
-
-    componentDidUpdate() {
-        console.log('member', this.props.member);
     }
 
     editMember = (modifiedInputs, onSuccess) => {

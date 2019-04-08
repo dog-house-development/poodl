@@ -1,144 +1,158 @@
 const volunteerInputs = [
     {
-        id: 'name',
-        kind: 'flex',
+        id: 'Personal Info',
+        kind: 'group',
         inputs: [
             {
-                id: 'firstName',
-                kind: 'field',
-                type: 'text',
-                label: 'First name',
-                style: {
-                    // width: '10em',
-                    flexGrow: '5'
-                }
+                id: 'name',
+                kind: 'flex',
+                inputs: [
+                    {
+                        id: 'firstName',
+                        kind: 'field',
+                        type: 'text',
+                        label: 'First name',
+                        style: {
+                            // width: '10em',
+                            flexGrow: '5'
+                        }
+                    },
+                    {
+                        id: 'middleInitial',
+                        kind: 'field',
+                        label: 'M.I.',
+                        style: {
+                            // width: '2em'
+                        }
+                    },
+                    {
+                        id: 'lastName',
+                        kind: 'field',
+                        type: 'text',
+                        label: 'Last name',
+                        style: {
+                            // width: '10em'
+                        }
+                    },
+                    {
+                        id: 'nickName',
+                        kind: 'field',
+                        label: 'Nickname or Preferred Name',
+                        style: {
+                            // width: '10em'
+                        }
+                    }
+                ]
             },
             {
-                id: 'middleInitial',
+                id: 'email',
                 kind: 'field',
-                label: 'M.I.',
-                style: {
-                    // width: '2em'
-                }
+                type: 'email',
+                label: 'Email'
             },
             {
-                id: 'lastName',
+                id: 'password',
                 kind: 'field',
-                type: 'text',
-                label: 'Last name',
-                style: {
-                    // width: '10em'
-                }
+                type: 'password',
+                label: 'Password',
+                editable: false
             },
             {
-                id: 'nickName',
+                id: 'password2',
                 kind: 'field',
-                label: 'Nickname or Preferred Name',
-                style: {
-                    // width: '10em'
-                }
+                type: 'password',
+                label: 'Confirm Password',
+                editable: false
+            },
+            {
+                id: 'address',
+                kind: 'flex',
+                inputs: [
+                    {
+                        id: 'streetAddress',
+                        kind: 'field',
+                        label: 'Street Address'
+                    },
+                    {
+                        id: 'city',
+                        kind: 'field',
+                        label: 'City'
+                    },
+                    {
+                        id: 'state',
+                        kind: 'field',
+                        label: 'State'
+                    },
+                    {
+                        id: 'zip',
+                        kind: 'field',
+                        label: 'ZIP'
+                    }
+                ]
+            },
+            {
+                id: 'phones',
+                kind: 'flex',
+                inputs: [
+                    {
+                        id: 'homePhone',
+                        kind: 'field',
+                        label: 'Home Phone'
+                    },
+                    {
+                        id: 'cellPhone',
+                        kind: 'field',
+                        label: 'Cell or Message Phone'
+                    }
+                ]
+            },
+            {
+                id: 'references',
+                kind: 'field',
+                label: 'References'
             }
         ]
     },
     {
-        id: 'email',
-        kind: 'field',
-        type: 'email',
-        label: 'Email'
-    },
-    {
-        id: 'password',
-        kind: 'field',
-        type: 'password',
-        label: 'Password'
-    },
-    {
-        id: 'password2',
-        kind: 'field',
-        type: 'password',
-        label: 'Confirm Password'
-    },
-    {
-        id: 'address',
-        kind: 'flex',
+        id: 'Volunteer Info',
+        kind: 'group',
         inputs: [
             {
-                id: 'streetAddress',
-                kind: 'field',
-                label: 'Street Address'
+                id: 'learnAboutVolunteerProgram',
+                kind: 'radio',
+                label: "How did you learn about Belgrade Senior Center's volunteer program",
+                options: [
+                    'Friend or Relative',
+                    'Brochure/Poster',
+                    'Newspaper, Television or Radio',
+                    'School or College',
+                    'Belgrade Senior Center',
+                    'United Way',
+                    'Community Event',
+                    'Other'
+                ]
             },
             {
-                id: 'city',
+                id: 'volunteerFrequency',
                 kind: 'field',
-                label: 'City'
+                label: 'How often would you like to volunteer?'
             },
             {
-                id: 'state',
-                kind: 'field',
-                label: 'State'
+                id: 'occasionalOneDayProjects',
+                kind: 'selectBoolean',
+                label: 'I would like to be contacted for occasional one-day projects that fit my skills and interests'
             },
             {
-                id: 'zip',
+                id: 'singleDayActivity',
+                kind: 'selectBoolean',
+                label: 'I would like to volunteer for a single day activity.'
+            },
+            {
+                id: 'availabilitySchedule',
                 kind: 'field',
-                label: 'ZIP'
+                label: 'What is your availability schedule?'
             }
         ]
-    },
-    {
-        id: 'phones',
-        kind: 'flex',
-        inputs: [
-            {
-                id: 'homePhone',
-                kind: 'field',
-                label: 'Home Phone'
-            },
-            {
-                id: 'cellPhone',
-                kind: 'field',
-                label: 'Cell or Message Phone'
-            }
-        ]
-    },
-    {
-        id: 'references',
-        kind: 'field',
-        label: 'References'
-    },
-    {
-        id: 'learnAboutVolunteerProgram',
-        kind: 'radio',
-        label: "How did you learn about Belgrade Senior Center's volunteer program",
-        options: [
-            'Friend or Relative',
-            'Brochure/Poster',
-            'Newspaper, Television or Radio',
-            'School or College',
-            'Belgrade Senior Center',
-            'United Way',
-            'Community Event',
-            'Other'
-        ]
-    },
-    {
-        id: 'volunteerFrequency',
-        kind: 'field',
-        label: 'How often would you like to volunteer?'
-    },
-    {
-        id: 'occasionalOneDayProjects',
-        kind: 'selectBoolean',
-        label: 'I would like to be contacted for occasional one-day projects that fit my skills and interests'
-    },
-    {
-        id: 'singleDayActivity',
-        kind: 'selectBoolean',
-        label: 'I would like to volunteer for a single day activity.'
-    },
-    {
-        id: 'availabilitySchedule',
-        kind: 'field',
-        label: 'What is your availability schedule?'
     },
     {
         id: 'skills',

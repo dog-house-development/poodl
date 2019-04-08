@@ -23,9 +23,6 @@ class Radio extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.id === 'gender') {
-            // console.log(this.props.id, this.props.value);
-        }
         if (this.props.value !== prevProps.value) {
             this.setState({ value: this.props.value });
         }
@@ -40,10 +37,6 @@ class Radio extends Component {
     }
 
     onChange = e => {
-        if (this.props.id === 'gender') {
-            console.log(this.props.id, e.target.id);
-        }
-
         this.setState({ value: e.target.id });
     };
 
