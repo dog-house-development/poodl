@@ -1,6 +1,7 @@
 const volunteerInputs = [
     {
-        id: 'Personal Info',
+        id: 'personalInfo',
+        label: 'Personal Info',
         kind: 'group',
         inputs: [
             {
@@ -101,7 +102,8 @@ const volunteerInputs = [
         ]
     },
     {
-        id: 'Volunteer Info',
+        id: 'volunteerInfo',
+        label: 'Volunteer Info',
         kind: 'group',
         inputs: [
             {
@@ -144,7 +146,8 @@ const volunteerInputs = [
     {
         id: 'skills',
         kind: 'group',
-        label: 'Skills and Interests (please check all that apply)',
+        label: 'Skills and Interests',
+        description: 'Please check all that apply.',
         inputs: [
             {
                 id: 'houseMaintenanceAndRepairs',
