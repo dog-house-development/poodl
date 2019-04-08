@@ -183,8 +183,9 @@ class DynamicForm extends React.Component {
 
     getFlexInput(input) {
         return (
-            <div className="inline-input" key={input.id}>
-                {this.getInputMarkup(input.inputs, input.present)}
+            <div className="inline-input-wrapper" key={input.id}>
+                <h3 className="inline-input-label">{input.label}</h3>
+                <div className="inline-input">{this.getInputMarkup(input.inputs, input.present)}</div>
             </div>
         );
     }

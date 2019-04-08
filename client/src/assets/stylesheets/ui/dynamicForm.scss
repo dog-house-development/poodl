@@ -1,18 +1,24 @@
 .dynamic-form {
-  .inline-input {
-    display: flex;
+  .inline-input-wrapper {
+    .inline-input-label {
+      color: $gray-7;
+      font-size: 1.1em;
+    }
+    .inline-input {
+      display: flex;
 
-    .field-wrapper {
-      flex-grow: 1;
-      margin-left: 0.7em;
+      .field-wrapper {
+        flex-grow: 1;
+        margin-left: 0.7em;
 
-      &:first-child {
-        margin-left: 0;
-      }
+        &:first-child {
+          margin-left: 0;
+        }
 
-      .field-outer {
-        input {
-          width: 0;
+        .field-outer {
+          input {
+            width: 0;
+          }
         }
       }
     }
