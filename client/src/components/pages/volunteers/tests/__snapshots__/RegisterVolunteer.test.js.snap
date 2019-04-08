@@ -29,7 +29,7 @@ exports[`Register volunteer tests render should render correctly 1`] = `
       inputs={
         Array [
           Object {
-            "id": "Personal Info",
+            "id": "personalInfo",
             "inputs": Array [
               Object {
                 "id": "name",
@@ -38,29 +38,23 @@ exports[`Register volunteer tests render should render correctly 1`] = `
                     "id": "firstName",
                     "kind": "field",
                     "label": "First name",
-                    "style": Object {
-                      "flexGrow": "5",
-                    },
                     "type": "text",
                   },
                   Object {
                     "id": "middleInitial",
                     "kind": "field",
                     "label": "M.I.",
-                    "style": Object {},
                   },
                   Object {
                     "id": "lastName",
                     "kind": "field",
                     "label": "Last name",
-                    "style": Object {},
                     "type": "text",
                   },
                   Object {
                     "id": "nickName",
                     "kind": "field",
                     "label": "Nickname or Preferred Name",
-                    "style": Object {},
                   },
                 ],
                 "kind": "flex",
@@ -134,9 +128,10 @@ exports[`Register volunteer tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Personal Info",
           },
           Object {
-            "id": "Volunteer Info",
+            "id": "volunteerInfo",
             "inputs": Array [
               Object {
                 "id": "learnAboutVolunteerProgram",
@@ -175,8 +170,10 @@ exports[`Register volunteer tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Volunteer Info",
           },
           Object {
+            "description": "Please check all that apply.",
             "id": "skills",
             "inputs": Array [
               Object {
@@ -255,7 +252,7 @@ exports[`Register volunteer tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
-            "label": "Skills and Interests (please check all that apply)",
+            "label": "Skills and Interests",
           },
         ]
       }
