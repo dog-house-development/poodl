@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Loading from './Loading';
 
 const propTypes = {
     onClick: PropTypes.func,
@@ -8,26 +9,31 @@ const propTypes = {
     content: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     type: PropTypes.string,
     formButton: PropTypes.bool,
-    dropdownButton: PropTypes.bool,
     id: PropTypes.string
 };
 
 const defaultProps = {
     size: 'medium',
     kind: 'primary',
-    dropdownButton: false
+    type: 'button'
 };
 
 class Button extends Component {
+    getContent() {
+        if (this.props.loading) {
+            return <Loading />;
+        }
+
+        return this.props.content || this.props.children;
+    }
+
     render() {
+        const { content, size, kind, formButton, ...buttonProps } = this.props;
         return (
             <button
-                onClick={this.props.onClick}
                 className={`button ${this.props.size} ${this.props.kind} ${this.props.formButton ? 'form-button' : ''}`}
-                type={this.props.type}
-                id={this.props.id}
-            >
-                {this.props.content ? this.props.content : this.props.children}
+                {...buttonProps}>
+                {this.getContent()}
             </button>
         );
     }

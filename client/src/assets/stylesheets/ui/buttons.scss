@@ -58,6 +58,19 @@
     }
   }
 
+  &:disabled {
+    background-color: white;
+    border-color: $gray-2;
+    color: $gray-3;
+
+    &:hover {
+      background-color: white;
+      border-color: $gray-2;
+      color: $gray-3;
+      cursor: default;
+    }
+  }
+
   &.tertiary {
     border-color: transparent;
     color: $button-primary;
@@ -69,6 +82,16 @@
 
     &:active {
       color: $button-primary-active;
+    }
+
+    &:disabled {
+      color: $gray-3;
+
+      &:hover {
+        color: $gray-3;
+        cursor: default;
+        border-color: transparent;
+      }
     }
   }
 

@@ -1,8 +1,7 @@
-import moment from 'moment';
-
 const memberInputs = [
     {
-        id: 'Personal Info',
+        id: 'personalInfo',
+        label: 'Personal Info',
         kind: 'group',
         inputs: [
             {
@@ -28,8 +27,7 @@ const memberInputs = [
                 kind: 'datePicker',
                 label: 'Date of Birth',
                 minYear: 1900,
-                maxYear: 1990,
-                value: moment('1-1-1950', 'M-D-YYYY')
+                maxYear: 1990
             },
             {
                 id: 'email',
@@ -52,7 +50,8 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Emergency Contact Info',
+        id: 'emergencyContactInfo',
+        label: 'Emergency Contact Info',
         kind: 'group',
         inputs: [
             {
@@ -76,7 +75,8 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Membership Details',
+        id: 'membershipDetails',
+        label: 'Membership Details',
         kind: 'group',
         inputs: [
             {
@@ -120,7 +120,8 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Health Info',
+        id: 'healthInfo',
+        label: 'Health Info',
         kind: 'group',
         inputs: [
             {
@@ -150,7 +151,8 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Demographic Info',
+        id: 'demographicInfo',
+        label: 'Demographic Info',
         kind: 'group',
         inputs: [
             {
@@ -219,7 +221,8 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Nation Family Caregiver Support Program',
+        id: 'supportProgram',
+        label: 'Nation Family Caregiver Support Program',
         description:
             'If client is receiving services under National Family Caregiver Support Program, complete the following:',
         kind: 'group',

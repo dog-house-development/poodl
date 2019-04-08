@@ -29,7 +29,7 @@ exports[`Register member tests render should render correctly 1`] = `
       inputs={
         Array [
           Object {
-            "id": "Personal Info",
+            "id": "personalInfo",
             "inputs": Array [
               Object {
                 "id": "name",
@@ -55,7 +55,6 @@ exports[`Register member tests render should render correctly 1`] = `
                 "label": "Date of Birth",
                 "maxYear": 1990,
                 "minYear": 1900,
-                "value": "1950-01-01T07:00:00.000Z",
               },
               Object {
                 "id": "email",
@@ -81,9 +80,10 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Personal Info",
           },
           Object {
-            "id": "Emergency Contact Info",
+            "id": "emergencyContactInfo",
             "inputs": Array [
               Object {
                 "id": "emergencyContactName",
@@ -105,9 +105,10 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Emergency Contact Info",
           },
           Object {
-            "id": "Membership Details",
+            "id": "membershipDetails",
             "inputs": Array [
               Object {
                 "id": "memberisNewOrRenewal",
@@ -157,9 +158,10 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Membership Details",
           },
           Object {
-            "id": "Health Info",
+            "id": "healthInfo",
             "inputs": Array [
               Object {
                 "id": "specialDiet",
@@ -187,9 +189,10 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Health Info",
           },
           Object {
-            "id": "Demographic Info",
+            "id": "demographicInfo",
             "inputs": Array [
               Object {
                 "id": "race",
@@ -259,10 +262,11 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Demographic Info",
           },
           Object {
             "description": "If client is receiving services under National Family Caregiver Support Program, complete the following:",
-            "id": "Nation Family Caregiver Support Program",
+            "id": "supportProgram",
             "inputs": Array [
               Object {
                 "id": "caregiver",
@@ -322,6 +326,7 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Nation Family Caregiver Support Program",
           },
         ]
       }
