@@ -157,7 +157,7 @@ class DynamicForm extends React.Component {
             );
         }
 
-        return <h3 />;
+        return <div />;
     }
     getGroupTitleMarkup(input) {
         if (this.props.editable) {
