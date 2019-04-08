@@ -21,11 +21,17 @@
   .input-group {
     .input-group-label {
       color: $gray-7;
-      font-size: 1.5em;
-      border-bottom-width: 2px;
-      border-bottom-style: solid;
-      border-color: $gray-6;
+      font-size: 1.6em;
+      border-bottom: 2px solid $gray-3;
+      padding-bottom: 0.3em;
       margin-bottom: 0.6em;
+      margin-top: 1.8em;
+    }
+
+    &:first-child {
+      .input-group-label {
+        margin-top: 0.8em;
+      }
     }
 
     .input-group-description {
