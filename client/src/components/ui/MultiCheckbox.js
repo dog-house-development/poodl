@@ -53,9 +53,6 @@ class MultiCheckbox extends React.Component {
     }
 
     onChange = e => {
-        if (e.target.checked) {
-            // add it to the
-        }
         this.setState({ [e.target.id]: e.target.checked });
     };
 
