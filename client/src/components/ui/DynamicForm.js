@@ -207,7 +207,10 @@ class DynamicForm extends React.Component {
                 const { kind, ...excludedInput } = input;
                 return <Field {...excludedInput} />;
             },
-            checkbox: input => <CheckBox {...input} />,
+            checkbox: input => {
+                const value = _.union(this.state.modifiedInputs[input.id], this.props.values[input.id]);
+                return <CheckBox value={value} {...input} />;
+            },
             multiCheckbox: input => <MultiCheckbox {...input} />,
             datePicker: input => <DatePicker {...input} />,
             select: input => <Select {...input} />,

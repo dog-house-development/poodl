@@ -5,8 +5,12 @@ import _ from 'lodash';
 class MultiCheckbox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = _.reduce(
-            props.options,
+        this.state = this.valuePropToState();
+    }
+
+    optionsAsObject() {
+        return _.reduce(
+            this.props.options,
             (state, option) => {
                 state[option] = false;
                 return state;
@@ -19,6 +23,20 @@ class MultiCheckbox extends React.Component {
         return _.keys(_.pickBy(this.state));
     }
 
+    valuePropToState() {
+        // take value array like ['one', 'two']
+        // take options like ['one', 'two', 'three', 'four']
+        // return object like { one: true, two: true, three: false, four: false}
+        const result = this.optionsAsObject();
+        _.forEach(this.props.options, option => {
+            if (_.includes(this.props.value, option)) {
+                result[option] = true;
+            }
+        });
+
+        return result;
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if (this.state !== prevState) {
             this.props.onChange({
@@ -28,21 +46,23 @@ class MultiCheckbox extends React.Component {
                 }
             });
         }
+
+        if (!_.isEqual(this.props.value, prevProps.value)) {
+            this.setState(this.valuePropToState());
+        }
     }
 
     onChange = e => {
+        if (e.target.checked) {
+            // add it to the
+        }
         this.setState({ [e.target.id]: e.target.checked });
     };
 
     getCheckboxMarkup = option => {
         return (
             <div className="multi-checkbox-item" key={option}>
-                <CheckBox
-                    label={option}
-                    id={option}
-                    onChange={this.onChange}
-                    value={_.includes(this.props.value, option)}
-                />
+                <CheckBox label={option} id={option} onChange={this.onChange} value={this.state[option]} />
             </div>
         );
     };
