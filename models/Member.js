@@ -104,7 +104,16 @@ const memberSchema = new Schema(
             type: String
         },
         numberInHousehold: {
-            type: String
+            type: String,
+            default: 0,
+            validate: {
+                validator: v => {
+                    if (v) {
+                        return Validator.isInt(v, { min: 0 });
+                    }
+                },
+                message: 'Not a valid number'
+            }
         },
         isPersonCaregiver: {
             type: Boolean
@@ -131,9 +140,16 @@ const memberSchema = new Schema(
             type: String
         },
         numberOfKidsUnder19: {
-            type: Number,
-            min: 0,
-            default: 0
+            type: String,
+            default: 0,
+            validate: {
+                validator: v => {
+                    if (v) {
+                        return Validator.isInt(v, { min: 0 });
+                    }
+                },
+                message: 'Not a valid number'
+            }
         },
         needsAADL: {
             type: [String]
