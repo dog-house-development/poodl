@@ -39,7 +39,6 @@ class Field extends Component {
 
     handleChange(e) {
         e.preventDefault();
-        e.persist();
         this.props.onChange(e);
     }
 
