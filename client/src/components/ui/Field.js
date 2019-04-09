@@ -44,10 +44,10 @@ class Field extends Component {
     }
 
     render() {
-        const { present, editable, ...inputProps } = this.props;
+        const { style, present, editable, ...inputProps } = this.props;
         if (present) {
             return (
-                <div className="field-wrapper editable-field-wrapper">
+                <div style={style} className="field-wrapper editable-field-wrapper">
                     <p className="field-label">{this.props.label}</p>
                     <p>{this.props.value}</p>
                 </div>
@@ -56,6 +56,7 @@ class Field extends Component {
 
         return (
             <div
+                style={style}
                 className={classnames('field-wrapper', this.props.className, {
                     'inline-field': this.props.sidebyside
                 })}>
