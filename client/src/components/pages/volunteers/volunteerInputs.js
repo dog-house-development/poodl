@@ -1,7 +1,7 @@
 const volunteerInputs = [
     {
         id: 'personalInfo',
-        label: '',
+        label: 'Personal Info',
         kind: 'group',
         inputs: [
             {
@@ -12,23 +12,35 @@ const volunteerInputs = [
                         id: 'firstName',
                         kind: 'field',
                         type: 'text',
-                        label: 'First name'
+                        label: 'First name',
+                        style: {
+                            flex: 3
+                        }
                     },
                     {
                         id: 'middleInitial',
                         kind: 'field',
-                        label: 'M.I.'
+                        label: 'M.I.',
+                        style: {
+                            flex: 1
+                        }
                     },
                     {
                         id: 'lastName',
                         kind: 'field',
                         type: 'text',
-                        label: 'Last name'
+                        label: 'Last name',
+                        style: {
+                            flex: 3
+                        }
                     },
                     {
                         id: 'nickName',
                         kind: 'field',
-                        label: 'Nickname or Preferred Name'
+                        label: 'Nickname',
+                        style: {
+                            flex: 2
+                        }
                     }
                 ]
             },
@@ -93,11 +105,79 @@ const volunteerInputs = [
                         label: 'Cell or Message Phone'
                     }
                 ]
+            }
+        ]
+    },
+    {
+        id: 'references',
+        label: 'References',
+        kind: 'group',
+        inputs: [
+            {
+                id: 'reference1',
+                kind: 'flex',
+                label: 'Reference #1',
+                inputs: [
+                    {
+                        id: 'reference1Name',
+                        kind: 'field',
+                        label: 'Name'
+                    },
+                    {
+                        id: 'reference1Relationship',
+                        kind: 'field',
+                        label: 'Relationship'
+                    },
+                    {
+                        id: 'reference1Phone',
+                        kind: 'field',
+                        label: 'Phone'
+                    }
+                ]
             },
             {
-                id: 'references',
-                kind: 'field',
-                label: 'References'
+                id: 'reference2',
+                kind: 'flex',
+                label: 'Reference #2',
+                inputs: [
+                    {
+                        id: 'reference2Name',
+                        kind: 'field',
+                        label: 'Name'
+                    },
+                    {
+                        id: 'reference2Relationship',
+                        kind: 'field',
+                        label: 'Relationship'
+                    },
+                    {
+                        id: 'reference2Phone',
+                        kind: 'field',
+                        label: 'Phone'
+                    }
+                ]
+            },
+            {
+                id: 'reference3',
+                kind: 'flex',
+                label: 'Reference #3',
+                inputs: [
+                    {
+                        id: 'reference3Name',
+                        kind: 'field',
+                        label: 'Name'
+                    },
+                    {
+                        id: 'reference3Relationship',
+                        kind: 'field',
+                        label: 'Relationship'
+                    },
+                    {
+                        id: 'reference3Phone',
+                        kind: 'field',
+                        label: 'Phone'
+                    }
+                ]
             }
         ]
     },

@@ -80,7 +80,7 @@ const memberInputs = [
         kind: 'group',
         inputs: [
             {
-                id: 'memberisNewOrRenewal',
+                id: 'memberIsNewOrRenewal',
                 kind: 'radio',
                 label: 'Member is new or renewal',
                 options: ['new', 'renewal']
