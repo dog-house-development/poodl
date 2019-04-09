@@ -68,7 +68,11 @@ class DynamicForm extends React.Component {
     }
 
     handleCancelClick = e => {
-        this.setState({ present: { ...this.state.present, [e.target.name]: true }, modifiedInputs: {} });
+        this.setState({
+            present: { ...this.state.present, [e.target.name]: true },
+            modifiedInputs: {},
+            hasErrors: false
+        });
     };
 
     onEditSuccess = () => {
@@ -254,7 +258,7 @@ class DynamicForm extends React.Component {
         return this.getInputKind()[input.kind]({
             ...input,
             key: input.id,
-            error: this.props.errors[input.id],
+            error: this.state.hasErrors ? this.props.errors[input.id] : '',
             onChange: this.props.onChange || this.handleInputChange,
             value: inputValue
         });
