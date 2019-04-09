@@ -61,6 +61,10 @@ class DynamicForm extends React.Component {
         return {};
     }
 
+    isBeingEdited() {
+        return _.includes(Object.values(this.state.present), false);
+    }
+
     componentDidUpdate(prevProps) {
         if (this.props.errors !== prevProps.errors) {
             this.setState({ hasErrors: true });
@@ -121,7 +125,7 @@ class DynamicForm extends React.Component {
     getEditButton(group) {
         return (
             <div className="edit">
-                <Button id={group.id} size="small" onClick={this.handleEditClick}>
+                <Button id={group.id} size="small" onClick={this.handleEditClick} disabled={this.isBeingEdited()}>
                     Edit
                 </Button>
             </div>
