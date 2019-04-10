@@ -33,12 +33,13 @@ const possibleKinds = [
 const propTypes = {
     errors: PropTypes.object.isRequired,
     values: PropTypes.object.isRequired,
-    editable: PropTypes.bool
+    editable: PropTypes.bool,
+    errorDescription: PropTypes.string
 };
 
 const defaultProps = {
     values: {},
-    errorDescription: 'There are errors in this form.'
+    errorDescription: ''
 };
 
 class DynamicForm extends React.Component {
