@@ -16,6 +16,10 @@ class ComboBox extends React.Component {
         value: PropTypes.string
     };
 
+    static defaultProps = {
+        value: ''
+    };
+
     constructor(props) {
         super(props);
         this.state = {

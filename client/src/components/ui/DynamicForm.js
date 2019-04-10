@@ -196,7 +196,7 @@ class DynamicForm extends React.Component {
     getGroupInput(input) {
         const present = _.get(this.state.present, input.id);
         return (
-            <div className={classnames('input-group', this.props.editable ? 'panel' : null)} key={input.id}>
+            <div className={classnames({ panel: this.props.editable }, 'input-group')} key={input.id}>
                 {this.getGroupTitleMarkup(input)}
                 {this.groupDescription(input)}
                 {this.getInputMarkup(input.inputs, present)}

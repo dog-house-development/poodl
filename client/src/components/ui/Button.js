@@ -28,10 +28,12 @@ class Button extends Component {
     }
 
     render() {
-        const { content, size, kind, formButton, ...buttonProps } = this.props;
+        const { content, size, kind, formButton, className, ...buttonProps } = this.props;
         return (
             <button
-                className={`button ${this.props.size} ${this.props.kind} ${this.props.formButton ? 'form-button' : ''}`}
+                className={`button ${this.props.size} ${this.props.kind} ${
+                    this.props.formButton ? 'form-button' : ''
+                } ${className}`}
                 {...buttonProps}>
                 {this.getContent()}
             </button>

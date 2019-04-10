@@ -35,7 +35,7 @@ describe('MemberProfile tests', () => {
             },
             _state
         );
-        props = _.assign({}, { match: { params: { id: 123 } } }, _props);
+        props = _.assign({}, { match: { params: { id: '123' } } }, _props);
         wrapper = shallow(
             <MemberProfile
                 match={match}

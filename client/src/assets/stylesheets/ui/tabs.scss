@@ -1,0 +1,43 @@
+@import './_presets.scss';
+
+.tab-bar {
+  border-bottom: 1px solid $gray-3;
+  padding: 0 100%;
+  margin: 1em -100% 2em;
+
+  .tab-button {
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-top-left-radius: $border-radius-default;
+    border-top-right-radius: $border-radius-default;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    margin-right: 0.1em;
+    color: $gray-6;
+    position: relative;
+    top: 1px;
+
+    box-shadow: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    &:hover {
+      // border-color: $gray-3;
+      color: $gray-7;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $gray-3;
+    }
+
+    &.current-tab {
+      background-color: white;
+      border-color: $gray-3;
+      border-bottom-color: transparent;
+      color: $gray-7;
+    }
+  }
+}
