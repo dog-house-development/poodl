@@ -69,11 +69,7 @@ class DynamicForm extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (!_.isEqual(this.props.errors, prevProps.errors)) {
-            if (_.isEmpty(this.props.errors)) {
-                this.setState({ hasErrors: false });
-            } else {
-                this.setState({ hasErrors: true });
-            }
+            this.setState({ hasErrors: !_.isEmpty(this.props.errors) });
         }
     }
 
