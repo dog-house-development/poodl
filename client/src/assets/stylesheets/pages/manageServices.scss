@@ -2,21 +2,28 @@
 
 .manage-services-panel {
   padding: 0;
-  border-color: $gray-3;
+  box-shadow: none;
+  border: none;
+  overflow: visible;
+  position: relative;
+
+  .connecting-line {
+    position: absolute;
+    height: 100%;
+    left: 2em;
+    border-right: 1px solid $gray-3;
+  }
 
   .list {
     margin: 0;
-    box-shadow: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border: none;
-    border-bottom: 2px solid $gray-2;
+    background-color: white;
+    position: relative;
   }
 
   .add-service-panel {
-    box-shadow: none;
-    margin: 0;
-    border: none;
+    border-color: $gray-3;
+    background-color: white;
+    position: relative;
 
     .panel-title {
       font-size: 1.5em;

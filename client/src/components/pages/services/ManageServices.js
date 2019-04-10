@@ -11,6 +11,7 @@ export class ManageServices extends Component {
     render() {
         return (
             <div className="panel manage-services-panel">
+                <div className="connecting-line" />
                 <ServiceList memberId={this.props.memberId} />
                 <AddService memberId={this.props.memberId} />
             </div>
