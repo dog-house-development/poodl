@@ -65,8 +65,16 @@ class DataGrid extends Component {
 
     getFilteredData = () => Utils.searchCollection(this.state.filterValue, this.props.data);
 
+    getSortedData() {
+        return _.sortBy(this.getFilteredData(), this.props.sortBy);
+    }
+
+    getData() {
+        return this.props.sortBy ? this.getSortedData() : this.getFilteredData();
+    }
+
     getBodyMarkup = () =>
-        _.map(this.getFilteredData(), row => (
+        _.map(this.getData(), row => (
             <tr key={row.key} onClick={e => this.props.onRowClick(e, row.key)}>
                 {_.map(row, (value, key) => (key !== 'key' ? <td key={key}>{value}</td> : null))}
             </tr>

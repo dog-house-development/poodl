@@ -41,7 +41,7 @@ class DatePicker extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.value !== this.props.value) {
+        if (!_.isEqual(prevProps.value, this.props.value)) {
             this.setState(this.getStateFromValue());
         }
 
@@ -166,7 +166,7 @@ class DatePicker extends Component {
             return (
                 <div className="field-wrapper editable-field-wrapper">
                     <p className="field-label">{this.props.label}</p>
-                    <p>{moment(this.currentDate()).format('MMMM Do, YYYY')}</p>
+                    <p>{this.props.value ? this.currentDate().format('MMMM Do, YYYY') : ''}</p>
                 </div>
             );
         }
