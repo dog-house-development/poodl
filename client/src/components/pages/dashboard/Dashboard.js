@@ -76,7 +76,7 @@ export class Dashboard extends Component {
                         date: this.state.activityDate,
                         data: this.props.activities
                     }}
-                    clickableRowRoute="activity/"
+                    clickableRowRoute="activities/"
                     errors={this.props.errors}
                 />
             </div>
