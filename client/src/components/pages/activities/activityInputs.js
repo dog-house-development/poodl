@@ -2,12 +2,14 @@ module.exports = [
     {
         id: 'name',
         label: 'Name',
-        kind: 'field'
+        kind: 'combobox',
+        placeholder: 'Name'
     },
     {
         id: 'description',
         label: 'Description',
-        kind: 'field'
+        kind: 'field',
+        placeholder: 'Description'
     },
     {
         id: 'time',

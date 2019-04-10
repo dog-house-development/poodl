@@ -5,6 +5,7 @@ import classnames from 'classnames';
 
 import CheckBox from './CheckBox';
 import Field from './Field';
+import ComboBox from './ComboBox';
 import DatePicker from './DatePicker';
 import MultiCheckbox from './MultiCheckbox';
 import Select from './Select';
@@ -17,6 +18,7 @@ import TimePicker from './TimePicker';
 
 const possibleKinds = [
     'field',
+    'combobox',
     'checkbox',
     'multiCheckbox',
     'select',
@@ -218,6 +220,7 @@ class DynamicForm extends React.Component {
                 const { kind, ...excludedInput } = input;
                 return <Field {...excludedInput} />;
             },
+            combobox: input => <ComboBox {...input} data={this.props.data[input.id]} />,
             checkbox: input => <CheckBox {...input} />,
             multiCheckbox: input => <MultiCheckbox {...input} />,
             datePicker: input => <DatePicker {...input} />,
@@ -287,7 +290,6 @@ class DynamicForm extends React.Component {
 
     getSubmitButtonMarkup() {
         if (!this.props.editable) {
-            console.log(this.props.loading);
             return (
                 <Button
                     formButton

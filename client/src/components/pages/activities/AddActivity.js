@@ -168,7 +168,11 @@ export class AddActivity extends Component {
             </form>
         );
     }
-
+    getFormData() {
+        return {
+            name: this.props.activities
+        };
+    }
     render() {
         return (
             <div className="add-activity-container">
@@ -187,6 +191,7 @@ export class AddActivity extends Component {
                         values={this.state}
                         loading={this.props.loading}
                         errorDescription=""
+                        data={this.getFormData()}
                     />
                 </div>
             </div>
