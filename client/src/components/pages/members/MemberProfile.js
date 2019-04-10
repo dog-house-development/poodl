@@ -33,7 +33,6 @@ export class MemberProfile extends Component {
                     <DynamicForm
                         inputs={memberInputs}
                         editValues={this.editMember}
-                        getValues={this.props.memberActions.get}
                         values={this.props.member}
                         editable={true}
                         loading={this.props.loading}

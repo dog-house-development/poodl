@@ -9,6 +9,16 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
+        case Types.activity.create.BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case Types.activity.create.SUCCESS:
+            return {
+                ...state,
+                loading: false
+            };
         case Types.activity.ERROR:
             return {
                 ...state,

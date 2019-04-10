@@ -6,8 +6,9 @@
     }
     .inline-input {
       display: flex;
+      justify-content: space-between;
 
-      .field-wrapper {
+      > .field-wrapper {
         flex: 1;
         margin-left: 0.7em;
 

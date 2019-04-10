@@ -14,6 +14,7 @@ import Button from './Button';
 import SelectBoolean from './SelectBoolean';
 import assert from 'assert';
 import Loading from './Loading';
+import TimePicker from './TimePicker';
 
 const possibleKinds = [
     'field',
@@ -22,6 +23,7 @@ const possibleKinds = [
     'multiCheckbox',
     'select',
     'datePicker',
+    'timePicker',
     'radio',
     'selectBoolean',
     'flex',
@@ -35,7 +37,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-    values: {}
+    values: {},
+    errorDescription: 'There are errors in this form.'
 };
 
 class DynamicForm extends React.Component {
@@ -225,6 +228,7 @@ class DynamicForm extends React.Component {
             checkbox: input => <CheckBox {...input} />,
             multiCheckbox: input => <MultiCheckbox {...input} />,
             datePicker: input => <DatePicker {...input} />,
+            timePicker: input => <TimePicker {...input} />,
             select: input => <Select {...input} />,
             radio: input => <Radio {...input} />,
             selectBoolean: input => <SelectBoolean {...input} />,
@@ -283,15 +287,20 @@ class DynamicForm extends React.Component {
     }
 
     getErrorMarkup() {
-        if (this.state.hasErrors && !this.props.editable) {
-            return <p className="form-error">There are errors in this form.</p>;
+        if (this.props.errorDescription && this.state.hasErrors && !this.props.editable) {
+            return <p className="form-error">{this.props.errorDescription}</p>;
         }
     }
 
     getSubmitButtonMarkup() {
         if (!this.props.editable) {
             return (
-                <Button formButton onClick={this.props.onSubmit} size="medium" type="button">
+                <Button
+                    formButton
+                    onClick={this.props.onSubmit}
+                    size="medium"
+                    type="button"
+                    disabled={this.props.loading}>
                     {this.props.submitButtonLabel}
                 </Button>
             );

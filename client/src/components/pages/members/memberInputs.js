@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const memberInputs = [
     {
         id: 'personalInfo',
@@ -26,8 +28,8 @@ const memberInputs = [
                 id: 'birthDate',
                 kind: 'datePicker',
                 label: 'Date of Birth',
-                minYear: 1900,
-                maxYear: 1990
+                minYear: moment().year() - 125,
+                maxYear: moment().year() - 20
             },
             {
                 id: 'email',
