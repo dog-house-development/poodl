@@ -20,6 +20,7 @@
 @import 'ui/checkbox.scss';
 @import 'ui/multiCheckbox.scss';
 @import 'ui/radio.scss';
+@import 'ui/tabs.scss';
 
 // pages
 @import 'pages/register.scss';
@@ -48,6 +49,7 @@
   min-height: 100%;
   padding-bottom: 51px;
   position: relative;
+  overflow: hidden;
 }
 
 i {

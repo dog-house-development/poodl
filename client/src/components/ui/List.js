@@ -19,8 +19,11 @@ const defaultProps = {
 class List extends Component {
     getHeaderMarkup = () => <div className="list-header">{this.props.name}</div>;
 
-    getBodyMarkup = () =>
-        _.isEmpty(this.props.data) ? (
+    getBodyMarkup = () => {
+        if (this.props.loading) {
+            return <Loading />;
+        }
+        return _.isEmpty(this.props.data) ? (
             <p className="no-data-message">{this.props.noDataMessage}</p>
         ) : (
             _.map(this.props.data, row => (
@@ -38,11 +41,9 @@ class List extends Component {
                 </div>
             ))
         );
+    };
 
     render() {
-        if (this.props.loading) {
-            return <Loading />;
-        }
         return (
             <div className="panel list">
                 {this.getHeaderMarkup()}
