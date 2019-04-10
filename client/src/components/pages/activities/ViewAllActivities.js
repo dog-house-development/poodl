@@ -29,7 +29,8 @@ export class ViewAllActivities extends Component {
                 name: activity.name,
                 key: activity._id,
                 startDate: moment(activity.startDate).format('h:mm a, MMMM Do YYYY'),
-                endDate: moment(activity.endDate).format('h:mm a, MMMM Do YYYY')
+                endDate: moment(activity.endDate).format('h:mm a, MMMM Do YYYY'),
+                memberCount: activity.members.length
             });
         });
         return data;
@@ -52,6 +53,7 @@ export class ViewAllActivities extends Component {
                     data={this.getDataGridContent()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
+                    sortBy={activity => moment(activity.startDate, 'h:mm a, MMMM Do YYYY')}
                 />
             </div>
         );
