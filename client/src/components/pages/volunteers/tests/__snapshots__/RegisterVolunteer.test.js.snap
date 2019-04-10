@@ -25,6 +25,7 @@ exports[`Register volunteer tests render should render correctly 1`] = `
       Register Volunteer
     </h1>
     <DynamicForm
+      errorDescription="There are errors in this form."
       errors={Object {}}
       inputs={
         Array [
