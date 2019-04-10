@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Select from './Select';
+import _ from 'lodash';
 
 class TimePicker extends Component {
     static propTypes = {
         onChange: PropTypes.func.isRequired,
-        value: PropTypes.object.isRequired,
+        value: PropTypes.object,
         id: PropTypes.string.isRequired,
         error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
         label: PropTypes.string.isRequired
@@ -20,14 +21,14 @@ class TimePicker extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            hour: this.props.value.format('h'),
-            minute: '0',
-            ampm: this.props.value.format('A')
-        };
+        this.state = this.getStateFromValue();
     }
 
-    componentDidUpdate(_, prevState) {
+    componentDidUpdate(prevProps, prevState) {
+        if (!_.isEqual(prevProps.value, this.props.value)) {
+            this.setState(this.getStateFromValue());
+        }
+
         if (prevState !== this.state) {
             this.props.onChange({
                 target: {
@@ -36,6 +37,16 @@ class TimePicker extends Component {
                 }
             });
         }
+    }
+
+    getStateFromValue() {
+        const value = moment(this.props.value);
+
+        return {
+            hour: value.format('h'),
+            minute: value.format('mm'),
+            ampm: value.format('A')
+        };
     }
 
     currentTime() {
@@ -94,8 +105,17 @@ class TimePicker extends Component {
     }
 
     render() {
+        if (this.props.present) {
+            return (
+                <div className="field-wrapper editable-field-wrapper">
+                    <p className="field-label">{this.props.label}</p>
+                    <p>{this.props.value ? this.currentTime().format('h:mm A') : ''}</p>
+                </div>
+            );
+        }
+
         return (
-            <div className="picker">
+            <div className="picker field-wrapper">
                 <p className="picker-label field-label">{this.props.label}</p>
                 {this.getHourDropdown()} : {this.getMinuteDropdown()}
                 {this.getAMPMDropdown()}

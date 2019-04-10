@@ -19,7 +19,7 @@ export class ViewAllActivities extends Component {
 
     handleRowClick(e, id) {
         e.preventDefault();
-        this.props.history.push(`/activity/${id}`);
+        this.props.history.push(`/activities/${id}`);
     }
 
     getDataGridContent() {
