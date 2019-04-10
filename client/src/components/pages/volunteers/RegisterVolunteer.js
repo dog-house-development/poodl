@@ -51,6 +51,7 @@ export class RegisterVolunteer extends React.Component {
                         submitButtonLabel="Register Volunteer"
                         errors={this.props.errors}
                         values={this.state}
+                        errorDescription="There are errors in this form."
                     />
                 </div>
             </div>

@@ -25,7 +25,7 @@ exports[`VolunteerProfile tests render should render correctly 1`] = `
     <DynamicForm
       editValues={[Function]}
       editable={true}
-      errorDescription="There are errors in this form."
+      errorDescription=""
       errors={Object {}}
       inputs={
         Array [
