@@ -71,7 +71,14 @@ class DatePicker extends Component {
 
     currentDate() {
         const { day, month, year } = this.state;
-        return moment(`${day}-${month}-${year}`, 'D-MMMM-YYYY');
+        const date = moment(`${day}-${month}-${year}`, 'D-MMMM-YYYY');
+        if (date.isValid()) {
+            return date;
+        }
+
+        // If the date isn't valid then the day is overflowed so we use
+        // the end of the month
+        return moment(`${month}-${year}`, 'MMMM-YYYY').endOf('month');
     }
 
     onChange = e => {
@@ -81,12 +88,24 @@ class DatePicker extends Component {
         });
     };
 
+    daysInMonth() {
+        // Use 2000 if the year isn't set, because it's a leap year
+        // that way people can pick February 29th before they pick
+        // the year.
+        const year = this.state.year === 'Year' ? 2000 : this.state.year;
+        const month = this.state.month;
+        const time = `${month}-${year}`;
+        return moment(time, 'MMMM-YYYY').daysInMonth();
+    }
+
     getDayDropdown() {
         let days = [];
-        const disabled = this.state.month === 'Month';
+        let disabled = true;
         if (this.state.month !== 'Month') {
-            days = Array.from(Array(this.currentDate().daysInMonth()), (_x, index) => index + 1);
+            disabled = false;
+            days = Array.from(Array(this.daysInMonth()), (_x, index) => index + 1);
         }
+
         return (
             <Select
                 disabled={disabled}
