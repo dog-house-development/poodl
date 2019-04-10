@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 import ServiceActions from '../../../actions/serviceActions';
@@ -12,10 +13,6 @@ const propTypes = {
 };
 
 export class ServiceList extends Component {
-    componentDidMount() {
-        this.props.serviceActions.filter({ memberId: this.props.memberId });
-    }
-
     render() {
         return (
             <List
@@ -26,6 +23,8 @@ export class ServiceList extends Component {
                 }))}
                 name="Services"
                 loading={this.props.loading}
+                onRowClick={e => this.props.history.push(`/services/${e.target.id}`)}
+                noDataMessage="No services found for this member"
             />
         );
     }
@@ -46,7 +45,9 @@ export const mapDispatchToProps = dispatch => {
 };
 
 ServiceList.propTypes = propTypes;
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ServiceList);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(ServiceList)
+);

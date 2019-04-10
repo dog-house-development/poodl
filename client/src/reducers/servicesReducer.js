@@ -51,6 +51,19 @@ export default function(state = initialState, action) {
                 all: { ...state.all, [action.payload._id]: action.payload },
                 errors: {}
             };
+        case Types.service.delete.BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case Types.service.delete.SUCCESS:
+            const { [action.payload._id]: id, ...newState } = state.all;
+            return {
+                ...state,
+                loading: false,
+                all: newState,
+                errors: {}
+            };
         default:
             return state;
     }

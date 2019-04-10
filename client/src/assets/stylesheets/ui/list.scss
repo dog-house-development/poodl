@@ -24,9 +24,8 @@
 
     .list-row {
       cursor: pointer;
-      padding: 0.5em 1.5em;
-      border: 1px solid $gray-1;
-      border-collapse: collapse;
+      padding: 0.4em 1.5em;
+      border: 1px solid transparent;
       overflow-wrap: break-word;
 
       &:hover {
@@ -54,8 +53,15 @@
       }
 
       .list-row-secondary-text {
+        margin-top: 0.5em;
         font-size: 0.8em;
       }
+    }
+
+    .no-data-message {
+      text-align: center;
+      padding: 0.5em;
+      color: $gray-5;
     }
   }
 }

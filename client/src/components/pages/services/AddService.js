@@ -41,13 +41,13 @@ export class AddService extends Component {
 
     render() {
         return (
-            <div className="panel">
+            <div className="panel add-service-panel">
                 <h1 className="panel-title">Add Service</h1>
                 <DynamicForm
                     inputs={serviceInputs}
                     onChange={this.handleChange}
                     onSubmit={this.onSubmit}
-                    submitButtonLabel="Add Service"
+                    submitButtonLabel="Add"
                     errors={this.props.errors}
                     values={this.state}
                     data={{ name: this.props.services }}

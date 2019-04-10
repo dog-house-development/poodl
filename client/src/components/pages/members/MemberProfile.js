@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import _ from 'lodash';
-import MemberActions from '../../../actions/memberActions';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
+
+import MemberActions from '../../../actions/memberActions';
 import DynamicForm from '../../ui/DynamicForm';
 import memberInputs from './memberInputs';
-import AddService from '../services/AddService';
-import ServiceList from '../services/ServiceList';
+import ManageServices from '../services/ManageServices';
 
 export class MemberProfile extends Component {
     static defaultProps = {
@@ -30,8 +30,7 @@ export class MemberProfile extends Component {
                     {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
                 </h1>
 
-                <ServiceList memberId={this.props.match.params.id} />
-                <AddService memberId={this.props.match.params.id} />
+                <ManageServices memberId={this.props.match.params.id} />
 
                 <DynamicForm
                     inputs={memberInputs}

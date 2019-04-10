@@ -81,6 +81,7 @@ class ComboBox extends React.Component {
                     onFocus={this.setOpenTrue}
                     autoComplete="off"
                     spellCheck="false"
+                    present={this.props.present}
                 />
                 {this.getDropdownMarkup()}
             </div>

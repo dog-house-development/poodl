@@ -1,0 +1,27 @@
+@import '_presets.scss';
+
+.manage-services-panel {
+  padding: 0;
+  border: none;
+
+  .list {
+    margin: 0;
+    box-shadow: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .add-service-panel {
+    box-shadow: none;
+    margin: 0;
+    border: none;
+
+    .panel-title {
+      font-size: 1.5em;
+    }
+
+    .form-button {
+      margin: 0;
+    }
+  }
+}
