@@ -23,7 +23,7 @@ export class VolunteerProfile extends Component {
 
     render() {
         return (
-            <div className="view-all-container">
+            <div className="view-all-container page-container">
                 <Link to="/volunteers" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all volunteers
                 </Link>

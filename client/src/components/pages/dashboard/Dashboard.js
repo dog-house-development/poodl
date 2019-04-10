@@ -48,7 +48,7 @@ export class Dashboard extends Component {
         const { admin } = this.props.auth;
 
         return (
-            <div className="dashboard-container">
+            <div className="dashboard-container page-container">
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
                 <div className="panel dashboard-panel">

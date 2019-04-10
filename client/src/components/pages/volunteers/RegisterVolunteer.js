@@ -38,7 +38,7 @@ export class RegisterVolunteer extends React.Component {
 
     render() {
         return (
-            <div className="register-container">
+            <div className="register-container page-container">
                 <Link to="/volunteers" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all volunteers
                 </Link>
