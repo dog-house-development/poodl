@@ -26,6 +26,8 @@
   }
 
   .input-group {
+    overflow: visible;
+
     .input-group-label {
       color: $gray-7;
       font-size: 1.6em;

@@ -16,335 +16,351 @@ exports[`MemberProfile tests render should render correctly 1`] = `
     </i>
      Back to all members
   </Link>
-  <div>
-    <h1>
-      Big
-       
-      Tup
-    </h1>
-    <DynamicForm
-      editValues={[Function]}
-      editable={true}
-      errors={Object {}}
-      getValues={[Function]}
-      inputs={
-        Array [
-          Object {
-            "id": "personalInfo",
-            "inputs": Array [
-              Object {
-                "id": "name",
-                "inputs": Array [
-                  Object {
-                    "id": "firstName",
-                    "kind": "field",
-                    "label": "First name",
-                    "type": "text",
-                  },
-                  Object {
-                    "id": "lastName",
-                    "kind": "field",
-                    "label": "Last name",
-                    "type": "text",
-                  },
-                ],
-                "kind": "flex",
-              },
-              Object {
-                "id": "birthDate",
-                "kind": "datePicker",
-                "label": "Date of Birth",
-                "maxYear": 1990,
-                "minYear": 1900,
-              },
-              Object {
-                "id": "email",
-                "kind": "field",
-                "label": "Email",
-                "type": "email",
-              },
-              Object {
-                "id": "address",
-                "kind": "field",
-                "label": "Address",
-                "type": "text",
-              },
-              Object {
-                "id": "gender",
-                "kind": "radio",
-                "label": "Gender",
-                "options": Array [
-                  "male",
-                  "female",
-                  "other",
-                ],
-              },
-            ],
-            "kind": "group",
-            "label": "Personal Info",
-          },
-          Object {
-            "id": "emergencyContactInfo",
-            "inputs": Array [
-              Object {
-                "id": "emergencyContactName",
-                "kind": "field",
-                "label": "Emergency Contact Name",
-                "type": "text",
-              },
-              Object {
-                "id": "emergencyContactRelationship",
-                "kind": "field",
-                "label": "Emergency Contact Relationship",
-                "type": "text",
-              },
-              Object {
-                "id": "emergencyContactPhoneNumber",
-                "kind": "field",
-                "label": "Emergency Contact Phone Number",
-                "type": "text",
-              },
-            ],
-            "kind": "group",
-            "label": "Emergency Contact Info",
-          },
-          Object {
-            "id": "membershipDetails",
-            "inputs": Array [
-              Object {
-                "id": "memberIsNewOrRenewal",
-                "kind": "radio",
-                "label": "Member is new or renewal",
-                "options": Array [
-                  "new",
-                  "renewal",
-                ],
-              },
-              Object {
-                "id": "formOfPayment",
-                "kind": "radio",
-                "label": "Method of payment",
-                "options": Array [
-                  "cash",
-                  "check",
-                  "card",
-                  "other",
-                ],
-              },
-              Object {
-                "id": "bankCheckNumber",
-                "kind": "field",
-                "label": "Bank Check Number",
-                "type": "text",
-              },
-              Object {
-                "id": "includedInEstatePlans",
-                "kind": "selectBoolean",
-                "label": "Included in Estate Plans",
-              },
-              Object {
-                "id": "wantsEstateInfo",
-                "kind": "selectBoolean",
-                "label": "Member Wants Estate Info",
-              },
-              Object {
-                "id": "membershipDate",
-                "kind": "datePicker",
-                "label": "Membership Date",
-              },
-              Object {
-                "id": "renewalDate",
-                "kind": "datePicker",
-                "label": "Renewal Date",
-              },
-            ],
-            "kind": "group",
-            "label": "Membership Details",
-          },
-          Object {
-            "id": "healthInfo",
-            "inputs": Array [
-              Object {
-                "id": "specialDiet",
-                "kind": "field",
-                "label": "Special Diet",
-                "type": "text",
-              },
-              Object {
-                "id": "medicalIssues",
-                "kind": "field",
-                "label": "Medical Issues",
-                "type": "text",
-              },
-              Object {
-                "id": "disabilities",
-                "kind": "field",
-                "label": "Disabilities",
-                "type": "text",
-              },
-              Object {
-                "id": "mealPreference",
-                "kind": "field",
-                "label": "Meal Preference",
-                "type": "text",
-              },
-            ],
-            "kind": "group",
-            "label": "Health Info",
-          },
-          Object {
-            "id": "demographicInfo",
-            "inputs": Array [
-              Object {
-                "id": "race",
-                "kind": "field",
-                "label": "Race",
-                "type": "text",
-              },
-              Object {
-                "id": "ethnicity",
-                "kind": "radio",
-                "label": "Ethnicity",
-                "options": Array [
-                  "Non-Hispanic/Latino",
-                  "Hispanic/Latino",
-                ],
-              },
-              Object {
-                "id": "numberInHousehold",
-                "kind": "field",
-                "label": "Number in Household",
-                "min": "0",
-                "type": "number",
-              },
-              Object {
-                "id": "isPersonCaregiver",
-                "kind": "selectBoolean",
-                "label": "If number in household is 2 or more, is one person a caregiver?",
-              },
-              Object {
-                "id": "monthlyIncome",
-                "kind": "radio",
-                "label": "Monthly Household Income",
-                "options": Array [
-                  "Under $1,012",
-                  "Under $1,372",
-                  "Under $1,732",
-                  "Under $2,092",
-                  "Under $2,452",
-                  "Under $2,812",
-                  "Over $3,172",
-                ],
-              },
-              Object {
-                "id": "disabled",
-                "inputs": Array [
-                  Object {
-                    "id": "isDisabled",
-                    "kind": "selectBoolean",
-                    "label": "Disabled",
-                  },
-                  Object {
-                    "id": "isVeteran",
-                    "kind": "selectBoolean",
-                    "label": "Veteran",
-                  },
-                  Object {
-                    "id": "isSpouse60",
-                    "kind": "selectBoolean",
-                    "label": "If under 60, is spouse over 60?",
-                  },
-                ],
-                "kind": "flex",
-              },
-              Object {
-                "id": "isDisabled60",
-                "kind": "selectBoolean",
-                "label": "If under 60, are you disabled and living with someone over 60?",
-              },
-            ],
-            "kind": "group",
-            "label": "Demographic Info",
-          },
-          Object {
-            "description": "If client is receiving services under National Family Caregiver Support Program, complete the following:",
-            "id": "supportProgram",
-            "inputs": Array [
-              Object {
-                "id": "caregiver",
-                "kind": "radio",
-                "label": "Caregiver",
-                "options": Array [
-                  "Husband",
-                  "Wife",
-                  "Daughter/DIL",
-                  "Son/SIL",
-                  "Other Relative",
-                  "Other",
-                ],
-              },
-              Object {
-                "id": "grandparent",
-                "kind": "radio",
-                "label": "Grandparent",
-                "options": Array [
-                  "Grandparent",
-                  "Other elder relative",
-                  "Other elder non relative",
-                ],
-              },
-              Object {
-                "id": "numberOfKidsUnder19",
-                "kind": "field",
-                "label": "Number of kids younger than 19",
-                "min": "0",
-                "type": "number",
-              },
-              Object {
-                "id": "needsAADL",
-                "kind": "multiCheckbox",
-                "label": "Needs Assistance with Activities of Daily Living (ADLs)",
-                "options": Array [
-                  "Eating",
-                  "Dressing",
-                  "Bathing",
-                  "Toileting",
-                  "Transferring",
-                  "Walking",
-                ],
-              },
-              Object {
-                "id": "needsIADL",
-                "kind": "multiCheckbox",
-                "label": "Needs Assistance with Instrumental Activities of Daily Living (IADLs)",
-                "options": Array [
-                  "Meal preparation",
-                  "Money management",
-                  "Shopping",
-                  "Transportation",
-                  "Telephone use",
-                  "Medication management",
-                  "Light housework",
-                  "Heavy housework",
-                ],
-              },
-            ],
-            "kind": "group",
-            "label": "Nation Family Caregiver Support Program",
-          },
-        ]
-      }
-      loading={false}
-      values={
+  <h1>
+    Big
+     
+    Tup
+  </h1>
+  <TabPage
+    startingTab="memberInfo"
+    tabs={
+      Array [
         Object {
-          "_id": "123",
-          "email": "bigtup@nowhere.com",
-          "firstName": "Big",
-          "lastName": "Tup",
-          "membershipDate": "02/20/2020",
-        }
-      }
-    />
-  </div>
+          "content": <DynamicForm
+            editValues={[Function]}
+            editable={true}
+            errorDescription="There are errors in this form."
+            errors={Object {}}
+            inputs={
+              Array [
+                Object {
+                  "id": "personalInfo",
+                  "inputs": Array [
+                    Object {
+                      "id": "name",
+                      "inputs": Array [
+                        Object {
+                          "id": "firstName",
+                          "kind": "field",
+                          "label": "First name",
+                          "type": "text",
+                        },
+                        Object {
+                          "id": "lastName",
+                          "kind": "field",
+                          "label": "Last name",
+                          "type": "text",
+                        },
+                      ],
+                      "kind": "flex",
+                    },
+                    Object {
+                      "id": "birthDate",
+                      "kind": "datePicker",
+                      "label": "Date of Birth",
+                      "maxYear": 1999,
+                      "minYear": 1894,
+                    },
+                    Object {
+                      "id": "email",
+                      "kind": "field",
+                      "label": "Email",
+                      "type": "email",
+                    },
+                    Object {
+                      "id": "address",
+                      "kind": "field",
+                      "label": "Address",
+                      "type": "text",
+                    },
+                    Object {
+                      "id": "gender",
+                      "kind": "radio",
+                      "label": "Gender",
+                      "options": Array [
+                        "male",
+                        "female",
+                        "other",
+                      ],
+                    },
+                  ],
+                  "kind": "group",
+                  "label": "Personal Info",
+                },
+                Object {
+                  "id": "emergencyContactInfo",
+                  "inputs": Array [
+                    Object {
+                      "id": "emergencyContactName",
+                      "kind": "field",
+                      "label": "Emergency Contact Name",
+                      "type": "text",
+                    },
+                    Object {
+                      "id": "emergencyContactRelationship",
+                      "kind": "field",
+                      "label": "Emergency Contact Relationship",
+                      "type": "text",
+                    },
+                    Object {
+                      "id": "emergencyContactPhoneNumber",
+                      "kind": "field",
+                      "label": "Emergency Contact Phone Number",
+                      "type": "text",
+                    },
+                  ],
+                  "kind": "group",
+                  "label": "Emergency Contact Info",
+                },
+                Object {
+                  "id": "membershipDetails",
+                  "inputs": Array [
+                    Object {
+                      "id": "memberIsNewOrRenewal",
+                      "kind": "radio",
+                      "label": "Member is new or renewal",
+                      "options": Array [
+                        "new",
+                        "renewal",
+                      ],
+                    },
+                    Object {
+                      "id": "formOfPayment",
+                      "kind": "radio",
+                      "label": "Method of payment",
+                      "options": Array [
+                        "cash",
+                        "check",
+                        "card",
+                        "other",
+                      ],
+                    },
+                    Object {
+                      "id": "bankCheckNumber",
+                      "kind": "field",
+                      "label": "Bank Check Number",
+                      "type": "text",
+                    },
+                    Object {
+                      "id": "includedInEstatePlans",
+                      "kind": "selectBoolean",
+                      "label": "Included in Estate Plans",
+                    },
+                    Object {
+                      "id": "wantsEstateInfo",
+                      "kind": "selectBoolean",
+                      "label": "Member Wants Estate Info",
+                    },
+                    Object {
+                      "id": "membershipDate",
+                      "kind": "datePicker",
+                      "label": "Membership Date",
+                    },
+                    Object {
+                      "id": "renewalDate",
+                      "kind": "datePicker",
+                      "label": "Renewal Date",
+                    },
+                  ],
+                  "kind": "group",
+                  "label": "Membership Details",
+                },
+                Object {
+                  "id": "healthInfo",
+                  "inputs": Array [
+                    Object {
+                      "id": "specialDiet",
+                      "kind": "field",
+                      "label": "Special Diet",
+                      "type": "text",
+                    },
+                    Object {
+                      "id": "medicalIssues",
+                      "kind": "field",
+                      "label": "Medical Issues",
+                      "type": "text",
+                    },
+                    Object {
+                      "id": "disabilities",
+                      "kind": "field",
+                      "label": "Disabilities",
+                      "type": "text",
+                    },
+                    Object {
+                      "id": "mealPreference",
+                      "kind": "field",
+                      "label": "Meal Preference",
+                      "type": "text",
+                    },
+                  ],
+                  "kind": "group",
+                  "label": "Health Info",
+                },
+                Object {
+                  "id": "demographicInfo",
+                  "inputs": Array [
+                    Object {
+                      "id": "race",
+                      "kind": "field",
+                      "label": "Race",
+                      "type": "text",
+                    },
+                    Object {
+                      "id": "ethnicity",
+                      "kind": "radio",
+                      "label": "Ethnicity",
+                      "options": Array [
+                        "Non-Hispanic/Latino",
+                        "Hispanic/Latino",
+                      ],
+                    },
+                    Object {
+                      "id": "numberInHousehold",
+                      "kind": "field",
+                      "label": "Number in Household",
+                      "min": "0",
+                      "type": "number",
+                    },
+                    Object {
+                      "id": "isPersonCaregiver",
+                      "kind": "selectBoolean",
+                      "label": "If number in household is 2 or more, is one person a caregiver?",
+                    },
+                    Object {
+                      "id": "monthlyIncome",
+                      "kind": "radio",
+                      "label": "Monthly Household Income",
+                      "options": Array [
+                        "Under $1,012",
+                        "Under $1,372",
+                        "Under $1,732",
+                        "Under $2,092",
+                        "Under $2,452",
+                        "Under $2,812",
+                        "Over $3,172",
+                      ],
+                    },
+                    Object {
+                      "id": "disabled",
+                      "inputs": Array [
+                        Object {
+                          "id": "isDisabled",
+                          "kind": "selectBoolean",
+                          "label": "Disabled",
+                        },
+                        Object {
+                          "id": "isVeteran",
+                          "kind": "selectBoolean",
+                          "label": "Veteran",
+                        },
+                        Object {
+                          "id": "isSpouse60",
+                          "kind": "selectBoolean",
+                          "label": "If under 60, is spouse over 60?",
+                        },
+                      ],
+                      "kind": "flex",
+                    },
+                    Object {
+                      "id": "isDisabled60",
+                      "kind": "selectBoolean",
+                      "label": "If under 60, are you disabled and living with someone over 60?",
+                    },
+                  ],
+                  "kind": "group",
+                  "label": "Demographic Info",
+                },
+                Object {
+                  "description": "If client is receiving services under National Family Caregiver Support Program, complete the following:",
+                  "id": "supportProgram",
+                  "inputs": Array [
+                    Object {
+                      "id": "caregiver",
+                      "kind": "radio",
+                      "label": "Caregiver",
+                      "options": Array [
+                        "Husband",
+                        "Wife",
+                        "Daughter/DIL",
+                        "Son/SIL",
+                        "Other Relative",
+                        "Other",
+                      ],
+                    },
+                    Object {
+                      "id": "grandparent",
+                      "kind": "radio",
+                      "label": "Grandparent",
+                      "options": Array [
+                        "Grandparent",
+                        "Other elder relative",
+                        "Other elder non relative",
+                      ],
+                    },
+                    Object {
+                      "id": "numberOfKidsUnder19",
+                      "kind": "field",
+                      "label": "Number of kids younger than 19",
+                      "min": "0",
+                      "type": "number",
+                    },
+                    Object {
+                      "id": "needsAADL",
+                      "kind": "multiCheckbox",
+                      "label": "Needs Assistance with Activities of Daily Living (ADLs)",
+                      "options": Array [
+                        "Eating",
+                        "Dressing",
+                        "Bathing",
+                        "Toileting",
+                        "Transferring",
+                        "Walking",
+                      ],
+                    },
+                    Object {
+                      "id": "needsIADL",
+                      "kind": "multiCheckbox",
+                      "label": "Needs Assistance with Instrumental Activities of Daily Living (IADLs)",
+                      "options": Array [
+                        "Meal preparation",
+                        "Money management",
+                        "Shopping",
+                        "Transportation",
+                        "Telephone use",
+                        "Medication management",
+                        "Light housework",
+                        "Heavy housework",
+                      ],
+                    },
+                  ],
+                  "kind": "group",
+                  "label": "Nation Family Caregiver Support Program",
+                },
+              ]
+            }
+            loading={false}
+            values={
+              Object {
+                "_id": "123",
+                "email": "bigtup@nowhere.com",
+                "firstName": "Big",
+                "lastName": "Tup",
+                "membershipDate": "02/20/2020",
+              }
+            }
+          />,
+          "id": "memberInfo",
+          "label": "Info",
+        },
+        Object {
+          "content": <ManageServices
+            memberId="123"
+          />,
+          "id": "services",
+          "label": "Services",
+        },
+      ]
+    }
+  />
 </div>
 `;

@@ -6,18 +6,18 @@ const serviceSchema = new Schema(
     {
         name: {
             type: String,
-            required: [true, 'Name field is required']
+            required: [true, 'Name is required']
+        },
+        details: {
+            type: String
         },
         seniorCenterId: {
             type: ObjectId,
-            required: [true, 'seniorCenterId field is required']
+            required: [true, 'Senior Center Id is required']
         },
         memberId: {
             type: ObjectId,
-            required: [true, 'memberId field is required']
-        },
-        description: {
-            type: String
+            required: [true, 'Member Id is required']
         }
     },
     { timestamps: true }
