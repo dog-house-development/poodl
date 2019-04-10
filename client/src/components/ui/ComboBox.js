@@ -13,7 +13,11 @@ class ComboBox extends React.Component {
         label: PropTypes.string,
         placeholder: PropTypes.string,
         id: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired
+        value: PropTypes.string
+    };
+
+    static defaultProps = {
+        value: ''
     };
 
     constructor(props) {

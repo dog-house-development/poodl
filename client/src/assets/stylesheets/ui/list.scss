@@ -1,0 +1,61 @@
+@import './_presets.scss';
+
+.list {
+  padding: 0;
+  border: 1px solid $gray-3;
+  border-collapse: collapse;
+
+  .list-header {
+    color: $gray-6;
+    border-bottom: 1px solid $gray-3;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    background-color: $gray-1;
+    font-weight: bold;
+    padding: 0.7em 1.5em 0.7em 1.5em;
+    text-align: left;
+    border-top-left-radius: $border-radius-default;
+    border-top-right-radius: $border-radius-default;
+  }
+
+  .list-body {
+    border-bottom-left-radius: $border-radius-default;
+    border-bottom-right-radius: $border-radius-default;
+
+    .list-row {
+      cursor: pointer;
+      padding: 0.5em 1.5em;
+      border: 1px solid $gray-1;
+      border-collapse: collapse;
+      overflow-wrap: break-word;
+
+      &:hover {
+        border-top: 1px solid $blue-light-border;
+        border-bottom: 1px solid $blue-light-border;
+        background-color: $blue-light;
+
+        &:first-child {
+          border-top-color: transparent;
+        }
+
+        &:last-child {
+          border-bottom-color: transparent;
+        }
+      }
+
+      .list-row-main-text {
+        font-size: 1em;
+        font-weight: bold;
+        display: inline-block;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .list-row-secondary-text {
+        font-size: 0.8em;
+      }
+    }
+  }
+}

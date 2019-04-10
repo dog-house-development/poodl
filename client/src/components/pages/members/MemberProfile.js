@@ -6,6 +6,8 @@ import MemberActions from '../../../actions/memberActions';
 import { Link } from 'react-router-dom';
 import DynamicForm from '../../ui/DynamicForm';
 import memberInputs from './memberInputs';
+import AddService from '../services/AddService';
+import ServiceList from '../services/ServiceList';
 
 export class MemberProfile extends Component {
     static defaultProps = {
@@ -27,6 +29,9 @@ export class MemberProfile extends Component {
                 <h1>
                     {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
                 </h1>
+
+                <ServiceList memberId={this.props.match.params.id} />
+                <AddService memberId={this.props.match.params.id} />
 
                 <DynamicForm
                     inputs={memberInputs}

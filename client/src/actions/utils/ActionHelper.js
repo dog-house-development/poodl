@@ -22,7 +22,7 @@ export default {
      * @param data      {Object}    data for the new doc
      * @param redirect  {boolean}   redirect to the page for the newly created doc
      */
-    create: (dispatch, type, data, history) => {
+    create: (dispatch, type, data, history, onSuccess = _.noop) => {
         dispatch({ type: type.create.BEGIN });
         axios
             .post(`/api/${type.url}/`, data)
@@ -31,6 +31,7 @@ export default {
                     type: type.create.SUCCESS,
                     payload: res.data
                 });
+                onSuccess();
                 if (history) {
                     history.push(`/${type.clientUrl || type.url}/${res.data._id}`);
                 }
