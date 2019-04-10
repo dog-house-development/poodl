@@ -11,6 +11,8 @@ import TimePicker from '../../ui/TimePicker';
 import Field from '../../ui/Field';
 import Button from '../../ui/Button';
 import ComboBox from '../../ui/ComboBox';
+import DynamicForm from '../../ui/DynamicForm';
+import activityInputs from './activityInputs';
 
 const propTypes = {
     auth: PropTypes.object.isRequired,
@@ -24,6 +26,7 @@ export class AddActivity extends Component {
             seniorCenterId: props.adminSeniorCenterId,
             multiDay: false,
             startDate: moment().startOf('day'),
+            date: moment().startOf('day'),
             endDate: moment()
                 .startOf('day')
                 .add(1, 'day'),
@@ -137,6 +140,35 @@ export class AddActivity extends Component {
         );
     }
 
+    getFormMarkup() {
+        return (
+            <form noValidate onSubmit={this.onSubmit}>
+                <ComboBox
+                    data={this.props.activities}
+                    label="Name"
+                    placeholder="Name"
+                    id="name"
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                    error={this.props.errors.name}
+                />
+                {this.getFieldsMarkup()}
+                <div className="side-by-side">
+                    <TimePicker
+                        label="Start Time"
+                        id="startTime"
+                        value={this.state.startTime}
+                        onChange={this.handleChange}
+                        error={this.state.multiDay ? '' : this.getDateErrorMarkup()}
+                    />
+                    <TimePicker label="End Time" id="endTime" value={this.state.endTime} onChange={this.handleChange} />
+                </div>
+                {this.getDatePickersMarkup()}
+                <Button type="submit" content="Add Activity" formButton />
+            </form>
+        );
+    }
+
     render() {
         return (
             <div className="add-activity-container">
@@ -145,35 +177,17 @@ export class AddActivity extends Component {
                 </Link>
                 <div className="add-activity-panel panel">
                     <h1 className="panel-title">Add Activity</h1>
-                    <form noValidate onSubmit={this.onSubmit}>
-                        <ComboBox
-                            data={this.props.activities}
-                            label="Name"
-                            placeholder="Name"
-                            id="name"
-                            value={this.state.name}
-                            onChange={this.handleChange}
-                            error={this.props.errors.name}
-                        />
-                        {this.getFieldsMarkup()}
-                        <div className="side-by-side">
-                            <TimePicker
-                                label="Start Time"
-                                id="startTime"
-                                time={this.state.startTime}
-                                onChange={this.handleChange}
-                                error={this.state.multiDay ? '' : this.getDateErrorMarkup()}
-                            />
-                            <TimePicker
-                                label="End Time"
-                                id="endTime"
-                                time={this.state.endTime}
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        {this.getDatePickersMarkup()}
-                        <Button type="submit" content="Add Activity" formButton />
-                    </form>
+                    {/* {this.getFormMarkup()} */}
+                    <DynamicForm
+                        inputs={activityInputs}
+                        onChange={this.handleChange}
+                        onSubmit={this.onSubmit}
+                        submitButtonLabel="Add Activity"
+                        errors={this.props.errors}
+                        values={this.state}
+                        loading={this.props.loading}
+                        errorDescription=""
+                    />
                 </div>
             </div>
         );
@@ -186,6 +200,7 @@ export const mapStateToProps = (state, props) => {
         adminIsSuper: _.get(state.auth.admin, 'superAdmin', false),
         adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.activities.errors,
+        loading: state.activities.loading,
         activities: _.get(state.activities, 'all')
     };
 };

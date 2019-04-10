@@ -21,7 +21,10 @@ module.exports = [
             {
                 id: 'endTime',
                 label: 'End Time',
-                kind: 'timePicker'
+                kind: 'timePicker',
+                style: {
+                    float: 'right'
+                }
             }
         ]
     },

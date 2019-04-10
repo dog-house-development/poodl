@@ -6,7 +6,7 @@ import Select from './Select';
 class TimePicker extends Component {
     static propTypes = {
         onChange: PropTypes.func.isRequired,
-        time: PropTypes.object.isRequired,
+        value: PropTypes.object.isRequired,
         id: PropTypes.string.isRequired,
         error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
         label: PropTypes.string.isRequired
@@ -21,9 +21,9 @@ class TimePicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hour: this.props.time.format('h'),
+            hour: this.props.value.format('h'),
             minute: '0',
-            ampm: this.props.time.format('A')
+            ampm: this.props.value.format('A')
         };
     }
 
