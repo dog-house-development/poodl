@@ -15,6 +15,18 @@ export default function(state = initialState, action) {
                 loading: false,
                 errors: action.payload
             };
+        case Types.service.create.BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case Types.service.create.SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                all: { ...state.all, [action.payload._id]: action.payload },
+                errors: {}
+            };
         case Types.service.filter.BEGIN:
             return {
                 ...state,

@@ -342,6 +342,9 @@ exports[`MemberProfile tests render should render correctly 1`] = `
         }
       }
     />
+    <ManageServices
+      memberId={123}
+    />
   </div>
 </div>
 `;

@@ -29,9 +29,6 @@ export class MemberProfile extends Component {
                 <h1>
                     {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
                 </h1>
-
-                <ManageServices memberId={this.props.match.params.id} />
-
                 <DynamicForm
                     inputs={memberInputs}
                     editValues={this.editMember}
@@ -41,6 +38,7 @@ export class MemberProfile extends Component {
                     loading={this.props.loading}
                     errors={this.props.errors}
                 />
+                <ManageServices memberId={this.props.match.params.id} />
             </div>
         );
     }

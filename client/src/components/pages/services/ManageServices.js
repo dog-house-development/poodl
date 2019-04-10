@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import AddService from '../services/AddService';
 import ServiceList from '../services/ServiceList';
 

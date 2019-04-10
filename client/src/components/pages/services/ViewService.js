@@ -29,11 +29,15 @@ export class ViewService extends Component {
     getFormMarkup() {
         return (
             <div>
-                <h1>{_.get(this.props.service, 'name')}</h1>
-                <Button
-                    onClick={() => this.props.serviceActions.delete(this.props.match.params.id, this.props.history)}
-                    content="Delete"
-                />
+                <h1 className="view-all-header">
+                    {_.get(this.props.service, 'name')}
+                    <Button
+                        onClick={() => this.props.serviceActions.delete(this.props.match.params.id, this.props.history)}
+                        size="small"
+                        className="delete-button">
+                        <i className="material-icons button-icon">remove_circle_outline</i>Remove service
+                    </Button>
+                </h1>
                 <DynamicForm
                     inputs={serviceInputs}
                     editValues={this.editService}
@@ -49,7 +53,7 @@ export class ViewService extends Component {
                         {
                             main: _.get(this.props.member, 'firstName') + ' ' + _.get(this.props.member, 'lastName'),
                             secondary: _.get(this.props.member, 'email'),
-                            key: _.get(this.props.member, '_id')
+                            key: _.get(this.props.member, '_id', _.uniqueId('list-row'))
                         }
                     ]}
                     name="Member"
@@ -63,7 +67,7 @@ export class ViewService extends Component {
 
     render() {
         return (
-            <div className="view-all-container">
+            <div className="view-all-container view-service">
                 <Link to={`/members/${_.get(this.props.service, 'memberId')}`} className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to member
                 </Link>
@@ -80,7 +84,7 @@ export const mapStateToProps = (state, props) => {
         services: state.services.all,
         loading: state.services.loading,
         errors: state.services.errors,
-        member: _.get(state.members.all, '[service.memberId]'),
+        member: state.members.all[_.get(service, 'memberId')],
         memberLoading: state.members.loading,
         memberErrors: state.members.errors
     };

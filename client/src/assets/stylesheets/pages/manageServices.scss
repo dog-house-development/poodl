@@ -2,13 +2,15 @@
 
 .manage-services-panel {
   padding: 0;
-  border: none;
+  border-color: $gray-3;
 
   .list {
     margin: 0;
     box-shadow: none;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border: none;
+    border-bottom: 2px solid $gray-2;
   }
 
   .add-service-panel {
@@ -18,6 +20,10 @@
 
     .panel-title {
       font-size: 1.5em;
+    }
+
+    .combobox-wrapper {
+      margin-bottom: 0.8rem;
     }
 
     .form-button {

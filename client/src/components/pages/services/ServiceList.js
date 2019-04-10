@@ -13,14 +13,21 @@ const propTypes = {
 };
 
 export class ServiceList extends Component {
+    componentDidMount() {
+        this.props.serviceActions.filter();
+    }
+
     render() {
         return (
             <List
-                data={_.map(this.props.services, service => ({
-                    main: service.name,
-                    secondary: service.details,
-                    key: service._id
-                }))}
+                data={_.map(
+                    _.filter(this.props.services, service => service.memberId === this.props.memberId),
+                    service => ({
+                        main: service.name,
+                        secondary: service.details,
+                        key: service._id
+                    })
+                )}
                 name="Services"
                 loading={this.props.loading}
                 onRowClick={e => this.props.history.push(`/services/${e.target.id}`)}
@@ -45,9 +52,7 @@ export const mapDispatchToProps = dispatch => {
 };
 
 ServiceList.propTypes = propTypes;
-export default withRouter(
-    connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(ServiceList)
-);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRouter(ServiceList));
