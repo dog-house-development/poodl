@@ -63,6 +63,10 @@ class DynamicForm extends React.Component {
         return {};
     }
 
+    isBeingEdited() {
+        return _.includes(Object.values(this.state.present), false);
+    }
+
     componentDidUpdate(prevProps) {
         if (!_.isEqual(this.props.errors, prevProps.errors)) {
             this.setState({ hasErrors: true });
@@ -70,7 +74,11 @@ class DynamicForm extends React.Component {
     }
 
     handleCancelClick = e => {
-        this.setState({ present: { ...this.state.present, [e.target.name]: true }, modifiedInputs: {} });
+        this.setState({
+            present: { ...this.state.present, [e.target.name]: true },
+            modifiedInputs: {},
+            hasErrors: false
+        });
     };
 
     onEditSuccess = () => {
@@ -119,7 +127,7 @@ class DynamicForm extends React.Component {
     getEditButton(group) {
         return (
             <div className="edit">
-                <Button id={group.id} size="small" onClick={this.handleEditClick}>
+                <Button id={group.id} size="small" onClick={this.handleEditClick} disabled={this.isBeingEdited()}>
                     Edit
                 </Button>
             </div>
@@ -257,7 +265,7 @@ class DynamicForm extends React.Component {
         return this.getInputKind()[input.kind]({
             ...input,
             key: input.id,
-            error: this.props.errors[input.id],
+            error: this.state.hasErrors ? this.props.errors[input.id] : '',
             onChange: this.props.onChange || this.handleInputChange,
             value: inputValue
         });

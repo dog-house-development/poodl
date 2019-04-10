@@ -213,7 +213,8 @@ exports[`Register member tests render should render correctly 1`] = `
                 "id": "numberInHousehold",
                 "kind": "field",
                 "label": "Number in Household",
-                "type": "text",
+                "min": "0",
+                "type": "number",
               },
               Object {
                 "id": "isPersonCaregiver",
@@ -295,6 +296,8 @@ exports[`Register member tests render should render correctly 1`] = `
                 "id": "numberOfKidsUnder19",
                 "kind": "field",
                 "label": "Number of kids younger than 19",
+                "min": "0",
+                "type": "number",
               },
               Object {
                 "id": "needsAADL",

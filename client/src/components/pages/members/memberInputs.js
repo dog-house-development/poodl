@@ -170,7 +170,8 @@ const memberInputs = [
             {
                 id: 'numberInHousehold',
                 kind: 'field',
-                type: 'text',
+                type: 'number',
+                min: '0',
                 label: 'Number in Household'
             },
             {
@@ -242,6 +243,8 @@ const memberInputs = [
             {
                 id: 'numberOfKidsUnder19',
                 kind: 'field',
+                type: 'number',
+                min: '0',
                 label: 'Number of kids younger than 19'
             },
             {
