@@ -35,7 +35,6 @@ export class VolunteerProfile extends Component {
                     <DynamicForm
                         inputs={volunteerInputs}
                         editValues={this.editVolunteer}
-                        getValues={this.props.volunteerActions.get}
                         values={this.props.volunteer}
                         editable={true}
                         loading={this.props.loading}

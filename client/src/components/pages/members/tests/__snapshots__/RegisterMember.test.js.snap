@@ -25,6 +25,7 @@ exports[`Register member tests render should render correctly 1`] = `
       Register Member
     </h1>
     <DynamicForm
+      errorDescription="There are errors in this form."
       errors={Object {}}
       inputs={
         Array [
@@ -53,8 +54,8 @@ exports[`Register member tests render should render correctly 1`] = `
                 "id": "birthDate",
                 "kind": "datePicker",
                 "label": "Date of Birth",
-                "maxYear": 1990,
-                "minYear": 1900,
+                "maxYear": 1999,
+                "minYear": 1894,
               },
               Object {
                 "id": "email",

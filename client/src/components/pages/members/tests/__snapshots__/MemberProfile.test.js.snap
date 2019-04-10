@@ -29,8 +29,8 @@ exports[`MemberProfile tests render should render correctly 1`] = `
           "content": <DynamicForm
             editValues={[Function]}
             editable={true}
+            errorDescription="There are errors in this form."
             errors={Object {}}
-            getValues={[Function]}
             inputs={
               Array [
                 Object {
@@ -58,8 +58,8 @@ exports[`MemberProfile tests render should render correctly 1`] = `
                       "id": "birthDate",
                       "kind": "datePicker",
                       "label": "Date of Birth",
-                      "maxYear": 1990,
-                      "minYear": 1900,
+                      "maxYear": 1999,
+                      "minYear": 1894,
                     },
                     Object {
                       "id": "email",

@@ -37,6 +37,7 @@ import RegisterMember from './pages/members/RegisterMember';
 // Activity pages
 import AddActivity from './pages/activities/AddActivity';
 import ViewAllActivities from './pages/activities/ViewAllActivities';
+import ViewActivity from './pages/activities/ViewActivity';
 
 // Service pages
 import ViewService from './pages/services/ViewService';
@@ -96,6 +97,7 @@ class App extends Component {
                             {/* Activity pages */}
                             <PrivateRoute exact path="/activities" component={ViewAllActivities} />
                             <PrivateRoute exact path="/activities/add" component={AddActivity} />
+                            <PrivateRoute exact path="/activities/:id" component={ViewActivity} />
                             {/* Service pages */}
                             <PrivateRoute exact path="/services/:id" component={ViewService} />
                             {/* Member check in */}
