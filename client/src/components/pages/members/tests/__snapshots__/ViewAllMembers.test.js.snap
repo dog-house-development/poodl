@@ -2,7 +2,7 @@
 
 exports[`ViewAllMembers tests render should render correctly 1`] = `
 <div
-  className="view-all-container"
+  className="view-all-container page-container"
 >
   <Link
     className="button small tertiary"
