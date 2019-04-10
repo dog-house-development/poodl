@@ -5,6 +5,7 @@ import classnames from 'classnames';
 
 import CheckBox from './CheckBox';
 import Field from './Field';
+import ComboBox from './ComboBox';
 import DatePicker from './DatePicker';
 import MultiCheckbox from './MultiCheckbox';
 import Select from './Select';
@@ -16,6 +17,7 @@ import Loading from './Loading';
 
 const possibleKinds = [
     'field',
+    'combobox',
     'checkbox',
     'multiCheckbox',
     'select',
@@ -66,7 +68,7 @@ class DynamicForm extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.errors !== prevProps.errors) {
+        if (!_.isEqual(this.props.errors, prevProps.errors)) {
             this.setState({ hasErrors: true });
         }
     }
@@ -191,7 +193,7 @@ class DynamicForm extends React.Component {
     getGroupInput(input) {
         const present = _.get(this.state.present, input.id);
         return (
-            <div className={classnames('input-group', this.props.editable ? 'panel' : null)} key={input.id}>
+            <div className={classnames({ panel: this.props.editable }, 'input-group')} key={input.id}>
                 {this.getGroupTitleMarkup(input)}
                 {this.groupDescription(input)}
                 {this.getInputMarkup(input.inputs, present)}
@@ -215,6 +217,7 @@ class DynamicForm extends React.Component {
                 const { kind, ...excludedInput } = input;
                 return <Field {...excludedInput} />;
             },
+            combobox: input => <ComboBox {...input} data={this.props.data[input.id]} />,
             checkbox: input => <CheckBox {...input} />,
             multiCheckbox: input => <MultiCheckbox {...input} />,
             datePicker: input => <DatePicker {...input} />,

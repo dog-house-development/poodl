@@ -13,7 +13,11 @@ class ComboBox extends React.Component {
         label: PropTypes.string,
         placeholder: PropTypes.string,
         id: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired
+        value: PropTypes.string
+    };
+
+    static defaultProps = {
+        value: ''
     };
 
     constructor(props) {
@@ -77,6 +81,7 @@ class ComboBox extends React.Component {
                     onFocus={this.setOpenTrue}
                     autoComplete="off"
                     spellCheck="false"
+                    present={this.props.present}
                 />
                 {this.getDropdownMarkup()}
             </div>
