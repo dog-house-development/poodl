@@ -34,8 +34,8 @@ describe('MemberProfile tests', () => {
                 },
                 services: {
                     all: {
-                        123: {},
-                        321: {}
+                        123: { memberId: '123' },
+                        321: { memberId: '444' }
                     }
                 }
             },
@@ -72,7 +72,7 @@ describe('MemberProfile tests', () => {
                 },
                 loading: false,
                 errors: {},
-                serviceCount: 2
+                serviceCount: 1
             });
         });
     });

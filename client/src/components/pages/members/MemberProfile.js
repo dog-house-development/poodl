@@ -73,7 +73,7 @@ export const mapStateToProps = (state, props) => {
         member: state.members.all[props.match.params.id],
         loading: state.members.loading,
         errors: state.members.errors,
-        serviceCount: _.size(state.services.all)
+        serviceCount: _.size(_.filter(state.services.all, service => service.memberId === props.match.params.id))
     };
 };
 
