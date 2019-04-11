@@ -52,6 +52,7 @@ export class ViewActivitiesByDate extends Component {
                     }}
                     clickableRowRoute="activities/"
                     errors={this.props.errors}
+                    noDataMessage="No activities scheduled for this day"
                 />
             </div>
         );
