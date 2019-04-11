@@ -1,49 +1,14 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ActivityActions from '../../../actions/activityActions';
-import ViewByDate from '../../ui/ViewByDate';
-import moment from 'moment';
+import ViewActivitiesByDate from '../activities/ViewActivitiesByDate';
 
 const propTypes = {
     auth: PropTypes.object.isRequired
 };
 
 export class Dashboard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            activityDate: moment().startOf('day')
-        };
-    }
-
-    getDateRangeFilter(start) {
-        const filter = {
-            startDate: {
-                $lt: start
-                    .clone()
-                    .add(1, 'days')
-                    .toISOString()
-            },
-            endDate: {
-                $gt: start.toISOString()
-            }
-        };
-
-        return filter;
-    }
-
-    componentDidMount() {
-        this.props.activityActions.filter(this.getDateRangeFilter(this.state.activityDate));
-    }
-
-    requestDate = date => {
-        this.setState({ activityDate: date });
-        this.props.activityActions.filter(this.getDateRangeFilter(date));
-    };
-
     render() {
         const { admin } = this.props.auth;
 
@@ -68,17 +33,7 @@ export class Dashboard extends Component {
                         Reports
                     </Link>
                 </div>
-                <h2>Activities</h2>
-                <ViewByDate
-                    requestDate={this.requestDate}
-                    loading={this.props.activitiesLoading}
-                    dateData={{
-                        date: this.state.activityDate,
-                        data: this.props.activities
-                    }}
-                    clickableRowRoute="activities/"
-                    errors={this.props.errors}
-                />
+                <ViewActivitiesByDate />
             </div>
         );
     }
@@ -86,21 +41,9 @@ export class Dashboard extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        auth: state.auth,
-        activities: state.activities.all,
-        activitiesLoading: state.activities.loading,
-        errors: state.activities.errors
-    };
-};
-
-export const mapDispatchToProps = dispatch => {
-    return {
-        activityActions: bindActionCreators(ActivityActions, dispatch)
+        auth: state.auth
     };
 };
 
 Dashboard.propTypes = propTypes;
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
