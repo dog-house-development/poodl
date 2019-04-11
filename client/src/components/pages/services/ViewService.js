@@ -22,7 +22,7 @@ export class ViewService extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (!_.isEqual(prevProps.service, this.props.service)) {
+        if (!_.isEqual(prevProps.service, this.props.service) && this.props.service) {
             this.props.memberActions.get(this.props.service.memberId);
         }
     }
