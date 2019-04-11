@@ -172,7 +172,7 @@ class DatePicker extends Component {
         }
 
         return (
-            <div className="picker">
+            <div className="picker field-wrapper">
                 <p className="picker-label field-label">{this.props.label}</p>
                 {this.getMonthDropdown()}
                 {this.getDayDropdown()}

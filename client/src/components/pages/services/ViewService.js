@@ -72,7 +72,7 @@ export class ViewService extends Component {
 
     render() {
         return (
-            <div className="view-all-container view-service">
+            <div className="view-all-container view-service page-container">
                 <Link to={`/members/${_.get(this.props.service, 'memberId')}`} className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to member
                 </Link>

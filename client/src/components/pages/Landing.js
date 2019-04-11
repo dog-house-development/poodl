@@ -12,7 +12,7 @@ export class Landing extends Component {
 
     render() {
         return (
-            <div className="landing-container">
+            <div className="landing-container page-container">
                 <div className="landing-header">
                     <h1>Welcome to</h1>
                     <h1 className="landing-title">Poodl</h1>
@@ -21,8 +21,7 @@ export class Landing extends Component {
                         href="https://github.com/dog-house-development/poodl/wiki"
                         className="button large primary"
                         target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                        rel="noopener noreferrer">
                         Learn More
                     </a>
                 </div>

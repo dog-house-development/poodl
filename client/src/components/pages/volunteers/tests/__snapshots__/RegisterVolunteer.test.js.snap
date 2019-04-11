@@ -2,7 +2,7 @@
 
 exports[`Register volunteer tests render should render correctly 1`] = `
 <div
-  className="register-container"
+  className="register-container page-container"
 >
   <Link
     className="button small tertiary"

@@ -23,3 +23,9 @@
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
+
+.page-container {
+  max-width: 50em;
+  margin: auto;
+  width: 95%;
+}
