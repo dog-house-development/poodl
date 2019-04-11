@@ -29,6 +29,7 @@ export class MemberProfile extends Component {
             {
                 id: 'memberInfo',
                 label: 'Info',
+                icon: 'account_box',
                 content: (
                     <DynamicForm
                         inputs={memberInputs}
@@ -43,6 +44,7 @@ export class MemberProfile extends Component {
             {
                 id: 'services',
                 label: 'Services',
+                icon: 'list_alt',
                 content: <ManageServices memberId={this.props.match.params.id} />
             }
         ];

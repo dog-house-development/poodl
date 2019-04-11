@@ -139,11 +139,13 @@ export class ViewActivity extends Component {
             {
                 id: 'info',
                 label: 'Info',
+                icon: 'event',
                 content: this.getFormMarkup()
             },
             {
                 id: 'members',
                 label: 'Members',
+                icon: 'people',
                 content: this.getMemberListMarkup()
             }
         ];
