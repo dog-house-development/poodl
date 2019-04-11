@@ -48,6 +48,16 @@
       color: $gray-7;
     }
 
+    &.tab-includes-icon {
+      padding-left: 2.35em;
+
+      .tab-icon {
+        position: absolute;
+        left: 0.65em;
+        font-size: 1.2em;
+      }
+    }
+
     .tab-label-count {
       position: relative;
       background-color: $gray-1;

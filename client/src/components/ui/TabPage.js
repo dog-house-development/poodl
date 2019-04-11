@@ -23,10 +23,14 @@ class TabPage extends Component {
     getTabBar() {
         return _.map(this.props.tabs, tab => (
             <button
-                className={classnames('tab-button', { 'current-tab': this.state.currentTab === tab.id })}
+                className={classnames('tab-button', {
+                    'current-tab': this.state.currentTab === tab.id,
+                    'tab-includes-icon': tab.icon
+                })}
                 id={tab.id}
                 key={tab.id}
                 onClick={this.onTabClick}>
+                {tab.icon ? <i className="material-icons tab-icon">{tab.icon}</i> : null}
                 {tab.label}
                 {tab.count ? <span className="tab-label-count">{tab.count}</span> : null}
             </button>
