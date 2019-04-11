@@ -28,6 +28,7 @@ class TabPage extends Component {
                 key={tab.id}
                 onClick={this.onTabClick}>
                 {tab.label}
+                {tab.count ? <span className="tab-label-count">{tab.count}</span> : null}
             </button>
         ));
     }
@@ -36,7 +37,7 @@ class TabPage extends Component {
         return (
             <div>
                 <div className="tab-bar">{this.getTabBar()}</div>
-                <div>{_.find(this.props.tabs, { id: this.state.currentTab }).content}</div>
+                <div>{_.get(_.find(this.props.tabs, { id: this.state.currentTab }), 'content')}</div>
             </div>
         );
     }

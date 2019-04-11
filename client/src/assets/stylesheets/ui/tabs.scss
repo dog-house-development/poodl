@@ -26,11 +26,19 @@
     &:hover {
       // border-color: $gray-3;
       color: $gray-7;
+
+      .tab-label-count {
+        background-color: $gray-2;
+      }
     }
 
     &:focus {
       outline: none;
       border-color: $gray-3;
+
+      .tab-label-count {
+        background-color: $gray-2;
+      }
     }
 
     &.current-tab {
@@ -38,6 +46,16 @@
       border-color: $gray-3;
       border-bottom-color: transparent;
       color: $gray-7;
+    }
+
+    .tab-label-count {
+      position: relative;
+      background-color: $gray-1;
+      color: $gray-6;
+      font-size: 0.8em;
+      border-radius: 1em;
+      padding: 0.03em 0.45em;
+      margin-left: 0.3em;
     }
   }
 }
