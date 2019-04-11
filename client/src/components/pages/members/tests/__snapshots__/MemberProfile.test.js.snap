@@ -357,6 +357,7 @@ exports[`MemberProfile tests render should render correctly 1`] = `
           "content": <ManageServices
             memberId="123"
           />,
+          "count": 1,
           "icon": "list_alt",
           "id": "services",
           "label": "Services",

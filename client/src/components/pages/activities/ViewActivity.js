@@ -146,6 +146,7 @@ export class ViewActivity extends Component {
                 id: 'members',
                 label: 'Members',
                 icon: 'people',
+                count: _.size(this.props.activity.members),
                 content: this.getMemberListMarkup()
             }
         ];
