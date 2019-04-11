@@ -4,7 +4,7 @@ import GoHome from '../ui/GoHome';
 class PageNotFound extends Component {
     render() {
         return (
-            <div className="landing-container">
+            <div className="landing-container page-container">
                 <div className="landing-header">
                     <h1 className="landing-title">404</h1>
                     <h1>Page not found</h1>

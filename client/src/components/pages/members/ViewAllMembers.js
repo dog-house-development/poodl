@@ -41,7 +41,7 @@ export class ViewAllMembers extends Component {
 
     render() {
         return (
-            <div className="view-all-container">
+            <div className="view-all-container page-container">
                 <Link to="/dashboard" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>

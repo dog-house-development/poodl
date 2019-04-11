@@ -119,7 +119,7 @@ export class RegisterAdmin extends Component {
 
     render() {
         return (
-            <div className="register-container">
+            <div className="register-container page-container">
                 <Link to="/dashboard" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>

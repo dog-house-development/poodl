@@ -11,7 +11,7 @@ import EditableProfile from '../../ui/EditableProfile';
 export class AdminProfile extends Component {
     render() {
         return (
-            <div className="view-all-container">
+            <div className="view-all-container page-container">
                 <Link to="/admins" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all admins
                 </Link>

@@ -68,7 +68,7 @@ export class AddActivity extends Component {
 
     render() {
         return (
-            <div className="add-activity-container">
+            <div className="add-activity-container page-container">
                 <Link to="/activities" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all activities
                 </Link>

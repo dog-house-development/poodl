@@ -87,7 +87,7 @@ export class Reports extends React.Component {
 
     render() {
         return (
-            <div className="reports-container">
+            <div className="reports-container page-container">
                 <Link to="/" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
