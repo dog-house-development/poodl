@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 import MemberActions from '../../../actions/memberActions';
+import ServiceActions from '../../../actions/serviceActions';
 import DynamicForm from '../../ui/DynamicForm';
 import memberInputs from './memberInputs';
 import ManageServices from '../services/ManageServices';
@@ -18,6 +19,7 @@ export class MemberProfile extends Component {
     componentDidMount() {
         // call redux action to retrieve specified profile from api
         this.props.memberActions.get(this.props.match.params.id);
+        this.props.serviceActions.filter();
     }
 
     editMember = (modifiedInputs, onSuccess) => {
@@ -45,7 +47,8 @@ export class MemberProfile extends Component {
                 id: 'services',
                 label: 'Services',
                 icon: 'list_alt',
-                content: <ManageServices memberId={this.props.match.params.id} />
+                count: this.props.serviceCount,
+                content: <ManageServices data={this.props.services} memberId={this.props.match.params.id} />
             }
         ];
     }
@@ -69,13 +72,15 @@ export const mapStateToProps = (state, props) => {
     return {
         member: state.members.all[props.match.params.id],
         loading: state.members.loading,
-        errors: state.members.errors
+        errors: state.members.errors,
+        serviceCount: _.size(state.services.all)
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        memberActions: bindActionCreators(MemberActions, dispatch)
+        memberActions: bindActionCreators(MemberActions, dispatch),
+        serviceActions: bindActionCreators(ServiceActions, dispatch)
     };
 };
 

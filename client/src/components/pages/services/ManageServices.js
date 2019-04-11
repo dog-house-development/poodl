@@ -4,7 +4,8 @@ import AddService from '../services/AddService';
 import ServiceList from '../services/ServiceList';
 
 const propTypes = {
-    memberId: PropTypes.string
+    memberId: PropTypes.string,
+    data: PropTypes.object
 };
 
 export class ManageServices extends Component {
@@ -13,7 +14,7 @@ export class ManageServices extends Component {
             <div className="panel manage-services-panel">
                 <div className="connecting-line" />
                 <ServiceList memberId={this.props.memberId} />
-                <AddService memberId={this.props.memberId} />
+                <AddService services={this.props.data} memberId={this.props.memberId} />
             </div>
         );
     }

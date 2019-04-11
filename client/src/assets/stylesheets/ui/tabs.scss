@@ -28,7 +28,7 @@
       color: $gray-7;
 
       .tab-label-count {
-        background-color: $gray-2;
+        color: $gray-7;
       }
     }
 
@@ -37,7 +37,7 @@
       border-color: $gray-3;
 
       .tab-label-count {
-        background-color: $gray-2;
+        color: $gray-7;
       }
     }
 
@@ -66,6 +66,7 @@
       border-radius: 1em;
       padding: 0.03em 0.45em;
       margin-left: 0.3em;
+      border: 1px solid $gray-2;
     }
   }
 }

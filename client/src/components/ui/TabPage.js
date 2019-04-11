@@ -32,7 +32,7 @@ class TabPage extends Component {
                 onClick={this.onTabClick}>
                 {tab.icon ? <i className="material-icons tab-icon">{tab.icon}</i> : null}
                 {tab.label}
-                {tab.count ? <span className="tab-label-count">{tab.count}</span> : null}
+                {!_.isNil(tab.count) ? <span className="tab-label-count">{tab.count}</span> : null}
             </button>
         ));
     }

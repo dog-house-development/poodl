@@ -31,6 +31,12 @@ describe('MemberProfile tests', () => {
                     },
                     errors: {},
                     loading: false
+                },
+                services: {
+                    all: {
+                        123: {},
+                        321: {}
+                    }
                 }
             },
             _state
@@ -65,7 +71,8 @@ describe('MemberProfile tests', () => {
                     email: 'bigtup@nowhere.com'
                 },
                 loading: false,
-                errors: {}
+                errors: {},
+                serviceCount: 2
             });
         });
     });
@@ -73,7 +80,9 @@ describe('MemberProfile tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ memberActions: {} }));
+            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(
+                JSON.stringify({ memberActions: {}, serviceActions: {} })
+            );
         });
     });
 

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
-import ServiceActions from '../../../actions/serviceActions';
 import List from '../../ui/List';
 
 const propTypes = {
@@ -13,10 +11,6 @@ const propTypes = {
 };
 
 export class ServiceList extends Component {
-    componentDidMount() {
-        this.props.serviceActions.filter();
-    }
-
     render() {
         return (
             <List
@@ -45,14 +39,5 @@ export const mapStateToProps = (state, props) => {
     };
 };
 
-export const mapDispatchToProps = dispatch => {
-    return {
-        serviceActions: bindActionCreators(ServiceActions, dispatch)
-    };
-};
-
 ServiceList.propTypes = propTypes;
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withRouter(ServiceList));
+export default connect(mapStateToProps)(withRouter(ServiceList));
