@@ -135,6 +135,17 @@ describe('Add activity tests', () => {
             ]);
         });
 
+        describe('onSubmit', () => {
+            xit('should run without errors', () => {
+                spyOn(instance, 'onSubmit');
+                const e = {
+                    target: { id: 'name', value: 'Bingo' },
+                    preventDefault: () => {}
+                };
+                wrapper.find('Form').simulate('submit', e);
+            });
+        });
+
         xit('should return correct fields if super admin', () => {
             setInstanceAndWrapper({}, { auth: { admin: { accessLevel: 'Super', seniorCenterId: '123' } } });
             expect(instance.getFields()).toEqual([
