@@ -18,8 +18,13 @@ export class ViewService extends Component {
 
     componentDidMount() {
         // call redux action to retrieve specified profile from api
-        this.props.serviceActions.filter();
-        this.props.memberActions.filter();
+        this.props.serviceActions.get(this.props.match.params.id);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!_.isEqual(prevProps.service, this.props.service)) {
+            this.props.memberActions.get(this.props.service.memberId);
+        }
     }
 
     editService = (modifiedInputs, onSuccess) => {
