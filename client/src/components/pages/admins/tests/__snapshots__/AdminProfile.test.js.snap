@@ -2,7 +2,7 @@
 
 exports[`AdminProfile tests render should render correctly 1`] = `
 <div
-  className="view-all-container page-container"
+  className="page-container"
 >
   <Link
     className="button small tertiary"
@@ -16,99 +16,105 @@ exports[`AdminProfile tests render should render correctly 1`] = `
     </i>
      Back to all admins
   </Link>
-  <div>
+  <div
+    className="page-header"
+  >
     <h1>
-      Moose
-       
-      Man
+      Moose Man
     </h1>
-    <DynamicForm
-      editValues={[Function]}
-      editable={true}
-      errorDescription=""
-      errors={Object {}}
-      inputs={
-        Array [
-          Object {
-            "id": "personalInfo",
-            "inputs": Array [
-              Object {
-                "id": "name",
-                "inputs": Array [
-                  Object {
-                    "id": "firstName",
-                    "kind": "field",
-                    "label": "First name",
-                    "style": Object {
-                      "flex": 3,
-                    },
-                    "type": "text",
-                  },
-                  Object {
-                    "id": "middleInitial",
-                    "kind": "field",
-                    "label": "M.I.",
-                    "style": Object {
-                      "flex": 1,
-                    },
-                  },
-                  Object {
-                    "id": "lastName",
-                    "kind": "field",
-                    "label": "Last name",
-                    "style": Object {
-                      "flex": 3,
-                    },
-                    "type": "text",
-                  },
-                  Object {
-                    "id": "nickName",
-                    "kind": "field",
-                    "label": "Nickname",
-                    "style": Object {
-                      "flex": 2,
-                    },
-                  },
-                ],
-                "kind": "flex",
-              },
-              Object {
-                "id": "email",
-                "kind": "field",
-                "label": "Email",
-                "type": "email",
-              },
-              Object {
-                "editable": false,
-                "id": "password",
-                "kind": "field",
-                "label": "Password",
-                "type": "password",
-              },
-              Object {
-                "editable": false,
-                "id": "password2",
-                "kind": "field",
-                "label": "Confirm Password",
-                "type": "password",
-              },
-            ],
-            "kind": "group",
-            "label": "Personal Info",
-          },
-        ]
-      }
-      loading={false}
-      values={
-        Object {
-          "_id": "123",
-          "email": "mooseman@nowhere.com",
-          "firstName": "Moose",
-          "lastName": "Man",
-          "superAdmin": true,
-        }
-      }
-    />
+    <DeleteButton
+      confirmQuestion="Are you sure you want to delete the admin 'Moose Man'?"
+      onConfirm={[Function]}
+    >
+      Delete Admin
+    </DeleteButton>
   </div>
+  <DynamicForm
+    editValues={[Function]}
+    editable={true}
+    errorDescription=""
+    errors={Object {}}
+    inputs={
+      Array [
+        Object {
+          "id": "personalInfo",
+          "inputs": Array [
+            Object {
+              "id": "name",
+              "inputs": Array [
+                Object {
+                  "id": "firstName",
+                  "kind": "field",
+                  "label": "First name",
+                  "style": Object {
+                    "flex": 3,
+                  },
+                  "type": "text",
+                },
+                Object {
+                  "id": "middleInitial",
+                  "kind": "field",
+                  "label": "M.I.",
+                  "style": Object {
+                    "flex": 1,
+                  },
+                },
+                Object {
+                  "id": "lastName",
+                  "kind": "field",
+                  "label": "Last name",
+                  "style": Object {
+                    "flex": 3,
+                  },
+                  "type": "text",
+                },
+                Object {
+                  "id": "nickName",
+                  "kind": "field",
+                  "label": "Nickname",
+                  "style": Object {
+                    "flex": 2,
+                  },
+                },
+              ],
+              "kind": "flex",
+            },
+            Object {
+              "id": "email",
+              "kind": "field",
+              "label": "Email",
+              "type": "email",
+            },
+            Object {
+              "editable": false,
+              "id": "password",
+              "kind": "field",
+              "label": "Password",
+              "type": "password",
+            },
+            Object {
+              "editable": false,
+              "id": "password2",
+              "kind": "field",
+              "label": "Confirm Password",
+              "type": "password",
+            },
+          ],
+          "kind": "group",
+          "label": "Personal Info",
+        },
+      ]
+    }
+    loading={false}
+    values={
+      Object {
+        "_id": "123",
+        "email": "mooseman@nowhere.com",
+        "firstName": "Moose",
+        "lastName": "Man",
+        "superAdmin": true,
+      }
+    }
+  />
 </div>
 `;

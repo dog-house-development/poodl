@@ -14,6 +14,7 @@ const match = {
     }
 };
 describe('VolunteerProfile tests', () => {
+    global.scrollTo = jest.fn();
     let state, props, wrapper, instance;
     const setInstanceAndWrapper = (_props = {}, _state = {}) => {
         state = _.assign(

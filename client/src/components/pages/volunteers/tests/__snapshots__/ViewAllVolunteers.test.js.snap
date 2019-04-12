@@ -2,7 +2,7 @@
 
 exports[`ViewAllVolunteers tests render should render correctly 1`] = `
 <div
-  className="view-all-container page-container"
+  className="page-container"
 >
   <Link
     className="button small tertiary"
@@ -17,7 +17,7 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
      Back to home
   </Link>
   <div
-    className="view-all-header"
+    className="page-header"
   >
     <h1>
       Manage Volunteers

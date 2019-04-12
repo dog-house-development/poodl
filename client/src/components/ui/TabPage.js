@@ -17,7 +17,9 @@ class TabPage extends Component {
     }
 
     onTabClick = e => {
-        this.setState({ currentTab: e.target.id });
+        if (e.target.id) {
+            this.setState({ currentTab: e.target.id });
+        }
     };
 
     getTabBar() {

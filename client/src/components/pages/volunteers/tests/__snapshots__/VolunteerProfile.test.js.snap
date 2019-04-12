@@ -2,7 +2,7 @@
 
 exports[`VolunteerProfile tests render should render correctly 1`] = `
 <div
-  className="view-all-container page-container"
+  className="page-container"
 >
   <Link
     className="button small tertiary"
@@ -17,11 +17,19 @@ exports[`VolunteerProfile tests render should render correctly 1`] = `
      Back to all volunteers
   </Link>
   <div>
-    <h1>
-      Big
-       
-      Tup
-    </h1>
+    <div
+      className="page-header"
+    >
+      <h1>
+        Big Tup
+      </h1>
+      <DeleteButton
+        confirmQuestion="Are you sure you want to delete the volunteer 'Big Tup'?"
+        onConfirm={[Function]}
+      >
+        Delete Volunteer
+      </DeleteButton>
+    </div>
     <DynamicForm
       editValues={[Function]}
       editable={true}

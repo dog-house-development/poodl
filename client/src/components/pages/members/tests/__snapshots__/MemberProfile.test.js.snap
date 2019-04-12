@@ -2,7 +2,7 @@
 
 exports[`MemberProfile tests render should render correctly 1`] = `
 <div
-  className="view-all-container page-container"
+  className="page-container"
 >
   <Link
     className="button small tertiary"
@@ -16,11 +16,19 @@ exports[`MemberProfile tests render should render correctly 1`] = `
     </i>
      Back to all members
   </Link>
-  <h1>
-    Big
-     
-    Tup
-  </h1>
+  <div
+    className="page-header"
+  >
+    <h1>
+      Big Tup
+    </h1>
+    <DeleteButton
+      confirmQuestion="Are you sure you want to delete the member 'Big Tup'?"
+      onConfirm={[Function]}
+    >
+      Delete Member
+    </DeleteButton>
+  </div>
   <TabPage
     startingTab="memberInfo"
     tabs={
