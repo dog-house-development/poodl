@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Dropdown from '../ui/Dropdown';
 import AuthActions from '../../actions/authActions';
 import Button from '../ui/Button';
-import onClickOutside from './../ui/SearchField';
 
 export class Navbar extends Component {
     constructor() {
