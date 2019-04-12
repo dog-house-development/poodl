@@ -48,7 +48,7 @@ export class SelfRegisterMember extends React.Component {
                         submitButtonLabel="Sign up"
                         errors={this.props.errors}
                         values={this.state}
-                        errorDescription="There are snakes in this boot."
+                        errorDescription="There are errors in this form."
                     />
                 </div>
             </div>
