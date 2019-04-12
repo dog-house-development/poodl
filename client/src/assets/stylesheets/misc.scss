@@ -28,4 +28,29 @@
   max-width: 50em;
   margin: auto;
   width: 95%;
+
+  .page-header {
+    width: 100%;
+    margin-top: 1rem;
+    min-height: 3em;
+
+    // This is a clearfix hack, which makes it so floated elements
+    // appear inside parent div
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    h1 {
+      display: inline-block;
+    }
+
+    a,
+    button {
+      margin-top: 0.55rem;
+      margin-left: 0.5em;
+      float: right;
+    }
+  }
 }

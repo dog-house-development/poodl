@@ -12,6 +12,8 @@ import activityInputs from './activityInputs';
 import List from '../../ui/List';
 import mongoose from 'mongoose';
 import TabPage from './../../ui/TabPage';
+import Loading from './../../ui/Loading';
+import { DeleteButton } from './../../ui/DeleteButton';
 const { ObjectId } = mongoose.Types;
 
 const propTypes = {
@@ -152,13 +154,28 @@ export class ViewActivity extends Component {
         ];
     }
 
+    handleDeleteClick = () => {
+        this.props.activityActions.delete(this.props.match.params.id, () => this.props.history.push('/activities'));
+    };
+
+    getActivityName() {
+        return this.props.loading ? <Loading content="" /> : _.get(this.props.activity, 'name');
+    }
+
     render() {
         return (
             <div className="page-container">
                 <Link to="/activities" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all activities
                 </Link>
-                <h1>{_.get(this.props.activity, 'name')}</h1>
+                <div className="page-header">
+                    <h1>{this.getActivityName()}</h1>
+                    <DeleteButton
+                        onConfirm={this.handleDeleteClick}
+                        confirmQuestion={`Are you sure you want to delete the activity '${this.getActivityName()}'?`}>
+                        Delete Activity
+                    </DeleteButton>
+                </div>
                 <TabPage tabs={this.getTabs()} startingTab="info" />
             </div>
         );
