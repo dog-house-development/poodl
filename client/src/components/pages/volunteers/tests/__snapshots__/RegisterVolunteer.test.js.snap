@@ -99,21 +99,33 @@ exports[`Register volunteer tests render should render correctly 1`] = `
                     "id": "streetAddress",
                     "kind": "field",
                     "label": "Street Address",
+                    "style": Object {
+                      "flex": 3,
+                    },
                   },
                   Object {
                     "id": "city",
                     "kind": "field",
                     "label": "City",
+                    "style": Object {
+                      "flex": 2,
+                    },
                   },
                   Object {
                     "id": "state",
                     "kind": "field",
                     "label": "State",
+                    "style": Object {
+                      "flex": 1,
+                    },
                   },
                   Object {
                     "id": "zip",
                     "kind": "field",
                     "label": "ZIP",
+                    "style": Object {
+                      "flex": 1,
+                    },
                   },
                 ],
                 "kind": "flex",
