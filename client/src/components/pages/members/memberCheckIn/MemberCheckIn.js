@@ -7,16 +7,16 @@ import { withRouter } from 'react-router-dom';
 
 import MemberActions from '../../../../actions/memberActions';
 import AuthActions from '../../../../actions/authActions';
-// import ActivityActions from '../../../../actions/activityActions';
-// import Loading from '../../../ui/Loading';
 import Button from '../../../ui/Button';
 
 // check-in pages
 import FindMember from './pages/FindMember';
 import SelectActivities from './pages/SelectActivities';
 import Finished from './pages/Finished';
+import SelfRegisterMember from './pages/SelfRegisterMember';
 
 const pages = {
+    memberSignUp: { title: 'Sign up', index: -1 },
     findMember: { title: 'FindMember', index: 0 },
     selectActivities: { title: 'SelectActivities', index: 1 },
     finished: { title: 'Finished', index: 2 }
@@ -48,7 +48,7 @@ class MemberCheckIn extends Component {
     }
 
     getBackButtonMarkup() {
-        if (this.state.currentPage !== pages.findMember) {
+        if (this.state.currentPage !== pages.findMember && this.state.currentPage !== pages.memberSignUp) {
             return (
                 <Button
                     onClick={() =>
@@ -76,7 +76,7 @@ class MemberCheckIn extends Component {
     }
 
     getNextButtonMarkup() {
-        if (this.state.currentPage !== pages.findMember) {
+        if (this.state.currentPage !== pages.findMember && this.state.currentPage !== pages.memberSignUp) {
             return (
                 <Button onClick={this.onNextClick} kind="primary">
                     {this.state.currentPage === pages.finished ? (
@@ -94,12 +94,26 @@ class MemberCheckIn extends Component {
         }
     }
 
+    onSignUpClick = () => {
+        this.setState({ currentPage: pages.memberSignUp });
+    };
+
+    onSignUpSuccess = id => {
+        this.setState({ memberId: id, currentPage: pages.findMember });
+    };
+
     getPageMarkup() {
         switch (this.state.currentPage) {
+            case pages.memberSignUp:
+                return (
+                    <div>
+                        <SelfRegisterMember onSignUpSuccess={this.onSignUpSuccess} />
+                    </div>
+                );
             case pages.findMember:
                 return (
                     <div>
-                        <FindMember setMemberId={this.setMemberId} />
+                        <FindMember setMemberId={this.setMemberId} onSignUpClick={this.onSignUpClick} />
                     </div>
                 );
             case pages.selectActivities:

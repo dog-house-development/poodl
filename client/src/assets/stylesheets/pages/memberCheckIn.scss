@@ -27,6 +27,19 @@
       max-width: 40em;
       margin: auto;
       overflow: visible;
+      margin-bottom: 2em;
+    }
+
+    .sign-up-container {
+      text-align: center;
+
+      p {
+        display: inline-block;
+      }
+
+      button {
+        margin-left: 1em;
+      }
     }
 
     .last-check-in {
