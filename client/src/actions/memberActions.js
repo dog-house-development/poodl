@@ -2,8 +2,8 @@ import ActionHelper from './utils/ActionHelper';
 import Types from './types';
 
 export default {
-    create: (data, history) => dispatch => {
-        ActionHelper.create(dispatch, Types.member, data, history);
+    create: (data, history, onSuccess) => dispatch => {
+        ActionHelper.create(dispatch, Types.member, data, history, onSuccess);
     },
 
     filter: data => dispatch => {

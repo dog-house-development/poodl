@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import _ from 'lodash';
-import AdminActions from '../../../actions/adminActions';
+
 import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
-import adminFields, { Categories } from './adminFields';
-import EditableProfile from '../../ui/EditableProfile';
 import { DeleteButton } from './../../ui/DeleteButton';
+
+import AdminActions from '../../../actions/adminActions';
+import DynamicForm from '../../ui/DynamicForm';
+import adminInputs from './adminInputs';
+
 export class AdminProfile extends Component {
+    componentDidMount() {
+        this.props.adminActions.get(this.props.match.params.id);
+    }
+
     getAdminName() {
         return this.props.loading ? (
             <Loading content="" />
@@ -21,9 +29,13 @@ export class AdminProfile extends Component {
         this.props.adminActions.delete(this.props.match.params.id, () => this.props.history.push('/admins'));
     };
 
+    editAdmin = (modifiedInputs, onSuccess) => {
+        this.props.adminActions.edit(_.get(this.props.admin, '_id'), modifiedInputs, onSuccess);
+    };
+
     render() {
         return (
-            <div className="view-all-container page-container">
+            <div className="page-container">
                 <Link to="/admins" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all admins
                 </Link>
@@ -35,12 +47,13 @@ export class AdminProfile extends Component {
                         Delete Admin
                     </DeleteButton>
                 </div>
-                <EditableProfile
-                    fields={adminFields}
-                    categories={Categories}
-                    editProfile={this.props.adminActions.edit}
-                    getProfile={this.props.adminActions.get}
-                    profile={this.props.admin}
+                <DynamicForm
+                    inputs={adminInputs}
+                    editValues={this.editAdmin}
+                    values={this.props.admin}
+                    editable={true}
+                    loading={this.props.loading}
+                    errors={this.props.errors}
                 />
             </div>
         );
