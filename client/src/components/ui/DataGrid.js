@@ -41,7 +41,6 @@ class DataGrid extends Component {
     }
 
     handleFilterChange = event => {
-        event.preventDefault();
         this.setState({
             filterValue: event.target.value
         });
@@ -58,6 +57,8 @@ class DataGrid extends Component {
                     value={this.state.filterValue}
                     placeholder="Search"
                     autoComplete="off"
+                    clearable
+                    leftIcon="search"
                 />
             );
         }

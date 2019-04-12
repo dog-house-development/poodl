@@ -27,6 +27,7 @@
 
   .field-outer {
     display: flex;
+    position: relative;
 
     .field {
       flex-grow: 1;
@@ -79,6 +80,55 @@
 
       &.field-error-border {
         border-color: $red-1;
+      }
+
+      &.clearable-field {
+        padding-right: 1.75em;
+      }
+
+      &.include-left-icon {
+        padding-left: 2em;
+      }
+    }
+
+    .clear-icon {
+      position: absolute;
+      pointer-events: auto;
+      color: $gray-4;
+      border-radius: 1em;
+      font-size: 1em;
+      right: 0.2em;
+      top: calc(50% - 0.5em);
+
+      &:hover {
+        color: $gray-5;
+        background-color: $gray-2;
+      }
+
+      &.large {
+        font-size: 1.3em;
+        right: 0.5em;
+      }
+
+      &.secondary {
+        &:hover {
+          color: $gray-7;
+          background-color: transparent;
+        }
+      }
+    }
+
+    .left-icon {
+      font-size: 1.4em;
+      top: calc(50% - 0.5em);
+      left: 0.3em;
+      position: absolute;
+      color: $gray-4;
+
+      &.large {
+        font-size: 1.3em;
+        left: 0.35em;
+        font-size: 1.75em;
       }
     }
   }
