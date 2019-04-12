@@ -17,7 +17,7 @@ exports[`ViewAllAdmins tests render should render correctly 1`] = `
      Back to home
   </Link>
   <div
-    className="view-all-header"
+    className="page-header"
   >
     <h1>
       Manage Admins

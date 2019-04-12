@@ -16,6 +16,7 @@ ApiHelper.get(router, Member);
 // @route PATCH api/members/:id
 ApiHelper.edit(router, Member);
 
+// @route DELETE api/members/:id
 router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
     const id = mongoose.Types.ObjectId(req.params.id);
     Member.findByIdAndDelete(id, (err, doc) => {

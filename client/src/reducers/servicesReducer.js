@@ -69,7 +69,7 @@ export default function(state = initialState, action) {
                 loading: true
             };
         case Types.service.delete.SUCCESS:
-            const { [action.payload._id]: id, ...newState } = state.all;
+            const { [action.payload._id]: deletedService, ...newState } = state.all;
             return {
                 ...state,
                 loading: false,

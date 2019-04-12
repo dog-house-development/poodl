@@ -10,8 +10,8 @@ import DynamicForm from '../../ui/DynamicForm';
 import memberInputs from './memberInputs';
 import ManageServices from '../services/ManageServices';
 import TabPage from '../../ui/TabPage';
-import Button from './../../ui/Button';
 import Loading from '../../ui/Loading';
+import DeleteButton from '../../ui/DeleteButton';
 
 export class MemberProfile extends Component {
     static defaultProps = {
@@ -22,6 +22,7 @@ export class MemberProfile extends Component {
         // call redux action to retrieve specified profile from api
         this.props.memberActions.get(this.props.match.params.id);
         this.props.serviceActions.filter();
+        window.scrollTo(0, 0);
     }
 
     editMember = (modifiedInputs, onSuccess) => {
@@ -64,23 +65,22 @@ export class MemberProfile extends Component {
     }
 
     handleDeleteClick = () => {
-        const shouldDelete = window.confirm(`Are you sure you want to delete the member '${this.getMemberName()}'`);
-        if (shouldDelete) {
-            this.props.memberActions.delete(this.props.match.params.id, this.props.history);
-        }
+        this.props.memberActions.delete(this.props.match.params.id, () => this.props.history.push('/members'));
     };
 
     render() {
         return (
-            <div className="view-all-container page-container">
+            <div className="page-container">
                 <Link to="/members" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all members
                 </Link>
-                <div className="view-all-header">
+                <div className="page-header">
                     <h1>{this.getMemberName()}</h1>
-                    <Button onClick={this.handleDeleteClick} size="small" className="delete-button">
-                        <i className="material-icons button-icon">remove_circle_outline</i>Delete Member
-                    </Button>
+                    <DeleteButton
+                        onConfirm={this.handleDeleteClick}
+                        confirmQuestion={`Are you sure you want to delete the member '${this.getMemberName()}'?`}>
+                        Delete Member
+                    </DeleteButton>
                 </div>
                 <TabPage tabs={this.getTabs()} startingTab="memberInfo" />
             </div>

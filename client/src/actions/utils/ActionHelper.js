@@ -96,6 +96,7 @@ export default {
                     type: type.edit.SUCCESS,
                     payload: res.data
                 });
+
                 onSuccess();
             })
             .catch(err => getErrors(dispatch, type, err));
@@ -107,7 +108,7 @@ export default {
      * @param type      {String}    the type to create the action for
      * @param id        {String}    id of the doc to delete
      */
-    delete: (dispatch, type, id, history) => {
+    delete: (dispatch, type, id, onSuccess = _.noop) => {
         dispatch({ type: type.delete.BEGIN });
         axios
             .delete(`/api/${type.url}/${id}`)
@@ -116,9 +117,8 @@ export default {
                     type: type.delete.SUCCESS,
                     payload: res.data
                 });
-                if (history) {
-                    history.goBack();
-                }
+
+                onSuccess();
             })
             .catch(err => getErrors(dispatch, type, err));
     }

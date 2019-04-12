@@ -7,9 +7,10 @@ import _ from 'lodash';
 import ServiceActions from '../../../actions/serviceActions';
 import MemberActions from '../../../actions/memberActions';
 import DynamicForm from '../../ui/DynamicForm';
-import Button from '../../ui/Button';
 import List from '../../ui/List';
 import serviceInputs from './serviceInputs';
+import { DeleteButton } from './../../ui/DeleteButton';
+import Loading from './../../ui/Loading';
 
 export class ViewService extends Component {
     static defaultProps = {
@@ -22,7 +23,7 @@ export class ViewService extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (!_.isEqual(prevProps.service, this.props.service)) {
+        if (!_.isEqual(prevProps.service, this.props.service) && this.props.service) {
             this.props.memberActions.get(this.props.service.memberId);
         }
     }
@@ -31,18 +32,13 @@ export class ViewService extends Component {
         this.props.serviceActions.edit(_.get(this.props.service, '_id'), modifiedInputs, onSuccess);
     };
 
+    handleDeleteClick = () => {
+        this.props.serviceActions.delete(this.props.match.params.id, () => this.props.history.goBack());
+    };
+
     getFormMarkup() {
         return (
-            <div>
-                <h1 className="view-all-header">
-                    {_.get(this.props.service, 'name')}
-                    <Button
-                        onClick={() => this.props.serviceActions.delete(this.props.match.params.id, this.props.history)}
-                        size="small"
-                        className="delete-button">
-                        <i className="material-icons button-icon">remove_circle_outline</i>Remove service
-                    </Button>
-                </h1>
+            <>
                 <DynamicForm
                     inputs={serviceInputs}
                     editValues={this.editService}
@@ -66,16 +62,28 @@ export class ViewService extends Component {
                     onRowClick={e => this.props.history.push(`/members/${e.target.id}`)}
                     noDataMessage="Member not found for this service"
                 />
-            </div>
+            </>
         );
+    }
+
+    getServiceName() {
+        return this.props.loading ? <Loading content="" /> : _.get(this.props.service, 'name');
     }
 
     render() {
         return (
-            <div className="view-all-container view-service page-container">
+            <div className="view-service page-container">
                 <Link to={`/members/${_.get(this.props.service, 'memberId')}`} className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to member
                 </Link>
+                <div className="page-header">
+                    <h1>{this.getServiceName()}</h1>
+                    <DeleteButton
+                        onConfirm={this.handleDeleteClick}
+                        confirmQuestion={`Are you sure you want to remove the service '${this.getServiceName()}'?`}>
+                        Remove Service
+                    </DeleteButton>
+                </div>
                 {this.getFormMarkup()}
             </div>
         );

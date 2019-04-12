@@ -17,5 +17,9 @@ export default {
 
     edit: (id, data, onSuccess) => dispatch => {
         ActionHelper.edit(dispatch, Types.admin, id, data, onSuccess);
+    },
+
+    delete: (id, onSuccess) => dispatch => {
+        ActionHelper.delete(dispatch, Types.admin, id, onSuccess);
     }
 };
