@@ -29,7 +29,7 @@ exports[`MemberProfile tests render should render correctly 1`] = `
       Delete Member
     </DeleteButton>
   </div>
-  <TabPage
+  <withRouter(TabPage)
     startingTab="memberInfo"
     tabs={
       Array [

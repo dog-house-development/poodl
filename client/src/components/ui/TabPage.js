@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import _ from 'lodash';
+import Utils from '../../utils/Utils';
 
 const propTypes = {
-    tabs: PropTypes.array,
-    startingTab: PropTypes.string
+    startingTab: PropTypes.string,
+    tabs: PropTypes.array
 };
 
 const defaultProps = {};
@@ -13,13 +15,13 @@ const defaultProps = {};
 class TabPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { currentTab: props.startingTab };
+        const urlTab = Utils.getUrlParameter('tab', props.location.search);
+        this.state = { currentTab: _.find(props.tabs, { id: urlTab }) ? urlTab : props.startingTab };
     }
 
     onTabClick = e => {
-        if (e.target.id) {
-            this.setState({ currentTab: e.target.id });
-        }
+        this.setState({ currentTab: e.target.id });
+        Utils.setUrlParameter('tab', e.target.id, this.props.history);
     };
 
     getTabBar() {
@@ -51,4 +53,4 @@ class TabPage extends Component {
 
 TabPage.propTypes = propTypes;
 TabPage.defaultProps = defaultProps;
-export default TabPage;
+export default withRouter(TabPage);
