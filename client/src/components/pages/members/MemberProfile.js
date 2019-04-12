@@ -10,6 +10,8 @@ import DynamicForm from '../../ui/DynamicForm';
 import memberInputs from './memberInputs';
 import ManageServices from '../services/ManageServices';
 import TabPage from '../../ui/TabPage';
+import Button from './../../ui/Button';
+import Loading from '../../ui/Loading';
 
 export class MemberProfile extends Component {
     static defaultProps = {
@@ -53,15 +55,33 @@ export class MemberProfile extends Component {
         ];
     }
 
+    getMemberName() {
+        return this.props.loading ? (
+            <Loading content="" />
+        ) : (
+            _.get(this.props.member, 'firstName') + ' ' + _.get(this.props.member, 'lastName')
+        );
+    }
+
+    handleDeleteClick = () => {
+        const shouldDelete = window.confirm(`Are you sure you want to delete the member '${this.getMemberName()}'`);
+        if (shouldDelete) {
+            this.props.memberActions.delete(this.props.match.params.id, this.props.history);
+        }
+    };
+
     render() {
         return (
             <div className="view-all-container page-container">
                 <Link to="/members" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all members
                 </Link>
-                <h1>
-                    {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
-                </h1>
+                <div className="view-all-header">
+                    <h1>{this.getMemberName()}</h1>
+                    <Button onClick={this.handleDeleteClick} size="small" className="delete-button">
+                        <i className="material-icons button-icon">remove_circle_outline</i>Delete Member
+                    </Button>
+                </div>
                 <TabPage tabs={this.getTabs()} startingTab="memberInfo" />
             </div>
         );
