@@ -10,6 +10,7 @@
 @import 'ui/searchField.scss';
 @import 'ui/panel.scss';
 @import 'ui/datagrid.scss';
+@import 'ui/list.scss';
 @import 'ui/viewByDate.scss';
 @import 'ui/loading.scss';
 @import 'ui/select.scss';
@@ -19,15 +20,13 @@
 @import 'ui/checkbox.scss';
 @import 'ui/multiCheckbox.scss';
 @import 'ui/radio.scss';
+@import 'ui/tabs.scss';
 
 // pages
-@import 'pages/register.scss';
 @import 'pages/login.scss';
 @import 'pages/landing.scss';
 @import 'pages/dashboard.scss';
-@import 'pages/viewAll.scss';
-@import 'pages/addActivity.scss';
-@import 'pages/registerContainer.scss';
+@import 'pages/manageServices.scss';
 @import 'pages/memberCheckIn.scss';
 @import 'pages/reports.scss';
 
@@ -45,6 +44,7 @@
   min-height: 100%;
   padding-bottom: 51px;
   position: relative;
+  overflow: hidden;
 }
 
 i {

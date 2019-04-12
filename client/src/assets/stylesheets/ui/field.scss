@@ -27,6 +27,7 @@
 
   .field-outer {
     display: flex;
+    position: relative;
 
     .field {
       flex-grow: 1;
@@ -43,7 +44,7 @@
       &:focus {
         outline: 0;
         border-color: $button-primary;
-        background-color: $gray-1;
+        background-color: $gray-0;
       }
 
       &.normal {
@@ -56,8 +57,78 @@
         font-size: 1.25em;
       }
 
+      &.secondary {
+        background-color: #e1e6ed;
+        border-color: transparent;
+        color: $gray-7;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          background-color: $gray-1;
+          border-color: $gray-2;
+        }
+
+        &:focus {
+          background-color: $gray-1;
+          box-shadow: 0 0 0 3pt $blue-outline;
+        }
+
+        &::placeholder {
+          color: $gray-5;
+        }
+      }
+
       &.field-error-border {
         border-color: $red-1;
+      }
+
+      &.clearable-field {
+        padding-right: 1.75em;
+      }
+
+      &.include-left-icon {
+        padding-left: 2em;
+      }
+    }
+
+    .clear-icon {
+      position: absolute;
+      pointer-events: auto;
+      color: $gray-4;
+      border-radius: 1em;
+      font-size: 1em;
+      right: 0.2em;
+      top: calc(50% - 0.5em);
+
+      &:hover {
+        color: $gray-5;
+        background-color: $gray-2;
+      }
+
+      &.large {
+        font-size: 1.3em;
+        right: 0.5em;
+      }
+
+      &.secondary {
+        &:hover {
+          color: $gray-7;
+          background-color: transparent;
+        }
+      }
+    }
+
+    .left-icon {
+      font-size: 1.4em;
+      top: calc(50% - 0.5em);
+      left: 0.3em;
+      position: absolute;
+      color: $gray-4;
+
+      &.large {
+        font-size: 1.3em;
+        left: 0.35em;
+        font-size: 1.75em;
       }
     }
   }
@@ -76,6 +147,14 @@
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
+    }
+  }
+
+  &.filter-field {
+    max-width: 14em;
+
+    @media screen and (max-width: $mobile) {
+      max-width: 100%;
     }
   }
 }

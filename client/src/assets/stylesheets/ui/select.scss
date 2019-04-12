@@ -1,9 +1,29 @@
 .select {
   .field-outer {
-    .field {
-      flex-grow: 0;
-      &.medium-width {
-        min-width: 4em;
+    .select-inner {
+      display: inline-block;
+      position: relative;
+
+      .field {
+        flex-grow: 0;
+        padding-right: 1.6em;
+
+        &.medium-width {
+          min-width: 4em;
+        }
+      }
+
+      .select-icon {
+        position: absolute;
+        right: 0.1em;
+        top: 20%;
+        color: $gray-4;
+      }
+
+      &:hover {
+        .select-icon {
+          color: $gray-6;
+        }
       }
     }
   }

@@ -48,7 +48,6 @@ class SearchField extends Component {
     }
 
     handleChange(e) {
-        e.preventDefault();
         this.setState({ searchParam: e.target.value, resultsOpen: true });
         this.searchData(e.target.value);
     }
@@ -64,7 +63,7 @@ class SearchField extends Component {
     }
 
     getSearchResultsMarkup() {
-        if (this.state.searchParam.length < this.props.minCharactersBeforeResults) {
+        if (_.trim(this.state.searchParam).length < this.props.minCharactersBeforeResults) {
             return;
         } else if (this.state.resultsOpen && !_.isEmpty(this.state.filteredData)) {
             return (
@@ -96,6 +95,8 @@ class SearchField extends Component {
                     onClick={this.handleFieldClick}
                     autoComplete="off"
                     autoFocus={this.props.autoFocus}
+                    clearable={this.props.clearable}
+                    leftIcon="search"
                 />
                 {this.getSearchResultsMarkup()}
             </div>

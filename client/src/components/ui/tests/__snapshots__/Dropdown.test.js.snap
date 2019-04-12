@@ -15,10 +15,10 @@ exports[`Dropdown tests render should render closed dropdown correctly 1`] = `
         </i>
       </span>
     }
-    dropdownButton={true}
     kind="primary"
     onClick={[Function]}
     size="medium"
+    type="button"
   />
 </div>
 `;
@@ -38,10 +38,10 @@ exports[`Dropdown tests render should render open arrow dropdown correctly 1`] =
         </i>
       </span>
     }
-    dropdownButton={true}
     kind="primary"
     onClick={[Function]}
     size="medium"
+    type="button"
   />
   <div
     className="dropdown-content dropdown-align-left arrow-dropdown"
@@ -88,10 +88,10 @@ exports[`Dropdown tests render should render open dropdown correctly 1`] = `
         </i>
       </span>
     }
-    dropdownButton={true}
     kind="primary"
     onClick={[Function]}
     size="medium"
+    type="button"
   />
   <div
     className="dropdown-content dropdown-align-left"

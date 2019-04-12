@@ -3,29 +3,62 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import VolunteerActions from '../../../actions/volunteerActions';
-import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
-import volunteerFields, { Categories } from './volunteerFields';
-import EditableProfile from '../../ui/EditableProfile';
+import DynamicForm from '../../ui/DynamicForm';
+import volunteerInputs from './volunteerInputs';
+import { DeleteButton } from './../../ui/DeleteButton';
+import Loading from './../../ui/Loading';
 
 export class VolunteerProfile extends Component {
+    static defaultProps = {
+        errors: {}
+    };
+
+    componentDidMount() {
+        // call redux action to retrieve specified profile from api
+        this.props.volunteerActions.get(this.props.match.params.id);
+        window.scrollTo(0, 0);
+    }
+
+    editVolunteer = (modifiedInputs, onSuccess) => {
+        this.props.volunteerActions.edit(_.get(this.props.volunteer, '_id'), modifiedInputs, onSuccess);
+    };
+
+    getVolunteerName() {
+        return this.props.loading ? (
+            <Loading content="" />
+        ) : (
+            _.get(this.props.volunteer, 'firstName') + ' ' + _.get(this.props.volunteer, 'lastName')
+        );
+    }
+
+    handleDeleteClick = () => {
+        this.props.volunteerActions.delete(this.props.match.params.id, () => this.props.history.push('/volunteers'));
+    };
+
     render() {
         return (
-            <div className="view-all-container">
+            <div className="page-container">
                 <Link to="/volunteers" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all volunteers
                 </Link>
                 <div>
-                    <h1>
-                        {this.props.loading ? <Loading /> : _.get(this.props.volunteers, 'firstName')}{' '}
-                        {this.props.loading ? '' : _.get(this.props.volunteers, 'lastName')}
-                    </h1>
-                    <EditableProfile
-                        fields={volunteerFields}
-                        categories={Categories}
-                        editProfile={this.props.volunteerActions.edit}
-                        getProfile={this.props.volunteerActions.get}
-                        profile={this.props.volunteer}
+                    <div className="page-header">
+                        <h1>{this.getVolunteerName()}</h1>
+                        <DeleteButton
+                            onConfirm={this.handleDeleteClick}
+                            confirmQuestion={`Are you sure you want to delete the volunteer '${this.getVolunteerName()}'?`}>
+                            Delete Volunteer
+                        </DeleteButton>
+                    </div>
+
+                    <DynamicForm
+                        inputs={volunteerInputs}
+                        editValues={this.editVolunteer}
+                        values={this.props.volunteer}
+                        editable={true}
+                        loading={this.props.loading}
+                        errors={this.props.errors}
                     />
                 </div>
             </div>

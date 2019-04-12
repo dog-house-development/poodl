@@ -2,7 +2,7 @@
 
 exports[`Register member tests render should render correctly 1`] = `
 <div
-  className="register-container"
+  className="page-container"
 >
   <Link
     className="button small tertiary"
@@ -25,11 +25,12 @@ exports[`Register member tests render should render correctly 1`] = `
       Register Member
     </h1>
     <DynamicForm
+      errorDescription="There are errors in this form."
       errors={Object {}}
       inputs={
         Array [
           Object {
-            "id": "Personal Info",
+            "id": "personalInfo",
             "inputs": Array [
               Object {
                 "id": "name",
@@ -53,9 +54,8 @@ exports[`Register member tests render should render correctly 1`] = `
                 "id": "birthDate",
                 "kind": "datePicker",
                 "label": "Date of Birth",
-                "maxYear": 1990,
-                "minYear": 1900,
-                "value": "1950-01-01T07:00:00.000Z",
+                "maxYear": 1999,
+                "minYear": 1894,
               },
               Object {
                 "id": "email",
@@ -81,9 +81,10 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Personal Info",
           },
           Object {
-            "id": "Emergency Contact Info",
+            "id": "emergencyContactInfo",
             "inputs": Array [
               Object {
                 "id": "emergencyContactName",
@@ -105,12 +106,13 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Emergency Contact Info",
           },
           Object {
-            "id": "Membership Details",
+            "id": "membershipDetails",
             "inputs": Array [
               Object {
-                "id": "memberisNewOrRenewal",
+                "id": "memberIsNewOrRenewal",
                 "kind": "radio",
                 "label": "Member is new or renewal",
                 "options": Array [
@@ -157,9 +159,10 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Membership Details",
           },
           Object {
-            "id": "Health Info",
+            "id": "healthInfo",
             "inputs": Array [
               Object {
                 "id": "specialDiet",
@@ -187,9 +190,10 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Health Info",
           },
           Object {
-            "id": "Demographic Info",
+            "id": "demographicInfo",
             "inputs": Array [
               Object {
                 "id": "race",
@@ -210,7 +214,8 @@ exports[`Register member tests render should render correctly 1`] = `
                 "id": "numberInHousehold",
                 "kind": "field",
                 "label": "Number in Household",
-                "type": "text",
+                "min": "0",
+                "type": "number",
               },
               Object {
                 "id": "isPersonCaregiver",
@@ -259,10 +264,11 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Demographic Info",
           },
           Object {
             "description": "If client is receiving services under National Family Caregiver Support Program, complete the following:",
-            "id": "Nation Family Caregiver Support Program",
+            "id": "supportProgram",
             "inputs": Array [
               Object {
                 "id": "caregiver",
@@ -291,6 +297,8 @@ exports[`Register member tests render should render correctly 1`] = `
                 "id": "numberOfKidsUnder19",
                 "kind": "field",
                 "label": "Number of kids younger than 19",
+                "min": "0",
+                "type": "number",
               },
               Object {
                 "id": "needsAADL",
@@ -322,6 +330,7 @@ exports[`Register member tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
+            "label": "Nation Family Caregiver Support Program",
           },
         ]
       }

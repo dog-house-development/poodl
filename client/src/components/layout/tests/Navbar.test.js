@@ -15,6 +15,7 @@ describe('Navbar tests', () => {
             {},
             {
                 content: 'Press me',
+                location: { pathname: '/' },
                 onClick: () => {}
             },
             _props

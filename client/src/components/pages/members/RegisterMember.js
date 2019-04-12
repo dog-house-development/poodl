@@ -38,7 +38,7 @@ export class RegisterMember extends React.Component {
 
     render() {
         return (
-            <div className="register-container">
+            <div className="page-container">
                 <Link to="/members" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all members
                 </Link>
@@ -51,6 +51,7 @@ export class RegisterMember extends React.Component {
                         submitButtonLabel="Register Member"
                         errors={this.props.errors}
                         values={this.state}
+                        errorDescription="There are errors in this form."
                     />
                 </div>
             </div>

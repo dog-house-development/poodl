@@ -16,7 +16,7 @@ exports[`Navbar tests render should render correctly 1`] = `
     <div
       className="App wrapper"
     >
-      <Connect(withRouter(Navbar)) />
+      <withRouter(Connect(Navbar)) />
       <Switch>
         <Route
           component={[Function]}
@@ -87,6 +87,16 @@ exports[`Navbar tests render should render correctly 1`] = `
           component={[Function]}
           exact={true}
           path="/activities/add"
+        />
+        <Connect(PrivateRoute)
+          component={[Function]}
+          exact={true}
+          path="/activities/:id"
+        />
+        <Connect(PrivateRoute)
+          component={[Function]}
+          exact={true}
+          path="/services/:id"
         />
         <Connect(PrivateRoute)
           component={[Function]}

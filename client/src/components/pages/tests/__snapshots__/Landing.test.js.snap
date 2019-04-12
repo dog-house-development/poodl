@@ -2,7 +2,7 @@
 
 exports[`Landing tests render should render correctly 1`] = `
 <div
-  className="landing-container"
+  className="landing-container page-container"
 >
   <div
     className="landing-header"

@@ -47,20 +47,5 @@ exports[`Login tests render should render correctly 1`] = `
     noValidate={true}
     onSubmit={[Function]}
   />
-  <div
-    className="center"
-  >
-    <p>
-      Forgot password?
-       
-      <Link
-        className="button small secondary"
-        replace={false}
-        to="/login"
-      >
-        Reset
-      </Link>
-    </p>
-  </div>
 </div>
 `;
