@@ -19,6 +19,16 @@ class TabPage extends Component {
         this.state = { currentTab: _.find(props.tabs, { id: urlTab }) ? urlTab : props.startingTab };
     }
 
+    componentDidUpdate() {
+        const urlTab = Utils.getUrlParameter('tab', this.props.location.search);
+        const urlTabExists = _.find(this.props.tabs, { id: urlTab });
+        if (urlTab && urlTab !== this.state.currentTab && urlTabExists) {
+            this.setState({ currentTab: urlTabExists ? urlTab : this.props.startingTab });
+        } else if (!urlTab && this.props.startingTab !== this.state.currentTab) {
+            this.setState({ currentTab: this.props.startingTab });
+        }
+    }
+
     onTabClick = e => {
         this.setState({ currentTab: e.target.id });
         Utils.setUrlParameter('tab', e.target.id, this.props.history);

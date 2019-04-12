@@ -36,7 +36,7 @@ const Utils = {
         }),
 
     setUrlParameter: (key, value, history) => {
-        history.push(`?${key}=${value}`);
+        history.push({ search: `?${key}=${value}` });
     },
 
     getUrlParameter: (key, search) => {
