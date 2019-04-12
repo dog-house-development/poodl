@@ -4,8 +4,44 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Dropdown from '../ui/Dropdown';
 import AuthActions from '../../actions/authActions';
+import Button from '../ui/Button';
 
 export class Navbar extends Component {
+    constructor() {
+        super();
+        this.state = {
+            skinny: false,
+            expanded: false
+        };
+    }
+
+    updateWidth = () => {
+        if (window.innerWidth < 700 && !this.state.skinny) {
+            this.setState({ skinny: true });
+        }
+
+        if (window.innerWidth > 700 && this.state.skinny) {
+            this.setState({ skinny: false });
+        }
+    };
+
+    componentDidMount() {
+        this.updateWidth();
+        window.addEventListener('resize', this.updateWidth);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWidth);
+    }
+
+    getMemberCheckinHeaderMarkup() {
+        return (
+            <div className="header check-in-header">
+                <h1 className="check-in-title">Member check in</h1>
+            </div>
+        );
+    }
+
     getUserDropDownContent() {
         return [
             {
@@ -43,21 +79,25 @@ export class Navbar extends Component {
         );
     }
 
-    getHeaderMarkup() {
-        if (!this.props.auth.isAuthenticated) {
-            return (
-                <>
+    getLoginMarkup() {
+        return (
+            <div className="header">
+                <ul>
                     <li className="">
                         <Link to="/">Poodl</Link>
                     </li>
                     <li className="right">
                         <Link to="/login">Log in</Link>
                     </li>
-                </>
-            );
-        } else {
-            return (
-                <>
+                </ul>
+            </div>
+        );
+    }
+
+    getWideHeaderMarkup() {
+        return (
+            <div className="header">
+                <ul>
                     <li className="">
                         <Link to="/dashboard">Poodl</Link>
                     </li>
@@ -73,15 +113,67 @@ export class Navbar extends Component {
                     <li className="right">
                         <Link to="/member-check-in">Member check-in</Link>
                     </li>
-                </>
+                </ul>
+            </div>
+        );
+    }
+
+    handleMenuClick = () => {
+        this.setState({ expanded: !this.state.expanded });
+    };
+
+    getAccordion() {
+        if (this.state.expanded) {
+            return (
+                <ul className="accordion">
+                    <li>
+                        <Link to="/dashboard">My Dashboard</Link>
+                    </li>
+                    <li>
+                        <Link to="/activities">Activities</Link>
+                    </li>
+                    <li>
+                        <Link to="/member-check-in">Member check-in</Link>
+                    </li>
+                    <li className="line">
+                        <Button
+                            kind="secondary"
+                            size="small"
+                            onClick={() => {
+                                this.props.history.push(`/admins/${this.props.auth.admin.id}`);
+                            }}>
+                            My Profile
+                        </Button>
+                    </li>
+                    <li>
+                        <Button
+                            kind="secondary"
+                            size="small"
+                            onClick={() => {
+                                this.props.authActions.logoutAdmin();
+                            }}>
+                            Log out
+                        </Button>
+                    </li>
+                </ul>
             );
         }
     }
 
-    getMemberCheckinHeaderMarkup() {
+    getSkinnyHeaderMarkup() {
         return (
-            <div className="header check-in-header">
-                <h1 className="check-in-title">Member check in</h1>
+            <div className="header skinny">
+                <ul>
+                    <li className="poodl">
+                        <Link to="/dashboard">Poodl</Link>
+                    </li>
+                    <li className="right menu">
+                        <Button kind="tertiary" size="small" onClick={this.handleMenuClick}>
+                            <i className="material-icons">menu</i>
+                        </Button>
+                    </li>
+                </ul>
+                {this.getAccordion()}
             </div>
         );
     }
@@ -90,11 +182,16 @@ export class Navbar extends Component {
         if (this.props.location.pathname === '/member-check-in') {
             return this.getMemberCheckinHeaderMarkup();
         }
-        return (
-            <div className="header">
-                <ul>{this.getHeaderMarkup()}</ul>
-            </div>
-        );
+
+        if (!this.props.auth.isAuthenticated) {
+            return this.getLoginMarkup();
+        }
+
+        if (this.state.skinny) {
+            return this.getSkinnyHeaderMarkup();
+        }
+
+        return this.getWideHeaderMarkup();
     }
 }
 
