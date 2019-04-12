@@ -48,13 +48,4 @@ router.post('/quarterData', (req, res) => {
     });
 });
 
-function convertToString(arr) {
-    for (var i = 0; i < arr.length; i++) arr[i] = String(arr[i]);
-    return arr;
-}
-function removeDuplicate(arr) {
-    temp = new Set(arr);
-    return Array.from(temp);
-}
-
 module.exports = router;

@@ -1,15 +1,17 @@
 module.export = {
     getMatch(a, b) {
-        var duplicated = [];
-        var nonDuplicated = [];
+        const duplicated = [];
+        const nonDuplicated = [];
+
+        a = removeDuplicate(a);
+        b = removeDuplicate(b);
 
         //can probably be switched to index of methods to make it faster
         //but they were not working for some reason so this is how it is
-        for (var i = 0; i < a.length; i++) {
-            for (var e = 0; e < b.length; e++) {
+        for (const i = 0; i < a.length; i++) {
+            for (const e = 0; e < b.length; e++) {
                 if (a[i] === b[e] && !duplicated.includes(a[i])) {
                     duplicated.push(a[i]);
-                    console.log(a[i]);
                     continue;
                 }
             }
@@ -20,3 +22,8 @@ module.export = {
         return [duplicated.length, nonDuplicated.length];
     }
 };
+
+function removeDuplicate(arr) {
+    temp = new Set(arr);
+    return Array.from(temp);
+}
