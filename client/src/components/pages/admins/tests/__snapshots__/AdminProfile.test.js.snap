@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AdminProfile tests mapStateToProps should map state to props 1`] = `
+Object {
+  "admin": Object {
+    "_id": "123",
+    "email": "mooseman@nowhere.com",
+    "firstName": "Moose",
+    "lastName": "Man",
+    "superAdmin": true,
+  },
+  "auth": Object {
+    "admin": Object {
+      "superAdmin": true,
+    },
+    "errors": Object {},
+  },
+  "errors": Object {},
+  "loading": false,
+}
+`;
+
 exports[`AdminProfile tests render should render correctly 1`] = `
 <div
   className="page-container"
