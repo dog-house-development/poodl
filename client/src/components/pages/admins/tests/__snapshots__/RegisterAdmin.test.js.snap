@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Register tests render should render correctly 1`] = `
+exports[`RegisterAdmin tests render should render correctly 1`] = `
 <div
   className="register-container page-container"
 >
@@ -16,67 +16,104 @@ exports[`Register tests render should render correctly 1`] = `
     </i>
      Back to home
   </Link>
-  <Form
-    buttonLabel="Register"
-    fields={
-      Array [
+  <div
+    className="panel"
+  >
+    <h1
+      className="panel-title"
+    >
+      Register Member
+    </h1>
+    <DynamicForm
+      errorDescription=""
+      errors={Object {}}
+      inputs={
+        Array [
+          Object {
+            "id": "personalInfo",
+            "inputs": Array [
+              Object {
+                "id": "name",
+                "inputs": Array [
+                  Object {
+                    "id": "firstName",
+                    "kind": "field",
+                    "label": "First name",
+                    "style": Object {
+                      "flex": 3,
+                    },
+                    "type": "text",
+                  },
+                  Object {
+                    "id": "middleInitial",
+                    "kind": "field",
+                    "label": "M.I.",
+                    "style": Object {
+                      "flex": 1,
+                    },
+                  },
+                  Object {
+                    "id": "lastName",
+                    "kind": "field",
+                    "label": "Last name",
+                    "style": Object {
+                      "flex": 3,
+                    },
+                    "type": "text",
+                  },
+                  Object {
+                    "id": "nickName",
+                    "kind": "field",
+                    "label": "Nickname",
+                    "style": Object {
+                      "flex": 2,
+                    },
+                  },
+                ],
+                "kind": "flex",
+              },
+              Object {
+                "id": "email",
+                "kind": "field",
+                "label": "Email",
+                "type": "email",
+              },
+              Object {
+                "editable": false,
+                "id": "password",
+                "kind": "field",
+                "label": "Password",
+                "type": "password",
+              },
+              Object {
+                "editable": false,
+                "id": "password2",
+                "kind": "field",
+                "label": "Confirm Password",
+                "type": "password",
+              },
+            ],
+            "kind": "group",
+            "label": "Personal Info",
+          },
+        ]
+      }
+      onChange={[Function]}
+      onSubmit={[Function]}
+      submitButtonLabel="Register Admin"
+      values={
         Object {
-          "autoComplete": "off",
-          "error": undefined,
-          "id": "firstName",
-          "label": "First name",
-          "onChange": [Function],
-          "placeholder": "John...",
-          "sidebyside": 1,
-          "type": "text",
-          "value": "",
-        },
-        Object {
-          "autoComplete": "off",
-          "error": undefined,
-          "id": "lastName",
-          "label": "Last name",
-          "onChange": [Function],
-          "placeholder": "Smith...",
-          "sidebyside": 2,
-          "type": "text",
-          "value": "",
-        },
-        Object {
-          "autoComplete": "off",
-          "error": undefined,
-          "id": "email",
-          "label": "Email",
-          "onChange": [Function],
-          "placeholder": "example@poodl.com...",
-          "type": "email",
-          "value": "sam@test.com",
-        },
-        Object {
-          "autoComplete": "off",
-          "error": undefined,
-          "id": "password",
-          "label": "Password",
-          "onChange": [Function],
-          "placeholder": "Shhhhh...",
-          "type": "password",
-          "value": "abc123",
-        },
-        Object {
-          "autoComplete": "off",
-          "error": undefined,
-          "id": "password2",
-          "label": "Confirm Password",
-          "onChange": [Function],
-          "placeholder": "Again...",
-          "type": "password",
-          "value": "abc123",
-        },
-      ]
-    }
-    formTitle="Register Admin"
-    noValidate={true}
-    onSubmit={[Function]}
-  />
+          "email": "sam@test.com",
+          "errors": Object {
+            "email": "Invalid email",
+          },
+          "name": "Sam",
+          "password": "abc123",
+          "password2": "abc123",
+          "seniorCenterId": 123,
+        }
+      }
+    />
+  </div>
 </div>
 `;
