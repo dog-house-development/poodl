@@ -9,6 +9,21 @@ const propTypes = {
 };
 
 export class Dashboard extends Component {
+    getAdminAndVolunteerButtons() {
+        if (this.props.auth.admin.accessLevel !== 'Volunteer') {
+            return (
+                <>
+                    <Link to="/admins" className="button primary medium">
+                        Admins
+                    </Link>
+                    <Link to="/volunteers" className="button primary medium">
+                        Volunteers
+                    </Link>
+                </>
+            );
+        }
+    }
+
     render() {
         const { admin } = this.props.auth;
 
@@ -17,12 +32,7 @@ export class Dashboard extends Component {
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
                 <div className="panel dashboard-panel">
-                    <Link to="/admins" className="button primary medium">
-                        Admins
-                    </Link>
-                    <Link to="/volunteers" className="button primary medium">
-                        Volunteers
-                    </Link>
+                    {this.getAdminAndVolunteerButtons()}
                     <Link to="/members" className="button primary medium">
                         Members
                     </Link>
