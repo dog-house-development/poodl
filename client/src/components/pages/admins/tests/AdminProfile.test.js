@@ -62,17 +62,7 @@ describe('AdminProfile tests', () => {
 
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
-            expect(mapStateToProps(state, props)).toEqual({
-                admin: {
-                    _id: '123',
-                    firstName: 'Moose',
-                    lastName: 'Man',
-                    email: 'mooseman@nowhere.com',
-                    superAdmin: true
-                },
-                loading: false,
-                errors: {}
-            });
+            expect(mapStateToProps(state, props)).toMatchSnapshot();
         });
     });
 
