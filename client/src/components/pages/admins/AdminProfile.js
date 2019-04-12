@@ -1,14 +1,23 @@
-import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import _ from 'lodash';
-import AdminActions from '../../../actions/adminActions';
-import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
-import adminFields, { Categories } from './adminFields';
-import EditableProfile from '../../ui/EditableProfile';
+import React, { Component } from 'react';
+import _ from 'lodash';
+
+import Loading from '../../ui/Loading';
+import AdminActions from '../../../actions/adminActions';
+import DynamicForm from '../../ui/DynamicForm';
+import adminInputs from './adminInputs';
 
 export class AdminProfile extends Component {
+    componentDidMount() {
+        this.props.adminActions.get(this.props.match.params.id);
+    }
+
+    editAdmin = (modifiedInputs, onSuccess) => {
+        this.props.adminActions.edit(_.get(this.props.admin, '_id'), modifiedInputs, onSuccess);
+    };
+
     render() {
         return (
             <div className="view-all-container page-container">
@@ -20,12 +29,13 @@ export class AdminProfile extends Component {
                         {this.props.loading ? <Loading /> : _.get(this.props.admin, 'firstName')}{' '}
                         {this.props.loading ? '' : _.get(this.props.admin, 'lastName')}
                     </h1>
-                    <EditableProfile
-                        fields={adminFields}
-                        categories={Categories}
-                        editProfile={this.props.adminActions.edit}
-                        getProfile={this.props.adminActions.get}
-                        profile={this.props.admin}
+                    <DynamicForm
+                        inputs={adminInputs}
+                        editValues={this.editAdmin}
+                        values={this.props.admin}
+                        editable={true}
+                        loading={this.props.loading}
+                        errors={this.props.errors}
                     />
                 </div>
             </div>
