@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import _ from 'lodash';
 
 const propTypes = {
     onChange: PropTypes.func.isRequired,
@@ -20,7 +21,9 @@ const propTypes = {
     sidebyside: PropTypes.oneOf([1, 2]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     onClick: PropTypes.func,
-    present: PropTypes.bool
+    present: PropTypes.bool,
+    clearable: PropTypes.bool,
+    leftIcon: PropTypes.string
 };
 
 const defaultProps = {
@@ -42,8 +45,31 @@ class Field extends Component {
         this.props.onChange(e);
     }
 
+    getClearMarkup() {
+        if (this.props.clearable && !_.isEmpty(this.props.value)) {
+            return (
+                <i
+                    className={classnames('material-icons', 'clear-icon', this.props.size, this.props.kind)}
+                    onClick={this.onClearClick}>
+                    clear
+                </i>
+            );
+        }
+    }
+
+    onClearClick = () => {
+        const e = { target: { value: '' } };
+        this.props.onChange(e);
+    };
+
+    getLeftIconMarkup() {
+        if (this.props.leftIcon) {
+            return <i className={classnames('material-icons', 'left-icon', this.props.size)}>{this.props.leftIcon}</i>;
+        }
+    }
+
     render() {
-        const { style, present, editable, ...inputProps } = this.props;
+        const { style, present, editable, clearable, leftIcon, ...inputProps } = this.props;
         if (present) {
             return (
                 <div style={style} className="field-wrapper editable-field-wrapper">
@@ -61,6 +87,7 @@ class Field extends Component {
                 })}>
                 <p className="field-label">{this.props.label}</p>
                 <div className="field-outer">
+                    {this.getLeftIconMarkup()}
                     <input
                         {...inputProps}
                         className={classnames(
@@ -69,9 +96,12 @@ class Field extends Component {
                             this.props.kind,
                             { 'first-side-by-side-input': this.props.sidebyside === 1 },
                             { 'second-side-by-side-input': this.props.sidebyside === 2 },
-                            { 'field-error-border': this.props.error }
+                            { 'field-error-border': this.props.error },
+                            { 'clearable-field': this.props.clearable },
+                            { 'include-left-icon': this.props.leftIcon }
                         )}
                     />
+                    {this.getClearMarkup()}
                     <p className="field-error-label">{this.props.error}</p>
                 </div>
             </div>
