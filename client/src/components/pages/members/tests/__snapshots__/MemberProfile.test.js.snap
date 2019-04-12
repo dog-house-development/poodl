@@ -21,7 +21,7 @@ exports[`MemberProfile tests render should render correctly 1`] = `
      
     Tup
   </h1>
-  <TabPage
+  <withRouter(TabPage)
     startingTab="memberInfo"
     tabs={
       Array [

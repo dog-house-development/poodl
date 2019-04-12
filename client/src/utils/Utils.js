@@ -33,7 +33,18 @@ const Utils = {
             let valueToTest = _.clone(value);
             _.remove(valueToTest, 'key');
             return Utils.searchObject(param, valueToTest);
-        })
+        }),
+
+    setUrlParameter: (key, value, history) => {
+        history.push(`?${key}=${value}`);
+    },
+
+    getUrlParameter: (key, search) => {
+        key = key.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+        let regex = new RegExp('[\\?&]' + key + '=([^&#]*)');
+        let results = regex.exec(search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
 };
 
 export default Utils;
