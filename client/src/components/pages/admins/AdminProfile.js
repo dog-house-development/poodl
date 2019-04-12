@@ -30,6 +30,18 @@ export class AdminProfile extends Component {
         this.props.adminActions.edit(_.get(this.props.admin, '_id'), modifiedInputs, onSuccess);
     };
 
+    getDeleteButton() {
+        if (this.props.auth.admin.id !== _.get(this.props.admin, '_id')) {
+            return (
+                <DeleteButton
+                    onConfirm={this.handleDeleteClick}
+                    confirmQuestion={`Are you sure you want to delete the admin '${this.getAdminName()}'?`}>
+                    Delete Admin
+                </DeleteButton>
+            );
+        }
+    }
+
     render() {
         return (
             <div className="page-container">
@@ -38,11 +50,7 @@ export class AdminProfile extends Component {
                 </Link>
                 <div className="page-header">
                     <h1>{this.getAdminName()}</h1>
-                    <DeleteButton
-                        onConfirm={this.handleDeleteClick}
-                        confirmQuestion={`Are you sure you want to delete the admin '${this.getAdminName()}'?`}>
-                        Delete Admin
-                    </DeleteButton>
+                    {this.getDeleteButton()}
                 </div>
                 <DynamicForm
                     inputs={adminInputs}
@@ -61,7 +69,8 @@ export const mapStateToProps = (state, props) => {
     return {
         admin: state.admins.all[props.match.params.id],
         loading: state.admins.loading,
-        errors: state.admins.errors
+        errors: state.admins.errors,
+        auth: state.auth
     };
 };
 
