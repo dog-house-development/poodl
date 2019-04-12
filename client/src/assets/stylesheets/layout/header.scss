@@ -54,11 +54,11 @@
     }
 
     &.menu {
-      padding-top: 0.5rem;
+      padding: 0.85rem 2vw 0 0;
 
       button {
         color: $gray-6;
-        padding-right: 2vw;
+        padding: 0;
 
         &:hover {
           color: $gray-8;
@@ -69,8 +69,6 @@
 
   .accordion {
     border-top: 1px solid $gray-4;
-    padding: 0.5rem;
-    padding-right: 2.5vw;
     li {
       display: block;
       text-align: right;
@@ -78,18 +76,22 @@
 
       a {
         padding: 0.5rem;
-        padding-right: 0;
+        padding-right: 2.5vw;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       button {
         padding: 0.5rem;
-        padding-right: 0;
+        padding-right: 2.5vw;
+        width: 100%;
         font-size: 13px;
         font-weight: bold;
         color: $gray-6;
         text-transform: uppercase;
         text-decoration: none;
         border: none;
+        text-align: right;
 
         &:hover {
           color: $gray-8;
