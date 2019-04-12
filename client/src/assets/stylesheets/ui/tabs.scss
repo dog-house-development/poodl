@@ -2,8 +2,9 @@
 
 .tab-bar {
   border-bottom: 1px solid $gray-3;
-  padding: 0 100%;
-  margin: 1em -100% 2em;
+  // width: 100vw;
+  padding: 0 50vw;
+  margin: 1em -50vw 2em;
 
   .tab-button {
     border: 1px solid transparent;
