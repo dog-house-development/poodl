@@ -110,14 +110,6 @@ export class Login extends Component {
                     formTitle="Log In"
                     errors={this.getFormErrors()}
                 />
-                <div className="center">
-                    <p>
-                        Forgot password?{' '}
-                        <Link to="/login" className="button small secondary">
-                            Reset
-                        </Link>
-                    </p>
-                </div>
             </div>
         );
     }
