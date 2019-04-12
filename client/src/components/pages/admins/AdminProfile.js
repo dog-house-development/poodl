@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import _ from 'lodash';
-
 import Loading from '../../ui/Loading';
-import { Link } from 'react-router-dom';
 import { DeleteButton } from './../../ui/DeleteButton';
-
 import AdminActions from '../../../actions/adminActions';
 import DynamicForm from '../../ui/DynamicForm';
 import adminInputs from './adminInputs';

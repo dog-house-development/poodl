@@ -2,7 +2,7 @@
 
 exports[`AdminProfile tests render should render correctly 1`] = `
 <div
-  className="view-all-container page-container"
+  className="page-container"
 >
   <Link
     className="button small tertiary"
@@ -22,7 +22,6 @@ exports[`AdminProfile tests render should render correctly 1`] = `
     <h1>
       Moose Man
     </h1>
-<<<<<<< HEAD
     <DeleteButton
       confirmQuestion="Are you sure you want to delete the admin 'Moose Man'?"
       onConfirm={[Function]}
@@ -30,137 +29,84 @@ exports[`AdminProfile tests render should render correctly 1`] = `
       Delete Admin
     </DeleteButton>
   </div>
-  <withRouter(EditableProfile)
-    categories={
-      Object {
-        "admin": Object {
-          "id": "admin",
-          "title": "Admin Info",
-        },
-      }
-    }
-    editProfile={[Function]}
-    fields={
+  <DynamicForm
+    editValues={[Function]}
+    editable={true}
+    errorDescription=""
+    errors={Object {}}
+    inputs={
       Array [
-=======
-    <DynamicForm
-      editValues={[Function]}
-      editable={true}
-      errorDescription=""
-      errors={Object {}}
-      inputs={
-        Array [
-          Object {
-            "id": "personalInfo",
-            "inputs": Array [
-              Object {
-                "id": "name",
-                "inputs": Array [
-                  Object {
-                    "id": "firstName",
-                    "kind": "field",
-                    "label": "First name",
-                    "style": Object {
-                      "flex": 3,
-                    },
-                    "type": "text",
+        Object {
+          "id": "personalInfo",
+          "inputs": Array [
+            Object {
+              "id": "name",
+              "inputs": Array [
+                Object {
+                  "id": "firstName",
+                  "kind": "field",
+                  "label": "First name",
+                  "style": Object {
+                    "flex": 3,
                   },
-                  Object {
-                    "id": "middleInitial",
-                    "kind": "field",
-                    "label": "M.I.",
-                    "style": Object {
-                      "flex": 1,
-                    },
+                  "type": "text",
+                },
+                Object {
+                  "id": "middleInitial",
+                  "kind": "field",
+                  "label": "M.I.",
+                  "style": Object {
+                    "flex": 1,
                   },
-                  Object {
-                    "id": "lastName",
-                    "kind": "field",
-                    "label": "Last name",
-                    "style": Object {
-                      "flex": 3,
-                    },
-                    "type": "text",
+                },
+                Object {
+                  "id": "lastName",
+                  "kind": "field",
+                  "label": "Last name",
+                  "style": Object {
+                    "flex": 3,
                   },
-                  Object {
-                    "id": "nickName",
-                    "kind": "field",
-                    "label": "Nickname",
-                    "style": Object {
-                      "flex": 2,
-                    },
+                  "type": "text",
+                },
+                Object {
+                  "id": "nickName",
+                  "kind": "field",
+                  "label": "Nickname",
+                  "style": Object {
+                    "flex": 2,
                   },
-                ],
-                "kind": "flex",
-              },
-              Object {
-                "id": "email",
-                "kind": "field",
-                "label": "Email",
-                "type": "email",
-              },
-              Object {
-                "editable": false,
-                "id": "password",
-                "kind": "field",
-                "label": "Password",
-                "type": "password",
-              },
-              Object {
-                "editable": false,
-                "id": "password2",
-                "kind": "field",
-                "label": "Confirm Password",
-                "type": "password",
-              },
-            ],
-            "kind": "group",
-            "label": "Personal Info",
-          },
-        ]
-      }
-      loading={false}
-      values={
->>>>>>> b1e6ed1e660af5f409c2751347e4a99c25d336ec
-        Object {
-          "category": "admin",
-          "id": "firstName",
-          "label": "First name",
-          "type": "text",
-        },
-        Object {
-          "category": "admin",
-          "id": "lastName",
-          "label": "Last name",
-          "type": "text",
-        },
-        Object {
-          "category": "admin",
-          "id": "email",
-          "label": "Email",
-          "type": "email",
-        },
-        Object {
-          "category": "admin",
-          "id": "seniorCenterId",
-          "label": "Senior  Center ID",
-          "type": "text",
-        },
-        Object {
-          "category": "admin",
-          "id": "accessLevel",
-          "label": "Access Level",
-          "options": Array [
-            "Super",
-            "Admin",
-            "Volunteer",
+                },
+              ],
+              "kind": "flex",
+            },
+            Object {
+              "id": "email",
+              "kind": "field",
+              "label": "Email",
+              "type": "email",
+            },
+            Object {
+              "editable": false,
+              "id": "password",
+              "kind": "field",
+              "label": "Password",
+              "type": "password",
+            },
+            Object {
+              "editable": false,
+              "id": "password2",
+              "kind": "field",
+              "label": "Confirm Password",
+              "type": "password",
+            },
           ],
-          "type": "radio",
+          "kind": "group",
+          "label": "Personal Info",
         },
       ]
     }
-    getProfile={[Function]}
-    profile={
+    loading={false}
+    values={
       Object {
         "_id": "123",
         "email": "mooseman@nowhere.com",
