@@ -24,6 +24,8 @@ class TabPage extends Component {
         const urlTabExists = _.find(this.props.tabs, { id: urlTab });
         if (urlTab && urlTab !== this.state.currentTab && urlTabExists) {
             this.setState({ currentTab: urlTabExists ? urlTab : this.props.startingTab });
+        } else if (!urlTab && this.props.startingTab !== this.state.currentTab) {
+            this.setState({ currentTab: this.props.startingTab });
         }
     }
 
