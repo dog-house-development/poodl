@@ -71,22 +71,34 @@ const volunteerInputs = [
                     {
                         id: 'streetAddress',
                         kind: 'field',
-                        label: 'Street Address'
+                        label: 'Street Address',
+                        style: {
+                            flex: 3
+                        }
                     },
                     {
                         id: 'city',
                         kind: 'field',
-                        label: 'City'
+                        label: 'City',
+                        style: {
+                            flex: 2
+                        }
                     },
                     {
                         id: 'state',
                         kind: 'field',
-                        label: 'State'
+                        label: 'State',
+                        style: {
+                            flex: 1
+                        }
                     },
                     {
                         id: 'zip',
                         kind: 'field',
-                        label: 'ZIP'
+                        label: 'ZIP',
+                        style: {
+                            flex: 1
+                        }
                     }
                 ]
             },
