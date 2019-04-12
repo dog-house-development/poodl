@@ -16,72 +16,78 @@ exports[`AdminProfile tests render should render correctly 1`] = `
     </i>
      Back to all admins
   </Link>
-  <div>
+  <div
+    className="page-header"
+  >
     <h1>
-      Moose
-       
-      Man
+      Moose Man
     </h1>
-    <withRouter(EditableProfile)
-      categories={
-        Object {
-          "admin": Object {
-            "id": "admin",
-            "title": "Admin Info",
-          },
-        }
-      }
-      editProfile={[Function]}
-      fields={
-        Array [
-          Object {
-            "category": "admin",
-            "id": "firstName",
-            "label": "First name",
-            "type": "text",
-          },
-          Object {
-            "category": "admin",
-            "id": "lastName",
-            "label": "Last name",
-            "type": "text",
-          },
-          Object {
-            "category": "admin",
-            "id": "email",
-            "label": "Email",
-            "type": "email",
-          },
-          Object {
-            "category": "admin",
-            "id": "seniorCenterId",
-            "label": "Senior  Center ID",
-            "type": "text",
-          },
-          Object {
-            "category": "admin",
-            "id": "accessLevel",
-            "label": "Access Level",
-            "options": Array [
-              "Super",
-              "Admin",
-              "Volunteer",
-            ],
-            "type": "radio",
-          },
-        ]
-      }
-      getProfile={[Function]}
-      profile={
-        Object {
-          "_id": "123",
-          "email": "mooseman@nowhere.com",
-          "firstName": "Moose",
-          "lastName": "Man",
-          "superAdmin": true,
-        }
-      }
-    />
+    <DeleteButton
+      confirmQuestion="Are you sure you want to delete the admin 'Moose Man'?"
+      onConfirm={[Function]}
+    >
+      Delete Admin
+    </DeleteButton>
   </div>
+  <withRouter(EditableProfile)
+    categories={
+      Object {
+        "admin": Object {
+          "id": "admin",
+          "title": "Admin Info",
+        },
+      }
+    }
+    editProfile={[Function]}
+    fields={
+      Array [
+        Object {
+          "category": "admin",
+          "id": "firstName",
+          "label": "First name",
+          "type": "text",
+        },
+        Object {
+          "category": "admin",
+          "id": "lastName",
+          "label": "Last name",
+          "type": "text",
+        },
+        Object {
+          "category": "admin",
+          "id": "email",
+          "label": "Email",
+          "type": "email",
+        },
+        Object {
+          "category": "admin",
+          "id": "seniorCenterId",
+          "label": "Senior  Center ID",
+          "type": "text",
+        },
+        Object {
+          "category": "admin",
+          "id": "accessLevel",
+          "label": "Access Level",
+          "options": Array [
+            "Super",
+            "Admin",
+            "Volunteer",
+          ],
+          "type": "radio",
+        },
+      ]
+    }
+    getProfile={[Function]}
+    profile={
+      Object {
+        "_id": "123",
+        "email": "mooseman@nowhere.com",
+        "firstName": "Moose",
+        "lastName": "Man",
+        "superAdmin": true,
+      }
+    }
+  />
 </div>
 `;
