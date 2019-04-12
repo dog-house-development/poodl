@@ -2,7 +2,7 @@
 
 exports[`ViewAllMembers tests render should render correctly 1`] = `
 <div
-  className="view-all-container"
+  className="page-container"
 >
   <Link
     className="button small tertiary"
@@ -17,7 +17,7 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
      Back to home
   </Link>
   <div
-    className="view-all-header"
+    className="page-header"
   >
     <h1>
       Manage Members
@@ -33,6 +33,18 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
         add
       </i>
       Register Member
+    </Link>
+    <Link
+      className="button small primary"
+      replace={false}
+      to="/member-check-in"
+    >
+      <i
+        className="material-icons button-icon"
+      >
+        check
+      </i>
+      Member check-in
     </Link>
   </div>
   <DataGrid
@@ -54,6 +66,7 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
         },
       ]
     }
+    includeFilterControls={true}
     loading={false}
     onRowClick={[Function]}
   />

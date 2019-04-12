@@ -2,16 +2,32 @@
 
 .header {
   background: $gray-1;
-  padding: 0 24px;
-  margin-bottom: 24px;
+  padding: 0 2em;
+  margin-bottom: 1em;
+
+  // This is a clearfix hack, which makes it so floated elements
+  // appear inside parent div
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  &.check-in-header {
+    background-color: #fff;
+    border-bottom: 3px solid $gray-3;
+    margin: 0 0 4em 2em;
+    padding: 0;
+
+    .check-in-title {
+      font-size: 2em;
+      padding: 0.5em 0;
+    }
+  }
 
   li {
     display: inline;
     list-style: none;
-
-    &.right {
-      float: right;
-    }
 
     a {
       font-size: 13px;
@@ -34,6 +50,64 @@
 
       &.current-location {
         border-bottom: 2px solid $button-primary;
+      }
+    }
+
+    &.menu {
+      padding: 0.85rem 2vw 0 0;
+
+      button {
+        color: $gray-6;
+        padding: 0;
+
+        &:hover {
+          color: $gray-8;
+        }
+      }
+    }
+  }
+
+  .accordion {
+    border-top: 1px solid $gray-4;
+    li {
+      display: block;
+      text-align: right;
+      float: none;
+
+      a {
+        padding: 0.5rem;
+        padding-right: 2.5vw;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      button {
+        padding: 0.5rem;
+        padding-right: 2.5vw;
+        width: 100%;
+        font-size: 13px;
+        font-weight: bold;
+        color: $gray-6;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: none;
+        text-align: right;
+
+        &:hover {
+          color: $gray-8;
+          background: none;
+        }
+      }
+    }
+  }
+
+  &.skinny {
+    padding: 0;
+    overflow: hidden;
+
+    .poodl {
+      a {
+        padding-left: 4vw;
       }
     }
   }

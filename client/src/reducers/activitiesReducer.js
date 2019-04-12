@@ -9,6 +9,16 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch (action.type) {
+        case Types.activity.create.BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case Types.activity.create.SUCCESS:
+            return {
+                ...state,
+                loading: false
+            };
         case Types.activity.ERROR:
             return {
                 ...state,
@@ -49,6 +59,19 @@ export default function(state = initialState, action) {
                 ...state,
                 loading: false,
                 all: { ...state.all, [action.payload._id]: action.payload },
+                errors: {}
+            };
+        case Types.activity.delete.BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case Types.activity.delete.SUCCESS:
+            const { [action.payload._id]: deletedActivity, ...newState } = state.all;
+            return {
+                ...state,
+                loading: false,
+                all: newState,
                 errors: {}
             };
         default:

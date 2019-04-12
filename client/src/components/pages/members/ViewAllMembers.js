@@ -41,15 +41,19 @@ export class ViewAllMembers extends Component {
 
     render() {
         return (
-            <div className="view-all-container">
+            <div className="page-container">
                 <Link to="/dashboard" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
-                <div className="view-all-header">
+                <div className="page-header">
                     <h1>Manage Members</h1>
                     <Link to="/members/register" className="button small primary">
                         <i className="material-icons button-icon">add</i>
                         Register Member
+                    </Link>
+                    <Link to="/member-check-in" className="button small primary">
+                        <i className="material-icons button-icon">check</i>
+                        Member check-in
                     </Link>
                 </div>
                 <DataGrid

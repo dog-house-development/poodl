@@ -1,0 +1,40 @@
+@import '_presets.scss';
+
+.manage-services-panel {
+  padding: 0;
+  box-shadow: none;
+  border: none;
+  overflow: visible;
+  position: relative;
+
+  .connecting-line {
+    position: absolute;
+    height: 100%;
+    left: 2em;
+    border-right: 1px solid $gray-3;
+  }
+
+  .list {
+    margin: 0;
+    background-color: white;
+    position: relative;
+  }
+
+  .add-service-panel {
+    border-color: $gray-3;
+    background-color: white;
+    position: relative;
+
+    .panel-title {
+      font-size: 1.5em;
+    }
+
+    .combobox-wrapper {
+      margin-bottom: 0.8rem;
+    }
+
+    .form-button {
+      margin: 0;
+    }
+  }
+}

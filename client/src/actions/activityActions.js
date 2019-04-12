@@ -14,7 +14,11 @@ export default {
         ActionHelper.get(dispatch, Types.activity, id);
     },
 
-    edit: (id, data) => dispatch => {
-        ActionHelper.edit(dispatch, Types.activity, id, data);
+    edit: (id, data, onSuccess) => dispatch => {
+        ActionHelper.edit(dispatch, Types.activity, id, data, onSuccess);
+    },
+
+    delete: (id, onSuccess) => dispatch => {
+        ActionHelper.delete(dispatch, Types.activity, id, onSuccess);
     }
 };

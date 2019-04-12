@@ -9,6 +9,7 @@
   text-decoration: none;
   -webkit-appearance: none;
   cursor: pointer;
+  font-family: inherit;
 
   &.small {
     padding: 4px 12px;
@@ -58,6 +59,19 @@
     }
   }
 
+  &:disabled {
+    background-color: white;
+    border-color: $gray-2;
+    color: $gray-3;
+
+    &:hover {
+      background-color: white;
+      border-color: $gray-2;
+      color: $gray-3;
+      cursor: default;
+    }
+  }
+
   &.tertiary {
     border-color: transparent;
     color: $button-primary;
@@ -69,6 +83,16 @@
 
     &:active {
       color: $button-primary-active;
+    }
+
+    &:disabled {
+      color: $gray-3;
+
+      &:hover {
+        color: $gray-3;
+        cursor: default;
+        border-color: transparent;
+      }
     }
   }
 
@@ -85,5 +109,23 @@
   .button-icon {
     font-size: inherit;
     margin-right: 0.5em;
+    margin-top: -3px;
+  }
+
+  &.delete-button {
+    text-align: right;
+    background-color: $orange-1;
+    border-color: $orange-2;
+    transition: box-shadow ease-in-out 0.12s;
+
+    &:hover {
+      background-color: $orange-2;
+      border-color: $orange-2;
+    }
+
+    &:active {
+      background-color: $orange-1;
+      border-color: $orange-2;
+    }
   }
 }

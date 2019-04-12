@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import _ from 'lodash';
 
 const propTypes = {
     onChange: PropTypes.func.isRequired,
@@ -10,7 +11,8 @@ const propTypes = {
     min: PropTypes.string,
     max: PropTypes.string,
     size: PropTypes.oneOf(['normal', 'large']),
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    kind: PropTypes.oneOf(['primary', 'secondary']),
     placeholder: PropTypes.string,
     label: PropTypes.string,
     autoComplete: PropTypes.oneOf(['on', 'off']),
@@ -18,15 +20,18 @@ const propTypes = {
     spellCheck: PropTypes.oneOf(['true', 'false']),
     sidebyside: PropTypes.oneOf([1, 2]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    present: PropTypes.bool,
+    clearable: PropTypes.bool,
+    leftIcon: PropTypes.string
 };
 
 const defaultProps = {
     size: 'normal',
     type: 'text',
-    autoComplete: 'on'
-    // value is not default to '' because I want the warning
-    // if no value prop is given
+    autoComplete: 'on',
+    value: '',
+    kind: 'primary'
 };
 
 class Field extends Component {
@@ -40,24 +45,63 @@ class Field extends Component {
         this.props.onChange(e);
     }
 
+    getClearMarkup() {
+        if (this.props.clearable && !_.isEmpty(this.props.value)) {
+            return (
+                <i
+                    className={classnames('material-icons', 'clear-icon', this.props.size, this.props.kind)}
+                    onClick={this.onClearClick}>
+                    clear
+                </i>
+            );
+        }
+    }
+
+    onClearClick = () => {
+        const e = { target: { value: '' } };
+        this.props.onChange(e);
+    };
+
+    getLeftIconMarkup() {
+        if (this.props.leftIcon) {
+            return <i className={classnames('material-icons', 'left-icon', this.props.size)}>{this.props.leftIcon}</i>;
+        }
+    }
+
     render() {
+        const { style, present, editable, clearable, leftIcon, ...inputProps } = this.props;
+        if (present) {
+            return (
+                <div style={style} className="field-wrapper editable-field-wrapper">
+                    <p className="field-label">{this.props.label}</p>
+                    <p>{this.props.value}</p>
+                </div>
+            );
+        }
+
         return (
-            <div className={classnames('field-wrapper', { 'inline-field': this.props.sidebyside })}>
+            <div
+                style={style}
+                className={classnames('field-wrapper', this.props.className, {
+                    'inline-field': this.props.sidebyside
+                })}>
                 <p className="field-label">{this.props.label}</p>
                 <div className="field-outer">
+                    {this.getLeftIconMarkup()}
                     <input
-                        {...this.props}
-                        onChange={this.props.onChange}
-                        onClick={this.props.onClick}
+                        {...inputProps}
                         className={classnames(
                             'field',
                             this.props.size,
+                            this.props.kind,
                             { 'first-side-by-side-input': this.props.sidebyside === 1 },
                             { 'second-side-by-side-input': this.props.sidebyside === 2 },
-                            { 'field-error-border': this.props.error }
+                            { 'field-error-border': this.props.error },
+                            { 'clearable-field': this.props.clearable },
+                            { 'include-left-icon': this.props.leftIcon }
                         )}
-                        value={this.props.value}
                     />
+                    {this.getClearMarkup()}
                     <p className="field-error-label">{this.props.error}</p>
                 </div>
             </div>

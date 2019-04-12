@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-// import { Link } from 'react-router-dom';
 import MemberActions from '../../../../../actions/memberActions';
-// import Loading from '../../../../ui/Loading';
 import SearchField from '../../../../ui/SearchField';
+import Utils from '../../../../../utils/Utils';
+import Button from '../../../../ui/Button';
 
 const propTypes = {
-    setMemberId: PropTypes.func
+    setMemberId: PropTypes.func,
+    onSignUpClick: PropTypes.func
 };
 
 export class FindMember extends Component {
@@ -29,28 +29,30 @@ export class FindMember extends Component {
 
     render() {
         return (
-            <div className="panel finished-panel">
-                <h2 className="panel-title">Enter your name to check in</h2>
-                <SearchField
-                    size="large"
-                    id="find-member-search"
-                    data={this.props.members}
-                    autoFocus="on"
-                    searchRule={(param, value) => {
-                        param = _.lowerCase(param);
-                        return (
-                            _.includes(_.lowerCase(value.firstName), param) ||
-                            _.includes(_.lowerCase(value.lastName), param)
-                        );
-                    }}
-                    displayRow={row => (
-                        <>
-                            {row.firstName + ' ' + row.lastName}
-                            <i className="material-icons arrow-icon">arrow_forward</i>
-                        </>
-                    )}
-                    onSearchResultClick={this.handleSearchResultClick}
-                />
+            <div>
+                <div className="panel finished-panel">
+                    <h2 className="panel-title">Enter your name to check in</h2>
+                    <SearchField
+                        size="large"
+                        clearable
+                        id="find-member-search"
+                        data={this.props.members}
+                        autoFocus="on"
+                        minCharactersBeforeResults={3}
+                        searchRule={(param, member) => Utils.searchObject(param, [member.firstName, member.lastName])}
+                        displayRow={row => (
+                            <>
+                                {row.firstName + ' ' + row.lastName}
+                                <i className="material-icons arrow-icon">arrow_forward</i>
+                            </>
+                        )}
+                        onSearchResultClick={this.handleSearchResultClick}
+                    />
+                </div>
+                <div className="finished-panel sign-up-container">
+                    <p>Not a member? </p>
+                    <Button content="Sign up now" onClick={this.props.onSignUpClick} kind="secondary" />
+                </div>
             </div>
         );
     }

@@ -11,12 +11,14 @@ const propTypes = {
     loading: PropTypes.bool,
     includeAttendance: PropTypes.bool,
     clickableRowRoute: PropTypes.string,
-    errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
+    errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    noDataMessage: PropTypes.string
 };
 
 const defaultProps = {
     loading: false,
-    includeAttendance: true
+    includeAttendance: true,
+    noDataMessage: 'Nothing found for this date'
 };
 
 class ViewByDate extends Component {
@@ -38,8 +40,7 @@ class ViewByDate extends Component {
             <div className="view-by-date-header">
                 <button
                     className="button view-by-date-header-button"
-                    onClick={() => this.props.requestDate(currentDate.subtract(1, 'days'))}
-                >
+                    onClick={() => this.props.requestDate(currentDate.subtract(1, 'days'))}>
                     <span>
                         <i className="material-icons view-by-date-header-button-arrow">keyboard_arrow_left</i>
                         {currentDate
@@ -65,8 +66,7 @@ class ViewByDate extends Component {
                 </div>
                 <button
                     className="button view-by-date-header-button"
-                    onClick={() => this.props.requestDate(currentDate.add(1, 'days'))}
-                >
+                    onClick={() => this.props.requestDate(currentDate.add(1, 'days'))}>
                     <span>
                         {currentDate
                             .clone()
@@ -111,7 +111,9 @@ class ViewByDate extends Component {
         if (this.props.loading) {
             return;
         } else if (!_.isEmpty(this.props.errors)) {
-            return <p>Error time</p>;
+            return <p className="vbd-error-message">Error time</p>;
+        } else if (_.isEmpty(this.props.dateData.data)) {
+            return <p className="vbd-no-data-message">{this.props.noDataMessage}</p>;
         }
         return (
             <div className="view-by-date-body">
@@ -120,8 +122,7 @@ class ViewByDate extends Component {
                         <div
                             key={row._id}
                             className="view-by-date-row"
-                            onClick={evt => this.handleRowClick(evt, row._id)}
-                        >
+                            onClick={evt => this.handleRowClick(evt, row._id)}>
                             <h3 className="vbd-row-title">{row.name}</h3>
                             {this.getDateMarkup(row)}
                             {this.getAttendanceMarkup(row)}

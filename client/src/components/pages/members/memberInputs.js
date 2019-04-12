@@ -2,7 +2,8 @@ import moment from 'moment';
 
 const memberInputs = [
     {
-        id: 'Personal Info',
+        id: 'personalInfo',
+        label: 'Personal Info',
         kind: 'group',
         inputs: [
             {
@@ -27,9 +28,8 @@ const memberInputs = [
                 id: 'birthDate',
                 kind: 'datePicker',
                 label: 'Date of Birth',
-                minYear: 1900,
-                maxYear: 1990,
-                value: moment('1-1-1950', 'M-D-YYYY')
+                minYear: moment().year() - 125,
+                maxYear: moment().year() - 20
             },
             {
                 id: 'email',
@@ -52,7 +52,8 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Emergency Contact Info',
+        id: 'emergencyContactInfo',
+        label: 'Emergency Contact Info',
         kind: 'group',
         inputs: [
             {
@@ -76,11 +77,12 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Membership Details',
+        id: 'membershipDetails',
+        label: 'Membership Details',
         kind: 'group',
         inputs: [
             {
-                id: 'memberisNewOrRenewal',
+                id: 'memberIsNewOrRenewal',
                 kind: 'radio',
                 label: 'Member is new or renewal',
                 options: ['new', 'renewal']
@@ -120,7 +122,8 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Health Info',
+        id: 'healthInfo',
+        label: 'Health Info',
         kind: 'group',
         inputs: [
             {
@@ -150,7 +153,8 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Demographic Info',
+        id: 'demographicInfo',
+        label: 'Demographic Info',
         kind: 'group',
         inputs: [
             {
@@ -168,7 +172,8 @@ const memberInputs = [
             {
                 id: 'numberInHousehold',
                 kind: 'field',
-                type: 'text',
+                type: 'number',
+                min: '0',
                 label: 'Number in Household'
             },
             {
@@ -219,7 +224,8 @@ const memberInputs = [
         ]
     },
     {
-        id: 'Nation Family Caregiver Support Program',
+        id: 'supportProgram',
+        label: 'Nation Family Caregiver Support Program',
         description:
             'If client is receiving services under National Family Caregiver Support Program, complete the following:',
         kind: 'group',
@@ -239,6 +245,8 @@ const memberInputs = [
             {
                 id: 'numberOfKidsUnder19',
                 kind: 'field',
+                type: 'number',
+                min: '0',
                 label: 'Number of kids younger than 19'
             },
             {

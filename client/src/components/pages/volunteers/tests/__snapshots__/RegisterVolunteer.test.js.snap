@@ -2,7 +2,7 @@
 
 exports[`Register volunteer tests render should render correctly 1`] = `
 <div
-  className="register-container"
+  className="register-container page-container"
 >
   <Link
     className="button small tertiary"
@@ -25,144 +25,248 @@ exports[`Register volunteer tests render should render correctly 1`] = `
       Register Volunteer
     </h1>
     <DynamicForm
+      errorDescription="There are errors in this form."
       errors={Object {}}
       inputs={
         Array [
           Object {
-            "id": "name",
+            "id": "personalInfo",
             "inputs": Array [
               Object {
-                "id": "firstName",
-                "kind": "field",
-                "label": "First name",
-                "style": Object {
-                  "flexGrow": "5",
-                },
-                "type": "text",
+                "id": "name",
+                "inputs": Array [
+                  Object {
+                    "id": "firstName",
+                    "kind": "field",
+                    "label": "First name",
+                    "style": Object {
+                      "flex": 3,
+                    },
+                    "type": "text",
+                  },
+                  Object {
+                    "id": "middleInitial",
+                    "kind": "field",
+                    "label": "M.I.",
+                    "style": Object {
+                      "flex": 1,
+                    },
+                  },
+                  Object {
+                    "id": "lastName",
+                    "kind": "field",
+                    "label": "Last name",
+                    "style": Object {
+                      "flex": 3,
+                    },
+                    "type": "text",
+                  },
+                  Object {
+                    "id": "nickName",
+                    "kind": "field",
+                    "label": "Nickname",
+                    "style": Object {
+                      "flex": 2,
+                    },
+                  },
+                ],
+                "kind": "flex",
               },
               Object {
-                "id": "middleInitial",
+                "id": "email",
                 "kind": "field",
-                "label": "M.I.",
-                "style": Object {},
+                "label": "Email",
+                "type": "email",
               },
               Object {
-                "id": "lastName",
+                "editable": false,
+                "id": "password",
                 "kind": "field",
-                "label": "Last name",
-                "style": Object {},
-                "type": "text",
+                "label": "Password",
+                "type": "password",
               },
               Object {
-                "id": "nickName",
+                "editable": false,
+                "id": "password2",
                 "kind": "field",
-                "label": "Nickname or Preferred Name",
-                "style": Object {},
+                "label": "Confirm Password",
+                "type": "password",
+              },
+              Object {
+                "id": "address",
+                "inputs": Array [
+                  Object {
+                    "id": "streetAddress",
+                    "kind": "field",
+                    "label": "Street Address",
+                    "style": Object {
+                      "flex": 3,
+                    },
+                  },
+                  Object {
+                    "id": "city",
+                    "kind": "field",
+                    "label": "City",
+                    "style": Object {
+                      "flex": 2,
+                    },
+                  },
+                  Object {
+                    "id": "state",
+                    "kind": "field",
+                    "label": "State",
+                    "style": Object {
+                      "flex": 1,
+                    },
+                  },
+                  Object {
+                    "id": "zip",
+                    "kind": "field",
+                    "label": "ZIP",
+                    "style": Object {
+                      "flex": 1,
+                    },
+                  },
+                ],
+                "kind": "flex",
+              },
+              Object {
+                "id": "phones",
+                "inputs": Array [
+                  Object {
+                    "id": "homePhone",
+                    "kind": "field",
+                    "label": "Home Phone",
+                  },
+                  Object {
+                    "id": "cellPhone",
+                    "kind": "field",
+                    "label": "Cell or Message Phone",
+                  },
+                ],
+                "kind": "flex",
               },
             ],
-            "kind": "flex",
-          },
-          Object {
-            "id": "email",
-            "kind": "field",
-            "label": "Email",
-            "type": "email",
-          },
-          Object {
-            "id": "password",
-            "kind": "field",
-            "label": "Password",
-            "type": "password",
-          },
-          Object {
-            "id": "password2",
-            "kind": "field",
-            "label": "Confirm Password",
-            "type": "password",
-          },
-          Object {
-            "id": "address",
-            "inputs": Array [
-              Object {
-                "id": "streetAddress",
-                "kind": "field",
-                "label": "Street Address",
-              },
-              Object {
-                "id": "city",
-                "kind": "field",
-                "label": "City",
-              },
-              Object {
-                "id": "state",
-                "kind": "field",
-                "label": "State",
-              },
-              Object {
-                "id": "zip",
-                "kind": "field",
-                "label": "ZIP",
-              },
-            ],
-            "kind": "flex",
-          },
-          Object {
-            "id": "phones",
-            "inputs": Array [
-              Object {
-                "id": "homePhone",
-                "kind": "field",
-                "label": "Home Phone",
-              },
-              Object {
-                "id": "cellPhone",
-                "kind": "field",
-                "label": "Cell or Message Phone",
-              },
-            ],
-            "kind": "flex",
+            "kind": "group",
+            "label": "Personal Info",
           },
           Object {
             "id": "references",
-            "kind": "field",
+            "inputs": Array [
+              Object {
+                "id": "reference1",
+                "inputs": Array [
+                  Object {
+                    "id": "reference1Name",
+                    "kind": "field",
+                    "label": "Name",
+                  },
+                  Object {
+                    "id": "reference1Relationship",
+                    "kind": "field",
+                    "label": "Relationship",
+                  },
+                  Object {
+                    "id": "reference1Phone",
+                    "kind": "field",
+                    "label": "Phone",
+                  },
+                ],
+                "kind": "flex",
+                "label": "Reference #1",
+              },
+              Object {
+                "id": "reference2",
+                "inputs": Array [
+                  Object {
+                    "id": "reference2Name",
+                    "kind": "field",
+                    "label": "Name",
+                  },
+                  Object {
+                    "id": "reference2Relationship",
+                    "kind": "field",
+                    "label": "Relationship",
+                  },
+                  Object {
+                    "id": "reference2Phone",
+                    "kind": "field",
+                    "label": "Phone",
+                  },
+                ],
+                "kind": "flex",
+                "label": "Reference #2",
+              },
+              Object {
+                "id": "reference3",
+                "inputs": Array [
+                  Object {
+                    "id": "reference3Name",
+                    "kind": "field",
+                    "label": "Name",
+                  },
+                  Object {
+                    "id": "reference3Relationship",
+                    "kind": "field",
+                    "label": "Relationship",
+                  },
+                  Object {
+                    "id": "reference3Phone",
+                    "kind": "field",
+                    "label": "Phone",
+                  },
+                ],
+                "kind": "flex",
+                "label": "Reference #3",
+              },
+            ],
+            "kind": "group",
             "label": "References",
           },
           Object {
-            "id": "learnAboutVolunteerProgram",
-            "kind": "radio",
-            "label": "How did you learn about Belgrade Senior Center's volunteer program",
-            "options": Array [
-              "Friend or Relative",
-              "Brochure/Poster",
-              "Newspaper, Television or Radio",
-              "School or College",
-              "Belgrade Senior Center",
-              "United Way",
-              "Community Event",
-              "Other",
+            "id": "volunteerInfo",
+            "inputs": Array [
+              Object {
+                "id": "learnAboutVolunteerProgram",
+                "kind": "radio",
+                "label": "How did you learn about Belgrade Senior Center's volunteer program",
+                "options": Array [
+                  "Friend or Relative",
+                  "Brochure/Poster",
+                  "Newspaper, Television or Radio",
+                  "School or College",
+                  "Belgrade Senior Center",
+                  "United Way",
+                  "Community Event",
+                  "Other",
+                ],
+              },
+              Object {
+                "id": "volunteerFrequency",
+                "kind": "field",
+                "label": "How often would you like to volunteer?",
+              },
+              Object {
+                "id": "occasionalOneDayProjects",
+                "kind": "selectBoolean",
+                "label": "I would like to be contacted for occasional one-day projects that fit my skills and interests",
+              },
+              Object {
+                "id": "singleDayActivity",
+                "kind": "selectBoolean",
+                "label": "I would like to volunteer for a single day activity.",
+              },
+              Object {
+                "id": "availabilitySchedule",
+                "kind": "field",
+                "label": "What is your availability schedule?",
+              },
             ],
+            "kind": "group",
+            "label": "Volunteer Info",
           },
           Object {
-            "id": "volunteerFrequency",
-            "kind": "field",
-            "label": "How often would you like to volunteer?",
-          },
-          Object {
-            "id": "occasionalOneDayProjects",
-            "kind": "selectBoolean",
-            "label": "I would like to be contacted for occasional one-day projects that fit my skills and interests",
-          },
-          Object {
-            "id": "singleDayActivity",
-            "kind": "selectBoolean",
-            "label": "I would like to volunteer for a single day activity.",
-          },
-          Object {
-            "id": "availabilitySchedule",
-            "kind": "field",
-            "label": "What is your availability schedule?",
-          },
-          Object {
+            "description": "Please check all that apply.",
             "id": "skills",
             "inputs": Array [
               Object {
@@ -241,7 +345,7 @@ exports[`Register volunteer tests render should render correctly 1`] = `
               },
             ],
             "kind": "group",
-            "label": "Skills and Interests (please check all that apply)",
+            "label": "Skills and Interests",
           },
         ]
       }

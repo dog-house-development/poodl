@@ -1,0 +1,76 @@
+@import './_presets.scss';
+
+.tab-bar {
+  border-bottom: 1px solid $gray-3;
+  padding: 0 50vw;
+  margin: 1em -50vw 2.5em;
+
+  .tab-button {
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-top-left-radius: $border-radius-default;
+    border-top-right-radius: $border-radius-default;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    margin-right: 0.1em;
+    color: $gray-6;
+    position: relative;
+    top: 1px;
+
+    box-shadow: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    &:hover {
+      // border-color: $gray-3;
+      color: $gray-7;
+
+      .tab-label-count {
+        color: $gray-7;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $gray-3;
+
+      .tab-label-count {
+        color: $gray-7;
+      }
+    }
+
+    &.current-tab {
+      background-color: white;
+      border-color: $gray-3;
+      border-bottom-color: transparent;
+      color: $gray-7;
+    }
+
+    &.tab-includes-icon {
+      padding-left: 2.35em;
+
+      .tab-icon {
+        position: absolute;
+        left: 0.65em;
+        font-size: 1.2em;
+      }
+    }
+
+    * {
+      pointer-events: none;
+    }
+
+    .tab-label-count {
+      position: relative;
+      background-color: $gray-1;
+      color: $gray-6;
+      font-size: 0.8em;
+      border-radius: 1em;
+      padding: 0.03em 0.45em;
+      margin-left: 0.3em;
+      border: 1px solid $gray-2;
+    }
+  }
+}

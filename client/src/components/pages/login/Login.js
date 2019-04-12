@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -30,10 +30,6 @@ export class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAuthenticated) {
-            this.props.history.push('/dashboard');
-        }
-
         if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
@@ -96,6 +92,11 @@ export class Login extends Component {
     }
 
     render() {
+        if (this.props.auth.isAuthenticated) {
+            // take the saved previous attempted url and redirect to it otherwise dashboard
+            const { from } = this.props.location.state || { from: { pathname: '/dashboard' } };
+            return <Redirect to={from} />;
+        }
         return (
             <div className="login-container">
                 <Link to="/" className="button small tertiary">
@@ -109,14 +110,6 @@ export class Login extends Component {
                     formTitle="Log In"
                     errors={this.getFormErrors()}
                 />
-                <div className="center">
-                    <p>
-                        Forgot password?{' '}
-                        <Link to="/login" className="button small secondary">
-                            Reset
-                        </Link>
-                    </p>
-                </div>
             </div>
         );
     }
@@ -137,7 +130,9 @@ export const mapDispatchToProps = dispatch => {
 
 Login.propTypes = propTypes;
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Login);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Login)
+);
