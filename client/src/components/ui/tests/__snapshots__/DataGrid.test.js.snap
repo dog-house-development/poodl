@@ -5,8 +5,10 @@ exports[`DataGrid tests render should render data 1`] = `
   <Field
     autoComplete="off"
     className="filter-field"
+    clearable={true}
     id="filter"
     kind="secondary"
+    leftIcon="search"
     onChange={[Function]}
     placeholder="Search"
     size="normal"
@@ -73,8 +75,10 @@ exports[`DataGrid tests render should render loading 1`] = `
   <Field
     autoComplete="off"
     className="filter-field"
+    clearable={true}
     id="filter"
     kind="secondary"
+    leftIcon="search"
     onChange={[Function]}
     placeholder="Search"
     size="normal"
