@@ -34,6 +34,7 @@ export class FindMember extends Component {
                     <h2 className="panel-title">Enter your name to check in</h2>
                     <SearchField
                         size="large"
+                        clearable
                         id="find-member-search"
                         data={this.props.members}
                         autoFocus="on"
