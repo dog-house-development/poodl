@@ -58,6 +58,10 @@
       }
     }
 
+    * {
+      pointer-events: none;
+    }
+
     .tab-label-count {
       position: relative;
       background-color: $gray-1;
