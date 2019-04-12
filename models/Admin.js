@@ -117,117 +117,60 @@ const adminSchema = new Schema(
             }
         },
         reference1Name: {
-            type: String,
-            validate: {
-                validator: function(v) {
-                    if (this.accessLevel === 'Volunteer') {
-                        return v.length > 0;
-                    }
-                },
-                message: 'Reference Name is required'
-            }
+            type: String
         },
         reference1Relationship: {
-            type: String,
-            validate: {
-                validator: function(v) {
-                    if (this.accessLevel === 'Volunteer') {
-                        return v.length > 0;
-                    }
-                },
-                message: 'References Relationship is required'
-            }
+            type: String
         },
         reference1Phone: {
             type: String,
             validate: {
                 validator: function(v) {
-                    if (this.accessLevel === 'Volunteer') {
-                        return v.length > 0;
+                    if (v) {
+                        return Validator.isMobilePhone(v);
                     }
                 },
-                message: 'Reference Number is required'
+                message: 'Phone is invalid'
             }
         },
         reference2Name: {
-            type: String,
-            validate: {
-                validator: function(v) {
-                    if (this.accessLevel === 'Volunteer') {
-                        return v.length > 0;
-                    }
-                },
-                message: 'Reference Name is required'
-            }
+            type: String
         },
         reference2Relationship: {
-            type: String,
-            validate: {
-                validator: function(v) {
-                    if (this.accessLevel === 'Volunteer') {
-                        return v.length > 0;
-                    }
-                },
-                message: 'References Relationship is required'
-            }
+            type: String
         },
         reference2Phone: {
             type: String,
             validate: {
                 validator: function(v) {
-                    if (this.accessLevel === 'Volunteer') {
-                        return v.length > 0;
+                    if (v) {
+                        return Validator.isMobilePhone(v);
                     }
                 },
-                message: 'Reference Number is required'
+                message: 'Phone is invalid'
             }
         },
         reference3Name: {
-            type: String,
-            validate: {
-                validator: function(v) {
-                    if (this.accessLevel === 'Volunteer') {
-                        return v.length > 0;
-                    }
-                },
-                message: 'Reference Name is required'
-            }
+            type: String
         },
         reference3Relationship: {
-            type: String,
-            validate: {
-                validator: function(v) {
-                    if (this.accessLevel === 'Volunteer') {
-                        return v.length > 0;
-                    }
-                },
-                message: 'References Relationship is required'
-            }
+            type: String
         },
         reference3Phone: {
             type: String,
             validate: {
                 validator: function(v) {
-                    if (this.accessLevel === 'Volunteer') {
-                        return v.length > 0;
+                    if (v) {
+                        return Validator.isMobilePhone(v);
                     }
                 },
-                message: 'Reference Number is required'
+                message: 'Phone is invalid'
             }
         },
 
         learnAboutVolunteerProgram: {
-            type: String,
-            enum: [
-                'Friend or Relative',
-                'Brochure/Poster',
-                'Newspaper, Television or Radio',
-                'School or College',
-                'Belgrade Senior Center',
-                'United Way',
-                'Community Event',
-                'Other'
-            ]
+            type: String
+            // Look in volunteer inputs for enum
         },
         volunteerFrequency: {
             type: String
@@ -245,48 +188,33 @@ const adminSchema = new Schema(
         },
         houseMaintenanceAndRepairs: [
             {
-                type: String,
-                enum: ['Carpentry', 'Plumbing', 'Masonry', 'Cleaning', 'Electrical', 'Painting', 'None']
+                type: String
+                // Look in volunteer inputs for enum
             }
         ],
         groundMaintenance: [
             {
-                type: String,
-                enum: [
-                    'Lawn Maintenance ',
-                    'Grounds Cleanup',
-                    'Pruning Trees and Shrubs',
-                    'Planting and Maintaining Flower Beds',
-                    'Snow Removal'
-                ]
+                type: String
             }
         ],
         clericalAssistance: [
             {
-                type: String,
-                enum: ['Data Entry', 'Folding Brochures', 'General Office', 'Preparing Bulk Mailings', 'Front Desk']
+                type: String
             }
         ],
         nutritionProgram: [
             {
-                type: String,
-                enum: ['Food Prep', 'Dishes', 'Deliver Meals on Wheels', 'Dining Room Setup']
+                type: String
             }
         ],
         specialEventsAndFundRaising: [
             {
-                type: String,
-                enum: [
-                    'Create Flyers, Brochures, and/or Posters',
-                    'Assist with Events',
-                    'Solicit Auction Items, Donations, Prizes, In-Kind Services'
-                ]
+                type: String
             }
         ],
         interpretingTeachingClassesOrWorkshops: [
             {
-                type: String,
-                enum: ['Life Skill Classes', 'Painting, Crafts', 'Computer', 'Exercise']
+                type: String
             }
         ],
         proposedActivities: {

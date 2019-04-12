@@ -13,7 +13,11 @@ class ComboBox extends React.Component {
         label: PropTypes.string,
         placeholder: PropTypes.string,
         id: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired
+        value: PropTypes.string
+    };
+
+    static defaultProps = {
+        value: ''
     };
 
     constructor(props) {
@@ -26,7 +30,7 @@ class ComboBox extends React.Component {
     getFilteredData() {
         const uniqueData = _.uniq(_.map(this.props.data, item => item.name));
         const sortedData = _.sortBy(uniqueData, [item => item.toLowerCase()]);
-        const filteredData = _.filter(sortedData, item => new RegExp(this.props.value, 'i').test(item));
+        const filteredData = _.filter(sortedData, item => new RegExp(_.escapeRegExp(this.props.value), 'i').test(item));
         return filteredData;
     }
 
@@ -65,19 +69,28 @@ class ComboBox extends React.Component {
     }
 
     render() {
+        if (this.props.present) {
+            return (
+                <div style={this.props.style} className="field-wrapper editable-field-wrapper">
+                    <p className="field-label">{this.props.label}</p>
+                    <p>{this.props.value}</p>
+                </div>
+            );
+        }
+
+        const {
+            enableOnClickOutside,
+            kind,
+            eventTypes,
+            disableOnClickOutside,
+            stopPropagation,
+            preventDefault,
+            outsideClickIgnoreClass,
+            ...inputProps
+        } = this.props;
         return (
             <div className="combobox-wrapper">
-                <Field
-                    label={this.props.label}
-                    placeholder={this.props.placeholder}
-                    id={this.props.id}
-                    onChange={this.props.onChange}
-                    value={this.props.value}
-                    error={this.props.error}
-                    onFocus={this.setOpenTrue}
-                    autoComplete="off"
-                    spellCheck="false"
-                />
+                <Field {...inputProps} onFocus={this.setOpenTrue} autoComplete="off" spellCheck="false" />
                 {this.getDropdownMarkup()}
             </div>
         );

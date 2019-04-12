@@ -105,5 +105,29 @@ export default {
             SUCCESS: 'DELETE_ACTIVITY_SUCCESS'
         },
         ERROR: 'GET_ACTIVITY_ERRORS'
+    },
+    service: {
+        url: 'services',
+        create: {
+            BEGIN: 'CREATE_SERVICE_BEGIN',
+            SUCCESS: 'CREATE_SERVICE_SUCCESS'
+        },
+        filter: {
+            BEGIN: 'FILTER_SERVICES_BEGIN',
+            SUCCESS: 'FILTER_SERVICES_SUCCESS'
+        },
+        get: {
+            BEGIN: 'GET_SERVICE_BEGIN',
+            SUCCESS: 'GET_SERVICE_SUCCESS'
+        },
+        edit: {
+            BEGIN: 'EDIT_SERVICE_BEGIN',
+            SUCCESS: 'EDIT_SERVICE_SUCCESS'
+        },
+        delete: {
+            BEGIN: 'DELETE_SERVICE_BEGIN',
+            SUCCESS: 'DELETE_SERVICE_SUCCESS'
+        },
+        ERROR: 'GET_SERVICE_ERRORS'
     }
 };

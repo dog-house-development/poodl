@@ -3,29 +3,42 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import VolunteerActions from '../../../actions/volunteerActions';
-import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
-import volunteerFields, { Categories } from './volunteerFields';
-import EditableProfile from '../../ui/EditableProfile';
+import DynamicForm from '../../ui/DynamicForm';
+import volunteerInputs from './volunteerInputs';
 
 export class VolunteerProfile extends Component {
+    static defaultProps = {
+        errors: {}
+    };
+
+    componentDidMount() {
+        // call redux action to retrieve specified profile from api
+        this.props.volunteerActions.get(this.props.match.params.id);
+    }
+
+    editVolunteer = (modifiedInputs, onSuccess) => {
+        this.props.volunteerActions.edit(_.get(this.props.volunteer, '_id'), modifiedInputs, onSuccess);
+    };
+
     render() {
         return (
-            <div className="view-all-container">
+            <div className="view-all-container page-container">
                 <Link to="/volunteers" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all volunteers
                 </Link>
                 <div>
                     <h1>
-                        {this.props.loading ? <Loading /> : _.get(this.props.volunteers, 'firstName')}{' '}
-                        {this.props.loading ? '' : _.get(this.props.volunteers, 'lastName')}
+                        {_.get(this.props.volunteer, 'firstName')} {_.get(this.props.volunteer, 'lastName')}
                     </h1>
-                    <EditableProfile
-                        fields={volunteerFields}
-                        categories={Categories}
-                        editProfile={this.props.volunteerActions.edit}
-                        getProfile={this.props.volunteerActions.get}
-                        profile={this.props.volunteer}
+
+                    <DynamicForm
+                        inputs={volunteerInputs}
+                        editValues={this.editVolunteer}
+                        values={this.props.volunteer}
+                        editable={true}
+                        loading={this.props.loading}
+                        errors={this.props.errors}
                     />
                 </div>
             </div>

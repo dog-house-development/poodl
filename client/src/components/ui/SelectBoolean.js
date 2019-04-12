@@ -46,17 +46,7 @@ class SelectBoolean extends React.Component {
 
     render() {
         return (
-            <Select
-                onChange={this.handleChange}
-                id={this.props.id}
-                value={this.getValue()}
-                size={this.props.size}
-                width={this.props.width}
-                name={this.props.name}
-                label={this.props.label}
-                padStart={this.props.padStart}
-                options={this.getOptions()}
-            />
+            <Select {...this.props} onChange={this.handleChange} value={this.getValue()} options={this.getOptions()} />
         );
     }
 }

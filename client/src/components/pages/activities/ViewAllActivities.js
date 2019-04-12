@@ -19,7 +19,7 @@ export class ViewAllActivities extends Component {
 
     handleRowClick(e, id) {
         e.preventDefault();
-        this.props.history.push(`/activity/${id}`);
+        this.props.history.push(`/activities/${id}`);
     }
 
     getDataGridContent() {
@@ -29,7 +29,8 @@ export class ViewAllActivities extends Component {
                 name: activity.name,
                 key: activity._id,
                 startDate: moment(activity.startDate).format('h:mm a, MMMM Do YYYY'),
-                endDate: moment(activity.endDate).format('h:mm a, MMMM Do YYYY')
+                endDate: moment(activity.endDate).format('h:mm a, MMMM Do YYYY'),
+                memberCount: activity.members.length
             });
         });
         return data;
@@ -37,7 +38,7 @@ export class ViewAllActivities extends Component {
 
     render() {
         return (
-            <div className="view-all-container">
+            <div className="view-all-container page-container">
                 <Link to="/dashboard" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to home
                 </Link>
@@ -52,6 +53,7 @@ export class ViewAllActivities extends Component {
                     data={this.getDataGridContent()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
+                    sortBy={activity => moment(activity.startDate, 'h:mm a, MMMM Do YYYY')}
                 />
             </div>
         );

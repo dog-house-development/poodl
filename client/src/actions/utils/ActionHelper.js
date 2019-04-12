@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _ from 'lodash';
 
 /**
  * Action creator for getting errors
@@ -21,7 +22,7 @@ export default {
      * @param data      {Object}    data for the new doc
      * @param redirect  {boolean}   redirect to the page for the newly created doc
      */
-    create: (dispatch, type, data, history) => {
+    create: (dispatch, type, data, history, onSuccess = _.noop) => {
         dispatch({ type: type.create.BEGIN });
         axios
             .post(`/api/${type.url}/`, data)
@@ -30,6 +31,7 @@ export default {
                     type: type.create.SUCCESS,
                     payload: res.data
                 });
+                onSuccess();
                 if (history) {
                     history.push(`/${type.clientUrl || type.url}/${res.data._id}`);
                 }
@@ -85,7 +87,7 @@ export default {
      * @param id        {String}    id of the doc to edit
      * @param data      {Object}    data to modify the doc
      */
-    edit: (dispatch, type, id, data) => {
+    edit: (dispatch, type, id, data, onSuccess = _.noop) => {
         dispatch({ type: type.edit.BEGIN });
         axios
             .patch(`/api/${type.url}/${id}`, data)
@@ -94,6 +96,7 @@ export default {
                     type: type.edit.SUCCESS,
                     payload: res.data
                 });
+                onSuccess();
             })
             .catch(err => getErrors(dispatch, type, err));
     },
@@ -104,7 +107,7 @@ export default {
      * @param type      {String}    the type to create the action for
      * @param id        {String}    id of the doc to delete
      */
-    delete: (dispatch, type, id) => {
+    delete: (dispatch, type, id, history) => {
         dispatch({ type: type.delete.BEGIN });
         axios
             .delete(`/api/${type.url}/${id}`)
@@ -113,6 +116,9 @@ export default {
                     type: type.delete.SUCCESS,
                     payload: res.data
                 });
+                if (history) {
+                    history.goBack();
+                }
             })
             .catch(err => getErrors(dispatch, type, err));
     }

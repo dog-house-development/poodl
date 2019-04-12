@@ -12,6 +12,8 @@
     width: 100%;
     top: 100%;
     font-size: 1em;
+    max-height: 50vh;
+    overflow-y: scroll;
 
     .dropdown-content-row {
       font-weight: bold;

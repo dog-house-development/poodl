@@ -1,33 +1,68 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import _ from 'lodash';
-import MemberActions from '../../../actions/memberActions';
-import Loading from '../../ui/Loading';
 import { Link } from 'react-router-dom';
-import memberFields, { Categories } from './memberFields';
-import EditableProfile from '../../ui/EditableProfile';
+import _ from 'lodash';
+
+import MemberActions from '../../../actions/memberActions';
+import ServiceActions from '../../../actions/serviceActions';
+import DynamicForm from '../../ui/DynamicForm';
+import memberInputs from './memberInputs';
+import ManageServices from '../services/ManageServices';
+import TabPage from '../../ui/TabPage';
 
 export class MemberProfile extends Component {
+    static defaultProps = {
+        errors: {}
+    };
+
+    componentDidMount() {
+        // call redux action to retrieve specified profile from api
+        this.props.memberActions.get(this.props.match.params.id);
+        this.props.serviceActions.filter();
+    }
+
+    editMember = (modifiedInputs, onSuccess) => {
+        this.props.memberActions.edit(_.get(this.props.member, '_id'), modifiedInputs, onSuccess);
+    };
+
+    getTabs() {
+        return [
+            {
+                id: 'memberInfo',
+                label: 'Info',
+                icon: 'account_box',
+                content: (
+                    <DynamicForm
+                        inputs={memberInputs}
+                        editValues={this.editMember}
+                        values={this.props.member}
+                        editable={true}
+                        loading={this.props.loading}
+                        errors={this.props.errors}
+                    />
+                )
+            },
+            {
+                id: 'services',
+                label: 'Services',
+                icon: 'list_alt',
+                count: this.props.serviceCount,
+                content: <ManageServices data={this.props.services} memberId={this.props.match.params.id} />
+            }
+        ];
+    }
+
     render() {
         return (
-            <div className="view-all-container">
+            <div className="view-all-container page-container">
                 <Link to="/members" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all members
                 </Link>
-                <div>
-                    <h1>
-                        {this.props.loading ? <Loading /> : _.get(this.props.member, 'firstName')}{' '}
-                        {this.props.loading ? '' : _.get(this.props.member, 'lastName')}
-                    </h1>
-                    <EditableProfile
-                        fields={memberFields}
-                        categories={Categories}
-                        editProfile={this.props.memberActions.edit}
-                        getProfile={this.props.memberActions.get}
-                        profile={this.props.member}
-                    />
-                </div>
+                <h1>
+                    {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
+                </h1>
+                <TabPage tabs={this.getTabs()} startingTab="memberInfo" />
             </div>
         );
     }
@@ -37,13 +72,15 @@ export const mapStateToProps = (state, props) => {
     return {
         member: state.members.all[props.match.params.id],
         loading: state.members.loading,
-        errors: state.members.errors
+        errors: state.members.errors,
+        serviceCount: _.size(_.filter(state.services.all, service => service.memberId === props.match.params.id))
     };
 };
 
 export const mapDispatchToProps = dispatch => {
     return {
-        memberActions: bindActionCreators(MemberActions, dispatch)
+        memberActions: bindActionCreators(MemberActions, dispatch),
+        serviceActions: bindActionCreators(ServiceActions, dispatch)
     };
 };
 

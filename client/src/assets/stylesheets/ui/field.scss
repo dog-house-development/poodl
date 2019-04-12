@@ -43,7 +43,7 @@
       &:focus {
         outline: 0;
         border-color: $button-primary;
-        background-color: $gray-1;
+        background-color: $gray-0;
       }
 
       &.normal {
@@ -54,6 +54,27 @@
       &.large {
         padding: 15px;
         font-size: 1.25em;
+      }
+
+      &.secondary {
+        background-color: #e1e6ed;
+        border-color: transparent;
+        color: $gray-7;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          background-color: $gray-1;
+          border-color: $gray-2;
+        }
+
+        &:focus {
+          background-color: $gray-1;
+          box-shadow: 0 0 0 3pt $blue-outline;
+        }
+
+        &::placeholder {
+          color: $gray-5;
+        }
       }
 
       &.field-error-border {
@@ -76,6 +97,14 @@
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
+    }
+  }
+
+  &.filter-field {
+    max-width: 14em;
+
+    @media screen and (max-width: $mobile) {
+      max-width: 100%;
     }
   }
 }

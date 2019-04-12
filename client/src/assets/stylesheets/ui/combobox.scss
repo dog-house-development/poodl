@@ -30,12 +30,13 @@
       text-decoration: none;
       -webkit-appearance: none;
       width: 100%;
-      padding: 0.3em 0.6em;
+      padding: 0.5em 0.6em;
       //   border: 1px solid transparent;
       background-color: transparent;
       cursor: pointer;
       background-color: $gray-1;
       font-size: 1em;
+      font-weight: 500;
 
       &:hover {
         background-color: $blue-dropdown;
@@ -54,4 +55,8 @@
       }
     }
   }
+}
+
+.combobox-panel {
+  overflow: auto;
 }

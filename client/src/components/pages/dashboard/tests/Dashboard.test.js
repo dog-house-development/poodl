@@ -22,22 +22,12 @@ describe('Dashboard tests', () => {
                         name: 'Sandwich Man'
                     },
                     errors: {}
-                },
-                activities: { all: [], loading: false, errors: {} }
+                }
             },
             _state
         );
         props = _.assign({}, _props);
-        wrapper = shallow(
-            <Dashboard
-                {..._.assign(
-                    {},
-                    props,
-                    mapStateToProps(state, props),
-                    mapDispatchToProps(jasmine.createSpy('dispatch'))
-                )}
-            />
-        );
+        wrapper = shallow(<Dashboard {..._.assign({}, props, mapStateToProps(state, props))} />);
         instance = wrapper.instance();
         instance.setState({ activitiesStartDate: new Date('01-14-2019') });
     };
@@ -57,18 +47,8 @@ describe('Dashboard tests', () => {
                         name: 'Sandwich Man'
                     },
                     errors: {}
-                },
-                activities: [],
-                activitiesLoading: false,
-                errors: {}
+                }
             });
-        });
-    });
-
-    describe('mapDispatchToProps', () => {
-        it('should map dispatch to props', () => {
-            const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ activityActions: {} }));
         });
     });
 });

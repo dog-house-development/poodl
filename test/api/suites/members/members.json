@@ -33,7 +33,7 @@
             "grandparent": "Grandparent",
             "needsAADL": ["Transferring"],
             "needsIADL": ["Money management"],
-            "numberOfKidsUnder19": 47
+            "numberOfKidsUnder19": "47"
         },
         {
             "_id": "5c91e863fe6662045cb471d4",
@@ -68,7 +68,7 @@
             "grandparent": "Grandparent",
             "needsAADL": ["None"],
             "needsIADL": ["None"],
-            "numberOfKidsUnder19": 2
+            "numberOfKidsUnder19": "2"
         }
     ]
 }
