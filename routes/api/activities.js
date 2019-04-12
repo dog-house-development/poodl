@@ -18,4 +18,43 @@ ApiHelper.edit(router, Activity);
 // @router DELETE api/activities/:id
 ApiHelper.delete(router, Activity);
 
+router.post('/quarterData', (req, res) => {
+    const start = req.body.start;
+    const end = req.body.end;
+    const activityName = req.body.activityName;
+    const queryFields = { members: 1 };
+
+    const callQuarter = {
+        $and: [
+            {
+                startDate: {
+                    $gte: new Date(start),
+                    $lte: new Date(end)
+                }
+            },
+            {
+                name: activityName
+            }
+        ]
+    };
+
+    Activity.find(callQuarter, queryFields, (err, docs) => {
+        if (err) throw new Error(err.message, null);
+        const arr = [];
+        docs.forEach(function(list) {
+            arr.push.apply(arr, list.members);
+        });
+        return res.json(arr);
+    });
+});
+
+function convertToString(arr) {
+    for (var i = 0; i < arr.length; i++) arr[i] = String(arr[i]);
+    return arr;
+}
+function removeDuplicate(arr) {
+    temp = new Set(arr);
+    return Array.from(temp);
+}
+
 module.exports = router;
