@@ -10,6 +10,8 @@ import DynamicForm from '../../ui/DynamicForm';
 import memberInputs from './memberInputs';
 import ManageServices from '../services/ManageServices';
 import TabPage from '../../ui/TabPage';
+import Loading from '../../ui/Loading';
+import DeleteButton from '../../ui/DeleteButton';
 
 export class MemberProfile extends Component {
     static defaultProps = {
@@ -20,6 +22,7 @@ export class MemberProfile extends Component {
         // call redux action to retrieve specified profile from api
         this.props.memberActions.get(this.props.match.params.id);
         this.props.serviceActions.filter();
+        window.scrollTo(0, 0);
     }
 
     editMember = (modifiedInputs, onSuccess) => {
@@ -53,15 +56,32 @@ export class MemberProfile extends Component {
         ];
     }
 
+    getMemberName() {
+        return this.props.loading ? (
+            <Loading content="" />
+        ) : (
+            _.get(this.props.member, 'firstName') + ' ' + _.get(this.props.member, 'lastName')
+        );
+    }
+
+    handleDeleteClick = () => {
+        this.props.memberActions.delete(this.props.match.params.id, () => this.props.history.push('/members'));
+    };
+
     render() {
         return (
-            <div className="view-all-container page-container">
+            <div className="page-container">
                 <Link to="/members" className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to all members
                 </Link>
-                <h1>
-                    {_.get(this.props.member, 'firstName')} {_.get(this.props.member, 'lastName')}
-                </h1>
+                <div className="page-header">
+                    <h1>{this.getMemberName()}</h1>
+                    <DeleteButton
+                        onConfirm={this.handleDeleteClick}
+                        confirmQuestion={`Are you sure you want to delete the member '${this.getMemberName()}'?`}>
+                        Delete Member
+                    </DeleteButton>
+                </div>
                 <TabPage tabs={this.getTabs()} startingTab="memberInfo" />
             </div>
         );

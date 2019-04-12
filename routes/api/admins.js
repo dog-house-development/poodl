@@ -3,6 +3,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const mongoose = require('mongoose');
 
 // misc
 const keys = require('../../config/keys');
@@ -13,7 +14,7 @@ const validateRegisterAdmin = require('./validation/admin/registerAdmin');
 const validateLoginInput = require('./validation/admin/login');
 
 const router = express.Router();
-const Admin = require('mongoose').model('Admin');
+const Admin = mongoose.model('Admin');
 
 // @route POST api/admins/filter
 ApiHelper.filter(router, Admin);
@@ -25,7 +26,34 @@ ApiHelper.get(router, Admin);
 ApiHelper.edit(router, Admin);
 
 // @route DELETE api/admins/:id
-ApiHelper.delete(router, Admin);
+router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const id = mongoose.Types.ObjectId(req.params.id);
+    Admin.findByIdAndDelete(id, (err, doc) => {
+        if (err) {
+            return res.status(400).json(err);
+        }
+        if (!doc) {
+            return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
+        }
+
+        // Remove the admins's id from any activity's admin array.
+        mongoose.model('Activity').updateMany(
+            {},
+            {
+                $pull: {
+                    admins: id
+                }
+            },
+            err => {
+                if (err) {
+                    return res.status(404).json(err);
+                }
+            }
+        );
+
+        return res.json(doc);
+    });
+});
 
 // @route POST api/admins/
 router.post('/', (req, res) => {

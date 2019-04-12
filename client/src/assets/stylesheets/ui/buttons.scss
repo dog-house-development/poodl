@@ -110,4 +110,21 @@
     margin-right: 0.5em;
     margin-top: -3px;
   }
+
+  &.delete-button {
+    text-align: right;
+    background-color: $orange-1;
+    border-color: $orange-2;
+    transition: box-shadow ease-in-out 0.12s;
+
+    &:hover {
+      background-color: $orange-2;
+      border-color: $orange-2;
+    }
+
+    &:active {
+      background-color: $orange-1;
+      border-color: $orange-2;
+    }
+  }
 }

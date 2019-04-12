@@ -3,7 +3,7 @@
 .datagrid {
   padding: 0;
   border: 1px solid $gray-3;
-  overflow-x: scroll;
+  overflow-x: auto;
 
   table {
     width: 100%;
