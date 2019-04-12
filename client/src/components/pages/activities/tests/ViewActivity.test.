@@ -21,23 +21,35 @@ describe('ViewActivity tests', () => {
             {
                 auth: {
                     admin: {
+                        _id: '123',
+                        firstName: 'Moose',
+                        lastName: 'Man',
+                        email: 'mooseman@nowhere.com',
                         superAdmin: true
                     },
                     errors: {}
                 },
+                members: {
+                    loading: false,
+                    all: {
+                        _id: '321',
+                        firstName: 'Big',
+                        lastName: 'Tup',
+                        membershipDate: '1950-03-15T20:07:42.762Z',
+                        email: 'bigtup@nowhere.com'
+                    },
+                    errors: {}
+                },
+
                 activities: {
                     all: {
                         123: {
-                            _id: '1',
+                            _id: '123',
                             name: 'Fun',
                             description: 'A fun time with fun activities',
                             startDate: '1971-02-01T07:00:00.000Z',
                             endDate: '1971-02-01T07:00:00.000Z',
-                            members: [
-                                { firstName: 'Big', lastName: 'Tup', _id: '123' },
-                                { firstName: 'Lil', lastName: 'Tup', _id: '321' }
-                            ],
-                            loading: false
+                            members: [{ firstName: 'Big', lastName: 'Tup', _id: '321' }]
                         }
                     },
 
@@ -69,29 +81,36 @@ describe('ViewActivity tests', () => {
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
+                activities: {
+                    123: {
+                        _id: '123',
+                        name: 'Fun',
+                        description: 'A fun time with fun activities',
+                        startDate: '1971-02-01T07:00:00.000Z',
+                        endDate: '1971-02-01T07:00:00.000Z',
+                        members: [{ firstName: 'Big', lastName: 'Tup', _id: '321' }]
+                    }
+                },
                 activity: {
-                    _id: '1',
+                    _id: '123',
                     name: 'Fun',
                     description: 'A fun time with fun activities',
                     startDate: '1971-02-01T07:00:00.000Z',
                     endDate: '1971-02-01T07:00:00.000Z',
-                    members: [
-                        { firstName: 'Big', lastName: 'Tup', _id: '333' },
-                        { firstName: 'Lil', lastName: 'Tup', _id: '444' }
-                    ]
-                },
-                membersLoading: {
-                    members: {
-                        accessLevel: 'Admin',
-                        seniorCenterId: 123,
-                        firstName: 'Frog',
-                        lastName: 'Anderson',
-                        loading: false
-                    },
-                    errors: {}
+                    members: [{ firstName: 'Big', lastName: 'Tup', _id: '321' }]
                 },
                 loading: false,
-                errors: {}
+                membersLoading: false,
+                adminSeniorCenterId: undefined,
+                members: {
+                    _id: '321',
+                    firstName: 'Big',
+                    lastName: 'Tup',
+                    membershipDate: '1950-03-15T20:07:42.762Z',
+                    email: 'bigtup@nowhere.com'
+                },
+                errors: {},
+                loading: false
             });
         });
     });
