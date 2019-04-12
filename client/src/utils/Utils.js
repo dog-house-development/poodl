@@ -41,8 +41,7 @@ const Utils = {
 
     getUrlParameter: (key, search) => {
         key = key.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-        let regex = new RegExp('[\\?&]' + key + '=([^&#]*)');
-        let results = regex.exec(search);
+        let results = new RegExp('[\\?&]' + key + '=([^&#]*)').exec(search);
         return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
 };
