@@ -113,12 +113,14 @@ export default {
         axios
             .delete(`/api/${type.url}/${id}`)
             .then(res => {
+                // Call on success before dispatch so the props are the same
+                // and you can still use them inside of this function.
+                onSuccess();
+
                 dispatch({
                     type: type.delete.SUCCESS,
                     payload: res.data
                 });
-
-                onSuccess();
             })
             .catch(err => getErrors(dispatch, type, err));
     }

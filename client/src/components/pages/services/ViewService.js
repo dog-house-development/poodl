@@ -32,8 +32,14 @@ export class ViewService extends Component {
         this.props.serviceActions.edit(_.get(this.props.service, '_id'), modifiedInputs, onSuccess);
     };
 
+    getMemberUrl() {
+        return `/members/${_.get(this.props.service, 'memberId')}?tab=services`;
+    }
+
     handleDeleteClick = () => {
-        this.props.serviceActions.delete(this.props.match.params.id, () => this.props.history.goBack());
+        this.props.serviceActions.delete(this.props.match.params.id, () =>
+            this.props.history.push(this.getMemberUrl())
+        );
     };
 
     getFormMarkup() {
@@ -73,7 +79,7 @@ export class ViewService extends Component {
     render() {
         return (
             <div className="view-service page-container">
-                <Link to={`/members/${_.get(this.props.service, 'memberId')}`} className="button small tertiary">
+                <Link to={this.getMemberUrl()} className="button small tertiary">
                     <i className="material-icons">keyboard_backspace</i> Back to member
                 </Link>
                 <div className="page-header">
