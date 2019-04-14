@@ -17,11 +17,17 @@ export default function(state = initialState, action) {
                 isAuthenticated: !_.isEmpty(action.payload),
                 admin: action.payload
             };
+        case Types.auth.login.BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
         case Types.auth.login.SUCCESS:
             return {
                 ...state,
                 isAuthenticated: !_.isEmpty(action.payload),
-                admin: action.payload
+                admin: action.payload,
+                loading: false
             };
         case Types.auth.logout.SUCCESS:
             return {
@@ -32,7 +38,8 @@ export default function(state = initialState, action) {
         case Types.auth.ERROR:
             return {
                 ...state,
-                errors: action.payload
+                errors: action.payload,
+                loading: false
             };
         default:
             return state;

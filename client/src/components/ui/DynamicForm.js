@@ -285,7 +285,7 @@ class DynamicForm extends React.Component {
 
     getErrorMarkup() {
         if (this.props.errorDescription && this.state.hasErrors && !this.props.editable) {
-            return <p className="form-error">{this.props.errorDescription}</p>;
+            return <div className="form-error">{this.props.errorDescription}</div>;
         }
     }
 

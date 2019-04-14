@@ -42,9 +42,9 @@
   }
 
   .form-error {
+    display: inline;
     color: $red-2;
-    font-size: 12px;
-    margin-top: 15px;
+    font-size: 0.75em;
   }
 }
 

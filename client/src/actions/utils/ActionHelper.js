@@ -7,7 +7,7 @@ import _ from 'lodash';
  * @param type      {String}    the type to create the action for
  * @param errors    {Object}    errors data to send in action payload
  */
-const getErrors = (dispatch, type, errors) => {
+export const getErrors = (dispatch, type, errors) => {
     dispatch({
         type: type.ERROR,
         payload: errors.response.data
