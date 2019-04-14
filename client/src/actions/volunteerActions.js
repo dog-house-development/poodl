@@ -12,8 +12,8 @@ export default {
         ActionHelper.filter(dispatch, Types.volunteer, data);
     },
 
-    get: id => dispatch => {
-        ActionHelper.get(dispatch, Types.volunteer, id);
+    get: (id, onFail) => dispatch => {
+        ActionHelper.get(dispatch, Types.volunteer, id, onFail);
     },
 
     edit: (id, data, onSuccess) => dispatch => {

@@ -16,7 +16,9 @@ export class VolunteerProfile extends Component {
 
     componentDidMount() {
         // call redux action to retrieve specified profile from api
-        this.props.volunteerActions.get(this.props.match.params.id);
+        this.props.volunteerActions.get(this.props.match.params.id, () => {
+            this.props.history.push('/pageNotFound');
+        });
         window.scrollTo(0, 0);
     }
 
