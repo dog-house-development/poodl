@@ -10,8 +10,8 @@ export default {
         ActionHelper.filter(dispatch, Types.member, data);
     },
 
-    get: id => dispatch => {
-        ActionHelper.get(dispatch, Types.member, id);
+    get: (id, onFail) => dispatch => {
+        ActionHelper.get(dispatch, Types.member, id, onFail);
     },
 
     edit: (id, data, onSuccess) => dispatch => {
