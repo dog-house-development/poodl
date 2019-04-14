@@ -125,7 +125,7 @@ export class Navbar extends Component {
     getAccordion() {
         if (this.state.expanded) {
             return (
-                <ul className="accordion">
+                <ul className="accordion" onClick={this.handleMenuClick}>
                     <li>
                         <Link to="/dashboard">My Dashboard</Link>
                     </li>
