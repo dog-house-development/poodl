@@ -20,7 +20,7 @@ export default {
      * @param dispatch  {Function}  the action dispatcher
      * @param type      {String}    the type to create the action for
      * @param data      {Object}    data for the new doc
-     * @param redirect  {boolean}   redirect to the page for the newly created doc
+     * @param onSuccess {Function}  callback for when creating is successful
      */
     create: (dispatch, type, data, history, onSuccess = _.noop) => {
         dispatch({ type: type.create.BEGIN });
@@ -65,8 +65,9 @@ export default {
      * @param dispatch  {Function}  the action dispatcher
      * @param type      {String}    the type to create the action for
      * @param id        {String}    id of the doc to retrieve
+     * @param onFail {Function}  callback for when an error occurs
      */
-    get: (dispatch, type, id) => {
+    get: (dispatch, type, id, onFail = _.noop) => {
         dispatch({ type: type.get.BEGIN });
         axios
             .get(`/api/${type.url}/${id}`)
@@ -77,7 +78,10 @@ export default {
                 });
                 return res.data;
             })
-            .catch(err => getErrors(dispatch, type, err));
+            .catch(err => {
+                getErrors(dispatch, type, err);
+                onFail();
+            });
     },
 
     /**
@@ -86,6 +90,7 @@ export default {
      * @param type      {String}    the type to create the action for
      * @param id        {String}    id of the doc to edit
      * @param data      {Object}    data to modify the doc
+     * @param onSuccess {Function}  callback for when creating is successful
      */
     edit: (dispatch, type, id, data, onSuccess = _.noop) => {
         dispatch({ type: type.edit.BEGIN });
@@ -107,6 +112,7 @@ export default {
      * @param dispatch  {Function}  the action dispatcher
      * @param type      {String}    the type to create the action for
      * @param id        {String}    id of the doc to delete
+     * @param onSuccess {Function}  callback for when creating is successful
      */
     delete: (dispatch, type, id, onSuccess = _.noop) => {
         dispatch({ type: type.delete.BEGIN });

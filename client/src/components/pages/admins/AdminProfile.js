@@ -11,7 +11,9 @@ import adminInputs from './adminInputs';
 
 export class AdminProfile extends Component {
     componentDidMount() {
-        this.props.adminActions.get(this.props.match.params.id);
+        this.props.adminActions.get(this.props.match.params.id, () => {
+            this.props.history.push('/pageNotFound');
+        });
     }
 
     getAdminName() {
