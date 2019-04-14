@@ -29,12 +29,13 @@
     overflow: visible;
 
     .input-group-label {
+      display: inline-block;
       color: $gray-7;
       font-size: 1.6em;
       border-bottom: 2px solid $gray-3;
       padding-bottom: 0.3em;
       margin-bottom: 0.6em;
-      margin-top: 1.8em;
+      margin-top: 1rem;
 
       &.editable {
         margin-top: 0;
@@ -42,6 +43,14 @@
           margin-top: 0;
         }
       }
+    }
+
+    .input-group-buttons {
+      float: right;
+      position: relative;
+      // makes the buttons on top of the presented fields so you can
+      // click on them
+      z-index: 1;
     }
 
     &:first-child {
