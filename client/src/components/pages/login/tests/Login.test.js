@@ -54,10 +54,7 @@ describe('Login tests', () => {
 
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
-            expect(mapStateToProps(state, props)).toEqual({
-                auth: { isAuthenticated: false, loading: false, errors: {} },
-                errors: {}
-            });
+            expect(mapStateToProps(state, props)).toMatchSnapshot();
         });
     });
 
@@ -103,27 +100,7 @@ describe('Login tests', () => {
                 target: { id: 'email', value: 'Meow' },
                 preventDefault: () => {}
             };
-            wrapper.find('Form').simulate('submit', e);
-        });
-    });
-
-    describe('getFormErrors', () => {
-        it('should return nothing when there are no errors', () => {
-            expect(instance.getFormErrors()).toEqual([]);
-        });
-
-        it('should return correct errors when they exist', () => {
-            setInstanceAndWrapper({}, { auth: { errors: { emailnotfound: 'Email not found' } } });
-            expect(instance.getFormErrors()).toEqual(['Email and password combination not found']);
-
-            setInstanceAndWrapper({}, { auth: { errors: { passwordincorrect: 'Password incorrect' } } });
-            expect(instance.getFormErrors()).toEqual(['Email and password combination not found']);
-
-            setInstanceAndWrapper({}, { auth: { errors: { email: 'Invalid email' } } });
-            expect(instance.getFormErrors()).toEqual([]);
-
-            setInstanceAndWrapper({}, { auth: { errors: { party: 'Party time' } } });
-            expect(instance.getFormErrors()).toEqual(['Party time']);
+            wrapper.find('DynamicForm').simulate('submit', e);
         });
     });
 
