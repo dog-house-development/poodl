@@ -3,6 +3,7 @@ import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
 import Types from './types';
+import { getErrors } from './utils/ActionHelper';
 
 export default {
     setCurrentAdmin: decoded => ({
@@ -11,6 +12,9 @@ export default {
     }),
 
     loginAdmin: adminData => dispatch => {
+        dispatch({
+            type: Types.auth.login.BEGIN
+        });
         axios
             .post('/api/admins/login', adminData)
             .then(res => {
@@ -29,12 +33,7 @@ export default {
                     payload: decoded
                 });
             })
-            .catch(err =>
-                dispatch({
-                    type: Types.auth.ERROR,
-                    payload: err.response.data
-                })
-            );
+            .catch(err => getErrors(dispatch, Types.auth, err));
     },
 
     logoutAdmin: () => dispatch => {

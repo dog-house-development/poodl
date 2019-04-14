@@ -95,11 +95,15 @@ router.post('/login', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
+    const notFoundError = {
+        error: 'Email and password combination not found'
+    };
+
     // Find Admin by email
     Admin.findOne({ email }).then(admin => {
         // Check if Admin exists
         if (!admin) {
-            return res.status(404).json({ emailnotfound: 'Email not found' });
+            return res.status(404).json(notFoundError);
         }
 
         // Check password
@@ -130,7 +134,7 @@ router.post('/login', (req, res) => {
                     }
                 );
             } else {
-                return res.status(400).json({ passwordincorrect: 'Password incorrect' });
+                return res.status(404).json(notFoundError);
             }
         });
     });
