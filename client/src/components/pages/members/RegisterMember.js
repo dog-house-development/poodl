@@ -52,6 +52,7 @@ export class RegisterMember extends React.Component {
                         errors={this.props.errors}
                         values={this.state}
                         errorDescription="There are errors in this form."
+                        loading={this.props.loading}
                     />
                 </div>
             </div>
