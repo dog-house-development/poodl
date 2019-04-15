@@ -51,6 +51,7 @@ export class AddService extends Component {
                     errors={this.props.errors}
                     values={this.state}
                     data={{ name: this.props.services }}
+                    loading={this.props.loading}
                 />
             </div>
         );
@@ -61,7 +62,8 @@ export const mapStateToProps = (state, props) => {
     return {
         adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.services.errors,
-        services: _.get(state.services, 'all')
+        services: _.get(state.services, 'all'),
+        loading: state.services.loading
     };
 };
 

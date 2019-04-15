@@ -23,7 +23,6 @@ export class ServiceList extends Component {
                     })
                 )}
                 name="Services"
-                loading={this.props.loading}
                 onRowClick={e => this.props.history.push(`/services/${e.target.id}`)}
                 noDataMessage="No services found for this member"
             />

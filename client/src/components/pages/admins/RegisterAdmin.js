@@ -49,6 +49,7 @@ export class RegisterAdmin extends Component {
                         submitButtonLabel="Register Admin"
                         errors={this.props.errors}
                         values={this.state}
+                        loading={this.props.loading}
                     />
                 </div>
             </div>
@@ -61,7 +62,8 @@ export const mapStateToProps = (state, props) => {
         auth: state.auth,
         adminIsSuper: _.get(state.auth.admin, 'accessLevel', false) === 'Super',
         adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
-        errors: state.admins.errors
+        errors: state.admins.errors,
+        loading: state.admins.loading
     };
 };
 

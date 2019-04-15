@@ -295,21 +295,21 @@ class DynamicForm extends React.Component {
     getSubmitButtonMarkup() {
         if (!this.props.editable) {
             return (
-                <Button
-                    formButton
-                    onClick={this.props.onSubmit}
-                    size="medium"
-                    type="button"
-                    disabled={this.props.loading}>
+                <Button formButton size="medium" type="submit" disabled={this.props.loading}>
                     {this.props.submitButtonLabel}
                 </Button>
             );
         }
     }
 
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.onSubmit(e);
+    };
+
     render() {
         return (
-            <form className="dynamic-form">
+            <form className="dynamic-form" onSubmit={this.handleSubmit}>
                 {this.getInputMarkup(this.props.inputs)}
                 {this.getErrorMarkup()}
                 {this.getSubmitButtonMarkup()}

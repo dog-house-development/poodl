@@ -49,6 +49,7 @@ export class SelfRegisterMember extends React.Component {
                         errors={this.props.errors}
                         values={this.state}
                         errorDescription="There are errors in this form."
+                        loading={this.props.loading}
                     />
                 </div>
             </div>
@@ -59,7 +60,8 @@ export class SelfRegisterMember extends React.Component {
 export const mapStateToProps = (state, props) => {
     return {
         adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
-        errors: state.members.errors
+        errors: state.members.errors,
+        loading: state.members.loading
     };
 };
 
