@@ -33,9 +33,7 @@ export class Login extends Component {
         this.setState({ [e.target.id]: e.target.value });
     };
 
-    onSubmit = e => {
-        e.preventDefault();
-
+    onSubmit = () => {
         const adminData = {
             email: this.state.email,
             password: this.state.password
