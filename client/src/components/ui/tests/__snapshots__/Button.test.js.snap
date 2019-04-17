@@ -2,20 +2,22 @@
 
 exports[`Button tests render should render form-button correctly 1`] = `
 <button
-  className="button medium primary form-button undefined"
+  className="button medium primary form-button"
   onClick={[Function]}
   type="normal"
 >
+   
   Press me
 </button>
 `;
 
 exports[`Button tests render should render normal button correctly 1`] = `
 <button
-  className="button medium primary  undefined"
+  className="button medium primary"
   onClick={[Function]}
   type="normal"
 >
+   
   Press me
 </button>
 `;

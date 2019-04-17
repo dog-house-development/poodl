@@ -19,7 +19,7 @@ exports[`Navbar tests render should render links for logged in admins 1`] = `
       className="right"
       style={
         Object {
-          "marginTop": "12px",
+          "marginTop": "0.7em",
         }
       }
     >
