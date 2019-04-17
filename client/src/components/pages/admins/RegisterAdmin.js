@@ -37,8 +37,8 @@ export class RegisterAdmin extends Component {
     render() {
         return (
             <div className="register-container page-container">
-                <Link to="/dashboard" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to home
+                <Link to="/dashboard" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
                 <div className="panel">
                     <h1 className="panel-title">Register Member</h1>

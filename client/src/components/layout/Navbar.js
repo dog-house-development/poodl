@@ -101,7 +101,7 @@ export class Navbar extends Component {
                     <li className="">
                         <Link to="/dashboard">Poodl</Link>
                     </li>
-                    <li className="right" style={{ marginTop: '12px' }}>
+                    <li className="right" style={{ marginTop: '0.7em' }}>
                         {this.getUserDropDownMarkup()}
                     </li>
                     <li className="right">

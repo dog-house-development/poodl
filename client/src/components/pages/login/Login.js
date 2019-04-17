@@ -50,8 +50,8 @@ export class Login extends Component {
         }
         return (
             <div className="login-container page-container">
-                <Link to="/" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to home
+                <Link to="/" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
                 <div className="panel">
                     <DynamicForm
