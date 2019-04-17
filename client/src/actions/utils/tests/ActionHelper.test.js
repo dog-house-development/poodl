@@ -1,16 +1,9 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 
 import { getDefaultActions } from '../ActionHelper';
-
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
-const store = mockStore();
-
-const axios = require('axios');
-const MockAdapter = require('axios-mock-adapter');
-
-const mockAxios = new MockAdapter(axios);
 
 describe('ActionHelper.js', () => {
     const testType = {
@@ -39,13 +32,52 @@ describe('ActionHelper.js', () => {
     };
 
     describe('ActionHelper', () => {
+        const middlewares = [thunk];
+        const mockStore = configureMockStore(middlewares);
+        const store = mockStore();
+        const mockAxios = new MockAdapter(axios);
+
         const actions = getDefaultActions(testType);
         const testData = { name: 'Test', _id: 'testId' };
         const testErrors = { error: 'so many error' };
 
+        const setMockAxios = {
+            success: (fun, appendToUrl = '') => {
+                mockAxios[fun](`/api/${testType.url}/${appendToUrl}`).reply(200, testData);
+            },
+            fail: (fun, appendToUrl = '') => {
+                mockAxios[fun](`/api/${testType.url}/${appendToUrl}`).reply(400, testErrors);
+            }
+        };
+
         const getSuccessActions = type => [{ type: type.BEGIN }, { payload: testData, type: type.SUCCESS }];
 
         const getErrorActions = type => [{ type: type.BEGIN }, { payload: testErrors, type: testType.ERROR }];
+
+        let onSuccess, onFail;
+
+        const expectResult = {
+            fail: type => {
+                expect(store.getActions()).toEqual(getErrorActions(type));
+                expect(onSuccess).not.toBeCalled();
+                expect(onFail).toBeCalled();
+            },
+            success: type => {
+                expect(store.getActions()).toEqual(getSuccessActions(type));
+                expect(onSuccess).toBeCalled();
+                expect(onFail).not.toBeCalled();
+            }
+        };
+
+        beforeEach(() => {
+            onSuccess = jest.fn(res => {
+                expect(res.data).toEqual(testData);
+            });
+
+            onFail = jest.fn(err => {
+                expect(err.response.data).toEqual(testErrors);
+            });
+        });
 
         afterEach(() => {
             mockAxios.reset();
@@ -53,93 +85,84 @@ describe('ActionHelper.js', () => {
         });
 
         describe('create', () => {
-            it('dispatches success action', async () => {
-                mockAxios.onPost(`/api/${testType.url}/`).reply(200, testData);
+            const createTest = async (successOrFail, expectedHistory) => {
+                setMockAxios[successOrFail]('onPost');
                 const history = [];
-                const onSuccess = jest.fn();
-                await store.dispatch(actions.create(testData, history, onSuccess));
-                const expectedHistory = [`/${testType.url}/${testData._id}`];
+                await store.dispatch(actions.create(testData, history, onSuccess, onFail));
                 expect(history).toEqual(expectedHistory);
-                expect(store.getActions()).toEqual(getSuccessActions(testType.create));
-                expect(onSuccess).toBeCalled();
+                expectResult[successOrFail](testType.create);
+            };
+
+            it('dispatches success action', async () => {
+                await createTest('success', [`/${testType.url}/${testData._id}`]);
             });
 
             it('dispatches error action', async () => {
-                mockAxios.onPost(`/api/${testType.url}/`).reply(400, testErrors);
-                const history = [];
-                const onSuccess = jest.fn();
-                await store.dispatch(actions.create(null, history, onSuccess));
-                expect(history).toEqual([]);
-                expect(store.getActions()).toEqual(getErrorActions(testType.create));
-                expect(onSuccess).not.toBeCalled();
+                await createTest('fail', []);
             });
         });
 
         describe('filter', () => {
+            const filterTest = async successOrFail => {
+                setMockAxios[successOrFail]('onPost', 'filter');
+                await store.dispatch(actions.filter({}, onSuccess, onFail));
+                expectResult[successOrFail](testType.filter);
+            };
+
             it('dispatches success action', async () => {
-                mockAxios.onPost(`/api/${testType.url}/filter`).reply(200, testData);
-                await store.dispatch(actions.filter({}));
-                expect(store.getActions()).toEqual(getSuccessActions(testType.filter));
+                await filterTest('success');
             });
 
             it('dispatches error action', async () => {
-                mockAxios.onPost(`/api/${testType.url}/filter`).reply(400, testErrors);
-                await store.dispatch(actions.filter({}));
-                expect(store.getActions()).toEqual(getErrorActions(testType.filter));
+                await filterTest('fail');
             });
         });
 
         describe('get', () => {
+            const getTest = async successOrFail => {
+                setMockAxios[successOrFail]('onGet', testData._id);
+                await store.dispatch(actions.get(testData._id, onSuccess, onFail));
+                expectResult[successOrFail](testType.get);
+            };
+
             it('dispatches success action', async () => {
-                mockAxios.onGet(`/api/${testType.url}/${testData._id}`).reply(200, testData);
-                const onFail = jest.fn();
-                await store.dispatch(actions.get(testData._id, onFail));
-                expect(store.getActions()).toEqual(getSuccessActions(testType.get));
-                expect(onFail).not.toBeCalled();
+                await getTest('success');
             });
 
             it('dispatches error action', async () => {
-                mockAxios.onGet(`/api/${testType.url}/`).reply(400, testErrors);
-                const onFail = jest.fn();
-                await store.dispatch(actions.get('', onFail));
-                expect(store.getActions()).toEqual(getErrorActions(testType.get));
-                expect(onFail).toBeCalled();
+                await getTest('fail');
             });
         });
 
         describe('edit', () => {
+            const editTest = async successOrFail => {
+                setMockAxios[successOrFail]('onPatch', testData._id);
+                await store.dispatch(actions.edit(testData._id, testData, onSuccess, onFail));
+                expectResult[successOrFail](testType.edit);
+            };
+
             it('dispatches success action', async () => {
-                mockAxios.onPatch(`/api/${testType.url}/${testData._id}`).reply(200, testData);
-                const onSuccess = jest.fn();
-                await store.dispatch(actions.edit(testData._id, testData, onSuccess));
-                expect(store.getActions()).toEqual(getSuccessActions(testType.edit));
-                expect(onSuccess).toBeCalled();
+                await editTest('success');
             });
 
             it('dispatches error action', async () => {
-                mockAxios.onPatch(`/api/${testType.url}/`).reply(400, testErrors);
-                const onSuccess = jest.fn();
-                await store.dispatch(actions.edit('', onSuccess));
-                expect(store.getActions()).toEqual(getErrorActions(testType.edit));
-                expect(onSuccess).not.toBeCalled();
+                await editTest('fail');
             });
         });
 
         describe('delete', () => {
+            const deleteTest = async successOrFail => {
+                setMockAxios[successOrFail]('onDelete', testData._id);
+                await store.dispatch(actions.delete(testData._id, onSuccess, onFail));
+                expectResult[successOrFail](testType.delete);
+            };
+
             it('dispatches success action', async () => {
-                mockAxios.onDelete(`/api/${testType.url}/${testData._id}`).reply(200, testData);
-                const onSuccess = jest.fn();
-                await store.dispatch(actions.delete(testData._id, onSuccess));
-                expect(store.getActions()).toEqual(getSuccessActions(testType.delete));
-                expect(onSuccess).toBeCalled();
+                await deleteTest('success');
             });
 
             it('dispatches error action', async () => {
-                mockAxios.onDelete(`/api/${testType.url}/`).reply(400, testErrors);
-                const onSuccess = jest.fn();
-                await store.dispatch(actions.delete('', onSuccess));
-                expect(store.getActions()).toEqual(getErrorActions(testType.delete));
-                expect(onSuccess).not.toBeCalled();
+                await deleteTest('fail');
             });
         });
     });
