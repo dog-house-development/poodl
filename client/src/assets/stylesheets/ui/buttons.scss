@@ -2,6 +2,7 @@
 
 .button {
   display: inline-block;
+  position: relative;
   font-weight: bold;
   border: 1px solid transparent;
   border-radius: 5px;
@@ -10,20 +11,21 @@
   -webkit-appearance: none;
   cursor: pointer;
   font-family: inherit;
+  transition: all ease-in-out 0.15s;
 
   &.small {
-    padding: 4px 12px;
-    font-size: 14px;
+    padding: 0.6em 1.5em;
+    font-size: 0.8em;
   }
 
   &.medium {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 0.8em 1.6em;
+    font-size: 0.95em;
   }
 
   &.large {
-    padding: 18px 30px;
-    font-size: 18px;
+    padding: 1em 1em;
+    font-size: 1em;
   }
 
   &.primary {
@@ -43,31 +45,30 @@
   }
 
   &.secondary {
-    border-color: $button-primary;
+    border-color: $transparent-2;
     color: $button-primary;
     background-color: transparent;
 
     &:hover {
-      background-color: $button-primary;
-      color: #fff;
+      background-color: $transparent-1;
+      color: $button-primary-hover;
     }
 
     &:active {
-      border-color: $button-primary-active;
-      color: #fff;
-      background-color: $button-primary-active;
+      color: $button-primary-active;
+      background-color: $gray-2;
     }
   }
 
   &:disabled {
     background-color: white;
-    border-color: $gray-2;
-    color: $gray-3;
+    border-color: $transparent-2;
+    color: $transparent-3;
 
     &:hover {
       background-color: white;
-      border-color: $gray-2;
-      color: $gray-3;
+      border-color: $transparent-2;
+      color: $transparent-3;
       cursor: default;
     }
   }
@@ -86,10 +87,10 @@
     }
 
     &:disabled {
-      color: $gray-3;
+      color: $transparent-3;
 
       &:hover {
-        color: $gray-3;
+        color: $transparent-3;
         cursor: default;
         border-color: transparent;
       }
@@ -106,10 +107,17 @@
     margin-top: 1.5em;
   }
 
+  &.icon {
+    padding-left: 3em;
+  }
+
   .button-icon {
-    font-size: inherit;
+    font-size: 1.5em;
+    position: absolute;
     margin-right: 0.5em;
-    margin-top: -3px;
+    margin-top: -2px;
+    margin-bottom: none;
+    left: 0.65em;
   }
 
   &.delete-button {

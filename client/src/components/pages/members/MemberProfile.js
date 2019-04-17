@@ -73,8 +73,8 @@ export class MemberProfile extends Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/members" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to all members
+                <Link to="/members" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to all members
                 </Link>
                 <div className="page-header">
                     <h1>{this.getMemberName()}</h1>

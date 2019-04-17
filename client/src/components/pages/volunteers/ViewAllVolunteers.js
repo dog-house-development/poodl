@@ -40,12 +40,12 @@ export class ViewAllVolunteers extends Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/dashboard" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to home
+                <Link to="/dashboard" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
                 <div className="page-header">
-                    <h1>Manage Volunteers</h1>
-                    <Link to="/volunteers/register" className="button small primary">
+                    <h1>Volunteers</h1>
+                    <Link to="/volunteers/register" className="button small primary icon">
                         <i className="material-icons button-icon">add</i>
                         Register Volunteer
                     </Link>

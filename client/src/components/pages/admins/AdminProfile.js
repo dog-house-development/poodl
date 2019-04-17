@@ -72,8 +72,8 @@ export class AdminProfile extends Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/admins" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to all admins
+                <Link to="/admins" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to all admins
                 </Link>
                 <div className="page-header">
                     <h1>{this.getAdminName()}</h1>

@@ -5,12 +5,12 @@ exports[`Register volunteer tests render should render correctly 1`] = `
   className="register-container page-container"
 >
   <Link
-    className="button small tertiary"
+    className="button small tertiary icon"
     replace={false}
     to="/volunteers"
   >
     <i
-      className="material-icons"
+      className="material-icons button-icon"
     >
       keyboard_backspace
     </i>

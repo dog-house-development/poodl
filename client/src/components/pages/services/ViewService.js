@@ -81,8 +81,8 @@ export class ViewService extends Component {
     render() {
         return (
             <div className="view-service page-container">
-                <Link to={this.getMemberUrl()} className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to member
+                <Link to={this.getMemberUrl()} className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to member
                 </Link>
                 <div className="page-header">
                     <h1>{this.getServiceName()}</h1>

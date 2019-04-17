@@ -42,17 +42,17 @@ export class ViewAllMembers extends Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/dashboard" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to home
+                <Link to="/dashboard" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
                 <div className="page-header">
-                    <h1>Manage Members</h1>
-                    <Link to="/members/register" className="button small primary">
-                        <i className="material-icons button-icon">add</i>
+                    <h1>Members</h1>
+                    <Link to="/members/register" className="button small primary icon">
+                        <i className="material-icons button-icon">person_add</i>
                         Register Member
                     </Link>
-                    <Link to="/member-check-in" className="button small primary">
-                        <i className="material-icons button-icon">check</i>
+                    <Link to="/member-check-in" className="button small primary icon">
+                        <i className="material-icons button-icon">how_to_reg</i>
                         Member check-in
                     </Link>
                 </div>
