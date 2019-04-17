@@ -63,6 +63,22 @@ describe('Navbar tests', () => {
         });
     });
 
+    describe('updateWidth', () => {
+        it('should set skinny to false if window is large and skinny is true', () => {
+            window.innerWidth = 701;
+            instance.setState({ skinny: true });
+            spyOn(instance, 'setState');
+            instance.updateWidth();
+            expect(instance.setState).toHaveBeenCalledWith({ skinny: false });
+        });
+    });
+
+    describe('getSkinnyHeaderMarkup', () => {
+        it('should return skinny header markup', () => {
+            expect(instance.getSkinnyHeaderMarkup()).toMatchSnapshot();
+        });
+    });
+
     describe('render', () => {
         it('should render links for logged in admins', () => {
             setInstanceAndWrapper(
@@ -73,6 +89,20 @@ describe('Navbar tests', () => {
         });
 
         it('should render links for nobody logged in', () => {
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render member check-in header', () => {
+            setInstanceAndWrapper({ location: { pathname: '/member-check-in' } });
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render skinny header', () => {
+            setInstanceAndWrapper(
+                {},
+                { auth: { isAuthenticated: true, admin: { firstName: 'Sam', lastName: 'Bam' } } }
+            );
+            instance.setState({ skinny: true });
             expect(wrapper).toMatchSnapshot();
         });
     });
