@@ -43,7 +43,7 @@ export class ViewActivity extends Component {
     }
 
     componentDidMount() {
-        this.props.activityActions.get(this.props.match.params.id, () => {
+        this.props.activityActions.get(this.props.match.params.id, _.noop, () => {
             this.props.history.push('/pageNotFound');
         });
         this.fetchMembers();

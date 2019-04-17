@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { ActionHelper, getDefaultActions } from '../ActionHelper';
+import { getDefaultActions } from '../ActionHelper';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

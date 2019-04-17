@@ -22,7 +22,7 @@ export const ActionHelper = {
      * @param data      {Object}    data for the new doc
      * @param onSuccess {Function}  callback for when creating is successful
      */
-    create: async (dispatch, type, data, history, onSuccess = _.noop) => {
+    create: async (dispatch, type, data, history, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.create.BEGIN });
         try {
             const res = await axios.post(`/api/${type.url}/`, data);
@@ -31,12 +31,13 @@ export const ActionHelper = {
                 type: type.create.SUCCESS,
                 payload: res.data
             });
-            onSuccess();
+            onSuccess(res);
             if (history) {
                 history.push(`/${type.clientUrl || type.url}/${res.data._id}`);
             }
         } catch (err) {
-            return getErrors(dispatch, type, err);
+            getErrors(dispatch, type, err);
+            onFail(err);
         }
     },
 
@@ -46,7 +47,7 @@ export const ActionHelper = {
      * @param type      {String}    the type to create the action for
      * @param data      {Object}    data for the new doc
      */
-    filter: async (dispatch, type, data = {}) => {
+    filter: async (dispatch, type, data = {}, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.filter.BEGIN });
         try {
             const res = await axios.post(`/api/${type.url}/filter`, data);
@@ -54,8 +55,10 @@ export const ActionHelper = {
                 type: type.filter.SUCCESS,
                 payload: res.data
             });
+            onSuccess(res);
         } catch (err) {
             getErrors(dispatch, type, err);
+            onFail(err);
         }
     },
 
@@ -66,7 +69,7 @@ export const ActionHelper = {
      * @param id        {String}    id of the doc to retrieve
      * @param onFail {Function}  callback for when an error occurs
      */
-    get: async (dispatch, type, id, onFail = _.noop) => {
+    get: async (dispatch, type, id, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.get.BEGIN });
         try {
             const res = await axios.get(`/api/${type.url}/${id}`);
@@ -74,9 +77,10 @@ export const ActionHelper = {
                 type: type.get.SUCCESS,
                 payload: res.data
             });
+            onSuccess(res);
         } catch (err) {
             getErrors(dispatch, type, err);
-            onFail();
+            onFail(err);
         }
     },
 
@@ -88,7 +92,7 @@ export const ActionHelper = {
      * @param data      {Object}    data to modify the doc
      * @param onSuccess {Function}  callback for when creating is successful
      */
-    edit: async (dispatch, type, id, data, onSuccess = _.noop) => {
+    edit: async (dispatch, type, id, data, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.edit.BEGIN });
         try {
             const res = await axios.patch(`/api/${type.url}/${id}`, data);
@@ -96,9 +100,10 @@ export const ActionHelper = {
                 type: type.edit.SUCCESS,
                 payload: res.data
             });
-            onSuccess();
+            onSuccess(res);
         } catch (err) {
             getErrors(dispatch, type, err);
+            onFail(err);
         }
     },
 
@@ -109,43 +114,44 @@ export const ActionHelper = {
      * @param id        {String}    id of the doc to delete
      * @param onSuccess {Function}  callback for when creating is successful
      */
-    delete: async (dispatch, type, id, onSuccess = _.noop) => {
+    delete: async (dispatch, type, id, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.delete.BEGIN });
         try {
             const res = await axios.delete(`/api/${type.url}/${id}`);
             // Call on success before dispatch so the props are the same
             // and you can still use them inside of this function.
-            onSuccess();
+            onSuccess(res);
             dispatch({
                 type: type.delete.SUCCESS,
                 payload: res.data
             });
         } catch (err) {
             getErrors(dispatch, type, err);
+            onFail(err);
         }
     }
 };
 
 export const getDefaultActions = type => {
     return {
-        create: (data, history, onSuccess) => dispatch => {
-            return ActionHelper.create(dispatch, type, data, history, onSuccess);
+        create: (data, history, onSuccess, onFail) => dispatch => {
+            return ActionHelper.create(dispatch, type, data, history, onSuccess, onFail);
         },
 
-        filter: data => dispatch => {
-            return ActionHelper.filter(dispatch, type, data);
+        filter: (data, onSuccess, onFail) => dispatch => {
+            return ActionHelper.filter(dispatch, type, data, onSuccess, onFail);
         },
 
-        get: (id, onFail) => dispatch => {
-            return ActionHelper.get(dispatch, type, id, onFail);
+        get: (id, onSuccess, onFail) => dispatch => {
+            return ActionHelper.get(dispatch, type, id, onSuccess, onFail);
         },
 
-        edit: (id, data, onSuccess) => dispatch => {
-            return ActionHelper.edit(dispatch, type, id, data, onSuccess);
+        edit: (id, data, onSuccess, onFail) => dispatch => {
+            return ActionHelper.edit(dispatch, type, id, data, onSuccess, onFail);
         },
 
-        delete: (id, onSuccess) => dispatch => {
-            return ActionHelper.delete(dispatch, type, id, onSuccess);
+        delete: (id, onSuccess, onFail) => dispatch => {
+            return ActionHelper.delete(dispatch, type, id, onSuccess, onFail);
         }
     };
 };
