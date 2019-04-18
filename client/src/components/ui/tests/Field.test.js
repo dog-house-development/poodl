@@ -41,8 +41,8 @@ describe('Field tests', () => {
             const baseProps = { onChange: jest.fn() };
             setInstanceAndWrapper(baseProps);
             const e = {
-                target: { name: 'email', value: 'Moo' },
-                preventDefault: () => {}
+                preventDefault: () => {},
+                target: { name: 'email', value: 'Moo' }
             };
             wrapper.find('input').simulate('change', e);
             expect(baseProps.onChange).toHaveBeenCalledTimes(1);
@@ -52,6 +52,10 @@ describe('Field tests', () => {
     describe('render', () => {
         it('should render not side by side', () => {
             setInstanceAndWrapper();
+            expect(wrapper).toMatchSnapshot();
+        });
+        it('should render present', () => {
+            setInstanceAndWrapper({ present: true });
             expect(wrapper).toMatchSnapshot();
         });
 
