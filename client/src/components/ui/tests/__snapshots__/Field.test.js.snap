@@ -36,6 +36,19 @@ exports[`Field tests render should render not side by side 1`] = `
 </div>
 `;
 
+exports[`Field tests render should render present 1`] = `
+<div
+  className="field-wrapper editable-field-wrapper"
+>
+  <p
+    className="field-label"
+  >
+    Email:
+  </p>
+  <p />
+</div>
+`;
+
 exports[`Field tests render should render the first side by side input 1`] = `
 <div
   className="field-wrapper inline-field"
