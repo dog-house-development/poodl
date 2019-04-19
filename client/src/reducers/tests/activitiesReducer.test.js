@@ -1,113 +1,82 @@
 import reducer from '../../reducers/activitiesReducer';
 import Types from '../../actions/types';
 
-describe('activity reducer', () => {
-    it('should return the initial state', () => {
-        expect(reducer(undefined, {})).toEqual({
-            //text: 'Use Redux',
-            //completed: false,
-            //id: 0
+describe('initialState', () => {
+    test('is correct', () => {
+        const action = { type: 'dummy_state' };
+        const initialState = { loading: false, all: {}, errors: {} };
 
-            loading: false,
-            all: {},
-            errors: {}
-        });
+        expect(reducer(undefined, action)).toEqual(initialState);
     });
+});
 
-    it('should handle Create.BEGIN', () => {
-        expect(
-            reducer([], {
-                type: Types.activity.create.BEGIN,
-                loading: true
-            })
-        ).toEqual({
-            loading: true
-        });
+describe('CREATE_ACTIVITY_BEGIN', () => {
+    test('returns the  create.BEGIN state', () => {
+        const mockPayload = { loading: true };
+        const action = { type: Types.activity.create.BEGIN, payload: mockPayload };
+        const expectedState = { loading: true, all: {}, errors: {} };
 
-        expect(
-            reducer(
-                {
-                    loading: true
-                },
-                {
-                    type: Types.activity.create.BEGIN,
-                    loading: true
-                }
-            )
-        ).toEqual(
-            {
-                loading: true
-            },
-            {
-                loading: true
-            }
-        );
+        expect(reducer(undefined, action)).toEqual(expectedState);
     });
+});
 
-    it('should handle Create.SUCCESS', () => {
-        expect(
-            reducer([], {
-                type: Types.activity.create.SUCCESS,
-                loading: false
-            })
-        ).toEqual({
-            loading: false
-        });
+describe('CREATE_ACTIVITY_SUCCESS', () => {
+    test('returns the create.SUCCESS state', () => {
+        const mockPayload = { loading: false };
+        const action = { type: Types.activity.create.SUCCESS, payload: mockPayload };
+        const expectedState = { loading: false, all: {}, errors: {} };
 
-        expect(
-            reducer(
-                {
-                    loading: false
-                },
-                {
-                    type: Types.activity.create.SUCCESS,
-                    loading: false
-                }
-            )
-        ).toEqual(
-            {
-                loading: false
-            },
-            {
-                loading: false
-            }
-        );
+        expect(reducer(undefined, action)).toEqual(expectedState);
     });
+});
 
-    it('should handle activity.ERROR', () => {
-        const action = { type: 'activity' };
-        expect(
-            reducer([], {
-                type: Types.activity.ERROR,
-                errors: action.payload,
-                loading: true
-            })
-        ).toEqual({
-            errors: action.payload,
-            loading: true
-        });
+describe('GET_ACTIVITY_ERRORS', () => {
+    test('returns the activity.ERROR state', () => {
+        const mockPayload = { error: 'so many error' };
+        const action = { type: Types.activity.ERROR, payload: mockPayload };
+        const expectedState = { loading: false, all: {}, errors: { error: 'so many error' } };
 
-        expect(
-            reducer(
-                {
-                    errors: action.payload,
-                    loading: false
-                },
-                {
-                    type: Types.activity.create.BEGIN,
-                    errors: action.payload,
-                    loading: true
-                }
-            )
-        ).toEqual(
-            {
-                errors: action.payload,
-                loading: true
-            },
-            {
-                errors: action.payload,
-                loading: true
-            }
-        );
+        expect(reducer(undefined, action)).toEqual(expectedState);
+    });
+});
+
+describe('FILTER_ACTIVITY_BEGIN', () => {
+    test('returns the  filter.BEGIN state', () => {
+        const mockPayload = { loading: true };
+        const action = { type: Types.activity.filter.BEGIN, payload: mockPayload };
+        const expectedState = { loading: true, all: {}, errors: {} };
+
+        expect(reducer(undefined, action)).toEqual(expectedState);
+    });
+});
+
+describe('FILTER_ACTIVITY_SUCCESS', () => {
+    test('returns the filter.SUCCESS state', () => {
+        const testData = { name: 'Test', _id: '0' };
+        const mockPayload = { loading: false, all: testData, errors: {} };
+        const action = { type: Types.activity.filter.SUCCESS, payload: mockPayload };
+        const expectedState = { loading: false, all: { 0: { name: 'Test', _id: '0' }, undefined: {} }, errors: {} };
+
+        expect(reducer(undefined, action)).toEqual(expectedState);
+    });
+});
+
+describe('GET_ACTIVITY_BEGIN', () => {
+    test('returns the  get.BEGIN state', () => {
+        const mockPayload = { loading: true };
+        const action = { type: Types.activity.get.BEGIN, payload: mockPayload };
+        const expectedState = { loading: true, all: {}, errors: {} };
+
+        expect(reducer(undefined, action)).toEqual(expectedState);
+    });
+});
+
+describe('EDIT_ACTIVITY_BEGIN', () => {
+    test('returns the  edit.BEGIN state', () => {
+        const mockPayload = { loading: true };
+        const action = { type: Types.activity.edit.BEGIN, payload: mockPayload };
+        const expectedState = { loading: true, all: {}, errors: {} };
+
+        expect(reducer(undefined, action)).toEqual(expectedState);
     });
 });
