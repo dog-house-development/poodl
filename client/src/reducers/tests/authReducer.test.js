@@ -2,7 +2,7 @@ import reducer from '../../reducers/authReducer';
 import Types from '../../actions/types';
 
 describe('initialState', () => {
-    test('is correct', () => {
+    it('is correct', () => {
         const action = { type: 'dummy_state' };
         const initialState = {
             isAuthenticated: false,
@@ -17,7 +17,7 @@ describe('initialState', () => {
 });
 
 describe('GET_AUTH_ERRORS', () => {
-    test('returns the auth.ERROR state', () => {
+    it('returns the auth.ERROR state', () => {
         const mockPayload = { error: 'so many error' };
         const action = { type: Types.auth.ERROR, payload: mockPayload };
         const expectedState = {
@@ -33,7 +33,7 @@ describe('GET_AUTH_ERRORS', () => {
 });
 
 describe('SET_CURRENT_ADMIN', () => {
-    test('returns the  set current admin state', () => {
+    it('returns the  set current admin state', () => {
         const testAdmin = { firstName: 'Test', _id: '0' };
         const mockPayload = { admin: testAdmin, isAuthenticated: true };
         const action = { type: Types.auth.SET_CURRENT_ADMIN, payload: mockPayload };
@@ -50,7 +50,7 @@ describe('SET_CURRENT_ADMIN', () => {
 });
 
 describe('login.SUCCESS', () => {
-    test('returns the  filter.BEGIN state', () => {
+    it('returns the  filter.BEGIN state', () => {
         const testAdmin = { firstName: 'Test', _id: '0' };
         const mockPayload = { admin: testAdmin, isAuthenticated: true };
         const action = { type: Types.auth.login.SUCCESS, payload: mockPayload };
@@ -67,7 +67,7 @@ describe('login.SUCCESS', () => {
 });
 
 describe('logout.SUCCESS', () => {
-    test('returns the filter.SUCCESS state', () => {
+    it('returns the filter.SUCCESS state', () => {
         const testAdmin = { firstName: 'Test', _id: '0' };
         const mockPayload = { admin: testAdmin, isAuthenticated: true };
         const action = { type: Types.auth.logout.SUCCESS, payload: mockPayload };
