@@ -37,31 +37,37 @@ exports[`Navbar tests render should render correctly 1`] = `
           component={[Function]}
           exact={true}
           path="/admins"
+          restrictAccess="Volunteer"
         />
         <Connect(PrivateRoute)
           component={[Function]}
           exact={true}
           path="/admins/register"
+          restrictAccess="Volunteer"
         />
         <Connect(PrivateRoute)
           component={[Function]}
           exact={true}
           path="/admins/:id"
+          restrictAccess="Volunteer"
         />
         <Connect(PrivateRoute)
           component={[Function]}
           exact={true}
           path="/volunteers"
+          restrictAccess="Volunteer"
         />
         <Connect(PrivateRoute)
           component={[Function]}
           exact={true}
           path="/volunteers/register"
+          restrictAccess="Volunteer"
         />
         <Connect(PrivateRoute)
           component={[Function]}
           exact={true}
           path="/volunteers/:id"
+          restrictAccess="Volunteer"
         />
         <Connect(PrivateRoute)
           component={[Function]}
