@@ -132,7 +132,7 @@ describe('View ActivitiesByDate test', () => {
     });
 
     describe('render', () => {
-        xit('should render correctly', () => {
+        it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();
         });
     });

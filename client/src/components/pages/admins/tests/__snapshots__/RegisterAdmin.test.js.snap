@@ -29,7 +29,7 @@ exports[`Register tests render should render correctly 1`] = `
           "placeholder": "John...",
           "sidebyside": 1,
           "type": "text",
-          "value": "",
+          "value": "Sam",
         },
         Object {
           "autoComplete": "off",
@@ -40,7 +40,7 @@ exports[`Register tests render should render correctly 1`] = `
           "placeholder": "Smith...",
           "sidebyside": 2,
           "type": "text",
-          "value": "",
+          "value": "Smith",
         },
         Object {
           "autoComplete": "off",

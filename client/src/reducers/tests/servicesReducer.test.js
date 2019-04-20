@@ -2,7 +2,7 @@ import reducer from '../../reducers/servicesReducer';
 import Types from '../../actions/types';
 
 describe('initialState', () => {
-    test('is correct', () => {
+    it('is correct', () => {
         const action = { type: 'dummy_state' };
         const initialState = { loading: false, all: {}, errors: {} };
 
@@ -11,7 +11,7 @@ describe('initialState', () => {
 });
 
 describe('CREATE_SERVICE_BEGIN', () => {
-    test('returns the  create.BEGIN state', () => {
+    it('returns the  create.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.create.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -21,7 +21,7 @@ describe('CREATE_SERVICE_BEGIN', () => {
 });
 
 describe('GET_SERVICE_ERRORS', () => {
-    test('returns the service.ERROR state', () => {
+    it('returns the service.ERROR state', () => {
         const mockPayload = { error: 'so many error' };
         const action = { type: Types.service.ERROR, payload: mockPayload };
         const expectedState = { loading: false, all: {}, errors: { error: 'so many error' } };
@@ -31,7 +31,7 @@ describe('GET_SERVICE_ERRORS', () => {
 });
 
 describe('FILTER_SERVICES_BEGIN', () => {
-    test('returns the  filter.BEGIN state', () => {
+    it('returns the  filter.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.filter.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -41,7 +41,7 @@ describe('FILTER_SERVICES_BEGIN', () => {
 });
 
 describe('FILTER_SERVICES_SUCCESS', () => {
-    test('returns the filter.SUCCESS state', () => {
+    it('returns the filter.SUCCESS state', () => {
         const testData = { name: 'Test', _id: '0' };
         const mockPayload = { loading: false, all: testData, errors: {} };
         const action = { type: Types.service.filter.SUCCESS, payload: mockPayload };
@@ -56,7 +56,7 @@ describe('FILTER_SERVICES_SUCCESS', () => {
 });
 
 describe('GET_SERVICE_BEGIN', () => {
-    test('returns the  get.BEGIN state', () => {
+    it('returns the  get.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.get.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -66,7 +66,7 @@ describe('GET_SERVICE_BEGIN', () => {
 });
 
 describe('EDIT_SERVICE_BEGIN', () => {
-    test('returns the  edit.BEGIN state', () => {
+    it('returns the  edit.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.edit.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };

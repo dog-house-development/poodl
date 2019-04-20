@@ -44,11 +44,12 @@ describe('Register tests', () => {
         );
         instance = wrapper.instance();
         wrapper.setState({
-            name: 'Sam',
+            firstName: 'Sam',
+            lastName: 'Smith',
             email: 'sam@test.com',
             password: 'abc123',
             password2: 'abc123',
-            errors: { email: 'Invalid email' }
+            error: { email: 'Invalid email' }
         });
     };
 
@@ -96,7 +97,7 @@ describe('Register tests', () => {
     });
 
     describe('onSubmit', () => {
-        xit('should run without errors', () => {
+        it('should run without errors', () => {
             spyOn(instance, 'onSubmit');
             const e = {
                 target: { id: 'email', value: 'Meow' },
@@ -107,7 +108,7 @@ describe('Register tests', () => {
     });
 
     describe('getFields', () => {
-        xit('should return correct fields if not super admin', () => {
+        it('should return correct fields if not super admin', () => {
             expect(instance.getFields()).toEqual([
                 {
                     onChange: instance.onChange,
@@ -117,7 +118,8 @@ describe('Register tests', () => {
                     placeholder: 'John...',
                     sidebyside: 1,
                     autoComplete: 'off',
-                    error: undefined
+                    error: undefined,
+                    value: 'Sam'
                 },
                 {
                     onChange: instance.onChange,
@@ -127,7 +129,8 @@ describe('Register tests', () => {
                     placeholder: 'Smith...',
                     sidebyside: 2,
                     autoComplete: 'off',
-                    error: undefined
+                    error: undefined,
+                    value: 'Smith'
                 },
                 {
                     onChange: instance.onChange,
@@ -136,7 +139,8 @@ describe('Register tests', () => {
                     label: 'Email',
                     placeholder: 'example@poodl.com...',
                     autoComplete: 'off',
-                    error: 'Invalid email'
+                    error: undefined,
+                    value: 'sam@test.com'
                 },
                 {
                     onChange: instance.onChange,
@@ -145,7 +149,8 @@ describe('Register tests', () => {
                     label: 'Password',
                     placeholder: 'Shhhhh...',
                     autoComplete: 'off',
-                    error: undefined
+                    error: undefined,
+                    value: 'abc123'
                 },
                 {
                     onChange: instance.onChange,
@@ -154,12 +159,13 @@ describe('Register tests', () => {
                     label: 'Confirm Password',
                     placeholder: 'Again...',
                     autoComplete: 'off',
-                    error: undefined
+                    error: undefined,
+                    value: 'abc123'
                 }
             ]);
         });
 
-        xit('should return correct fields if super admin', () => {
+        it('should return correct fields if super admin', () => {
             setInstanceAndWrapper({}, { auth: { admin: { accessLevel: 'Super', seniorCenterId: '123' } } });
             expect(instance.getFields()).toEqual([
                 {
@@ -170,7 +176,8 @@ describe('Register tests', () => {
                     placeholder: 'John...',
                     sidebyside: 1,
                     autoComplete: 'off',
-                    error: undefined
+                    error: undefined,
+                    value: 'Sam'
                 },
                 {
                     onChange: instance.onChange,
@@ -180,7 +187,8 @@ describe('Register tests', () => {
                     placeholder: 'Smith...',
                     sidebyside: 2,
                     autoComplete: 'off',
-                    error: undefined
+                    error: undefined,
+                    value: 'Smith'
                 },
                 {
                     onChange: instance.onChange,
@@ -189,7 +197,8 @@ describe('Register tests', () => {
                     label: 'Email',
                     placeholder: 'example@poodl.com...',
                     autoComplete: 'off',
-                    error: 'Invalid email'
+                    error: undefined,
+                    value: 'sam@test.com'
                 },
                 {
                     onChange: instance.onChange,
@@ -198,7 +207,8 @@ describe('Register tests', () => {
                     label: 'Password',
                     placeholder: 'Shhhhh...',
                     autoComplete: 'off',
-                    error: undefined
+                    error: undefined,
+                    value: 'abc123'
                 },
                 {
                     onChange: instance.onChange,
@@ -207,16 +217,17 @@ describe('Register tests', () => {
                     label: 'Confirm Password',
                     placeholder: 'Again...',
                     autoComplete: 'off',
-                    error: undefined
+                    error: undefined,
+                    value: 'abc123'
                 },
                 {
                     onChange: instance.onChange,
                     id: 'seniorCenterId',
-                    content: '123',
                     type: 'text',
                     label: 'Senior Center Id',
                     placeholder: 'ID...',
-                    error: undefined
+                    error: undefined,
+                    value: '123'
                 }
             ]);
         });

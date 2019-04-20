@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`View ActivitiesByDate test render should render correctly 1`] = `
+<div>
+  <h2>
+    Activities
+  </h2>
+  <withRouter(ViewByDate)
+    clickableRowRoute="activities/"
+    dateData={
+      Object {
+        "data": Array [
+          Object {
+            "_id": "1",
+            "description": "A fun time with fun activities",
+            "endDate": "1971-02-01T07:00:00.000Z",
+            "members": Array [
+              Object {
+                "_id": "123",
+                "firstName": "Big",
+                "lastName": "Tup",
+              },
+              Object {
+                "_id": "321",
+                "firstName": "Lil",
+                "lastName": "Tup",
+              },
+            ],
+            "name": "Fun",
+            "startDate": "1971-02-01T07:00:00.000Z",
+          },
+          Object {
+            "_id": "2",
+            "description": "A fun time with fun stuff",
+            "endDate": "1970-01-01T07:00:00.000Z",
+            "members": Array [
+              Object {
+                "_id": "123",
+                "firstName": "Big",
+                "lastName": "Tup",
+              },
+              Object {
+                "_id": "321",
+                "firstName": "Lil",
+                "lastName": "Tup",
+              },
+            ],
+            "name": "Stuff",
+            "startDate": "1970-01-01T07:00:00.000Z",
+          },
+        ],
+        "date": "2019-04-20T06:00:00.000Z",
+      }
+    }
+    errors={Object {}}
+    loading={false}
+    noDataMessage="No activities scheduled for this day"
+    requestDate={[Function]}
+  />
+</div>
+`;

@@ -2,7 +2,7 @@ import reducer from '../../reducers/activitiesReducer';
 import Types from '../../actions/types';
 
 describe('initialState', () => {
-    test('is correct', () => {
+    it('is correct', () => {
         const action = { type: 'dummy_state' };
         const initialState = { loading: false, all: {}, errors: {} };
 
@@ -11,7 +11,7 @@ describe('initialState', () => {
 });
 
 describe('CREATE_ACTIVITY_BEGIN', () => {
-    test('returns the  create.BEGIN state', () => {
+    it('returns the  create.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.activity.create.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -21,7 +21,7 @@ describe('CREATE_ACTIVITY_BEGIN', () => {
 });
 
 describe('CREATE_ACTIVITY_SUCCESS', () => {
-    test('returns the create.SUCCESS state', () => {
+    it('returns the create.SUCCESS state', () => {
         const mockPayload = { loading: false };
         const action = { type: Types.activity.create.SUCCESS, payload: mockPayload };
         const expectedState = { loading: false, all: {}, errors: {} };
@@ -31,7 +31,7 @@ describe('CREATE_ACTIVITY_SUCCESS', () => {
 });
 
 describe('GET_ACTIVITY_ERRORS', () => {
-    test('returns the activity.ERROR state', () => {
+    it('returns the activity.ERROR state', () => {
         const mockPayload = { error: 'so many error' };
         const action = { type: Types.activity.ERROR, payload: mockPayload };
         const expectedState = { loading: false, all: {}, errors: { error: 'so many error' } };
@@ -41,7 +41,7 @@ describe('GET_ACTIVITY_ERRORS', () => {
 });
 
 describe('FILTER_ACTIVITY_BEGIN', () => {
-    test('returns the  filter.BEGIN state', () => {
+    it('returns the  filter.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.activity.filter.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -51,7 +51,7 @@ describe('FILTER_ACTIVITY_BEGIN', () => {
 });
 
 describe('FILTER_ACTIVITY_SUCCESS', () => {
-    test('returns the filter.SUCCESS state', () => {
+    it('returns the filter.SUCCESS state', () => {
         const testData = { name: 'Test', _id: '0' };
         const mockPayload = { loading: false, all: testData, errors: {} };
         const action = { type: Types.activity.filter.SUCCESS, payload: mockPayload };
@@ -62,7 +62,7 @@ describe('FILTER_ACTIVITY_SUCCESS', () => {
 });
 
 describe('GET_ACTIVITY_BEGIN', () => {
-    test('returns the  get.BEGIN state', () => {
+    it('returns the  get.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.activity.get.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -72,7 +72,7 @@ describe('GET_ACTIVITY_BEGIN', () => {
 });
 
 describe('EDIT_ACTIVITY_BEGIN', () => {
-    test('returns the  edit.BEGIN state', () => {
+    it('returns the  edit.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.activity.edit.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };

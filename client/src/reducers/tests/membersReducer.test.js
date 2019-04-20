@@ -2,7 +2,7 @@ import reducer from '../../reducers/membersReducer';
 import Types from '../../actions/types';
 
 describe('initialState', () => {
-    test('is correct', () => {
+    it('is correct', () => {
         const action = { type: 'dummy_state' };
         const initialState = { loading: false, all: {}, errors: {} };
 
@@ -11,7 +11,7 @@ describe('initialState', () => {
 });
 
 describe('GET_MEMBER_ERRORS', () => {
-    test('returns the member.ERROR state', () => {
+    it('returns the member.ERROR state', () => {
         const mockPayload = { error: 'so many error' };
         const action = { type: Types.member.ERROR, payload: mockPayload };
         const expectedState = { loading: false, all: {}, errors: { error: 'so many error' } };
@@ -21,7 +21,7 @@ describe('GET_MEMBER_ERRORS', () => {
 });
 
 describe('FILTER_MEMBER_BEGIN', () => {
-    test('returns the  filter.BEGIN state', () => {
+    it('returns the  filter.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.member.filter.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -31,7 +31,7 @@ describe('FILTER_MEMBER_BEGIN', () => {
 });
 
 describe('FILTER_MEMBER_SUCCESS', () => {
-    test('returns the filter.SUCCESS state', () => {
+    it('returns the filter.SUCCESS state', () => {
         const testData = { firstName: 'Test', _id: '0' };
         const mockPayload = { loading: false, all: testData, errors: {} };
         const action = { type: Types.member.filter.SUCCESS, payload: mockPayload };
@@ -46,7 +46,7 @@ describe('FILTER_MEMBER_SUCCESS', () => {
 });
 
 describe('GET_MEMBER_BEGIN', () => {
-    test('returns the  get.BEGIN state', () => {
+    it('returns the  get.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.member.get.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -56,7 +56,7 @@ describe('GET_MEMBER_BEGIN', () => {
 });
 
 describe('EDIT_MEMBER_BEGIN', () => {
-    test('returns the  edit.BEGIN state', () => {
+    it('returns the  edit.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.member.edit.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
