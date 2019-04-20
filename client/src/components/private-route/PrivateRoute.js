@@ -7,25 +7,27 @@ const propTypes = {
     auth: PropTypes.object.isRequired
 };
 
-export const PrivateRoute = ({ component: Component, auth, ...rest }) => (
+export const PrivateRoute = ({ component: Component, auth, restrictAccess, ...rest }) => (
     <Route
         {...rest}
-        render={props =>
-            auth.isAuthenticated === true ? (
-                <Component {...props} />
-            ) : (
+        render={props => {
+            if (auth.isAuthenticated && auth.admin.accessLevel !== restrictAccess) {
+                return <Component {...props} />;
+            }
+
+            return (
                 <Redirect
                     to={{
                         pathname: '/login',
                         state: { from: props.location }
                     }}
                 />
-            )
-        }
+            );
+        }}
     />
 );
 
-export const mapStateToProps = (state, props) => ({
+export const mapStateToProps = state => ({
     auth: state.auth
 });
 

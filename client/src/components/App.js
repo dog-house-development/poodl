@@ -83,13 +83,38 @@ class App extends Component {
                             <Route exact path="/login" component={Login} />
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
                             {/* Admin pages */}
-                            <PrivateRoute exact path="/admins" component={ViewAllAdmins} />
-                            <PrivateRoute exact path="/admins/register" component={RegisterAdmin} />
-                            <PrivateRoute exact path="/admins/:id" component={AdminProfile} />
+                            <PrivateRoute exact path="/admins" component={ViewAllAdmins} restrictAccess="Volunteer" />
+                            <PrivateRoute
+                                exact
+                                path="/admins/register"
+                                component={RegisterAdmin}
+                                restrictAccess="Volunteer"
+                            />
+                            <PrivateRoute
+                                exact
+                                path="/admins/:id"
+                                component={AdminProfile}
+                                restrictAccess="Volunteer"
+                            />
                             {/* Volunteer pages */}
-                            <PrivateRoute exact path="/volunteers" component={ViewAllVolunteers} />
-                            <PrivateRoute exact path="/volunteers/register" component={RegisterVolunteer} />
-                            <PrivateRoute exact path="/volunteers/:id" component={VolunteerProfile} />
+                            <PrivateRoute
+                                exact
+                                path="/volunteers"
+                                component={ViewAllVolunteers}
+                                restrictAccess="Volunteer"
+                            />
+                            <PrivateRoute
+                                exact
+                                path="/volunteers/register"
+                                component={RegisterVolunteer}
+                                restrictAccess="Volunteer"
+                            />
+                            <PrivateRoute
+                                exact
+                                path="/volunteers/:id"
+                                component={VolunteerProfile}
+                                restrictAccess="Volunteer"
+                            />
                             {/* Member pages */}
                             <PrivateRoute exact path="/members" component={ViewAllMembers} />
                             <PrivateRoute exact path="/members/register" component={RegisterMember} />
