@@ -1,0 +1,1688 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DynamicForm tests handleCancelClick should click cancel 1`] = `
+<Button
+  disabled={false}
+  kind="tertiary"
+  name="testGroup"
+  onClick={[Function]}
+  size="small"
+  type="button"
+>
+  Cancel
+</Button>
+`;
+
+exports[`DynamicForm tests handleCancelClick should click cancel 2`] = `
+<form
+  className="dynamic-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="panel input-group"
+    key="testGroup"
+  >
+    <h3
+      className="input-group-label editable"
+    >
+      Test Group
+    </h3>
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <p
+      className="input-group-description"
+    >
+      Test description
+    </p>
+    <div
+      className="inline-input-wrapper"
+      key="testFlex"
+    >
+      <h3
+        className="inline-input-label"
+      />
+      <div
+        className="inline-input"
+      >
+        <Field
+          autoComplete="on"
+          error=""
+          id="lastName"
+          key="lastName"
+          kind="primary"
+          label="Last name"
+          onChange={[Function]}
+          present={true}
+          size="normal"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <DatePicker
+      dayLabel=""
+      error=""
+      id="test0"
+      key="test0"
+      kind="datePicker"
+      label="Date of Birth"
+      monthLabel=""
+      onChange={[Function]}
+      present={true}
+      yearLabel=""
+    />
+    <OnClickOutside(ComboBox)
+      data={
+        Array [
+          "help",
+          "me",
+        ]
+      }
+      error=""
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      id="test1"
+      key="test1"
+      kind="combobox"
+      label="Date of Birth"
+      onChange={[Function]}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      present={true}
+      preventDefault={false}
+      stopPropagation={false}
+    />
+    <CheckBox
+      error=""
+      id="test2"
+      key="test2"
+      kind="checkbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <MultiCheckbox
+      error=""
+      id="test3"
+      key="test3"
+      kind="multiCheckbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <TimePicker
+      ampmLabel=""
+      error=""
+      hourLabel=""
+      id="test4"
+      key="test4"
+      kind="timePicker"
+      label="Date of Birth"
+      minuteLabel=""
+      onChange={[Function]}
+      present={true}
+    />
+    <Select
+      error=""
+      id="test5"
+      key="test5"
+      kind="select"
+      label="Date of Birth"
+      onChange={[Function]}
+      options={
+        Array [
+          "test1",
+          "test2",
+        ]
+      }
+      padStart={0}
+      present={true}
+      size="normal"
+    />
+    <Radio
+      error=""
+      id="test6"
+      key="test6"
+      kind="radio"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      value=""
+    />
+    <SelectBoolean
+      error=""
+      false="No"
+      id="test7"
+      key="test7"
+      kind="selectBoolean"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      true="Yes"
+      value={false}
+    />
+  </div>
+  <div
+    className="panel input-group"
+    key="testGroup2"
+  >
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup2"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <Field
+      autoComplete="on"
+      error=""
+      id="test"
+      key="test"
+      kind="primary"
+      onChange={[Function]}
+      present={true}
+      size="normal"
+      type="text"
+      value=""
+    />
+  </div>
+</form>
+`;
+
+exports[`DynamicForm tests handleDoneClick should call editValues 1`] = `
+<Button
+  disabled={false}
+  kind="primary"
+  name="testGroup"
+  onClick={[Function]}
+  size="small"
+  type="button"
+>
+  Done
+</Button>
+`;
+
+exports[`DynamicForm tests handleDoneClick should call editValues 2`] = `
+<form
+  className="dynamic-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="panel input-group"
+    key="testGroup"
+  >
+    <h3
+      className="input-group-label editable"
+    >
+      Test Group
+    </h3>
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <p
+      className="input-group-description"
+    >
+      Test description
+    </p>
+    <div
+      className="inline-input-wrapper"
+      key="testFlex"
+    >
+      <h3
+        className="inline-input-label"
+      />
+      <div
+        className="inline-input"
+      >
+        <Field
+          autoComplete="on"
+          error=""
+          id="lastName"
+          key="lastName"
+          kind="primary"
+          label="Last name"
+          onChange={[Function]}
+          present={true}
+          size="normal"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <DatePicker
+      dayLabel=""
+      error=""
+      id="test0"
+      key="test0"
+      kind="datePicker"
+      label="Date of Birth"
+      monthLabel=""
+      onChange={[Function]}
+      present={true}
+      yearLabel=""
+    />
+    <OnClickOutside(ComboBox)
+      data={
+        Array [
+          "help",
+          "me",
+        ]
+      }
+      error=""
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      id="test1"
+      key="test1"
+      kind="combobox"
+      label="Date of Birth"
+      onChange={[Function]}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      present={true}
+      preventDefault={false}
+      stopPropagation={false}
+    />
+    <CheckBox
+      error=""
+      id="test2"
+      key="test2"
+      kind="checkbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <MultiCheckbox
+      error=""
+      id="test3"
+      key="test3"
+      kind="multiCheckbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <TimePicker
+      ampmLabel=""
+      error=""
+      hourLabel=""
+      id="test4"
+      key="test4"
+      kind="timePicker"
+      label="Date of Birth"
+      minuteLabel=""
+      onChange={[Function]}
+      present={true}
+    />
+    <Select
+      error=""
+      id="test5"
+      key="test5"
+      kind="select"
+      label="Date of Birth"
+      onChange={[Function]}
+      options={
+        Array [
+          "test1",
+          "test2",
+        ]
+      }
+      padStart={0}
+      present={true}
+      size="normal"
+    />
+    <Radio
+      error=""
+      id="test6"
+      key="test6"
+      kind="radio"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      value=""
+    />
+    <SelectBoolean
+      error=""
+      false="No"
+      id="test7"
+      key="test7"
+      kind="selectBoolean"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      true="Yes"
+      value={false}
+    />
+  </div>
+  <div
+    className="panel input-group"
+    key="testGroup2"
+  >
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup2"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <Field
+      autoComplete="on"
+      error=""
+      id="test"
+      key="test"
+      kind="primary"
+      onChange={[Function]}
+      present={true}
+      size="normal"
+      type="text"
+      value=""
+    />
+  </div>
+</form>
+`;
+
+exports[`DynamicForm tests handleDoneClick should change present state to true 1`] = `
+<Button
+  disabled={false}
+  kind="secondary"
+  name="testGroup"
+  onClick={[Function]}
+  size="small"
+  type="button"
+>
+  Done
+</Button>
+`;
+
+exports[`DynamicForm tests handleDoneClick should change present state to true 2`] = `
+<form
+  className="dynamic-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="panel input-group"
+    key="testGroup"
+  >
+    <h3
+      className="input-group-label editable"
+    >
+      Test Group
+    </h3>
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <p
+      className="input-group-description"
+    >
+      Test description
+    </p>
+    <div
+      className="inline-input-wrapper"
+      key="testFlex"
+    >
+      <h3
+        className="inline-input-label"
+      />
+      <div
+        className="inline-input"
+      >
+        <Field
+          autoComplete="on"
+          error=""
+          id="lastName"
+          key="lastName"
+          kind="primary"
+          label="Last name"
+          onChange={[Function]}
+          present={true}
+          size="normal"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <DatePicker
+      dayLabel=""
+      error=""
+      id="test0"
+      key="test0"
+      kind="datePicker"
+      label="Date of Birth"
+      monthLabel=""
+      onChange={[Function]}
+      present={true}
+      yearLabel=""
+    />
+    <OnClickOutside(ComboBox)
+      data={
+        Array [
+          "help",
+          "me",
+        ]
+      }
+      error=""
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      id="test1"
+      key="test1"
+      kind="combobox"
+      label="Date of Birth"
+      onChange={[Function]}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      present={true}
+      preventDefault={false}
+      stopPropagation={false}
+    />
+    <CheckBox
+      error=""
+      id="test2"
+      key="test2"
+      kind="checkbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <MultiCheckbox
+      error=""
+      id="test3"
+      key="test3"
+      kind="multiCheckbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <TimePicker
+      ampmLabel=""
+      error=""
+      hourLabel=""
+      id="test4"
+      key="test4"
+      kind="timePicker"
+      label="Date of Birth"
+      minuteLabel=""
+      onChange={[Function]}
+      present={true}
+    />
+    <Select
+      error=""
+      id="test5"
+      key="test5"
+      kind="select"
+      label="Date of Birth"
+      onChange={[Function]}
+      options={
+        Array [
+          "test1",
+          "test2",
+        ]
+      }
+      padStart={0}
+      present={true}
+      size="normal"
+    />
+    <Radio
+      error=""
+      id="test6"
+      key="test6"
+      kind="radio"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      value=""
+    />
+    <SelectBoolean
+      error=""
+      false="No"
+      id="test7"
+      key="test7"
+      kind="selectBoolean"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      true="Yes"
+      value={false}
+    />
+  </div>
+  <div
+    className="panel input-group"
+    key="testGroup2"
+  >
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup2"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <Field
+      autoComplete="on"
+      error=""
+      id="test"
+      key="test"
+      kind="primary"
+      onChange={[Function]}
+      present={true}
+      size="normal"
+      type="text"
+      value=""
+    />
+  </div>
+</form>
+`;
+
+exports[`DynamicForm tests handleEditClick should click edit 1`] = `
+<form
+  className="dynamic-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="panel input-group"
+    key="testGroup"
+  >
+    <h3
+      className="input-group-label editable"
+    >
+      Test Group
+    </h3>
+    <div
+      className="input-group-buttons"
+    >
+      <Button
+        disabled={false}
+        kind="tertiary"
+        name="testGroup"
+        onClick={[Function]}
+        size="small"
+        type="button"
+      >
+        Cancel
+      </Button>
+      <Button
+        disabled={false}
+        kind="secondary"
+        name="testGroup"
+        onClick={[Function]}
+        size="small"
+        type="button"
+      >
+        Done
+      </Button>
+    </div>
+    <p
+      className="input-group-description"
+    >
+      Test description
+    </p>
+    <div
+      className="inline-input-wrapper"
+      key="testFlex"
+    >
+      <h3
+        className="inline-input-label"
+      />
+      <div
+        className="inline-input"
+      >
+        <Field
+          autoComplete="on"
+          error=""
+          id="lastName"
+          key="lastName"
+          kind="primary"
+          label="Last name"
+          onChange={[Function]}
+          present={false}
+          size="normal"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <DatePicker
+      dayLabel=""
+      error=""
+      id="test0"
+      key="test0"
+      kind="datePicker"
+      label="Date of Birth"
+      monthLabel=""
+      onChange={[Function]}
+      present={false}
+      yearLabel=""
+    />
+    <OnClickOutside(ComboBox)
+      data={
+        Array [
+          "help",
+          "me",
+        ]
+      }
+      error=""
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      id="test1"
+      key="test1"
+      kind="combobox"
+      label="Date of Birth"
+      onChange={[Function]}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      present={false}
+      preventDefault={false}
+      stopPropagation={false}
+    />
+    <CheckBox
+      error=""
+      id="test2"
+      key="test2"
+      kind="checkbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+    />
+    <MultiCheckbox
+      error=""
+      id="test3"
+      key="test3"
+      kind="multiCheckbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+    />
+    <TimePicker
+      ampmLabel=""
+      error=""
+      hourLabel=""
+      id="test4"
+      key="test4"
+      kind="timePicker"
+      label="Date of Birth"
+      minuteLabel=""
+      onChange={[Function]}
+      present={false}
+    />
+    <Select
+      error=""
+      id="test5"
+      key="test5"
+      kind="select"
+      label="Date of Birth"
+      onChange={[Function]}
+      options={
+        Array [
+          "test1",
+          "test2",
+        ]
+      }
+      padStart={0}
+      present={false}
+      size="normal"
+    />
+    <Radio
+      error=""
+      id="test6"
+      key="test6"
+      kind="radio"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+      value=""
+    />
+    <SelectBoolean
+      error=""
+      false="No"
+      id="test7"
+      key="test7"
+      kind="selectBoolean"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+      true="Yes"
+      value={false}
+    />
+  </div>
+  <div
+    className="panel input-group"
+    key="testGroup2"
+  >
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={true}
+          id="testGroup2"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <Field
+      autoComplete="on"
+      error=""
+      id="test"
+      key="test"
+      kind="primary"
+      onChange={[Function]}
+      present={true}
+      size="normal"
+      type="text"
+      value=""
+    />
+  </div>
+</form>
+`;
+
+exports[`DynamicForm tests render should render 1`] = `
+<form
+  className="dynamic-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="input-group"
+    key="testGroup"
+  >
+    <h3
+      className="input-group-label"
+    >
+      Test Group
+    </h3>
+    <p
+      className="input-group-description"
+    >
+      Test description
+    </p>
+    <div
+      className="inline-input-wrapper"
+      key="testFlex"
+    >
+      <h3
+        className="inline-input-label"
+      />
+      <div
+        className="inline-input"
+      >
+        <Field
+          autoComplete="on"
+          editable={false}
+          error=""
+          id="test1"
+          key="test1"
+          kind="primary"
+          label="First name"
+          onChange={[Function]}
+          present={false}
+          size="normal"
+          type="text"
+          value=""
+        />
+        <Field
+          autoComplete="on"
+          error=""
+          id="lastName"
+          key="lastName"
+          kind="primary"
+          label="Last name"
+          onChange={[Function]}
+          present={false}
+          size="normal"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <DatePicker
+      dayLabel=""
+      error=""
+      id="test0"
+      key="test0"
+      kind="datePicker"
+      label="Date of Birth"
+      monthLabel=""
+      onChange={[Function]}
+      present={false}
+      yearLabel=""
+    />
+    <OnClickOutside(ComboBox)
+      data={
+        Array [
+          "help",
+          "me",
+        ]
+      }
+      error=""
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      id="test1"
+      key="test1"
+      kind="combobox"
+      label="Date of Birth"
+      onChange={[Function]}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      present={false}
+      preventDefault={false}
+      stopPropagation={false}
+    />
+    <CheckBox
+      error=""
+      id="test2"
+      key="test2"
+      kind="checkbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+    />
+    <MultiCheckbox
+      error=""
+      id="test3"
+      key="test3"
+      kind="multiCheckbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+    />
+    <TimePicker
+      ampmLabel=""
+      error=""
+      hourLabel=""
+      id="test4"
+      key="test4"
+      kind="timePicker"
+      label="Date of Birth"
+      minuteLabel=""
+      onChange={[Function]}
+      present={false}
+    />
+    <Select
+      error=""
+      id="test5"
+      key="test5"
+      kind="select"
+      label="Date of Birth"
+      onChange={[Function]}
+      options={
+        Array [
+          "test1",
+          "test2",
+        ]
+      }
+      padStart={0}
+      present={false}
+      size="normal"
+    />
+    <Radio
+      error=""
+      id="test6"
+      key="test6"
+      kind="radio"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+      value=""
+    />
+    <SelectBoolean
+      error=""
+      false="No"
+      id="test7"
+      key="test7"
+      kind="selectBoolean"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+      true="Yes"
+      value={false}
+    />
+  </div>
+  <div
+    className="input-group"
+    key="testGroup2"
+  >
+    <Field
+      autoComplete="on"
+      error=""
+      id="test"
+      key="test"
+      kind="primary"
+      onChange={[Function]}
+      present={false}
+      size="normal"
+      type="text"
+      value=""
+    />
+  </div>
+  <Button
+    disabled={false}
+    formButton={true}
+    kind="primary"
+    size="medium"
+    type="submit"
+  >
+    Submit Button
+  </Button>
+</form>
+`;
+
+exports[`DynamicForm tests render should render as editable 1`] = `
+<form
+  className="dynamic-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="panel input-group"
+    key="testGroup"
+  >
+    <h3
+      className="input-group-label editable"
+    >
+      Test Group
+    </h3>
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <p
+      className="input-group-description"
+    >
+      Test description
+    </p>
+    <div
+      className="inline-input-wrapper"
+      key="testFlex"
+    >
+      <h3
+        className="inline-input-label"
+      />
+      <div
+        className="inline-input"
+      >
+        <Field
+          autoComplete="on"
+          error=""
+          id="lastName"
+          key="lastName"
+          kind="primary"
+          label="Last name"
+          onChange={[Function]}
+          present={true}
+          size="normal"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <DatePicker
+      dayLabel=""
+      error=""
+      id="test0"
+      key="test0"
+      kind="datePicker"
+      label="Date of Birth"
+      monthLabel=""
+      onChange={[Function]}
+      present={true}
+      yearLabel=""
+    />
+    <OnClickOutside(ComboBox)
+      data={
+        Array [
+          "help",
+          "me",
+        ]
+      }
+      error=""
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      id="test1"
+      key="test1"
+      kind="combobox"
+      label="Date of Birth"
+      onChange={[Function]}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      present={true}
+      preventDefault={false}
+      stopPropagation={false}
+    />
+    <CheckBox
+      error=""
+      id="test2"
+      key="test2"
+      kind="checkbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <MultiCheckbox
+      error=""
+      id="test3"
+      key="test3"
+      kind="multiCheckbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <TimePicker
+      ampmLabel=""
+      error=""
+      hourLabel=""
+      id="test4"
+      key="test4"
+      kind="timePicker"
+      label="Date of Birth"
+      minuteLabel=""
+      onChange={[Function]}
+      present={true}
+    />
+    <Select
+      error=""
+      id="test5"
+      key="test5"
+      kind="select"
+      label="Date of Birth"
+      onChange={[Function]}
+      options={
+        Array [
+          "test1",
+          "test2",
+        ]
+      }
+      padStart={0}
+      present={true}
+      size="normal"
+    />
+    <Radio
+      error=""
+      id="test6"
+      key="test6"
+      kind="radio"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      value=""
+    />
+    <SelectBoolean
+      error=""
+      false="No"
+      id="test7"
+      key="test7"
+      kind="selectBoolean"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      true="Yes"
+      value={false}
+    />
+  </div>
+  <div
+    className="panel input-group"
+    key="testGroup2"
+  >
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup2"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <Field
+      autoComplete="on"
+      error=""
+      id="test"
+      key="test"
+      kind="primary"
+      onChange={[Function]}
+      present={true}
+      size="normal"
+      type="text"
+      value=""
+    />
+  </div>
+</form>
+`;
+
+exports[`DynamicForm tests render should render with errors 1`] = `
+<form
+  className="dynamic-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="input-group"
+    key="testGroup"
+  >
+    <h3
+      className="input-group-label"
+    >
+      Test Group
+    </h3>
+    <p
+      className="input-group-description"
+    >
+      Test description
+    </p>
+    <div
+      className="inline-input-wrapper"
+      key="testFlex"
+    >
+      <h3
+        className="inline-input-label"
+      />
+      <div
+        className="inline-input"
+      >
+        <Field
+          autoComplete="on"
+          editable={false}
+          id="test1"
+          key="test1"
+          kind="primary"
+          label="First name"
+          onChange={[Function]}
+          present={false}
+          size="normal"
+          type="text"
+          value=""
+        />
+        <Field
+          autoComplete="on"
+          id="lastName"
+          key="lastName"
+          kind="primary"
+          label="Last name"
+          onChange={[Function]}
+          present={false}
+          size="normal"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <DatePicker
+      dayLabel=""
+      id="test0"
+      key="test0"
+      kind="datePicker"
+      label="Date of Birth"
+      monthLabel=""
+      onChange={[Function]}
+      present={false}
+      yearLabel=""
+    />
+    <OnClickOutside(ComboBox)
+      data={
+        Array [
+          "help",
+          "me",
+        ]
+      }
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      id="test1"
+      key="test1"
+      kind="combobox"
+      label="Date of Birth"
+      onChange={[Function]}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      present={false}
+      preventDefault={false}
+      stopPropagation={false}
+    />
+    <CheckBox
+      id="test2"
+      key="test2"
+      kind="checkbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+    />
+    <MultiCheckbox
+      id="test3"
+      key="test3"
+      kind="multiCheckbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+    />
+    <TimePicker
+      ampmLabel=""
+      hourLabel=""
+      id="test4"
+      key="test4"
+      kind="timePicker"
+      label="Date of Birth"
+      minuteLabel=""
+      onChange={[Function]}
+      present={false}
+    />
+    <Select
+      id="test5"
+      key="test5"
+      kind="select"
+      label="Date of Birth"
+      onChange={[Function]}
+      options={
+        Array [
+          "test1",
+          "test2",
+        ]
+      }
+      padStart={0}
+      present={false}
+      size="normal"
+    />
+    <Radio
+      id="test6"
+      key="test6"
+      kind="radio"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+      value=""
+    />
+    <SelectBoolean
+      false="No"
+      id="test7"
+      key="test7"
+      kind="selectBoolean"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={false}
+      true="Yes"
+      value={false}
+    />
+  </div>
+  <div
+    className="input-group"
+    key="testGroup2"
+  >
+    <Field
+      autoComplete="on"
+      id="test"
+      key="test"
+      kind="primary"
+      onChange={[Function]}
+      present={false}
+      size="normal"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form-error"
+  >
+    So many errors
+  </div>
+  <Button
+    disabled={false}
+    formButton={true}
+    kind="primary"
+    size="medium"
+    type="submit"
+  >
+    Submit Button
+  </Button>
+</form>
+`;
+
+exports[`DynamicForm tests render should render with loading 1`] = `
+<form
+  className="dynamic-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="panel input-group"
+    key="testGroup"
+  >
+    <h3
+      className="input-group-label editable"
+    >
+      Test Group
+    </h3>
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="input-group-loading"
+      >
+        <Loading
+          content=""
+          kind="primary"
+          size="small"
+        />
+      </div>
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <p
+      className="input-group-description"
+    >
+      Test description
+    </p>
+    <div
+      className="inline-input-wrapper"
+      key="testFlex"
+    >
+      <h3
+        className="inline-input-label"
+      />
+      <div
+        className="inline-input"
+      >
+        <Field
+          autoComplete="on"
+          error=""
+          id="lastName"
+          key="lastName"
+          kind="primary"
+          label="Last name"
+          onChange={[Function]}
+          present={true}
+          size="normal"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <DatePicker
+      dayLabel=""
+      error=""
+      id="test0"
+      key="test0"
+      kind="datePicker"
+      label="Date of Birth"
+      monthLabel=""
+      onChange={[Function]}
+      present={true}
+      yearLabel=""
+    />
+    <OnClickOutside(ComboBox)
+      data={
+        Array [
+          "help",
+          "me",
+        ]
+      }
+      error=""
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      id="test1"
+      key="test1"
+      kind="combobox"
+      label="Date of Birth"
+      onChange={[Function]}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      present={true}
+      preventDefault={false}
+      stopPropagation={false}
+    />
+    <CheckBox
+      error=""
+      id="test2"
+      key="test2"
+      kind="checkbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <MultiCheckbox
+      error=""
+      id="test3"
+      key="test3"
+      kind="multiCheckbox"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+    />
+    <TimePicker
+      ampmLabel=""
+      error=""
+      hourLabel=""
+      id="test4"
+      key="test4"
+      kind="timePicker"
+      label="Date of Birth"
+      minuteLabel=""
+      onChange={[Function]}
+      present={true}
+    />
+    <Select
+      error=""
+      id="test5"
+      key="test5"
+      kind="select"
+      label="Date of Birth"
+      onChange={[Function]}
+      options={
+        Array [
+          "test1",
+          "test2",
+        ]
+      }
+      padStart={0}
+      present={true}
+      size="normal"
+    />
+    <Radio
+      error=""
+      id="test6"
+      key="test6"
+      kind="radio"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      value=""
+    />
+    <SelectBoolean
+      error=""
+      false="No"
+      id="test7"
+      key="test7"
+      kind="selectBoolean"
+      label="Date of Birth"
+      onChange={[Function]}
+      present={true}
+      true="Yes"
+      value={false}
+    />
+  </div>
+  <div
+    className="panel input-group"
+    key="testGroup2"
+  >
+    <div
+      className="input-group-buttons"
+    >
+      <div
+        className="input-group-loading"
+      >
+        <Loading
+          content=""
+          kind="primary"
+          size="small"
+        />
+      </div>
+      <div
+        className="edit"
+      >
+        <Button
+          disabled={false}
+          id="testGroup2"
+          kind="primary"
+          onClick={[Function]}
+          size="small"
+          type="button"
+        >
+          Edit
+        </Button>
+      </div>
+    </div>
+    <Field
+      autoComplete="on"
+      error=""
+      id="test"
+      key="test"
+      kind="primary"
+      onChange={[Function]}
+      present={true}
+      size="normal"
+      type="text"
+      value=""
+    />
+  </div>
+</form>
+`;

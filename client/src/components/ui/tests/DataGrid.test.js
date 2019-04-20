@@ -1,11 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
 import DataGrid from '../DataGrid';
-import Loading from '../Loading';
 
 configure({ adapter: new Adapter() });
 
