@@ -11,29 +11,28 @@ export default {
         payload: decoded
     }),
 
-    loginAdmin: adminData => dispatch => {
+    loginAdmin: adminData => async dispatch => {
         dispatch({
             type: Types.auth.login.BEGIN
         });
-        axios
-            .post('/api/admins/login', adminData)
-            .then(res => {
-                // Save to localStorage
-
-                // Set token to localStorage
-                const { token } = res.data;
-                localStorage.setItem('jwtToken', token);
-                // Set token to Auth header
-                setAuthToken(token);
-                // Decode token to get admin data
-                const decoded = jwt_decode(token);
-                // Set current admin
-                dispatch({
-                    type: Types.auth.login.SUCCESS,
-                    payload: decoded
-                });
-            })
-            .catch(err => getErrors(dispatch, Types.auth, err));
+        try {
+            // Send api request to login
+            const res = await axios.post('/api/admins/login', adminData);
+            const { token } = res.data;
+            // Set localStorage with token
+            localStorage.setItem('jwtToken', token);
+            // Set Auth Header with token
+            setAuthToken(token);
+            // Decode token to get admin data
+            const decoded = jwt_decode(token);
+            // Set current admin
+            dispatch({
+                type: Types.auth.login.SUCCESS,
+                payload: decoded
+            });
+        } catch (err) {
+            getErrors(dispatch, Types.auth, err);
+        }
     },
 
     logoutAdmin: () => dispatch => {

@@ -1,18 +1,16 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 
 import VolunteerActions from '../volunteerActions';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
-const store = mockStore();
-
-const axios = require('axios');
-const MockAdapter = require('axios-mock-adapter');
-
-const mockAxios = new MockAdapter(axios);
-
 describe('volunteerActions.js', () => {
+    const middlewares = [thunk];
+    const mockStore = configureMockStore(middlewares);
+    const store = mockStore();
+    const mockAxios = new MockAdapter(axios);
+
     afterEach(() => {
         mockAxios.reset();
     });

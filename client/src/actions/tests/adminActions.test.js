@@ -1,18 +1,16 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 
 import AdminActions from '../adminActions';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
-const store = mockStore();
-
-const axios = require('axios');
-const MockAdapter = require('axios-mock-adapter');
-
-const mockAxios = new MockAdapter(axios);
-
 describe('adminActions.js', () => {
+    const middlewares = [thunk];
+    const mockStore = configureMockStore(middlewares);
+    const store = mockStore();
+    const mockAxios = new MockAdapter(axios);
+
     describe('filter', () => {
         it('adds access level to filter', async () => {
             let requestFilter;
