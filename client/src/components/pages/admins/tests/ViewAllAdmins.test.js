@@ -34,6 +34,11 @@ describe('ViewAllAdmins tests', () => {
                         }
                     ],
                     errors: {}
+                },
+                auth: {
+                    admin: {
+                        accessLevel: 'Super'
+                    }
                 }
             },
             _state
@@ -76,7 +81,8 @@ describe('ViewAllAdmins tests', () => {
                     }
                 ],
                 errors: {},
-                loading: false
+                loading: false,
+                adminIsSuper: true
             });
         });
     });
@@ -92,6 +98,17 @@ describe('ViewAllAdmins tests', () => {
         it('should run without breaking', () => {
             spyOn(instance, 'componentDidMount');
             instance.componentDidMount();
+        });
+    });
+
+    describe('getSuperColumnData', () => {
+        it('should return nothing if admin is not super', () => {
+            setInstanceAndWrapper({}, { auth: { admin: { accessLevel: 'Volunteer' } } });
+            expect(instance.getSuperColumnData({ accessLevel: 'Super' })).toBeUndefined();
+        });
+
+        it('should return correct data if admin is super', () => {
+            expect(instance.getSuperColumnData({ accessLevel: 'Super' })).toEqual({ super: 'Yes' });
         });
     });
 
