@@ -12,7 +12,7 @@ import AuthActions from '../../../actions/authActions';
 
 export class AdminProfile extends Component {
     componentDidMount() {
-        this.props.adminActions.get(this.props.match.params.id, () => {
+        this.props.adminActions.get(this.props.match.params.id, _.noop, () => {
             this.props.history.push('/pageNotFound');
         });
     }

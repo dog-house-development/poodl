@@ -20,7 +20,7 @@ export class MemberProfile extends Component {
 
     componentDidMount() {
         // call redux action to retrieve specified profile from api
-        this.props.memberActions.get(this.props.match.params.id, () => {
+        this.props.memberActions.get(this.props.match.params.id, _.noop, () => {
             this.props.history.push('/pageNotFound');
         });
         this.props.serviceActions.filter();

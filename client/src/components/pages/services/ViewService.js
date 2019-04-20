@@ -19,7 +19,7 @@ export class ViewService extends Component {
 
     componentDidMount() {
         // call redux action to retrieve specified profile from api
-        this.props.serviceActions.get(this.props.match.params.id, () => {
+        this.props.serviceActions.get(this.props.match.params.id, _.noop, () => {
             this.props.history.push('/pageNotFound');
         });
     }
