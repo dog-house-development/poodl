@@ -87,26 +87,17 @@ describe('Register tests', () => {
 
     describe('onChange', () => {
         it('should run without errors', () => {
-            spyOn(instance, 'onChange');
-            expect(instance.state.email).toEqual('sam@test.com');
-            const e = {
-                target: { id: 'email', value: 'Meow' }
-            };
-            instance.onChange(e);
+            wrapper.find('Form').simulate('change', {
+                target: {
+                    id: 'email',
+                    value: 'max@test.com'
+                }
+            });
+
+            expect(wrapper).toMatchSnapshot();
+            expect(instance.onChange).toHaveBeenCalled();
         });
     });
-
-    describe('onSubmit', () => {
-        it('should run without errors', () => {
-            spyOn(instance, 'onSubmit');
-            const e = {
-                target: { id: 'email', value: 'Meow' },
-                preventDefault: () => {}
-            };
-            wrapper.find('Form').simulate('submit', e);
-        });
-    });
-
     describe('getFields', () => {
         it('should return correct fields if not super admin', () => {
             expect(instance.getFields()).toEqual([
