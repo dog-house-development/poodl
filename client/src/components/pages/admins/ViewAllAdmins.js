@@ -23,6 +23,12 @@ export class ViewAllAdmins extends Component {
         this.props.history.push(`/admins/${id}`);
     }
 
+    getSuperColumnData(admin) {
+        if (this.props.adminIsSuper) {
+            return { super: admin.accessLevel === 'Super' ? 'Yes' : 'No' };
+        }
+    }
+
     getDataGridContent() {
         // choose what we want to display out of the admins data
         let data = [];
@@ -32,7 +38,7 @@ export class ViewAllAdmins extends Component {
                 firstName: admin.firstName,
                 lastName: admin.lastName,
                 email: admin.email,
-                super: admin.accessLevel === 'Super' ? 'Yes' : 'No',
+                ...this.getSuperColumnData(admin),
                 key: admin._id
             });
         });
@@ -66,7 +72,8 @@ export const mapStateToProps = (state, props) => {
     return {
         admins: state.admins.all,
         loading: state.admins.loading,
-        errors: state.admins.errors
+        errors: state.admins.errors,
+        adminIsSuper: state.auth.admin.accessLevel === 'Super'
     };
 };
 
