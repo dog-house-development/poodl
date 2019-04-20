@@ -34,12 +34,20 @@ const propTypes = {
     errors: PropTypes.object.isRequired,
     values: PropTypes.object.isRequired,
     editable: PropTypes.bool,
-    errorDescription: PropTypes.string
+    errorDescription: PropTypes.string,
+    data: PropTypes.object,
+    editValues: PropTypes.func,
+    inputs: PropTypes.array.isRequired,
+    loading: PropTypes.bool,
+    onChange: PropTypes.func,
+    onSubmit: PropTypes.func,
+    submitButtonLabel: PropTypes.string
 };
 
 const defaultProps = {
     values: {},
-    errorDescription: ''
+    errorDescription: '',
+    errors: {}
 };
 
 class DynamicForm extends React.Component {
@@ -318,7 +326,7 @@ class DynamicForm extends React.Component {
     }
 }
 
-DynamicForm.propTypes = propTypes;
 DynamicForm.defaultProps = defaultProps;
+DynamicForm.propTypes = propTypes;
 
 export default DynamicForm;
