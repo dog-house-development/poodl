@@ -137,6 +137,7 @@ export class Navbar extends Component {
                     </li>
                     <li className="line">
                         <Button
+                            id="myProfile"
                             kind="secondary"
                             size="small"
                             onClick={() => {
@@ -147,6 +148,7 @@ export class Navbar extends Component {
                     </li>
                     <li>
                         <Button
+                            id="logout"
                             kind="secondary"
                             size="small"
                             onClick={() => {

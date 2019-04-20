@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button tests render should render correctly 1`] = `
+<div
+  className="panel"
+>
+  <h2
+    className="panel-title"
+  >
+    All done!
+  </h2>
+  <p>
+    Have a great day!
+  </p>
+</div>
+`;
