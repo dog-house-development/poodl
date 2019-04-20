@@ -20,6 +20,7 @@ export class SelectActivities extends Component {
             showEndedActivities: false
         };
     }
+
     componentDidMount() {
         const today = moment().startOf('day');
         this.props.activityActions.filter({
