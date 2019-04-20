@@ -10,7 +10,17 @@ describe('initialState', () => {
     });
 });
 
-describe('GET_SERVICES_ERRORS', () => {
+describe('CREATE_SERVICE_BEGIN', () => {
+    test('returns the  create.BEGIN state', () => {
+        const mockPayload = { loading: true };
+        const action = { type: Types.service.create.BEGIN, payload: mockPayload };
+        const expectedState = { loading: true, all: {}, errors: {} };
+
+        expect(reducer(undefined, action)).toEqual(expectedState);
+    });
+});
+
+describe('GET_SERVICE_ERRORS', () => {
     test('returns the service.ERROR state', () => {
         const mockPayload = { error: 'so many error' };
         const action = { type: Types.service.ERROR, payload: mockPayload };
@@ -45,7 +55,7 @@ describe('FILTER_SERVICES_SUCCESS', () => {
     });
 });
 
-describe('GET_SERVICES_BEGIN', () => {
+describe('GET_SERVICE_BEGIN', () => {
     test('returns the  get.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.get.BEGIN, payload: mockPayload };
@@ -55,7 +65,7 @@ describe('GET_SERVICES_BEGIN', () => {
     });
 });
 
-describe('EDIT_SERVICES_BEGIN', () => {
+describe('EDIT_SERVICE_BEGIN', () => {
     test('returns the  edit.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.edit.BEGIN, payload: mockPayload };
