@@ -1,5 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Navbar tests getAccordion should return accordion markup 1`] = `
+<ul
+  className="accordion"
+  onClick={[Function]}
+>
+  <li>
+    <Link
+      replace={false}
+      to="/dashboard"
+    >
+      My Dashboard
+    </Link>
+  </li>
+  <li>
+    <Link
+      replace={false}
+      to="/activities"
+    >
+      Activities
+    </Link>
+  </li>
+  <li>
+    <Link
+      replace={false}
+      to="/member-check-in"
+    >
+      Member check-in
+    </Link>
+  </li>
+  <li
+    className="line"
+  >
+    <Button
+      id="myProfile"
+      kind="secondary"
+      onClick={[Function]}
+      size="small"
+      type="button"
+    >
+      My Profile
+    </Button>
+  </li>
+  <li>
+    <Button
+      id="logout"
+      kind="secondary"
+      onClick={[Function]}
+      size="small"
+      type="button"
+    >
+      Log out
+    </Button>
+  </li>
+</ul>
+`;
+
 exports[`Navbar tests getSkinnyHeaderMarkup should return skinny header markup 1`] = `
 <div
   className="header skinny"

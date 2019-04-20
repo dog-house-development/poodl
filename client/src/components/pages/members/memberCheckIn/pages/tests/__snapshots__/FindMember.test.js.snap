@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FindMember tests render should render correctly 1`] = `
+<div>
+  <div
+    className="panel finished-panel"
+  >
+    <h2
+      className="panel-title"
+    >
+      Enter your name to check in
+    </h2>
+    <OnClickOutside(SearchField)
+      autoFocus="on"
+      clearable={true}
+      data={
+        Object {
+          "123": Object {
+            "_id": "123",
+            "email": "bigtup@nowhere.com",
+            "firstName": "Big",
+            "lastName": "Tup",
+            "membershipDate": "02/20/2020",
+          },
+        }
+      }
+      displayRow={[Function]}
+      eventTypes={
+        Array [
+          "mousedown",
+          "touchstart",
+        ]
+      }
+      excludeScrollbar={false}
+      id="find-member-search"
+      minCharactersBeforeResults={3}
+      onSearchResultClick={[Function]}
+      outsideClickIgnoreClass="ignore-react-onclickoutside"
+      preventDefault={false}
+      searchRule={[Function]}
+      size="large"
+      stopPropagation={false}
+    />
+  </div>
+  <div
+    className="finished-panel sign-up-container"
+  >
+    <p>
+      Not a member? 
+    </p>
+    <Button
+      content="Sign up now"
+      kind="secondary"
+      size="medium"
+      type="button"
+    />
+  </div>
+</div>
+`;

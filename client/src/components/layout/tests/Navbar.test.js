@@ -67,9 +67,25 @@ describe('Navbar tests', () => {
         it('should set skinny to false if window is large and skinny is true', () => {
             window.innerWidth = 701;
             instance.setState({ skinny: true });
-            spyOn(instance, 'setState');
             instance.updateWidth();
-            expect(instance.setState).toHaveBeenCalledWith({ skinny: false });
+            expect(instance.state).toEqual({ skinny: false, expanded: false });
+        });
+    });
+
+    describe('handleMenuClick', () => {
+        it('should toggle expanded state', () => {
+            instance.setState({ expanded: false });
+            instance.handleMenuClick();
+            expect(instance.state).toEqual({ expanded: true, skinny: false });
+            instance.handleMenuClick();
+            expect(instance.state).toEqual({ expanded: false, skinny: false });
+        });
+    });
+
+    describe('getAccordion', () => {
+        it('should return accordion markup', () => {
+            instance.setState({ expanded: true });
+            expect(instance.getAccordion()).toMatchSnapshot();
         });
     });
 

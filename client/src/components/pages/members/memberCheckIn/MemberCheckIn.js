@@ -15,14 +15,14 @@ import SelectActivities from './pages/SelectActivities';
 import Finished from './pages/Finished';
 import SelfRegisterMember from './pages/SelfRegisterMember';
 
-const pages = {
+export const pages = {
     memberSignUp: { title: 'Sign up', index: -1 },
     findMember: { title: 'FindMember', index: 0 },
     selectActivities: { title: 'SelectActivities', index: 1 },
     finished: { title: 'Finished', index: 2 }
 };
 
-class MemberCheckIn extends Component {
+export class MemberCheckIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
