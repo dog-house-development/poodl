@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox tests render should render normal checkbox correctly 1`] = `
+<div
+  className="checkbox-wrapper"
+>
+  <label>
+    <input
+      checked={true}
+      id="primary"
+      name="primary"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <p
+      className="checkbox-label"
+    >
+      Test Box
+    </p>
+  </label>
+</div>
+`;

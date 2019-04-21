@@ -1,0 +1,14 @@
+{
+    "activities": [
+        {
+            "_id": 123,
+            "name": "test1",
+            "description": "test"
+        },
+        {
+            "_id": 223,
+            "name": "test2",
+            "description": "test"
+        }
+    ]
+}

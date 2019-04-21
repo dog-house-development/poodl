@@ -44,11 +44,12 @@ describe('RegisterAdmin tests', () => {
         );
         instance = wrapper.instance();
         wrapper.setState({
-            name: 'Sam',
+            firstName: 'Sam',
+            lastName: 'Smith',
             email: 'sam@test.com',
             password: 'abc123',
             password2: 'abc123',
-            errors: { email: 'Invalid email' }
+            error: { email: 'Invalid email' }
         });
     };
 

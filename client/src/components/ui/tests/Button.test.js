@@ -30,6 +30,28 @@ describe('Button tests', () => {
         setInstanceAndWrapper();
     });
 
+    describe('getIconMarkup', () => {
+        it('should render loading', () => {
+            setInstanceAndWrapper({ loading: true });
+            expect(wrapper).toMatchSnapshot();
+        });
+        it('should run getIconMarkup correctly', () => {
+            setInstanceAndWrapper({ icon: 'account_box' });
+            expect(wrapper).toMatchSnapshot();
+        });
+    });
+
+    describe('getContent', () => {
+        it('should render getContent correctly', () => {
+            setInstanceAndWrapper();
+            expect(wrapper).toMatchSnapshot();
+        });
+        it('should render loading', () => {
+            setInstanceAndWrapper({ loading: true });
+            expect(wrapper).toMatchSnapshot();
+        });
+    });
+
     describe('render', () => {
         it('should render normal button correctly', () => {
             expect(wrapper).toMatchSnapshot();
