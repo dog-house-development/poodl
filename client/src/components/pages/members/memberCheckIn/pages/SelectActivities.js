@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import moment from 'moment';
 import ActivityActions from '../../../../../actions/activityActions';
-// import Loading from '../../../ui/Loading';
 import Button from '../../../../ui/Button';
 import Utils from '../../../../../utils/Utils';
 
@@ -86,18 +85,25 @@ export class SelectActivities extends Component {
         return <p>Activities that you are signed up for will appear here</p>;
     }
 
+    removeMemberFromActivity(activity) {
+        return _.pull(activity.members, this.props.memberId);
+    }
+
+    removeActivity = activity => () => {
+        this.props.activityActions.edit(activity._id, {
+            members: this.removeMemberFromActivity(activity)
+        });
+    };
+
     getActivityButtonMarkup(activity, selected) {
         if (_.includes(activity.members, this.props.memberId)) {
             return (
                 <div className="activity-button-wrapper">
                     <Button
-                        onClick={() => {
-                            this.props.activityActions.edit(activity._id, {
-                                members: [..._.remove(activity.members, this.props.memberId)]
-                            });
-                        }}
+                        onClick={this.removeActivity(activity)}
                         kind="secondary"
-                        icon={selected ? 'remove_circle' : 'assignment_turned_in'}>
+                        icon={selected ? 'remove_circle' : 'assignment_turned_in'}
+                        disabled={this.props.activitiesLoading}>
                         {selected ? 'Remove' : 'Signed Up'}
                     </Button>
                 </div>
@@ -112,7 +118,8 @@ export class SelectActivities extends Component {
                             members: [...activity.members, this.props.memberId]
                         });
                     }}
-                    icon="assignment">
+                    icon="assignment"
+                    disabled={this.props.activitiesLoading}>
                     Sign up
                 </Button>
             </div>
