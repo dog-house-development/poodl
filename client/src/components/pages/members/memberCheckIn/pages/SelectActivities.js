@@ -96,22 +96,14 @@ export class SelectActivities extends Component {
                                 members: [..._.remove(activity.members, this.props.memberId)]
                             });
                         }}
-                        kind="secondary">
-                        {selected ? (
-                            <>
-                                <i className="material-icons button-icon">remove_circle</i>
-                                Remove
-                            </>
-                        ) : (
-                            <>
-                                <i className="material-icons button-icon">assignment_turned_in</i>
-                                Signed up
-                            </>
-                        )}
+                        kind="secondary"
+                        icon={selected ? 'remove_circle' : 'assignment_turned_in'}>
+                        {selected ? 'Remove' : 'Signed Up'}
                     </Button>
                 </div>
             );
         }
+
         return (
             <div className="activity-button-wrapper">
                 <Button
@@ -119,8 +111,8 @@ export class SelectActivities extends Component {
                         this.props.activityActions.edit(activity._id, {
                             members: [...activity.members, this.props.memberId]
                         });
-                    }}>
-                    <i className="material-icons button-icon">assignment</i>
+                    }}
+                    icon="assignment">
                     Sign up
                 </Button>
             </div>
