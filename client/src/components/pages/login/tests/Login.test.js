@@ -83,13 +83,20 @@ describe('Login tests', () => {
     describe('componentWillReceiveProps', () => {});
 
     describe('onChange', () => {
-        it('should run without errors', () => {
+        it('should change auth loading to true', () => {
+            instance.setState({ auth: { loading: false } });
             spyOn(instance, 'onChange');
-            expect(instance.state.email).toEqual('test@test.test');
             const e = {
-                target: { id: 'email', value: 'Meow' }
+                target: {
+                    id: 'auth',
+                    value: {
+                        isAuthenticated: false,
+                        loading: true,
+                        errors: {}
+                    }
+                }
             };
-            instance.onChange(e);
+            wrapper.find('DynamicForm').simulate('change', e);
         });
     });
 

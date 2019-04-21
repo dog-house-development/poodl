@@ -14,6 +14,7 @@ describe('Navbar tests', () => {
         props = _.assign(
             {},
             {
+                history: ['/login'],
                 content: 'Press me',
                 location: { pathname: '/' },
                 onClick: () => {}
@@ -64,6 +65,12 @@ describe('Navbar tests', () => {
     });
 
     describe('updateWidth', () => {
+        it('should set skinny to true if window is small and skinny is false', () => {
+            window.innerWidth = 699;
+            instance.setState({ skinny: true });
+            instance.updateWidth();
+            expect(instance.state).toEqual({ skinny: true, expanded: false });
+        });
         it('should set skinny to false if window is large and skinny is true', () => {
             window.innerWidth = 701;
             instance.setState({ skinny: true });
@@ -88,10 +95,43 @@ describe('Navbar tests', () => {
             expect(instance.getAccordion()).toMatchSnapshot();
         });
     });
-
+    describe('getUserDropDownContent', () => {
+        it('should return drop down content', () => {
+            const mockCallBack = jest.fn();
+            expect(JSON.stringify(instance.getUserDropDownContent())).toEqual(
+                JSON.stringify([
+                    {
+                        content: 'Dashboard',
+                        onClick: () => {
+                            _.concat(instance.props.history.push('/dashboard'));
+                        }
+                    },
+                    {
+                        content: 'My profile',
+                        onClick: () => {
+                            _.concat(instance.props.history.push(`/admins/${this.props.auth.admin.id}`));
+                        }
+                    },
+                    { type: 'divider' },
+                    {
+                        content: 'Log out',
+                        onClick: () => {
+                            _.concat(instance.props.authActions.logoutAdmin());
+                        }
+                    }
+                ])
+            );
+        });
+    });
     describe('getSkinnyHeaderMarkup', () => {
         it('should return skinny header markup', () => {
             expect(instance.getSkinnyHeaderMarkup()).toMatchSnapshot();
+        });
+    });
+    describe('componentWillUnmount', () => {
+        it('should run without breaking', () => {
+            spyOn(instance, 'componentDidMount');
+            instance.componentDidMount();
         });
     });
 

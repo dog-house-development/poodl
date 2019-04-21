@@ -35,41 +35,41 @@ describe('Dropdown tests', () => {
 
     describe('onDropdownClick', () => {
         it('should set state to the open if it is closed', () => {
-            instance.setState({ open: false });
             spyOn(instance, 'onDropdownClick');
             const e = {
                 preventDefault: () => {}
             };
             instance.onDropdownClick(e);
+            expect(instance.state.open).toEqual(true);
         });
 
         it('should set state to the closed if it is open', () => {
-            instance.setState({ open: true });
             spyOn(instance, 'onDropdownClick');
             const e = {
                 preventDefault: () => {}
             };
             instance.onDropdownClick(e);
+            expect(instance.state.open).toEqual(false);
         });
     });
 
     describe('onDropdownRowClick', () => {
         it('should set state to the open if it is closed', () => {
-            instance.setState({ open: false });
             spyOn(instance, 'onDropdownRowClick');
             const e = {
                 preventDefault: () => {}
             };
             instance.onDropdownRowClick(e);
+            expect(instance.state.open).toEqual(true);
         });
 
         it('should set state to the closed if it is open', () => {
-            instance.setState({ open: true });
             spyOn(instance, 'onDropdownRowClick');
             const e = {
                 preventDefault: () => {}
             };
             instance.onDropdownRowClick(e);
+            expect(instance.state.open).toEqual(false);
         });
     });
 
@@ -81,6 +81,7 @@ describe('Dropdown tests', () => {
                 preventDefault: () => {}
             };
             instance.handleClickOutside(e);
+            expect(instance.state.open).toEqual(true);
         });
 
         it('should set state to the closed if it is open', () => {
@@ -90,6 +91,7 @@ describe('Dropdown tests', () => {
                 preventDefault: () => {}
             };
             instance.handleClickOutside(e);
+            expect(instance.state.open).toEqual(false);
         });
     });
 

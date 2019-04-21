@@ -32,7 +32,7 @@ export class Dropdown extends Component {
 
     onDropdownClick(e) {
         e.preventDefault();
-        this.setState({ open: !this.state.open });
+        this.setState({ open: false });
     }
 
     onDropdownRowClick(onRowClick, evt) {
