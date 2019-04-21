@@ -21,8 +21,8 @@ describe('GET_ADMIN_ERRORS', () => {
     });
 });
 
-describe('FILTER_ADMIN_BEGIN', () => {
-    it('returns the  filter.BEGIN state', () => {
+describe('FILTER_ADMINS_BEGIN', () => {
+    it('returns the filter.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.admin.filter.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -31,14 +31,14 @@ describe('FILTER_ADMIN_BEGIN', () => {
     });
 });
 
-describe('FILTER_ADMIN_SUCCESS', () => {
+describe('FILTER_ADMINS_SUCCESS', () => {
     it('returns the filter.SUCCESS state', () => {
-        const testData = { firstName: 'Test', _id: '0' };
+        const testData = { firstName: 'Test', _id: 123 };
         const mockPayload = { loading: false, all: testData, errors: {} };
         const action = { type: Types.admin.filter.SUCCESS, payload: mockPayload };
         const expectedState = {
             loading: false,
-            all: { 0: { firstName: 'Test', _id: '0' }, undefined: {} },
+            all: { 123: { firstName: 'Test', _id: 123 }, undefined: {} },
             errors: {}
         };
 
@@ -47,7 +47,7 @@ describe('FILTER_ADMIN_SUCCESS', () => {
 });
 
 describe('GET_ADMIN_BEGIN', () => {
-    it('returns the  get.BEGIN state', () => {
+    it('returns the get.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.admin.get.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -56,8 +56,23 @@ describe('GET_ADMIN_BEGIN', () => {
     });
 });
 
+describe('GET_ADMIN_SUCCESS', () => {
+    it('returns the get.SUCCESS state', () => {
+        const testData = { firstName: 'Test', _id: '0' };
+        const mockPayload = { all: testData };
+        const action = { type: Types.admin.get.SUCCESS, payload: mockPayload };
+        const expectedState = {
+            loading: false,
+            all: { undefined: { all: { _id: '0', firstName: 'Test' } } },
+            errors: {}
+        };
+
+        expect(reducer(undefined, action)).toEqual(expectedState);
+    });
+});
+
 describe('EDIT_ADMIN_BEGIN', () => {
-    it('returns the  edit.BEGIN state', () => {
+    it('returns the edit.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.admin.edit.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -75,8 +90,8 @@ describe('EDIT_ADMIN_SUCCESS', () => {
             all: {
                 undefined: {
                     all: [
-                        { _id: '123', firstName: 'Bob', lastName: 'Bub' },
-                        { _id: '321', firstName: 'Lil', lastName: 'Tup' }
+                        { _id: 123, firstName: 'Bob', lastName: 'Bub' },
+                        { _id: 321, firstName: 'Lil', lastName: 'Tup' }
                     ]
                 }
             },
@@ -88,7 +103,7 @@ describe('EDIT_ADMIN_SUCCESS', () => {
 });
 
 describe('DELETE_ADMIN_BEGIN', () => {
-    it('returns the  delete.BEGIN state', () => {
+    it('returns the delete.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.admin.delete.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
