@@ -4,18 +4,14 @@ exports[`SelfRegisterMember tests render should render correctly 1`] = `
 <div
   className="page-container"
 >
-  <Link
-    className="button small tertiary icon"
-    replace={false}
-    to="/member-check-in"
+  <Button
+    icon="keyboard_backspace"
+    kind="tertiary"
+    size="medium"
+    type="button"
   >
-    <i
-      className="material-icons button-icon"
-    >
-      keyboard_backspace
-    </i>
-     Back to check-in
-  </Link>
+    Back to check-in
+  </Button>
   <div
     className="panel"
   >

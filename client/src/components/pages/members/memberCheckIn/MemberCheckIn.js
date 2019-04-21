@@ -107,7 +107,7 @@ export class MemberCheckIn extends Component {
             case pages.memberSignUp:
                 return (
                     <div>
-                        <SelfRegisterMember onSignUpSuccess={this.onSignUpSuccess} />
+                        <SelfRegisterMember onSignUpSuccess={this.onSignUpSuccess} goBack={this.onNextClick} />
                     </div>
                 );
             case pages.findMember:

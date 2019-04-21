@@ -1,6 +1,5 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import React from 'react';
 import _ from 'lodash';
@@ -8,10 +7,12 @@ import _ from 'lodash';
 import DynamicForm from '../../../../ui/DynamicForm';
 import MemberActions from '../../../../../actions/memberActions';
 import memberInputs from '../../memberInputs';
+import Button from './../../../../ui/Button';
 
 export class SelfRegisterMember extends React.Component {
     static propTypes = {
-        onSignUpSuccess: PropTypes.func
+        onSignUpSuccess: PropTypes.func,
+        goBack: PropTypes.func
     };
 
     constructor(props) {
@@ -36,9 +37,9 @@ export class SelfRegisterMember extends React.Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/member-check-in" className="button small tertiary icon">
-                    <i className="material-icons button-icon">keyboard_backspace</i> Back to check-in
-                </Link>
+                <Button icon="keyboard_backspace" onClick={this.props.goBack} kind="tertiary">
+                    Back to check-in
+                </Button>
                 <div className="panel">
                     <h1 className="panel-title">Sign up</h1>
                     <DynamicForm

@@ -53,6 +53,7 @@ exports[`MemberCheckIn tests getPageMarkup should return finished 1`] = `
 exports[`MemberCheckIn tests getPageMarkup should return memberSignUpMarkup 1`] = `
 <div>
   <Connect(SelfRegisterMember)
+    goBack={[Function]}
     onSignUpSuccess={[Function]}
   />
 </div>
