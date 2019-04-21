@@ -6,7 +6,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 
 // misc
-const keys = require('../../config/keys');
+const secrets = require('../../config/secrets');
 const ApiHelper = require('./utils/apiHelper');
 
 // input validation
@@ -122,7 +122,7 @@ router.post('/login', (req, res) => {
                 // Sign token
                 jwt.sign(
                     payload,
-                    keys.secretOrKey,
+                    process.env.JWT_KEY || secrets.jwtKey,
                     {
                         expiresIn: 31556926 // 1 year in seconds
                     },
