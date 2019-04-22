@@ -199,9 +199,13 @@ class DynamicForm extends React.Component {
         );
     }
 
-    groupDescription(input) {
-        if (input.description) {
-            return <p className="input-group-description">{input.description}</p>;
+    groupDescription(group) {
+        if (!this.props.editable && group.submittableDescription) {
+            return <p className="input-group-description">{group.submittableDescription}</p>;
+        }
+
+        if (group.description) {
+            return <p className="input-group-description">{group.description}</p>;
         }
     }
 
