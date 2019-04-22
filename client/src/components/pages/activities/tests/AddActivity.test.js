@@ -6,22 +6,6 @@ import _ from 'lodash';
 
 import { AddActivity, mapStateToProps, mapDispatchToProps } from '../AddActivity';
 
-// // Return a fixed timestamp when moment().format() is called
-// jest.mock('moment', () => () => ({
-//     startOf: () => '2018–04–22T12:34:56+00:00',
-//     get: () => {},
-//     isAfter: () => true,
-//     clone: () => {
-//         return {
-//             endOf: () => {
-//                 return {
-//                     endOf: () => {}
-//                 };
-//             }
-//         };
-//     }
-// }));
-
 configure({ adapter: new Adapter() });
 
 describe('Add activity tests', () => {
