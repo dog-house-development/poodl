@@ -16,7 +16,7 @@ export class SelectActivities extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showEndedActivities: false
+            showEndedActivities: props.isSuper
         };
     }
 
@@ -141,8 +141,16 @@ export class SelectActivities extends Component {
         );
     }
 
+    getSortedActivities() {
+        if (this.props.isSuper) {
+            return _.sortBy(this.props.activities, activity => activity.startDate);
+        }
+
+        return this.props.activities;
+    }
+
     getActivitiesMarkup() {
-        return _.map(this.props.activities, activity => {
+        return _.map(this.getSortedActivities(), activity => {
             if (moment(activity.endDate).isAfter(moment()) || this.state.showEndedActivities) {
                 return (
                     <div key={activity._id} className="select-activity-panel-wrapper">
@@ -171,19 +179,28 @@ export class SelectActivities extends Component {
                 )}
                 <div className="selected-activities-panel">
                     <div className="panel">
-                        <h2 className="panel-title">Activities that you are signed up for today</h2>
+                        <h2 className="panel-title">
+                            Activities that you are signed up for{this.props.isSuper ? '' : ' today'}
+                        </h2>
                         <hr />
                         <div>{this.getSelectedActivitiesMarkup()}</div>
                     </div>
                 </div>
                 <div className="selectable-activities-panel">
                     <div className="panel">
-                        <h2 className="panel-title">Sign up for activities happening today</h2>
-                        <Button
-                            size="small"
-                            content={this.state.showEndedActivities ? 'Hide ended activities' : 'Show ended activities'}
-                            onClick={() => this.setState({ showEndedActivities: !this.state.showEndedActivities })}
-                        />
+                        <h2 className="panel-title">
+                            Sign up for activities{this.props.isSuper ? '' : ' happening today'}
+                        </h2>
+                        {this.props.isSuper ? null : (
+                            <Button
+                                size="small"
+                                content={
+                                    this.state.showEndedActivities ? 'Hide ended activities' : 'Show ended activities'
+                                }
+                                onClick={() => this.setState({ showEndedActivities: !this.state.showEndedActivities })}
+                            />
+                        )}
+
                         <hr />
                         <div className="select-activity-panels-container">{this.getActivitiesMarkup()}</div>
                     </div>

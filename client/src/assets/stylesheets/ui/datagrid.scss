@@ -20,6 +20,7 @@
         th {
           font-weight: bold;
           padding: 0.7em 0;
+          padding-right: 1em;
           text-align: left;
 
           &:first-child {
@@ -54,6 +55,8 @@
         }
 
         td {
+          padding-right: 0.7em;
+
           &:first-child {
             padding-left: 2vw;
             overflow-wrap: break-word;

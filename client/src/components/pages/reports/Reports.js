@@ -19,7 +19,8 @@ export class Reports extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            month: moment(moment().format(monthFormat), monthFormat)
+            month: moment(moment().format(monthFormat), monthFormat),
+            tab: 'activities'
         };
     }
 
@@ -37,42 +38,86 @@ export class Reports extends React.Component {
         return _.filter(this.props.activities, { name: activityName });
     }
 
-    getDuplicatedActivityMembers(activityName) {
-        let duplicatedMembers = [];
+    getLastDayOfMonth() {
+        return this.state.month
+            .clone()
+            .endOf('month')
+            .endOf('day');
+    }
+
+    getFirstDayOfMonth() {
+        return this.state.month;
+    }
+
+    getActivitiesToDate(activityName) {
+        return _.filter(this.getActivitiesWithName(activityName), activity => {
+            if (moment(activity.startDate).isAfter(this.getLastDayOfMonth())) {
+                return false;
+            }
+
+            return true;
+        });
+    }
+
+    getActivitiesThisMonth(activityName) {
+        return _.filter(this.getActivitiesToDate(activityName), activity => {
+            if (moment(activity.startDate).isBefore(this.getFirstDayOfMonth())) {
+                return false;
+            }
+
+            return true;
+        });
+    }
+
+    getSignupsToDate(activityName) {
+        let members = [];
+        _.forEach(this.getActivitiesToDate(activityName), activity => {
+            members.push(...activity.members);
+        });
+
+        return members;
+    }
+
+    getSignupsThisMonth(activityName) {
+        let members = [];
+        _.forEach(this.getActivitiesThisMonth(activityName), activity => {
+            members.push(...activity.members);
+        });
+
+        return members;
+    }
+
+    getMembersToDate(activityName) {
+        return _.uniq(this.getSignupsToDate(activityName));
+    }
+
+    getMembersThisMonth(activityName) {
+        return _.uniq(this.getSignupsThisMonth(activityName));
+    }
+
+    getNewMembersThisMonth(activityName) {
+        let previousMembers = [];
         _.forEach(this.getActivitiesWithName(activityName), activity => {
-            duplicatedMembers.push(...activity.members);
+            if (moment(activity.startDate).isBefore(this.getFirstDayOfMonth())) {
+                previousMembers.push(...activity.members);
+            }
         });
 
-        return duplicatedMembers;
-    }
+        previousMembers = _.uniq(previousMembers);
 
-    getUniqueActivityMembers(activityName) {
-        return _.uniq(this.getDuplicatedActivityMembers(activityName));
-    }
-
-    getDuplicatedServiceMembers(serviceName) {
-        let duplicatedMembers = [];
-        _.forEach(this.getServicesWithName(serviceName), service => {
-            duplicatedMembers.push(service.memberId);
-        });
-
-        return duplicatedMembers;
-    }
-
-    getUniqueServiceMembers(serviceName) {
-        return _.uniq(this.getDuplicatedServiceMembers(serviceName));
-    }
-
-    getTotalSignups(activityName) {
-        return _.filter(this.props.activities, { name: activityName });
+        return _.difference(this.getMembersThisMonth(activityName), previousMembers);
     }
 
     getActivityData = activityName => {
         return {
             activityName: activityName,
-            totalActivities: this.getActivitiesWithName(activityName).length,
-            uniqueMembers: this.getUniqueActivityMembers(activityName).length,
-            memberSignups: this.getDuplicatedActivityMembers(activityName).length,
+            newMembersThisMonth: this.getNewMembersThisMonth(activityName).length,
+            activitiesThisMonth: this.getActivitiesThisMonth(activityName).length,
+            totalMembersThisMonth: this.getMembersThisMonth(activityName).length,
+            signUpsThisMonth: this.getSignupsThisMonth(activityName).length,
+            totalActivitiesToDate: this.getActivitiesToDate(activityName).length,
+            totalMembersToDate: this.getMembersToDate(activityName).length,
+            totalSignUpsToDate: this.getSignupsToDate(activityName).length,
             key: activityName
         };
     };
@@ -81,7 +126,6 @@ export class Reports extends React.Component {
         return {
             serviceName: serviceName,
             totalServices: this.getServicesWithName(serviceName).length,
-            totalMembers: this.getUniqueServiceMembers(serviceName).length,
             key: serviceName
         };
     };
@@ -167,7 +211,6 @@ export class Reports extends React.Component {
     getActivitiesTab() {
         return (
             <>
-                <h2>Activity Reports</h2>
                 <MonthPicker
                     id="month"
                     value={this.state.month}
@@ -180,21 +223,11 @@ export class Reports extends React.Component {
     }
 
     getServicesTab() {
-        return (
-            <>
-                <h2>Service Reports</h2>
-                {this.getServicesDataGrid()}
-            </>
-        );
+        return <>{this.getServicesDataGrid()}</>;
     }
 
     getMembersTab() {
-        return (
-            <>
-                <h2>Member Reports</h2>
-                {this.getMembersReports()}
-            </>
-        );
+        return <>{this.getMembersReports()}</>;
     }
 
     getTabs() {
@@ -202,22 +235,33 @@ export class Reports extends React.Component {
             {
                 id: 'activities',
                 label: 'Activities',
+                title: 'Activity',
                 icon: 'event',
                 content: this.getActivitiesTab()
             },
             {
                 id: 'services',
                 label: 'Services',
+                title: 'Service',
                 icon: 'list_alt',
                 content: this.getServicesTab()
             },
             {
                 id: 'members',
                 label: 'Members',
+                title: 'Member',
                 icon: 'people',
                 content: this.props.loading ? <Loading /> : this.getMembersTab()
             }
         ];
+    }
+
+    handleTabChange = id => {
+        this.setState({ tab: id });
+    };
+
+    getPageTitle() {
+        return _.find(this.getTabs(), { id: this.state.tab }).title;
     }
 
     render() {
@@ -226,8 +270,12 @@ export class Reports extends React.Component {
                 <Link to="/" className="button small tertiary icon">
                     <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
-                <h1>Reports</h1>
-                <TabPage tabs={this.getTabs()} startingTab="activities" />
+                <div className="page-header">
+                    <h1>
+                        {this.getPageTitle()} {'Reports'}
+                    </h1>
+                </div>
+                <TabPage tabs={this.getTabs()} startingTab="activities" onChange={this.handleTabChange} />
             </div>
         );
     }

@@ -1,16 +1,4 @@
 .reports-container {
-  .tab-bar {
-    margin-bottom: 1.5em;
-  }
-
-  h2 {
-    margin-bottom: 0.6em;
-  }
-
-  .picker {
-    margin-bottom: 2.5em;
-  }
-
   .list-body {
     padding: 1em;
     .list-row {
@@ -21,6 +9,7 @@
         font-weight: bold;
         display: inline-block;
         border-bottom: 1px solid $gray-4;
+        color: $gray-8;
       }
 
       .list-row-secondary-text {
@@ -28,5 +17,10 @@
         font-size: 1em;
       }
     }
+  }
+
+  th {
+    font-size: 1.2em;
+    text-transform: none;
   }
 }

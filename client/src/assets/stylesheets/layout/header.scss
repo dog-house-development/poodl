@@ -54,11 +54,9 @@
     }
 
     &.menu {
-      padding: 0.85rem 2vw 0 0;
-
       button {
         color: $gray-6;
-        padding: 0;
+        padding: 0.85rem 2vw 1.1rem 2em;
 
         &:hover {
           color: $gray-8;
