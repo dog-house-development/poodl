@@ -1,0 +1,669 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reports tests mapStateToProps should map state to props 1`] = `
+Object {
+  "activities": Object {
+    "5ca46e70e54c0d00178954ed": Object {
+      "__v": 0,
+      "_id": "5ca46e70e54c0d00178954ed",
+      "admins": Array [],
+      "createdAt": "2019-04-03T08:27:28.931Z",
+      "description": "Crab stab pose.",
+      "endDate": "2019-04-10T03:00:00.000Z",
+      "members": Array [
+        "5c9dd4cb4eb48f7132365fa4",
+      ],
+      "name": "Yoga",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-10T02:00:00.000Z",
+      "updatedAt": "2019-04-21T22:40:19.510Z",
+    },
+    "5cad401cd38dec1632ce18cd": Object {
+      "__v": 25,
+      "_id": "5cad401cd38dec1632ce18cd",
+      "admins": Array [],
+      "createdAt": "2019-04-10T01:00:12.157Z",
+      "description": "Baby",
+      "endDate": "2019-04-22T01:00:00.000Z",
+      "members": Array [
+        "5cad46d96b32860017594caf",
+        "5cb024e1d139eb13534540f2",
+        "5caf9647fc31310578686604",
+      ],
+      "name": "Bingo",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-22T00:00:00.000Z",
+      "updatedAt": "2019-04-22T07:50:15.729Z",
+    },
+    "5cb004161942c00aae2b74db": Object {
+      "__v": 1,
+      "_id": "5cb004161942c00aae2b74db",
+      "admins": Array [],
+      "createdAt": "2019-04-12T03:20:54.668Z",
+      "description": "Yoga with batman",
+      "endDate": "2019-04-12T04:00:00.000Z",
+      "members": Array [
+        "5c9dd4cb4eb48f7132365fa4",
+      ],
+      "name": "Lunch",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-12T03:00:00.000Z",
+      "updatedAt": "2019-04-21T22:40:19.510Z",
+    },
+    "5cb221da9a32970017b01316": Object {
+      "__v": 57,
+      "_id": "5cb221da9a32970017b01316",
+      "admins": Array [],
+      "createdAt": "2019-04-13T17:52:26.184Z",
+      "description": "Enjoy poker night with the community!",
+      "endDate": "2019-04-22T05:00:00.000Z",
+      "members": Array [
+        "5cb024e1d139eb13534540f2",
+        "5c9dd4cb4eb48f7132365fa4",
+      ],
+      "name": "Poker night",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-22T03:00:00.000Z",
+      "updatedAt": "2019-04-21T23:39:25.104Z",
+    },
+    "5cbce0c2d079870554b848ec": Object {
+      "__v": 1,
+      "_id": "5cbce0c2d079870554b848ec",
+      "admins": Array [],
+      "createdAt": "2019-04-21T21:29:38.236Z",
+      "description": "test",
+      "endDate": "2019-04-21T22:00:00.000Z",
+      "members": Array [
+        "5cb024e1d139eb13534540f2",
+      ],
+      "name": "Lunch",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-21T21:00:00.000Z",
+      "updatedAt": "2019-04-21T22:40:19.510Z",
+    },
+    "5cbce0cbd079870554b848ed": Object {
+      "__v": 2,
+      "_id": "5cbce0cbd079870554b848ed",
+      "admins": Array [],
+      "createdAt": "2019-04-21T21:29:47.585Z",
+      "description": "Crab stab pose.",
+      "endDate": "2019-04-21T22:00:00.000Z",
+      "members": Array [
+        "5cb024e1d139eb13534540f2",
+        "5c9dd4cb4eb48f7132365fa4",
+      ],
+      "name": "Poker night",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-21T21:00:00.000Z",
+      "updatedAt": "2019-04-22T05:29:03.762Z",
+    },
+    "5cbce0d9d079870554b848ee": Object {
+      "__v": 1,
+      "_id": "5cbce0d9d079870554b848ee",
+      "admins": Array [],
+      "createdAt": "2019-04-21T21:30:01.152Z",
+      "description": "Yoga with batman",
+      "endDate": "2019-04-21T22:00:00.000Z",
+      "members": Array [
+        "5cb024e1d139eb13534540f2",
+      ],
+      "name": "Yoga",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-21T21:00:00.000Z",
+      "updatedAt": "2019-04-21T22:40:19.510Z",
+    },
+    "5cbce10fd079870554b848ef": Object {
+      "__v": 0,
+      "_id": "5cbce10fd079870554b848ef",
+      "admins": Array [],
+      "createdAt": "2019-04-21T21:30:55.074Z",
+      "description": "Pinochle",
+      "endDate": "2019-04-21T22:00:00.000Z",
+      "members": Array [],
+      "name": "Card Games",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-21T21:00:00.000Z",
+      "updatedAt": "2019-04-21T22:40:19.510Z",
+    },
+    "5cbcfedfda8ded0a2ae46a24": Object {
+      "__v": 1,
+      "_id": "5cbcfedfda8ded0a2ae46a24",
+      "admins": Array [],
+      "createdAt": "2019-04-21T23:38:07.665Z",
+      "description": "Poker doker hoker",
+      "endDate": "2019-04-22T00:00:00.000Z",
+      "members": Array [
+        "5c9dd4cb4eb48f7132365fa4",
+      ],
+      "name": "Poker night",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-21T23:00:00.000Z",
+      "updatedAt": "2019-04-21T23:39:29.817Z",
+    },
+    "5cbd5405dc419b0fb81b1ed3": Object {
+      "__v": 1,
+      "_id": "5cbd5405dc419b0fb81b1ed3",
+      "admins": Array [],
+      "createdAt": "2019-04-22T05:41:25.390Z",
+      "description": "bango bongo",
+      "endDate": "2019-05-22T05:59:00.000Z",
+      "members": Array [
+        "5c9dd4cb4eb48f7132365fa4",
+      ],
+      "name": "Bingo",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-05-22T05:00:00.000Z",
+      "updatedAt": "2019-04-22T06:01:03.677Z",
+    },
+    "5cbd5c93ddf27e10f0fe7f13": Object {
+      "__v": 3,
+      "_id": "5cbd5c93ddf27e10f0fe7f13",
+      "admins": Array [],
+      "createdAt": "2019-04-22T06:17:55.030Z",
+      "description": "test",
+      "endDate": "2019-03-23T03:00:00.000Z",
+      "members": Array [
+        "5c9dd4cb4eb48f7132365fa4",
+        "5cb024e1d139eb13534540f2",
+        "5caf9647fc31310578686604",
+      ],
+      "name": "Bingo",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-03-23T02:00:00.000Z",
+      "updatedAt": "2019-04-22T07:50:14.141Z",
+    },
+    "5cbd61c8ff5a2f12012635cf": Object {
+      "__v": 3,
+      "_id": "5cbd61c8ff5a2f12012635cf",
+      "admins": Array [],
+      "createdAt": "2019-04-22T06:40:08.167Z",
+      "description": "test",
+      "endDate": "2019-04-22T07:00:00.000Z",
+      "members": Array [
+        "5caf9647fc31310578686604",
+      ],
+      "name": "Bingo",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-04-22T06:00:00.000Z",
+      "updatedAt": "2019-04-22T07:50:41.565Z",
+    },
+    "5cbd727d2e75fe14a547b95c": Object {
+      "__v": 0,
+      "_id": "5cbd727d2e75fe14a547b95c",
+      "admins": Array [],
+      "createdAt": "2019-04-22T07:51:25.085Z",
+      "description": "test",
+      "endDate": "2019-03-22T08:00:00.000Z",
+      "members": Array [],
+      "name": "Bingo",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-03-22T07:00:00.000Z",
+      "updatedAt": "2019-04-22T07:52:16.815Z",
+    },
+    "5cbd72822e75fe14a547b95d": Object {
+      "__v": 2,
+      "_id": "5cbd72822e75fe14a547b95d",
+      "admins": Array [],
+      "createdAt": "2019-04-22T07:51:30.293Z",
+      "description": "test",
+      "endDate": "2019-03-22T08:00:00.000Z",
+      "members": Array [
+        "5cbd731d2e75fe14a547b95f",
+        "5cbd72fd2e75fe14a547b95e",
+      ],
+      "name": "Bingo",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "startDate": "2019-03-22T07:00:00.000Z",
+      "updatedAt": "2019-04-22T07:54:45.591Z",
+    },
+  },
+  "adminSeniorCenterId": "1",
+  "errors": undefined,
+  "loading": undefined,
+  "members": Object {
+    "5c9dd4cb4eb48f7132365fa4": Object {
+      "__v": 28,
+      "_id": "5c9dd4cb4eb48f7132365fa4",
+      "address": "P Sherman 42 Wallaby Way",
+      "bankCheckNumber": "2121",
+      "birthDate": "1972-02-29T07:00:00.000Z",
+      "caregiver": "Daughter/DIL",
+      "checkIns": Array [
+        "2019-03-29T19:15:49.553Z",
+        "2019-03-29T20:34:29.879Z",
+        "2019-03-29T20:34:40.123Z",
+        "2019-03-29T20:34:43.775Z",
+        "2019-03-29T20:34:47.163Z",
+        "2019-04-03T19:06:40.777Z",
+        "2019-04-06T00:25:50.727Z",
+        "2019-04-06T00:50:44.985Z",
+        "2019-04-06T02:24:15.277Z",
+        "2019-04-08T05:50:28.363Z",
+        "2019-04-10T20:06:53.921Z",
+        "2019-04-11T14:20:26.677Z",
+        "2019-04-12T03:36:01.281Z",
+        "2019-04-12T03:36:25.468Z",
+        "2019-04-12T03:36:31.234Z",
+        "2019-04-12T03:37:10.371Z",
+        "2019-04-12T03:37:37.192Z",
+        "2019-04-12T06:15:26.076Z",
+        "2019-04-21T00:05:49.626Z",
+        "2019-04-21T23:39:31.722Z",
+        "2019-04-22T06:18:25.871Z",
+      ],
+      "createdAt": "2019-03-29T08:18:19.622Z",
+      "disabilities": "Blind",
+      "email": "iamiron@manitee.com",
+      "emergencyContactName": "The  hulk",
+      "emergencyContactPhoneNumber": "406-220-1005",
+      "emergencyContactRelationship": "friend",
+      "ethnicity": "Hispanic/Latino",
+      "firstName": "Barry",
+      "formOfPayment": "check",
+      "gender": "male",
+      "grandparent": "Other elder relative",
+      "includedInEstatePlans": false,
+      "isDisabled": true,
+      "isDisabled60": true,
+      "isPersonCaregiver": true,
+      "lastName": "Starky",
+      "mealPreference": "Blood of her enemies",
+      "medicalIssues": "Faceless",
+      "memberIsNewOrRenewal": "new",
+      "membershipDate": "2018-11-29T07:00:00.000Z",
+      "monthlyIncome": "Under $2,452",
+      "needsAADL": Array [
+        "Eating",
+        "Bathing",
+      ],
+      "needsIADL": Array [
+        "Light housework",
+      ],
+      "numberInHousehold": "21",
+      "numberOfKidsUnder19": "4",
+      "race": "Awesome",
+      "renewalDate": "2019-03-29T06:00:00.000Z",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "specialDiet": "fish, chicken nuggets",
+      "updatedAt": "2019-04-22T06:18:26.014Z",
+      "wantsEstateInfo": true,
+    },
+    "5cad46d96b32860017594caf": Object {
+      "__v": 3,
+      "_id": "5cad46d96b32860017594caf",
+      "address": "123 fake street bozeman MT, 59715",
+      "birthDate": "1929-03-05T07:00:00.000Z",
+      "caregiver": "Husband",
+      "checkIns": Array [
+        "2019-04-10T01:31:54.304Z",
+        "2019-04-12T15:17:12.765Z",
+        "2019-04-12T15:19:58.550Z",
+      ],
+      "createdAt": "2019-04-10T01:28:57.752Z",
+      "disabilities": "Deaf",
+      "email": "johnsmit@gmail.com",
+      "emergencyContactName": "jeremy",
+      "emergencyContactPhoneNumber": "1231234321",
+      "emergencyContactRelationship": "dad",
+      "ethnicity": "Non-Hispanic/Latino",
+      "firstName": "Jon",
+      "formOfPayment": "cash",
+      "gender": "male",
+      "grandparent": "Other elder non relative",
+      "includedInEstatePlans": false,
+      "lastName": "Stith",
+      "memberIsNewOrRenewal": "new",
+      "membershipDate": "2016-05-05T06:00:00.000Z",
+      "monthlyIncome": "Under $1,012",
+      "needsAADL": Array [
+        "Transferring",
+      ],
+      "needsIADL": Array [
+        "Medication management",
+      ],
+      "numberInHousehold": "2",
+      "numberOfKidsUnder19": "0",
+      "renewalDate": "2018-04-03T06:00:00.000Z",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-12T15:19:58.773Z",
+      "wantsEstateInfo": false,
+    },
+    "5caf9647fc31310578686604": Object {
+      "__v": 2,
+      "_id": "5caf9647fc31310578686604",
+      "address": "avengers",
+      "birthDate": "1904-05-03T07:00:00.000Z",
+      "checkIns": Array [
+        "2019-04-12T06:15:33.161Z",
+        "2019-04-17T01:39:56.561Z",
+      ],
+      "createdAt": "2019-04-11T19:32:23.152Z",
+      "email": "captain@marvel.com",
+      "emergencyContactName": "Carol M Danvers",
+      "emergencyContactPhoneNumber": "4068001000",
+      "firstName": "Carol",
+      "gender": "female",
+      "includedInEstatePlans": false,
+      "lastName": "Danvers",
+      "memberIsNewOrRenewal": "new",
+      "membershipDate": "2019-04-11T19:32:23.131Z",
+      "needsAADL": Array [
+        "Toileting",
+      ],
+      "needsIADL": Array [
+        "Medication management",
+      ],
+      "numberInHousehold": "0",
+      "numberOfKidsUnder19": "0",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-17T01:39:56.728Z",
+      "wantsEstateInfo": false,
+    },
+    "5cb024e1d139eb13534540f2": Object {
+      "__v": 8,
+      "_id": "5cb024e1d139eb13534540f2",
+      "address": "615 1/2 W Park Street",
+      "checkIns": Array [
+        "2019-04-12T16:21:32.382Z",
+        "2019-04-21T20:07:52.057Z",
+        "2019-04-21T20:10:05.440Z",
+        "2019-04-21T20:10:16.323Z",
+        "2019-04-21T20:25:10.778Z",
+        "2019-04-21T20:27:16.297Z",
+        "2019-04-21T20:27:20.588Z",
+        "2019-04-21T21:06:00.977Z",
+      ],
+      "createdAt": "2019-04-12T05:40:49.378Z",
+      "email": "karlgmolina@gmail.com",
+      "emergencyContactName": "Karl Molina",
+      "emergencyContactPhoneNumber": "4062201005",
+      "firstName": "Karl",
+      "includedInEstatePlans": false,
+      "lastName": "Molina",
+      "memberIsNewOrRenewal": "new",
+      "membershipDate": "2019-04-12T05:40:49.354Z",
+      "needsAADL": Array [],
+      "needsIADL": Array [],
+      "numberInHousehold": "0",
+      "numberOfKidsUnder19": "0",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-21T21:06:01.435Z",
+      "wantsEstateInfo": false,
+    },
+    "5cbd72fd2e75fe14a547b95e": Object {
+      "__v": 1,
+      "_id": "5cbd72fd2e75fe14a547b95e",
+      "checkIns": Array [
+        "2019-04-22T07:54:47.538Z",
+      ],
+      "createdAt": "2019-04-22T07:53:33.289Z",
+      "firstName": "Hug",
+      "includedInEstatePlans": false,
+      "lastName": "Bug",
+      "memberIsNewOrRenewal": "new",
+      "membershipDate": "2019-04-22T07:53:33.287Z",
+      "needsAADL": Array [],
+      "needsIADL": Array [],
+      "numberInHousehold": "0",
+      "numberOfKidsUnder19": "0",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-22T07:54:47.671Z",
+      "wantsEstateInfo": false,
+    },
+    "5cbd731d2e75fe14a547b95f": Object {
+      "__v": 0,
+      "_id": "5cbd731d2e75fe14a547b95f",
+      "checkIns": Array [],
+      "createdAt": "2019-04-22T07:54:05.149Z",
+      "firstName": "Quirrel",
+      "includedInEstatePlans": false,
+      "lastName": "Buirrel",
+      "memberIsNewOrRenewal": "new",
+      "membershipDate": "2019-04-22T07:54:05.149Z",
+      "needsAADL": Array [],
+      "needsIADL": Array [],
+      "numberInHousehold": "0",
+      "numberOfKidsUnder19": "0",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-22T07:54:05.149Z",
+      "wantsEstateInfo": false,
+    },
+  },
+  "services": Object {
+    "5cad6bb686005a50797a851b": Object {
+      "__v": 0,
+      "_id": "5cad6bb686005a50797a851b",
+      "createdAt": "2019-04-10T04:06:14.852Z",
+      "details": "I guess barry needs a wheel chair too",
+      "memberId": "5c9dd4cb4eb48f7132365fa4",
+      "name": "Wheel chair loan",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-10T04:06:14.852Z",
+    },
+    "5cae0f781d7c8b5b323b8f2e": Object {
+      "__v": 0,
+      "_id": "5cae0f781d7c8b5b323b8f2e",
+      "createdAt": "2019-04-10T15:44:56.122Z",
+      "details": "Barry better bring that fricken wheel chair back soon",
+      "memberId": "5c9dd4cb4eb48f7132365fa4",
+      "name": "Wheel chair loan",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-10T15:44:56.122Z",
+    },
+    "5cb4b44f71227c02631109b6": Object {
+      "__v": 0,
+      "_id": "5cb4b44f71227c02631109b6",
+      "createdAt": "2019-04-15T16:41:51.359Z",
+      "memberId": "5c9dd4cb4eb48f7132365fa4",
+      "name": "Blood pressure monitoring",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-15T16:41:51.359Z",
+    },
+    "5cb695ccb905680fa9c5e862": Object {
+      "__v": 0,
+      "_id": "5cb695ccb905680fa9c5e862",
+      "createdAt": "2019-04-17T02:56:12.363Z",
+      "details": "1st of every month",
+      "memberId": "5cad46d96b32860017594caf",
+      "name": "Blood pressure monitoring",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-20T00:18:58.146Z",
+    },
+    "5cbcfcf967fdf109dce17a46": Object {
+      "__v": 0,
+      "_id": "5cbcfcf967fdf109dce17a46",
+      "createdAt": "2019-04-21T23:30:01.592Z",
+      "memberId": "5c9dd4cb4eb48f7132365fa4",
+      "name": "Meals on Wheels",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-21T23:30:01.592Z",
+    },
+    "5cbcfe93da8ded0a2ae46a23": Object {
+      "__v": 0,
+      "_id": "5cbcfe93da8ded0a2ae46a23",
+      "createdAt": "2019-04-21T23:36:51.062Z",
+      "memberId": "5cad46d96b32860017594caf",
+      "name": "Wheel chair loan",
+      "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+      "updatedAt": "2019-04-21T23:36:51.062Z",
+    },
+  },
+}
+`;
+
+exports[`Reports tests render should render correctly 1`] = `
+<div
+  className="reports-container page-container"
+>
+  <Link
+    className="button small tertiary icon"
+    replace={false}
+    to="/"
+  >
+    <i
+      className="material-icons button-icon"
+    >
+      keyboard_backspace
+    </i>
+     Back to home
+  </Link>
+  <div
+    className="page-header"
+  >
+    <h1>
+      Activity
+       
+      Reports
+    </h1>
+  </div>
+  <withRouter(TabPage)
+    onChange={[Function]}
+    startingTab="activities"
+    tabs={
+      Array [
+        Object {
+          "content": <React.Fragment>
+            <MonthPicker
+              id="month"
+              label="Reporting Month"
+              monthLabel=""
+              onChange={[Function]}
+              value={
+                Object {
+                  "clone": [Function],
+                  "format": [Function],
+                  "isAfter": [Function],
+                  "isBefore": [Function],
+                }
+              }
+              yearLabel=""
+            />
+            <withRouter(DataGrid)
+              data={
+                Array [
+                  Object {
+                    "activitiesThisMonth": 0,
+                    "activityName": "Bingo",
+                    "key": "Bingo",
+                    "newMembersThisMonth": 0,
+                    "signUpsThisMonth": 0,
+                    "totalActivitiesToDate": 0,
+                    "totalMembersThisMonth": 0,
+                    "totalMembersToDate": 0,
+                    "totalSignUpsToDate": 0,
+                  },
+                  Object {
+                    "activitiesThisMonth": 0,
+                    "activityName": "Card Games",
+                    "key": "Card Games",
+                    "newMembersThisMonth": 0,
+                    "signUpsThisMonth": 0,
+                    "totalActivitiesToDate": 0,
+                    "totalMembersThisMonth": 0,
+                    "totalMembersToDate": 0,
+                    "totalSignUpsToDate": 0,
+                  },
+                  Object {
+                    "activitiesThisMonth": 0,
+                    "activityName": "Lunch",
+                    "key": "Lunch",
+                    "newMembersThisMonth": 0,
+                    "signUpsThisMonth": 0,
+                    "totalActivitiesToDate": 0,
+                    "totalMembersThisMonth": 0,
+                    "totalMembersToDate": 0,
+                    "totalSignUpsToDate": 0,
+                  },
+                  Object {
+                    "activitiesThisMonth": 0,
+                    "activityName": "Poker night",
+                    "key": "Poker night",
+                    "newMembersThisMonth": 0,
+                    "signUpsThisMonth": 0,
+                    "totalActivitiesToDate": 0,
+                    "totalMembersThisMonth": 0,
+                    "totalMembersToDate": 0,
+                    "totalSignUpsToDate": 0,
+                  },
+                  Object {
+                    "activitiesThisMonth": 0,
+                    "activityName": "Yoga",
+                    "key": "Yoga",
+                    "newMembersThisMonth": 0,
+                    "signUpsThisMonth": 0,
+                    "totalActivitiesToDate": 0,
+                    "totalMembersThisMonth": 0,
+                    "totalMembersToDate": 0,
+                    "totalSignUpsToDate": 0,
+                  },
+                ]
+              }
+              includeFilterControls={false}
+              onRowClick={[Function]}
+            />
+          </React.Fragment>,
+          "icon": "event",
+          "id": "activities",
+          "label": "Activities",
+          "title": "Activity",
+        },
+        Object {
+          "content": <React.Fragment>
+            <withRouter(DataGrid)
+              data={
+                Array [
+                  Object {
+                    "key": "Blood pressure monitoring",
+                    "serviceName": "Blood pressure monitoring",
+                    "totalServices": 2,
+                  },
+                  Object {
+                    "key": "Meals on Wheels",
+                    "serviceName": "Meals on Wheels",
+                    "totalServices": 1,
+                  },
+                  Object {
+                    "key": "Wheel chair loan",
+                    "serviceName": "Wheel chair loan",
+                    "totalServices": 3,
+                  },
+                ]
+              }
+              includeFilterControls={false}
+            />
+          </React.Fragment>,
+          "icon": "list_alt",
+          "id": "services",
+          "label": "Services",
+          "title": "Service",
+        },
+        Object {
+          "content": <React.Fragment>
+            <List
+              data={
+                Array [
+                  Object {
+                    "key": "totalMembers",
+                    "main": "Total Members",
+                    "secondary": 6,
+                  },
+                  Object {
+                    "key": "checkIns",
+                    "main": "Total Check-Ins",
+                    "secondary": 35,
+                  },
+                ]
+              }
+              loading={false}
+            />
+          </React.Fragment>,
+          "icon": "people",
+          "id": "members",
+          "label": "Members",
+          "title": "Member",
+        },
+      ]
+    }
+  />
+</div>
+`;

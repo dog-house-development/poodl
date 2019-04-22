@@ -16,23 +16,27 @@ export class SelectActivities extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showEndedActivities: false
+            showEndedActivities: props.isSuper
         };
     }
 
     componentDidMount() {
-        const today = moment().startOf('day');
-        this.props.activityActions.filter({
-            startDate: {
-                $lte: today
-                    .clone()
-                    .add(1, 'days')
-                    .toISOString()
-            },
-            endDate: {
-                $gte: today.toISOString()
-            }
-        });
+        if (this.props.isSuper) {
+            this.props.activityActions.filter();
+        } else {
+            const today = moment().startOf('day');
+            this.props.activityActions.filter({
+                startDate: {
+                    $lte: today
+                        .clone()
+                        .add(1, 'days')
+                        .toISOString()
+                },
+                endDate: {
+                    $gte: today.toISOString()
+                }
+            });
+        }
     }
 
     getActivityNoticeMarkup(activity) {
@@ -63,14 +67,7 @@ export class SelectActivities extends Component {
                 return (
                     <div key={activity._id} className="selected-activity-panel-wrapper">
                         <div className="selected-activity-panel">
-                            <h3 className="activity-name">{activity.name}</h3>
-                            <p className="activity-description">{activity.description}</p>
-                            <p className="activity-description">
-                                {Utils.formatDateRange(activity.startDate, activity.endDate)}
-                            </p>
-
-                            {this.getActivityNoticeMarkup(activity)}
-
+                            {this.getActivityMarkup(activity)}
                             <div className="activity-button">{this.getActivityButtonMarkup(activity, true)}</div>
                         </div>
                     </div>
@@ -126,18 +123,39 @@ export class SelectActivities extends Component {
         );
     }
 
+    getDateIfSuper(activity) {
+        if (this.props.isSuper) {
+            return <p className="activity-description">{moment(activity.startDate).format('MMMM Do, YYYY')}</p>;
+        }
+    }
+
+    getActivityMarkup(activity) {
+        return (
+            <>
+                <h3 className="activity-name">{activity.name}</h3>
+                <p className="activity-description">{activity.description}</p>
+                <p className="activity-description">{Utils.formatDateRange(activity.startDate, activity.endDate)}</p>
+                {this.getDateIfSuper(activity)}
+                {this.getActivityNoticeMarkup(activity)}
+            </>
+        );
+    }
+
+    getSortedActivities() {
+        if (this.props.isSuper) {
+            return _.sortBy(this.props.activities, activity => activity.startDate);
+        }
+
+        return this.props.activities;
+    }
+
     getActivitiesMarkup() {
-        return _.map(this.props.activities, activity => {
+        return _.map(this.getSortedActivities(), activity => {
             if (moment(activity.endDate).isAfter(moment()) || this.state.showEndedActivities) {
                 return (
                     <div key={activity._id} className="select-activity-panel-wrapper">
                         <div className="select-activity-panel">
-                            <h3 className="activity-name">{activity.name}</h3>
-                            <p className="activity-description">{activity.description}</p>
-                            <p className="activity-description">
-                                {Utils.formatDateRange(activity.startDate, activity.endDate)}
-                            </p>
-                            {this.getActivityNoticeMarkup(activity)}
+                            {this.getActivityMarkup(activity)}
                             <div className="activity-button">{this.getActivityButtonMarkup(activity)}</div>
                         </div>
                     </div>
@@ -161,19 +179,28 @@ export class SelectActivities extends Component {
                 )}
                 <div className="selected-activities-panel">
                     <div className="panel">
-                        <h2 className="panel-title">Activities that you are signed up for today</h2>
+                        <h2 className="panel-title">
+                            {`Activities that you are signed up for${this.props.isSuper ? '' : ' today'}`}
+                        </h2>
                         <hr />
                         <div>{this.getSelectedActivitiesMarkup()}</div>
                     </div>
                 </div>
                 <div className="selectable-activities-panel">
                     <div className="panel">
-                        <h2 className="panel-title">Sign up for activities happening today</h2>
-                        <Button
-                            size="small"
-                            content={this.state.showEndedActivities ? 'Hide ended activities' : 'Show ended activities'}
-                            onClick={() => this.setState({ showEndedActivities: !this.state.showEndedActivities })}
-                        />
+                        <h2 className="panel-title">
+                            {`Sign up for activities${this.props.isSuper ? '' : ' happening today'}`}
+                        </h2>
+                        {this.props.isSuper ? null : (
+                            <Button
+                                size="small"
+                                content={
+                                    this.state.showEndedActivities ? 'Hide ended activities' : 'Show ended activities'
+                                }
+                                onClick={() => this.setState({ showEndedActivities: !this.state.showEndedActivities })}
+                            />
+                        )}
+
                         <hr />
                         <div className="select-activity-panels-container">{this.getActivitiesMarkup()}</div>
                     </div>
@@ -189,7 +216,8 @@ export const mapStateToProps = (state, props) => {
         activities: state.activities.all,
         activitiesLoading: state.activities.loading,
         activityErrors: state.activities.errors,
-        member: _.find(state.members.all, { _id: props.memberId })
+        member: _.find(state.members.all, { _id: props.memberId }),
+        isSuper: state.auth.admin.accessLevel === 'Super'
     };
 };
 

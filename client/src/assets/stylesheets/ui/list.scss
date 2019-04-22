@@ -56,6 +56,23 @@
         margin-top: 0.5em;
         font-size: 0.8em;
       }
+
+      &.no-click {
+        cursor: default;
+        border: none;
+
+        &:hover {
+          border-top: none;
+          border-bottom: none;
+          background-color: transparent;
+        }
+
+        .list-row-main-text {
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
     }
 
     .no-data-message {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import classnames from 'classnames';
 
 import Loading from './Loading';
 
@@ -17,7 +18,11 @@ const defaultProps = {
 };
 
 class List extends Component {
-    getHeaderMarkup = () => <div className="list-header">{this.props.name}</div>;
+    getHeaderMarkup() {
+        if (this.props.name) {
+            return <div className="list-header">{this.props.name}</div>;
+        }
+    }
 
     getBodyMarkup = () => {
         if (this.props.loading) {
@@ -27,7 +32,11 @@ class List extends Component {
             <p className="no-data-message">{this.props.noDataMessage}</p>
         ) : (
             _.map(this.props.data, row => (
-                <div key={row.key} id={row.key} onClick={this.props.onRowClick} className="list-row">
+                <div
+                    key={row.key}
+                    id={row.key}
+                    onClick={this.props.onRowClick}
+                    className={classnames('list-row', this.props.onRowClick ? '' : 'no-click')}>
                     <h4 id={row.key} className="list-row-main-text">
                         {row.main}
                     </h4>

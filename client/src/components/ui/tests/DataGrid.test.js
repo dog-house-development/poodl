@@ -3,7 +3,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import DataGrid from '../DataGrid';
+import { DataGrid } from '../DataGrid';
 
 configure({ adapter: new Adapter() });
 
@@ -17,7 +17,8 @@ describe('DataGrid tests', () => {
                     { name: 'Dong Nong', email: 'dongnong@nowhere.com', key: '123' },
                     { name: 'Juck Gruck', email: 'juckgruck@nowhere.com', key: '321' }
                 ],
-                loading: false
+                loading: false,
+                location: { search: {} }
             },
             _props
         );

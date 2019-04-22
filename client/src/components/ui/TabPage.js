@@ -6,8 +6,9 @@ import _ from 'lodash';
 import Utils from '../../utils/Utils';
 
 const propTypes = {
-    startingTab: PropTypes.string,
-    tabs: PropTypes.array
+    startingTab: PropTypes.string.isRequired,
+    tabs: PropTypes.array.isRequired,
+    onChange: PropTypes.func
 };
 
 const defaultProps = {};
@@ -19,13 +20,17 @@ class TabPage extends Component {
         this.state = { currentTab: _.find(props.tabs, { id: urlTab }) ? urlTab : props.startingTab };
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps, prevState) {
         const urlTab = Utils.getUrlParameter('tab', this.props.location.search);
         const urlTabExists = _.find(this.props.tabs, { id: urlTab });
         if (urlTab && urlTab !== this.state.currentTab && urlTabExists) {
             this.setState({ currentTab: urlTabExists ? urlTab : this.props.startingTab });
         } else if (!urlTab && this.props.startingTab !== this.state.currentTab) {
             this.setState({ currentTab: this.props.startingTab });
+        }
+
+        if (prevState.currentTab !== this.state.currentTab && this.props.onChange) {
+            this.props.onChange(this.state.currentTab);
         }
     }
 
