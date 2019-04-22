@@ -28,8 +28,8 @@ export class ViewAllActivities extends Component {
             data.push({
                 name: activity.name,
                 key: activity._id,
-                startDate: moment(activity.startDate).format('h:mm a, MMMM Do YYYY'),
-                endDate: moment(activity.endDate).format('h:mm a, MMMM Do YYYY'),
+                date: moment(activity.startDate).format('MMMM Do, YYYY'),
+                time: `${moment(activity.startDate).format('h:mm a')} - ${moment(activity.endDate).format('h:mm a')}`,
                 memberCount: activity.members.length
             });
         });
@@ -53,7 +53,7 @@ export class ViewAllActivities extends Component {
                     data={this.getDataGridContent()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
-                    sortBy={activity => moment(activity.startDate, 'h:mm a, MMMM Do YYYY')}
+                    sortBy={activity => moment(activity.date, 'MMMM Do, YYYY')}
                 />
             </div>
         );
