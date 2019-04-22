@@ -6,6 +6,22 @@ import _ from 'lodash';
 
 import { AddActivity, mapStateToProps, mapDispatchToProps } from '../AddActivity';
 
+// // Return a fixed timestamp when moment().format() is called
+// jest.mock('moment', () => () => ({
+//     startOf: () => '2018–04–22T12:34:56+00:00',
+//     get: () => {},
+//     isAfter: () => true,
+//     clone: () => {
+//         return {
+//             endOf: () => {
+//                 return {
+//                     endOf: () => {}
+//                 };
+//             }
+//         };
+//     }
+// }));
+
 configure({ adapter: new Adapter() });
 
 describe('Add activity tests', () => {
@@ -45,8 +61,9 @@ describe('Add activity tests', () => {
         wrapper.setState({
             name: 'Test',
             description: 'test description',
-            startDate: '1111-11-11T11:11:11',
-            endDate: '1111-11-11T11:11:11',
+            date: '1111-11-11T11:11:11',
+            startTime: '1111-11-11T11:11:11',
+            endTime: '1111-11-11T12:11:11',
             errors: { description: 'Description is required' }
         });
     };
@@ -56,7 +73,7 @@ describe('Add activity tests', () => {
     });
 
     describe('render', () => {
-        xit('should render correctly', () => {
+        it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();
         });
     });
