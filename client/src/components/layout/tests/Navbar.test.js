@@ -14,7 +14,6 @@ describe('Navbar tests', () => {
         props = _.assign(
             {},
             {
-                history: ['/login'],
                 content: 'Press me',
                 location: { pathname: '/' },
                 onClick: () => {}
@@ -93,34 +92,6 @@ describe('Navbar tests', () => {
         it('should return accordion markup', () => {
             instance.setState({ expanded: true });
             expect(instance.getAccordion()).toMatchSnapshot();
-        });
-    });
-    describe('getUserDropDownContent', () => {
-        it('should return drop down content', () => {
-            const mockCallBack = jest.fn();
-            expect(JSON.stringify(instance.getUserDropDownContent())).toEqual(
-                JSON.stringify([
-                    {
-                        content: 'Dashboard',
-                        onClick: () => {
-                            _.concat(instance.props.history.push('/dashboard'));
-                        }
-                    },
-                    {
-                        content: 'My profile',
-                        onClick: () => {
-                            _.concat(instance.props.history.push(`/admins/${this.props.auth.admin.id}`));
-                        }
-                    },
-                    { type: 'divider' },
-                    {
-                        content: 'Log out',
-                        onClick: () => {
-                            _.concat(instance.props.authActions.logoutAdmin());
-                        }
-                    }
-                ])
-            );
         });
     });
     describe('getSkinnyHeaderMarkup', () => {
