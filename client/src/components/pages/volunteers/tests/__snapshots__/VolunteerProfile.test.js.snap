@@ -274,7 +274,6 @@ exports[`VolunteerProfile tests render should render correctly 1`] = `
             "label": "Volunteer Info",
           },
           Object {
-            "description": "Please check all that apply.",
             "id": "skills",
             "inputs": Array [
               Object {
@@ -354,6 +353,7 @@ exports[`VolunteerProfile tests render should render correctly 1`] = `
             ],
             "kind": "group",
             "label": "Skills and Interests",
+            "submittableDescription": "Please check all that apply.",
           },
         ]
       }
