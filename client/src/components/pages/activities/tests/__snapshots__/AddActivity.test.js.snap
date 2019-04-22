@@ -2,15 +2,15 @@
 
 exports[`Add activity tests render should render correctly 1`] = `
 <div
-  className="add-activity-container"
+  className="add-activity-container page-container"
 >
   <Link
-    className="button small tertiary"
+    className="button small tertiary icon"
     replace={false}
     to="/activities"
   >
     <i
-      className="material-icons"
+      className="material-icons button-icon"
     >
       keyboard_backspace
     </i>
@@ -24,92 +24,77 @@ exports[`Add activity tests render should render correctly 1`] = `
     >
       Add Activity
     </h1>
-    <form
-      noValidate={true}
-      onSubmit={[Function]}
-    >
-      <OnClickOutside(ComboBox)
-        eventTypes={
-          Array [
-            "mousedown",
-            "touchstart",
-          ]
+    <DynamicForm
+      data={
+        Object {
+          "name": undefined,
         }
-        excludeScrollbar={false}
-        id="name"
-        label="Name"
-        onChange={[Function]}
-        outsideClickIgnoreClass="ignore-react-onclickoutside"
-        placeholder="Name"
-        preventDefault={false}
-        stopPropagation={false}
-        value="Test"
-      />
-      <Field
-        autoComplete="off"
-        autoFocus="off"
-        id="description"
-        key="description"
-        label="Description"
-        onChange={[Function]}
-        placeholder="Description"
-        size="normal"
-        type="text"
-      />
-      <div
-        className="side-by-side"
-      >
-        <TimePicker
-          ampmLabel=""
-          hourLabel=""
-          minuteLabel=""
-          name="startTime"
-          onChange={[Function]}
-          time={"2019-03-26T03:00:00.000Z"}
-          title="Start Time"
-        />
-        <TimePicker
-          ampmLabel=""
-          hourLabel=""
-          minuteLabel=""
-          name="endTime"
-          onChange={[Function]}
-          time={"2019-03-26T04:00:00.000Z"}
-          title="End Time"
-        />
-      </div>
-      <div
-        className="side-by-side"
-      >
-        <DatePicker
-          date="1111-11-11T11:11:11"
-          dayLabel=""
-          error=""
-          monthLabel=""
-          name="startDate"
-          onChange={[Function]}
-          title="Date"
-          yearLabel=""
-        />
-      </div>
-      <Button
-        content="Multiple Days"
-        dropdownButton={false}
-        kind="secondary"
-        onClick={[Function]}
-        size="small"
-        title="The activity spans multiple days"
-        type="button"
-      />
-      <Button
-        content="Add Activity"
-        dropdownButton={false}
-        formButton={true}
-        kind="primary"
-        size="medium"
-        type="submit"
-      />
-    </form>
+      }
+      errorDescription=""
+      errors={Object {}}
+      inputs={
+        Array [
+          Object {
+            "id": "activity",
+            "inputs": Array [
+              Object {
+                "id": "name",
+                "kind": "combobox",
+                "label": "Name",
+                "placeholder": "Name",
+              },
+              Object {
+                "id": "description",
+                "kind": "field",
+                "label": "Description",
+                "placeholder": "Description",
+              },
+              Object {
+                "id": "time",
+                "inputs": Array [
+                  Object {
+                    "id": "startTime",
+                    "kind": "timePicker",
+                    "label": "Start Time",
+                  },
+                  Object {
+                    "id": "endTime",
+                    "kind": "timePicker",
+                    "label": "End Time",
+                    "style": Object {
+                      "float": "right",
+                    },
+                  },
+                ],
+                "kind": "flex",
+              },
+              Object {
+                "id": "date",
+                "kind": "datePicker",
+                "label": "Date",
+              },
+            ],
+            "kind": "group",
+          },
+        ]
+      }
+      onChange={[Function]}
+      onSubmit={[Function]}
+      submitButtonLabel="Add Activity"
+      values={
+        Object {
+          "date": "1111-11-11T11:11:11",
+          "description": "test description",
+          "endTime": "1111-11-11T12:11:11",
+          "errors": Object {
+            "description": "Description is required",
+          },
+          "name": "Test",
+          "seniorCenterId": undefined,
+          "startTime": "1111-11-11T11:11:11",
+        }
+      }
+    />
   </div>
 </div>
 `;
