@@ -528,66 +528,73 @@ exports[`Reports tests render should render correctly 1`] = `
               label="Reporting Month"
               monthLabel=""
               onChange={[Function]}
-              value={"2019-04-01T07:00:00.000Z"}
+              value={
+                Object {
+                  "clone": [Function],
+                  "format": [Function],
+                  "isAfter": [Function],
+                  "isBefore": [Function],
+                }
+              }
               yearLabel=""
             />
             <withRouter(DataGrid)
               data={
                 Array [
                   Object {
-                    "activitiesThisMonth": 2,
+                    "activitiesThisMonth": 0,
                     "activityName": "Bingo",
                     "key": "Bingo",
-                    "newMembersThisMonth": 1,
-                    "signUpsThisMonth": 4,
-                    "totalActivitiesToDate": 5,
-                    "totalMembersThisMonth": 3,
-                    "totalMembersToDate": 6,
-                    "totalSignUpsToDate": 9,
-                  },
-                  Object {
-                    "activitiesThisMonth": 1,
-                    "activityName": "Card Games",
-                    "key": "Card Games",
                     "newMembersThisMonth": 0,
                     "signUpsThisMonth": 0,
-                    "totalActivitiesToDate": 1,
+                    "totalActivitiesToDate": 0,
                     "totalMembersThisMonth": 0,
                     "totalMembersToDate": 0,
                     "totalSignUpsToDate": 0,
                   },
                   Object {
-                    "activitiesThisMonth": 2,
+                    "activitiesThisMonth": 0,
+                    "activityName": "Card Games",
+                    "key": "Card Games",
+                    "newMembersThisMonth": 0,
+                    "signUpsThisMonth": 0,
+                    "totalActivitiesToDate": 0,
+                    "totalMembersThisMonth": 0,
+                    "totalMembersToDate": 0,
+                    "totalSignUpsToDate": 0,
+                  },
+                  Object {
+                    "activitiesThisMonth": 0,
                     "activityName": "Lunch",
                     "key": "Lunch",
-                    "newMembersThisMonth": 2,
-                    "signUpsThisMonth": 2,
-                    "totalActivitiesToDate": 2,
-                    "totalMembersThisMonth": 2,
-                    "totalMembersToDate": 2,
-                    "totalSignUpsToDate": 2,
+                    "newMembersThisMonth": 0,
+                    "signUpsThisMonth": 0,
+                    "totalActivitiesToDate": 0,
+                    "totalMembersThisMonth": 0,
+                    "totalMembersToDate": 0,
+                    "totalSignUpsToDate": 0,
                   },
                   Object {
-                    "activitiesThisMonth": 3,
+                    "activitiesThisMonth": 0,
                     "activityName": "Poker night",
                     "key": "Poker night",
-                    "newMembersThisMonth": 2,
-                    "signUpsThisMonth": 5,
-                    "totalActivitiesToDate": 3,
-                    "totalMembersThisMonth": 2,
-                    "totalMembersToDate": 2,
-                    "totalSignUpsToDate": 5,
+                    "newMembersThisMonth": 0,
+                    "signUpsThisMonth": 0,
+                    "totalActivitiesToDate": 0,
+                    "totalMembersThisMonth": 0,
+                    "totalMembersToDate": 0,
+                    "totalSignUpsToDate": 0,
                   },
                   Object {
-                    "activitiesThisMonth": 2,
+                    "activitiesThisMonth": 0,
                     "activityName": "Yoga",
                     "key": "Yoga",
-                    "newMembersThisMonth": 2,
-                    "signUpsThisMonth": 2,
-                    "totalActivitiesToDate": 2,
-                    "totalMembersThisMonth": 2,
-                    "totalMembersToDate": 2,
-                    "totalSignUpsToDate": 2,
+                    "newMembersThisMonth": 0,
+                    "signUpsThisMonth": 0,
+                    "totalActivitiesToDate": 0,
+                    "totalMembersThisMonth": 0,
+                    "totalMembersToDate": 0,
+                    "totalSignUpsToDate": 0,
                   },
                 ]
               }
