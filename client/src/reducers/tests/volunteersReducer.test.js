@@ -30,21 +30,6 @@ describe('FILTER_VOLUNTEER_BEGIN', () => {
     });
 });
 
-describe('FILTER_VOLUNTEER_SUCCESS', () => {
-    it('returns the filter.SUCCESS state', () => {
-        const testData = { firstName: 'Test', _id: '0' };
-        const mockPayload = { loading: false, all: testData, errors: {} };
-        const action = { type: Types.volunteer.filter.SUCCESS, payload: mockPayload };
-        const expectedState = {
-            loading: false,
-            all: { 0: { firstName: 'Test', _id: '0' }, undefined: {} },
-            errors: {}
-        };
-
-        expect(reducer(undefined, action)).toEqual(expectedState);
-    });
-});
-
 describe('GET_VOLUNTEER_BEGIN', () => {
     it('returns the  get.BEGIN state', () => {
         const mockPayload = { loading: true };
@@ -80,42 +65,11 @@ describe('EDIT_VOLUNTEER_BEGIN', () => {
     });
 });
 
-describe('EDIT_VOLUNTEER_SUCCESS', () => {
-    it('returns the edit.SUCCESS state', () => {
-        const testData = { firstName: 'Test', _id: '0' };
-        const mockPayload = { all: testData };
-        const action = { type: Types.volunteer.edit.SUCCESS, payload: mockPayload };
-        const expectedState = {
-            loading: false,
-            all: { undefined: { all: { _id: '0', firstName: 'Test' } } },
-            errors: {}
-        };
-
-        expect(reducer(undefined, action)).toEqual(expectedState);
-    });
-});
-
 describe('DELETE_VOLUNTEER_BEGIN', () => {
     it('returns the  delete.BEGIN state', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.volunteer.delete.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
-
-        expect(reducer(undefined, action)).toEqual(expectedState);
-    });
-});
-
-describe('DELETE_VOLUNTEER_SUCCESS', () => {
-    it('returns the delete.SUCCESS state', () => {
-        const testData = { firstName: 'Test', _id: '0' };
-        const deletedVolunteer = { firstName: 'John', _id: '123' };
-        const mockPayload = { payload: testData, deletedVolunteer };
-        const action = { type: Types.volunteer.delete.SUCCESS, payload: mockPayload };
-        const expectedState = {
-            loading: false,
-            all: {},
-            errors: {}
-        };
 
         expect(reducer(undefined, action)).toEqual(expectedState);
     });

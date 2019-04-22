@@ -54,17 +54,17 @@ exports[`Dropdown tests render should render open arrow dropdown correctly 1`] =
     />
     <button
       className="dropdown-content-row medium"
-      key="dropdown-row-7"
+      key="dropdown-row-4"
       onClick={[Function]}
     >
       party
     </button>
     <hr
-      key="divider-8"
+      key="divider-5"
     />
     <button
       className="dropdown-content-row medium"
-      key="dropdown-row-9"
+      key="dropdown-row-6"
       onClick={[Function]}
     >
       woohoo
@@ -98,17 +98,17 @@ exports[`Dropdown tests render should render open dropdown correctly 1`] = `
   >
     <button
       className="dropdown-content-row medium"
-      key="dropdown-row-4"
+      key="dropdown-row-1"
       onClick={[Function]}
     >
       party
     </button>
     <hr
-      key="divider-5"
+      key="divider-2"
     />
     <button
       className="dropdown-content-row medium"
-      key="dropdown-row-6"
+      key="dropdown-row-3"
       onClick={[Function]}
     >
       woohoo

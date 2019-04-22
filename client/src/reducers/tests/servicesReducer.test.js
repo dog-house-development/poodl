@@ -50,7 +50,7 @@ describe('GET_SERVICE_ERRORS', () => {
 });
 
 describe('FILTER_SERVICE_BEGIN', () => {
-    it('returns the  filter.BEGIN state', () => {
+    it('should set loading = true', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.filter.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -59,23 +59,8 @@ describe('FILTER_SERVICE_BEGIN', () => {
     });
 });
 
-describe('FILTER_SERVICE_SUCCESS', () => {
-    it('returns the filter.SUCCESS state', () => {
-        const testData = { name: 'Test', _id: 0 };
-        const mockPayload = { loading: false, all: testData, errors: {} };
-        const action = { type: Types.service.filter.SUCCESS, payload: mockPayload };
-        const expectedState = {
-            loading: false,
-            all: { 0: { name: 'Test', _id: 0 }, undefined: {} },
-            errors: {}
-        };
-
-        expect(reducer(undefined, action)).toEqual(expectedState);
-    });
-});
-
 describe('GET_SERVICE_BEGIN', () => {
-    it('returns the  get.BEGIN state', () => {
+    it('should set loading = true', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.get.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -85,7 +70,7 @@ describe('GET_SERVICE_BEGIN', () => {
 });
 
 describe('GET_SERVICE_SUCCESS', () => {
-    it('returns the get.SUCCESS state', () => {
+    it('should set loading to false and return services', () => {
         const mockPayload = { all: services };
         const action = { type: Types.service.get.SUCCESS, payload: mockPayload };
         const expectedState = {
@@ -103,7 +88,7 @@ describe('GET_SERVICE_SUCCESS', () => {
 });
 
 describe('EDIT_SERVICE_BEGIN', () => {
-    it('returns the  edit.BEGIN state', () => {
+    it('should set loading = true', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.edit.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
@@ -111,45 +96,12 @@ describe('EDIT_SERVICE_BEGIN', () => {
         expect(reducer(undefined, action)).toEqual(expectedState);
     });
 });
-describe('EDIT_SERVICE_SUCCESS', () => {
-    it('returns the filter.SUCCESS state', () => {
-        const mockPayload = { all: services };
-        const action = { type: Types.service.edit.SUCCESS, payload: mockPayload };
-        const expectedState = {
-            loading: false,
-            all: {
-                undefined: {
-                    all: [{ _id: 987, name: 'Food Delivery' }, { _id: 789, name: 'Insulin' }]
-                }
-            },
-            errors: {},
-            loading: false
-        };
-
-        expect(reducer(undefined, action)).toEqual(expectedState);
-    });
-});
 
 describe('DELETE_SERVICE_BEGIN', () => {
-    it('returns the  delete.BEGIN state', () => {
+    it('should set loading = true', () => {
         const mockPayload = { loading: true };
         const action = { type: Types.service.delete.BEGIN, payload: mockPayload };
         const expectedState = { loading: true, all: {}, errors: {} };
-
-        expect(reducer(undefined, action)).toEqual(expectedState);
-    });
-});
-describe('DELETE_SERVICE_SUCCESS', () => {
-    it('returns the delete.SUCCESS state', () => {
-        const testData = { name: 'Test', _id: '0' };
-        const deletedActivity = { name: 'Yoga', _id: '123' };
-        const mockPayload = { payload: services, deletedActivity };
-        const action = { type: Types.service.delete.SUCCESS, payload: mockPayload };
-        const expectedState = {
-            loading: false,
-            all: {},
-            errors: {}
-        };
 
         expect(reducer(undefined, action)).toEqual(expectedState);
     });
