@@ -22,18 +22,22 @@ export class SelectActivities extends Component {
     }
 
     componentDidMount() {
-        const today = moment().startOf('day');
-        this.props.activityActions.filter({
-            startDate: {
-                $lte: today
-                    .clone()
-                    .add(1, 'days')
-                    .toISOString()
-            },
-            endDate: {
-                $gte: today.toISOString()
-            }
-        });
+        if (this.props.isSuper) {
+            this.props.activityActions.filter();
+        } else {
+            const today = moment().startOf('day');
+            this.props.activityActions.filter({
+                startDate: {
+                    $lte: today
+                        .clone()
+                        .add(1, 'days')
+                        .toISOString()
+                },
+                endDate: {
+                    $gte: today.toISOString()
+                }
+            });
+        }
     }
 
     getActivityNoticeMarkup(activity) {
@@ -127,6 +131,12 @@ export class SelectActivities extends Component {
         );
     }
 
+    getDateIfSuper(activity) {
+        if (this.props.isSuper) {
+            return <p className="activity-description">{moment(activity.startDate).format('MMMM Do, YYYY')}</p>;
+        }
+    }
+
     getActivitiesMarkup() {
         return _.map(this.props.activities, activity => {
             if (moment(activity.endDate).isAfter(moment()) || this.state.showEndedActivities) {
@@ -138,6 +148,7 @@ export class SelectActivities extends Component {
                             <p className="activity-description">
                                 {Utils.formatDateRange(activity.startDate, activity.endDate)}
                             </p>
+                            {this.getDateIfSuper(activity)}
                             {this.getActivityNoticeMarkup(activity)}
                             <div className="activity-button">{this.getActivityButtonMarkup(activity)}</div>
                         </div>
@@ -190,7 +201,8 @@ export const mapStateToProps = (state, props) => {
         activities: state.activities.all,
         activitiesLoading: state.activities.loading,
         activityErrors: state.activities.errors,
-        member: _.find(state.members.all, { _id: props.memberId })
+        member: _.find(state.members.all, { _id: props.memberId }),
+        isSuper: state.auth.admin.accessLevel === 'Super'
     };
 };
 
