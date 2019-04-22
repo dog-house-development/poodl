@@ -33,31 +33,8 @@ describe('Dropdown tests', () => {
         setInstanceAndWrapper();
     });
 
-    describe('handleClickOutside', () => {
-        it('should set state to the open if it is closed', () => {
-            instance.setState({ open: false });
-            spyOn(instance, 'handleClickOutside');
-            const e = {
-                preventDefault: () => {}
-            };
-            instance.handleClickOutside(e);
-            expect(instance.state.open).toEqual(true);
-        });
-
-        it('should set state to the closed if it is open', () => {
-            instance.setState({ open: true });
-            spyOn(instance, 'handleClickOutside');
-            const e = {
-                preventDefault: () => {}
-            };
-            instance.handleClickOutside(e);
-            expect(instance.state.open).toEqual(false);
-        });
-    });
-
     describe('getDropdownContentMarkup', () => {
         it('should not return markup because open is false', () => {
-            //spyOn(instance, 'handleClickOutside');
             instance.setState({ open: false });
             expect(instance.getDropdownContentMarkup()).toEqual(undefined);
         });
