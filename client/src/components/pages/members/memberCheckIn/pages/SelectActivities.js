@@ -180,7 +180,7 @@ export class SelectActivities extends Component {
                 <div className="selected-activities-panel">
                     <div className="panel">
                         <h2 className="panel-title">
-                            Activities that you are signed up for{this.props.isSuper ? '' : ' today'}
+                            {`Activities that you are signed up for${this.props.isSuper ? '' : ' today'}`}
                         </h2>
                         <hr />
                         <div>{this.getSelectedActivitiesMarkup()}</div>
@@ -189,7 +189,7 @@ export class SelectActivities extends Component {
                 <div className="selectable-activities-panel">
                     <div className="panel">
                         <h2 className="panel-title">
-                            Sign up for activities{this.props.isSuper ? '' : ' happening today'}
+                            {`Sign up for activities${this.props.isSuper ? '' : ' happening today'}`}
                         </h2>
                         {this.props.isSuper ? null : (
                             <Button

@@ -19,7 +19,7 @@ const defaultProps = {
     includeFilterControls: true
 };
 
-class DataGrid extends Component {
+export class DataGrid extends Component {
     constructor(props) {
         super(props);
         const query = Utils.getUrlParameter('query', props.location.search);

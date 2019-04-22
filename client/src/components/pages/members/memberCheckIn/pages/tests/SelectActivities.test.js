@@ -12,6 +12,11 @@ describe('SelectActivities tests', () => {
         state = _.assign(
             {},
             {
+                auth: {
+                    admin: {
+                        accessLevel: 'Admin'
+                    }
+                },
                 members: {
                     all: { 123: { firstName: 'Sam', _id: '123' } },
                     errors: {},
@@ -45,19 +50,14 @@ describe('SelectActivities tests', () => {
 
     describe('mapStateToProps', () => {
         it('should map state to props', () => {
-            expect(mapStateToProps(state, props)).toEqual({
-                activities: { 321: { name: 'Yoga', _id: '321' } },
-                activitiesLoading: false,
-                activityErrors: {},
-                member: { firstName: 'Sam', _id: '123' }
-            });
+            expect(mapStateToProps(state, props)).toMatchSnapshot();
         });
     });
 
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ activityActions: {} }));
+            expect(mapDispatchToProps(dispatch)).toMatchSnapshot();
         });
     });
 
