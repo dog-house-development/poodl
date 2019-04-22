@@ -6,8 +6,8 @@ import _ from 'lodash';
 import Utils from '../../utils/Utils';
 
 const propTypes = {
-    startingTab: PropTypes.string,
-    tabs: PropTypes.array
+    startingTab: PropTypes.string.isRequired,
+    tabs: PropTypes.array.isRequired
 };
 
 const defaultProps = {};

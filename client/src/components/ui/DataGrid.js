@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { withRouter } from 'react-router-dom';
 
 import Loading from './Loading';
 import Field from './Field';
@@ -21,7 +22,8 @@ const defaultProps = {
 class DataGrid extends Component {
     constructor(props) {
         super(props);
-        this.state = { filterValue: '', filteredData: props.data };
+        const query = Utils.getUrlParameter('query', props.location.search);
+        this.state = { filterValue: query, filteredData: props.data };
     }
 
     componentDidUpdate(prevProps) {
@@ -76,7 +78,10 @@ class DataGrid extends Component {
 
     getBodyMarkup = () =>
         _.map(this.getData(), row => (
-            <tr key={row.key} onClick={e => this.props.onRowClick(e, row.key)}>
+            <tr
+                className={this.props.onRowClick ? '' : 'no-click'}
+                key={row.key}
+                onClick={e => (this.props.onRowClick ? this.props.onRowClick(e, row.key) : null)}>
                 {_.map(row, (value, key) => (key !== 'key' ? <td key={key}>{value}</td> : null))}
             </tr>
         ));
@@ -107,4 +112,4 @@ class DataGrid extends Component {
 
 DataGrid.propTypes = propTypes;
 DataGrid.defaultProps = defaultProps;
-export default DataGrid;
+export default withRouter(DataGrid);

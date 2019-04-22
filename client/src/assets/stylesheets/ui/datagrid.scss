@@ -64,6 +64,16 @@
             padding-right: 2vw;
           }
         }
+
+        &.no-click {
+          cursor: default;
+
+          &:hover {
+            border-top: none;
+            border-bottom: none;
+            background-color: transparent;
+          }
+        }
       }
     }
   }
