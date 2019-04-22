@@ -67,14 +67,7 @@ export class SelectActivities extends Component {
                 return (
                     <div key={activity._id} className="selected-activity-panel-wrapper">
                         <div className="selected-activity-panel">
-                            <h3 className="activity-name">{activity.name}</h3>
-                            <p className="activity-description">{activity.description}</p>
-                            <p className="activity-description">
-                                {Utils.formatDateRange(activity.startDate, activity.endDate)}
-                            </p>
-
-                            {this.getActivityNoticeMarkup(activity)}
-
+                            {this.getActivityMarkup(activity)}
                             <div className="activity-button">{this.getActivityButtonMarkup(activity, true)}</div>
                         </div>
                     </div>
@@ -136,19 +129,25 @@ export class SelectActivities extends Component {
         }
     }
 
+    getActivityMarkup(activity) {
+        return (
+            <>
+                <h3 className="activity-name">{activity.name}</h3>
+                <p className="activity-description">{activity.description}</p>
+                <p className="activity-description">{Utils.formatDateRange(activity.startDate, activity.endDate)}</p>
+                {this.getDateIfSuper(activity)}
+                {this.getActivityNoticeMarkup(activity)}
+            </>
+        );
+    }
+
     getActivitiesMarkup() {
         return _.map(this.props.activities, activity => {
             if (moment(activity.endDate).isAfter(moment()) || this.state.showEndedActivities) {
                 return (
                     <div key={activity._id} className="select-activity-panel-wrapper">
                         <div className="select-activity-panel">
-                            <h3 className="activity-name">{activity.name}</h3>
-                            <p className="activity-description">{activity.description}</p>
-                            <p className="activity-description">
-                                {Utils.formatDateRange(activity.startDate, activity.endDate)}
-                            </p>
-                            {this.getDateIfSuper(activity)}
-                            {this.getActivityNoticeMarkup(activity)}
+                            {this.getActivityMarkup(activity)}
                             <div className="activity-button">{this.getActivityButtonMarkup(activity)}</div>
                         </div>
                     </div>
