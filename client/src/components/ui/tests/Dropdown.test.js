@@ -32,6 +32,64 @@ describe('Dropdown tests', () => {
     beforeEach(() => {
         setInstanceAndWrapper();
     });
+    it('should set state to the open if it is closed', () => {
+        instance.setState({ open: false });
+        spyOn(instance, 'onDropdownClick');
+        const e = {
+            preventDefault: () => {}
+        };
+        instance.onDropdownClick(e);
+    });
+    describe('onDropdownClick', () => {
+        it('should set state to the closed if it is open', () => {
+            instance.setState({ open: true });
+            spyOn(instance, 'onDropdownClick');
+            const e = {
+                preventDefault: () => {}
+            };
+            instance.onDropdownClick(e);
+        });
+    });
+
+    describe('onDropdownRowClick', () => {
+        it('should set state to the open if it is closed', () => {
+            instance.setState({ open: false });
+            spyOn(instance, 'onDropdownRowClick');
+            const e = {
+                preventDefault: () => {}
+            };
+            instance.onDropdownRowClick(e);
+        });
+
+        it('should set state to the closed if it is open', () => {
+            instance.setState({ open: true });
+            spyOn(instance, 'onDropdownRowClick');
+            const e = {
+                preventDefault: () => {}
+            };
+            instance.onDropdownRowClick(e);
+        });
+    });
+
+    describe('handleClickOutside', () => {
+        it('should set state to the open if it is closed', () => {
+            instance.setState({ open: false });
+            spyOn(instance, 'handleClickOutside');
+            const e = {
+                preventDefault: () => {}
+            };
+            instance.handleClickOutside(e);
+        });
+
+        it('should set state to the closed if it is open', () => {
+            instance.setState({ open: true });
+            spyOn(instance, 'handleClickOutside');
+            const e = {
+                preventDefault: () => {}
+            };
+            instance.handleClickOutside(e);
+        });
+    });
 
     describe('getDropdownContentMarkup', () => {
         it('should not return markup because open is false', () => {
