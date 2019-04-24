@@ -1,0 +1,14 @@
+{
+    "admins": [
+        {
+            "_id": 123,
+            "firstName": "Bob",
+            "lastName": "Bub"
+        },
+        {
+            "_id": 321,
+            "firstName": "Lil",
+            "lastName": "Tup"
+        }
+    ]
+}

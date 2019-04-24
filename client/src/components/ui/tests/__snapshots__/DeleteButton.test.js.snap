@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteButton tests render should render form-Deletebutton correctly 1`] = `
+<Button
+  className="delete-button"
+  icon="remove_circle_outline"
+  kind="primary"
+  onClick={[Function]}
+  size="small"
+  type="button"
+/>
+`;
+
+exports[`DeleteButton tests render should render normal Deletebutton correctly 1`] = `
+<Button
+  className="delete-button"
+  icon="remove_circle_outline"
+  kind="primary"
+  onClick={[Function]}
+  size="small"
+  type="button"
+/>
+`;

@@ -104,10 +104,11 @@ exports[`RegisterAdmin tests render should render correctly 1`] = `
       values={
         Object {
           "email": "sam@test.com",
-          "errors": Object {
+          "error": Object {
             "email": "Invalid email",
           },
-          "name": "Sam",
+          "firstName": "Sam",
+          "lastName": "Smith",
           "password": "abc123",
           "password2": "abc123",
           "seniorCenterId": 123,
