@@ -239,7 +239,7 @@ const volunteerInputs = [
         id: 'skills',
         kind: 'group',
         label: 'Skills and Interests',
-        description: 'Please check all that apply.',
+        submittableDescription: 'Please check all that apply.',
         inputs: [
             {
                 id: 'houseMaintenanceAndRepairs',

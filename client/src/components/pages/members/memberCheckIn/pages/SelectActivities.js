@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import moment from 'moment';
 import ActivityActions from '../../../../../actions/activityActions';
-// import Loading from '../../../ui/Loading';
 import Button from '../../../../ui/Button';
 import Utils from '../../../../../utils/Utils';
 
@@ -17,22 +16,27 @@ export class SelectActivities extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showEndedActivities: false
+            showEndedActivities: props.isSuper
         };
     }
+
     componentDidMount() {
-        const today = moment().startOf('day');
-        this.props.activityActions.filter({
-            startDate: {
-                $lte: today
-                    .clone()
-                    .add(1, 'days')
-                    .toISOString()
-            },
-            endDate: {
-                $gte: today.toISOString()
-            }
-        });
+        if (this.props.isSuper) {
+            this.props.activityActions.filter();
+        } else {
+            const today = moment().startOf('day');
+            this.props.activityActions.filter({
+                startDate: {
+                    $lte: today
+                        .clone()
+                        .add(1, 'days')
+                        .toISOString()
+                },
+                endDate: {
+                    $gte: today.toISOString()
+                }
+            });
+        }
     }
 
     getActivityNoticeMarkup(activity) {
@@ -63,14 +67,7 @@ export class SelectActivities extends Component {
                 return (
                     <div key={activity._id} className="selected-activity-panel-wrapper">
                         <div className="selected-activity-panel">
-                            <h3 className="activity-name">{activity.name}</h3>
-                            <p className="activity-description">{activity.description}</p>
-                            <p className="activity-description">
-                                {Utils.formatDateRange(activity.startDate, activity.endDate)}
-                            </p>
-
-                            {this.getActivityNoticeMarkup(activity)}
-
+                            {this.getActivityMarkup(activity)}
                             <div className="activity-button">{this.getActivityButtonMarkup(activity, true)}</div>
                         </div>
                     </div>
@@ -85,32 +82,31 @@ export class SelectActivities extends Component {
         return <p>Activities that you are signed up for will appear here</p>;
     }
 
+    removeMemberFromActivity(activity) {
+        return _.pull(activity.members, this.props.memberId);
+    }
+
+    removeActivity = activity => () => {
+        this.props.activityActions.edit(activity._id, {
+            members: this.removeMemberFromActivity(activity)
+        });
+    };
+
     getActivityButtonMarkup(activity, selected) {
         if (_.includes(activity.members, this.props.memberId)) {
             return (
                 <div className="activity-button-wrapper">
                     <Button
-                        onClick={() => {
-                            this.props.activityActions.edit(activity._id, {
-                                members: [..._.remove(activity.members, this.props.memberId)]
-                            });
-                        }}
-                        kind="secondary">
-                        {selected ? (
-                            <>
-                                <i className="material-icons button-icon">remove_circle</i>
-                                Remove
-                            </>
-                        ) : (
-                            <>
-                                <i className="material-icons button-icon">assignment_turned_in</i>
-                                Signed up
-                            </>
-                        )}
+                        onClick={this.removeActivity(activity)}
+                        kind="secondary"
+                        icon={selected ? 'remove_circle' : 'assignment_turned_in'}
+                        disabled={this.props.activitiesLoading}>
+                        {selected ? 'Remove' : 'Signed Up'}
                     </Button>
                 </div>
             );
         }
+
         return (
             <div className="activity-button-wrapper">
                 <Button
@@ -118,26 +114,48 @@ export class SelectActivities extends Component {
                         this.props.activityActions.edit(activity._id, {
                             members: [...activity.members, this.props.memberId]
                         });
-                    }}>
-                    <i className="material-icons button-icon">assignment</i>
+                    }}
+                    icon="assignment"
+                    disabled={this.props.activitiesLoading}>
                     Sign up
                 </Button>
             </div>
         );
     }
 
+    getDateIfSuper(activity) {
+        if (this.props.isSuper) {
+            return <p className="activity-description">{moment(activity.startDate).format('MMMM Do, YYYY')}</p>;
+        }
+    }
+
+    getActivityMarkup(activity) {
+        return (
+            <>
+                <h3 className="activity-name">{activity.name}</h3>
+                <p className="activity-description">{activity.description}</p>
+                <p className="activity-description">{Utils.formatDateRange(activity.startDate, activity.endDate)}</p>
+                {this.getDateIfSuper(activity)}
+                {this.getActivityNoticeMarkup(activity)}
+            </>
+        );
+    }
+
+    getSortedActivities() {
+        if (this.props.isSuper) {
+            return _.sortBy(this.props.activities, activity => activity.startDate);
+        }
+
+        return this.props.activities;
+    }
+
     getActivitiesMarkup() {
-        return _.map(this.props.activities, activity => {
+        return _.map(this.getSortedActivities(), activity => {
             if (moment(activity.endDate).isAfter(moment()) || this.state.showEndedActivities) {
                 return (
                     <div key={activity._id} className="select-activity-panel-wrapper">
                         <div className="select-activity-panel">
-                            <h3 className="activity-name">{activity.name}</h3>
-                            <p className="activity-description">{activity.description}</p>
-                            <p className="activity-description">
-                                {Utils.formatDateRange(activity.startDate, activity.endDate)}
-                            </p>
-                            {this.getActivityNoticeMarkup(activity)}
+                            {this.getActivityMarkup(activity)}
                             <div className="activity-button">{this.getActivityButtonMarkup(activity)}</div>
                         </div>
                     </div>
@@ -161,19 +179,28 @@ export class SelectActivities extends Component {
                 )}
                 <div className="selected-activities-panel">
                     <div className="panel">
-                        <h2 className="panel-title">Activities that you are signed up for today</h2>
+                        <h2 className="panel-title">
+                            {`Activities that you are signed up for${this.props.isSuper ? '' : ' today'}`}
+                        </h2>
                         <hr />
                         <div>{this.getSelectedActivitiesMarkup()}</div>
                     </div>
                 </div>
                 <div className="selectable-activities-panel">
                     <div className="panel">
-                        <h2 className="panel-title">Sign up for activities happening today</h2>
-                        <Button
-                            size="small"
-                            content={this.state.showEndedActivities ? 'Hide ended activities' : 'Show ended activities'}
-                            onClick={() => this.setState({ showEndedActivities: !this.state.showEndedActivities })}
-                        />
+                        <h2 className="panel-title">
+                            {`Sign up for activities${this.props.isSuper ? '' : ' happening today'}`}
+                        </h2>
+                        {this.props.isSuper ? null : (
+                            <Button
+                                size="small"
+                                content={
+                                    this.state.showEndedActivities ? 'Hide ended activities' : 'Show ended activities'
+                                }
+                                onClick={() => this.setState({ showEndedActivities: !this.state.showEndedActivities })}
+                            />
+                        )}
+
                         <hr />
                         <div className="select-activity-panels-container">{this.getActivitiesMarkup()}</div>
                     </div>
@@ -189,7 +216,8 @@ export const mapStateToProps = (state, props) => {
         activities: state.activities.all,
         activitiesLoading: state.activities.loading,
         activityErrors: state.activities.errors,
-        member: _.find(state.members.all, { _id: props.memberId })
+        member: _.find(state.members.all, { _id: props.memberId }),
+        isSuper: state.auth.admin.accessLevel === 'Super'
     };
 };
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
+import classnames from 'classnames';
 
 const propTypes = {
     onClick: PropTypes.func,
@@ -9,7 +10,8 @@ const propTypes = {
     content: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     type: PropTypes.string,
     formButton: PropTypes.bool,
-    id: PropTypes.string
+    id: PropTypes.string,
+    icon: PropTypes.string
 };
 
 const defaultProps = {
@@ -19,21 +21,36 @@ const defaultProps = {
 };
 
 class Button extends Component {
+    getIconMarkup() {
+        if (this.props.icon) {
+            return <i className="material-icons button-icon">{this.props.icon}</i>;
+        }
+    }
+
     getContent() {
         if (this.props.loading) {
             return <Loading />;
         }
 
-        return this.props.content || this.props.children;
+        return (
+            <>
+                {this.getIconMarkup()} {this.props.content || this.props.children}
+            </>
+        );
     }
 
     render() {
-        const { content, size, kind, formButton, className, ...buttonProps } = this.props;
+        const { content, size, kind, formButton, className, icon, ...buttonProps } = this.props;
         return (
             <button
-                className={`button ${this.props.size} ${this.props.kind} ${
-                    this.props.formButton ? 'form-button' : ''
-                } ${className}`}
+                className={classnames(
+                    'button',
+                    this.props.size,
+                    this.props.kind,
+                    { 'form-button': this.props.formButton },
+                    { icon: this.props.icon },
+                    className
+                )}
                 {...buttonProps}>
                 {this.getContent()}
             </button>

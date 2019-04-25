@@ -20,7 +20,9 @@ export class MemberProfile extends Component {
 
     componentDidMount() {
         // call redux action to retrieve specified profile from api
-        this.props.memberActions.get(this.props.match.params.id);
+        this.props.memberActions.get(this.props.match.params.id, _.noop, () => {
+            this.props.history.push('/pageNotFound');
+        });
         this.props.serviceActions.filter();
         window.scrollTo(0, 0);
     }
@@ -71,8 +73,8 @@ export class MemberProfile extends Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/members" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to all members
+                <Link to="/members" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to all members
                 </Link>
                 <div className="page-header">
                     <h1>{this.getMemberName()}</h1>

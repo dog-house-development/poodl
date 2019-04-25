@@ -32,6 +32,7 @@ export default function(state = initialState, action) {
                 ...state,
                 loading: true
             };
+        // not
         case Types.volunteer.get.SUCCESS:
             return {
                 ...state,
@@ -44,6 +45,7 @@ export default function(state = initialState, action) {
                 ...state,
                 loading: true
             };
+        // not
         case Types.volunteer.edit.SUCCESS:
             return {
                 ...state,

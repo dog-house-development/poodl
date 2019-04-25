@@ -39,8 +39,8 @@ export class RegisterMember extends React.Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/members" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to all members
+                <Link to="/members" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to all members
                 </Link>
                 <div className="panel">
                     <h1 className="panel-title">Register Member</h1>
@@ -52,6 +52,7 @@ export class RegisterMember extends React.Component {
                         errors={this.props.errors}
                         values={this.state}
                         errorDescription="There are errors in this form."
+                        loading={this.props.loading}
                     />
                 </div>
             </div>

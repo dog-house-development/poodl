@@ -76,6 +76,7 @@ export default function(state = initialState, action) {
                 all: newState,
                 errors: {}
             };
+
         default:
             return state;
     }

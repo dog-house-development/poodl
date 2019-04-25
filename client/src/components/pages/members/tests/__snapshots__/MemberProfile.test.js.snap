@@ -5,12 +5,12 @@ exports[`MemberProfile tests render should render correctly 1`] = `
   className="page-container"
 >
   <Link
-    className="button small tertiary"
+    className="button small tertiary icon"
     replace={false}
     to="/members"
   >
     <i
-      className="material-icons"
+      className="material-icons button-icon"
     >
       keyboard_backspace
     </i>

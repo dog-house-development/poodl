@@ -1,26 +1,15 @@
-import ActionHelper from './utils/ActionHelper';
+import { getDefaultActions, ActionHelper } from './utils/ActionHelper';
 import Types from './types';
 
 export default {
-    create: (data, history) => dispatch => {
+    ...getDefaultActions(Types.volunteer),
+    create: (data, history, onSuccess, onFail) => dispatch => {
         data.accessLevel = 'Volunteer';
-        ActionHelper.create(dispatch, Types.volunteer, data, history);
+        return ActionHelper.create(dispatch, Types.volunteer, data, history, onSuccess, onFail);
     },
 
-    filter: data => dispatch => {
+    filter: (data, onSuccess, onFail) => dispatch => {
         data = { ...data, accessLevel: 'Volunteer' };
-        ActionHelper.filter(dispatch, Types.volunteer, data);
-    },
-
-    get: id => dispatch => {
-        ActionHelper.get(dispatch, Types.volunteer, id);
-    },
-
-    edit: (id, data, onSuccess) => dispatch => {
-        ActionHelper.edit(dispatch, Types.volunteer, id, data, onSuccess);
-    },
-
-    delete: (id, onSuccess) => dispatch => {
-        ActionHelper.delete(dispatch, Types.volunteer, id, onSuccess);
+        return ActionHelper.filter(dispatch, Types.volunteer, data, onSuccess, onFail);
     }
 };

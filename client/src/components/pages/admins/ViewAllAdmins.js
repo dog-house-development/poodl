@@ -15,13 +15,18 @@ export class ViewAllAdmins extends Component {
 
     componentDidMount() {
         // call redux action to retrieve all admins from api
-        this.props.adminActions.filter({ accessLevel: { $ne: 'Volunteer' } });
-        //this.props.adminActions.filter({ accessLevel: 'Super' });
+        this.props.adminActions.filter();
     }
 
     handleRowClick(e, id) {
         e.preventDefault();
         this.props.history.push(`/admins/${id}`);
+    }
+
+    getSuperColumnData(admin) {
+        if (this.props.adminIsSuper) {
+            return { super: admin.accessLevel === 'Super' ? 'Yes' : 'No' };
+        }
     }
 
     getDataGridContent() {
@@ -33,7 +38,7 @@ export class ViewAllAdmins extends Component {
                 firstName: admin.firstName,
                 lastName: admin.lastName,
                 email: admin.email,
-                super: admin.accessLevel === 'Super' ? 'Yes' : 'No',
+                ...this.getSuperColumnData(admin),
                 key: admin._id
             });
         });
@@ -43,12 +48,12 @@ export class ViewAllAdmins extends Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/dashboard" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to home
+                <Link to="/dashboard" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
                 <div className="page-header">
-                    <h1>Manage Admins</h1>
-                    <Link to="/admins/register" className="button small primary">
+                    <h1>Admins</h1>
+                    <Link to="/admins/register" className="button small primary icon">
                         <i className="material-icons button-icon">person_add</i>
                         Add admin
                     </Link>
@@ -67,7 +72,8 @@ export const mapStateToProps = (state, props) => {
     return {
         admins: state.admins.all,
         loading: state.admins.loading,
-        errors: state.admins.errors
+        errors: state.admins.errors,
+        adminIsSuper: state.auth.admin.accessLevel === 'Super'
     };
 };
 

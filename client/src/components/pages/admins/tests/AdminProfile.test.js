@@ -69,7 +69,7 @@ describe('AdminProfile tests', () => {
     describe('mapDispatchToProps', () => {
         it('should map dispatch to props', () => {
             const dispatch = jest.fn();
-            expect(JSON.stringify(mapDispatchToProps(dispatch))).toEqual(JSON.stringify({ adminActions: {} }));
+            expect(mapDispatchToProps(dispatch)).toMatchSnapshot();
         });
     });
 

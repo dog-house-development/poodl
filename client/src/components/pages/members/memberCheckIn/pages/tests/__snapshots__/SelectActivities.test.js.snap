@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectActivities tests mapDispatchToProps should map dispatch to props 1`] = `
+Object {
+  "activityActions": Object {
+    "create": [Function],
+    "delete": [Function],
+    "edit": [Function],
+    "filter": [Function],
+    "get": [Function],
+  },
+}
+`;
+
+exports[`SelectActivities tests mapStateToProps should map state to props 1`] = `
+Object {
+  "activities": Object {
+    "321": Object {
+      "_id": "321",
+      "name": "Yoga",
+    },
+  },
+  "activitiesLoading": false,
+  "activityErrors": Object {},
+  "isSuper": false,
+  "member": Object {
+    "_id": "123",
+    "firstName": "Sam",
+  },
+}
+`;
+
+exports[`SelectActivities tests render should render correctly 1`] = `
+<div>
+  <h2
+    className="panel-title"
+  >
+    Hello 
+    Sam
+     
+    !
+  </h2>
+  <p
+    className="last-check-in"
+  >
+    Welcome! This is your first time checking in.
+  </p>
+  <div
+    className="selected-activities-panel"
+  >
+    <div
+      className="panel"
+    >
+      <h2
+        className="panel-title"
+      >
+        Activities that you are signed up for today
+      </h2>
+      <hr />
+      <div>
+        <p>
+          Activities that you are signed up for will appear here
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="selectable-activities-panel"
+  >
+    <div
+      className="panel"
+    >
+      <h2
+        className="panel-title"
+      >
+        Sign up for activities happening today
+      </h2>
+      <Button
+        content="Show ended activities"
+        kind="primary"
+        onClick={[Function]}
+        size="small"
+        type="button"
+      />
+      <hr />
+      <div
+        className="select-activity-panels-container"
+      />
+    </div>
+  </div>
+  <div
+    className="clear"
+  />
+</div>
+`;

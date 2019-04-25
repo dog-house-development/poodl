@@ -52,7 +52,8 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 3pt $blue-outline inset;
+        box-shadow: none;
+        color: $gray-6;
       }
 
       &:first-child {
@@ -67,14 +68,6 @@
         text-align: right;
         padding-left: 1.25vw;
         padding-right: 1vw;
-      }
-
-      &:focus {
-        box-shadow: none;
-
-        .view-by-date-header-button-arrow {
-          color: $button-primary;
-        }
       }
 
       .view-by-date-header-button-arrow {

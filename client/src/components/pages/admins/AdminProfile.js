@@ -8,10 +8,37 @@ import { DeleteButton } from './../../ui/DeleteButton';
 import AdminActions from '../../../actions/adminActions';
 import DynamicForm from '../../ui/DynamicForm';
 import adminInputs from './adminInputs';
+import AuthActions from '../../../actions/authActions';
 
 export class AdminProfile extends Component {
     componentDidMount() {
-        this.props.adminActions.get(this.props.match.params.id);
+        this.props.adminActions.get(this.props.match.params.id, _.noop, () => {
+            this.props.history.push('/pageNotFound');
+        });
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.authAdminChanged()) {
+            const newAuthAdmin = {
+                id: this.props.admin._id,
+                firstName: this.props.admin.firstName,
+                lastName: this.props.admin.lastName,
+                seniorCenterId: this.props.admin.seniorCenterId,
+                accessLevel: this.props.admin.accessLevel
+            };
+
+            this.props.authActions.setCurrentAdmin(newAuthAdmin);
+        }
+    }
+
+    authAdminChanged() {
+        if (this.props.admin) {
+            const { firstName, lastName, _id } = this.props.admin;
+            const nameChanged =
+                firstName !== this.props.auth.admin.firstName || lastName !== this.props.auth.admin.lastName;
+            const idChanged = _id === this.props.auth.admin.id;
+            return idChanged && nameChanged;
+        }
     }
 
     getAdminName() {
@@ -45,8 +72,8 @@ export class AdminProfile extends Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/admins" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to all admins
+                <Link to="/admins" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to all admins
                 </Link>
                 <div className="page-header">
                     <h1>{this.getAdminName()}</h1>
@@ -76,7 +103,8 @@ export const mapStateToProps = (state, props) => {
 
 export const mapDispatchToProps = dispatch => {
     return {
-        adminActions: bindActionCreators(AdminActions, dispatch)
+        adminActions: bindActionCreators(AdminActions, dispatch),
+        authActions: bindActionCreators(AuthActions, dispatch)
     };
 };
 

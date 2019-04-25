@@ -63,6 +63,49 @@ describe('Navbar tests', () => {
         });
     });
 
+    describe('updateWidth', () => {
+        it('should set skinny to true if window is small and skinny is false', () => {
+            window.innerWidth = 699;
+            instance.setState({ skinny: true });
+            instance.updateWidth();
+            expect(instance.state).toEqual({ skinny: true, expanded: false });
+        });
+        it('should set skinny to false if window is large and skinny is true', () => {
+            window.innerWidth = 701;
+            instance.setState({ skinny: true });
+            instance.updateWidth();
+            expect(instance.state).toEqual({ skinny: false, expanded: false });
+        });
+    });
+
+    describe('handleMenuClick', () => {
+        it('should toggle expanded state', () => {
+            instance.setState({ expanded: false });
+            instance.handleMenuClick();
+            expect(instance.state).toEqual({ expanded: true, skinny: false });
+            instance.handleMenuClick();
+            expect(instance.state).toEqual({ expanded: false, skinny: false });
+        });
+    });
+
+    describe('getAccordion', () => {
+        it('should return accordion markup', () => {
+            instance.setState({ expanded: true });
+            expect(instance.getAccordion()).toMatchSnapshot();
+        });
+    });
+    describe('getSkinnyHeaderMarkup', () => {
+        it('should return skinny header markup', () => {
+            expect(instance.getSkinnyHeaderMarkup()).toMatchSnapshot();
+        });
+    });
+    describe('componentWillUnmount', () => {
+        it('should run without breaking', () => {
+            spyOn(instance, 'componentDidMount');
+            instance.componentDidMount();
+        });
+    });
+
     describe('render', () => {
         it('should render links for logged in admins', () => {
             setInstanceAndWrapper(
@@ -73,6 +116,20 @@ describe('Navbar tests', () => {
         });
 
         it('should render links for nobody logged in', () => {
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render member check-in header', () => {
+            setInstanceAndWrapper({ location: { pathname: '/member-check-in' } });
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        it('should render skinny header', () => {
+            setInstanceAndWrapper(
+                {},
+                { auth: { isAuthenticated: true, admin: { firstName: 'Sam', lastName: 'Bam' } } }
+            );
+            instance.setState({ skinny: true });
             expect(wrapper).toMatchSnapshot();
         });
     });

@@ -16,7 +16,9 @@ export class VolunteerProfile extends Component {
 
     componentDidMount() {
         // call redux action to retrieve specified profile from api
-        this.props.volunteerActions.get(this.props.match.params.id);
+        this.props.volunteerActions.get(this.props.match.params.id, _.noop, () => {
+            this.props.history.push('/pageNotFound');
+        });
         window.scrollTo(0, 0);
     }
 
@@ -39,8 +41,8 @@ export class VolunteerProfile extends Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/volunteers" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to all volunteers
+                <Link to="/volunteers" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to all volunteers
                 </Link>
                 <div>
                     <div className="page-header">

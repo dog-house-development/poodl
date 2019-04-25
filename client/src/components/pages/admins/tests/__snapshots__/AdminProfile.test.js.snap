@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AdminProfile tests mapDispatchToProps should map dispatch to props 1`] = `
+Object {
+  "adminActions": Object {
+    "create": [Function],
+    "delete": [Function],
+    "edit": [Function],
+    "filter": [Function],
+    "get": [Function],
+  },
+  "authActions": Object {
+    "loginAdmin": [Function],
+    "logoutAdmin": [Function],
+    "setCurrentAdmin": [Function],
+  },
+}
+`;
+
 exports[`AdminProfile tests mapStateToProps should map state to props 1`] = `
 Object {
   "admin": Object {
@@ -25,12 +42,12 @@ exports[`AdminProfile tests render should render correctly 1`] = `
   className="page-container"
 >
   <Link
-    className="button small tertiary"
+    className="button small tertiary icon"
     replace={false}
     to="/admins"
   >
     <i
-      className="material-icons"
+      className="material-icons button-icon"
     >
       keyboard_backspace
     </i>

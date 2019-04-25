@@ -1,5 +1,96 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Navbar tests getAccordion should return accordion markup 1`] = `
+<ul
+  className="accordion"
+  onClick={[Function]}
+>
+  <li>
+    <Link
+      replace={false}
+      to="/dashboard"
+    >
+      My Dashboard
+    </Link>
+  </li>
+  <li>
+    <Link
+      replace={false}
+      to="/activities"
+    >
+      Activities
+    </Link>
+  </li>
+  <li>
+    <Link
+      replace={false}
+      to="/member-check-in"
+    >
+      Member check-in
+    </Link>
+  </li>
+  <li
+    className="line"
+  >
+    <Button
+      id="myProfile"
+      kind="secondary"
+      onClick={[Function]}
+      size="small"
+      type="button"
+    >
+      My Profile
+    </Button>
+  </li>
+  <li>
+    <Button
+      id="logout"
+      kind="secondary"
+      onClick={[Function]}
+      size="small"
+      type="button"
+    >
+      Log out
+    </Button>
+  </li>
+</ul>
+`;
+
+exports[`Navbar tests getSkinnyHeaderMarkup should return skinny header markup 1`] = `
+<div
+  className="header skinny"
+>
+  <ul>
+    <li
+      className="poodl"
+    >
+      <Link
+        replace={false}
+        to="/dashboard"
+      >
+        Poodl
+      </Link>
+    </li>
+    <li
+      className="right menu"
+    >
+      <Button
+        kind="tertiary"
+        onClick={[Function]}
+        size="small"
+        type="button"
+      >
+        <i
+          className="material-icons"
+        >
+          menu
+        </i>
+      </Button>
+    </li>
+  </ul>
+</div>
+`;
+
 exports[`Navbar tests render should render links for logged in admins 1`] = `
 <div
   className="header"
@@ -19,7 +110,7 @@ exports[`Navbar tests render should render links for logged in admins 1`] = `
       className="right"
       style={
         Object {
-          "marginTop": "12px",
+          "marginTop": "0.7em",
         }
       }
     >
@@ -118,6 +209,53 @@ exports[`Navbar tests render should render links for nobody logged in 1`] = `
       >
         Log in
       </Link>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Navbar tests render should render member check-in header 1`] = `
+<div
+  className="header check-in-header"
+>
+  <h1
+    className="check-in-title"
+  >
+    Member check in
+  </h1>
+</div>
+`;
+
+exports[`Navbar tests render should render skinny header 1`] = `
+<div
+  className="header skinny"
+>
+  <ul>
+    <li
+      className="poodl"
+    >
+      <Link
+        replace={false}
+        to="/dashboard"
+      >
+        Poodl
+      </Link>
+    </li>
+    <li
+      className="right menu"
+    >
+      <Button
+        kind="tertiary"
+        onClick={[Function]}
+        size="small"
+        type="button"
+      >
+        <i
+          className="material-icons"
+        >
+          menu
+        </i>
+      </Button>
     </li>
   </ul>
 </div>

@@ -7,37 +7,38 @@ import _ from 'lodash';
  * @param type      {String}    the type to create the action for
  * @param errors    {Object}    errors data to send in action payload
  */
-const getErrors = (dispatch, type, errors) => {
+export const getErrors = (dispatch, type, errors) => {
     dispatch({
         type: type.ERROR,
         payload: errors.response.data
     });
 };
 
-export default {
+export const ActionHelper = {
     /**
      * Action creator for creating a new doc
      * @param dispatch  {Function}  the action dispatcher
-     * @param type      {String}    the type to create the action for
+     * @param type      {Object}    the type to create the action for
      * @param data      {Object}    data for the new doc
-     * @param redirect  {boolean}   redirect to the page for the newly created doc
+     * @param onSuccess {Function}  callback for when creating is successful
      */
-    create: (dispatch, type, data, history, onSuccess = _.noop) => {
+    create: async (dispatch, type, data, history, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.create.BEGIN });
-        axios
-            .post(`/api/${type.url}/`, data)
-            .then(res => {
-                dispatch({
-                    type: type.create.SUCCESS,
-                    payload: res.data
-                });
-                onSuccess();
-                if (history) {
-                    history.push(`/${type.clientUrl || type.url}/${res.data._id}`);
-                }
-                return res.data;
-            })
-            .catch(err => getErrors(dispatch, type, err));
+        try {
+            const res = await axios.post(`/api/${type.url}/`, data);
+
+            dispatch({
+                type: type.create.SUCCESS,
+                payload: res.data
+            });
+            onSuccess(res);
+            if (history) {
+                history.push(`/${type.clientUrl || type.url}/${res.data._id}`);
+            }
+        } catch (err) {
+            getErrors(dispatch, type, err);
+            onFail(err);
+        }
     },
 
     /**
@@ -46,18 +47,19 @@ export default {
      * @param type      {String}    the type to create the action for
      * @param data      {Object}    data for the new doc
      */
-    filter: (dispatch, type, data = {}) => {
+    filter: async (dispatch, type, data = {}, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.filter.BEGIN });
-        axios
-            .post(`/api/${type.url}/filter`, data)
-            .then(res => {
-                dispatch({
-                    type: type.filter.SUCCESS,
-                    payload: res.data
-                });
-                return res.data;
-            })
-            .catch(err => getErrors(dispatch, type, err));
+        try {
+            const res = await axios.post(`/api/${type.url}/filter`, data);
+            dispatch({
+                type: type.filter.SUCCESS,
+                payload: res.data
+            });
+            onSuccess(res);
+        } catch (err) {
+            getErrors(dispatch, type, err);
+            onFail(err);
+        }
     },
 
     /**
@@ -65,19 +67,21 @@ export default {
      * @param dispatch  {Function}  the action dispatcher
      * @param type      {String}    the type to create the action for
      * @param id        {String}    id of the doc to retrieve
+     * @param onFail {Function}  callback for when an error occurs
      */
-    get: (dispatch, type, id) => {
+    get: async (dispatch, type, id, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.get.BEGIN });
-        axios
-            .get(`/api/${type.url}/${id}`)
-            .then(res => {
-                dispatch({
-                    type: type.get.SUCCESS,
-                    payload: res.data
-                });
-                return res.data;
-            })
-            .catch(err => getErrors(dispatch, type, err));
+        try {
+            const res = await axios.get(`/api/${type.url}/${id}`);
+            dispatch({
+                type: type.get.SUCCESS,
+                payload: res.data
+            });
+            onSuccess(res);
+        } catch (err) {
+            getErrors(dispatch, type, err);
+            onFail(err);
+        }
     },
 
     /**
@@ -86,20 +90,21 @@ export default {
      * @param type      {String}    the type to create the action for
      * @param id        {String}    id of the doc to edit
      * @param data      {Object}    data to modify the doc
+     * @param onSuccess {Function}  callback for when creating is successful
      */
-    edit: (dispatch, type, id, data, onSuccess = _.noop) => {
+    edit: async (dispatch, type, id, data, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.edit.BEGIN });
-        axios
-            .patch(`/api/${type.url}/${id}`, data)
-            .then(res => {
-                dispatch({
-                    type: type.edit.SUCCESS,
-                    payload: res.data
-                });
-
-                onSuccess();
-            })
-            .catch(err => getErrors(dispatch, type, err));
+        try {
+            const res = await axios.patch(`/api/${type.url}/${id}`, data);
+            dispatch({
+                type: type.edit.SUCCESS,
+                payload: res.data
+            });
+            onSuccess(res);
+        } catch (err) {
+            getErrors(dispatch, type, err);
+            onFail(err);
+        }
     },
 
     /**
@@ -107,19 +112,46 @@ export default {
      * @param dispatch  {Function}  the action dispatcher
      * @param type      {String}    the type to create the action for
      * @param id        {String}    id of the doc to delete
+     * @param onSuccess {Function}  callback for when creating is successful
      */
-    delete: (dispatch, type, id, onSuccess = _.noop) => {
+    delete: async (dispatch, type, id, onSuccess = _.noop, onFail = _.noop) => {
         dispatch({ type: type.delete.BEGIN });
-        axios
-            .delete(`/api/${type.url}/${id}`)
-            .then(res => {
-                dispatch({
-                    type: type.delete.SUCCESS,
-                    payload: res.data
-                });
-
-                onSuccess();
-            })
-            .catch(err => getErrors(dispatch, type, err));
+        try {
+            const res = await axios.delete(`/api/${type.url}/${id}`);
+            // Call on success before dispatch so the props are the same
+            // and you can still use them inside of this function.
+            onSuccess(res);
+            dispatch({
+                type: type.delete.SUCCESS,
+                payload: res.data
+            });
+        } catch (err) {
+            getErrors(dispatch, type, err);
+            onFail(err);
+        }
     }
+};
+
+export const getDefaultActions = type => {
+    return {
+        create: (data, history, onSuccess, onFail) => dispatch => {
+            return ActionHelper.create(dispatch, type, data, history, onSuccess, onFail);
+        },
+
+        filter: (data, onSuccess, onFail) => dispatch => {
+            return ActionHelper.filter(dispatch, type, data, onSuccess, onFail);
+        },
+
+        get: (id, onSuccess, onFail) => dispatch => {
+            return ActionHelper.get(dispatch, type, id, onSuccess, onFail);
+        },
+
+        edit: (id, data, onSuccess, onFail) => dispatch => {
+            return ActionHelper.edit(dispatch, type, id, data, onSuccess, onFail);
+        },
+
+        delete: (id, onSuccess, onFail) => dispatch => {
+            return ActionHelper.delete(dispatch, type, id, onSuccess, onFail);
+        }
+    };
 };

@@ -17,8 +17,7 @@ export class DeleteButton extends Component {
 
     render() {
         return (
-            <Button onClick={this.handleClick} size="small" className="delete-button">
-                <i className="material-icons button-icon">remove_circle_outline</i>
+            <Button onClick={this.handleClick} size="small" className="delete-button" icon="remove_circle_outline">
                 {this.props.children}
             </Button>
         );

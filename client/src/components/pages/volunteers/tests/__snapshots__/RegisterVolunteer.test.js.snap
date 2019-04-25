@@ -5,12 +5,12 @@ exports[`Register volunteer tests render should render correctly 1`] = `
   className="register-container page-container"
 >
   <Link
-    className="button small tertiary"
+    className="button small tertiary icon"
     replace={false}
     to="/volunteers"
   >
     <i
-      className="material-icons"
+      className="material-icons button-icon"
     >
       keyboard_backspace
     </i>
@@ -266,7 +266,6 @@ exports[`Register volunteer tests render should render correctly 1`] = `
             "label": "Volunteer Info",
           },
           Object {
-            "description": "Please check all that apply.",
             "id": "skills",
             "inputs": Array [
               Object {
@@ -346,6 +345,7 @@ exports[`Register volunteer tests render should render correctly 1`] = `
             ],
             "kind": "group",
             "label": "Skills and Interests",
+            "submittableDescription": "Please check all that apply.",
           },
         ]
       }

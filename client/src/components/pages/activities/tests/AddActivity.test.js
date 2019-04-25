@@ -45,8 +45,9 @@ describe('Add activity tests', () => {
         wrapper.setState({
             name: 'Test',
             description: 'test description',
-            startDate: '1111-11-11T11:11:11',
-            endDate: '1111-11-11T11:11:11',
+            date: '1111-11-11T11:11:11',
+            startTime: '1111-11-11T11:11:11',
+            endTime: '1111-11-11T12:11:11',
             errors: { description: 'Description is required' }
         });
     };
@@ -56,7 +57,7 @@ describe('Add activity tests', () => {
     });
 
     describe('render', () => {
-        xit('should render correctly', () => {
+        it('should render correctly', () => {
             expect(wrapper).toMatchSnapshot();
         });
     });

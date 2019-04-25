@@ -1,51 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Login tests mapStateToProps should map state to props 1`] = `
+Object {
+  "auth": Object {
+    "errors": Object {},
+    "isAuthenticated": false,
+    "loading": false,
+  },
+  "errors": Object {},
+  "loading": false,
+}
+`;
+
 exports[`Login tests render should render correctly 1`] = `
 <div
-  className="login-container"
+  className="login-container page-container"
 >
   <Link
-    className="button small tertiary"
+    className="button small tertiary icon"
     replace={false}
     to="/"
   >
     <i
-      className="material-icons"
+      className="material-icons button-icon"
     >
       keyboard_backspace
     </i>
      Back to home
   </Link>
-  <Form
-    buttonLabel="Log in"
-    errors={Array []}
-    fields={
-      Array [
+  <div
+    className="panel"
+  >
+    <DynamicForm
+      errorDescription=""
+      errors={Object {}}
+      inputs={
+        Array [
+          Object {
+            "id": "login",
+            "inputs": Array [
+              Object {
+                "id": "email",
+                "kind": "field",
+                "label": "Email",
+                "placeholder": "Password",
+                "type": "email",
+              },
+              Object {
+                "id": "password",
+                "kind": "field",
+                "label": "Password",
+                "placeholder": "Password",
+                "type": "password",
+              },
+            ],
+            "kind": "group",
+            "label": "Log In",
+          },
+        ]
+      }
+      loading={false}
+      onChange={[Function]}
+      onSubmit={[Function]}
+      submitButtonLabel="Log in"
+      values={
         Object {
-          "autoComplete": "on",
-          "error": undefined,
-          "id": "email",
-          "label": "Email",
-          "onChange": [Function],
-          "placeholder": "Email...",
-          "type": "email",
-          "value": "test@test.test",
-        },
-        Object {
-          "autoComplete": "on",
-          "error": undefined,
-          "id": "password",
-          "label": "Password",
-          "onChange": [Function],
-          "placeholder": "Password......",
-          "type": "password",
-          "value": "abc123",
-        },
-      ]
-    }
-    formTitle="Log In"
-    noValidate={true}
-    onSubmit={[Function]}
-  />
+          "email": "test@test.test",
+          "errors": Object {},
+          "password": "abc123",
+        }
+      }
+    />
+  </div>
 </div>
 `;

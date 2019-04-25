@@ -13,10 +13,12 @@ export class Dashboard extends Component {
         if (this.props.auth.admin.accessLevel !== 'Volunteer') {
             return (
                 <>
-                    <Link to="/admins" className="button primary medium">
+                    <Link to="/admins" className="button primary medium icon">
+                        <i className="material-icons button-icon">brightness_auto</i>
                         Admins
                     </Link>
-                    <Link to="/volunteers" className="button primary medium">
+                    <Link to="/volunteers" className="button primary medium icon">
+                        <i className="material-icons button-icon">how_to_reg</i>
                         Volunteers
                     </Link>
                 </>
@@ -32,14 +34,17 @@ export class Dashboard extends Component {
                 <h2>Hey there, </h2>
                 <h1>{admin.firstName + ' ' + admin.lastName}.</h1>
                 <div className="panel dashboard-panel">
-                    {this.getAdminAndVolunteerButtons()}
-                    <Link to="/members" className="button primary medium">
+                    <Link to="/members" className="button primary medium icon">
+                        <i className="material-icons button-icon">people</i>
                         Members
                     </Link>
-                    <Link to="/activities" className="button primary medium">
+                    <Link to="/activities" className="button primary medium icon">
+                        <i className="material-icons button-icon">directions_run</i>
                         Activities
                     </Link>
-                    <Link to="/reports" className="button primary medium">
+                    {this.getAdminAndVolunteerButtons()}
+                    <Link to="/reports" className="button primary medium icon">
+                        <i className="material-icons button-icon">insert_chart</i>
                         Reports
                     </Link>
                 </div>

@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberCheckIn tests getBackButtonMarkup should return back button markup 1`] = `
+<Button
+  kind="secondary"
+  onClick={[Function]}
+  size="medium"
+  type="button"
+>
+  <i
+    className="material-icons"
+  >
+    arrow_back
+  </i>
+   Back
+</Button>
+`;
+
+exports[`MemberCheckIn tests getNextButtonMarkup should return next button markup 1`] = `
+<Button
+  kind="primary"
+  onClick={[Function]}
+  size="medium"
+  type="button"
+>
+  <React.Fragment>
+    Finish
+     
+    <i
+      className="material-icons"
+    >
+      arrow_forward
+    </i>
+  </React.Fragment>
+</Button>
+`;
+
+exports[`MemberCheckIn tests getPageMarkup should return findMember 1`] = `
+<div>
+  <Connect(FindMember)
+    onSignUpClick={[Function]}
+    setMemberId={[Function]}
+  />
+</div>
+`;
+
+exports[`MemberCheckIn tests getPageMarkup should return finished 1`] = `
+<div>
+  <Finished />
+</div>
+`;
+
+exports[`MemberCheckIn tests getPageMarkup should return memberSignUpMarkup 1`] = `
+<div>
+  <Connect(SelfRegisterMember)
+    goBack={[Function]}
+    onSignUpSuccess={[Function]}
+  />
+</div>
+`;
+
+exports[`MemberCheckIn tests getPageMarkup should return selectActivities 1`] = `
+<div>
+  <Connect(SelectActivities)
+    memberId={null}
+  />
+</div>
+`;
+
+exports[`MemberCheckIn tests getPageMarkup should return you are lost 1`] = `
+<p>
+  you are lost my friend
+</p>
+`;
+
+exports[`MemberCheckIn tests render should render correctly 1`] = `
+<div
+  className="member-check-in-container"
+>
+  <div>
+    <div
+      className="check-in-panel"
+    >
+      <div>
+        <Connect(FindMember)
+          onSignUpClick={[Function]}
+          setMemberId={[Function]}
+        />
+      </div>
+    </div>
+    <div
+      className="navigation-buttons-container"
+    >
+      <div
+        className="back-button-container"
+      />
+      <div
+        className="next-button-container"
+      />
+    </div>
+  </div>
+</div>
+`;

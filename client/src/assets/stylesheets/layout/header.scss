@@ -30,13 +30,13 @@
     list-style: none;
 
     a {
-      font-size: 13px;
+      font-size: 0.8em;
       font-weight: bold;
       color: $gray-6;
       display: inline-block;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 18px 15px;
+      padding: 1.5em 1.15em;
       border-bottom: 2px solid transparent;
 
       &:hover {
@@ -54,11 +54,9 @@
     }
 
     &.menu {
-      padding: 0.85rem 2vw 0 0;
-
       button {
         color: $gray-6;
-        padding: 0;
+        padding: 0.85rem 2vw 1.1rem 2em;
 
         &:hover {
           color: $gray-8;
@@ -85,7 +83,7 @@
         padding: 0.5rem;
         padding-right: 2.5vw;
         width: 100%;
-        font-size: 13px;
+        font-size: 0.8em;
         font-weight: bold;
         color: $gray-6;
         text-transform: uppercase;

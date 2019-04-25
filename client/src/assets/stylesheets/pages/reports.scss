@@ -1,15 +1,26 @@
 .reports-container {
-  .reports-content {
-    .reports-activities {
-      .activity-report {
-        margin: 1.25em 0;
-        .activity-info {
-          padding-left: 1em;
-          p {
-            padding-left: 0.2em;
-          }
-        }
+  .list-body {
+    padding: 1em;
+    .list-row {
+      padding: 0.4em 0.5em;
+
+      .list-row-main-text {
+        font-size: 1.125em;
+        font-weight: bold;
+        display: inline-block;
+        border-bottom: 1px solid $gray-4;
+        color: $gray-8;
+      }
+
+      .list-row-secondary-text {
+        margin-top: 0.3em;
+        font-size: 1em;
       }
     }
+  }
+
+  th {
+    font-size: 1.2em;
+    text-transform: none;
   }
 }

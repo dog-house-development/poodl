@@ -47,6 +47,8 @@
         "not op_mini all"
     ],
     "devDependencies": {
-        "enzyme-to-json": "^3.3.5"
+        "axios-mock-adapter": "^1.16.0",
+        "enzyme-to-json": "^3.3.5",
+        "redux-mock-store": "^1.5.3"
     }
 }

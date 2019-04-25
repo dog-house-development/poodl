@@ -34,12 +34,20 @@ const propTypes = {
     errors: PropTypes.object.isRequired,
     values: PropTypes.object.isRequired,
     editable: PropTypes.bool,
-    errorDescription: PropTypes.string
+    errorDescription: PropTypes.string,
+    data: PropTypes.object,
+    editValues: PropTypes.func,
+    inputs: PropTypes.array.isRequired,
+    loading: PropTypes.bool,
+    onChange: PropTypes.func,
+    onSubmit: PropTypes.func,
+    submitButtonLabel: PropTypes.string
 };
 
 const defaultProps = {
     values: {},
-    errorDescription: ''
+    errorDescription: '',
+    errors: {}
 };
 
 class DynamicForm extends React.Component {
@@ -169,28 +177,35 @@ class DynamicForm extends React.Component {
                 </h3>
             );
         }
-
-        return <div />;
     }
-    getGroupTitleMarkup(input) {
+
+    getGroupButtonsAndLoading(group) {
         if (this.props.editable) {
             return (
-                <div className="side-by-side">
-                    {this.getGroupLabel(input)}
-                    <div>
-                        {this.getGroupLoading()}
-                        {this.getGroupButtons(input)}
-                    </div>
+                <div className="input-group-buttons">
+                    {this.getGroupLoading()}
+                    {this.getGroupButtons(group)}
                 </div>
             );
         }
-
-        return this.getGroupLabel(input);
     }
 
-    groupDescription(input) {
-        if (input.description) {
-            return <p className="input-group-description">{input.description}</p>;
+    getGroupTitleMarkup(group) {
+        return (
+            <>
+                {this.getGroupLabel(group)}
+                {this.getGroupButtonsAndLoading(group)}
+            </>
+        );
+    }
+
+    groupDescription(group) {
+        if (!this.props.editable && group.submittableDescription) {
+            return <p className="input-group-description">{group.submittableDescription}</p>;
+        }
+
+        if (group.description) {
+            return <p className="input-group-description">{group.description}</p>;
         }
     }
 
@@ -285,28 +300,28 @@ class DynamicForm extends React.Component {
 
     getErrorMarkup() {
         if (this.props.errorDescription && this.state.hasErrors && !this.props.editable) {
-            return <p className="form-error">{this.props.errorDescription}</p>;
+            return <div className="form-error">{this.props.errorDescription}</div>;
         }
     }
 
     getSubmitButtonMarkup() {
         if (!this.props.editable) {
             return (
-                <Button
-                    formButton
-                    onClick={this.props.onSubmit}
-                    size="medium"
-                    type="button"
-                    disabled={this.props.loading}>
+                <Button formButton size="medium" type="submit" disabled={this.props.loading}>
                     {this.props.submitButtonLabel}
                 </Button>
             );
         }
     }
 
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.onSubmit(e);
+    };
+
     render() {
         return (
-            <form className="dynamic-form">
+            <form className="dynamic-form" onSubmit={this.handleSubmit}>
                 {this.getInputMarkup(this.props.inputs)}
                 {this.getErrorMarkup()}
                 {this.getSubmitButtonMarkup()}
@@ -315,7 +330,7 @@ class DynamicForm extends React.Component {
     }
 }
 
-DynamicForm.propTypes = propTypes;
 DynamicForm.defaultProps = defaultProps;
+DynamicForm.propTypes = propTypes;
 
 export default DynamicForm;

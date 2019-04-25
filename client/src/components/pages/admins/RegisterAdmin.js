@@ -37,8 +37,8 @@ export class RegisterAdmin extends Component {
     render() {
         return (
             <div className="register-container page-container">
-                <Link to="/dashboard" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to home
+                <Link to="/dashboard" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
                 <div className="panel">
                     <h1 className="panel-title">Register Member</h1>
@@ -49,6 +49,7 @@ export class RegisterAdmin extends Component {
                         submitButtonLabel="Register Admin"
                         errors={this.props.errors}
                         values={this.state}
+                        loading={this.props.loading}
                     />
                 </div>
             </div>
@@ -61,7 +62,8 @@ export const mapStateToProps = (state, props) => {
         auth: state.auth,
         adminIsSuper: _.get(state.auth.admin, 'accessLevel', false) === 'Super',
         adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
-        errors: state.admins.errors
+        errors: state.admins.errors,
+        loading: state.admins.loading
     };
 };
 

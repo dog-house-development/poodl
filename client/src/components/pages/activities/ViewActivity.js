@@ -43,7 +43,9 @@ export class ViewActivity extends Component {
     }
 
     componentDidMount() {
-        this.props.activityActions.get(this.props.match.params.id);
+        this.props.activityActions.get(this.props.match.params.id, _.noop, () => {
+            this.props.history.push('/pageNotFound');
+        });
         this.fetchMembers();
     }
 
@@ -165,8 +167,8 @@ export class ViewActivity extends Component {
     render() {
         return (
             <div className="page-container">
-                <Link to="/activities" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to all activities
+                <Link to="/activities" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to all activities
                 </Link>
                 <div className="page-header">
                     <h1>{this.getActivityName()}</h1>

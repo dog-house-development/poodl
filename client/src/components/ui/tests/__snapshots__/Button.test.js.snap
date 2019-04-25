@@ -1,21 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button tests render should render form-button correctly 1`] = `
+exports[`Button tests getContent should render getContent correctly 1`] = `
 <button
-  className="button medium primary form-button undefined"
+  className="button medium primary"
   onClick={[Function]}
   type="normal"
 >
+   
+  Press me
+</button>
+`;
+
+exports[`Button tests getContent should render loading 1`] = `
+<button
+  className="button medium primary"
+  loading={true}
+  onClick={[Function]}
+  type="normal"
+>
+  <Loading
+    content="Loading..."
+    kind="primary"
+    size="medium"
+  />
+</button>
+`;
+
+exports[`Button tests getIconMarkup should render loading 1`] = `
+<button
+  className="button medium primary"
+  loading={true}
+  onClick={[Function]}
+  type="normal"
+>
+  <Loading
+    content="Loading..."
+    kind="primary"
+    size="medium"
+  />
+</button>
+`;
+
+exports[`Button tests getIconMarkup should run getIconMarkup correctly 1`] = `
+<button
+  className="button medium primary icon"
+  onClick={[Function]}
+  type="normal"
+>
+  <i
+    className="material-icons button-icon"
+  >
+    account_box
+  </i>
+   
+  Press me
+</button>
+`;
+
+exports[`Button tests render should render form-button correctly 1`] = `
+<button
+  className="button medium primary form-button"
+  onClick={[Function]}
+  type="normal"
+>
+   
   Press me
 </button>
 `;
 
 exports[`Button tests render should render normal button correctly 1`] = `
 <button
-  className="button medium primary  undefined"
+  className="button medium primary"
   onClick={[Function]}
   type="normal"
 >
+   
   Press me
 </button>
 `;

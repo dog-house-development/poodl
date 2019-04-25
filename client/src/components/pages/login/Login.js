@@ -3,23 +3,23 @@ import { bindActionCreators } from 'redux';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 import AuthActions from '../../../actions/authActions';
-import Form from '../../ui/Form';
+import DynamicForm from '../../ui/DynamicForm';
+import loginInputs from './loginInputs';
 
 const propTypes = {
     auth: PropTypes.object.isRequired
 };
 
+const defaultProps = {
+    errors: {}
+};
+
 export class Login extends Component {
-    constructor() {
-        super();
-        this.state = {
-            email: '',
-            password: '',
-            errors: {}
-        };
+    constructor(props) {
+        super(props);
+        this.state = {};
     }
 
     componentDidMount() {
@@ -29,21 +29,11 @@ export class Login extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-            this.setState({
-                errors: nextProps.errors
-            });
-        }
-    }
-
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
 
-    onSubmit = e => {
-        e.preventDefault();
-
+    onSubmit = () => {
         const adminData = {
             email: this.state.email,
             password: this.state.password
@@ -52,45 +42,6 @@ export class Login extends Component {
         this.props.authActions.loginAdmin(adminData);
     };
 
-    getFields = () => {
-        const { errors } = this.state;
-        const fields = [
-            {
-                id: 'email',
-                type: 'email',
-                label: 'Email',
-                value: this.state.email,
-                onChange: this.onChange,
-                error: errors.email,
-                placeholder: 'Email...',
-                autoComplete: 'on'
-            },
-            {
-                id: 'password',
-                type: 'password',
-                label: 'Password',
-                value: this.state.password,
-                onChange: this.onChange,
-                error: errors.password,
-                placeholder: 'Password......',
-                autoComplete: 'on'
-            }
-        ];
-        return fields;
-    };
-
-    getFormErrors() {
-        let errors = [];
-        _.each(this.props.errors, (value, key) => {
-            if (key.toLowerCase() === 'emailnotfound' || key.toLowerCase() === 'passwordincorrect') {
-                errors.push('Email and password combination not found');
-            } else if (key !== 'email' && key !== 'password') {
-                errors.push(value);
-            }
-        });
-        return errors;
-    }
-
     render() {
         if (this.props.auth.isAuthenticated) {
             // take the saved previous attempted url and redirect to it otherwise dashboard
@@ -98,27 +49,32 @@ export class Login extends Component {
             return <Redirect to={from} />;
         }
         return (
-            <div className="login-container">
-                <Link to="/" className="button small tertiary">
-                    <i className="material-icons">keyboard_backspace</i> Back to home
+            <div className="login-container page-container">
+                <Link to="/" className="button small tertiary icon">
+                    <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
-                <Form
-                    fields={this.getFields()}
-                    onSubmit={this.onSubmit}
-                    noValidate
-                    buttonLabel="Log in"
-                    formTitle="Log In"
-                    errors={this.getFormErrors()}
-                />
+                <div className="panel">
+                    <DynamicForm
+                        inputs={loginInputs}
+                        onChange={this.onChange}
+                        onSubmit={this.onSubmit}
+                        submitButtonLabel="Log in"
+                        errors={this.props.errors}
+                        values={this.state}
+                        errorDescription={this.props.errors.error}
+                        loading={this.props.loading}
+                    />
+                </div>
             </div>
         );
     }
 }
 
-export const mapStateToProps = (state, props) => {
+export const mapStateToProps = state => {
     return {
         auth: state.auth,
-        errors: state.auth.errors
+        errors: state.auth.errors,
+        loading: state.auth.loading
     };
 };
 
@@ -129,6 +85,7 @@ export const mapDispatchToProps = dispatch => {
 };
 
 Login.propTypes = propTypes;
+Login.defaultProps = defaultProps;
 
 export default withRouter(
     connect(

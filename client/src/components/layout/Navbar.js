@@ -101,7 +101,7 @@ export class Navbar extends Component {
                     <li className="">
                         <Link to="/dashboard">Poodl</Link>
                     </li>
-                    <li className="right" style={{ marginTop: '12px' }}>
+                    <li className="right" style={{ marginTop: '0.7em' }}>
                         {this.getUserDropDownMarkup()}
                     </li>
                     <li className="right">
@@ -125,7 +125,7 @@ export class Navbar extends Component {
     getAccordion() {
         if (this.state.expanded) {
             return (
-                <ul className="accordion">
+                <ul className="accordion" onClick={this.handleMenuClick}>
                     <li>
                         <Link to="/dashboard">My Dashboard</Link>
                     </li>
@@ -137,6 +137,7 @@ export class Navbar extends Component {
                     </li>
                     <li className="line">
                         <Button
+                            id="myProfile"
                             kind="secondary"
                             size="small"
                             onClick={() => {
@@ -147,6 +148,7 @@ export class Navbar extends Component {
                     </li>
                     <li>
                         <Button
+                            id="logout"
                             kind="secondary"
                             size="small"
                             onClick={() => {

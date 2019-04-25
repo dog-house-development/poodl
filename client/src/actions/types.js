@@ -2,6 +2,7 @@ export default {
     auth: {
         SET_CURRENT_ADMIN: 'SET_CURRENT_ADMIN',
         login: {
+            BEGIN: 'LOGIN_ADMIN_BEGIN',
             SUCCESS: 'LOGIN_ADMIN_SUCCESS'
         },
         logout: {

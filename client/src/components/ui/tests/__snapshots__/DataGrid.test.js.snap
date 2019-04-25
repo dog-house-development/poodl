@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DataGrid tests getFilterMarkup should return filter field 1`] = `
+<Field
+  autoComplete="off"
+  className="filter-field"
+  clearable={true}
+  id="filter"
+  kind="secondary"
+  leftIcon="search"
+  onChange={[Function]}
+  placeholder="Search"
+  size="normal"
+  type="text"
+  value=""
+/>
+`;
+
+exports[`DataGrid tests handleFilterChange should handle change to filter 1`] = `
+<Field
+  autoComplete="off"
+  className="filter-field"
+  clearable={true}
+  id="filter"
+  kind="secondary"
+  leftIcon="search"
+  onChange={[Function]}
+  placeholder="Search"
+  size="normal"
+  type="text"
+  value=""
+/>
+`;
+
 exports[`DataGrid tests render should render data 1`] = `
 <div>
   <Field
@@ -35,6 +67,7 @@ exports[`DataGrid tests render should render data 1`] = `
       </thead>
       <tbody>
         <tr
+          className="no-click"
           key="123"
           onClick={[Function]}
         >
@@ -50,6 +83,7 @@ exports[`DataGrid tests render should render data 1`] = `
           </td>
         </tr>
         <tr
+          className="no-click"
           key="321"
           onClick={[Function]}
         >
