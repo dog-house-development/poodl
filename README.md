@@ -7,6 +7,8 @@
 
 _Welcome to Poodl!_ Find our application at [https://poodl.herokuapp.com/](https://poodl.herokuapp.com/ 'poodl'). Read [our wiki](https://github.com/dog-house-development/poodl/wiki 'poodl wiki') to learn more.
 
+Project Presentation Slides are available at https://drive.google.com/open?id=1fdZ4rtndXsAyTBywn6YVjPrGIAKfaGF_
+
 ## Sites
 
 **Development:** [poodl-dev.herokuapp.com](http://poodl-dev.herokuapp.com/)
