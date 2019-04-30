@@ -33,6 +33,7 @@ export class DeleteButton extends Component {
         if (this.state.confirmModalOpen) {
             return (
                 <ConfirmModal
+                    title="Confirm Delete"
                     message={this.props.confirmQuestion}
                     onConfirm={this.handleConfirm}
                     onCancel={this.handleCancel}
