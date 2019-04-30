@@ -3,12 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ViewActivitiesByDate from '../activities/ViewActivitiesByDate';
+import ConfirmModal from '../../ui/Modals/ConfirmModal';
+import Button from '../../ui/Button';
 
 const propTypes = {
     auth: PropTypes.object.isRequired
 };
 
 export class Dashboard extends Component {
+    constructor() {
+        super();
+        this.state = { hello: false };
+    }
     getAdminAndVolunteerButtons() {
         if (this.props.auth.admin.accessLevel !== 'Volunteer') {
             return (
@@ -23,6 +29,19 @@ export class Dashboard extends Component {
                     </Link>
                 </>
             );
+        }
+    }
+
+    getModal() {
+        if (this.state.hello) {
+            return (
+                <ConfirmModal
+                    onSubmit={() => this.setState({ hello: false })}
+                    onCancel={() => this.setState({ hello: false })}
+                />
+            );
+        } else {
+            return <Button onClick={() => this.setState({ hello: true })}>Hello</Button>;
         }
     }
 
@@ -49,6 +68,7 @@ export class Dashboard extends Component {
                     </Link>
                 </div>
                 <ViewActivitiesByDate />
+                {this.getModal()}
             </div>
         );
     }
