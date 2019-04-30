@@ -1,17 +1,41 @@
 import React, { Component } from 'react';
 import FocusLock from 'react-focus-lock';
-import ModalWrapper from './ModalWrapper';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+    onCancel: PropTypes.func
+};
+
+const modalRoot = document.getElementById('modal-root');
 
 class Modal extends Component {
+    constructor(props) {
+        super(props);
+        this.el = document.createElement('div');
+    }
+
+    componentDidMount() {
+        modalRoot.appendChild(this.el);
+    }
+
+    componentWillUnmount() {
+        modalRoot.removeChild(this.el);
+    }
+
     render() {
-        return (
-            <ModalWrapper>
-                <FocusLock>
-                    <div className="modal">{this.props.children}</div>
-                </FocusLock>
-            </ModalWrapper>
+        return ReactDOM.createPortal(
+            <FocusLock>
+                <div className="modal-wrapper" onClick={this.props.onCancel}>
+                    <div className="modal" onClick={e => e.stopPropagation()}>
+                        {this.props.children}
+                    </div>
+                </div>
+            </FocusLock>,
+            this.el
         );
     }
 }
 
+Modal.propTypes = propTypes;
 export default Modal;

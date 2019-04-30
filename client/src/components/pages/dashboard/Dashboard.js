@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ViewActivitiesByDate from '../activities/ViewActivitiesByDate';
-import ConfirmModal from '../../ui/Modals/ConfirmModal';
-import Button from '../../ui/Button';
 
 const propTypes = {
     auth: PropTypes.object.isRequired
@@ -32,19 +30,6 @@ export class Dashboard extends Component {
         }
     }
 
-    getModal() {
-        if (this.state.hello) {
-            return (
-                <ConfirmModal
-                    onSubmit={() => this.setState({ hello: false })}
-                    onCancel={() => this.setState({ hello: false })}
-                />
-            );
-        } else {
-            return <Button onClick={() => this.setState({ hello: true })}>Hello</Button>;
-        }
-    }
-
     render() {
         const { admin } = this.props.auth;
 
@@ -68,7 +53,6 @@ export class Dashboard extends Component {
                     </Link>
                 </div>
                 <ViewActivitiesByDate />
-                {this.getModal()}
             </div>
         );
     }

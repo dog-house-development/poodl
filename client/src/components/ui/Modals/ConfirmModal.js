@@ -7,7 +7,7 @@ const propTypes = {
     title: PropTypes.string,
     message: PropTypes.string,
     onCancel: PropTypes.func,
-    onSubmit: PropTypes.func
+    onConfirm: PropTypes.func
 };
 
 class ConfirmModal extends Component {
@@ -27,18 +27,18 @@ class ConfirmModal extends Component {
 
     render() {
         return (
-            <Modal>
+            <Modal onCancel={this.props.onCancel}>
                 <h2 className="title">{this.props.title || 'Confirm'}</h2>
                 <p className="message">{this.props.message || 'Are you sure?'}</p>
                 <div className="buttons">
                     <Button id="cancel" onClick={this.props.onCancel} content="Cancel" kind="tertiary" width="8em" />
                     <Button
-                        id="submit"
-                        onClick={this.props.onSubmit}
+                        id="confirm"
+                        onClick={this.props.onConfirm}
                         content="Yes"
                         kind="tertiary"
                         width="8em"
-                        autoFocus
+                        data-autofocus
                     />
                 </div>
             </Modal>
