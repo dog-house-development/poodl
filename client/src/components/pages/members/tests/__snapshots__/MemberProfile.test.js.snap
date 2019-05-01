@@ -22,12 +22,34 @@ exports[`MemberProfile tests render should render correctly 1`] = `
     <h1>
       Big Tup
     </h1>
-    <DeleteButton
-      confirmQuestion="Are you sure you want to delete the member 'Big Tup'?"
-      onConfirm={[Function]}
+    <div
+      className="button-list"
     >
-      Delete Member
-    </DeleteButton>
+      <OnClickOutside(Dropdown)
+        align="right"
+        eventTypes={
+          Array [
+            "mousedown",
+            "touchstart",
+          ]
+        }
+        excludeScrollbar={false}
+        icon="more_vert"
+        kind="tertiary"
+        outsideClickIgnoreClass="ignore-react-onclickoutside"
+        preventDefault={false}
+        stopPropagation={false}
+      >
+        <ConfirmButton
+          className="dropdown-content-row medium"
+          message="Are you sure you want to delete the member 'Big Tup'?"
+          onConfirm={[Function]}
+          title="Confirm Delete"
+        >
+          Delete Member
+        </ConfirmButton>
+      </OnClickOutside(Dropdown)>
+    </div>
   </div>
   <withRouter(TabPage)
     startingTab="memberInfo"

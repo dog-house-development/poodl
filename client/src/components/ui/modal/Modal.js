@@ -31,8 +31,8 @@ class Modal extends Component {
     render() {
         return ReactDOM.createPortal(
             <FocusLock>
-                <div className="modal-wrapper" onClick={this.handleCancelClick}>
-                    <div className="modal" onClick={e => e.stopPropagation()}>
+                <div id="modal" className="modal-wrapper" onClick={this.handleCancelClick}>
+                    <div id="modal" className="modal" onClick={e => e.stopPropagation()}>
                         {this.props.children}
                     </div>
                 </div>

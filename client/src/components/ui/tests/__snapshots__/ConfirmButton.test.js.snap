@@ -1,12 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DeleteButton tests render should render delete button correctly 1`] = `
-<Button
-  className="delete-button"
-  icon="remove_circle_outline"
-  kind="primary"
+<button
   onClick={[Function]}
-  size="small"
-  type="button"
 />
 `;

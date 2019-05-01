@@ -59,7 +59,8 @@ export class Dropdown extends Component {
     }
 
     handleClickOutside = evt => {
-        if (this.state.open) {
+        // should not close dropdown if modal is open
+        if (this.state.open && !_.find(evt.path, { id: 'modal' })) {
             this.setState({ open: !this.state.open });
         }
     };

@@ -34,7 +34,7 @@ export class ConfirmButton extends Component {
                 <MessageModal
                     title={this.props.title}
                     message={this.props.message}
-                    onConfirm={this.handleConfirm}
+                    onSubmit={this.handleConfirm}
                     onCancel={this.handleCancel}
                 />
             );
