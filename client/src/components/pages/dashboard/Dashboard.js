@@ -9,10 +9,6 @@ const propTypes = {
 };
 
 export class Dashboard extends Component {
-    constructor() {
-        super();
-        this.state = { hello: false };
-    }
     getAdminAndVolunteerButtons() {
         if (this.props.auth.admin.accessLevel !== 'Volunteer') {
             return (
