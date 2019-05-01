@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
+import ConfirmModal from './modal/ConfirmModal';
 
 const propTypes = {
     onConfirm: PropTypes.func.isRequired,
@@ -8,17 +9,44 @@ const propTypes = {
 };
 
 export class DeleteButton extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            confirmModalOpen: false
+        };
+    }
+
     handleClick = () => {
-        const shouldDelete = window.confirm(this.props.confirmQuestion);
-        if (shouldDelete) {
-            this.props.onConfirm();
-        }
+        this.setState({ confirmModalOpen: true });
     };
+
+    handleCancel = () => {
+        this.setState({ confirmModalOpen: false });
+    };
+
+    handleConfirm = () => {
+        this.setState({ confirmModalOpen: false });
+        this.props.onConfirm();
+    };
+
+    getConfirmModal() {
+        if (this.state.confirmModalOpen) {
+            return (
+                <ConfirmModal
+                    title="Confirm Delete"
+                    message={this.props.confirmQuestion}
+                    onConfirm={this.handleConfirm}
+                    onCancel={this.handleCancel}
+                />
+            );
+        }
+    }
 
     render() {
         return (
             <Button onClick={this.handleClick} size="small" className="delete-button" icon="remove_circle_outline">
                 {this.props.children}
+                {this.getConfirmModal()}
             </Button>
         );
     }

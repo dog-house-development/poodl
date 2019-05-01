@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
@@ -15,7 +14,7 @@ describe('DeleteButton tests', () => {
             {},
             {
                 onConfirm: () => {},
-                confirmQuestion: 'Are you sure?'
+                confirmQuestion: 'Are you sure you want to delete this?'
             },
             _props
         );
@@ -26,13 +25,9 @@ describe('DeleteButton tests', () => {
     beforeEach(() => {
         setInstanceAndWrapper();
     });
-    describe('render', () => {
-        it('should render normal Deletebutton correctly', () => {
-            expect(wrapper).toMatchSnapshot();
-        });
 
-        it('should render form-Deletebutton correctly', () => {
-            setInstanceAndWrapper({ formButton: true });
+    describe('render', () => {
+        it('should render delete button correctly', () => {
             expect(wrapper).toMatchSnapshot();
         });
     });

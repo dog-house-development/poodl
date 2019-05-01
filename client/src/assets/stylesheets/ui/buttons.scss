@@ -42,6 +42,11 @@
       background-color: $button-primary-active;
       border-color: $button-primary-active;
     }
+
+    &:focus {
+      background-color: $button-primary-active;
+      border-color: $button-primary-active;
+    }
   }
 
   &.secondary {
@@ -57,6 +62,10 @@
     &:active {
       color: $button-primary-active;
       background-color: $gray-2;
+    }
+
+    &:focus {
+      background-color: $blue-light;
     }
   }
 
@@ -75,15 +84,19 @@
 
   &.tertiary {
     border-color: transparent;
-    color: $button-primary;
+    color: $button-primary-active;
     background-color: transparent;
 
     &:hover {
-      color: $button-primary-hover;
+      background-color: $blue-light;
+    }
+
+    &:focus {
+      background-color: $blue-light-border;
     }
 
     &:active {
-      color: $button-primary-active;
+      background-color: $blue-outline;
     }
 
     &:disabled {
@@ -99,7 +112,6 @@
 
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 3pt $blue-outline;
   }
 
   &.form-button {

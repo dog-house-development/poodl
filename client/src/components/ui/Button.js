@@ -11,7 +11,9 @@ const propTypes = {
     type: PropTypes.string,
     formButton: PropTypes.bool,
     id: PropTypes.string,
-    icon: PropTypes.string
+    icon: PropTypes.string,
+    width: PropTypes.string,
+    autoFocus: PropTypes.bool
 };
 
 const defaultProps = {
@@ -39,18 +41,18 @@ class Button extends Component {
         );
     }
 
+    getWidth() {
+        if (this.props.width) {
+            return { width: this.props.width, paddingLeft: 'unset', paddingRight: 'unset' };
+        }
+    }
+
     render() {
-        const { content, size, kind, formButton, className, icon, ...buttonProps } = this.props;
+        const { content, size, kind, formButton, className, icon, width, ...buttonProps } = this.props;
         return (
             <button
-                className={classnames(
-                    'button',
-                    this.props.size,
-                    this.props.kind,
-                    { 'form-button': this.props.formButton },
-                    { icon: this.props.icon },
-                    className
-                )}
+                className={classnames('button', size, kind, { 'form-button': formButton }, { icon: icon }, className)}
+                style={this.getWidth()}
                 {...buttonProps}>
                 {this.getContent()}
             </button>

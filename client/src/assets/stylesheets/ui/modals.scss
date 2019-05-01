@@ -1,0 +1,44 @@
+@import './_presets.scss';
+
+.modal-wrapper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $transparent-4;
+
+  .modal {
+    transition: all 0.9s;
+    background: #fff;
+    padding: 1.5em;
+    box-sizing: border-box;
+    border-radius: $border-radius-default;
+    margin: 24px 0;
+    -webkit-box-shadow: 0px 0px 15px -5px rgba(100, 100, 100, 0.8);
+    -moz-box-shadow: 0px 0px 15px -5px rgba(100, 100, 100, 0.8);
+    box-shadow: 0px 0px 15px -5px rgba(100, 100, 100, 0.8);
+    width: 95%;
+    max-width: 30em;
+
+    .title {
+      margin-bottom: 0.5em;
+    }
+
+    .message {
+      font-size: 1.1em;
+    }
+
+    .buttons {
+      margin-top: 1.5em;
+      text-align: right;
+
+      .button {
+        margin-left: 0.5em;
+      }
+    }
+  }
+}
