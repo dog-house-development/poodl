@@ -7,10 +7,17 @@ const propTypes = {
     title: PropTypes.string,
     message: PropTypes.string,
     onCancel: PropTypes.func,
-    onConfirm: PropTypes.func
+    onSubmit: PropTypes.func,
+    submitButtonText: PropTypes.string,
+    cancelButtonText: PropTypes.string
 };
 
-class ConfirmModal extends Component {
+const defaultProps = {
+    submitButtonText: 'Ok',
+    cancelButtonText: 'Cancel'
+};
+
+class MessageModal extends Component {
     handleKeyDown = e => {
         // escape key press
         if (e.keyCode === 27) {
@@ -32,11 +39,17 @@ class ConfirmModal extends Component {
                 <h2 className="title">{this.props.title || 'Confirm'}</h2>
                 <p className="message">{this.props.message || 'Are you sure?'}</p>
                 <div className="buttons">
-                    <Button id="cancel" onClick={this.props.onCancel} content="Cancel" kind="tertiary" width="8em" />
+                    <Button
+                        id="cancel"
+                        onClick={this.props.onCancel}
+                        content={this.props.cancelButtonText}
+                        kind="tertiary"
+                        width="8em"
+                    />
                     <Button
                         id="confirm"
-                        onClick={this.props.onConfirm}
-                        content="Yes"
+                        onClick={this.props.onSubmit}
+                        content={this.props.submitButtonText}
                         kind="tertiary"
                         width="8em"
                         data-autofocus
@@ -47,5 +60,6 @@ class ConfirmModal extends Component {
     }
 }
 
-ConfirmModal.propTypes = propTypes;
-export default ConfirmModal;
+MessageModal.propTypes = propTypes;
+MessageModal.defaultProps = defaultProps;
+export default MessageModal;

@@ -44,10 +44,12 @@ export class ViewAllActivities extends Component {
                 </Link>
                 <div className="page-header">
                     <h1>Activities</h1>
-                    <Link to="/activities/add" className="button small primary icon">
-                        <i className="material-icons button-icon">add</i>
-                        Add Activity
-                    </Link>
+                    <div className="button-list">
+                        <Link to="/activities/add" className="button small primary icon">
+                            <i className="material-icons button-icon">add</i>
+                            Add Activity
+                        </Link>
+                    </div>
                 </div>
                 <DataGrid
                     data={this.getDataGridContent()}

@@ -53,10 +53,12 @@ export class ViewAllAdmins extends Component {
                 </Link>
                 <div className="page-header">
                     <h1>Admins</h1>
-                    <Link to="/admins/register" className="button small primary icon">
-                        <i className="material-icons button-icon">person_add</i>
-                        Add admin
-                    </Link>
+                    <div className="button-list">
+                        <Link to="/admins/register" className="button small primary icon">
+                            <i className="material-icons button-icon">person_add</i>
+                            Add admin
+                        </Link>
+                    </div>
                 </div>
                 <DataGrid
                     data={this.getDataGridContent()}

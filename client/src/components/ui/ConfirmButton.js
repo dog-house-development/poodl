@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
-import ConfirmModal from './modal/ConfirmModal';
+import MessageModal from './modal/MessageModal';
 
 const propTypes = {
     onConfirm: PropTypes.func.isRequired,
-    confirmQuestion: PropTypes.string.isRequired
+    message: PropTypes.string.isRequired
 };
 
-export class DeleteButton extends Component {
+export class ConfirmButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,9 +31,9 @@ export class DeleteButton extends Component {
     getConfirmModal() {
         if (this.state.confirmModalOpen) {
             return (
-                <ConfirmModal
-                    title="Confirm Delete"
-                    message={this.props.confirmQuestion}
+                <MessageModal
+                    title={this.props.title}
+                    message={this.props.message}
                     onConfirm={this.handleConfirm}
                     onCancel={this.handleCancel}
                 />
@@ -44,13 +43,13 @@ export class DeleteButton extends Component {
 
     render() {
         return (
-            <Button onClick={this.handleClick} size="small" className="delete-button" icon="remove_circle_outline">
+            <button onClick={this.handleClick} className={this.props.className}>
                 {this.props.children}
                 {this.getConfirmModal()}
-            </Button>
+            </button>
         );
     }
 }
 
-DeleteButton.propTypes = propTypes;
-export default DeleteButton;
+ConfirmButton.propTypes = propTypes;
+export default ConfirmButton;

@@ -43,14 +43,17 @@
     }
 
     h1 {
-      display: inline-block;
+      float: left;
     }
 
-    a,
-    button {
-      margin-top: 0.55rem;
-      margin-left: 0.5em;
+    .button-list {
       float: right;
+
+      & > a,
+      & > button {
+        margin-left: 0.5em;
+        margin-top: 0.25em;
+      }
     }
   }
 }

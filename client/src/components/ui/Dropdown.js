@@ -8,10 +8,12 @@ import classnames from 'classnames';
 const propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     kind: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-    buttonContent: PropTypes.string.isRequired,
-    dropdownContent: PropTypes.array.isRequired,
+    buttonContent: PropTypes.string,
+    dropdownContent: PropTypes.array,
     align: PropTypes.oneOf(['left', 'center', 'right']),
-    arrow: PropTypes.bool
+    arrow: PropTypes.bool,
+    caret: PropTypes.bool,
+    icon: PropTypes.string
 };
 
 const defaultProps = {
@@ -28,6 +30,21 @@ export class Dropdown extends Component {
             open: false
         };
         this.onDropdownClick = this.onDropdownClick.bind(this);
+    }
+
+    handleKeyDown = e => {
+        // escape key press
+        if (e.keyCode === 27) {
+            this.setState({ open: false });
+        }
+    };
+
+    componentDidMount() {
+        document.addEventListener('keydown', this.handleKeyDown);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handleKeyDown);
     }
 
     onDropdownClick(e) {
@@ -64,6 +81,7 @@ export class Dropdown extends Component {
                         'arrow-dropdown': this.props.arrow
                     })}>
                     {arrowMarkup}
+                    {this.props.children}
                     {_.map(this.props.dropdownContent, row => {
                         if (_.get(row, 'type') === 'divider') {
                             return <hr key={_.uniqueId('divider-')} />;
@@ -82,22 +100,25 @@ export class Dropdown extends Component {
         }
     }
 
+    getCaretMarkup() {
+        if (this.props.caret) {
+            return (
+                <i className="material-icons dropdown-caret">{this.state.open ? 'arrow_drop_up' : 'arrow_drop_down'}</i>
+            );
+        }
+    }
+
     render() {
         return (
             <div className="dropdown-wrapper">
                 <Button
                     size={this.props.size}
                     kind={this.props.kind}
-                    content={
-                        <span>
-                            {this.props.buttonContent}
-                            <i className="material-icons dropdown-caret">
-                                {this.state.open ? 'arrow_drop_up' : 'arrow_drop_down'}
-                            </i>
-                        </span>
-                    }
                     onClick={this.onDropdownClick}
-                />
+                    icon={this.props.icon}>
+                    {this.props.buttonContent}
+                    {this.getCaretMarkup()}
+                </Button>
                 {this.getDropdownContentMarkup()}
             </div>
         );
