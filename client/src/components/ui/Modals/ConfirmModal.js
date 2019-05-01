@@ -12,6 +12,7 @@ const propTypes = {
 
 class ConfirmModal extends Component {
     handleKeyDown = e => {
+        // escape key press
         if (e.keyCode === 27) {
             this.props.onCancel();
         }
