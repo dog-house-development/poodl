@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
-import ConfirmModal from '../ui/modals/ConfirmModal';
+import ConfirmModal from './modals/ConfirmModal';
 
 const propTypes = {
     onConfirm: PropTypes.func.isRequired,
