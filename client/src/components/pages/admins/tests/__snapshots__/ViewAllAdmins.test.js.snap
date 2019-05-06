@@ -22,18 +22,22 @@ exports[`ViewAllAdmins tests render should render correctly 1`] = `
     <h1>
       Admins
     </h1>
-    <Link
-      className="button small primary icon"
-      replace={false}
-      to="/admins/register"
+    <div
+      className="button-list"
     >
-      <i
-        className="material-icons button-icon"
+      <Link
+        className="button small primary icon"
+        replace={false}
+        to="/admins/register"
       >
-        person_add
-      </i>
-      Add admin
-    </Link>
+        <i
+          className="material-icons button-icon"
+        >
+          person_add
+        </i>
+        Add admin
+      </Link>
+    </div>
   </div>
   <withRouter(DataGrid)
     data={

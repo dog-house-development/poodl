@@ -123,6 +123,15 @@
     padding-left: 3em;
   }
 
+  &.icon-no-content {
+    padding: 0.8em 0.8em;
+
+    .button-icon {
+      margin: 0;
+      position: static;
+    }
+  }
+
   .button-icon {
     font-size: 1.5em;
     position: absolute;

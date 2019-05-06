@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import _ from 'lodash';
 import Loading from '../../ui/Loading';
-import { DeleteButton } from './../../ui/DeleteButton';
+import ConfirmButton from './../../ui/ConfirmButton';
 import AdminActions from '../../../actions/adminActions';
 import DynamicForm from '../../ui/DynamicForm';
 import adminInputs from './adminInputs';
 import AuthActions from '../../../actions/authActions';
+import Dropdown from '../../ui/Dropdown';
 
 export class AdminProfile extends Component {
     componentDidMount() {
@@ -60,11 +61,13 @@ export class AdminProfile extends Component {
     getDeleteButton() {
         if (this.props.auth.admin.id !== _.get(this.props.admin, '_id')) {
             return (
-                <DeleteButton
+                <ConfirmButton
+                    className="dropdown-content-row medium"
                     onConfirm={this.handleDeleteClick}
-                    confirmQuestion={`Are you sure you want to delete the admin '${this.getAdminName()}'?`}>
+                    title="Confirm Delete"
+                    message={`Are you sure you want to delete the admin '${this.getAdminName()}'?`}>
                     Delete Admin
-                </DeleteButton>
+                </ConfirmButton>
             );
         }
     }
@@ -77,7 +80,11 @@ export class AdminProfile extends Component {
                 </Link>
                 <div className="page-header">
                     <h1>{this.getAdminName()}</h1>
-                    {this.getDeleteButton()}
+                    <div className="button-list">
+                        <Dropdown icon="more_vert" kind="tertiary" align="right">
+                            {this.getDeleteButton()}
+                        </Dropdown>
+                    </div>
                 </div>
                 <DynamicForm
                     inputs={adminInputs}

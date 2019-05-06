@@ -59,12 +59,34 @@ exports[`AdminProfile tests render should render correctly 1`] = `
     <h1>
       Moose Man
     </h1>
-    <DeleteButton
-      confirmQuestion="Are you sure you want to delete the admin 'Moose Man'?"
-      onConfirm={[Function]}
+    <div
+      className="button-list"
     >
-      Delete Admin
-    </DeleteButton>
+      <OnClickOutside(Dropdown)
+        align="right"
+        eventTypes={
+          Array [
+            "mousedown",
+            "touchstart",
+          ]
+        }
+        excludeScrollbar={false}
+        icon="more_vert"
+        kind="tertiary"
+        outsideClickIgnoreClass="ignore-react-onclickoutside"
+        preventDefault={false}
+        stopPropagation={false}
+      >
+        <ConfirmButton
+          className="dropdown-content-row medium"
+          message="Are you sure you want to delete the admin 'Moose Man'?"
+          onConfirm={[Function]}
+          title="Confirm Delete"
+        >
+          Delete Admin
+        </ConfirmButton>
+      </OnClickOutside(Dropdown)>
+    </div>
   </div>
   <DynamicForm
     editValues={[Function]}

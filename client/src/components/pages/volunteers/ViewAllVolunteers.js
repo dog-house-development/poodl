@@ -45,10 +45,12 @@ export class ViewAllVolunteers extends Component {
                 </Link>
                 <div className="page-header">
                     <h1>Volunteers</h1>
-                    <Link to="/volunteers/register" className="button small primary icon">
-                        <i className="material-icons button-icon">person_add</i>
-                        Register Volunteer
-                    </Link>
+                    <div className="button-list">
+                        <Link to="/volunteers/register" className="button small primary icon">
+                            <i className="material-icons button-icon">person_add</i>
+                            Register Volunteer
+                        </Link>
+                    </div>
                 </div>
                 <DataGrid
                     data={this.getDataGridContent()}

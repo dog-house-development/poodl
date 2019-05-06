@@ -73,6 +73,7 @@ export class Navbar extends Component {
                 kind="secondary"
                 align="right"
                 arrow
+                caret
                 buttonContent={this.props.auth.admin.firstName + ' ' + this.props.auth.admin.lastName}
                 dropdownContent={this.getUserDropDownContent()}
             />

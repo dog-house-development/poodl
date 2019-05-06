@@ -5,21 +5,13 @@ exports[`Dropdown tests render should render closed dropdown correctly 1`] = `
   className="dropdown-wrapper"
 >
   <Button
-    content={
-      <span>
-        Dropdown time
-        <i
-          className="material-icons dropdown-caret"
-        >
-          arrow_drop_down
-        </i>
-      </span>
-    }
     kind="primary"
     onClick={[Function]}
     size="medium"
     type="button"
-  />
+  >
+    Dropdown time
+  </Button>
 </div>
 `;
 
@@ -28,21 +20,13 @@ exports[`Dropdown tests render should render open arrow dropdown correctly 1`] =
   className="dropdown-wrapper"
 >
   <Button
-    content={
-      <span>
-        Dropdown time
-        <i
-          className="material-icons dropdown-caret"
-        >
-          arrow_drop_up
-        </i>
-      </span>
-    }
     kind="primary"
     onClick={[Function]}
     size="medium"
     type="button"
-  />
+  >
+    Dropdown time
+  </Button>
   <div
     className="dropdown-content dropdown-align-left arrow-dropdown"
   >
@@ -78,21 +62,13 @@ exports[`Dropdown tests render should render open dropdown correctly 1`] = `
   className="dropdown-wrapper"
 >
   <Button
-    content={
-      <span>
-        Dropdown time
-        <i
-          className="material-icons dropdown-caret"
-        >
-          arrow_drop_up
-        </i>
-      </span>
-    }
     kind="primary"
     onClick={[Function]}
     size="medium"
     type="button"
-  />
+  >
+    Dropdown time
+  </Button>
   <div
     className="dropdown-content dropdown-align-left"
   >

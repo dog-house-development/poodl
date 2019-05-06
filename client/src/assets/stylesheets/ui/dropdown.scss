@@ -5,11 +5,6 @@
   display: inline-block;
 
   .button {
-    &.tertiary {
-      padding-left: 0;
-      padding-right: 0;
-    }
-
     .dropdown-caret {
       margin-top: -9px;
       height: 17px;
@@ -23,8 +18,8 @@
     border: 1px solid $gray-2;
     border-radius: $border-radius-default;
     background-color: #fff;
-    min-width: 150px;
-    max-width: 250px;
+    min-width: 12em;
+    max-width: 15em;
     z-index: 10;
 
     -webkit-box-shadow: 0px 0px 52px -9px rgba(194, 194, 194, 0.8);

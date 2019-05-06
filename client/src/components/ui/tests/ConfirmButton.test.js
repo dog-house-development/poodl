@@ -3,7 +3,7 @@ import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import _ from 'lodash';
 
-import DeleteButton from '../DeleteButton';
+import ConfirmButton from '../ConfirmButton';
 
 configure({ adapter: new Adapter() });
 
@@ -14,11 +14,11 @@ describe('DeleteButton tests', () => {
             {},
             {
                 onConfirm: () => {},
-                confirmQuestion: 'Are you sure you want to delete this?'
+                message: 'Are you sure you want to delete this?'
             },
             _props
         );
-        wrapper = shallow(<DeleteButton {..._.assign({}, props)} />);
+        wrapper = shallow(<ConfirmButton {..._.assign({}, props)} />);
         instance = wrapper.instance();
     };
 

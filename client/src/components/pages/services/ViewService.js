@@ -9,8 +9,9 @@ import MemberActions from '../../../actions/memberActions';
 import DynamicForm from '../../ui/DynamicForm';
 import List from '../../ui/List';
 import serviceInputs from './serviceInputs';
-import { DeleteButton } from './../../ui/DeleteButton';
+import ConfirmButton from './../../ui/ConfirmButton';
 import Loading from './../../ui/Loading';
+import Dropdown from '../../ui/Dropdown';
 
 export class ViewService extends Component {
     static defaultProps = {
@@ -86,11 +87,17 @@ export class ViewService extends Component {
                 </Link>
                 <div className="page-header">
                     <h1>{this.getServiceName()}</h1>
-                    <DeleteButton
-                        onConfirm={this.handleDeleteClick}
-                        confirmQuestion={`Are you sure you want to remove the service '${this.getServiceName()}'?`}>
-                        Remove Service
-                    </DeleteButton>
+                    <div className="button-list">
+                        <Dropdown icon="more_vert" kind="tertiary" align="right">
+                            <ConfirmButton
+                                className="dropdown-content-row medium"
+                                onConfirm={this.handleDeleteClick}
+                                title="Confirm Delete"
+                                message={`Are you sure you want to remove the service '${this.getServiceName()}'?`}>
+                                Remove Service
+                            </ConfirmButton>
+                        </Dropdown>
+                    </div>
                 </div>
                 {this.getFormMarkup()}
             </div>

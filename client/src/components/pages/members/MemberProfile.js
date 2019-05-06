@@ -11,7 +11,8 @@ import memberInputs from './memberInputs';
 import ManageServices from '../services/ManageServices';
 import TabPage from '../../ui/TabPage';
 import Loading from '../../ui/Loading';
-import DeleteButton from '../../ui/DeleteButton';
+import ConfirmButton from '../../ui/ConfirmButton';
+import Dropdown from '../../ui/Dropdown';
 
 export class MemberProfile extends Component {
     static defaultProps = {
@@ -78,11 +79,17 @@ export class MemberProfile extends Component {
                 </Link>
                 <div className="page-header">
                     <h1>{this.getMemberName()}</h1>
-                    <DeleteButton
-                        onConfirm={this.handleDeleteClick}
-                        confirmQuestion={`Are you sure you want to delete the member '${this.getMemberName()}'?`}>
-                        Delete Member
-                    </DeleteButton>
+                    <div className="button-list">
+                        <Dropdown icon="more_vert" kind="tertiary" align="right">
+                            <ConfirmButton
+                                className="dropdown-content-row medium"
+                                onConfirm={this.handleDeleteClick}
+                                title="Confirm Delete"
+                                message={`Are you sure you want to delete the member '${this.getMemberName()}'?`}>
+                                Delete Member
+                            </ConfirmButton>
+                        </Dropdown>
+                    </div>
                 </div>
                 <TabPage tabs={this.getTabs()} startingTab="memberInfo" />
             </div>

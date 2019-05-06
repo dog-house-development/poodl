@@ -1,19 +1,22 @@
-import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import moment from 'moment';
+import mongoose from 'mongoose';
+import React, { Component } from 'react';
+import _ from 'lodash';
+
 import ActivityActions from '../../../actions/activityActions';
 import MemberActions from '../../../actions/memberActions';
-import _ from 'lodash';
-import moment from 'moment';
 import DynamicForm from '../../ui/DynamicForm';
 import activityInputs from './activityInputs';
 import List from '../../ui/List';
-import mongoose from 'mongoose';
 import TabPage from './../../ui/TabPage';
 import Loading from './../../ui/Loading';
-import { DeleteButton } from './../../ui/DeleteButton';
+import ConfirmButton from '../../ui/ConfirmButton';
+import Dropdown from '../../ui/Dropdown';
+
 const { ObjectId } = mongoose.Types;
 
 const propTypes = {
@@ -172,11 +175,17 @@ export class ViewActivity extends Component {
                 </Link>
                 <div className="page-header">
                     <h1>{this.getActivityName()}</h1>
-                    <DeleteButton
-                        onConfirm={this.handleDeleteClick}
-                        confirmQuestion={`Are you sure you want to delete the activity '${this.getActivityName()}'?`}>
-                        Delete Activity
-                    </DeleteButton>
+                    <div className="button-list">
+                        <Dropdown icon="more_vert" kind="tertiary" align="right">
+                            <ConfirmButton
+                                className="dropdown-content-row medium"
+                                onConfirm={this.handleDeleteClick}
+                                title="Confirm Delete"
+                                message={`Are you sure you want to delete the activity '${this.getActivityName()}'?`}>
+                                Delete Activity
+                            </ConfirmButton>
+                        </Dropdown>
+                    </div>
                 </div>
                 <TabPage tabs={this.getTabs()} startingTab="info" />
             </div>

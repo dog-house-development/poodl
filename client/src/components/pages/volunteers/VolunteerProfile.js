@@ -6,8 +6,9 @@ import VolunteerActions from '../../../actions/volunteerActions';
 import { Link } from 'react-router-dom';
 import DynamicForm from '../../ui/DynamicForm';
 import volunteerInputs from './volunteerInputs';
-import { DeleteButton } from './../../ui/DeleteButton';
+import ConfirmButton from './../../ui/ConfirmButton';
 import Loading from './../../ui/Loading';
+import Dropdown from '../../ui/Dropdown';
 
 export class VolunteerProfile extends Component {
     static defaultProps = {
@@ -47,11 +48,17 @@ export class VolunteerProfile extends Component {
                 <div>
                     <div className="page-header">
                         <h1>{this.getVolunteerName()}</h1>
-                        <DeleteButton
-                            onConfirm={this.handleDeleteClick}
-                            confirmQuestion={`Are you sure you want to delete the volunteer '${this.getVolunteerName()}'?`}>
-                            Delete Volunteer
-                        </DeleteButton>
+                        <div className="button-list">
+                            <Dropdown icon="more_vert" kind="tertiary" align="right">
+                                <ConfirmButton
+                                    className="dropdown-content-row medium"
+                                    onConfirm={this.handleDeleteClick}
+                                    title="Confirm Delete"
+                                    message={`Are you sure you want to delete the volunteer '${this.getVolunteerName()}'?`}>
+                                    Delete Volunteer
+                                </ConfirmButton>
+                            </Dropdown>
+                        </div>
                     </div>
 
                     <DynamicForm

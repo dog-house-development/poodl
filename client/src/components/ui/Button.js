@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 import classnames from 'classnames';
+import _ from 'lodash';
 
 const propTypes = {
     onClick: PropTypes.func,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     kind: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-    content: PropTypes.PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     type: PropTypes.string,
     formButton: PropTypes.bool,
     id: PropTypes.string,
@@ -51,7 +52,17 @@ class Button extends Component {
         const { content, size, kind, formButton, className, icon, width, ...buttonProps } = this.props;
         return (
             <button
-                className={classnames('button', size, kind, { 'form-button': formButton }, { icon: icon }, className)}
+                className={classnames(
+                    'button',
+                    size,
+                    kind,
+                    {
+                        'form-button': formButton,
+                        icon: icon,
+                        'icon-no-content': icon && !content && _.isEmpty(_.filter(this.props.children, child => child))
+                    },
+                    className
+                )}
                 style={this.getWidth()}
                 {...buttonProps}>
                 {this.getContent()}
