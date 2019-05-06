@@ -14,7 +14,7 @@ describe('DeleteButton tests', () => {
             {},
             {
                 onConfirm: () => {},
-                confirmQuestion: 'Are you sure you want to delete this?'
+                message: 'Are you sure you want to delete this?'
             },
             _props
         );

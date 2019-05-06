@@ -9,7 +9,8 @@ const propTypes = {
     onCancel: PropTypes.func,
     onSubmit: PropTypes.func,
     submitButtonText: PropTypes.string,
-    cancelButtonText: PropTypes.string
+    cancelButtonText: PropTypes.string,
+    focusSubmit: PropTypes.bool
 };
 
 const defaultProps = {
@@ -33,11 +34,23 @@ class MessageModal extends Component {
         document.removeEventListener('keydown', this.handleKeyDown);
     }
 
+    getTitleMarkup() {
+        if (this.props.title) {
+            return <h2 className="title">{this.props.title}</h2>;
+        }
+    }
+
+    getMessageMarkup() {
+        if (this.props.message) {
+            return <p className="message">{this.props.message}</p>;
+        }
+    }
+
     render() {
         return (
             <Modal onCancel={this.props.onCancel}>
-                <h2 className="title">{this.props.title || 'Confirm'}</h2>
-                <p className="message">{this.props.message || 'Are you sure?'}</p>
+                {this.getTitleMarkup()}
+                {this.getMessageMarkup()}
                 <div className="buttons">
                     <Button
                         id="cancel"
@@ -45,14 +58,15 @@ class MessageModal extends Component {
                         content={this.props.cancelButtonText}
                         kind="tertiary"
                         width="8em"
-                        data-autofocus
+                        data-autofocus={!this.props.focusSubmit}
                     />
                     <Button
-                        id="confirm"
+                        id="submit"
                         onClick={this.props.onSubmit}
                         content={this.props.submitButtonText}
                         kind="tertiary"
                         width="8em"
+                        data-autofocus={this.props.focusSubmit}
                     />
                 </div>
             </Modal>
