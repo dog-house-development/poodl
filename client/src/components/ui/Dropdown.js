@@ -89,7 +89,8 @@ export class Dropdown extends Component {
                         }
                         return (
                             <button
-                                key={_.uniqueId('dropdown-row-')}
+                                key={row.id || _.uniqueId('dropdown-row-')}
+                                id={row.id}
                                 className={`dropdown-content-row ${this.props.size}`}
                                 onClick={evt => this.onDropdownRowClick(row.onClick, evt)}>
                                 {row.content}
