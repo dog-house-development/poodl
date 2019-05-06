@@ -22,30 +22,34 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
     <h1>
       Members
     </h1>
-    <Link
-      className="button small primary icon"
-      replace={false}
-      to="/members/register"
+    <div
+      className="button-list"
     >
-      <i
-        className="material-icons button-icon"
+      <Link
+        className="button small primary icon"
+        replace={false}
+        to="/members/register"
       >
-        person_add
-      </i>
-      Register Member
-    </Link>
-    <Link
-      className="button small primary icon"
-      replace={false}
-      to="/member-check-in"
-    >
-      <i
-        className="material-icons button-icon"
+        <i
+          className="material-icons button-icon"
+        >
+          person_add
+        </i>
+        Register Member
+      </Link>
+      <Link
+        className="button small primary icon"
+        replace={false}
+        to="/member-check-in"
       >
-        how_to_reg
-      </i>
-      Member check-in
-    </Link>
+        <i
+          className="material-icons button-icon"
+        >
+          how_to_reg
+        </i>
+        Member check-in
+      </Link>
+    </div>
   </div>
   <withRouter(DataGrid)
     data={

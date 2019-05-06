@@ -45,6 +45,7 @@ class MessageModal extends Component {
                         content={this.props.cancelButtonText}
                         kind="tertiary"
                         width="8em"
+                        data-autofocus
                     />
                     <Button
                         id="confirm"
@@ -52,7 +53,6 @@ class MessageModal extends Component {
                         content={this.props.submitButtonText}
                         kind="tertiary"
                         width="8em"
-                        data-autofocus
                     />
                 </div>
             </Modal>

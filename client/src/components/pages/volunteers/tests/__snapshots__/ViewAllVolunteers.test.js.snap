@@ -22,18 +22,22 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
     <h1>
       Volunteers
     </h1>
-    <Link
-      className="button small primary icon"
-      replace={false}
-      to="/volunteers/register"
+    <div
+      className="button-list"
     >
-      <i
-        className="material-icons button-icon"
+      <Link
+        className="button small primary icon"
+        replace={false}
+        to="/volunteers/register"
       >
-        person_add
-      </i>
-      Register Volunteer
-    </Link>
+        <i
+          className="material-icons button-icon"
+        >
+          person_add
+        </i>
+        Register Volunteer
+      </Link>
+    </div>
   </div>
   <withRouter(DataGrid)
     data={
