@@ -1,9 +1,11 @@
 passport = require('passport');
+restrictAccess = require('./restrictAccess');
+
 module.exports = {
     // Create api helper
     // @param router    the express Router
     // @param model     the mongoose model for the api
-    create: (router, model) => {
+    create: (router, model, restrictAccess) => {
         router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
             new model(req.body)
                 .save()
@@ -33,7 +35,14 @@ module.exports = {
     // @param router    the express Router
     // @param model     the mongoose model for the api
     get: (router, model) => {
-        router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+        router.get('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+            // console.log(req.headers.authorization);
+            const restrictAccessError = await restrictAccess(req, ['Volunteer']);
+            console.log('error' + restrictAccessError);
+            if (restrictAccessError) {
+                return res.status(401).json(restrictAccessError);
+            }
+
             model.findById(req.params.id, (err, doc) => {
                 if (err) {
                     return res.status(400).json(err);
