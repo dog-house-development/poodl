@@ -3,20 +3,26 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { withRouter } from 'react-router-dom';
 
+import ExportButton from './ExportButton';
 import Loading from './Loading';
 import Field from './Field';
 import Utils from '../../utils/Utils';
 
 const propTypes = {
     data: PropTypes.array.isRequired,
+    columns: PropTypes.array,
     loading: PropTypes.bool,
     onRowClick: PropTypes.func,
-    includeFilterControls: PropTypes.bool
+    includeFilterControls: PropTypes.bool,
+    includeExport: PropTypes.bool,
+    uniqueId: PropTypes.string
 };
 
 const defaultProps = {
     loading: false,
-    includeFilterControls: true
+    includeFilterControls: true,
+    includeExport: false,
+    uniqueId: '_id'
 };
 
 export class DataGrid extends Component {
@@ -35,11 +41,17 @@ export class DataGrid extends Component {
     getHeaderMarkup() {
         return (
             <tr>
-                {_.map(_.keys(_.get(this.props, 'data[0]')), key => {
-                    return key !== 'key' ? <th key={key}>{_.startCase(key)}</th> : null;
-                })}
+                {_.map(this.props.columns, ({ key, label }) => (
+                    <th key={key}>{_.startCase(_.isNil(label) ? key : label)}</th>
+                ))}
             </tr>
         );
+    }
+
+    getExportButtonMarkup() {
+        if (this.props.includeExport) {
+            return <ExportButton data={this.getData()} content="Export" />;
+        }
     }
 
     handleFilterChange = event => {
@@ -104,6 +116,7 @@ export class DataGrid extends Component {
         return (
             <div>
                 {this.getFilterMarkup()}
+                {this.getExportButtonMarkup()}
                 {this.getTableMarkup()}
             </div>
         );

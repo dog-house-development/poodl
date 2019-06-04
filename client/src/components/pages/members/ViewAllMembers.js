@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+import React, { Component } from 'react';
 import _ from 'lodash';
 import MemberActions from '../../../actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
 
 export class ViewAllMembers extends Component {
     constructor(props) {
@@ -39,6 +39,24 @@ export class ViewAllMembers extends Component {
         return data;
     }
 
+    getDataGridColumns() {
+        return [
+            {
+                key: 'firstName'
+            },
+            {
+                key: 'lastName'
+            },
+            {
+                key: 'membershipDate',
+                markup: membershipDate => moment(membershipDate).format('MMMM Do, YYYY')
+            },
+            {
+                key: 'email'
+            }
+        ];
+    }
+
     render() {
         return (
             <div className="page-container">
@@ -59,9 +77,11 @@ export class ViewAllMembers extends Component {
                     </div>
                 </div>
                 <DataGrid
-                    data={this.getDataGridContent()}
+                    data={this.props.members}
+                    columns={this.getDataGridColumns()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
+                    includeExport
                 />
             </div>
         );
