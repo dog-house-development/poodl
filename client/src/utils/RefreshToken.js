@@ -2,6 +2,7 @@ import store from '../store';
 import AuthActions from '../actions/authActions';
 import moment from 'moment';
 
+// Function to manage refreshing the 
 const refreshToken = () => {
     console.log('refreshToken');
     let shouldRefresh = false;
@@ -12,22 +13,41 @@ const refreshToken = () => {
         time++;
     }, 1000);
 
-    const refresh = () => {
+    const jwtRefresh = () => {
+        if (localStorage.getItem('jwtToken')) {
+            console.log('refresh jwt');
+        }
+    };
+
+    const logout = () => {
+        if (localStorage.getItem('jwtToken')) {
+            console.log('logout');
+            store.dispatch(AuthActions.logoutAdmin());
+        }
+    };
+
+    let logoutInterval;
+    const seconds = 1000;
+
+    const resetLogoutInterval = () => {
+        console.log('reset logout interval');
+        clearInterval(logoutInterval);
+        logoutInterval = setInterval(logout, 10 * seconds);
+    };
+
+    resetLogoutInterval();
+
+    const logoutRefresh = () => {
         if (localStorage.getItem('jwtToken')) {
             if (shouldRefresh) {
-                console.log('refresh jwt');
                 shouldRefresh = false;
-            } else {
-                console.log('logout');
-                store.dispatch(AuthActions.logoutAdmin());
-                shouldRefresh = true;
+                resetLogoutInterval();
             }
         }
     };
 
-    const seconds = 1000;
-
-    setInterval(refresh, 10 * seconds);
+    setInterval(jwtRefresh, 5 * seconds);
+    setInterval(logoutRefresh, 1 * seconds);
 
     const interact = () => {
         if (!shouldRefresh) {

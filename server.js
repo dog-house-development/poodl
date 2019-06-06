@@ -9,10 +9,7 @@ const mongoURI = process.env.MONGODB_URI || require('./config/secrets').mongoURI
 
 // Connect to MongoDB
 mongoose
-    .connect(
-        mongoURI,
-        { useNewUrlParser: true }
-    )
+    .connect(mongoURI, { useNewUrlParser: true })
     .then(() => console.log('MongoDB successfully connected at ' + mongoURI))
     .catch(err => console.log(err));
 
