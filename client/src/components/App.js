@@ -59,21 +59,26 @@ class App extends Component {
         super(props);
         this.findExistingToken();
         refreshToken();
+        console.log('constructor');
     }
 
     findExistingToken() {
         // Check for token to keep admin logged in
-        if (localStorage.jwtToken) {
+        if (localStorage.getItem('jwtToken')) {
             const token = localStorage.getItem('jwtToken');
-            const decoded = jwt_decode(token);
+            setAuthToken(token);
+            store.dispatch(AuthActions.refreshToken());
 
-            // Check for expired token
-            const currentTime = Date.now() / 1000; // to get in seconds
-            if (decoded.exp >= currentTime) {
-                setAuthToken(token);
-                // Set admin and isAuthenticated
-                store.dispatch(AuthActions.setCurrentAdmin(decoded));
-            }
+            // const decoded = jwt_decode(token);
+
+            // // Check for expired token
+            // const currentTime = Date.now() / 1000; // to get in seconds
+            // if (decoded.exp >= currentTime) {
+            //     // Set admin and isAuthenticated
+            //     // store.dispatch(AuthActions.setCurrentAdmin(decoded));
+
+            //     store.dispatch(AuthActions.refreshToken());
+            // }
         }
     }
 

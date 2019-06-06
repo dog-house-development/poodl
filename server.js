@@ -5,7 +5,7 @@ const passport = require('passport');
 const path = require('path');
 
 // MongoDB URI
-const mongoURI = process.env.MONGODB_URI || require('./config/secrets').mongoURI;
+const mongoURI = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
 mongoose

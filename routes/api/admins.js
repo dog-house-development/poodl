@@ -56,7 +56,7 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
 });
 
 // @route POST api/admins/
-router.post('/', (req, res) => {
+router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
     const newAdmin = new Admin(req.body);
 
     const { errors, isValid } = validateRegisterAdmin(req.body);
@@ -112,24 +112,29 @@ router.post('/login', (req, res) => {
                 // Admin matched
                 // Create JWT Payload, basically what we want to send in the response
                 const payload = {
+                    id: admin.id
+                };
+
+                const adminData = {
                     id: admin.id,
                     firstName: admin.firstName,
                     lastName: admin.lastName,
                     seniorCenterId: admin.seniorCenterId,
                     accessLevel: admin.accessLevel
                 };
+                console.log('hello');
 
                 // Sign token
                 jwt.sign(
                     payload,
-                    keys.secretOrKey,
+                    keys.jwtKey,
                     {
                         expiresIn: 10 // 1 year in seconds
                     },
                     (err, token) => {
                         res.json({
-                            success: true,
-                            token: 'Bearer ' + token
+                            token: 'Bearer ' + token,
+                            admin: adminData
                         });
                     }
                 );
@@ -138,6 +143,41 @@ router.post('/login', (req, res) => {
             }
         });
     });
+});
+
+// @route GET api/admins/refresh-token
+// @desc Login Admin and return JWT token
+// @access Public
+router.get('/refresh-token', passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log('api refresh token');
+    const { user } = req;
+    const payload = {
+        id: user.id
+    };
+
+    const adminData = {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        seniorCenterId: user.seniorCenterId,
+        accessLevel: user.accessLevel
+    };
+
+    // Sign token
+    jwt.sign(
+        payload,
+        keys.jwtKey,
+        {
+            expiresIn: 10 // 1 year in seconds
+        },
+        (err, token) => {
+            console.log(token);
+            return res.json({
+                token: 'Bearer ' + token,
+                admin: adminData
+            });
+        }
+    );
 });
 
 module.exports = router;
