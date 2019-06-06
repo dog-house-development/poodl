@@ -1,5 +1,5 @@
-passport = require('passport');
-restrictAccess = require('./restrictAccess');
+const passport = require('passport');
+const restrictAccess = require('./restrictAccess');
 
 module.exports = {
     // Create api helper
@@ -37,11 +37,12 @@ module.exports = {
     get: (router, model) => {
         router.get('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
             // console.log(req.headers.authorization);
-            const restrictAccessError = await restrictAccess(req, ['Volunteer']);
-            console.log('error' + restrictAccessError);
-            if (restrictAccessError) {
-                return res.status(401).json(restrictAccessError);
-            }
+            console.log(req.user);
+            // const restrictAccessError = await restrictAccess(req, ['Volunteer']);
+            // console.log('error' + restrictAccessError);
+            // if (restrictAccessError) {
+            //     return res.status(401).json(restrictAccessError);
+            // }
 
             model.findById(req.params.id, (err, doc) => {
                 if (err) {

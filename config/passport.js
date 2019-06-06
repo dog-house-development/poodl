@@ -8,8 +8,10 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.secretOrKey;
 
 module.exports = passport => {
+    // See http://www.passportjs.org/packages/passport-jwt/ for more info
     passport.use(
         new JwtStrategy(opts, (jwt_payload, done) => {
+            console.log('jwt strategy');
             Admin.findById(jwt_payload.id)
                 .then(admin => {
                     if (admin) {

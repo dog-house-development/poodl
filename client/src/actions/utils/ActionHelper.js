@@ -1,5 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
+import AuthActions from '../authActions';
 
 /**
  * Action creator for getting errors
@@ -8,6 +9,11 @@ import _ from 'lodash';
  * @param errors    {Object}    errors data to send in action payload
  */
 export const getErrors = (dispatch, type, errors) => {
+    // If unauthorized, logout
+    if (errors.response.status === 401) {
+        dispatch(AuthActions.logoutAdmin());
+    }
+
     dispatch({
         type: type.ERROR,
         payload: errors.response.data
