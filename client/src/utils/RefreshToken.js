@@ -14,7 +14,7 @@ const refreshToken = () => {
 
     const jwtRefresh = () => {
         console.log('should refresh?');
-        if (localStorage.getItem('jwtToken')) {
+        if (localStorage.getItem('jwtToken') && shouldRefresh) {
             console.log('refresh jwt');
             store.dispatch(AuthActions.refreshToken());
         }
@@ -22,7 +22,8 @@ const refreshToken = () => {
 
     const logout = () => {
         if (localStorage.getItem('jwtToken') && !shouldRefresh) {
-            console.log('logout');
+            // console.log('logout');
+            console.log('timed out because of inactivity after 10 seconds');
             store.dispatch(AuthActions.logoutAdmin());
         }
     };
@@ -55,6 +56,7 @@ const refreshToken = () => {
     };
 
     window.onmousemove = interact;
+    window.onmousedown = interact;
     // window.onchange = interact;
 };
 

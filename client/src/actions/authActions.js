@@ -3,12 +3,19 @@ import setAuthToken from '../utils/setAuthToken';
 
 import Types from './types';
 import { getErrors } from './utils/ActionHelper';
+import jwt_decode from 'jwt-decode';
+
+const setCurrentAdmin = admin => {
+    console.log('set current admin');
+    console.log(admin);
+    return {
+        type: Types.auth.SET_CURRENT_ADMIN,
+        payload: admin
+    };
+};
 
 export default {
-    setCurrentAdmin: decoded => ({
-        type: Types.auth.SET_CURRENT_ADMIN,
-        payload: decoded
-    }),
+    setCurrentAdmin: setCurrentAdmin,
 
     loginAdmin: adminData => async dispatch => {
         dispatch({
@@ -17,16 +24,19 @@ export default {
         try {
             // Send api request to login
             const res = await axios.post('/api/admins/login', adminData);
-            const { token, admin } = res.data;
+            const { token } = res.data;
             // Set localStorage with token
             localStorage.setItem('jwtToken', token);
             // Set Auth Header with token
             setAuthToken(token);
             // Decode token to get admin data
+            // Use jwt-decode instead of jsonwebtoken so you don't have
+            // to remove 'Bearer' from the token
+            const decoded = jwt_decode(token);
             // Set current admin
             dispatch({
                 type: Types.auth.login.SUCCESS,
-                payload: admin
+                payload: decoded
             });
         } catch (err) {
             getErrors(dispatch, Types.auth, err);
@@ -46,15 +56,17 @@ export default {
     },
 
     refreshToken: () => async dispatch => {
+        // console.log('refresh token action');
         try {
             // Send api request new token
             const res = await axios.get('/api/admins/refresh-token');
-            const { token, admin } = res.data;
+            const { token } = res.data;
+            console.log(token);
+            // console.log('token exp', token.exp);
             // Set localStorage with token
             localStorage.setItem('jwtToken', token);
             // Set Auth Header with token
             setAuthToken(token);
-            dispatch(this.setCurrentAdmin(admin));
         } catch (err) {
             getErrors(dispatch, Types.auth, err);
         }

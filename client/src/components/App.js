@@ -7,7 +7,6 @@ import refreshToken from '../utils/RefreshToken';
 import AuthActions from '../actions/authActions';
 import { Provider } from 'react-redux';
 import store from '../store';
-import moment from 'moment';
 
 // layout
 import Navbar from './layout/Navbar';
@@ -63,22 +62,22 @@ class App extends Component {
     }
 
     findExistingToken() {
-        // Check for token to keep admin logged in
-        if (localStorage.getItem('jwtToken')) {
-            const token = localStorage.getItem('jwtToken');
+        if (localStorage.jwtToken) {
+            // Set auth token header auth
+            const token = localStorage.jwtToken;
             setAuthToken(token);
-            store.dispatch(AuthActions.refreshToken());
-
-            // const decoded = jwt_decode(token);
-
-            // // Check for expired token
-            // const currentTime = Date.now() / 1000; // to get in seconds
-            // if (decoded.exp >= currentTime) {
-            //     // Set admin and isAuthenticated
-            //     // store.dispatch(AuthActions.setCurrentAdmin(decoded));
-
-            //     store.dispatch(AuthActions.refreshToken());
-            // }
+            // Decode token and get admin info and exp
+            const decoded = jwt_decode(token);
+            // Set admin and isAuthenticated
+            store.dispatch(AuthActions.setCurrentAdmin(decoded));
+            // Check for expired token
+            const currentTime = Date.now() / 1000; // to get in milliseconds
+            if (decoded.exp < currentTime) {
+                // Logout admin
+                store.dispatch(AuthActions.logoutAdmin());
+            } else {
+                store.dispatch(AuthActions.refreshToken());
+            }
         }
     }
 

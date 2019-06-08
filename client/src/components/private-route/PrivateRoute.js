@@ -11,14 +11,14 @@ export const PrivateRoute = ({ component: Component, auth, restrictAccess, ...re
     <Route
         {...rest}
         render={props => {
-            console.log('render');
-            console.log(auth);
+            // console.log('render');
+            // console.log(auth);
             if (auth.isAuthenticated && auth.admin.accessLevel !== restrictAccess) {
-                console.log('render 2');
+                // console.log('render 2');
                 return <Component {...props} />;
             }
 
-            console.log('render 3');
+            // console.log('render 3');
             return (
                 <Redirect
                     to={{

@@ -10,7 +10,7 @@ import AuthActions from '../authActions';
  */
 export const getErrors = (dispatch, type, errors) => {
     // If unauthorized, logout
-    console.log(errors);
+    // console.log('getErrors err', errors);
     if (errors.response.status === 401) {
         dispatch(AuthActions.logoutAdmin());
     }
