@@ -4,9 +4,9 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 import refreshToken from '../utils/RefreshToken';
 
-import AuthActions from '../actions/authActions';
+import AuthActions from '../redux/actions/authActions';
 import { Provider } from 'react-redux';
-import store from '../store';
+import store from '../redux/store';
 
 // layout
 import Navbar from './layout/Navbar';

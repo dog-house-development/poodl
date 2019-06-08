@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Dropdown from '../ui/Dropdown';
-import AuthActions from '../../actions/authActions';
+import AuthActions from '../../redux/actions/authActions';
 import Button from '../ui/Button';
 
 export class Navbar extends Component {

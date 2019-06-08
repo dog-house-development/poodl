@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import moment from 'moment';
-import ActivityActions from '../../../../../actions/activityActions';
+import ActivityActions from '../../../../../redux/actions/activityActions';
 import Button from '../../../../ui/Button';
 import Utils from '../../../../../utils/Utils';
 

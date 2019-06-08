@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import AdminActions from '../../../actions/adminActions';
+import AdminActions from '../../../redux/actions/adminActions';
 import DynamicForm from '../../ui/DynamicForm';
 import adminInputs from './adminInputs';
 

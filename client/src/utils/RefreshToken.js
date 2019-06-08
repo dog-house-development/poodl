@@ -1,5 +1,5 @@
-import store from '../store';
-import AuthActions from '../actions/authActions';
+import store from '../redux/store';
+import AuthActions from '../redux/actions/authActions';
 
 // Function to manage refreshing the jwt and logging out when inactive.
 const refreshToken = () => {

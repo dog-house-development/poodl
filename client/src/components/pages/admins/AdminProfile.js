@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import Loading from '../../ui/Loading';
 import ConfirmButton from './../../ui/ConfirmButton';
-import AdminActions from '../../../actions/adminActions';
+import AdminActions from '../../../redux/actions/adminActions';
 import DynamicForm from '../../ui/DynamicForm';
 import adminInputs from './adminInputs';
-import AuthActions from '../../../actions/authActions';
+import AuthActions from '../../../redux/actions/authActions';
 import Dropdown from '../../ui/Dropdown';
 
 export class AdminProfile extends Component {
