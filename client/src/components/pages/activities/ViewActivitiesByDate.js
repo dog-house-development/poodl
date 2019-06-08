@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-import ActivityActions from '../../../actions/activityActions';
+import ActivityActions from '../../../redux/actions/activityActions';
 import ViewByDate from '../../ui/ViewByDate';
 
 export class ViewActivitiesByDate extends Component {

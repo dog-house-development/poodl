@@ -5,7 +5,7 @@ import memberInputs from './memberInputs';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import MemberActions from '../../../actions/memberActions';
+import MemberActions from '../../../redux/actions/memberActions';
 import _ from 'lodash';
 
 export class RegisterMember extends React.Component {

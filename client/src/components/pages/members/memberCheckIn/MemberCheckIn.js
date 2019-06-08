@@ -5,8 +5,8 @@ import _ from 'lodash';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 
-import MemberActions from '../../../../actions/memberActions';
-import AuthActions from '../../../../actions/authActions';
+import MemberActions from '../../../../redux/actions/memberActions';
+import AuthActions from '../../../../redux/actions/authActions';
 import Button from '../../../ui/Button';
 
 // check-in pages

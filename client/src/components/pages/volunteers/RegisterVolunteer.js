@@ -5,7 +5,7 @@ import volunteerInputs from './volunteerInputs';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import VolunteerActions from '../../../actions/volunteerActions';
+import VolunteerActions from '../../../redux/actions/volunteerActions';
 import _ from 'lodash';
 
 export class RegisterVolunteer extends React.Component {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import ActivityActions from '../../../actions/activityActions';
+import ActivityActions from '../../../redux/actions/activityActions';
 import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
