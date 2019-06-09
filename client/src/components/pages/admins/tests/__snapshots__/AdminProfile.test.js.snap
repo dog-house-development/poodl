@@ -12,6 +12,7 @@ Object {
   "authActions": Object {
     "loginAdmin": [Function],
     "logoutAdmin": [Function],
+    "refreshToken": [Function],
     "setCurrentAdmin": [Function],
   },
 }
