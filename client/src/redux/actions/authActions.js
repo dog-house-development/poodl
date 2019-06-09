@@ -5,15 +5,13 @@ import Types from './types';
 import { getErrors } from './utils/ActionHelper';
 import jwt_decode from 'jwt-decode';
 
-const setCurrentAdmin = admin => {
-    return {
-        type: Types.auth.SET_CURRENT_ADMIN,
-        payload: admin
-    };
-};
-
 export default {
-    setCurrentAdmin: setCurrentAdmin,
+    setCurrentAdmin: admin => {
+        return {
+            type: Types.auth.SET_CURRENT_ADMIN,
+            payload: admin
+        };
+    },
 
     loginAdmin: adminData => async dispatch => {
         dispatch({

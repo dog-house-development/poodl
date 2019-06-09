@@ -16,6 +16,11 @@ const validateLoginInput = require('./validation/admin/login');
 const router = express.Router();
 const Admin = mongoose.model('Admin');
 
+/**
+ * An express middleware that sends a new jwt.
+ * @param {request} req API request
+ * @param {response} res API response
+ */
 const sendJwt = (req, res) => {
     // Create JWT Payload, basically what we want to send in the response
     const { user } = req;

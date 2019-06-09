@@ -1,7 +1,13 @@
 import store from '../redux/store';
 import AuthActions from '../redux/actions/authActions';
 
-// Function to manage refreshing the jwt and logging out when inactive.
+/**
+ * Manages refreshing the jwt and logging out when inactive.
+ * Every 2 hours it refresh the json web token.
+ * Every 5 hours it checks if you interacted, if so it resets a timeout
+ * that will log you out in 10 hours.
+ * The token from the server expires in 11 hours.
+ */
 const refreshToken = () => {
     let shouldRefresh = false;
 
