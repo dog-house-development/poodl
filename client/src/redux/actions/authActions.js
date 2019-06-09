@@ -61,7 +61,7 @@ export default {
             // Send api request new token
             const res = await axios.get('/api/admins/refresh-token');
             const { token } = res.data;
-            console.log(token);
+            // console.log(token);
             // console.log('token exp', token.exp);
             // Set localStorage with token
             localStorage.setItem('jwtToken', token);

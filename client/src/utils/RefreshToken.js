@@ -3,38 +3,26 @@ import AuthActions from '../redux/actions/authActions';
 
 // Function to manage refreshing the jwt and logging out when inactive.
 const refreshToken = () => {
-    console.log('refreshToken');
     let shouldRefresh = false;
 
-    let time = 0;
-    setInterval(() => {
-        console.log(time, 'should refresh', shouldRefresh);
-        time++;
-    }, 1000);
-
     const jwtRefresh = () => {
-        console.log('should refresh?');
-        if (localStorage.getItem('jwtToken') && shouldRefresh) {
-            console.log('refresh jwt');
+        if (localStorage.getItem('jwtToken')) {
             store.dispatch(AuthActions.refreshToken());
         }
     };
 
     const logout = () => {
         if (localStorage.getItem('jwtToken') && !shouldRefresh) {
-            // console.log('logout');
-            console.log('timed out because of inactivity after 10 seconds');
             store.dispatch(AuthActions.logoutAdmin());
         }
     };
 
     let logoutInterval;
-    const seconds = 1000;
+    const hours = 3600000; // 1 hour in milliseconds
 
     const resetLogoutInterval = () => {
-        console.log('reset logout interval');
         clearInterval(logoutInterval);
-        logoutInterval = setInterval(logout, 10 * seconds);
+        logoutInterval = setInterval(logout, 10 * hours);
     };
 
     resetLogoutInterval();
@@ -46,8 +34,8 @@ const refreshToken = () => {
         }
     };
 
-    setInterval(jwtRefresh, 5 * seconds);
-    setInterval(logoutRefresh, 1 * seconds);
+    setInterval(jwtRefresh, 2 * hours);
+    setInterval(logoutRefresh, 5 * hours);
 
     const interact = () => {
         if (!shouldRefresh) {
@@ -57,7 +45,6 @@ const refreshToken = () => {
 
     window.onmousemove = interact;
     window.onmousedown = interact;
-    // window.onchange = interact;
 };
 
 export default refreshToken;

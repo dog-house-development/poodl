@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
-import setAuthToken from '../utils/setAuthToken';
 import refreshToken from '../utils/RefreshToken';
+import findExistingToken from '../utils/FindExistingToken';
 
-import AuthActions from '../redux/actions/authActions';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
 
@@ -56,29 +54,8 @@ import '../assets/stylesheets/App.scss';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.findExistingToken();
+        findExistingToken();
         refreshToken();
-        console.log('constructor');
-    }
-
-    findExistingToken() {
-        if (localStorage.jwtToken) {
-            // Set auth token header auth
-            const token = localStorage.jwtToken;
-            setAuthToken(token);
-            // Decode token and get admin info and exp
-            const decoded = jwt_decode(token);
-            // Set admin and isAuthenticated
-            store.dispatch(AuthActions.setCurrentAdmin(decoded));
-            // Check for expired token
-            const currentTime = Date.now() / 1000; // to get in milliseconds
-            if (decoded.exp < currentTime) {
-                // Logout admin
-                store.dispatch(AuthActions.logoutAdmin());
-            } else {
-                store.dispatch(AuthActions.refreshToken());
-            }
-        }
     }
 
     render() {

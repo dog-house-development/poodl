@@ -33,7 +33,7 @@ const sendJwt = (req, res) => {
         payload,
         keys.jwtKey,
         {
-            expiresIn: 20
+            expiresIn: 39600 // 11 hours in seconds
         },
         (err, token) => {
             if (err) {
