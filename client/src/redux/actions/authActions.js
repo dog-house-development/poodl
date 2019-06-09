@@ -6,8 +6,6 @@ import { getErrors } from './utils/ActionHelper';
 import jwt_decode from 'jwt-decode';
 
 const setCurrentAdmin = admin => {
-    console.log('set current admin');
-    console.log(admin);
     return {
         type: Types.auth.SET_CURRENT_ADMIN,
         payload: admin
@@ -56,16 +54,11 @@ export default {
     },
 
     refreshToken: () => async dispatch => {
-        // console.log('refresh token action');
         try {
-            // Send api request new token
+            // Send api request for new token
             const res = await axios.get('/api/admins/refresh-token');
             const { token } = res.data;
-            // console.log(token);
-            // console.log('token exp', token.exp);
-            // Set localStorage with token
             localStorage.setItem('jwtToken', token);
-            // Set Auth Header with token
             setAuthToken(token);
         } catch (err) {
             getErrors(dispatch, Types.auth, err);

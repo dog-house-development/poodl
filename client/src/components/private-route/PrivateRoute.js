@@ -12,14 +12,14 @@ export const PrivateRoute = ({ component: Component, auth, restrictAccess, ...re
     <Route
         {...rest}
         render={props => {
-            // console.log('render');
-            // console.log(auth);
+            if (!auth.admin.accessLevel) {
+                throw new Error('Admin must have an access level.');
+            }
+
             if (auth.isAuthenticated && auth.admin.accessLevel !== restrictAccess) {
-                // console.log('render 2');
                 return <Component {...props} />;
             }
 
-            // console.log('render 3');
             return (
                 <Redirect
                     to={{

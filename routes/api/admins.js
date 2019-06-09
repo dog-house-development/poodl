@@ -17,7 +17,6 @@ const router = express.Router();
 const Admin = mongoose.model('Admin');
 
 const sendJwt = (req, res) => {
-    console.log('send jwt');
     // Create JWT Payload, basically what we want to send in the response
     const { user } = req;
     const payload = {
