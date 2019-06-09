@@ -7,6 +7,7 @@ const propTypes = {
     auth: PropTypes.object.isRequired
 };
 
+// This is a functional higher order component. See https://reactjs.org/docs/higher-order-components.html
 export const PrivateRoute = ({ component: Component, auth, restrictAccess, ...rest }) => (
     <Route
         {...rest}
