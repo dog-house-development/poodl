@@ -17,7 +17,6 @@ export class AddActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            seniorCenterId: props.adminSeniorCenterId,
             date: moment().startOf('day'),
             name: '',
             description: '',
@@ -93,7 +92,6 @@ export class AddActivity extends Component {
 
 export const mapStateToProps = state => {
     return {
-        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.activities.errors,
         loading: state.activities.loading,
         activities: _.get(state.activities, 'all')

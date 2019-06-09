@@ -61,7 +61,6 @@ describe('RegisterAdmin tests', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
                 adminIsSuper: false,
-                adminSeniorCenterId: 123,
                 auth: {
                     isAuthenticated: true,
                     loading: false,

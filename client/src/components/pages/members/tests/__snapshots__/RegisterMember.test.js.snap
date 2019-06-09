@@ -337,11 +337,7 @@ exports[`Register member tests render should render correctly 1`] = `
       onChange={[Function]}
       onSubmit={[Function]}
       submitButtonLabel="Register Member"
-      values={
-        Object {
-          "seniorCenterId": undefined,
-        }
-      }
+      values={Object {}}
     />
   </div>
 </div>

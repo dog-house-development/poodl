@@ -46,8 +46,7 @@ describe('SelfRegisterMember tests', () => {
         it('should map state to props', () => {
             expect(mapStateToProps(state, props)).toEqual({
                 loading: false,
-                errors: {},
-                adminSeniorCenterId: '34543'
+                errors: {}
             });
         });
     });
@@ -62,7 +61,7 @@ describe('SelfRegisterMember tests', () => {
     describe('handleChange', () => {
         it('should set the state to the id and the value', () => {
             instance.handleChange({ target: { id: 'name', value: 'Sam' } });
-            expect(instance.state).toEqual({ name: 'Sam', seniorCenterId: '34543' });
+            expect(instance.state).toEqual({ name: 'Sam' });
         });
     });
 

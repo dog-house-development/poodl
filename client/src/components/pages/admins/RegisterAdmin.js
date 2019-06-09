@@ -17,9 +17,7 @@ const propTypes = {
 export class RegisterAdmin extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            seniorCenterId: props.adminSeniorCenterId
-        };
+        this.state = {};
     }
 
     handleChange = e => {
@@ -61,7 +59,6 @@ export const mapStateToProps = (state, props) => {
     return {
         auth: state.auth,
         adminIsSuper: _.get(state.auth.admin, 'accessLevel', false) === 'Super',
-        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.admins.errors,
         loading: state.admins.loading
     };

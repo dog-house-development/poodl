@@ -352,11 +352,7 @@ exports[`Register volunteer tests render should render correctly 1`] = `
       onChange={[Function]}
       onSubmit={[Function]}
       submitButtonLabel="Register Volunteer"
-      values={
-        Object {
-          "seniorCenterId": undefined,
-        }
-      }
+      values={Object {}}
     />
   </div>
 </div>
