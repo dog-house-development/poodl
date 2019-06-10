@@ -77,6 +77,17 @@
             background-color: transparent;
           }
         }
+
+        &.no-data-row {
+          height: unset;
+
+          .no-data {
+            color: $transparent-4;
+            text-align: center;
+            font-size: 1em;
+            padding: 0.5em;
+          }
+        }
       }
     }
   }

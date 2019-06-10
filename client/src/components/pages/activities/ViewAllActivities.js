@@ -56,6 +56,7 @@ export class ViewAllActivities extends Component {
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
                     sortBy={activity => moment(activity.date, 'MMMM Do, YYYY')}
+                    noDataMessage="No activities to display"
                 />
             </div>
         );

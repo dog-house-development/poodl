@@ -57,6 +57,7 @@ exports[`ViewAllVolunteers tests render should render correctly 1`] = `
       ]
     }
     loading={false}
+    noDataMessage="No volunteers to display"
     onRowClick={[Function]}
   />
 </div>

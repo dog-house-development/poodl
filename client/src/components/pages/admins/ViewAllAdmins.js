@@ -64,6 +64,7 @@ export class ViewAllAdmins extends Component {
                     data={this.getDataGridContent()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
+                    noDataMessage="No admins to display"
                 />
             </div>
         );
