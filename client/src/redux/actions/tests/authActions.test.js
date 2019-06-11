@@ -5,7 +5,7 @@ import MockAdapter from 'axios-mock-adapter';
 
 import AuthActions from '../authActions';
 import Types from '../types';
-import setAuthToken from '../../utils/setAuthToken';
+import setAuthToken from '../../../utils/setAuthToken';
 
 describe('authActions.js', () => {
     const middlewares = [thunk];

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import ServiceActions from '../../../actions/serviceActions';
+import ServiceActions from '../../../redux/actions/serviceActions';
 import serviceInputs from './serviceInputs';
 import DynamicForm from '../../ui/DynamicForm';
 

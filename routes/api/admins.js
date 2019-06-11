@@ -16,17 +16,47 @@ const validateLoginInput = require('./validation/admin/login');
 const router = express.Router();
 const Admin = mongoose.model('Admin');
 
-// @route POST api/admins/filter
-ApiHelper.filter(router, Admin);
+/**
+ * An express middleware that sends a new jwt.
+ * @param {request} req API request
+ * @param {response} res API response
+ */
+const sendJwt = (req, res) => {
+    // Create JWT Payload, basically what we want to send in the response
+    const { user } = req;
+    const payload = {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        seniorCenterId: user.seniorCenterId,
+        accessLevel: user.accessLevel
+    };
 
-// @route GET api/admins/:id
-ApiHelper.get(router, Admin);
+    // Sign token
+    return jwt.sign(
+        payload,
+        keys.jwtKey,
+        {
+            expiresIn: 39600 // 11 hours in seconds
+        },
+        (err, token) => {
+            if (err) {
+                return res.status(400).json(err);
+            }
 
-// @route PATCH api/admins/:id
-ApiHelper.edit(router, Admin);
+            return res.json({
+                token: 'Bearer ' + token
+            });
+        }
+    );
+};
 
 // @route DELETE api/admins/:id
 router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    if (req.params.id === req.user.id) {
+        return res.status(400).json('An admin cannot delete himself.');
+    }
+
     const id = mongoose.Types.ObjectId(req.params.id);
     Admin.findByIdAndDelete(id, (err, doc) => {
         if (err) {
@@ -56,7 +86,7 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
 });
 
 // @route POST api/admins/
-router.post('/', (req, res) => {
+router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
     const newAdmin = new Admin(req.body);
 
     const { errors, isValid } = validateRegisterAdmin(req.body);
@@ -66,8 +96,15 @@ router.post('/', (req, res) => {
 
     // Hash password before saving in database
     bcrypt.genSalt(10, (err, salt) => {
+        if (err) {
+            return res.status(400).json(err);
+        }
+
         bcrypt.hash(newAdmin.password, salt, (err, hash) => {
-            if (err) throw err;
+            if (err) {
+                return res.status(400).json(err);
+            }
+
             newAdmin.password = hash;
             newAdmin
                 .save()
@@ -82,62 +119,57 @@ router.post('/', (req, res) => {
 // @route POST api/admins/login
 // @desc Login Admin and return JWT token
 // @access Public
-router.post('/login', (req, res) => {
-    // Form validation
+router.post(
+    '/login',
+    (req, res, next) => {
+        // Form validation
+        const { errors, isValid } = validateLoginInput(req.body);
 
-    const { errors, isValid } = validateLoginInput(req.body);
-
-    // Check validation
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    const email = req.body.email;
-    const password = req.body.password;
-
-    const notFoundError = {
-        error: 'Email and password combination not found'
-    };
-
-    // Find Admin by email
-    Admin.findOne({ email }).then(admin => {
-        // Check if Admin exists
-        if (!admin) {
-            return res.status(404).json(notFoundError);
+        // Check validation
+        if (!isValid) {
+            return res.status(400).json(errors);
         }
 
-        // Check password
-        bcrypt.compare(password, admin.password).then(isMatch => {
-            if (isMatch) {
-                // Admin matched
-                // Create JWT Payload, basically what we want to send in the response
-                const payload = {
-                    id: admin.id,
-                    firstName: admin.firstName,
-                    lastName: admin.lastName,
-                    seniorCenterId: admin.seniorCenterId,
-                    accessLevel: admin.accessLevel
-                };
+        const email = req.body.email;
+        const password = req.body.password;
 
-                // Sign token
-                jwt.sign(
-                    payload,
-                    keys.secretOrKey,
-                    {
-                        expiresIn: 31556926 // 1 year in seconds
-                    },
-                    (err, token) => {
-                        res.json({
-                            success: true,
-                            token: 'Bearer ' + token
-                        });
-                    }
-                );
-            } else {
+        const notFoundError = {
+            error: 'Email and password combination not found'
+        };
+
+        // Find Admin by email
+        Admin.findOne({ email }).then(admin => {
+            // Check if Admin exists
+            if (!admin) {
                 return res.status(404).json(notFoundError);
             }
+
+            // Check password
+            bcrypt.compare(password, admin.password).then(isMatch => {
+                if (isMatch) {
+                    req.user = admin;
+                    next();
+                } else {
+                    return res.status(404).json(notFoundError);
+                }
+            });
         });
-    });
-});
+    },
+    sendJwt
+);
+
+// @route GET api/admins/refresh-token
+// @desc Login Admin and return JWT token
+// @access Public
+router.get('/refresh-token', passport.authenticate('jwt', { session: false }), sendJwt);
+
+// @route POST api/admins/filter
+ApiHelper.filter(router, Admin);
+
+// @route GET api/admins/:id
+ApiHelper.get(router, Admin);
+
+// @route PATCH api/admins/:id
+ApiHelper.edit(router, Admin);
 
 module.exports = router;

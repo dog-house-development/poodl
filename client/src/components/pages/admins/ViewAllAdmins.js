@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Link, withRouter } from 'react-router-dom';
 
-import AdminActions from '../../../actions/adminActions';
+import AdminActions from '../../../redux/actions/adminActions';
 import DataGrid from '../../ui/DataGrid';
 
 export class ViewAllAdmins extends Component {

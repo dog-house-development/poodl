@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
-import ServiceActions from '../../../actions/serviceActions';
-import MemberActions from '../../../actions/memberActions';
+import ServiceActions from '../../../redux/actions/serviceActions';
+import MemberActions from '../../../redux/actions/memberActions';
 import DynamicForm from '../../ui/DynamicForm';
 import List from '../../ui/List';
 import serviceInputs from './serviceInputs';

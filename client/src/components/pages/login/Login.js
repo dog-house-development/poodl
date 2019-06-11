@@ -4,7 +4,7 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import AuthActions from '../../../actions/authActions';
+import AuthActions from '../../../redux/actions/authActions';
 import DynamicForm from '../../ui/DynamicForm';
 import loginInputs from './loginInputs';
 

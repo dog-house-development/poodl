@@ -1,4 +1,5 @@
 const ApiHelper = require('./utils/apiHelper');
+const passport = require('passport');
 
 const router = require('express').Router();
 const mongoose = require('mongoose');

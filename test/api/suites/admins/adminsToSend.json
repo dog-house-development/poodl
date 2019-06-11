@@ -1,0 +1,68 @@
+{
+    "admins": [
+        {
+            "_id": "5cfc9ad43b23ac090318c044",
+            "accessLevel": "Admin",
+            "occasionalOneDayProjects": false,
+            "singleDayActivity": false,
+            "houseMaintenanceAndRepairs": [],
+            "groundMaintenance": [],
+            "clericalAssistance": [],
+            "nutritionProgram": [],
+            "specialEventsAndFundRaising": [],
+            "interpretingTeachingClassesOrWorkshops": [],
+            "email": "test1@test.testy",
+            "password": "testtest",
+            "password2": "testtest",
+            "firstName": "Boom",
+            "lastName": "Zoom",
+            "seniorCenterId": "5c75f99fe7179a3e36ddee5b"
+        },
+        {
+            "_id": "5c9dd52a4eb48f7132365fa5",
+            "accessLevel": "Volunteer",
+            "occasionalOneDayProjects": false,
+            "singleDayActivity": true,
+            "houseMaintenanceAndRepairs": ["Carpentry", "Plumbing", "Masonry", "Cleaning", "Electrical", "Painting"],
+            "groundMaintenance": [
+                "Lawn Maintenance",
+                "Grounds Cleanup",
+                "Pruning Trees and Shrubs",
+                "Planting and Maintaining Flower Beds",
+                "Snow Removal"
+            ],
+            "clericalAssistance": [
+                "Data Entry",
+                "Folding Brochures",
+                "General Office",
+                "Preparing Bulk Mailings",
+                "Front Desk"
+            ],
+            "nutritionProgram": ["Dining Room Setup"],
+            "specialEventsAndFundRaising": ["Assist with Events"],
+            "interpretingTeachingClassesOrWorkshops": ["Exercise"],
+            "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+            "email": "Scarlet@johanson.com",
+            "password": "$2a$10$aL0b5xW1sOsyxIZMlZe7AODv0v4nUvRbN5KUElil0sreuhIY6UZse",
+            "firstName": "Black",
+            "lastName": "Widow",
+            "nickName": "",
+            "streetAddress": "123 Avengers Street",
+            "city": "Bozeman",
+            "state": "MT",
+            "zip": "59715",
+            "homePhone": "4067778888",
+            "cellPhone": "",
+            "learnAboutVolunteerProgram": "Belgrade Senior Center",
+            "volunteerFrequency": "All the time baby",
+            "availabilitySchedule": "late 70s",
+            "proposedActivities": "saving the xmen",
+            "reference1Name": "Carol M Danvers",
+            "reference1Phone": "406-800-1000",
+            "reference1Relationship": "Sister",
+            "reference2Relationship": "dsdf",
+            "reference2Name": "Carol M Danvers",
+            "reference2Phone": ""
+        }
+    ]
+}

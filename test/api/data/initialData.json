@@ -1,0 +1,26 @@
+{
+    "admins": [
+        {
+            "_id": "5c9dd2d04eb48f7132365fa2",
+            "accessLevel": "Super",
+            "occasionalOneDayProjects": false,
+            "singleDayActivity": false,
+            "houseMaintenanceAndRepairs": [],
+            "groundMaintenance": [],
+            "clericalAssistance": [],
+            "nutritionProgram": [],
+            "specialEventsAndFundRaising": [],
+            "interpretingTeachingClassesOrWorkshops": [],
+            "firstName": "Bobbo",
+            "lastName": "Bubby",
+            "email": "test1@test.test",
+            "password": "$2a$10$bW9OOccrRi/ZOUdbpcDmvuuyRbBRZfe7ED8LvQipKf6OkIl5EYP2u",
+            "actualPassword": "testtest",
+            "seniorCenterId": "5c75f99fe7179a3e36ddee5b",
+            "createdAt": "2019-03-29T08:09:52.738Z",
+            "updatedAt": "2019-03-29T08:09:52.738Z",
+            "__v": 0,
+            "nickName": ""
+        }
+    ]
+}

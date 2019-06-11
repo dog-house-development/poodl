@@ -7,8 +7,8 @@ import mongoose from 'mongoose';
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import ActivityActions from '../../../actions/activityActions';
-import MemberActions from '../../../actions/memberActions';
+import ActivityActions from '../../../redux/actions/activityActions';
+import MemberActions from '../../../redux/actions/memberActions';
 import DynamicForm from '../../ui/DynamicForm';
 import activityInputs from './activityInputs';
 import List from '../../ui/List';
