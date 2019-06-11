@@ -8,5 +8,24 @@ module.exports = {
     addSeniorCenterIdToRequest(req, _res, next) {
         req.body.seniorCenterId = req.user.seniorCenterId;
         next();
+    },
+
+    restrictAccess(restrictedAccessLevels = []) {
+        return (req, res, next) => {
+            const validAccessLevels = ['Super', 'Admin', 'Volunteer'];
+            if (!validAccessLevels.includes(req.user.accessLevel)) {
+                return res
+                    .status(401)
+                    .json({ message: `Access level ${req.user.accessLevel} is not a valid access level` });
+            }
+            if (restrictedAccessLevels.includes(req.user.accessLevel)) {
+                return res.status(401).json({
+                    message: `Access level '${req.user.accessLevel}' cannot access method '${req.method}' to '${
+                        req.originalUrl
+                    }'`
+                });
+            }
+            next();
+        };
     }
 };

@@ -1,5 +1,5 @@
 passport = require('passport');
-const { addSeniorCenterIdToRequest } = require('./ExpressMiddleware');
+const { addSeniorCenterIdToRequest, restrictAccess } = require('./ExpressMiddleware');
 
 module.exports = {
     /**
@@ -7,15 +7,21 @@ module.exports = {
      * @param {ExpressRouter} router The express router
      * @param {MongooseModel} model  The mongoose model
      */
-    create(router, model) {
-        router.post('/', passport.authenticate('jwt', { session: false }), addSeniorCenterIdToRequest, (req, res) => {
-            new model(req.body)
-                .save()
-                .then(doc => res.json(doc))
-                .catch(err => {
-                    res.status(400).json(err);
-                });
-        });
+    create(router, model, restrictedAccessLevels) {
+        router.post(
+            '/',
+            passport.authenticate('jwt', { session: false }),
+            restrictAccess(restrictedAccessLevels),
+            addSeniorCenterIdToRequest,
+            (req, res) => {
+                new model(req.body)
+                    .save()
+                    .then(doc => res.json(doc))
+                    .catch(err => {
+                        res.status(400).json(err);
+                    });
+            }
+        );
     },
 
     /**
@@ -23,10 +29,11 @@ module.exports = {
      * @param {ExpressRouter} router The express router
      * @param {MongooseModel} model  The mongoose model
      */
-    filter(router, model) {
+    filter(router, model, restrictedAccessLevels) {
         router.post(
             '/filter',
             passport.authenticate('jwt', { session: false }),
+            restrictAccess(restrictedAccessLevels),
             addSeniorCenterIdToRequest,
             (req, res) => {
                 model.find(req.body, (err, docs) => {
@@ -45,19 +52,24 @@ module.exports = {
      * @param {ExpressRouter} router The express router
      * @param {MongooseModel} model  The mongoose model
      */
-    get(router, model) {
-        router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-            model.findById(req.params.id, (err, doc) => {
-                if (err) {
-                    return res.status(400).json(err);
-                }
-                if (!doc) {
-                    return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
-                }
+    get(router, model, restrictedAccessLevels) {
+        router.get(
+            '/:id',
+            passport.authenticate('jwt', { session: false }),
+            restrictAccess(restrictedAccessLevels),
+            (req, res) => {
+                model.findById(req.params.id, (err, doc) => {
+                    if (err) {
+                        return res.status(400).json(err);
+                    }
+                    if (!doc) {
+                        return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
+                    }
 
-                return res.json(doc);
-            });
-        });
+                    return res.json(doc);
+                });
+            }
+        );
     },
 
     /**
@@ -65,29 +77,34 @@ module.exports = {
      * @param {ExpressRouter} router The express router
      * @param {MongooseModel} model  The mongoose model
      */
-    edit(router, model) {
-        router.patch('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-            model.findById(req.params.id, (err, doc) => {
-                if (err) {
-                    return res.status(400).json(err);
-                }
-                if (!doc) {
-                    return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
-                }
-                delete req.body._id;
-                delete req.body.password;
-                delete req.body.accessLevel;
-                delete req.body.seniorCenterId;
-                for (let field in req.body) {
-                    doc[field] = req.body[field];
-                }
-                doc.save()
-                    .then(doc => res.json(doc))
-                    .catch(err => {
+    edit(router, model, restrictedAccessLevels) {
+        router.patch(
+            '/:id',
+            passport.authenticate('jwt', { session: false }),
+            restrictAccess(restrictedAccessLevels),
+            (req, res) => {
+                model.findById(req.params.id, (err, doc) => {
+                    if (err) {
                         return res.status(400).json(err);
-                    });
-            });
-        });
+                    }
+                    if (!doc) {
+                        return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
+                    }
+                    delete req.body._id;
+                    delete req.body.password;
+                    delete req.body.accessLevel;
+                    delete req.body.seniorCenterId;
+                    for (let field in req.body) {
+                        doc[field] = req.body[field];
+                    }
+                    doc.save()
+                        .then(doc => res.json(doc))
+                        .catch(err => {
+                            return res.status(400).json(err);
+                        });
+                });
+            }
+        );
     },
 
     /**
@@ -95,18 +112,23 @@ module.exports = {
      * @param {ExpressRouter} router The express router
      * @param {MongooseModel} model  The mongoose model
      */
-    delete(router, model) {
-        router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-            model.findByIdAndDelete(req.params.id, (err, doc) => {
-                if (err) {
-                    return res.status(400).json(err);
-                }
-                if (!doc) {
-                    return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
-                }
+    delete(router, model, restrictedAccessLevels) {
+        router.delete(
+            '/:id',
+            passport.authenticate('jwt', { session: false }),
+            restrictAccess(restrictedAccessLevels),
+            (req, res) => {
+                model.findByIdAndDelete(req.params.id, (err, doc) => {
+                    if (err) {
+                        return res.status(400).json(err);
+                    }
+                    if (!doc) {
+                        return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
+                    }
 
-                return res.json(doc);
-            });
-        });
+                    return res.json(doc);
+                });
+            }
+        );
     }
 };

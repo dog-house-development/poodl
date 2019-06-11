@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 // misc
 const keys = require('../../config/keys');
 const ApiHelper = require('./utils/apiHelper');
-const { addSeniorCenterIdToRequest } = require('./utils/ExpressMiddleware');
+const { addSeniorCenterIdToRequest, restrictAccess } = require('./utils/ExpressMiddleware');
 
 // input validation
 const validateRegisterAdmin = require('./validation/admin/registerAdmin');
@@ -18,67 +18,78 @@ const router = express.Router();
 const Admin = mongoose.model('Admin');
 
 // @route POST api/admins/filter
-ApiHelper.filter(router, Admin);
+ApiHelper.filter(router, Admin, ['Volunteer']);
 
 // @route GET api/admins/:id
 ApiHelper.get(router, Admin);
 
 // @route PATCH api/admins/:id
-ApiHelper.edit(router, Admin);
+ApiHelper.edit(router, Admin, ['Volunteer']);
 
 // @route DELETE api/admins/:id
-router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    const id = mongoose.Types.ObjectId(req.params.id);
-    Admin.findByIdAndDelete(id, (err, doc) => {
-        if (err) {
-            return res.status(400).json(err);
-        }
-        if (!doc) {
-            return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
-        }
-
-        // Remove the admins's id from any activity's admin array.
-        mongoose.model('Activity').updateMany(
-            {},
-            {
-                $pull: {
-                    admins: id
-                }
-            },
-            err => {
-                if (err) {
-                    return res.status(404).json(err);
-                }
+router.delete(
+    '/:id',
+    passport.authenticate('jwt', { session: false }),
+    restrictAccess(['Admin', 'Volunteer']),
+    (req, res) => {
+        const id = mongoose.Types.ObjectId(req.params.id);
+        Admin.findByIdAndDelete(id, (err, doc) => {
+            if (err) {
+                return res.status(400).json(err);
             }
-        );
+            if (!doc) {
+                return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
+            }
 
-        return res.json(doc);
-    });
-});
+            // Remove the admins's id from any activity's admin array.
+            mongoose.model('Activity').updateMany(
+                {},
+                {
+                    $pull: {
+                        admins: id
+                    }
+                },
+                err => {
+                    if (err) {
+                        return res.status(404).json(err);
+                    }
+                }
+            );
+
+            return res.json(doc);
+        });
+    }
+);
 
 // @route POST api/admins/
-router.post('/', passport.authenticate('jwt', { session: false }), addSeniorCenterIdToRequest, (req, res) => {
-    const newAdmin = new Admin(req.body);
+router.post(
+    '/',
+    passport.authenticate('jwt', { session: false }),
+    restrictAccess(['Volunteer']),
+    addSeniorCenterIdToRequest,
+    (req, res) => {
+        const newAdmin = new Admin(req.body);
 
-    const { errors, isValid } = validateRegisterAdmin(req.body);
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
+        const { errors, isValid } = validateRegisterAdmin(req.body);
+        if (!isValid) {
+            return res.status(400).json(errors);
+        }
 
-    // Hash password before saving in database
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newAdmin.password, salt, (err, hash) => {
-            if (err) throw err;
-            newAdmin.password = hash;
-            newAdmin
-                .save()
-                .then(admin => res.json(admin))
-                .catch(err => {
-                    return res.status(400).json(err);
-                });
+        // Hash password before saving in database
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newAdmin.password, salt, (err, hash) => {
+                if (err) throw err;
+                newAdmin.password = hash;
+                newAdmin
+                    .save()
+                    .then(admin => res.json(admin))
+                    .catch(err => {
+                        return res.status(400).json(err);
+                    });
+            });
         });
-    });
-});
+    }
+);
 
 // @route POST api/admins/login
 // @desc Login Admin and return JWT token
