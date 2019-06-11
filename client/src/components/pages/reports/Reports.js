@@ -283,7 +283,6 @@ export class Reports extends React.Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         activities: _.get(state.activities, 'all'),
         members: _.get(state.members, 'all'),
         services: _.get(state.services, 'all'),

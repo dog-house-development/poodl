@@ -79,7 +79,10 @@ module.exports = function() {
     });
 
     describe('POST /api/admins/filter', function() {
-        beforeEach(async () => await mongoUnit.initDb(process.env.MONGODB_URI, SAVEDDATA));
+        beforeEach(async () => {
+            const Admin = mongoose.model('Admin');
+            await Admin.insertMany(SAVEDDATA.admins);
+        });
 
         it('should get all admins', async () => {
             const res = await chai

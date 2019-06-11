@@ -2,7 +2,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
-import _ from 'lodash';
 
 import DynamicForm from '../../../../ui/DynamicForm';
 import MemberActions from '../../../../../redux/actions/memberActions';
@@ -17,9 +16,7 @@ export class SelfRegisterMember extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            seniorCenterId: props.adminSeniorCenterId
-        };
+        this.state = {};
     }
 
     handleChange = e => {
@@ -60,7 +57,6 @@ export class SelfRegisterMember extends React.Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.members.errors,
         loading: state.members.loading
     };

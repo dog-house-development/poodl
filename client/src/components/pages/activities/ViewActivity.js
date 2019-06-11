@@ -195,7 +195,6 @@ export class ViewActivity extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.activities.errors,
         loading: state.activities.loading,
         activities: _.get(state.activities, 'all'),

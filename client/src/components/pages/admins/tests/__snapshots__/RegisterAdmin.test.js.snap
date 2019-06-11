@@ -111,7 +111,6 @@ exports[`RegisterAdmin tests render should render correctly 1`] = `
           "lastName": "Smith",
           "password": "abc123",
           "password2": "abc123",
-          "seniorCenterId": 123,
         }
       }
     />

@@ -15,10 +15,7 @@ const propTypes = {
 export class AddService extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            memberId: props.memberId,
-            seniorCenterId: props.adminSeniorCenterId
-        };
+        this.state = {};
     }
 
     componentDidMount() {
@@ -60,7 +57,6 @@ export class AddService extends Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.services.errors,
         services: _.get(state.services, 'all'),
         loading: state.services.loading

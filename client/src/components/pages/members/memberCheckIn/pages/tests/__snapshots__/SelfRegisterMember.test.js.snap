@@ -334,11 +334,7 @@ exports[`SelfRegisterMember tests render should render correctly 1`] = `
       onChange={[Function]}
       onSubmit={[Function]}
       submitButtonLabel="Sign up"
-      values={
-        Object {
-          "seniorCenterId": "34543",
-        }
-      }
+      values={Object {}}
     />
   </div>
 </div>

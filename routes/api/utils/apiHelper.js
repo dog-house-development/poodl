@@ -1,11 +1,14 @@
+const { addSeniorCenterIdToRequest } = require('./ExpressMiddleware');
 const passport = require('passport');
 
 module.exports = {
-    // Create api helper
-    // @param router    the express Router
-    // @param model     the mongoose model for the api
-    create: (router, model) => {
-        router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+    /**
+     * Api to create new document
+     * @param {ExpressRouter} router The express router
+     * @param {MongooseModel} model  The mongoose model
+     */
+    create(router, model) {
+        router.post('/', passport.authenticate('jwt', { session: false }), addSeniorCenterIdToRequest, (req, res) => {
             new model(req.body)
                 .save()
                 .then(doc => res.json(doc))
@@ -15,11 +18,13 @@ module.exports = {
         });
     },
 
-    // Filter api helper
-    // @param router    the express Router
-    // @param model     the mongoose model for the api
-    filter: (router, model) => {
-        router.post('/filter', passport.authenticate('jwt', { session: false }), (req, res) => {
+    /**
+     * Api to filter all documents in a collection and return results
+     * @param {ExpressRouter} router The express router
+     * @param {MongooseModel} model  The mongoose model
+     */
+    filter(router, model, middlewares = []) {
+        router.post('/filter', passport.authenticate('jwt', { session: false }), middlewares, (req, res) => {
             model.find(req.body, (err, docs) => {
                 if (err) {
                     return res.status(400).json(err);
@@ -30,11 +35,13 @@ module.exports = {
         });
     },
 
-    // Get api helper
-    // @param router    the express Router
-    // @param model     the mongoose model for the api
-    get: (router, model) => {
-        router.get('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    /**
+     * Api to get single document by id
+     * @param {ExpressRouter} router The express router
+     * @param {MongooseModel} model  The mongoose model
+     */
+    get(router, model) {
+        router.get('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
             model.findById(req.params.id, (err, doc) => {
                 if (err) {
                     return res.status(400).json(err);
@@ -48,10 +55,12 @@ module.exports = {
         });
     },
 
-    // Edit api helper
-    // @param router    the express Router
-    // @param model     the mongoose model for the api
-    edit: (router, model) => {
+    /**
+     * Api to edit a document by id
+     * @param {ExpressRouter} router The express router
+     * @param {MongooseModel} model  The mongoose model
+     */
+    edit(router, model) {
         router.patch('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
             model.findById(req.params.id, (err, doc) => {
                 if (err) {
@@ -60,9 +69,10 @@ module.exports = {
                 if (!doc) {
                     return res.status(404).json({ _id: `Document id '${req.params.id}' does not exist` });
                 }
-                if (req.body._id) {
-                    delete req.body._id;
-                }
+                delete req.body._id;
+                delete req.body.password;
+                delete req.body.accessLevel;
+                delete req.body.seniorCenterId;
                 for (let field in req.body) {
                     doc[field] = req.body[field];
                 }
@@ -75,10 +85,12 @@ module.exports = {
         });
     },
 
-    // Delete api helper
-    // @param router    the express Router
-    // @param model     the mongoose model for the api
-    delete: (router, model) => {
+    /**
+     * Api to delete a document by id
+     * @param {ExpressRouter} router The express router
+     * @param {MongooseModel} model  The mongoose model
+     */
+    delete(router, model) {
         router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
             model.findByIdAndDelete(req.params.id, (err, doc) => {
                 if (err) {

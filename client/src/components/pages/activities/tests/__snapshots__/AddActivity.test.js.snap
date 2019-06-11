@@ -90,7 +90,6 @@ exports[`Add activity tests render should render correctly 1`] = `
             "description": "Description is required",
           },
           "name": "Test",
-          "seniorCenterId": undefined,
           "startTime": "1111-11-11T11:11:11",
         }
       }

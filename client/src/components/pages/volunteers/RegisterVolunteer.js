@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DynamicForm from '../../ui/DynamicForm';
 import volunteerInputs from './volunteerInputs';
@@ -6,9 +6,8 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import VolunteerActions from '../../../redux/actions/volunteerActions';
-import _ from 'lodash';
 
-export class RegisterVolunteer extends React.Component {
+export class RegisterVolunteer extends Component {
     static propTypes = {
         errors: PropTypes.object
     };
@@ -19,9 +18,7 @@ export class RegisterVolunteer extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            seniorCenterId: props.adminSeniorCenterId
-        };
+        this.state = {};
     }
 
     handleChange = e => {
@@ -62,7 +59,6 @@ export class RegisterVolunteer extends React.Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.volunteers.errors,
         loading: state.volunteers.loading
     };

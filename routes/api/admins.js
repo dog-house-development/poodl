@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 // misc
 const keys = require('../../config/keys');
 const ApiHelper = require('./utils/apiHelper');
+const { addSeniorCenterIdToRequest } = require('./utils/ExpressMiddleware');
 
 // input validation
 const validateRegisterAdmin = require('./validation/admin/registerAdmin');
@@ -86,7 +87,7 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
 });
 
 // @route POST api/admins/
-router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.post('/', passport.authenticate('jwt', { session: false }), addSeniorCenterIdToRequest, (req, res) => {
     const newAdmin = new Admin(req.body);
 
     const { errors, isValid } = validateRegisterAdmin(req.body);
@@ -164,7 +165,7 @@ router.post(
 router.get('/refresh-token', passport.authenticate('jwt', { session: false }), sendJwt);
 
 // @route POST api/admins/filter
-ApiHelper.filter(router, Admin);
+ApiHelper.filter(router, Admin, addSeniorCenterIdToRequest);
 
 // @route GET api/admins/:id
 ApiHelper.get(router, Admin);

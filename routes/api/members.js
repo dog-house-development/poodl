@@ -1,15 +1,17 @@
-const ApiHelper = require('./utils/apiHelper');
 const passport = require('passport');
-
-const router = require('express').Router();
 const mongoose = require('mongoose');
+
 const Member = mongoose.model('Member');
+const router = require('express').Router();
+
+const ApiHelper = require('./utils/apiHelper');
+const { addSeniorCenterIdToRequest } = require('./utils/ExpressMiddleware');
 
 // @route POST api/members/
 ApiHelper.create(router, Member);
 
 // @route POST api/members/filter
-ApiHelper.filter(router, Member);
+ApiHelper.filter(router, Member, addSeniorCenterIdToRequest);
 
 // @route GET api/members/:id
 ApiHelper.get(router, Member);

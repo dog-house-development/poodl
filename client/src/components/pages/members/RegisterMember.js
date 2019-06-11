@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MemberActions from '../../../redux/actions/memberActions';
-import _ from 'lodash';
 
 export class RegisterMember extends React.Component {
     static propTypes = {
@@ -19,9 +18,7 @@ export class RegisterMember extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            seniorCenterId: props.adminSeniorCenterId
-        };
+        this.state = {};
     }
 
     handleChange = e => {
@@ -62,7 +59,6 @@ export class RegisterMember extends React.Component {
 
 export const mapStateToProps = (state, props) => {
     return {
-        adminSeniorCenterId: _.get(state.auth.admin, 'seniorCenterId'),
         errors: state.members.errors
     };
 };
