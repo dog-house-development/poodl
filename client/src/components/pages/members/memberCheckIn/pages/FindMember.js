@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import MemberActions from '../../../../../actions/memberActions';
+import MemberActions from '../../../../../redux/actions/memberActions';
 import SearchField from '../../../../ui/SearchField';
 import Utils from '../../../../../utils/Utils';
 import Button from '../../../../ui/Button';

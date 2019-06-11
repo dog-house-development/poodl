@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import DynamicForm from '../../../../ui/DynamicForm';
-import MemberActions from '../../../../../actions/memberActions';
+import MemberActions from '../../../../../redux/actions/memberActions';
 import memberInputs from '../../memberInputs';
 import Button from './../../../../ui/Button';
 

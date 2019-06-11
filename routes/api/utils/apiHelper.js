@@ -1,5 +1,5 @@
-passport = require('passport');
 const { addSeniorCenterIdToRequest } = require('./ExpressMiddleware');
+const passport = require('passport');
 
 module.exports = {
     /**

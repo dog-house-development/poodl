@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ActivityActions from '../../../actions/activityActions';
+import ActivityActions from '../../../redux/actions/activityActions';
 import _ from 'lodash';
 import moment from 'moment';
 import DynamicForm from '../../ui/DynamicForm';
