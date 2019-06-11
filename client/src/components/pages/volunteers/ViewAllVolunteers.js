@@ -56,6 +56,7 @@ export class ViewAllVolunteers extends Component {
                     data={this.getDataGridContent()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
+                    noDataMessage="No volunteers to display"
                 />
             </div>
         );

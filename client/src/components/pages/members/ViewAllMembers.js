@@ -62,6 +62,7 @@ export class ViewAllMembers extends Component {
                     data={this.getDataGridContent()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
+                    noDataMessage="No members to display"
                 />
             </div>
         );

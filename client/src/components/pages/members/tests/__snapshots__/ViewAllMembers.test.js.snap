@@ -71,6 +71,7 @@ exports[`ViewAllMembers tests render should render correctly 1`] = `
       ]
     }
     loading={false}
+    noDataMessage="No members to display"
     onRowClick={[Function]}
   />
 </div>

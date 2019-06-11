@@ -41,7 +41,7 @@ export class RegisterAdmin extends Component {
                     <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
                 <div className="panel">
-                    <h1 className="panel-title">Register Member</h1>
+                    <h1 className="panel-title">Register Admin</h1>
                     <DynamicForm
                         inputs={adminInputs}
                         onChange={this.handleChange}

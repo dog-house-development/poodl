@@ -59,6 +59,7 @@ exports[`ViewAllAdmins tests render should render correctly 1`] = `
       ]
     }
     loading={false}
+    noDataMessage="No admins to display"
     onRowClick={[Function]}
   />
 </div>
