@@ -25,6 +25,19 @@
             "createdAt": "2019-06-11T00:26:23.555Z",
             "updatedAt": "2019-06-11T00:26:23.555Z",
             "__v": 0
+        },
+        {
+            "admins": ["5c91e863fe6662045cb471d4"],
+            "members": ["5c91e863fe6662045cb471d4"],
+            "_id": "5cfc9a6d29b3f10017a1fbc3",
+            "seniorCenterId": "5cff20e9ee0cb46154500647",
+            "name": "test2",
+            "description": "test",
+            "startDate": "1111-11-04T18:11:00.000Z",
+            "endDate": "1111-11-05T06:11:00.000Z",
+            "createdAt": "2019-06-11T00:26:23.555Z",
+            "updatedAt": "2019-06-11T00:26:23.555Z",
+            "__v": 0
         }
     ]
 }

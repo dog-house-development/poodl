@@ -36,7 +36,10 @@ module.exports = (path, modelName, DATA) =>
         });
 
         describe(`POST /api/${path}/filter`, function() {
-            beforeEach(async () => await mongoUnit.initDb(process.env.MONGODB_URI, DATA));
+            beforeEach(async () => {
+                const Model = mongoose.model(modelName);
+                await Model.insertMany(entities);
+            });
 
             it(`should get all ${path}`, async () => {
                 const res = await chai
@@ -49,6 +52,11 @@ module.exports = (path, modelName, DATA) =>
                 expect(res).to.have.status(200);
                 expect(res.body[0]).to.deep.include(entities[0]);
                 expect(res.body[1]).to.deep.include(entities[1]);
+
+                // In ../activities/activities.json there is an
+                // activity with a wrong senior center,
+                // the filter should not return that one.
+                expect(res.body.length).to.equal(2);
             });
         });
 

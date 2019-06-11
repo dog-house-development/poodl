@@ -23,21 +23,16 @@ module.exports = {
      * @param {ExpressRouter} router The express router
      * @param {MongooseModel} model  The mongoose model
      */
-    filter(router, model) {
-        router.post(
-            '/filter',
-            passport.authenticate('jwt', { session: false }),
-            addSeniorCenterIdToRequest,
-            (req, res) => {
-                model.find(req.body, (err, docs) => {
-                    if (err) {
-                        return res.status(400).json(err);
-                    }
+    filter(router, model, middlewares = []) {
+        router.post('/filter', passport.authenticate('jwt', { session: false }), middlewares, (req, res) => {
+            model.find(req.body, (err, docs) => {
+                if (err) {
+                    return res.status(400).json(err);
+                }
 
-                    return res.json(docs);
-                });
-            }
-        );
+                return res.json(docs);
+            });
+        });
     },
 
     /**

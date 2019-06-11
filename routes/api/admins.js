@@ -165,7 +165,7 @@ router.post(
 router.get('/refresh-token', passport.authenticate('jwt', { session: false }), sendJwt);
 
 // @route POST api/admins/filter
-ApiHelper.filter(router, Admin);
+ApiHelper.filter(router, Admin, addSeniorCenterIdToRequest);
 
 // @route GET api/admins/:id
 ApiHelper.get(router, Admin);
