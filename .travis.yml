@@ -8,8 +8,6 @@ cache:
     directories:
         - node_modules
         - client/node_modules
-services:
-    - mongodb
 before_install:
     - sudo apt-get install -y lcov
 install:
