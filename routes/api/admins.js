@@ -53,6 +53,10 @@ const sendJwt = (req, res) => {
 
 // @route DELETE api/admins/:id
 router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    if (req.params.id === req.user.id) {
+        return res.status(400).json('An admin cannot delete himself.');
+    }
+
     const id = mongoose.Types.ObjectId(req.params.id);
     Admin.findByIdAndDelete(id, (err, doc) => {
         if (err) {

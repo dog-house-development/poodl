@@ -1,11 +1,10 @@
 const passport = require('passport');
-const restrictAccess = require('./restrictAccess');
 
 module.exports = {
     // Create api helper
     // @param router    the express Router
     // @param model     the mongoose model for the api
-    create: (router, model, restrictAccess) => {
+    create: (router, model) => {
         router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
             new model(req.body)
                 .save()
