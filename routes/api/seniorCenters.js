@@ -10,7 +10,7 @@ ApiHelper.create(router, SeniorCenter, ['Admin', 'Volunteer']);
 ApiHelper.filter(router, SeniorCenter, ['Admin', 'Volunteer']);
 
 // @route GET api/seniorCenters/:id
-ApiHelper.get(router, SeniorCenter, ['Admin', 'Volunteer']);
+ApiHelper.get(router, SeniorCenter);
 
 // @route PATCH api/seniorCenters/:id
 ApiHelper.edit(router, SeniorCenter, ['Admin', 'Volunteer']);
