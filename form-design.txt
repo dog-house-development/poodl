@@ -1,0 +1,69 @@
+forms
+
+forms shouldn't have references to other things
+
+formschema or mastformschema, waiverformschema, etc..
+
+Form schema
+fields
+and values
+
+or form schema
+fields
+
+and filled out form schema
+value field pairs
+
+
+form has a list of 'admin', or 'volunteer' or both
+
+senior center has form doc and it's copied 
+
+i make a mast form and save it to the database
+
+what if admins and volunteers want the mast form but
+senior center 1 wants just admins and senior center 2
+wants just volunteers
+but then 
+
+
+a user has a filled out form
+a filled out form has an array of filled out fields
+a filled out field has a value and a field
+
+senior center has
+formspecification has
+form
+who it wants to have the form [Admin, Volunteer, Member, ]
+
+senior center has forms
+forms have field definitions
+users have filled forms
+filled forms point to form to get field definitions
+
+fields
+	id
+	label
+	type - [getFromHoldingEntity
+	required
+	validator
+	options
+	
+getFromHoldingEntity
+	not be fill outable but it's in the definition of the form
+	
+	
+
+filled form has
+	object propertyName = fieldName, value = value
+	form
+
+then it validates that object with 
+
+name password stored in admin schema
+make volunteer form
+how are we going to make sure if data is duplicated between forms,
+it isn't messed up when you edit it
+
+how do you get a filledform from a user if it has an array of filledforms
+do you iterate through the filledforms and check if that
