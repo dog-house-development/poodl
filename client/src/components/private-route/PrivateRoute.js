@@ -12,7 +12,7 @@ export const PrivateRoute = ({ component: Component, auth, restrictAccess, ...re
     <Route
         {...rest}
         render={props => {
-            if (!auth.admin.accessLevel) {
+            if (auth.isAuthenticated && !auth.admin.accessLevel) {
                 throw new Error('Admin must have an access level.');
             }
 
