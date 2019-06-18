@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Link, withRouter } from 'react-router-dom';
 
-import AdminActions from '../../../actions/adminActions';
+import AdminActions from '../../../redux/actions/adminActions';
 import DataGrid from '../../ui/DataGrid';
 
 export class ViewAllAdmins extends Component {
@@ -64,6 +64,7 @@ export class ViewAllAdmins extends Component {
                     data={this.getDataGridContent()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
+                    noDataMessage="No admins to display"
                 />
             </div>
         );

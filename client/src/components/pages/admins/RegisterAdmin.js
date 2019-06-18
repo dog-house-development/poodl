@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import AdminActions from '../../../actions/adminActions';
+import AdminActions from '../../../redux/actions/adminActions';
 import DynamicForm from '../../ui/DynamicForm';
 import adminInputs from './adminInputs';
 
@@ -39,7 +39,7 @@ export class RegisterAdmin extends Component {
                     <i className="material-icons button-icon">keyboard_backspace</i> Back to home
                 </Link>
                 <div className="panel">
-                    <h1 className="panel-title">Register Member</h1>
+                    <h1 className="panel-title">Register Admin</h1>
                     <DynamicForm
                         inputs={adminInputs}
                         onChange={this.handleChange}

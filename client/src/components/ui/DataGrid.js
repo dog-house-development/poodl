@@ -11,12 +11,14 @@ const propTypes = {
     data: PropTypes.array.isRequired,
     loading: PropTypes.bool,
     onRowClick: PropTypes.func,
-    includeFilterControls: PropTypes.bool
+    includeFilterControls: PropTypes.bool,
+    noDataMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 const defaultProps = {
     loading: false,
-    includeFilterControls: true
+    includeFilterControls: true,
+    noDataMessage: 'There is no data to display'
 };
 
 export class DataGrid extends Component {
@@ -76,8 +78,18 @@ export class DataGrid extends Component {
         return this.props.sortBy ? this.getSortedData() : this.getFilteredData();
     }
 
-    getBodyMarkup = () =>
-        _.map(this.getData(), row => (
+    getBodyMarkup = () => {
+        const data = this.getData();
+        if (_.isEmpty(data)) {
+            return (
+                <tr className="no-data-row">
+                    <td>
+                        <p className="no-data">{this.props.noDataMessage}</p>
+                    </td>
+                </tr>
+            );
+        }
+        return _.map(data, row => (
             <tr
                 className={this.props.onRowClick ? '' : 'no-click'}
                 key={row.key}
@@ -85,6 +97,7 @@ export class DataGrid extends Component {
                 {_.map(row, (value, key) => (key !== 'key' ? <td key={key}>{value}</td> : null))}
             </tr>
         ));
+    };
 
     getTableMarkup() {
         if (this.props.loading) {

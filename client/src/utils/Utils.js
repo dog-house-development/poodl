@@ -9,16 +9,6 @@ const Utils = {
         return moment(startDate).format('h:mma M/D/YY') + ' - ' + moment(endDate).format('h:mma M/D/YY');
     },
 
-    setLocalStorage: (key, value) => {
-        window.localStorage.setItem(key, value);
-    },
-
-    getLocalStorage: key => window.localStorage.getItem(key),
-
-    removeLocalStorage: key => {
-        window.localStorage.removeItem(key);
-    },
-
     searchObject: (param, data) =>
         _.reduce(
             _.split(param, ' '),

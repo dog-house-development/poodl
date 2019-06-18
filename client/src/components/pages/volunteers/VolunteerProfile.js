@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import VolunteerActions from '../../../actions/volunteerActions';
+import VolunteerActions from '../../../redux/actions/volunteerActions';
 import { Link } from 'react-router-dom';
 import DynamicForm from '../../ui/DynamicForm';
 import volunteerInputs from './volunteerInputs';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import MemberActions from '../../../actions/memberActions';
+import MemberActions from '../../../redux/actions/memberActions';
 import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -62,6 +62,7 @@ export class ViewAllMembers extends Component {
                     data={this.getDataGridContent()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
+                    noDataMessage="No members to display"
                 />
             </div>
         );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import VolunteerActions from '../../../actions/volunteerActions';
+import VolunteerActions from '../../../redux/actions/volunteerActions';
 import DataGrid from '../../ui/DataGrid';
 import { Link } from 'react-router-dom';
 
@@ -56,6 +56,7 @@ export class ViewAllVolunteers extends Component {
                     data={this.getDataGridContent()}
                     loading={this.props.loading}
                     onRowClick={this.handleRowClick}
+                    noDataMessage="No volunteers to display"
                 />
             </div>
         );

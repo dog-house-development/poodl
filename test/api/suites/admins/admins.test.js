@@ -2,121 +2,146 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
 const mongoUnit = require('mongo-unit');
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
+const getToken = require('../../token/GetToken');
 const expectNoErrors = require('../../utils/expectNoErrors');
-const DATA = require('./admins');
-const admins = DATA.admins;
-const firstPassword = admins[0].password;
-const secondPassword = admins[1].password;
+const FRESHDATA = require('./adminsToSend');
+const SAVEDDATA = require('./adminsInDatabase');
+
+const adminsToSend = FRESHDATA.admins;
+const adminsInDatabase = SAVEDDATA.admins;
+
+const INITIALDATA = require('../../data/initialData');
+const initialAdmin = INITIALDATA.admins[0];
+const firstPassword = adminsToSend[0].password;
+const secondPassword = adminsToSend[1].password;
 
 module.exports = function() {
+    describe('POST /api/admins/login', function() {
+        it('should login successfully', async () => {
+            const credentials = {
+                email: initialAdmin.email,
+                password: initialAdmin.actualPassword
+            };
+
+            const res = await chai
+                .request(require('../../../../server'))
+                .post('/api/admins/login')
+                .send(credentials);
+
+            expectNoErrors(res);
+
+            const actualDecoded = jwt.decode(res.body.token.split(' ')[1]);
+            const expectedDecoded = {
+                id: initialAdmin._id,
+                firstName: initialAdmin.firstName,
+                lastName: initialAdmin.lastName,
+                seniorCenterId: initialAdmin.seniorCenterId,
+                accessLevel: initialAdmin.accessLevel
+            };
+
+            expect(actualDecoded).to.deep.include(expectedDecoded);
+            // Expiration (exp) minus issued at (iat) should be how long it takes
+            // to expire.
+            const hours = 3600;
+            expect(actualDecoded.exp - actualDecoded.iat).to.equal(11 * hours);
+        });
+    });
+
     describe('POST /api/admins/', function() {
         it('should add a new admin', async () => {
+            // Remember that registering the admin will hash the password.
             const res = await chai
                 .request(require('../../../../server'))
                 .post('/api/admins/')
-                .send(admins[0]);
+                .set('Authorization', getToken())
+                .send(adminsToSend[0]);
+
+            expectNoErrors(res);
+
             res.body.password = firstPassword;
             res.body.password2 = firstPassword;
 
-            const log = { email: res.body.email, password: res.body.password };
+            expect(res).to.have.status(200);
+            expect(res.body).to.deep.include(adminsToSend[0]);
+
+            const credentials = { email: res.body.email, password: res.body.password };
 
             const res2 = await chai
                 .request(require('../../../../server'))
                 .post('/api/admins/login')
-                .send(log);
+                .send(credentials);
 
-            expectNoErrors(res);
-            expect(res).to.have.status(200);
-            expect(res.body).to.deep.include(admins[0]);
+            expectNoErrors(res2);
         });
     });
 
     describe('POST /api/admins/filter', function() {
-        //beforeEach(() => mongoUnit.initDb(process.env.MONGODB_URI, DATA));
+        beforeEach(async () => {
+            const Admin = mongoose.model('Admin');
+            await Admin.insertMany(SAVEDDATA.admins);
+        });
 
         it('should get all admins', async () => {
             const res = await chai
                 .request(require('../../../../server'))
-                .post('/api/admins/')
-                .send(admins[0]);
-            res.body.password = firstPassword;
-            res.body.password2 = firstPassword;
-
-            const log = { email: res.body.email, password: res.body.password };
-            const res2 = await chai
-                .request(require('../../../../server'))
-                .post('/api/admins/login')
-                .send(log);
-            const token = res2.body.token;
-
-            const res3 = await chai
-                .request(require('../../../../server'))
                 .post('/api/admins/filter')
-                .set('Authorization', token)
+                .set('Authorization', getToken())
                 .send();
 
-            expectNoErrors(res3);
-            expect(res3).to.have.status(200);
-            // admins[0].password = firstPassword;
-            // admins[0].password2 = firstPassword;
-            // admins[1].password = secondPassword;
-            // admins[1].password2 = secondPassword;
-            // delete admins[0]._id;
-            // delete admins[1]._id;
-            // expect(res3.body[0]).to.deep.include(admins[0]);
-            // expect(res3.body[1]).to.deep.include(admins[1]);
+            expectNoErrors(res);
+            expect(res).to.have.status(200);
+
+            // Look at second and third admins because the first one
+            // is the initial admin that is used for authentication.
+            expect(res.body[1]).to.deep.include(adminsInDatabase[0]);
+            expect(res.body[2]).to.deep.include(adminsInDatabase[1]);
         });
     });
 
     describe('GET /api/admins/:id', function() {
         it('it should get a specific admin', async () => {
-            const res1 = await chai
+            const res = await chai
                 .request(require('../../../../server'))
-                .post('/api/admins/')
-                .send(admins[0]);
-            const log = { email: res1.body.email, password: admins[0].password };
-            const res2 = await chai
-                .request(require('../../../../server'))
-                .post('/api/admins/login')
-                .send(log);
-            const token = res2.body.token;
-            const id = res1.body._id;
-            const res3 = await chai
-                .request(require('../../../../server'))
-                .get('/api/admins/' + id)
-                .set('Authorization', token);
-            res3.body.password = firstPassword;
-            res3.body.password2 = firstPassword;
-            expectNoErrors(res3);
-            expect(res3).to.have.status(200);
-            expect(res3.body).to.deep.include(admins[0]);
+                .get('/api/admins/' + initialAdmin._id)
+                .set('Authorization', getToken());
+
+            expectNoErrors(res);
+            expect(res).to.have.status(200);
+
+            res.body.actualPassword = initialAdmin.actualPassword;
+            expect(res.body).to.deep.include(initialAdmin);
         });
     });
 
     describe('DELETE /api/admins/:id', function() {
-        it('it should delete a specific admin', async () => {
-            const res1 = await chai
-                .request(require('../../../../server'))
-                .post('/api/admins/')
-                .send(admins[0]);
-            const log = { email: res1.body.email, password: admins[0].password };
-            const res2 = await chai
-                .request(require('../../../../server'))
-                .post('/api/admins/login')
-                .send(log);
-            const token = res2.body.token;
-            const id = res1.body._id;
-            const res3 = await chai
-                .request(require('../../../../server'))
-                .delete('/api/admins/' + id)
-                .set('Authorization', token);
-            res3.body.password = firstPassword;
-            res3.body.password2 = firstPassword;
+        beforeEach(async function() {
+            const Admin = mongoose.model('Admin');
+            const admin = new Admin(SAVEDDATA.admins[0]);
+            await admin.save();
+        });
 
-            expectNoErrors(res3);
-            expect(res3).to.have.status(200);
-            expect(res3.body).to.deep.include(admins[0]);
+        it('should delete a specific admin', async () => {
+            const res = await chai
+                .request(require('../../../../server'))
+                .delete('/api/admins/' + adminsInDatabase[0]._id)
+                .set('Authorization', getToken());
+
+            expectNoErrors(res);
+            expect(res).to.have.status(200);
+            expect(res.body).to.deep.include(adminsInDatabase[0]);
+        });
+
+        it('should not allow an admin to delete himself', async () => {
+            const res = await chai
+                .request(require('../../../../server'))
+                .delete('/api/admins/' + initialAdmin._id)
+                .set('Authorization', getToken());
+
+            expect(res).to.have.status(400);
+            expect(res.error.text).to.equal('"An admin cannot delete himself."');
         });
     });
 };

@@ -22,7 +22,7 @@ exports[`RegisterAdmin tests render should render correctly 1`] = `
     <h1
       className="panel-title"
     >
-      Register Member
+      Register Admin
     </h1>
     <DynamicForm
       errorDescription=""
