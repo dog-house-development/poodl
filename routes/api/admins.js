@@ -1,14 +1,17 @@
 // libraries
 const express = require('express');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const mongoose = require('mongoose');
 
 // misc
-const keys = require('../../config/keys');
 const ApiHelper = require('./utils/apiHelper');
-const { addSeniorCenterIdToRequest, restrictAdminVolunteer, restrictVolunteer } = require('./utils/ExpressMiddleware');
+const {
+    addSeniorCenterIdToRequest,
+    restrictAdminVolunteer,
+    restrictVolunteer,
+    sendJwt
+} = require('./utils/ExpressMiddleware');
 
 // input validation
 const validateRegisterAdmin = require('./validation/admin/registerAdmin');
@@ -16,41 +19,6 @@ const validateLoginInput = require('./validation/admin/login');
 
 const router = express.Router();
 const Admin = mongoose.model('Admin');
-
-/**
- * An express middleware that sends a new jwt.
- * @param {request} req API request
- * @param {response} res API response
- */
-const sendJwt = (req, res) => {
-    // Create JWT Payload, basically what we want to send in the response
-    const { user } = req;
-    const payload = {
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        seniorCenterId: user.seniorCenterId,
-        accessLevel: user.accessLevel
-    };
-
-    // Sign token
-    return jwt.sign(
-        payload,
-        keys.jwtKey,
-        {
-            expiresIn: 39600 // 11 hours in seconds
-        },
-        (err, token) => {
-            if (err) {
-                return res.status(400).json(err);
-            }
-
-            return res.json({
-                token: 'Bearer ' + token
-            });
-        }
-    );
-};
 
 // @route DELETE api/admins/:id
 router.delete('/:id', passport.authenticate('jwt', { session: false }), restrictAdminVolunteer, (req, res) => {
