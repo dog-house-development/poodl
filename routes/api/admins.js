@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 // misc
 const keys = require('../../config/keys');
 const ApiHelper = require('./utils/apiHelper');
-const { addSeniorCenterIdToRequest, restrictAccess } = require('./utils/ExpressMiddleware');
+const { addSeniorCenterIdToRequest, restrictAdminVolunteer, restrictVolunteer } = require('./utils/ExpressMiddleware');
 
 // input validation
 const validateRegisterAdmin = require('./validation/admin/registerAdmin');
@@ -53,7 +53,7 @@ const sendJwt = (req, res) => {
 };
 
 // @route DELETE api/admins/:id
-router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.delete('/:id', passport.authenticate('jwt', { session: false }), restrictAdminVolunteer, (req, res) => {
     if (req.params.id === req.user.id) {
         return res.status(400).json('An admin cannot delete himself.');
     }
@@ -90,7 +90,7 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
 router.post(
     '/',
     passport.authenticate('jwt', { session: false }),
-    restrictAccess(['Volunteer']),
+    restrictVolunteer,
     addSeniorCenterIdToRequest,
     (req, res) => {
         const newAdmin = new Admin(req.body);
@@ -166,17 +166,16 @@ router.post(
 );
 
 // @route GET api/admins/refresh-token
-// @desc Login Admin and return JWT token
 // @access Public
 router.get('/refresh-token', passport.authenticate('jwt', { session: false }), sendJwt);
 
 // @route POST api/admins/filter
-ApiHelper.filter(router, Admin, addSeniorCenterIdToRequest);
+ApiHelper.filter(router, Admin, [addSeniorCenterIdToRequest, restrictVolunteer]);
 
 // @route GET api/admins/:id
-ApiHelper.get(router, Admin);
+ApiHelper.get(router, Admin, restrictVolunteer);
 
 // @route PATCH api/admins/:id
-ApiHelper.edit(router, Admin);
+ApiHelper.edit(router, Admin, restrictVolunteer);
 
 module.exports = router;

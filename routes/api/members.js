@@ -5,7 +5,7 @@ const Member = mongoose.model('Member');
 const router = require('express').Router();
 
 const ApiHelper = require('./utils/apiHelper');
-const { addSeniorCenterIdToRequest, restrictAccess } = require('./utils/ExpressMiddleware');
+const { addSeniorCenterIdToRequest, restrictVolunteer } = require('./utils/ExpressMiddleware');
 
 // @route POST api/members/
 ApiHelper.create(router, Member);
@@ -20,7 +20,7 @@ ApiHelper.get(router, Member);
 ApiHelper.edit(router, Member);
 
 // @route DELETE api/members/:id
-router.delete('/:id', passport.authenticate('jwt', { session: false }), restrictAccess(['Volunteer']), (req, res) => {
+router.delete('/:id', passport.authenticate('jwt', { session: false }), restrictVolunteer, (req, res) => {
     const id = mongoose.Types.ObjectId(req.params.id);
     Member.findByIdAndDelete(id, (err, doc) => {
         if (err) {
