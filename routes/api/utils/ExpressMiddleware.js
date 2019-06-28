@@ -1,6 +1,10 @@
 const jwt = require('jsonwebtoken');
 const keys = require('../../../config/keys');
 
+/**
+ * Restricts the given access levels from using the api.
+ * @param {string[]} restrictedAccessLevels The array of restricted access levels.
+ */
 const restrictAccess = function(restrictedAccessLevels = []) {
     return (req, res, next) => {
         const validAccessLevels = ['Super', 'Admin', 'Volunteer'];
@@ -21,17 +25,36 @@ const restrictAccess = function(restrictedAccessLevels = []) {
 const expressMiddleware = {
     /**
      * Adds the senior center id of the user in the auth token to the body of the request
-     * @param {Object}   req  The request
-     * @param {Object}   _res The response
+     * @param {Request} req  The request
+     * @param {Response} _res The response
      * @param {Function} next The callback
      */
     addSeniorCenterIdToRequest(req, _res, next) {
         req.body.seniorCenterId = req.user.seniorCenterId;
         next();
     },
-    restrictAccess: restrictAccess,
-    restrictVolunteer: restrictAccess(['Volunteer']),
-    restrictAdminVolunteer: restrictAccess(['Volunteer', 'Admin']),
+
+    /**
+     * Restricts access to the given access levels.
+     * @param {string[]} restrictedAccessLevels The array of restricted access levels.
+     */
+    restrictAccess(restrictedAccessLevels = []) {
+        return restrictAccess(restrictedAccessLevels);
+    },
+
+    /**
+     * Restricts access to volunteers.
+     */
+    restrictVolunteer() {
+        return restrictAccess(['Volunteer']);
+    },
+
+    /**
+     * Restricts access to admins and volunteers.
+     */
+    restrictAdminVolunteer() {
+        return restrictAccess(['Volunteer', 'Admin']);
+    },
 
     /**
      * An express middleware that sends a new jwt.

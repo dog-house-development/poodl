@@ -18,16 +18,17 @@ const validateRegisterAdmin = require('./validation/admin/registerAdmin');
 const validateLoginInput = require('./validation/admin/login');
 
 const router = express.Router();
-const Admin = mongoose.model('Admin');
+
+const modelName = 'Admin';
 
 // @route DELETE api/admins/:id
-router.delete('/:id', passport.authenticate('jwt', { session: false }), restrictAdminVolunteer, (req, res) => {
+router.delete('/:id', passport.authenticate('jwt', { session: false }), restrictAdminVolunteer(), (req, res) => {
     if (req.params.id === req.user.id) {
         return res.status(400).json('An admin cannot delete himself.');
     }
 
     const id = mongoose.Types.ObjectId(req.params.id);
-    Admin.findByIdAndDelete(id, (err, doc) => {
+    mongoose.model(modelName).findByIdAndDelete(id, (err, doc) => {
         if (err) {
             return res.status(400).json(err);
         }
@@ -58,10 +59,10 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), restrict
 router.post(
     '/',
     passport.authenticate('jwt', { session: false }),
-    restrictVolunteer,
+    restrictVolunteer(),
     addSeniorCenterIdToRequest,
     (req, res) => {
-        const newAdmin = new Admin(req.body);
+        const newAdmin = new mongoose.model(modelName)(req.body);
 
         const { errors, isValid } = validateRegisterAdmin(req.body);
         if (!isValid) {
@@ -113,22 +114,25 @@ router.post(
         };
 
         // Find Admin by email
-        Admin.findOne({ email }).then(admin => {
-            // Check if Admin exists
-            if (!admin) {
-                return res.status(404).json(notFoundError);
-            }
-
-            // Check password
-            bcrypt.compare(password, admin.password).then(isMatch => {
-                if (isMatch) {
-                    req.user = admin;
-                    next();
-                } else {
+        mongoose
+            .model(modelName)
+            .findOne({ email })
+            .then(admin => {
+                // Check if Admin exists
+                if (!admin) {
                     return res.status(404).json(notFoundError);
                 }
+
+                // Check password
+                bcrypt.compare(password, admin.password).then(isMatch => {
+                    if (isMatch) {
+                        req.user = admin;
+                        next();
+                    } else {
+                        return res.status(404).json(notFoundError);
+                    }
+                });
             });
-        });
     },
     sendJwt
 );
@@ -138,12 +142,12 @@ router.post(
 router.get('/refresh-token', passport.authenticate('jwt', { session: false }), sendJwt);
 
 // @route POST api/admins/filter
-ApiHelper.filter(router, Admin, [addSeniorCenterIdToRequest, restrictVolunteer]);
+ApiHelper.filter(router, modelName, [addSeniorCenterIdToRequest, restrictVolunteer()]);
 
 // @route GET api/admins/:id
-ApiHelper.get(router, Admin, restrictVolunteer);
+ApiHelper.get(router, modelName, restrictVolunteer());
 
 // @route PATCH api/admins/:id
-ApiHelper.edit(router, Admin, restrictVolunteer);
+ApiHelper.edit(router, modelName, restrictVolunteer());
 
 module.exports = router;

@@ -3,8 +3,6 @@ const login = require('./suites/login/login.e2e.js');
 let controller = require('./controller.js');
 
 describe('Selenium tests', function() {
-    let driver;
-
     before(async () => {
         console.log('start mongo unit');
         const url = await mongoUnit.start();

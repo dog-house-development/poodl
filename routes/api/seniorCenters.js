@@ -2,21 +2,21 @@ const ApiHelper = require('./utils/apiHelper');
 const { restrictAdminVolunteer } = require('./utils/ExpressMiddleware');
 
 const router = require('express').Router();
-const SeniorCenter = require('mongoose').model('SeniorCenter');
+const modelName = 'SeniorCenter';
 
 // @route POST api/seniorCenters/
-ApiHelper.create(router, SeniorCenter, restrictAdminVolunteer);
+ApiHelper.create(router, modelName, restrictAdminVolunteer());
 
 // @route POST api/seniorCenters/filter
-ApiHelper.filter(router, SeniorCenter, restrictAdminVolunteer);
+ApiHelper.filter(router, modelName, restrictAdminVolunteer());
 
 // @route GET api/seniorCenters/:id
-ApiHelper.get(router, SeniorCenter);
+ApiHelper.get(router, modelName);
 
 // @route PATCH api/seniorCenters/:id
-ApiHelper.edit(router, SeniorCenter, restrictAdminVolunteer);
+ApiHelper.edit(router, modelName, restrictAdminVolunteer());
 
 // @router DELETE api/seniorCenters/:id
-ApiHelper.delete(router, SeniorCenter, restrictAdminVolunteer);
+ApiHelper.delete(router, modelName, restrictAdminVolunteer());
 
 module.exports = router;
