@@ -1,6 +1,5 @@
 const chai = require('chai');
 const expect = chai.expect;
-const mongoUnit = require('mongo-unit');
 const mongoose = require('mongoose');
 
 const getToken = require('../token/GetToken');

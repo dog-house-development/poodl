@@ -11,8 +11,7 @@ before_install:
 install:
     - yarn install-all
 script:
-    - yarn client:coverage
-    - yarn server:coverage
+    - yarn coverage
     - yarn --cwd client build
 after_script: # Upload coverage reports
     - yarn coveralls

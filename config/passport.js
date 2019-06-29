@@ -13,7 +13,7 @@ module.exports = passport => {
     // See http://www.passportjs.org/packages/passport-jwt/ for more info
     passport.use(
         new JwtStrategy(opts, (jwt_payload, done) => {
-            Admin.findById(jwt_payload.id, (err, admin) => {
+            Admin.findById(jwt_payload.id, (_err, admin) => {
                 if (admin) {
                     return done(null, admin);
                 }
