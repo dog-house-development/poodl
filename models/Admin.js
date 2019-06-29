@@ -28,7 +28,8 @@ const adminSchema = new Schema(
         },
         password: {
             type: String,
-            required: [true, 'Password is required']
+            required: [true, 'Password is required'],
+            hide: true
         },
         accessLevel: {
             type: String,
@@ -225,5 +226,6 @@ const adminSchema = new Schema(
 );
 
 adminSchema.plugin(require('./plugins/duplicateError'), { email: 'Email already exists' });
+adminSchema.plugin(require('mongoose-hidden')({ defaultHidden: { _id: false } }));
 
 module.exports = adminSchema;
