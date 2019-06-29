@@ -2919,6 +2919,14 @@ mongodb@~2.2.31:
     mongodb-core "2.1.20"
     readable-stream "2.2.7"
 
+mongoose-hidden@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/mongoose-hidden/-/mongoose-hidden-1.6.1.tgz#d2a87578ca87cd27f60364117ac65e687c12da83"
+  integrity sha512-cWRe7kFoTMwwFe3r+ODwDVdclCQPw2GUmBg19aJ1dBqZRUpkeoLq6/FTj0Lp97qgxhDz5H8gGKCEsNGHVOWwMQ==
+  dependencies:
+    debug "^4.0.1"
+    mpath "^0.5.1"
+
 mongoose-legacy-pluralize@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
@@ -2946,6 +2954,11 @@ mpath@0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mpath/-/mpath-0.5.1.tgz#17131501f1ff9e6e4fbc8ffa875aa7065b5775ab"
   integrity sha512-H8OVQ+QEz82sch4wbODFOz+3YQ61FYz/z3eJ5pIdbMEaUzDqA268Wd+Vt4Paw9TJfvDgVKaayC0gBzMIw2jhsg==
+
+mpath@^0.5.1:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/mpath/-/mpath-0.5.2.tgz#b1eac586dffb5175d2f51ca9aacba35d9940dd41"
+  integrity sha512-NOeCoW6AYc3hLi30npe7uzbD9b4FQZKH40YKABUCCvaKKL5agj6YzvHoNx8jQpDMNPgIa5bvSZQbQpWBAVD0Kw==
 
 mquery@3.2.0:
   version "3.2.0"

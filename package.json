@@ -33,6 +33,7 @@
         "is-empty": "^1.2.0",
         "jsonwebtoken": "^8.3.0",
         "mongoose": "^5.3.11",
+        "mongoose-hidden": "^1.6.1",
         "passport": "^0.4.0",
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",
