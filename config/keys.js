@@ -2,5 +2,6 @@
 // be a secrets file.
 module.exports = {
     jwtKey: process.env.JWT_KEY || require('./secrets').jwtKey,
-    mongoURI: process.env.MONGODB_URI || require('./secrets').mongoURI
+    mongoURI: process.env.MONGODB_URI || require('./secrets').mongoURI,
+    sendGridApiKey: process.env.SENDGRID_API_KEY || require('./secrets').sendGridApiKey
 };
