@@ -8,6 +8,10 @@ export default {
         logout: {
             SUCCESS: 'LOGOUT_ADMIN_SUCCESS'
         },
+        resetPasswordEmail: {
+            BEGIN: 'RESET_PASSWORD_EMAIL_BEGIN',
+            SUCCESS: 'RESET_PASSWORD_EMAIL_SUCCESS'
+        },
         ERROR: 'GET_AUTH_ERRORS'
     },
     admin: {

@@ -46,6 +46,7 @@ app.use('/api/members', require('./routes/api/members'));
 app.use('/api/seniorCenters', require('./routes/api/seniorCenters'));
 app.use('/api/services', require('./routes/api/services'));
 app.use('/api/activities', require('./routes/api/activities'));
+app.use('/api/reset-password', require('./routes/api/resetPassword'));
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

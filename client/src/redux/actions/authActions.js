@@ -4,6 +4,7 @@ import setAuthToken from '../../utils/setAuthToken';
 import Types from './types';
 import { getErrors } from './utils/ActionHelper';
 import jwt_decode from 'jwt-decode';
+import types from './types';
 
 export default {
     setCurrentAdmin: admin => {
@@ -58,6 +59,31 @@ export default {
             const { token } = res.data;
             localStorage.setItem('jwtToken', token);
             setAuthToken(token);
+        } catch (err) {
+            getErrors(dispatch, Types.auth, err);
+        }
+    },
+
+    sendResetPasswordEmail: (data, onSuccess) => async dispatch => {
+        dispatch({
+            type: types.auth.resetPasswordEmail.BEGIN
+        });
+
+        try {
+            await axios.post('/api/reset-password/email', data);
+            onSuccess();
+            dispatch({
+                type: types.auth.resetPasswordEmail.SUCCESS
+            });
+        } catch (err) {
+            getErrors(dispatch, Types.auth, err);
+        }
+    },
+
+    verifyResetPasswordJwt: (token, onSuccess) => async dispatch => {
+        try {
+            await axios.post('/api/reset-password/verify', { token });
+            onSuccess();
         } catch (err) {
             getErrors(dispatch, Types.auth, err);
         }

@@ -2,4 +2,10 @@
 
 .login-container {
   max-width: 25em;
+
+  .forgot-password {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: $gray-7;
+  }
 }

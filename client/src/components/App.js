@@ -12,6 +12,8 @@ import Footer from './layout/Footer';
 
 // auth
 import Login from './pages/login/Login';
+import EnterEmail from './pages/reset-password/EnterEmail';
+import ResetPassword from './pages/reset-password/ResetPassword';
 
 // basic
 import Dashboard from './pages/dashboard/Dashboard';
@@ -67,6 +69,8 @@ class App extends Component {
                         <Switch>
                             <Route exact path="/" component={Landing} />
                             <Route exact path="/login" component={Login} />
+                            <Route exact path="/reset-password/enter-email" component={EnterEmail} />
+                            <Route exact path="/reset-password/:jwt" component={ResetPassword} />
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
                             {/* Admin pages */}
                             <PrivateRoute exact path="/admins" component={ViewAllAdmins} restrictAccess="Volunteer" />
