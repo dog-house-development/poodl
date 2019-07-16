@@ -1,65 +1,34 @@
 // libraries
 const express = require('express');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const mongoose = require('mongoose');
 
 // misc
-const keys = require('../../config/keys');
 const ApiHelper = require('./utils/apiHelper');
-const { addSeniorCenterIdToRequest } = require('./utils/ExpressMiddleware');
+const {
+    addSeniorCenterIdToRequest,
+    restrictAdminVolunteer,
+    restrictVolunteer,
+    sendJwt
+} = require('./utils/ExpressMiddleware');
 
 // input validation
 const validateRegisterAdmin = require('./validation/admin/registerAdmin');
 const validateLoginInput = require('./validation/admin/login');
 
 const router = express.Router();
-const Admin = mongoose.model('Admin');
 
-/**
- * An express middleware that sends a new jwt.
- * @param {request} req API request
- * @param {response} res API response
- */
-const sendJwt = (req, res) => {
-    // Create JWT Payload, basically what we want to send in the response
-    const { user } = req;
-    const payload = {
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        seniorCenterId: user.seniorCenterId,
-        accessLevel: user.accessLevel
-    };
-
-    // Sign token
-    return jwt.sign(
-        payload,
-        keys.jwtKey,
-        {
-            expiresIn: 39600 // 11 hours in seconds
-        },
-        (err, token) => {
-            if (err) {
-                return res.status(400).json(err);
-            }
-
-            return res.json({
-                token: 'Bearer ' + token
-            });
-        }
-    );
-};
+const modelName = 'Admin';
 
 // @route DELETE api/admins/:id
-router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.delete('/:id', passport.authenticate('jwt', { session: false }), restrictAdminVolunteer(), (req, res) => {
     if (req.params.id === req.user.id) {
         return res.status(400).json('An admin cannot delete himself.');
     }
 
     const id = mongoose.Types.ObjectId(req.params.id);
-    Admin.findByIdAndDelete(id, (err, doc) => {
+    mongoose.model(modelName).findByIdAndDelete(id, (err, doc) => {
         if (err) {
             return res.status(400).json(err);
         }
@@ -87,35 +56,41 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
 });
 
 // @route POST api/admins/
-router.post('/', passport.authenticate('jwt', { session: false }), addSeniorCenterIdToRequest, (req, res) => {
-    const newAdmin = new Admin(req.body);
+router.post(
+    '/',
+    passport.authenticate('jwt', { session: false }),
+    restrictVolunteer(),
+    addSeniorCenterIdToRequest,
+    (req, res) => {
+        const newAdmin = new mongoose.model(modelName)(req.body);
 
-    const { errors, isValid } = validateRegisterAdmin(req.body);
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-
-    // Hash password before saving in database
-    bcrypt.genSalt(10, (err, salt) => {
-        if (err) {
-            return res.status(400).json(err);
+        const { errors, isValid } = validateRegisterAdmin(req.body);
+        if (!isValid) {
+            return res.status(400).json(errors);
         }
 
-        bcrypt.hash(newAdmin.password, salt, (err, hash) => {
+        // Hash password before saving in database
+        bcrypt.genSalt(10, (err, salt) => {
             if (err) {
                 return res.status(400).json(err);
             }
 
-            newAdmin.password = hash;
-            newAdmin
-                .save()
-                .then(admin => res.json(admin))
-                .catch(err => {
+            bcrypt.hash(newAdmin.password, salt, (err, hash) => {
+                if (err) {
                     return res.status(400).json(err);
-                });
+                }
+
+                newAdmin.password = hash;
+                newAdmin
+                    .save()
+                    .then(admin => res.json(admin))
+                    .catch(err => {
+                        return res.status(400).json(err);
+                    });
+            });
         });
-    });
-});
+    }
+);
 
 // @route POST api/admins/login
 // @desc Login Admin and return JWT token
@@ -139,38 +114,40 @@ router.post(
         };
 
         // Find Admin by email
-        Admin.findOne({ email }).then(admin => {
-            // Check if Admin exists
-            if (!admin) {
-                return res.status(404).json(notFoundError);
-            }
-
-            // Check password
-            bcrypt.compare(password, admin.password).then(isMatch => {
-                if (isMatch) {
-                    req.user = admin;
-                    next();
-                } else {
+        mongoose
+            .model(modelName)
+            .findOne({ email })
+            .then(admin => {
+                // Check if Admin exists
+                if (!admin) {
                     return res.status(404).json(notFoundError);
                 }
+
+                // Check password
+                bcrypt.compare(password, admin.password).then(isMatch => {
+                    if (isMatch) {
+                        req.user = admin;
+                        next();
+                    } else {
+                        return res.status(404).json(notFoundError);
+                    }
+                });
             });
-        });
     },
     sendJwt
 );
 
 // @route GET api/admins/refresh-token
-// @desc Login Admin and return JWT token
 // @access Public
 router.get('/refresh-token', passport.authenticate('jwt', { session: false }), sendJwt);
 
 // @route POST api/admins/filter
-ApiHelper.filter(router, Admin, addSeniorCenterIdToRequest);
+ApiHelper.filter(router, modelName, [addSeniorCenterIdToRequest, restrictVolunteer()]);
 
 // @route GET api/admins/:id
-ApiHelper.get(router, Admin);
+ApiHelper.get(router, modelName, restrictVolunteer());
 
 // @route PATCH api/admins/:id
-ApiHelper.edit(router, Admin);
+ApiHelper.edit(router, modelName, restrictVolunteer());
 
 module.exports = router;

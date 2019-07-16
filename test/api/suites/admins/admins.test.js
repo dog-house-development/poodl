@@ -19,6 +19,23 @@ const firstPassword = adminsToSend[0].password;
 const secondPassword = adminsToSend[1].password;
 
 module.exports = function() {
+    /**
+     * Verifies that the actual admin doesn't have password or __v properties.
+     * But otherwise the actual admin and expected are equal.
+     * @param {object} actualAdmin
+     * @param {object} expectedAdmin
+     */
+    const expectAdminToNotHavePassword = (actualAdmin, expectedAdmin) => {
+        expect(actualAdmin).to.not.have.property('password');
+        expect(actualAdmin).to.not.have.property('__v');
+
+        actualAdmin.password = expectedAdmin.password;
+        actualAdmin.actualPassword = expectedAdmin.actualPassword;
+        actualAdmin.__v = expectedAdmin.__v;
+
+        expect(actualAdmin).to.deep.include(expectedAdmin);
+    };
+
     describe('POST /api/admins/login', function() {
         it('should login successfully', async () => {
             const credentials = {
@@ -96,8 +113,8 @@ module.exports = function() {
 
             // Look at second and third admins because the first one
             // is the initial admin that is used for authentication.
-            expect(res.body[1]).to.deep.include(adminsInDatabase[0]);
-            expect(res.body[2]).to.deep.include(adminsInDatabase[1]);
+            expectAdminToNotHavePassword(res.body[1], adminsInDatabase[0]);
+            expectAdminToNotHavePassword(res.body[2], adminsInDatabase[1]);
         });
     });
 
@@ -111,8 +128,7 @@ module.exports = function() {
             expectNoErrors(res);
             expect(res).to.have.status(200);
 
-            res.body.actualPassword = initialAdmin.actualPassword;
-            expect(res.body).to.deep.include(initialAdmin);
+            expectAdminToNotHavePassword(res.body, initialAdmin);
         });
     });
 
@@ -131,7 +147,7 @@ module.exports = function() {
 
             expectNoErrors(res);
             expect(res).to.have.status(200);
-            expect(res.body).to.deep.include(adminsInDatabase[0]);
+            expectAdminToNotHavePassword(res.body, adminsInDatabase[0]);
         });
 
         it('should not allow an admin to delete himself', async () => {
