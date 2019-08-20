@@ -51,5 +51,8 @@
         "nodemon": "^1.19.1",
         "nyc": "^13.3.0",
         "selenium-webdriver": "^4.0.0-alpha.4"
+    },
+    "engines": {
+        "node": "11.10.1"
     }
 }
