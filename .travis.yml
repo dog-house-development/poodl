@@ -2,16 +2,16 @@ language: node_js
 node_js:
     - '11.10.1'
 cache:
-    yarn: true
+    npm: true
     directories:
         - node_modules
         - client/node_modules
 before_install:
     - sudo apt-get install -y lcov
 install:
-    - yarn install-all
+    - npm run install-all
 script:
-    - yarn coverage
-    - yarn --cwd client build
+    - npm run coverage
+    - npm run --prefix client build
 after_script: # Upload coverage reports
-    - yarn coveralls
+    - npm run coveralls
