@@ -2,27 +2,31 @@
     "name": "poodl",
     "version": "1.0.0",
     "description": "Senior Center App",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dog-house-development/poodl"
+    },
     "main": "server.js",
     "scripts": {
-        "install-all": "yarn && yarn --cwd client",
+        "install-all": "npm install && npm install --prefix client",
         "start:server": "node server.js",
-        "start:client": "yarn --cwd client start",
-        "test:client": "yarn --cwd client test",
+        "start:client": "npm run --prefix client start",
+        "test:client": "npm run --prefix client test",
         "test:server": "mocha routes --recursive --extension 'test.js'",
         "test:api": "mocha test/api",
         "test:selenium": "mocha test/selenium",
         "server": "nodemon server.js",
-        "cover:client": "yarn test:client --coverage",
+        "cover:client": "npm run test:client -- -- --coverage",
         "cover:api": "nyc --reporter=lcov mocha test/api",
         "cover:server": "nyc --reporter=lcov mocha routes --recursive",
         "cover:server:no-clean": "nyc --no-clean --reporter=lcov mocha routes --recursive --extension 'test.js'",
-        "coverage": "yarn cover:client && yarn cover:api && yarn cover:server:no-clean",
+        "coverage": "npm run cover:client && npm run cover:api && npm run cover:server:no-clean",
         "combine-coverage-files": "lcov -a client/coverage/lcov.info -a coverage/lcov.info -o coverage/total.info",
-        "coveralls": "yarn combine-coverage-files && cat coverage/total.info | coveralls",
-        "start:dev": "concurrently \"yarn server\" \"yarn start:client\"",
+        "coveralls": "npm run combine-coverage-files && cat coverage/total.info | coveralls",
+        "start:dev": "concurrently \"npm run server\" \"npm run start:client\"",
         "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
     },
-    "author": "",
+    "author": "Dog House Development",
     "license": "MIT",
     "dependencies": {
         "bcryptjs": "^2.4.3",
@@ -49,7 +53,7 @@
         "mockgoose": "^8.0.2",
         "mongo-unit": "^1.4.4",
         "nodemon": "^1.19.1",
-        "nyc": "^13.3.0",
+        "nyc": "^14.1.1",
         "selenium-webdriver": "^4.0.0-alpha.4"
     },
     "engines": {
