@@ -35,6 +35,16 @@ export default function(state = initialState, action) {
                 isAuthenticated: false,
                 admin: {}
             };
+        case Types.auth.resetPasswordEmail.BEGIN:
+            return {
+                ...state,
+                loading: true
+            };
+        case Types.auth.resetPasswordEmail.SUCCESS:
+            return {
+                ...state,
+                loading: false
+            };
         case Types.auth.ERROR:
             return {
                 ...state,

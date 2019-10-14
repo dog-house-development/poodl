@@ -9,7 +9,7 @@ const loginInputs = [
                 label: 'Email',
                 kind: 'field',
                 type: 'email',
-                placeholder: 'Password'
+                placeholder: 'Email'
             },
             {
                 id: 'password',

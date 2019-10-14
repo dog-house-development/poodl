@@ -65,6 +65,11 @@ export class Login extends Component {
                         loading={this.props.loading}
                     />
                 </div>
+                <div className="center">
+                    <Link to="/reset-password/enter-email" className="button medium tertiary forgot-password">
+                        Forgot password?
+                    </Link>
+                </div>
             </div>
         );
     }
